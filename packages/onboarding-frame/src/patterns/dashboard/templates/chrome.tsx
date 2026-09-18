@@ -148,7 +148,10 @@ export function TopBar({
   return (
     <header
       className={cn(
-        "flex h-14 shrink-0 items-center gap-3 px-4 sm:px-6",
+        // A top bar is a single row of controls, and at phone width it stops
+        // fitting. Scrolling keeps every control reachable; the enclosing
+        // Shell clips, so without this the right-hand ones simply vanish.
+        "flex h-14 shrink-0 items-center gap-3 overflow-x-auto px-4 sm:px-6",
         border && "border-b border-[color:var(--ob-border)]",
         className,
       )}
@@ -203,7 +206,11 @@ export function Card({
   return (
     <section
       className={cn(
-        "rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]",
+        // min-w-0: a card is nearly always a grid or flex item, where the
+        // default min-width:auto lets one non-shrinking child inside set the
+        // card's width. That is how a 390px column ended up holding a 619px
+        // card, with the overflow clipped rather than reflowed.
+        "min-w-0 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]",
         padded && "p-5",
         className,
       )}

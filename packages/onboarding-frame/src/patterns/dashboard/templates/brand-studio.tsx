@@ -87,7 +87,7 @@ export function BrandStudioTemplate({
           <button type="button" aria-label="More" className="opacity-50">
             <MoreIcon width={17} height={17} />
           </button>
-          <div className="ml-auto flex items-center gap-2.5">
+          <div className="ml-auto flex shrink-0 items-center gap-2.5">
             <Btn tone="neutral" size="sm">
               <CoinsIcon width={15} height={15} /> Upgrade
             </Btn>

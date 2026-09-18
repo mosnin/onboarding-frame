@@ -181,7 +181,7 @@ export function ApiConsoleTemplate({
         <>
         <div className="border-b border-[color:var(--ob-border)] px-6 py-7 sm:px-10">
           <div className="flex flex-wrap items-end gap-4">
-            <div className="flex-1">
+            <div className="min-w-0 flex-1">
               <h1 className="text-[2rem] font-extrabold tracking-tight">Dashboard</h1>
               <p className="mt-1 text-[color:var(--ob-muted)]">
                 Start exploring {brandName}&apos;s capabilities{" "}
@@ -191,7 +191,7 @@ export function ApiConsoleTemplate({
                 </button>
               </p>
             </div>
-            <div className="flex items-center gap-2 text-[0.9rem]">
+            <div className="flex min-w-0 items-center gap-2 text-[0.9rem]">
               <span className="text-[color:var(--ob-muted)]">I&apos;m here</span>
               <span className="font-mono opacity-60">&lt;/&gt;</span>
               <span className="font-semibold">To build with code</span>
@@ -203,7 +203,7 @@ export function ApiConsoleTemplate({
         <div className="grid gap-10 px-6 py-8 sm:px-10">
           <section className="grid gap-5">
             <div className="flex flex-wrap items-end gap-4">
-              <div className="flex-1">
+              <div className="min-w-0 flex-1">
                 <h2 className="text-xl font-extrabold tracking-tight">Getting started</h2>
                 <p className="mt-0.5 text-[0.92rem] text-[color:var(--ob-muted)]">
                   Start exploring {brandName}&apos;s capabilities
@@ -212,9 +212,9 @@ export function ApiConsoleTemplate({
               <Btn tone="neutral" size="sm">Don&apos;t show this</Btn>
             </div>
 
-            <div className="grid divide-y divide-[color:var(--ob-border)] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+            <div className="grid min-w-0 divide-y divide-[color:var(--ob-border)] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
               {/* Setup checklist */}
-              <div className="flex flex-col gap-5 p-6">
+              <div className="flex min-w-0 flex-col gap-5 p-6">
                 <div>
                   <h3 className="font-bold">Welcome to {brandName}!</h3>
                   <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
@@ -257,7 +257,7 @@ export function ApiConsoleTemplate({
               </div>
 
               {/* API quickstart */}
-              <div className="flex flex-col gap-5 p-6">
+              <div className="flex min-w-0 flex-col gap-5 p-6">
                 <div>
                   <h3 className="font-bold">Getting started with the API</h3>
                   <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
@@ -281,7 +281,7 @@ export function ApiConsoleTemplate({
               </div>
 
               {/* Model catalogue */}
-              <div className="flex flex-col gap-4 p-6">
+              <div className="flex min-w-0 flex-col gap-4 p-6">
                 <div>
                   <h3 className="font-bold">Explore the latest models</h3>
                   <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
@@ -295,9 +295,9 @@ export function ApiConsoleTemplate({
                   </span>
                   <Btn tone="dark" size="sm">Learn more</Btn>
                 </div>
-                <ul className="grid gap-3">
+                <ul className="grid min-w-0 gap-3">
                   {MODELS.map((model) => (
-                    <li key={model.id} className="flex gap-3">
+                    <li key={model.id} className="flex min-w-0 gap-3">
                       <span
                         aria-hidden
                         className="grid size-[26px] shrink-0 place-items-center rounded-[6px]"
@@ -328,7 +328,7 @@ export function ApiConsoleTemplate({
           </section>
 
           {/* Usage strip */}
-          <div className="grid divide-y divide-[color:var(--ob-border)] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+          <div className="grid min-w-0 divide-y divide-[color:var(--ob-border)] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
             <div className="flex flex-wrap gap-10 p-5">
               <div>
                 <p className="text-[0.86rem] text-[color:var(--ob-muted)]">Credits balance</p>

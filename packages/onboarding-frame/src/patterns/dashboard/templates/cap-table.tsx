@@ -94,7 +94,7 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
   return (
     <Surface tokens={capTableTokens} className={className}>
       <Shell className="flex-col">
-        <header className="flex h-[74px] shrink-0 items-center gap-3 border-b border-[color:var(--ob-border)] px-5">
+        <header className="flex h-[74px] shrink-0 items-center overflow-x-auto gap-3 border-b border-[color:var(--ob-border)] px-5">
           <WordmarkSlot width={78} height={20} label="" />
 
           <span className="flex items-center gap-2.5 rounded-full bg-[color:var(--ob-surface-2)] py-1.5 pl-1.5 pr-3">

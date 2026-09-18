@@ -95,7 +95,7 @@ export function CommunityTrafficTemplate({
   return (
     <Surface tokens={communityTokens} className={className}>
       <Shell className="flex-col">
-        <header className="flex h-[42px] shrink-0 items-center gap-[9px] border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[12px]">
+        <header className="flex h-[42px] shrink-0 items-center overflow-x-auto gap-[9px] border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[12px]">
           <span aria-hidden className="text-[0.869rem]">
             ☰
           </span>

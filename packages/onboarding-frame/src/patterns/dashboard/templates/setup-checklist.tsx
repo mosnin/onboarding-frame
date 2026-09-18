@@ -190,7 +190,7 @@ export function SetupChecklistTemplate({
           ) : (
           <div className="grid gap-6 px-6 py-6 sm:px-10 lg:grid-cols-[1fr_360px]">
             <div className="grid content-start gap-6">
-              <h1 className="text-[2rem] font-extrabold tracking-tight">
+              <h1 className="text-[1.5rem] font-extrabold tracking-tight sm:text-[2rem]">
                 Welcome to {brandName}, {userName}!
               </h1>
 

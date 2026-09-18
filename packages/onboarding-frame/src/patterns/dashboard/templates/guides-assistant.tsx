@@ -200,7 +200,10 @@ export function GuidesAssistantTemplate({
                   ].map((row) => (
                     <div
                       key={row.id}
-                      className="flex items-center gap-3 rounded-[10px] border border-[color:var(--ob-border)] p-4"
+                      // The trailing marks and the button cannot shrink, so on a
+                      // narrow screen the row wraps them onto a second line
+                      // rather than pushing them past the card.
+                      className="flex flex-wrap items-center gap-3 rounded-[10px] border border-[color:var(--ob-border)] p-4"
                     >
                       <span
                         aria-hidden
@@ -213,16 +216,16 @@ export function GuidesAssistantTemplate({
                       >
                         {row.done ? <Check width={13} height={13} /> : null}
                       </span>
-                      <span className="flex-1 whitespace-nowrap font-bold">{row.label}</span>
+                      <span className="min-w-0 flex-1 truncate font-bold">{row.label}</span>
                       {row.logos && (
-                        <span className="flex gap-1.5">
+                        <span className="flex shrink-0 gap-1.5">
                           {Array.from({ length: row.logos }, (_, i) => (
                             <Placeholder key={i} width={26} height={26} radius={6} />
                           ))}
                         </span>
                       )}
                       {row.channels && (
-                        <span className="flex gap-1.5">
+                        <span className="flex shrink-0 gap-1.5">
                           {(["mail", "chat", "share"] as IconName[]).map((name) => (
                             <span
                               key={name}
@@ -234,7 +237,7 @@ export function GuidesAssistantTemplate({
                         </span>
                       )}
                       {row.swatches && (
-                        <span className="flex gap-1.5">
+                        <span className="flex shrink-0 gap-1.5">
                           <Placeholder width={28} height={24} radius={4} />
                           <span className="size-6 rounded bg-[#ec4899]" />
                           <span className="size-6 rounded bg-[#2b2b2b]" />
@@ -249,7 +252,7 @@ export function GuidesAssistantTemplate({
                 </div>
               </Card>
 
-              <Card className="mt-5 grid gap-6 p-6 lg:grid-cols-[300px_1fr]">
+              <Card className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-6 p-6 lg:grid-cols-[300px_minmax(0,1fr)]">
                 <div>
                   <h2 className="flex items-center gap-2 font-bold">
                     <UserPlusIcon width={18} height={18} /> Grow your audience
@@ -281,7 +284,7 @@ export function GuidesAssistantTemplate({
                       ],
                     ]}
                   />
-                  <div className="mt-4 grid gap-5 rounded-[10px] bg-[color:var(--ob-surface-2)] p-5 sm:grid-cols-[1fr_200px]">
+                  <div className="mt-4 grid min-w-0 gap-5 rounded-[10px] bg-[color:var(--ob-surface-2)] p-5 sm:grid-cols-[minmax(0,1fr)_200px]">
                     <div>
                       <h3 className="font-bold">Sign-up form</h3>
                       <p className="mt-1.5 text-[0.92rem] leading-relaxed text-[color:var(--ob-muted)]">
@@ -534,7 +537,7 @@ function ReportingPage() {
                 {messages.map((row) => (
                   <tr key={row.id}>
                     <td className="border-b border-[color:var(--ob-border)] px-3 py-3.5">
-                      <span className="block max-w-[26rem] font-medium text-[color:var(--ob-brand)]">
+                      <span className="block w-full max-w-[26rem] font-medium text-[color:var(--ob-brand)]">
                         {row.name}
                       </span>
                       <span className="block text-[0.86rem] text-[color:var(--ob-muted)]">
