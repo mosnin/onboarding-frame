@@ -26,8 +26,11 @@ export type { PlansProps } from "./patterns/plans/Plans";
 export { Countdown, ComparisonMatrix, QuotaMatrix, CheckoutPanel, PeriodToggle } from "./patterns/plans/parts";
 
 export { Dashboard } from "./patterns/dashboard/Dashboard";
+export * from "./patterns/dashboard/templates";
 export type { DashboardProps } from "./patterns/dashboard/Dashboard";
 
+export { Placeholder, LogoSlot, AvatarSlot, WordmarkSlot } from "./ui/placeholder";
+export { LineChart, BarChart, Donut, Ring, Sparkline, Heatmap, BarList } from "./ui/charts";
 export { Field, isMultiple } from "./ui/fields";
 export * from "./ui/primitives";
 

@@ -3,6 +3,7 @@
 import { Placeholder } from "../../../ui/placeholder";
 import { cn } from "../../../lib/cn";
 import { Surface, apiConsoleTokens } from "./tokens";
+import { ApiConsoleSubpage } from "./api-console-pages";
 import {
   Banner,
   Btn,
@@ -18,6 +19,18 @@ export interface TemplateProps {
   brandName?: string;
   userName?: string;
   className?: string;
+}
+
+/** Pages this template implements, matching its own navigation. */
+export type ApiConsolePage =
+  | "home"
+  | "explore"
+  | "assets"
+  | "serverless"
+  | "usage";
+
+export interface ApiConsoleProps extends TemplateProps {
+  page?: ApiConsolePage;
 }
 
 const TABS = [
@@ -59,8 +72,9 @@ const MODELS = [
  */
 export function ApiConsoleTemplate({
   brandName = "Northwind",
+  page = "home",
   className,
-}: TemplateProps) {
+}: ApiConsoleProps) {
   return (
     <Surface tokens={apiConsoleTokens}>
     <Shell className={cn("flex-col", className)}>
@@ -98,10 +112,10 @@ export function ApiConsoleTemplate({
           <button
             key={tab.id}
             type="button"
-            aria-current={tab.id === "home" ? "page" : undefined}
+            aria-current={tab.id === page ? "page" : undefined}
             className={cn(
               "relative flex items-center gap-1.5 whitespace-nowrap border-b-2 py-3 text-[0.9rem] transition-colors",
-              tab.id === "home"
+              tab.id === page
                 ? "border-[color:var(--ob-fg)] font-semibold"
                 : "border-transparent text-[color:var(--ob-fg-soft)] hover:text-[color:var(--ob-fg)]",
             )}
@@ -119,6 +133,10 @@ export function ApiConsoleTemplate({
       </nav>
 
       <Main>
+        {page !== "home" ? (
+          <ApiConsoleSubpage page={page} brandName={brandName} />
+        ) : (
+        <>
         <div className="border-b border-[color:var(--ob-border)] px-6 py-7 sm:px-10">
           <div className="flex flex-wrap items-end gap-4">
             <div className="flex-1">
@@ -317,6 +335,8 @@ export function ApiConsoleTemplate({
             </Card>
           </section>
         </div>
+        </>
+        )}
       </Main>
     </Shell>
     </Surface>

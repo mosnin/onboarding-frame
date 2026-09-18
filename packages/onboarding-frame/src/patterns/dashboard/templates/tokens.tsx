@@ -219,3 +219,67 @@ export const fileLibraryTokens: TemplateTokens = {
   radiusLg: "0.875rem",
   font: GEOMETRIC,
 };
+
+/** Warm mauve creative tool: dark plum CTA, soft pink banners, roomy cards. */
+export const creativeStudioTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f7f4f5",
+  surface3: "#ece5e8",
+  border: "#e9e3e5",
+  borderStrong: "#d2c8cc",
+  fg: "#1b1418",
+  fgSoft: "#4a4046",
+  muted: "#7c7078",
+  brand: "#7b1e3c",
+  brandFg: "#ffffff",
+  ctaBg: "#5e1930",
+  ctaFg: "#ffffff",
+  radius: "0.6rem",
+  radiusSm: "0.45rem",
+  radiusLg: "0.9rem",
+  font: GEOMETRIC,
+};
+
+/** Editorial white gallery: near-zero chrome, image-forward. */
+export const discoveryFeedTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f4f4f4",
+  surface3: "#e9e9e9",
+  border: "#ebebeb",
+  borderStrong: "#d4d4d4",
+  fg: "#111111",
+  fgSoft: "#3d3d3d",
+  muted: "#767676",
+  brand: "#111111",
+  brandFg: "#ffffff",
+  ctaBg: "#111111",
+  ctaFg: "#ffffff",
+  radius: "0.75rem",
+  radiusSm: "0.5rem",
+  radiusLg: "1rem",
+  font: GEOMETRIC,
+};
+
+/** Marketing suite: cool greys, indigo accents, dense guide cards. */
+export const guidesTokens: TemplateTokens = {
+  bg: "#f7f8fa",
+  surface: "#ffffff",
+  surface2: "#f3f4f7",
+  surface3: "#e7e9ef",
+  border: "#e3e5ec",
+  borderStrong: "#c9ccd8",
+  fg: "#13161f",
+  fgSoft: "#3f4453",
+  muted: "#6e7385",
+  brand: "#4b34d4",
+  brandFg: "#ffffff",
+  ctaBg: "#14161d",
+  ctaFg: "#ffffff",
+  success: "#12a150",
+  radius: "0.6rem",
+  radiusSm: "0.45rem",
+  radiusLg: "0.85rem",
+  font: GEOMETRIC,
+};
