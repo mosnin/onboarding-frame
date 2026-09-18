@@ -30,6 +30,9 @@ export * from "./patterns/dashboard/templates";
 export type { DashboardProps } from "./patterns/dashboard/Dashboard";
 
 export { Placeholder, LogoSlot, AvatarSlot, WordmarkSlot } from "./ui/placeholder";
+export { Avatar, Thumb } from "./ui/avatar";
+export { BrandMark, BrandTile } from "./ui/brand";
+export { Wordmark } from "./ui/wordmark";
 export { LineChart, BarChart, Donut, Ring, Sparkline, Heatmap, BarList } from "./ui/charts";
 export { Field, isMultiple } from "./ui/fields";
 export * from "./ui/primitives";

@@ -35,7 +35,6 @@ import {
   UserIcon,
 } from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
-import { LogoSlot } from "../../../ui/placeholder";
 import { Surface, campaignTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";

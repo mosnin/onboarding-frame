@@ -2,8 +2,15 @@
 
 import { Placeholder } from "../../../ui/placeholder";
 import {
+  CalendarIcon,
   CaretRightIcon,
+  EnvelopeIcon,
+  PaletteIcon,
+  ReceiptIcon,
+  VideoCameraIcon,
 } from "../../../ui/icons-solid";
+import { Thumb } from "../../../ui/avatar";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
 import { Surface, setupChecklistTokens } from "./tokens";
 import { ProgressBar } from "../../../ui/primitives";
@@ -31,6 +38,15 @@ import {
   Sparkle,
   type IconName,
 } from "../../../ui/icons";
+
+/** The tool categories the reference's "connect an app" row lists. */
+const TOOL_CHIPS = [
+  { label: "Mail", Icon: EnvelopeIcon },
+  { label: "Meetings", Icon: VideoCameraIcon },
+  { label: "Design", Icon: PaletteIcon },
+  { label: "Calendar", Icon: CalendarIcon },
+  { label: "Accounting", Icon: ReceiptIcon },
+];
 
 const NAV: {
   id: string;
@@ -110,7 +126,7 @@ export function SetupChecklistTemplate({
         {/* Measured off the reference: 240px on #121416. */}
         <Sidebar width={240} bg="#121416" className="border-r-0 text-white">
           <div className="p-4">
-            <Placeholder width={44} height={40} radius={6} />
+            <Wordmark name={brandName} size={14} mark={28} radius={6} tone="#ffffff" />
           </div>
 
           {/* Persistent setup progress lives above the nav, not inside it. */}
@@ -244,13 +260,9 @@ export function SetupChecklistTemplate({
                   <CaretRightIcon size={14} />
                 </div>
                 <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] p-5">
-                  <Placeholder
-                    width={52}
-                    height={52}
-                    radius={8}
-                    label="Logo"
-                    className="border-[#a5b4fc]"
-                  />
+                  <span className="block size-[52px] shrink-0">
+                    <Thumb seed={`${brandName}-logo`} radius={8} alt="Logo" />
+                  </span>
                   <span aria-hidden className="size-11 rounded-full bg-[#1170b8]" />
                   <span className="grid size-11 place-items-center rounded-full bg-[color:var(--ob-surface-3)] text-[0.82rem] font-bold text-[color:var(--ob-muted)]">
                     {userName.slice(0, 2).toUpperCase()}
@@ -264,13 +276,13 @@ export function SetupChecklistTemplate({
                   <CaretRightIcon size={14} />
                 </div>
                 <div className="flex flex-wrap gap-2.5 p-5 pt-2">
-                  {["Mail", "Meetings", "Design", "Calendar", "Accounting"].map((name) => (
+                  {TOOL_CHIPS.map((tool) => (
                     <span
-                      key={name}
+                      key={tool.label}
                       className="flex items-center gap-2 rounded-full border border-[color:var(--ob-border)] px-3 py-1.5 text-[0.86rem] font-medium"
                     >
-                      <Placeholder width={18} height={18} radius={4} />
-                      {name}
+                      <tool.Icon size={18} />
+                      {tool.label}
                     </span>
                   ))}
                 </div>
@@ -280,12 +292,9 @@ export function SetupChecklistTemplate({
                 <h3 className="font-extrabold">
                   Start using {brandName} with confidence
                 </h3>
-                <Placeholder
-                  ratio={16 / 9}
-                  label="Tutorial video thumbnail"
-                  radius={10}
-                  className="mt-4"
-                />
+                <span className="mt-4 block aspect-[16/9] w-full">
+                  <Thumb seed="tutorial-video" radius={10} alt="Tutorial video thumbnail" />
+                </span>
                 <ul className="mt-5 grid gap-4">
                   {RESOURCES.map((item) => (
                     <li key={item.id} className="flex items-center gap-3 text-[0.95rem]">

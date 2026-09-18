@@ -20,8 +20,10 @@ import {
   UsersIcon,
   WarningIcon,
 } from "../../../ui/icons-solid";
+import { BrandMark } from "../../../ui/brand";
+import { Avatar } from "../../../ui/avatar";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, complianceTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -114,6 +116,8 @@ const CONTROLS = [
  * with a sliver of brand colour instead of being scaled to look fuller.
  */
 export function ComplianceControlsTemplate({
+  brandName = "Acme",
+  userName = "Alex Rivera",
   className,
   page = "controls",
 }: ComplianceControlsProps) {
@@ -121,14 +125,14 @@ export function ComplianceControlsTemplate({
     <Surface tokens={complianceTokens} className={className}>
       <Shell className="flex-col">
         <header className="flex h-[49px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[18px]">
-          <WordmarkSlot width={70} height={15} label="" />
+          <Wordmark name={brandName} size={11} mark={15} radius={4} />
           <span className="ml-auto flex items-center gap-[12px] text-[color:var(--ob-fg-soft)]">
             {["?", "📣", "⚙"].map((glyph) => (
               <span key={glyph} aria-hidden>
                 {glyph}
               </span>
             ))}
-            <AvatarSlot size={23} />
+            <Avatar name={userName} size={23} />
           </span>
         </header>
 
@@ -339,7 +343,7 @@ export function ComplianceControlsTemplate({
                     Unassigned
                   </span>
                   <span className="flex items-center gap-[8px] text-[0.759rem]">
-                    <LogoSlot size={17} label="" radius={4} />
+                    <BrandMark brand="Acme" size={17} label="Acme" />
                     Acme
                   </span>
                   <span className="grid justify-items-start gap-[5px]">

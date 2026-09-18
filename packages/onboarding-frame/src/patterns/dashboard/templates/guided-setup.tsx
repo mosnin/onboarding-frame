@@ -1,6 +1,6 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, guidedSetupTokens } from "./tokens";
 import { Btn, Card, Chip, Fab, Main, Shell, Sidebar } from "./chrome";
@@ -54,6 +54,7 @@ const STEPS = [
  * steps stay visible but disabled, so the path is legible without being noisy.
  */
 export function GuidedSetupTemplate({
+  userName = "Alex Rivera",
   brandName = "Signal",
   className,
 }: TemplateProps) {
@@ -63,7 +64,7 @@ export function GuidedSetupTemplate({
       {/* Narrow icon rail */}
       {/* Measured off the reference: a 48px icon rail on #eaecff. */}
       <aside className="hidden w-12 shrink-0 flex-col items-center gap-6 bg-[#eaecff] py-4 sm:flex">
-        <Placeholder width={22} height={22} radius={6} />
+        <Avatar name={brandName} size={22} rounded={6} />
         <nav className="grid gap-[22px] text-[color:var(--ob-fg-soft)]">
           {RAIL.map((name) => (
             <button key={name} type="button" className="opacity-65 hover:opacity-100">
@@ -80,7 +81,7 @@ export function GuidedSetupTemplate({
               )}
             </button>
           ))}
-          <Placeholder shape="circle" width={26} height={26} />
+          <Avatar name={userName} size={26} />
         </div>
       </aside>
 

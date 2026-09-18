@@ -1,6 +1,7 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
+import { Avatar } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
 import { cn } from "../../../lib/cn";
 import { Surface, assistantHomeTokens } from "./tokens";
 import { Btn, Main, Shell, Sidebar } from "./chrome";
@@ -41,9 +42,9 @@ const SUGGESTIONS: {
   id: string;
   label: string;
   icon?: IconName;
-  logos?: number;
+  logos?: string[];
 }[] = [
-  { id: "connect", label: "Connect your apps", logos: 3 },
+  { id: "connect", label: "Connect your apps", logos: ["slack", "notion", "googledrive"] },
   { id: "deck", label: "Prepare a QBR deck", icon: "image" },
   { id: "tool", label: "Build an internal tool", icon: "settings" },
   { id: "gtm", label: "Automate my GTM motion", icon: "target" },
@@ -73,7 +74,7 @@ export function AssistantHomeTemplate({
     <Shell className={cn(className)} bg="#fbf7f6">
       <Sidebar width={199} bg="#f2eeeb" className="border-r-[color:#e4e0dd]">
         <div className="flex items-center gap-2 px-3 py-3.5">
-          <Placeholder width={24} height={24} radius={6} />
+          <Avatar name={brandName} size={24} rounded={6} />
           <button
             type="button"
             aria-label="Collapse sidebar"
@@ -115,7 +116,7 @@ export function AssistantHomeTemplate({
             <span aria-hidden className="size-1.5 rounded-full bg-[#0f8f6f]" />
           </button>
           <div className="flex items-center gap-2.5 rounded-[10px] px-2 py-2">
-            <Placeholder shape="circle" width={24} height={24} />
+            <Avatar name={userName} size={24} />
             <span className="flex-1 truncate text-[0.88rem]">{userName}@example.com</span>
             <BellIcon width={16} height={16} className="opacity-45" />
           </div>
@@ -228,8 +229,13 @@ export function AssistantHomeTemplate({
                 >
                   {item.logos ? (
                     <span className="flex shrink-0 -space-x-2">
-                      {Array.from({ length: item.logos }, (_, i) => (
-                        <Placeholder key={i} width={16} height={16} radius={4} />
+                      {item.logos.map((slug) => (
+                        <BrandMark
+                          key={slug}
+                          brand={slug}
+                          size={16}
+                          className="rounded-[4px] bg-[color:var(--ob-surface)] p-px"
+                        />
                       ))}
                     </span>
                   ) : (

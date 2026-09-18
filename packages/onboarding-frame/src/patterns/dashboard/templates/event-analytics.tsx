@@ -23,8 +23,9 @@ import {
   UsersIcon,
   WrenchIcon,
 } from "../../../ui/icons-solid";
+import { Avatar, Thumb } from "../../../ui/avatar";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, eventTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -76,6 +77,7 @@ const STATS = [
  * show: an organiser looking at an event that has not happened.
  */
 export function EventAnalyticsTemplate({
+  brandName = "Acme",
   className,
   page = "analytics",
 }: EventAnalyticsProps) {
@@ -84,7 +86,7 @@ export function EventAnalyticsTemplate({
       <Shell>
         <Sidebar width={278} bg="var(--ob-bg)" className="relative">
           <div className="flex items-center gap-2.5 px-5 pb-5 pt-6">
-            <WordmarkSlot width={120} height={18} label="" />
+            <Wordmark name={brandName} size={14} mark={18} radius={5} />
           </div>
 
           <nav className="grid gap-0.5 px-3">
@@ -130,7 +132,7 @@ export function EventAnalyticsTemplate({
             </span>
             <CardIcon size={14} />
             <span className="flex items-center gap-2.5 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] px-3 py-1.5">
-              <AvatarSlot size={22} />
+              <Avatar name="Community" size={22} />
               <span className="leading-tight">
                 <span className="block text-[0.66rem] uppercase tracking-wide text-[color:var(--ob-muted)]">
                   Community
@@ -145,7 +147,9 @@ export function EventAnalyticsTemplate({
 
           <div className="grid gap-5 px-6 pb-8">
             <section className="flex items-center gap-4 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-5">
-              <Placeholder width={56} height={56} radius={10} label="" />
+              <span className="block size-[56px] shrink-0">
+                <Thumb seed="acme-gathering" radius={10} alt="Event cover" />
+              </span>
               <div className="min-w-0 flex-1">
                 <h1 className="flex items-center gap-2.5 text-[1.35rem] font-bold tracking-[-0.01em]">
                   ASAcme gathering
@@ -448,7 +452,7 @@ function Rsvps() {
           className="grid grid-cols-[minmax(0,1fr)_110px_110px_130px] items-center border-t border-[color:var(--ob-border)] px-5 py-3.5 text-[0.95rem]"
         >
           <span className="flex items-center gap-2.5">
-            <AvatarSlot size={28} />
+            <Avatar name={person.name} size={28} />
             {person.name}
           </span>
           <span className="text-[color:var(--ob-fg-soft)]">{person.tier}</span>

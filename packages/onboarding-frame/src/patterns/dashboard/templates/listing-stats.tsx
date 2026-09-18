@@ -23,8 +23,9 @@ import {
   TargetIcon,
   QuestionIcon,
 } from "../../../ui/icons-solid";
+import { Avatar, Thumb } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, listingTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -173,7 +174,7 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
             Sales channels
           </p>
           <div className="flex items-center gap-[9px] px-[18px]">
-            <LogoSlot size={20} label="" radius={3} />
+            <BrandMark brand="HomemadeGoodsByAlex" size={20} label="HomemadeGoodsByAlex" />
             <span className="min-w-[0px] flex-1 text-[0.752rem] leading-snug">
               HomemadeGoodsByAlex
             </span>
@@ -181,7 +182,7 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
           </div>
 
           <div className="mt-auto flex items-center gap-[9px] border-t border-[color:var(--ob-border)] px-[18px] py-[12px]">
-            <AvatarSlot size={24} />
+            <Avatar name="Alex" size={24} />
             <span className="flex-1 text-[0.79rem]">Alex</span>
             <CaretUpIcon size={14} />
           </div>
@@ -206,7 +207,9 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
 
           <section className="mt-[21px] rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[18px]">
             <div className="flex gap-[21px]">
-              <Placeholder width={172} height={137} radius={6} label="Listing photo" />
+              <span className="block h-[137px] w-[172px] shrink-0">
+                <Thumb seed="listing-hero" radius={6} alt="Listing photo" />
+              </span>
               <div className="min-w-[0px] flex-1">
                 <div className="flex items-start gap-[15px]">
                   <h2 className="flex-1 text-[1.129rem] font-bold leading-snug">

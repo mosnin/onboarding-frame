@@ -10,8 +10,8 @@ import {
   ChatDotsIcon,
   ClockIcon,
 } from "../../../ui/icons-solid";
+import { BrandMark } from "../../../ui/brand";
 import { cn } from "../../../lib/cn";
-import { LogoSlot } from "../../../ui/placeholder";
 import { Surface, platformTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -80,7 +80,7 @@ export function PlatformReportsTemplate({
       <Shell>
         <Sidebar width={78} bg="#171717" className="items-center">
           <div className="pb-6 pt-4">
-            <LogoSlot size={24} label="" radius={6} />
+            <BrandMark brand="aria-hidden" size={24} label="aria-hidden" />
           </div>
           <nav className="grid gap-4">
             {RAIL.map((glyph, index) => (

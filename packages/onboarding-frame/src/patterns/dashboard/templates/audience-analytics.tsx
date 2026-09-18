@@ -18,8 +18,8 @@ import {
   UsersIcon,
   MapPinIcon,
 } from "../../../ui/icons-solid";
+import { Avatar, Thumb } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, audienceTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -72,6 +72,8 @@ const GROWTH = [
  * shown at full scale without looking like a broken chart.
  */
 export function AudienceAnalyticsTemplate({
+  brandName = "Acme",
+  userName = "Alex Rivera",
   className,
   page = "audience",
 }: AudienceAnalyticsProps) {
@@ -82,7 +84,7 @@ export function AudienceAnalyticsTemplate({
         <span className="h-[5px] shrink-0 bg-[color:var(--ob-cta-bg)]" />
 
         <header className="flex h-[53px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[18px]">
-          <LogoSlot size={29} label="" radius={14} />
+          <Avatar name={brandName} size={29} />
           <div className="mx-auto flex w-full max-w-[594px] items-center gap-[8px] rounded-full border border-[color:var(--ob-border-strong)] px-[15px] py-[9px] text-[0.789rem] text-[color:var(--ob-fg-soft)]">
             <SearchIcon size={14} /> Search
           </div>
@@ -93,7 +95,7 @@ export function AudienceAnalyticsTemplate({
               </span>
               Live expert help
             </span>
-            <AvatarSlot size={29} />
+            <Avatar name={userName} size={29} />
           </span>
         </header>
 
@@ -456,7 +458,9 @@ function AudienceDashboard() {
         </div>
 
         <div className="grid justify-items-center px-[21px] py-[42px] text-center">
-          <Placeholder width={143} height={143} radius={9} label="" />
+          <span className="block size-[143px]">
+            <Thumb seed="audience-empty" radius={9} alt="Illustration" />
+          </span>
           <h3
             className="pt-[18px] text-[1.503rem] font-bold tracking-[-0.01em]"
             style={{ fontFamily: "var(--ob-font-display)" }}

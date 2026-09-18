@@ -19,8 +19,9 @@ import {
   UsersIcon,
   WarningIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, Placeholder } from "../../../ui/placeholder";
+import { Placeholder } from "../../../ui/placeholder";
 import { Surface, goalTokens } from "./tokens";
 import { Main, SearchField, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -76,7 +77,11 @@ const STATUSES = [
  * area and actual progress as one point is what makes an untouched goal read
  * as untouched rather than as a plunging line.
  */
-export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerProps) {
+export function GoalTrackerTemplate({
+  brandName = "Acme",
+  className,
+  page = "goal",
+}: GoalTrackerProps) {
   return (
     <Surface tokens={goalTokens} className={className}>
       <Shell>
@@ -141,7 +146,7 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
           </div>
 
           <header className="flex items-center gap-[9px] border-b border-[color:var(--ob-border)] px-[18px] py-[12px]">
-            <Placeholder width={33} height={33} radius={6} label="" glyph="◬" />
+            <Avatar name={brandName} size={33} rounded={6} />
             <div className="min-w-[0px] flex-1">
               <p className="flex items-center gap-[5px] text-[0.676rem] text-[color:var(--ob-muted)]">
                 My workspace goals <CaretRightIcon size={14} />
@@ -155,7 +160,7 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
                 <StarIcon size={14} />
               </p>
             </div>
-            <AvatarSlot size={23} />
+            <Avatar name="Share" size={23} />
             <span className="flex items-center gap-[5px] rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] px-[11px] py-[6px] text-[0.676rem] font-semibold text-white">
               <LockIcon size={14} /> Share
             </span>
@@ -253,7 +258,7 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
                 Goal owner
               </p>
               <div className="flex items-center gap-[8px] text-[0.789rem]">
-                <AvatarSlot size={21} />
+                <Avatar name="Accountable team" size={21} />
                 Sam Lee
               </div>
 
@@ -261,7 +266,7 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
                 Accountable team
               </p>
               <div className="flex items-center gap-[8px] text-[0.789rem]">
-                <Placeholder width={20} height={20} radius={5} label="" />
+                <Avatar name={brandName} size={20} rounded={5} />
                 My workspace
               </div>
 

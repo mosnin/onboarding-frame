@@ -15,8 +15,9 @@ import {
   PaletteIcon,
   BriefcaseIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, Placeholder } from "../../../ui/placeholder";
+import { Placeholder } from "../../../ui/placeholder";
 import { Surface, freelanceTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -53,6 +54,8 @@ const RAIL = [
  * has not invoiced anyone.
  */
 export function FreelanceAnalyticsTemplate({
+  brandName = "Acme",
+  userName = "Alex Rivera",
   className,
   page = "analytics",
 }: FreelanceAnalyticsProps) {
@@ -61,10 +64,10 @@ export function FreelanceAnalyticsTemplate({
       <Shell>
         <Sidebar width={84} bg="var(--ob-surface)" className="items-center">
           <div className="pb-6 pt-4">
-            <LogoSlot size={30} label="" radius={7} />
+            <Avatar name={brandName} size={30} rounded={8} />
           </div>
           <div className="pb-5">
-            <AvatarSlot size={38} />
+            <Avatar name={userName} size={38} />
           </div>
           <nav className="grid w-full justify-items-center gap-3.5">
             {RAIL.map((item) =>

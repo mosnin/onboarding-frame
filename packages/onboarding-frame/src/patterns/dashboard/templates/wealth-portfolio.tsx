@@ -13,8 +13,10 @@ import {
   SparkleIcon,
   TrendUpIcon,
 } from "../../../ui/icons-solid";
+import { BrandMark } from "../../../ui/brand";
+import { Avatar, Thumb } from "../../../ui/avatar";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, wealthTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -65,6 +67,8 @@ const BALANCE = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.2, 3.1, 3.4, 3.42];
  * makes it read as an offer rather than as data.
  */
 export function WealthPortfolioTemplate({
+  brandName = "Acme",
+  userName = "Alex Rivera",
   className,
   page = "overview",
 }: WealthPortfolioProps) {
@@ -73,7 +77,7 @@ export function WealthPortfolioTemplate({
       <Shell>
         <Sidebar width={358} bg="var(--ob-bg)" className="border-r-0">
           <div className="px-7 pb-7 pt-6">
-            <WordmarkSlot width={150} height={30} label="" />
+            <Wordmark name={brandName} size={22} mark={30} radius={8} />
           </div>
           <nav className="grid gap-1 px-4">
             {NAV.map((item) => (
@@ -107,7 +111,7 @@ export function WealthPortfolioTemplate({
               ⌾
               <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-[#e5484d]" />
             </span>
-            <AvatarSlot size={38} />
+            <Avatar name={userName} size={38} />
           </header>
 
           <nav className="flex gap-2 pt-5">
@@ -147,7 +151,7 @@ export function WealthPortfolioTemplate({
                   <ul className="grid gap-4">
                     {ACCOUNTS.map((account) => (
                       <li key={account.id} className="flex items-center gap-3.5">
-                        <LogoSlot size={44} label="" radius={22} />
+                        <BrandMark brand={account.name} size={44} />
                         <span className="min-w-0 flex-1">
                           <span className="block text-[1.1rem] font-semibold">
                             {account.name}
@@ -193,7 +197,9 @@ export function WealthPortfolioTemplate({
                     Hide
                   </span>
                   <span className="ml-auto">
-                    <Placeholder width={72} height={56} radius={10} label="" />
+                    <span className="block h-[56px] w-[72px]">
+                      <Thumb seed="savings-card" radius={10} alt="Savings" />
+                    </span>
                   </span>
                 </div>
               </section>
@@ -275,7 +281,7 @@ export function WealthPortfolioTemplate({
                     <ul className="grid gap-4">
                       {HOLDINGS.map((holding) => (
                         <li key={holding.id} className="flex items-center gap-3">
-                          <LogoSlot size={38} label="" radius={19} />
+                          <BrandMark brand={holding.ticker} size={38} />
                           <span className="min-w-0 flex-1">
                             <span className="block text-[1.05rem] font-semibold">
                               {holding.ticker}
@@ -297,7 +303,7 @@ export function WealthPortfolioTemplate({
                     <ul className="grid gap-4">
                       {HOLDINGS.map((holding) => (
                         <li key={holding.id} className="flex items-center gap-3">
-                          <LogoSlot size={38} label="" radius={19} />
+                          <BrandMark brand={holding.ticker} size={38} />
                           <span className="min-w-0 flex-1">
                             <span className="block text-[1.05rem] font-semibold">
                               {holding.ticker}

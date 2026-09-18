@@ -12,8 +12,10 @@ import {
   ArrowsLeftRightIcon,
   QuestionIcon,
 } from "../../../ui/icons-solid";
+import { BrandMark } from "../../../ui/brand";
+import { Avatar } from "../../../ui/avatar";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, automationTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -59,6 +61,8 @@ const FOOTER_LINKS = [
  * thousand tasks have run.
  */
 export function AutomationAppsTemplate({
+  brandName = "Acme",
+  userName = "Alex Rivera",
   className,
   page = "apps",
 }: AutomationAppsProps) {
@@ -69,9 +73,9 @@ export function AutomationAppsTemplate({
           <span aria-hidden className="text-[0.986rem] text-[color:var(--ob-fg-soft)]">
             ✕
           </span>
-          <WordmarkSlot width={91} height={20} label="" />
+          <Wordmark name={brandName} size={15} mark={20} radius={5} />
           <SearchIcon size={14} />
-          <AvatarSlot size={30} />
+          <Avatar name={userName} size={30} />
         </header>
 
         <div className="flex min-h-[0px] flex-1">
@@ -150,7 +154,7 @@ export function AutomationAppsTemplate({
                   key={app.id}
                   className="flex items-center gap-[15px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[18px] py-[15px]"
                 >
-                  <LogoSlot size={39} label="" radius={6} />
+                  <BrandMark brand={app.name} size={39} />
                   <h2 className="flex-1 text-[1.062rem] font-bold">{app.name}</h2>
                   <Stat value={app.connections} label="Connection" />
                   <Stat value={app.workflows} label="Workflow" />
@@ -175,7 +179,7 @@ export function AutomationAppsTemplate({
                   ))}
                 </p>
                 <div className="pt-[30px]">
-                  <WordmarkSlot width={83} height={18} label="" />
+                  <Wordmark name={brandName} size={13} mark={18} radius={5} />
                 </div>
               </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
+import { Avatar, Thumb } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, brandStudioTokens } from "./tokens";
 import { Btn, Card, Chip, Main, Shell, Sidebar, TopBar } from "./chrome";
@@ -71,7 +71,7 @@ export function BrandStudioTemplate({
           beside it.
         */}
         <TopBar className="shrink-0">
-          <Placeholder width={24} height={24} radius={12} />
+          <Avatar name={brandName} size={24} />
           <span className="text-[color:var(--ob-muted)]">/</span>
           <span className="font-semibold">{userName}&apos;s team</span>
           <ChevronDown width={14} height={14} className="opacity-40" />
@@ -94,7 +94,7 @@ export function BrandStudioTemplate({
             <Btn tone="neutral" size="sm">
               <UserPlusIcon width={15} height={15} /> Invite team
             </Btn>
-            <Placeholder shape="circle" width={30} height={30} />
+            <Avatar name={userName} size={30} />
           </div>
         </TopBar>
 
@@ -203,7 +203,9 @@ export function BrandStudioTemplate({
                 {/* Collage of reference ads, each an explicit slot. */}
                 <div className="grid grid-cols-3 gap-2">
                   {[120, 90, 150, 100, 140, 80, 110, 130, 95].map((height, i) => (
-                    <Placeholder key={i} height={height} radius={8} label="Ad" />
+                    <span key={i} className="block" style={{ height }}>
+                      <Thumb seed={`ad-${i}`} radius={8} alt="Ad" />
+                    </span>
                   ))}
                 </div>
               </Card>
@@ -212,7 +214,9 @@ export function BrandStudioTemplate({
                 <div className="flex gap-2">
                   {[0, 1, 2, 3, 4].map((i) => (
                     <span key={i} className="relative">
-                      <Placeholder width={62} height={80} radius={8} />
+                      <span className="block h-[80px] w-[62px]">
+                        <Thumb seed={`style-${i}`} radius={8} alt="Style" />
+                      </span>
                       {i > 0 && (
                         <span className="absolute inset-0 grid place-items-center text-[color:var(--ob-muted)]">
                           <Lock width={15} height={15} />
@@ -271,11 +275,9 @@ export function BrandStudioTemplate({
               </Card>
 
               <Card className="flex flex-col gap-5 p-6">
-                <Placeholder
-                  ratio={16 / 9}
-                  radius={10}
-                  label="Brand logo on brand colour"
-                />
+                <span className="block aspect-[16/9] w-full">
+                  <Thumb seed={`${brandName}-kit`} radius={10} alt="Brand logo on brand colour" />
+                </span>
                 <div className="mt-auto">
                   <p className="flex items-center gap-2 text-[0.88rem] text-[color:var(--ob-muted)]">
                     <PaletteIcon width={16} height={16} /> Brand

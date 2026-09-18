@@ -1,6 +1,6 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, apiConsoleTokens } from "./tokens";
 import { ApiConsoleSubpage } from "./api-console-pages";
@@ -100,6 +100,7 @@ const MODELS = [
  * quickstart links and a model catalogue, with credit and error strips below.
  */
 export function ApiConsoleTemplate({
+  userName = "Alex Rivera",
   brandName = "Northwind",
   page = "home",
   className,
@@ -115,7 +116,7 @@ export function ApiConsoleTemplate({
       </Banner>
 
       <TopBar>
-        <Placeholder width={30} height={30} radius={7} />
+        <Avatar name={brandName} size={30} rounded={7} />
         <span className="text-[color:var(--ob-muted)]">/</span>
         <span className="font-semibold">Home</span>
         <SearchField
@@ -145,7 +146,7 @@ export function ApiConsoleTemplate({
         <button type="button" aria-label="Notifications" className="px-1 opacity-55">
           <BellIcon width={18} height={18} />
         </button>
-        <Placeholder shape="circle" width={30} height={30} />
+        <Avatar name={userName} size={30} />
       </TopBar>
 
       {/* Second-level product navigation */}

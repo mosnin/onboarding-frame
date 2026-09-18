@@ -2,8 +2,7 @@
 
 import type { ReactNode } from "react";
 import { cn } from "../../../lib/cn";
-import { Placeholder } from "../../../ui/placeholder";
-import { Avatar } from "../../../ui/avatar";
+import { Avatar, Thumb } from "../../../ui/avatar";
 import {
   ArrowsLeftRightIcon,
   ArrowsUpDownIcon,
@@ -537,7 +536,9 @@ function MerchantOverview() {
               Add to your overview ⊕
             </p>
             <div className="pt-[18px]">
-              <Placeholder height={157} radius={7} label="Widget preview" />
+              <span className="block h-[157px]">
+                <Thumb seed="billing-widget" radius={7} alt="Widget preview" />
+              </span>
             </div>
           </section>
 

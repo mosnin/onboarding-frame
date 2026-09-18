@@ -26,8 +26,9 @@ import {
   UsersIcon,
   WrenchIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, capTableTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -114,15 +115,20 @@ const TRANSACTIONS = [
  * zero on money and non-zero on ownership, which is exactly what a founder's
  * own line looks like: shares held, nothing paid for them.
  */
-export function CapTableTemplate({ className, page = "shareholders" }: CapTableProps) {
+export function CapTableTemplate({
+  brandName = "Acme",
+  userName = "Alex Rivera",
+  className,
+  page = "shareholders",
+}: CapTableProps) {
   return (
     <Surface tokens={capTableTokens} className={className}>
       <Shell className="flex-col">
         <header className="flex h-[74px] shrink-0 items-center overflow-x-auto gap-3 border-b border-[color:var(--ob-border)] px-5">
-          <WordmarkSlot width={78} height={20} label="" />
+          <Wordmark name={brandName} size={15} mark={20} radius={5} />
 
           <span className="flex items-center gap-2.5 rounded-full bg-[color:var(--ob-surface-2)] py-1.5 pl-1.5 pr-3">
-            <AvatarSlot size={28} />
+            <Avatar name="JAcme" size={28} />
             <span className="text-[1rem] font-medium">JAcme</span>
             <span className="rounded-full bg-[color:var(--ob-surface-3)] px-2.5 py-0.5 text-[0.85rem] text-[color:var(--ob-muted)]">
               Free
@@ -170,7 +176,7 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
             </span>
             <span className="px-3 py-1 text-[color:var(--ob-muted)]">Portal</span>
           </span>
-          <AvatarSlot size={34} />
+          <Avatar name={userName} size={34} />
         </header>
 
         <div className="flex min-h-0 flex-1">

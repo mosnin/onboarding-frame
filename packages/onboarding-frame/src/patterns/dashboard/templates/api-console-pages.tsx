@@ -1,7 +1,7 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
 import { BarChart, LineChart } from "../../../ui/charts";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Btn, Card, Chip, SearchField, Select, Table } from "./chrome";
 import type { ApiConsolePage } from "./api-console";
@@ -87,7 +87,7 @@ export function ApiConsoleSubpage({
           {CATALOGUE.map((model) => (
             <Card key={model.id} className="flex flex-col gap-3">
               <div className="flex items-start gap-3">
-                <Placeholder width={32} height={32} radius={7} />
+                <Avatar name={model.name} size={32} rounded={7} />
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-[0.95rem]">
                     {model.org && (
@@ -148,7 +148,7 @@ export function ApiConsoleSubpage({
             align={["left", "left", "right", "right", "right"]}
             rows={ASSETS.map((asset) => [
               <span key="n" className="flex items-center gap-2.5">
-                <Placeholder width={26} height={26} radius={5} />
+                <Avatar name={asset.name} size={26} rounded={5} />
                 <span className="font-medium">{asset.name}</span>
               </span>,
               asset.kind,

@@ -1,6 +1,6 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
+import { Avatar, Thumb } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, fileLibraryTokens } from "./tokens";
 import { Btn, Main, Segmented, Select, Shell, Sidebar } from "./chrome";
@@ -60,7 +60,7 @@ export function FileLibraryTemplate({
       {/* Measured off the reference: 255px. */}
       <Sidebar width={255} bg="var(--ob-surface-2)" className="border-r-0">
         <div className="flex items-center gap-2 p-5">
-          <Placeholder width={24} height={24} radius={6} />
+          <Avatar name={brandName} size={24} rounded={6} />
           <button type="button" aria-label="Notifications" className="ml-auto opacity-50">
             <BellIcon width={18} height={18} />
           </button>
@@ -194,11 +194,13 @@ export function FileLibraryTemplate({
             {FILES.map((file) => (
               <div key={file.id}>
                 <div className="relative">
-                  <Placeholder
-                    ratio={4 / 3}
-                    radius={10}
-                    label={file.kind === "library" ? "Library preview" : "File thumbnail"}
-                  />
+                  <span className="block aspect-[4/3] w-full">
+                    <Thumb
+                      seed={file.id}
+                      radius={10}
+                      alt={file.kind === "library" ? "Library preview" : "File thumbnail"}
+                    />
+                  </span>
                   {file.kind === "library" && (
                     <span className="absolute right-2.5 top-2.5 text-[color:var(--ob-muted)]">
                       <EyeIcon width={16} height={16} />

@@ -21,8 +21,10 @@ import {
   UsersIcon,
   UserPlusIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
+import { Placeholder } from "../../../ui/placeholder";
 import { Surface, peopleTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -77,6 +79,8 @@ const MONTHS = ["May", "Jul", "Sep", "Nov", "Jan", "Apr"];
  * like at three employees.
  */
 export function PeopleAnalyticsTemplate({
+  brandName = "Acme",
+  userName = "Alex Rivera",
   className,
   page = "analytics",
 }: PeopleAnalyticsProps) {
@@ -85,9 +89,9 @@ export function PeopleAnalyticsTemplate({
       <Shell>
         <Sidebar width={365} bg="var(--ob-surface)">
           <div className="flex items-center gap-4 px-6 pb-5 pt-5">
-            <WordmarkSlot width={92} height={24} label="" />
+            <Wordmark name={brandName} size={18} mark={24} radius={6} />
             <span className="ml-auto flex items-center gap-3 text-[color:var(--ob-fg-soft)]">
-              <AvatarSlot size={28} />
+              <Avatar name={userName} size={28} />
               <BellIcon size={14} />
               <SearchIcon size={14} />
             </span>

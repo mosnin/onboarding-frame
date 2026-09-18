@@ -62,6 +62,7 @@ const CORE_FILES = [
   "src/ui/icons-solid.tsx",
   "src/ui/brand.tsx",
   "src/ui/avatar.tsx",
+  "src/ui/wordmark.tsx",
   "src/ui/fields.tsx",
   "src/ui/placeholder.tsx",
   "src/hooks/usePersistentState.ts",

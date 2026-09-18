@@ -29,8 +29,8 @@ import {
   TreeIcon,
   WrenchIcon,
 } from "../../../ui/icons-solid";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, zoneTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -98,24 +98,33 @@ const METRICS = [
  * into one brand colour. The Quick Actions toggles are both off and show an
  * explicit ✕ in the knob, so "off" is stated rather than implied by position.
  */
-export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverviewProps) {
+export function ZoneOverviewTemplate({
+  brandName = "Acme",
+  className,
+  page = "overview",
+}: ZoneOverviewProps) {
   return (
     <Surface tokens={zoneTokens} className={className}>
       <Shell className="flex-col">
-        <header className="flex h-[57px] shrink-0 items-center gap-[15px] border-b border-[color:var(--ob-border)] px-[18px]">
-          <WordmarkSlot width={113} height={26} label="" />
-          <span className="ml-auto flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.753rem] text-[color:var(--ob-muted)]">
+        {/*
+          A header is one row of controls, and at 390px the search field, the
+          Add button and the two menus stop fitting. Scrolling keeps all four
+          reachable; narrowing the row would clip the last two off the edge.
+        */}
+        <header className="flex h-[57px] shrink-0 items-center gap-[15px] overflow-x-auto border-b border-[color:var(--ob-border)] px-[18px]">
+          <Wordmark name={brandName} size={19} mark={26} radius={7} />
+          <span className="ml-auto flex shrink-0 items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.753rem] text-[color:var(--ob-muted)]">
             <SearchIcon size={14} />
             <span className="w-[98px]">Go to…</span>
             <kbd className="rounded border border-[color:var(--ob-border)] px-[5px] py-[2px] text-[0.542rem] font-semibold">
               ⌘K
             </kbd>
           </span>
-          <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[15px] py-[8px] text-[0.753rem] font-semibold text-white">
+          <span className="shrink-0 rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[15px] py-[8px] text-[0.753rem] font-semibold text-white">
             Add ▾
           </span>
-          <span className="text-[0.768rem] font-medium">Support ▾</span>
-          <span className="text-[0.768rem] font-medium">Profile ▾</span>
+          <span className="shrink-0 text-[0.768rem] font-medium">Support ▾</span>
+          <span className="shrink-0 text-[0.768rem] font-medium">Profile ▾</span>
         </header>
 
         <div className="flex min-h-[0px] flex-1">

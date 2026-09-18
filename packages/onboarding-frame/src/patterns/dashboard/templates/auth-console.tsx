@@ -22,8 +22,9 @@ import {
   SparkleIcon,
   UserIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
 import { Surface, authTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -98,12 +99,12 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
         <Sidebar width={418} bg="var(--ob-bg)" className="border-r-0 p-3">
           <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
             <div className="flex items-center gap-3 px-3.5 py-3">
-              <AvatarSlot size={32} />
+              <Avatar name="Personal account" size={32} />
               <span className="flex-1 text-[1.08rem] font-medium">Personal account</span>
               <ArrowsUpDownIcon size={14} />
             </div>
             <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] px-3.5 py-3">
-              <LogoSlot size={30} label="" radius={15} />
+              <BrandMark brand="MyApp" size={30} label="MyApp" />
               <span className="flex-1 text-[1.08rem] font-medium">MyApp</span>
               <ArrowsUpDownIcon size={14} />
             </div>
@@ -167,7 +168,7 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
           </nav>
 
           <div className="mt-auto flex items-center gap-3 px-3 py-4">
-            <AvatarSlot size={32} />
+            <Avatar name="Jane Doe" size={32} />
             <span className="text-[1.08rem] font-medium">Jane Doe</span>
           </div>
         </Sidebar>
@@ -250,7 +251,7 @@ function RecentCard({
       <ul className="grid gap-4">
         {rows.map((row) => (
           <li key={row.id} className="flex items-center gap-3.5">
-            <AvatarSlot size={34} />
+            <Avatar name={row.email} size={34} />
             <span className="min-w-0 flex-1 truncate text-[1.08rem]">{row.email}</span>
             <span className="shrink-0 text-[1.05rem] text-[color:var(--ob-muted)]">
               {row.when}

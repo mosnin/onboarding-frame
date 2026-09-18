@@ -15,8 +15,9 @@ import {
   CloudIcon,
   PulseIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, warehouseTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -129,6 +130,7 @@ const QUERIES = [
  * pairing matters more than tidying it into an empty state.
  */
 export function WarehouseCostTemplate({
+  brandName = "Acme",
   className,
   page = "account",
 }: WarehouseCostProps) {
@@ -139,7 +141,7 @@ export function WarehouseCostTemplate({
       <Shell>
         <Sidebar width={242} bg="var(--ob-surface)">
           <div className="px-[15px] pb-[12px] pt-[15px]">
-            <WordmarkSlot width={113} height={20} label="" />
+            <Wordmark name={brandName} size={15} mark={20} radius={5} />
           </div>
 
           <nav className="grid gap-[2px] px-[9px]">
@@ -202,7 +204,7 @@ export function WarehouseCostTemplate({
             </div>
 
             <div className="flex items-center gap-[9px] pt-[12px]">
-              <AvatarSlot size={26} />
+              <Avatar name="Alex Smith" size={26} />
               <span className="flex-1 leading-tight">
                 <span className="block text-[0.756rem] font-semibold">Alex Smith</span>
                 <span className="block text-[0.68rem] text-[color:var(--ob-muted)]">

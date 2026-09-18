@@ -11,8 +11,9 @@ import {
   SearchIcon,
   ChartLineIcon,
 } from "../../../ui/icons-solid";
+import { BrandMark } from "../../../ui/brand";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
-import { LogoSlot } from "../../../ui/placeholder";
 import { Surface, terminalTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -115,6 +116,7 @@ const BUYS = [
  * line at this density.
  */
 export function MarketTerminalTemplate({
+  brandName = "Acme",
   className,
   page = "insider",
 }: MarketTerminalProps) {
@@ -123,7 +125,7 @@ export function MarketTerminalTemplate({
       <Shell>
         <Sidebar width={72} bg="var(--ob-bg)" className="items-center border-r-0">
           <div className="pb-8 pt-5">
-            <LogoSlot size={26} label="" radius={7} />
+            <Avatar name={brandName} size={26} rounded={7} />
           </div>
           <nav className="grid gap-5">
             {RAIL.map((glyph, index) => (
@@ -208,7 +210,7 @@ export function MarketTerminalTemplate({
                     key={row.id}
                     className="flex items-center gap-3 border-b border-[color:var(--ob-border)] py-2.5 last:border-b-0"
                   >
-                    <LogoSlot size={22} label="" radius={11} />
+                    <BrandMark brand={row.ticker} size={22} />
                     <span className="w-14 shrink-0 font-semibold">{row.ticker}</span>
                     <span className="min-w-0 flex-1 truncate text-[0.95rem] text-[color:var(--ob-fg-soft)]">
                       {row.who}
@@ -320,7 +322,7 @@ export function MarketTerminalTemplate({
                   >
                     <td className="border-b border-[color:var(--ob-border)] px-4 py-3.5">
                       <span className="flex items-center gap-2.5">
-                        <LogoSlot size={22} label="" radius={11} />
+                        <BrandMark brand={row.ticker} size={22} />
                         <span className="font-semibold">{row.ticker}</span>
                         <span className="truncate text-[color:var(--ob-muted)]">
                           {row.name}

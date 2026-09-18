@@ -10,8 +10,8 @@ import {
   SearchIcon,
   StarIcon,
 } from "../../../ui/icons-solid";
+import { Avatar, Thumb } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, productTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -57,6 +57,7 @@ const GROWTH = [
  * thumbnail here is a labelled placeholder.
  */
 export function ProductAnalyticsTemplate({
+  brandName = "Acme",
   className,
   page = "home",
 }: ProductAnalyticsProps) {
@@ -65,7 +66,7 @@ export function ProductAnalyticsTemplate({
       <Shell>
         <Sidebar width={251} bg="var(--ob-surface)">
           <div className="flex items-center gap-[9px] px-[15px] pb-[12px] pt-[12px]">
-            <WordmarkSlot width={23} height={23} label="" />
+            <Avatar name={brandName} size={23} rounded={6} />
             <span className="flex-1 leading-tight">
               <span className="block text-[0.836rem] font-semibold">Acme Analytics</span>
               <span className="block text-[0.722rem] text-[color:var(--ob-muted)]">
@@ -154,7 +155,9 @@ export function ProductAnalyticsTemplate({
                 className="overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)]"
               >
                 {/* Schematic, not a screenshot: no invented numbers. */}
-                <Placeholder height={73} radius={0} label="Board preview" />
+                <span className="block h-[73px]">
+                  <Thumb seed={title} radius={0} alt="Board preview" />
+                </span>
                 <p className="truncate px-[12px] py-[9px] text-[0.775rem]">{title}</p>
               </article>
             ))}
@@ -199,7 +202,7 @@ export function ProductAnalyticsTemplate({
                     <li key={board} className="flex items-center gap-[11px]">
                       <GridFourIcon size={14} />
                       <span className="flex-1 text-[0.821rem]">{board}</span>
-                      <AvatarSlot size={23} />
+                      <Avatar name="Suggested Creators" size={23} />
                     </li>
                   ))}
                 </ul>
@@ -210,7 +213,7 @@ export function ProductAnalyticsTemplate({
               <h2 className="pb-[9px] text-[0.874rem] font-semibold">Suggested Creators</h2>
               <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[15px]">
                 <div className="flex items-center gap-[11px]">
-                  <AvatarSlot size={33} />
+                  <Avatar name="Sam Lee" size={33} />
                   <span className="leading-tight">
                     <span className="block text-[0.821rem] font-semibold">Sam Lee</span>
                     <span className="block text-[0.76rem] text-[color:var(--ob-muted)]">

@@ -12,8 +12,10 @@ import {
   SearchIcon,
   QuestionIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, communityTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -100,6 +102,7 @@ const TABLE = [
  * catalogue — an older admin surface, and it should read as one.
  */
 export function CommunityTrafficTemplate({
+  brandName = "Acme",
   className,
   page = "traffic",
 }: CommunityTrafficProps) {
@@ -109,11 +112,11 @@ export function CommunityTrafficTemplate({
         <header className="flex h-[42px] shrink-0 items-center overflow-x-auto gap-[9px] border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[12px]">
           <ListChecksIcon size={14} />
           <span className="flex items-center gap-[6px]">
-            <LogoSlot size={20} label="" radius={10} />
-            <WordmarkSlot width={48} height={11} label="" />
+            <BrandMark brand="r/Acme_Mods" size={20} label="r/Acme_Mods" />
+            <Wordmark name={brandName} size={11} mark="none" />
           </span>
           <span className="flex items-center gap-[6px] pl-[9px] text-[0.718rem] font-medium">
-            <LogoSlot size={17} label="" radius={8} />
+            <BrandMark brand="r/Acme_Mods" size={17} label="r/Acme_Mods" />
             r/Acme_Mods
             <CaretDownIcon size={14} />
           </span>
@@ -122,7 +125,7 @@ export function CommunityTrafficTemplate({
             <SearchIcon size={14} />
             {/* The scoped-search pill lives inside the field in the reference. */}
             <span className="flex items-center gap-[5px] rounded-full bg-[color-mix(in_oklab,#0079d3_16%,transparent)] px-[6px] py-[2px] text-[0.642rem] font-medium text-[color:var(--ob-brand)]">
-              <LogoSlot size={12} label="" radius={6} />
+              <BrandMark brand="Search Reddit" size={12} label="Search Reddit" />
               r/Acme_Mods
               <span aria-hidden>⊗</span>
             </span>
@@ -142,7 +145,7 @@ export function CommunityTrafficTemplate({
             <ChartPieIcon size={14} /> Advertise
           </span>
           <span className="flex items-center gap-[6px] pl-[3px]">
-            <AvatarSlot size={23} />
+            <Avatar name="Mod_Account" size={23} />
             <span className="leading-tight">
               <span className="block text-[0.642rem] font-medium">Mod_Account</span>
               <span className="block text-[0.574rem] text-[color:var(--ob-muted)]">
@@ -154,7 +157,7 @@ export function CommunityTrafficTemplate({
         </header>
 
         <div className="flex items-center gap-[6px] border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[12px] py-[8px] text-[0.59rem] font-bold uppercase tracking-wide">
-          <LogoSlot size={15} label="" radius={8} />
+          <BrandMark brand="r/Acme_Mods" size={15} label="r/Acme_Mods" />
           <span className="text-[color:var(--ob-cta-bg)]">r/Acme_Mods</span>
           <span className="text-[color:var(--ob-muted)]">/</span>
           <span>Traffic stats</span>

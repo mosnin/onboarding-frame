@@ -19,8 +19,10 @@ import {
   InfoIcon,
   PauseIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, uptimeTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -95,6 +97,7 @@ const REGIONS = [
  * actions from dominating a page whose job is to say "everything is fine".
  */
 export function UptimeMonitorTemplate({
+  brandName = "Acme",
   className,
   page = "monitor",
 }: UptimeMonitorProps) {
@@ -103,7 +106,7 @@ export function UptimeMonitorTemplate({
       <Shell>
         <Sidebar width={310} bg="#171a21">
           <div className="flex items-center gap-2 px-5 pb-6 pt-5">
-            <WordmarkSlot width={130} height={22} label="" />
+            <Wordmark name={brandName} size={17} mark={22} radius={6} />
             <CaretDownIcon size={14} />
           </div>
 
@@ -132,7 +135,7 @@ export function UptimeMonitorTemplate({
           </nav>
 
           <div className="mx-3 mb-4 flex items-center gap-3 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3 py-2.5">
-            <LogoSlot size={32} label="" radius={16} />
+            <BrandMark brand="Team" size={32} label="Team" />
             <span className="flex-1 leading-tight">
               <span className="block text-[0.9rem] text-[color:var(--ob-muted)]">
                 Team
@@ -150,7 +153,7 @@ export function UptimeMonitorTemplate({
               <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-[#e8a33d]" />
             </span>
             <span className="flex items-center gap-2.5">
-              <AvatarSlot size={34} />
+              <Avatar name="Jane Smith" size={34} />
               <span className="text-[1.05rem] font-medium">Jane Smith</span>
               <CaretDownIcon size={14} />
             </span>

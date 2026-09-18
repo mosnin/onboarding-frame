@@ -20,8 +20,8 @@ import {
   TrophyIcon,
   UserIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot } from "../../../ui/placeholder";
 import { Surface, creatorTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -70,6 +70,7 @@ const HOURS = [
  * lose which is which.
  */
 export function CreatorRevenueTemplate({
+  userName = "Alex Rivera",
   className,
   page = "home",
 }: CreatorRevenueProps) {
@@ -129,7 +130,7 @@ export function CreatorRevenueTemplate({
           </div>
 
           <div className="flex items-center gap-[9px] px-[15px] py-[15px]">
-            <AvatarSlot size={29} />
+            <Avatar name="ASAcme" size={29} />
             <span className="flex-1 text-[0.913rem] font-semibold">ASAcme</span>
             <CaretDownIcon size={14} />
           </div>
@@ -204,7 +205,7 @@ export function CreatorRevenueTemplate({
                   {glyph}
                 </span>
               ))}
-              <AvatarSlot size={27} />
+              <Avatar name={userName} size={27} />
             </span>
           </header>
 

@@ -1,8 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { Placeholder } from "../../../ui/placeholder";
 import { ChatIcon, ChevronDown, Cross, SearchIcon } from "../../../ui/icons";
 
 /**
@@ -537,7 +537,15 @@ export function PageTitle({
   );
 }
 
-/** Brand lockup with the logo left as a placeholder slot. */
+/**
+ * Brand lockup: the product's mark beside its name.
+ *
+ * This drew the mark as a dotted grey box, which is what made every header
+ * using it read as a failed image load rather than as a recreation. The mark
+ * belongs to whoever ejects the template, so `Wordmark` stands a tile with the
+ * name's initial in its place — the shape and weight the reference measures,
+ * without claiming to be anyone's asset.
+ */
 export function BrandLockup({
   name,
   size = 26,
@@ -548,10 +556,13 @@ export function BrandLockup({
   className?: string;
 }) {
   return (
-    <div className={cn("flex items-center gap-2", className)}>
-      <Placeholder width={size} height={size} radius={6} />
-      <span className="text-[0.98rem] font-extrabold tracking-tight">{name}</span>
-    </div>
+    <Wordmark
+      name={name}
+      mark={size}
+      size={Math.round(size * 0.6)}
+      radius={6}
+      className={className}
+    />
   );
 }
 

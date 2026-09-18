@@ -1,6 +1,6 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
+import { Avatar, Thumb } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, creativeStudioTokens } from "./tokens";
 import { Btn, Main, SearchField, Shell, Sidebar, TopBar } from "./chrome";
@@ -76,7 +76,7 @@ export function CreativeStudioTemplate({
         {/* Measured off the reference: 241px, not 272. */}
         <Sidebar width={241}>
           <div className="flex items-center gap-2 p-4">
-            <Placeholder width={26} height={26} radius={6} />
+            <Avatar name={brandName} size={26} rounded={6} />
             <button type="button" aria-label="Tasks" className="ml-auto opacity-50">
               <CheckCircleIcon width={18} height={18} />
             </button>
@@ -155,7 +155,7 @@ export function CreativeStudioTemplate({
               <Btn tone="neutral" size="sm">
                 <Gift width={15} height={15} /> Earn $20
               </Btn>
-              <Placeholder shape="circle" width={30} height={30} />
+              <Avatar name={userName} size={30} />
               <button type="button" aria-label="Help" className="relative opacity-60">
                 <LifebuoyIcon width={19} height={19} />
                 <span className="absolute -right-0.5 -top-0.5 size-[6px] rounded-full bg-[#e0245e]" />
@@ -247,13 +247,9 @@ export function CreativeStudioTemplate({
                       {feature.body}
                     </p>
                   </div>
-                  <Placeholder
-                    width={150}
-                    height={150}
-                    radius={8}
-                    label="Feature art"
-                    className="shrink-0 self-center"
-                  />
+                  <span className="block size-[150px] shrink-0 self-center">
+                    <Thumb seed="feature-art" radius={8} alt="Feature art" />
+                  </span>
                 </article>
               ))}
             </div>
@@ -268,13 +264,9 @@ export function CreativeStudioTemplate({
                   editing, so you can start creating.
                 </p>
               </div>
-              <Placeholder
-                width={420}
-                height={190}
-                radius={10}
-                label="Product tour still"
-                className="max-w-full"
-              />
+              <span className="block h-[190px] w-[420px] max-w-full">
+                <Thumb seed="product-tour" radius={10} alt="Product tour still" />
+              </span>
             </section>
           </div>
         </Main>

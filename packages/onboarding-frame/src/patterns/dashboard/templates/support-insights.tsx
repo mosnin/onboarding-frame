@@ -1,10 +1,10 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
 import { BarChart, Heatmap, LineChart } from "../../../ui/charts";
 import {
   CaretRightIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, supportInsightsTokens } from "./tokens";
 import { Chip, Main, Select, Shell } from "./chrome";
@@ -80,6 +80,7 @@ function Metric({
  * "no data" rather than drawing a flat line that reads as a real zero.
  */
 export function SupportInsightsTemplate({
+  userName = "Alex Rivera",
   brandName = "Relay",
   className,
 }: TemplateProps) {
@@ -88,7 +89,7 @@ export function SupportInsightsTemplate({
       <Shell className={cn(className)} bg="var(--ob-bg)">
         {/* Product rail */}
         <aside className="hidden w-[68px] shrink-0 flex-col items-center gap-6 py-4 sm:flex">
-          <Placeholder width={34} height={34} radius={9} />
+          <Avatar name={brandName} size={34} rounded={9} />
           <nav className="grid gap-4 text-[color:var(--ob-fg-soft)]">
             {RAIL.map((name, i) => (
               <button
@@ -110,7 +111,7 @@ export function SupportInsightsTemplate({
               <BellIcon width={19} height={19} />
             </button>
             <button type="button" aria-label="Help" className="opacity-60">?</button>
-            <Placeholder shape="circle" width={30} height={30} />
+            <Avatar name={userName} size={30} />
           </div>
         </aside>
 

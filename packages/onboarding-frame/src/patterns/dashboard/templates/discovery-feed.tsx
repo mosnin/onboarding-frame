@@ -1,6 +1,6 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
+import { Avatar, Thumb } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, discoveryFeedTokens } from "./tokens";
 import { Main, Shell } from "./chrome";
@@ -47,14 +47,17 @@ const ITEMS = [
  * Masonry gallery with almost no chrome: a thin icon rail, a text tab strip,
  * and cards where the image carries the weight and metadata sits beneath.
  */
-export function DiscoveryFeedTemplate({ className }: TemplateProps) {
+export function DiscoveryFeedTemplate({
+  userName = "Alex Rivera",
+  className,
+}: TemplateProps) {
   const columns = [0, 1, 2, 3, 4].map((col) => ITEMS.filter((item) => item.col === col));
 
   return (
     <Surface tokens={discoveryFeedTokens}>
       <Shell className={cn(className)}>
         <aside className="hidden w-[72px] shrink-0 flex-col items-center gap-7 border-r border-[color:var(--ob-border)] py-5 sm:flex">
-          <Placeholder shape="circle" width={30} height={30} />
+          <Avatar name={userName} size={30} />
           <nav className="mt-auto grid gap-6 text-[color:var(--ob-fg-soft)]">
             {RAIL.map((name, i) => (
               <button
@@ -110,12 +113,9 @@ export function DiscoveryFeedTemplate({ className }: TemplateProps) {
                 {column.map((item) => (
                   <article key={item.id}>
                     <div className="relative">
-                      <Placeholder
-                        height={item.h}
-                        radius={10}
-                        label="Post image"
-                        className="w-full"
-                      />
+                      <span className="block" style={{ height: item.h }}>
+                        <Thumb seed={item.author + item.h} alt="Post image" radius={10} />
+                      </span>
                       {item.badges.length > 0 && (
                         <div className="absolute bottom-3 left-3 flex gap-1.5">
                           {item.badges.map((badge, j) => (
@@ -135,7 +135,7 @@ export function DiscoveryFeedTemplate({ className }: TemplateProps) {
                     </p>
                     <p className="mt-1.5 text-[0.95rem] leading-snug">{item.title}</p>
                     <div className="mt-2.5 flex items-center gap-2">
-                      <Placeholder shape="circle" width={18} height={18} />
+                      <Avatar name={item.author} size={18} />
                       <span className="text-[0.82rem] text-[color:var(--ob-muted)]">
                         {item.author}
                       </span>

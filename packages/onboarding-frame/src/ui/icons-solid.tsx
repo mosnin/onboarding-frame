@@ -87,6 +87,7 @@ import {
   Palette,
   Paperclip,
   PauseCircle,
+  VideoCamera,
   Phone,
   PencilSimple,
   Path,
@@ -343,6 +344,7 @@ export const PaletteIcon = solid(Palette, "regular");
 export const BriefcaseIcon = solid(Briefcase, "regular");
 export const HeartbeatIcon = solid(Heartbeat, "regular");
 export const PhoneIcon = solid(Phone, "regular");
+export const VideoCameraIcon = solid(VideoCamera, "regular");
 export const TreeStructureIcon = solid(TreeStructure, "regular");
 export const SunIcon = solid(Sun, "regular");
 export const PauseIcon = solid(PauseCircle, "regular");

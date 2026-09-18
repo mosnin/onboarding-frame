@@ -1,6 +1,7 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
+import { BrandMark } from "../../../ui/brand";
+import { Avatar, Thumb } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, guidesTokens } from "./tokens";
 import { LineChart } from "../../../ui/charts";
@@ -72,7 +73,7 @@ export function GuidesAssistantTemplate({
         {/* Measured off the reference: 229px. */}
         <Sidebar width={229} bg="var(--ob-surface)">
           <div className="p-4">
-            <Placeholder width={26} height={26} radius={6} />
+            <Avatar name={brandName} size={26} rounded={6} />
           </div>
           <nav className="grid gap-0.5 px-3">
             {NAV.map((item) =>
@@ -194,7 +195,7 @@ export function GuidesAssistantTemplate({
 
                 <div className="grid gap-3">
                   {[
-                    { id: "tools", label: "Business tools", done: true, logos: 1 },
+                    { id: "tools", label: "Business tools", done: true, logos: ["shopify"] },
                     { id: "channels", label: "Marketing channels", done: true, channels: true },
                     { id: "branding", label: "Confirm branding", done: false, swatches: true },
                   ].map((row) => (
@@ -219,8 +220,8 @@ export function GuidesAssistantTemplate({
                       <span className="min-w-0 flex-1 truncate font-bold">{row.label}</span>
                       {row.logos && (
                         <span className="flex shrink-0 gap-1.5">
-                          {Array.from({ length: row.logos }, (_, i) => (
-                            <Placeholder key={i} width={26} height={26} radius={6} />
+                          {row.logos.map((slug) => (
+                            <BrandMark key={slug} brand={slug} size={26} />
                           ))}
                         </span>
                       )}
@@ -238,7 +239,7 @@ export function GuidesAssistantTemplate({
                       )}
                       {row.swatches && (
                         <span className="flex shrink-0 gap-1.5">
-                          <Placeholder width={28} height={24} radius={4} />
+                          <span aria-hidden className="h-6 w-7 rounded bg-[#6366f1]" />
                           <span className="size-6 rounded bg-[#ec4899]" />
                           <span className="size-6 rounded bg-[#2b2b2b]" />
                           <span className="size-6 rounded border border-[color:var(--ob-border)] bg-white" />
@@ -271,7 +272,9 @@ export function GuidesAssistantTemplate({
                       [
                         <span key="f" className="flex items-center gap-2.5">
                           <ChevronUp width={15} height={15} className="opacity-40" />
-                          <Placeholder width={40} height={32} radius={4} />
+                          <span className="block h-8 w-10 shrink-0">
+                            <Thumb seed="signup-form" radius={4} alt="Sign-up form" />
+                          </span>
                           <span className="whitespace-nowrap font-medium">Sign-up form</span>
                         </span>,
                         <Chip key="t">
@@ -293,12 +296,9 @@ export function GuidesAssistantTemplate({
                         list.
                       </p>
                     </div>
-                    <Placeholder
-                      ratio={3 / 4}
-                      radius={8}
-                      label="Form preview"
-                      className="w-full"
-                    />
+                    <span className="block aspect-[3/4] w-full">
+                      <Thumb seed="form-preview" radius={8} alt="Form preview" />
+                    </span>
                   </div>
                 </div>
               </Card>

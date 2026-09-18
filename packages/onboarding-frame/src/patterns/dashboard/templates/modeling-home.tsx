@@ -5,8 +5,10 @@ import { LineChart } from "../../../ui/charts";
 import {
   CaretRightIcon,
 } from "../../../ui/icons-solid";
+import { BrandMark } from "../../../ui/brand";
+import { Avatar, Thumb } from "../../../ui/avatar";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, modelingTokens } from "./tokens";
 import { Main, NavItem, NavSection, SearchField, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -83,6 +85,8 @@ const WIZARDS = [
  * tidied into a contained thumbnail.
  */
 export function ModelingHomeTemplate({
+  brandName = "Acme",
+  userName = "Alex Rivera",
   className,
   page = "overview",
 }: ModelingHomeProps) {
@@ -92,10 +96,9 @@ export function ModelingHomeTemplate({
         {/* Measured off the reference: 253px. */}
         <Sidebar width={253} bg="var(--ob-surface)">
           <div className="flex items-center gap-2 px-4 pb-3 pt-4">
-            <LogoSlot size={22} label="" radius={11} />
-            <WordmarkSlot width={78} height={13} label="" />
+            <Wordmark name={brandName} size={13} mark={22} radius={11} />
             <span className="ml-auto">
-              <AvatarSlot size={24} />
+              <Avatar name={userName} size={24} />
             </span>
           </div>
 
@@ -195,7 +198,9 @@ function Overview() {
               index > 0 && "border-t border-[color:var(--ob-border)]",
             )}
           >
-            <Placeholder label="Template preview" height={170} radius={8} />
+            <span className="block h-[170px]">
+              <Thumb seed={template.name} radius={8} alt="Template preview" />
+            </span>
             <div>
               <h3 className="font-bold">{template.name}</h3>
               <p className="max-w-[62ch] pt-2 text-[0.95rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
@@ -231,7 +236,7 @@ function WizardCard({ wizard }: { wizard: (typeof WIZARDS)[number] }) {
                 index > 0 && "border-t border-[color:var(--ob-border)]",
               )}
             >
-              <LogoSlot size={22} label="" radius={6} />
+              <BrandMark brand={source} size={22} label={source} />
               {source}
             </div>
           ))}
@@ -312,7 +317,7 @@ function DataSources() {
             className="grid grid-cols-[minmax(0,1.4fr)_120px_160px_140px] items-center border-t border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-5 py-3 text-[0.9rem]"
           >
             <span className="flex items-center gap-2.5 font-medium">
-              <LogoSlot size={24} label="" radius={6} />
+              <BrandMark brand={row.name} size={24} />
               {row.name}
             </span>
             <span className="text-[color:var(--ob-fg-soft)]">{row.kind}</span>

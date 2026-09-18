@@ -27,8 +27,9 @@ import {
   ReceiptIcon,
   TrendUpIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
 import { Surface, bankingTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -96,7 +97,7 @@ export function BankingLedgerTemplate({
       <Shell>
         <Sidebar width={288} bg="var(--ob-surface)">
           <div className="flex items-center gap-3 px-5 pb-5 pt-5">
-            <LogoSlot size={30} label="" radius={7} />
+            <BrandMark brand="Acme" size={30} label="Acme" />
             <span className="flex-1 text-[1.12rem] font-semibold">Acme</span>
             <span aria-hidden className="text-[0.7rem] opacity-50">
               <ArrowsUpDownIcon size={12} />
@@ -189,7 +190,7 @@ export function BankingLedgerTemplate({
                 <BellIcon size={15} />
                 <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-[color:var(--ob-brand)]" />
               </span>
-              <AvatarSlot size={36} />
+              <Avatar name="Transactions" size={36} />
             </span>
           </header>
 
@@ -350,7 +351,7 @@ export function BankingLedgerTemplate({
                       </td>
                       <td className="px-4 py-4">
                         <span className="flex items-center gap-3">
-                          <LogoSlot size={30} label="" radius={15} />
+                          <BrandMark brand={row.name} size={30} />
                           <span>{row.name}</span>
                           {row.failed && (
                             <span className="rounded bg-[color-mix(in_oklab,#e5457f_14%,transparent)] px-2 py-0.5 text-[0.9rem] font-medium text-[color:var(--ob-brand)]">

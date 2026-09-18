@@ -29,8 +29,9 @@ import {
   TreeIcon,
   TriangleIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
 import { Surface, deployTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -93,7 +94,7 @@ export function DeployAnalyticsTemplate({
       <Shell>
         <Sidebar width={284} bg="var(--ob-surface)">
           <div className="flex items-center gap-[8px] px-[13px] pb-[10px] pt-[13px]">
-            <AvatarSlot size={22} />
+            <Avatar name="acme-team" size={22} />
             <span className="min-w-[0px] flex-1 truncate text-[0.793rem] font-medium">
               acme-team
             </span>
@@ -122,7 +123,7 @@ export function DeployAnalyticsTemplate({
           <NavList items={NAV_BOTTOM} active={page} />
 
           <div className="mt-auto flex items-center gap-[8px] px-[13px] py-[13px]">
-            <AvatarSlot size={23} />
+            <Avatar name="Sam Lee" size={23} />
             <span className="flex-1 text-[0.793rem] font-medium">Sam Lee</span>
             <span aria-hidden className="text-[color:var(--ob-muted)]">
               ···
@@ -137,7 +138,7 @@ export function DeployAnalyticsTemplate({
         <Main className="overflow-auto">
           <header className="flex h-[47px] shrink-0 items-center gap-[10px] border-b border-[color:var(--ob-border)] px-[20px]">
             <span className="flex items-center gap-[7px] text-[0.793rem] font-medium">
-              <LogoSlot size={17} label="" radius={3} />
+              <BrandMark brand="Analytics" size={17} label="Analytics" />
               newlandingpage
               <span aria-hidden className="text-[0.584rem] text-[color:var(--ob-muted)]">
                 ⌃⌄
@@ -385,7 +386,7 @@ function PanelCard({
                 style={{ width: `${row.fill}%` }}
               />
               <span className="relative flex items-center gap-[7px] px-[10px] py-[7px] text-[0.793rem]">
-                {icons && <LogoSlot size={15} label="" radius={3} />}
+                {icons && <BrandMark brand={row.label} size={15} />}
                 {row.label}
               </span>
             </span>

@@ -12,8 +12,8 @@ import {
   ArrowUpIcon,
   ArrowDownIcon,
 } from "../../../ui/icons-solid";
+import { Avatar, Thumb } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, walletTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -47,13 +47,17 @@ const TRENDING = ["Mint pass", "Onchain quiz", "Season pass", "Creator drop"];
  * is shown as "# ---" because this account has not placed yet; substituting a
  * plausible number would misrepresent a brand-new wallet.
  */
-export function WalletHomeTemplate({ className, page = "trending" }: WalletHomeProps) {
+export function WalletHomeTemplate({
+  brandName = "Wallet",
+  className,
+  page = "trending",
+}: WalletHomeProps) {
   return (
     <Surface tokens={walletTokens} className={className}>
       <Shell>
         <Sidebar width={320} bg="var(--ob-bg)" className="relative border-r-0">
           <div className="px-5 pb-6 pt-4">
-            <LogoSlot size={42} label="" radius={10} />
+            <Avatar name={brandName} size={42} />
           </div>
 
           <nav className="grid gap-1.5 px-4">
@@ -142,7 +146,9 @@ export function WalletHomeTemplate({ className, page = "trending" }: WalletHomeP
                 </span>
 
                 <div className="flex items-center gap-3 pt-7">
-                  <Placeholder width={44} height={44} radius={8} label="" />
+                  <span className="block size-[44px] shrink-0">
+                    <Thumb seed="creator-badge" radius={8} alt="Creator" />
+                  </span>
                   <span className="text-[1rem] font-bold uppercase tracking-wide">
                     Creator
                   </span>
@@ -168,7 +174,7 @@ export function WalletHomeTemplate({ className, page = "trending" }: WalletHomeP
               </div>
 
               <div className="relative bg-black">
-                <Placeholder height="100%" label="Drop artwork" radius={0} />
+                <Thumb seed="featured-drop" radius={0} alt="Drop artwork" />
                 <span
                   aria-hidden
                   className="absolute right-6 top-6 grid size-11 place-items-center rounded-full bg-[color-mix(in_oklab,#f7f8f8_16%,transparent)] text-[1rem]"
@@ -186,7 +192,7 @@ export function WalletHomeTemplate({ className, page = "trending" }: WalletHomeP
               }}
             >
               <div className="flex flex-wrap items-center gap-5 rounded-[calc(var(--ob-radius-lg)-1px)] bg-[color:var(--ob-bg)] p-5">
-                <AvatarSlot size={54} />
+                <Avatar name="yourname.acme.id" size={54} />
                 <span className="flex-1 text-[1.4rem] font-bold">yourname.acme.id</span>
                 <Badge glyph="🛡" value="100" label="Points" tone="#8b5cf6" />
                 <Badge glyph="♛" value="# ---" label="My rank" tone="#4ade80" />
@@ -210,7 +216,9 @@ export function WalletHomeTemplate({ className, page = "trending" }: WalletHomeP
             <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
               {TRENDING.map((item) => (
                 <div key={item} className="relative">
-                  <Placeholder height={210} radius={16} label={item} />
+                  <span className="block h-[210px]">
+                    <Thumb seed={item} radius={16} alt={item} />
+                  </span>
                   <span
                     aria-hidden
                     className="absolute bottom-4 right-4 grid size-9 place-items-center rounded-full bg-[color-mix(in_oklab,#0a0b0d_55%,transparent)] text-[0.9rem]"

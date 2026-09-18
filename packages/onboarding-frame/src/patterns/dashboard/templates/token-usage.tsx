@@ -8,8 +8,8 @@ import {
   RocketIcon,
   RobotIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
-import { LogoSlot } from "../../../ui/placeholder";
 import { Surface, usageTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -46,13 +46,18 @@ const TOTAL = [690, 400, 230, 215, 60, 0, 40, 260, 690, 700, 640, 300, 0];
  * list on the left is the selector: picking a row swaps the whole right
  * column, so the two panes are one control rather than two reports.
  */
-export function TokenUsageTemplate({ className, page = "models" }: TokenUsageProps) {
+export function TokenUsageTemplate({
+  brandName = "Acme",
+  userName = "Alex Rivera",
+  className,
+  page = "models",
+}: TokenUsageProps) {
   return (
     <Surface tokens={usageTokens} className={className}>
       <Shell>
         <Sidebar width={68} bg="var(--ob-surface)" className="items-center">
           <div className="pb-4 pt-4">
-            <LogoSlot size={26} label="" radius={6} />
+            <Avatar name={brandName} size={26} rounded={7} />
           </div>
           <nav className="grid gap-3">
             {RAIL.map((glyph, index) => (
@@ -82,7 +87,7 @@ export function TokenUsageTemplate({ className, page = "models" }: TokenUsagePro
                 {glyph}
               </span>
             ))}
-            <LogoSlot size={26} label="" radius={6} />
+            <Avatar name={userName} size={26} rounded={13} />
           </nav>
         </Sidebar>
 

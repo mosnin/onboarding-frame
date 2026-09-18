@@ -12,8 +12,10 @@ import {
   TreeIcon,
   UserIcon,
 } from "../../../ui/icons-solid";
+import { Avatar, Thumb } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, eventConsoleTokens } from "./tokens";
 import { Main, Shell } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -79,12 +81,17 @@ const TICKETS = [0, 0, 0, 0, 0, 0.1, 3, 1];
  * point: the dashboard is measuring revenue for a creator who has not charged
  * for anything yet, and inventing a number would remove exactly that.
  */
-export function EventConsoleTemplate({ className, page = "overview" }: EventConsoleProps) {
+export function EventConsoleTemplate({
+  brandName = "Acme",
+  userName = "Alex Rivera",
+  className,
+  page = "overview",
+}: EventConsoleProps) {
   return (
     <Surface tokens={eventConsoleTokens} className={className}>
       <Shell className="flex-col">
         <header className="flex h-[77px] shrink-0 items-center gap-[15px] px-4 sm:px-[24px]">
-          <WordmarkSlot width={81} height={21} label="" />
+          <Wordmark name={brandName} size={16} mark={21} radius={6} />
 
           {/* The nav is a floating pill, not a bar. */}
           <nav className="mx-auto flex max-w-full items-center gap-[6px] overflow-x-auto rounded-full bg-[color:var(--ob-surface-2)] px-[9px] py-[7px]">
@@ -104,7 +111,7 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
           </nav>
 
           <span className="flex shrink-0 items-center gap-2 sm:gap-[15px]">
-            <AvatarSlot size={27} />
+            <Avatar name={userName} size={27} />
             <BellIcon size={14} />
             <ListChecksIcon size={14} />
           </span>
@@ -114,7 +121,7 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
           <div className="grid gap-[24px] xl:grid-cols-[minmax(0,1fr)_420px]">
             <div>
               <div className="flex flex-wrap items-center gap-[15px]">
-                <LogoSlot size={53} label="" radius={27} />
+                <BrandMark brand="Acme" size={53} label="Acme" />
                 <h1 className="text-[1.63rem] font-bold tracking-[-0.01em]">Acme</h1>
 
                 <span className="flex items-center gap-[7px] pl-[12px] text-[0.8rem]">
@@ -211,7 +218,9 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
                 </div>
 
                 <div className="relative mt-[15px] overflow-hidden rounded-[var(--ob-radius)]">
-                  <Placeholder height={141} radius={0} label="Event banner" />
+                  <span className="block h-[141px]">
+                    <Thumb seed="cookie-meet-up" radius={0} alt="Event banner" />
+                  </span>
                   <span className="absolute inset-x-[18px] bottom-[18px] flex items-end gap-[12px]">
                     <span className="flex-1 text-[0.963rem] font-bold">
                       Cookie Meet-Up: Taste, Trade, &amp; Chat
@@ -246,7 +255,7 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
                     className="flex items-start gap-[12px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface)] p-[15px]"
                   >
                     {order.avatar ? (
-                      <AvatarSlot size={41} />
+                      <Avatar name={order.name} size={41} />
                     ) : (
                       <UserIcon size={14} />
                     )}

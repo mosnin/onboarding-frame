@@ -1,10 +1,10 @@
 "use client";
 
-import { Placeholder } from "../../../ui/placeholder";
 import { BarList, Donut, LineChart, Sparkline } from "../../../ui/charts";
 import {
   CaretRightIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, commerceTokens } from "./tokens";
 import { Btn, Card, Main, Select, Shell, Sidebar, TopBar } from "./chrome";
@@ -79,6 +79,7 @@ const SPIKE = [0, 0, 0, 0, 0, 0, 0, 0, 0.05, 0.9, 0.2, 0, 0, 0];
  * drawn from that shape rather than a smooth invented trend.
  */
 export function CommerceAnalyticsTemplate({
+  userName = "Alex Rivera",
   brandName = "Northshore",
   className,
 }: TemplateProps) {
@@ -87,7 +88,7 @@ export function CommerceAnalyticsTemplate({
       <Shell className={cn("flex-col", className)}>
         <TopBar bg="#1a1a1a" border={false} className="text-white">
           <div className="flex items-center gap-2">
-            <Placeholder width={26} height={26} radius={6} />
+            <Avatar name={brandName} size={26} rounded={6} />
             <span className="font-bold">{brandName}</span>
             <span className="rounded border border-white/25 px-1.5 py-0.5 text-[0.7rem]">
               Spring &apos;26
@@ -106,7 +107,7 @@ export function CommerceAnalyticsTemplate({
               <BellIcon width={18} height={18} />
             </button>
             <span className="flex items-center gap-2 rounded-[8px] bg-white/10 px-2 py-1">
-              <Placeholder shape="circle" width={22} height={22} />
+              <Avatar name={userName} size={22} />
               <span className="text-[0.86rem] text-white">Store admin</span>
             </span>
           </div>
