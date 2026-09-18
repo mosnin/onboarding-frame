@@ -14,6 +14,9 @@ export { GuidesAssistantTemplate } from "./guides-assistant";
 export { BrandStudioTemplate } from "./brand-studio";
 export { CommerceAnalyticsTemplate } from "./commerce-analytics";
 export { SupportInsightsTemplate } from "./support-insights";
+export { FinanceOverviewTemplate } from "./finance-overview";
+export { CrmWorkspaceTemplate } from "./crm-workspace";
+export type { CrmPage, CrmWorkspaceProps } from "./crm-workspace";
 
 export interface TemplateMeta {
   slug: string;
@@ -105,6 +108,25 @@ export const templateCatalog: TemplateMeta[] = [
     blurb:
       "Reporting view where each metric owns its chart, and empty periods say so instead of drawing a flat line that reads as zero.",
     pages: [{ id: "reporting", label: "Reporting" }],
+  },
+  {
+    slug: "finance-overview",
+    name: "Finance overview",
+    blurb:
+      "Spend dashboard where the actual-spend line stops at today and the budget continues as a dashed guide, so the gap is the story.",
+    pages: [{ id: "overview", label: "Overview" }],
+  },
+  {
+    slug: "crm-workspace",
+    name: "CRM workspace",
+    blurb:
+      "Dense hairline-ruled record system: the same companies read as a table, a pipeline board, a detail page and a rollup.",
+    pages: [
+      { id: "companies", label: "Companies" },
+      { id: "board", label: "Board" },
+      { id: "record", label: "Record" },
+      { id: "dashboard", label: "Dashboard" },
+    ],
   },
   {
     slug: "discovery-feed",

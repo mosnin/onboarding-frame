@@ -20,6 +20,12 @@ export interface Series {
   dashedFrom?: number;
   /** Fill the area under the line. */
   area?: boolean;
+  /**
+   * Mark the final point with a dot. Set per series so a chart can highlight
+   * where the real data ends without also dotting a reference or forecast
+   * line drawn beside it.
+   */
+  endDot?: boolean;
 }
 
 function scale(points: number[], min: number, max: number, height: number) {
@@ -54,7 +60,7 @@ export interface LineChartProps {
   max?: number;
   smooth?: boolean;
   gridLines?: number;
-  /** Draw a dot at the end of each line. */
+  /** Draw a dot at the end of every line; a series can opt in individually. */
   endDot?: boolean;
   className?: string;
 }
@@ -158,7 +164,7 @@ export function LineChart({
                     vectorEffect="non-scaling-stroke"
                   />
                 )}
-                {endDot && ys.length > 0 && (
+                {(s.endDot ?? endDot) && ys.length > 0 && (
                   <circle
                     cx={(ys.length - 1) * stepX}
                     cy={ys[ys.length - 1]}

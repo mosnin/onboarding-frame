@@ -349,3 +349,48 @@ export const supportInsightsTokens: TemplateTokens = {
   radiusLg: "0.75rem",
   font: GEOMETRIC,
 };
+
+/** Personal finance: airy white, green gains, generous radii, soft shadows. */
+export const financeTokens: TemplateTokens = {
+  bg: "#fbfcfc",
+  surface: "#ffffff",
+  surface2: "#f5f7f7",
+  surface3: "#eaefee",
+  border: "#eaeeed",
+  borderStrong: "#cdd6d4",
+  fg: "#11221c",
+  fgSoft: "#3d4b45",
+  muted: "#74837c",
+  brand: "#16c164",
+  brandFg: "#05230f",
+  ctaBg: "#11221c",
+  ctaFg: "#ffffff",
+  success: "#16c164",
+  danger: "#ef4444",
+  radius: "1rem",
+  radiusSm: "0.625rem",
+  radiusLg: "1.25rem",
+  font: GEOMETRIC,
+  shadow: "0 1px 2px rgb(16 40 32 / 0.04), 0 10px 30px -18px rgb(16 40 32 / 0.25)",
+};
+
+/** CRM workspace: dense, hairline borders, small type, minimal colour. */
+export const crmTokens: TemplateTokens = {
+  bg: "#fbfbfb",
+  surface: "#ffffff",
+  surface2: "#f6f6f6",
+  surface3: "#ededed",
+  border: "#ebebeb",
+  borderStrong: "#d6d6d6",
+  fg: "#1b1b1b",
+  fgSoft: "#474747",
+  muted: "#818181",
+  brand: "#3b5bdb",
+  brandFg: "#ffffff",
+  ctaBg: "#1b1b1b",
+  ctaFg: "#ffffff",
+  radius: "0.375rem",
+  radiusSm: "0.25rem",
+  radiusLg: "0.5rem",
+  font: GEOMETRIC,
+};

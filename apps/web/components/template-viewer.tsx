@@ -13,7 +13,10 @@ import {
   CommerceAnalyticsTemplate,
   SupportInsightsTemplate,
   SetupChecklistTemplate,
+  FinanceOverviewTemplate,
+  CrmWorkspaceTemplate,
   type ApiConsolePage,
+  type CrmPage,
 } from "onboarding-frame";
 
 /** Renders a template by slug, shared by the viewer and the shelf preview. */
@@ -39,6 +42,10 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
       return <CommerceAnalyticsTemplate />;
     case "support-insights":
       return <SupportInsightsTemplate />;
+    case "finance-overview":
+      return <FinanceOverviewTemplate />;
+    case "crm-workspace":
+      return <CrmWorkspaceTemplate page={page as CrmPage} />;
     case "discovery-feed":
       return <DiscoveryFeedTemplate />;
     default:
