@@ -162,7 +162,25 @@ export function DeployAnalyticsTemplate({
                 <span className="border-l border-[color:var(--ob-border)]" />
               </div>
 
-              <div className="px-5 pb-5 pt-2">
+              <div className="relative px-5 pb-5 pt-2">
+                {/*
+                  The reference is captured mid-hover, and that state carries
+                  information the resting chart does not: which day the peak
+                  belongs to, and that it was yesterday. Both are kept.
+                */}
+                <span className="pointer-events-none absolute inset-y-2 left-[calc(5%+80.5%*6/7)] z-10 hidden border-l border-[color:var(--ob-fg)] lg:block">
+                  <span className="absolute -left-[5px] top-[6%] size-2.5 rounded-full border-2 border-[color:var(--ob-surface)] bg-[color:var(--ob-brand)]" />
+                  <span className="absolute left-3 top-[8%] grid gap-1 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-3.5 py-2.5 shadow-[0_4px_14px_rgba(0,0,0,0.1)]">
+                    <span className="flex items-center gap-2.5 whitespace-nowrap text-[0.92rem]">
+                      <span aria-hidden className="size-2 rounded-full bg-[color:var(--ob-brand)]" />
+                      Visitors
+                      <span className="pl-1 font-semibold tabular-nums">13</span>
+                    </span>
+                    <span className="whitespace-nowrap pl-[18px] text-[0.92rem] text-[color:var(--ob-fg-soft)]">
+                      Apr 22
+                    </span>
+                  </span>
+                </span>
                 <LineChart
                   height={420}
                   gridLines={2}
@@ -174,7 +192,7 @@ export function DeployAnalyticsTemplate({
                     "Apr 19",
                     "Apr 20",
                     "Apr 21",
-                    "Apr 22",
+                    "Yesterday",
                     "Apr 23",
                   ]}
                   series={[

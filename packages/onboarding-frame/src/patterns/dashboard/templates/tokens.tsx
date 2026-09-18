@@ -612,3 +612,92 @@ export const usageTokens: TemplateTokens = {
   radiusSm: "0.5rem",
   radiusLg: "1rem",
 };
+
+/** Vanta: purple brand, tight 6-8px radii, grey chips carrying framework codes. */
+export const complianceTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f5f5f7",
+  surface3: "#e9e9ed",
+  border: "#e4e4e9",
+  borderStrong: "#cfcfd7",
+  fg: "#1a1a24",
+  fgSoft: "#3f3f4d",
+  muted: "#7d7d8c",
+  brand: "#6b46e5",
+  brandFg: "#ffffff",
+  ctaBg: "#6b46e5",
+  ctaFg: "#ffffff",
+  success: "#2f9e44",
+  danger: "#e0562d",
+  radius: "0.5rem",
+  radiusSm: "0.375rem",
+  radiusLg: "0.625rem",
+};
+
+/**
+ * Etsy: black text with an orange accent, pill-shaped controls, and small-caps
+ * labels that are underlined rather than coloured — an unusual combination
+ * that would be flattened by any shared house style.
+ */
+export const listingTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f4f4f4",
+  surface3: "#e8e8e8",
+  border: "#e1e1e1",
+  borderStrong: "#c9c9c9",
+  fg: "#111111",
+  fgSoft: "#3a3a3a",
+  muted: "#757575",
+  brand: "#f1641e",
+  brandFg: "#ffffff",
+  ctaBg: "#111111",
+  ctaFg: "#ffffff",
+  radius: "0.75rem",
+  radiusSm: "0.5rem",
+  radiusLg: "1rem",
+};
+
+/** Mailchimp: a yellow band over black text, with olive as the data colour. */
+export const audienceTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f6f6f4",
+  surface3: "#e9e9e5",
+  border: "#e2e2dd",
+  borderStrong: "#c8c8c1",
+  fg: "#241c15",
+  fgSoft: "#403830",
+  muted: "#6f675f",
+  brand: "#007c89",
+  brandFg: "#ffffff",
+  ctaBg: "#ffe01b",
+  ctaFg: "#241c15",
+  success: "#7a9a3e",
+  radius: "0.75rem",
+  radiusSm: "0.5rem",
+  radiusLg: "1rem",
+  fontDisplay:
+    '"Inter Variable", "InterVariable", Inter, ui-serif, Georgia, serif',
+};
+
+/** Cake: indigo primary with a pale-blue secondary, on navy ink. */
+export const capTableTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f6f6fb",
+  surface3: "#ececf6",
+  border: "#e6e6f0",
+  borderStrong: "#d0d0e0",
+  fg: "#1c1b3a",
+  fgSoft: "#3b3a5c",
+  muted: "#7b7a96",
+  brand: "#5b2ff5",
+  brandFg: "#ffffff",
+  ctaBg: "#5b2ff5",
+  ctaFg: "#ffffff",
+  radius: "0.625rem",
+  radiusSm: "0.5rem",
+  radiusLg: "0.875rem",
+};

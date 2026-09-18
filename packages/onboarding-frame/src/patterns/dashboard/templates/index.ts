@@ -36,6 +36,14 @@ export { DeployAnalyticsTemplate } from "./deploy-analytics";
 export type { DeployPage, DeployAnalyticsProps } from "./deploy-analytics";
 export { TokenUsageTemplate } from "./token-usage";
 export type { UsagePage, TokenUsageProps } from "./token-usage";
+export { ComplianceControlsTemplate } from "./compliance-controls";
+export type { CompliancePage, ComplianceControlsProps } from "./compliance-controls";
+export { ListingStatsTemplate } from "./listing-stats";
+export type { ListingPage, ListingStatsProps } from "./listing-stats";
+export { AudienceAnalyticsTemplate } from "./audience-analytics";
+export type { AudiencePage, AudienceAnalyticsProps } from "./audience-analytics";
+export { CapTableTemplate } from "./cap-table";
+export type { CapTablePage, CapTableProps } from "./cap-table";
 export { CrmWorkspaceTemplate } from "./crm-workspace";
 export type { CrmPage, CrmWorkspaceProps } from "./crm-workspace";
 
@@ -220,6 +228,34 @@ export const templateCatalog: TemplateMeta[] = [
     blurb:
       "Slate-only instrumentation for model spend, where days with no calls stay plotted as zero rather than being compressed away.",
     pages: [{ id: "models", label: "Models" }],
+  },
+  {
+    slug: "compliance-controls",
+    name: "Compliance controls",
+    blurb:
+      "Two progress stories that disagree on purpose: 99% of controls pass their tests while only 4% have an owner, and the donut shows it.",
+    pages: [{ id: "controls", label: "Controls" }],
+  },
+  {
+    slug: "listing-stats",
+    name: "Listing stats",
+    blurb:
+      "Marketplace seller stats with underlined small-caps labels and pill controls, where a new listing honestly reports \u201c--% YoY\u201d.",
+    pages: [{ id: "traffic", label: "Shop traffic" }],
+  },
+  {
+    slug: "audience-analytics",
+    name: "Audience analytics",
+    blurb:
+      "Email audience growth where every zero day carries a dot, so a month with two sign-ups reads as data rather than a broken chart.",
+    pages: [{ id: "audience", label: "Audience" }],
+  },
+  {
+    slug: "cap-table",
+    name: "Cap table",
+    blurb:
+      "Equity summary that keeps unavailable instruments visible but disabled, with setup progress riding in the top bar as a ring.",
+    pages: [{ id: "shareholders", label: "Shareholders" }],
   },
   {
     slug: "crm-workspace",

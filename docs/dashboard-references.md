@@ -213,3 +213,104 @@ starts high (~690), decays to 0 by Apr 18, flat, then a big smooth hump peaking 
 back to 0 at Apr 21.
 Two cards: "Input token trend" and "Output token trend" — slate BARS, y 0/150/300/470 and
 0/60/120/180/240, x Apr 15..Apr 21, bars only on Apr 15,16,17,20 (Apr 18/19/21 empty).
+
+| 26 | 082 | Vanta | compliance-controls | DONE |
+| 27 | 083 | Vercel, hover tooltip + crosshair | deploy-analytics | DONE (hover readout) |
+| 28 | 084 | Etsy Shop Manager | listing-stats | DONE |
+| 29 | 085 | Mailchimp audience | audience-analytics | DONE |
+| 30 | 086 | Cake Equity | cap-table | DONE |
+
+## 26 Vanta (082)
+White, purple #6b46e5 brand, grey-50 chips, small radii (6-8px). Top bar white w/ wordmark
+left and ?/📣/⚙/avatar right. Sidebar 300px white: search "Help… ⌘+K" grey pill;
+Home/Tests/Reports, rule, "Compliance ⌄" (ACTIVE parent has a purple left bar) w/ children
+Frameworks / Controls(ACTIVE, grey fill) / Policies / Documents / Audits;
+Trust Center ›, Risk ›, Vendor ›, Assets ›, Personnel ›, rule, Integrations. Bottom-right
+a collapse glyph.
+Main: H1 "Controls"; right outlined "More ⌄" and a DISABLED "Add control ⌄" (greyed).
+Two cards:
+- "Assignment": large thin DONUT (~200px, 10px stroke) mostly grey w/ a tiny purple arc at
+  the top; centre "4%" bold + "Assigned". Legend right: grey square Unassigned 100,
+  purple square Assigned 4, orange square Needs reassignment 0.
+- "Completion": "Controls OK" label, "99%" huge, a full-width green progress bar,
+  then "103 controls" (left) "104 total" (right). On the right two small grey-50 boxes:
+  "Test ↗  132/133" + green bar + "99%", and "Document ↗ 37/38" + green bar + "97%".
+Filter row: search input "Search controls", then dropdown labels Framework/Owner/Domain/
+Source/Framework code/Status/Trust Center/Risk, right a settings-sliders icon button.
+Table: header ID (w/ info icon) / Control / Owner / Source / Frameworks / Tests.
+Rows: monospace-ish ID (AST-1), bold control title + 2-line grey truncated description,
+Owner = dashed-circle avatar + "Unassigned", Source = small logo slot + "Vanta",
+Frameworks = grey chips "SOC 2 · CC 6.5" stacked (sometimes 2 + a grey "+2"),
+Tests = green check + "2/2", then "···".
+
+## 28 Etsy (084)
+White, orange #f1641e accent, BLACK text, underlined small-caps stat labels, big
+rounded-full date-range pill. Sidebar 340px white w/ hairline right border:
+"Shop Manager" bold + hamburger; nav w/ outline icons: Search, Dashboard, Listings,
+Messages, Orders, Etsy search visibility, "Stats" (ACTIVE, grey fill, caret up) w/
+children Shop traffic (ACTIVE bold, grey fill) / Marketplace insights; Customer service
+stats, Policy violations, "Marketing ⌃" w/ children Etsy Ads / Sales and discounts /
+Social media / Share & Save; "Finances ⌄", Apps, "Help ⌄", "Settings ⌄"; then small-caps
+grey "Sales channels" + a row w/ an E logo slot + shop name + pencil; footer avatar "Alex ⌃".
+Main: breadcrumb "Stats › Listing stats"; H1 "Listing stats"; a rounded-full outlined pill
+"Date Range  Last 7 Days: Mar 01 - Mar 07 ▾".
+Listing card (rounded-lg, hairline): square image placeholder 230px left; title 1.6rem bold;
+right outlined rounded-full "View item"; two columns "Price: $7.99 - $10.99" /
+"Status: Inactive" and "Current stock: 100"; rule; an inner bordered box
+"Improvement Suggestions" + right underlined "Edit listing" + a 2-item bullet list.
+Stats card split into 3 cells by vertical rules: each cell has small-caps UNDERLINED label
+(VISITS / ITEMS SOLD / REVENUE) + grey underlined "--% YoY" + right "🕐 Just now";
+huge number (5 / 1 / SGD 0.70); then a small area chart w/ ONE smooth bell-curve hump near
+the right, each a different colour (orange #e8734a, blue #4aa8d8, teal #7fc9b8); a top
+gridline labelled 6 / 2 / SGD 2; x labels "01 Mar" and "07 Mar" at the ends; then a legend
+row: coloured dot + "Etsy" + right "5 visits" / "1 item sold" / "SGD 0.70".
+"Explore your data" section: left heading + 2-line grey blurb; right two big rounded-lg
+outlined selects, each w/ a small-caps coloured label (orange TOTAL VIEWS, blue ORDERS)
+and a big number + caret; right "🕐 Updated Just now".
+
+## 29 Mailchimp (085)
+White; a YELLOW 6px bar across the very top; black text, serif-ish display headings;
+green #7a9a3e data. Sidebar 350px white: big outlined rounded-full "✎ Create";
+nav w/ line icons + carets: Campaigns ⌄, Automations ⌄, SMS + purple "New" chip ⌄,
+Audience ⌄, "Analytics ⌃" (ACTIVE) w/ children Marketing dashboard / Audience (ACTIVE,
+grey fill) / Reports / Custom reports; Website ⌄, Content ⌄, Integrations ⌄.
+Bottom-left a panel-collapse glyph.
+Top bar: logo left, big rounded-full "Search Mailchimp" centred, right a cream pill
+"● Live expert help" and an avatar.
+Sub-header: H1 "Audience analytics" + right teal link "Manage contacts".
+Card 1 (clipped at top): legend "Subscribed / Unsubscribed / Non-subscribed", pagination
+"0 - 16 of 30  ‹ Previous  Next ›" (Next in teal), then a grey note
+"Note: This new way of viewing your subscriber data by channel was launched April 1, 2024".
+Card 2 "What's changed" (serif, 2rem) + grey "Jul 7, 2024 - Aug 5, 2024" + rule.
+Row: underlined-dotted label "Total net subscriptions growth"; right a segmented control
+in a white rounded box w/ hairline: Day(active, shadowed) | Week | Month.
+Under it: big "4", a grey circle w/ "--", then grey "compared to last year".
+Chart: y 0..4, x Jul 07..Aug 05 with ROTATED (-45deg) date labels, a green line that is
+flat at 0 with a DOT ON EVERY DAY and two spikes (1 on Jul 12, 3 on Jul 16); a black
+baseline at 0. Legend bottom-right: green line + dot + "SLMobbin".
+A vertical "Feedback" tab is pinned to the right edge.
+
+## 30 Cake Equity (086)
+White, indigo #5b2ff5 brand, navy-ink text, light-blue secondary buttons.
+Top bar: "Cake." wordmark; a grey-50 pill w/ avatar + "JMobbin" + grey "Free" chip + caret;
+a lavender pill "◎ Issue overseas equity right"; a big rounded-full outlined pill with a
+33% RING + "Getting started 🚀" + caret; bell; ?; share; outlined "👤+ Invite co-pilots";
+indigo "Upgrade"; a segmented "Company | Portal"; avatar.
+Sidebar 335px: Getting Started, Dashboard, "Cap table ⌄" (open) w/ children Shareholders
+(ACTIVE: indigo text + indigo left bar + light fill) / Note holders / Transactions log;
+Equity plans ›, Tools ›, Communication, Data room, Secondaries, Documents ›, Company ›.
+Bottom: a bordered "✦ What's New" card containing three grey-50 rows (2FA security,
+Bare trusts & SPVs, Reporting) each w/ a circled → on the right; then "↻ Update available"
+and tiny grey "version: b513e7b0".
+Main: card "Summary" + tabs Shares(active, indigo underline) / Options / Notes(disabled) /
+RSUs(disabled). A 3x2 grid of centred figures: huge numbers over small-caps grey labels —
+$0.00 TOTAL INVESTED (w/ info icon), $0.00 TOTAL UNPAID, 44.44% UNDILUTED,
+23.52% DILUTED, 4 COM SHARES.
+Card "Documents": label left, then a bordered pill w/ a file glyph + underlined
+"Shareholder Certificate 1 - Jane Smith - J…".
+"Transaction history" heading + right: indigo "↻ Re-Issue share certificate",
+light-blue "🎖 Download share certificate", outlined "More ⌄".
+Table w/ checkbox column: Date / Type / Share class / Shares / Total shares /
+Price per share / Investment amount / Transfer amount, each row ending in an outlined
+"More ⌄" button. Rows: 27 Oct 2023 Shares issued COM 8 8 $0.00 $0.00 -;
+31 Oct 2023 Share split COM 1.00:1 8 - - -; 31 Oct 2023 Buy back COM -4 4 $1.00 $4.00 -.

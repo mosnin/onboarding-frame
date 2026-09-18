@@ -24,6 +24,10 @@ import {
   PlatformReportsTemplate,
   DeployAnalyticsTemplate,
   TokenUsageTemplate,
+  ComplianceControlsTemplate,
+  ListingStatsTemplate,
+  AudienceAnalyticsTemplate,
+  CapTableTemplate,
   type ApiConsolePage,
   type CrmPage,
   type FinancePage,
@@ -38,6 +42,10 @@ import {
   type ReportsPage,
   type DeployPage,
   type UsagePage,
+  type CompliancePage,
+  type ListingPage,
+  type AudiencePage,
+  type CapTablePage,
 } from "onboarding-frame";
 
 /** Renders a template by slug, shared by the viewer and the shelf preview. */
@@ -65,6 +73,14 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
       return <SupportInsightsTemplate />;
     case "finance-overview":
       return <FinanceOverviewTemplate page={page as FinancePage} />;
+    case "compliance-controls":
+      return <ComplianceControlsTemplate page={page as CompliancePage} />;
+    case "listing-stats":
+      return <ListingStatsTemplate page={page as ListingPage} />;
+    case "audience-analytics":
+      return <AudienceAnalyticsTemplate page={page as AudiencePage} />;
+    case "cap-table":
+      return <CapTableTemplate page={page as CapTablePage} />;
     case "community-traffic":
       return <CommunityTrafficTemplate page={page as CommunityPage} />;
     case "goal-tracker":
