@@ -438,7 +438,7 @@ bottom/edge; y labels top-left and bottom-left (8.0% / -4.0%); x "January 2024" 
 | 36 | 092 | Contra analytics | freelance-analytics | DONE |
 | 37 | 093 | Clerk dashboard | auth-console | DONE |
 | 38 | 094 | Better Stack uptime | uptime-monitor (dark) | DONE |
-| 39 | 095 | Cloudflare zone overview | zone-overview | DONE |
+| 39 | 095 | Cloudflare zone overview | zone-overview | REMEASURED |
 | 40 | 096 | Zapier My Apps | automation-apps | DONE |
 
 ## 36 Contra (092)

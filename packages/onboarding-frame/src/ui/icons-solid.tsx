@@ -254,6 +254,7 @@ export const SquaresFourIcon = solid(SquaresFour, "regular");
 export const SearchIcon = solid(MagnifyingGlass, "regular");
 export const ChatDotsIcon = solid(ChatCircleDots, "regular");
 export const CaretDownIcon = solid(CaretDown, "bold", 12);
+export const CaretDoubleLeftIcon = solid(CaretDoubleLeft, "bold", 12);
 export const CaretRightIcon = solid(CaretRight, "bold", 12);
 export const MoreVerticalIcon = solid(DotsThreeVertical, "bold");
 export const LinkIcon = solid(LinkSimple, "regular");

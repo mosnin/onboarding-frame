@@ -2,14 +2,20 @@
 
 import type { ReactNode } from "react";
 import {
+  ArrowLeftIcon,
   ArrowsUpDownIcon,
   ArticleIcon,
   BrowsersIcon,
   CardIcon,
+  CaretDoubleLeftIcon,
+  CaretDownIcon,
+  CheckIcon,
   ChartPieIcon,
   ClipboardIcon,
   CloudIcon,
+  CrossIcon,
   EnvelopeIcon,
+  ExternalSquareIcon,
   FlagIcon,
   FlowArrowIcon,
   GearIcon,
@@ -25,6 +31,7 @@ import {
   SearchIcon,
   ShieldIcon,
   SignpostIcon,
+  StarIcon,
   TagIcon,
   TreeIcon,
   WrenchIcon,
@@ -96,7 +103,8 @@ const METRICS = [
  * Orange is the mark and blue is every link and datum — the two accents never
  * take each other's job, which is easy to lose when a palette is normalised
  * into one brand colour. The Quick Actions toggles are both off and show an
- * explicit ✕ in the knob, so "off" is stated rather than implied by position.
+ * explicit cross in the knob, so "off" is stated rather than implied by
+ * position.
  */
 export function ZoneOverviewTemplate({
   brandName = "Acme",
@@ -111,30 +119,34 @@ export function ZoneOverviewTemplate({
           Add button and the two menus stop fitting. Scrolling keeps all four
           reachable; narrowing the row would clip the last two off the edge.
         */}
-        <header className="flex h-[57px] shrink-0 items-center gap-[15px] overflow-x-auto border-b border-[color:var(--ob-border)] px-[18px]">
-          <Wordmark name={brandName} size={19} mark={26} radius={7} />
-          <span className="ml-auto flex shrink-0 items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.753rem] text-[color:var(--ob-muted)]">
-            <SearchIcon size={14} />
-            <span className="w-[98px]">Go to…</span>
-            <kbd className="rounded border border-[color:var(--ob-border)] px-[5px] py-[2px] text-[0.542rem] font-semibold">
+        <header className="flex h-[63px] shrink-0 items-center gap-[17px] overflow-x-auto border-b border-[color:var(--ob-border)] px-[20px]">
+          <Wordmark name={brandName} size={21} mark={26} radius={8} />
+          <span className="ml-auto flex shrink-0 items-center gap-[9px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[13px] py-[9px] text-[0.833rem] text-[color:var(--ob-muted)]">
+            <SearchIcon size={15} />
+            <span className="w-[108px]">Go to…</span>
+            <kbd className="rounded border border-[color:var(--ob-border)] px-[6px] py-[2px] text-[0.6rem] font-semibold">
               ⌘K
             </kbd>
           </span>
-          <span className="shrink-0 rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[15px] py-[8px] text-[0.753rem] font-semibold text-white">
-            Add ▾
+          <span className="flex shrink-0 items-center gap-[7px] whitespace-nowrap rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[17px] py-[9px] text-[0.833rem] font-semibold text-white">
+            Add <CaretDownIcon size={12} weight="fill" />
           </span>
-          <span className="shrink-0 text-[0.768rem] font-medium">Support ▾</span>
-          <span className="shrink-0 text-[0.768rem] font-medium">Profile ▾</span>
+          <span className="flex shrink-0 items-center gap-[7px] text-[0.85rem] font-medium">
+            Support <CaretDownIcon size={12} weight="fill" />
+          </span>
+          <span className="flex shrink-0 items-center gap-[7px] text-[0.85rem] font-medium">
+            Profile <CaretDownIcon size={12} weight="fill" />
+          </span>
         </header>
 
         <div className="flex min-h-[0px] flex-1">
           <Sidebar width={260} bg="var(--ob-surface)">
-            <p className="flex items-center gap-[9px] px-[15px] py-[12px] text-[0.866rem] font-medium">
-              <span aria-hidden>←</span> Alex Smith
+            <p className="flex items-center gap-[10px] px-[22px] py-[18px] text-[0.958rem] font-medium">
+              <ArrowLeftIcon size={17} className="text-[color:var(--ob-brand)]" /> Alex Smith
             </p>
             <div className="mx-[0px] border-t border-[color:var(--ob-border)]" />
 
-            <nav className="grid gap-[2px] py-[6px]">
+            <nav className="grid py-[7px]">
               {NAV.map((item) => {
                 const active = item.id === page;
                 return (
@@ -148,9 +160,9 @@ export function ZoneOverviewTemplate({
                     <NavItem
                       label={
                         item.badge ? (
-                          <span className="flex items-center gap-[8px]">
+                          <span className="flex items-center gap-[9px]">
                             {item.label}
-                            <span className="rounded-full bg-[color-mix(in_oklab,#f6821f_22%,transparent)] px-[6px] py-[2px] text-[0.587rem] font-semibold text-[#9a5209]">
+                            <span className="rounded-full bg-[color-mix(in_oklab,#f6821f_22%,transparent)] px-[7px] py-[2px] text-[0.649rem] font-semibold text-[#9a5209]">
                               {item.badge}
                             </span>
                           </span>
@@ -158,16 +170,14 @@ export function ZoneOverviewTemplate({
                           item.label
                         )
                       }
-                      glyph={<item.Icon size={15} />}
+                      glyph={<item.Icon size={17} className="text-[color:var(--ob-brand)]" />}
                       trailing={
                         item.caret ? (
-                          <span aria-hidden className="text-[0.527rem] opacity-50">
-                            ▾
-                          </span>
+                          <CaretDownIcon size={11} weight="fill" className="opacity-55" />
                         ) : undefined
                       }
                       className={cn(
-                        "rounded-none text-[0.813rem]",
+                        "rounded-none gap-[19px] px-[25px] py-[10px] text-[0.899rem] text-[color:var(--ob-fg)]",
                         active &&
                           "bg-transparent font-medium text-[color:var(--ob-brand)]",
                       )}
@@ -177,58 +187,56 @@ export function ZoneOverviewTemplate({
               })}
             </nav>
 
-            <p className="mt-auto border-t border-[color:var(--ob-border)] px-[15px] py-[12px] text-[0.768rem] text-[color:var(--ob-fg-soft)]">
-              <span aria-hidden>«</span> Collapse sidebar
+            <p className="mt-auto border-t border-[color:var(--ob-border)] px-[17px] py-[13px] text-[0.85rem] text-[color:var(--ob-fg-soft)]">
+              <CaretDoubleLeftIcon size={13} /> Collapse sidebar
             </p>
           </Sidebar>
 
           <Main className="overflow-auto">
-            <div className="flex flex-wrap items-center gap-[9px] border-b border-[color:var(--ob-border)] px-[18px] py-[12px]">
-              <CardIcon size={14} />
-              <span className="text-[0.941rem] font-medium">content-acme.org</span>
-              <ArrowsUpDownIcon size={14} />
-              <span className="ml-[6px] flex items-center gap-[5px] rounded-full bg-[color-mix(in_oklab,#1d8102_16%,transparent)] px-[9px] py-[3px] text-[0.715rem] font-medium text-[color:var(--ob-success)]">
-                ✓ Active
+            <div className="flex flex-wrap items-center gap-[10px] border-b border-[color:var(--ob-border)] px-[20px] py-[18px]">
+              <CardIcon size={15} />
+              <span className="text-[1.041rem] font-medium">content-acme.org</span>
+              <ArrowsUpDownIcon size={15} />
+              <span className="ml-[7px] flex items-center gap-[6px] whitespace-nowrap rounded-full bg-[color-mix(in_oklab,#1d8102_16%,transparent)] px-[10px] py-[3px] text-[0.791rem] font-medium text-[color:var(--ob-success)]">
+                <CheckIcon size={12} weight="bold" /> Active
               </span>
-              <span className="rounded-full border border-[color:var(--ob-border-strong)] px-[9px] py-[3px] text-[0.715rem]">
-                ☆ Star
+              <span className="flex items-center gap-[6px] whitespace-nowrap rounded-full border border-[color:var(--ob-border-strong)] px-[10px] py-[3px] text-[0.791rem]">
+                <StarIcon size={12} /> Star
               </span>
-              <span className="rounded-full border border-[color:var(--ob-border-strong)] px-[9px] py-[3px] text-[0.715rem]">
+              <span className="rounded-full border border-[color:var(--ob-border-strong)] px-[10px] py-[3px] text-[0.791rem]">
                 Free plan
               </span>
             </div>
 
-            <div className="flex items-center gap-[9px] border-b border-[color:var(--ob-border)] bg-[color-mix(in_oklab,#0051c3_5%,transparent)] px-[18px] py-[12px]">
-              <p className="flex-1 text-[0.813rem]">
+            <div className="flex items-center gap-[10px] border-b border-[color:var(--ob-border)] bg-[color-mix(in_oklab,#0051c3_5%,transparent)] px-[20px] py-[18px]">
+              <p className="flex-1 text-[0.899rem]">
                 Why did you choose a Free plan?{" "}
                 <span className="font-medium underline">Share your feedback</span>{" "}
-                <span aria-hidden className="text-[0.64rem]">
-                  ↗
-                </span>
+                <ExternalSquareIcon size={12} className="inline align-[-1px]" />
               </p>
-              <span aria-hidden className="text-[0.866rem] text-[color:var(--ob-muted)]">
-                ✕
+              <span className="text-[color:var(--ob-muted)]">
+                <CrossIcon size={15} />
               </span>
             </div>
 
-            <div className="grid gap-[30px] px-[24px] py-[21px] xl:grid-cols-[minmax(0,1fr)_440px]">
+            <div className="grid gap-[33px] px-[27px] py-[23px] xl:grid-cols-[minmax(0,1fr)_440px]">
               <div>
-                <p className="text-[0.791rem] text-[color:var(--ob-fg-soft)]">Overview</p>
-                <h1 className="pt-[6px] text-[1.581rem] font-normal">content-acme.org</h1>
-                <p className="max-w-[62ch] pt-[9px] text-[0.813rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+                <p className="text-[0.875rem] text-[color:var(--ob-fg-soft)]">Overview</p>
+                <h1 className="pt-[7px] text-[1.749rem] font-normal">content-acme.org</h1>
+                <p className="max-w-[62ch] pt-[10px] text-[0.899rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
                   Monitor security and performance for content-acme.org. Configure
                   products and services from the menu.
                 </p>
-                <span className="mt-[15px] inline-flex items-center gap-[8px] rounded-full border border-[color:var(--ob-brand)] px-[15px] py-[8px] text-[0.768rem] font-medium text-[color:var(--ob-brand)]">
-                  <ArticleIcon size={14} /> Review fundamentals
+                <span className="mt-[17px] inline-flex items-center gap-[9px] rounded-full border border-[color:var(--ob-brand)] px-[17px] py-[9px] text-[0.85rem] font-medium text-[color:var(--ob-brand)]">
+                  <ArticleIcon size={15} /> Review fundamentals
                 </span>
 
-                <div className="flex flex-wrap items-baseline gap-[18px] pt-[21px]">
+                <div className="flex flex-wrap items-baseline gap-[20px] pt-[23px]">
                   {["24 Hours", "7 Days", "30 Days"].map((range, index) => (
                     <span
                       key={range}
                       className={cn(
-                        "text-[0.791rem]",
+                        "text-[0.875rem]",
                         index === 0
                           ? "border-b-2 border-[color:var(--ob-brand)] pb-[3px] font-medium text-[color:var(--ob-brand)]"
                           : "text-[color:var(--ob-fg-soft)]",
@@ -237,20 +245,20 @@ export function ZoneOverviewTemplate({
                       {range}
                     </span>
                   ))}
-                  <span className="ml-auto text-[0.693rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
+                  <span className="ml-auto text-[0.767rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
                     15 February — 16 February
                   </span>
                 </div>
 
-                <div className="pt-[12px]">
+                <div className="pt-[13px]">
                   {METRICS.map((metric) => (
                     <div
                       key={metric.id}
-                      className="grid items-center gap-[18px] border-t border-[color:var(--ob-border)] py-[15px] sm:grid-cols-[210px_minmax(0,1fr)]"
+                      className="grid items-center gap-[20px] border-t border-[color:var(--ob-border)] py-[17px] sm:grid-cols-[210px_minmax(0,1fr)]"
                     >
                       <div>
-                        <p className="text-[0.813rem]">{metric.label}</p>
-                        <p className="pt-[3px] text-[1.431rem] font-bold leading-none tabular-nums">
+                        <p className="text-[0.899rem]">{metric.label}</p>
+                        <p className="pt-[3px] text-[1.583rem] font-bold leading-none tabular-nums">
                           {metric.value}
                         </p>
                       </div>
@@ -260,19 +268,19 @@ export function ZoneOverviewTemplate({
                 </div>
               </div>
 
-              <aside className="grid content-start gap-[21px]">
+              <aside className="grid content-start gap-[23px]">
                 <section>
-                  <h2 className="pb-[9px] text-[1.13rem] font-normal">DNS</h2>
-                  <p className="flex items-center gap-[6px] pb-[9px] text-[0.813rem]">
+                  <h2 className="pb-[10px] text-[1.25rem] font-normal">DNS</h2>
+                  <p className="flex items-center gap-[7px] pb-[10px] text-[0.899rem]">
                     DNS Setup: Full <InfoDot />
                   </p>
-                  <p className="border-t border-[color:var(--ob-border)] pt-[9px] text-[0.813rem] font-medium text-[color:var(--ob-brand)] underline">
+                  <p className="border-t border-[color:var(--ob-border)] pt-[10px] text-[0.899rem] font-medium text-[color:var(--ob-brand)] underline">
                     DNS Records
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="pb-[12px] text-[1.13rem] font-normal">Quick Actions</h2>
+                  <h2 className="pb-[13px] text-[1.25rem] font-normal">Quick Actions</h2>
                   {[
                     {
                       id: "attack",
@@ -289,55 +297,50 @@ export function ZoneOverviewTemplate({
                   ].map((row) => (
                     <div
                       key={row.id}
-                      className="flex items-start gap-[15px] border-b border-[color:var(--ob-border)] py-[12px]"
+                      className="flex items-start gap-[17px] border-b border-[color:var(--ob-border)] py-[13px]"
                     >
                       <div className="flex-1">
-                        <h3 className="text-[0.843rem] font-medium">{row.title}</h3>
-                        <p className="pt-[5px] text-[0.768rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+                        <h3 className="text-[0.933rem] font-medium">{row.title}</h3>
+                        <p className="pt-[6px] text-[0.85rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
                           {row.body}
                         </p>
-                        <p className="pt-[6px] text-[0.768rem] font-medium text-[color:var(--ob-brand)] underline">
+                        <p className="pt-[7px] text-[0.85rem] font-medium text-[color:var(--ob-brand)] underline">
                           {row.link}{" "}
-                          <span aria-hidden className="text-[0.64rem]">
-                            ↗
-                          </span>
+                          <ExternalSquareIcon size={12} className="inline align-[-1px]" />
                         </p>
                       </div>
-                      {/* Off states the word: the knob carries an explicit ✕. */}
-                      <span className="mt-[3px] grid h-[21px] w-[42px] shrink-0 grid-cols-2 items-center rounded-full bg-[color:var(--ob-surface-3)] px-[3px]">
-                        <span className="size-[15px] rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
-                        <span
-                          aria-hidden
-                          className="text-center text-[0.542rem] text-[color:var(--ob-fg-soft)]"
-                        >
-                          ✕
+                      {/* Off states the word: the knob carries an explicit cross. */}
+                      <span className="mt-[3px] grid h-[23px] w-[46px] shrink-0 grid-cols-2 items-center rounded-full bg-[color:var(--ob-surface-3)] px-[3px]">
+                        <span className="size-[17px] rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
+                        <span className="grid place-items-center text-[color:var(--ob-fg-soft)]">
+                          <CrossIcon size={10} weight="bold" />
                         </span>
                       </span>
                     </div>
                   ))}
-                  <p className="pt-[12px] text-[0.813rem] font-medium text-[color:var(--ob-brand)] underline">
+                  <p className="pt-[13px] text-[0.899rem] font-medium text-[color:var(--ob-brand)] underline">
                     Run speed test
                   </p>
-                  <p className="pt-[9px] text-[0.813rem] font-medium text-[color:var(--ob-brand)] underline">
+                  <p className="pt-[10px] text-[0.899rem] font-medium text-[color:var(--ob-brand)] underline">
                     Configure caching
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="pb-[9px] text-[1.13rem] font-normal">Domain Registration</h2>
-                  <p className="text-[0.813rem]">Registrar: Unknown</p>
-                  <p className="pt-[9px] text-[0.813rem] font-medium text-[color:var(--ob-brand)] underline">
+                  <h2 className="pb-[10px] text-[1.25rem] font-normal">Domain Registration</h2>
+                  <p className="text-[0.899rem]">Registrar: Unknown</p>
+                  <p className="pt-[10px] text-[0.899rem] font-medium text-[color:var(--ob-brand)] underline">
                     Transfer to us
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="pb-[9px] text-[1.13rem] font-normal">Active Subscriptions</h2>
-                  <p className="flex items-center gap-[9px] text-[0.813rem]">
+                  <h2 className="pb-[10px] text-[1.25rem] font-normal">Active Subscriptions</h2>
+                  <p className="flex items-center gap-[10px] text-[0.899rem]">
                     <span className="flex-1 font-medium text-[color:var(--ob-brand)] underline">
                       Billing
                     </span>
-                    <span className="text-[0.753rem] text-[color:var(--ob-muted)]">
+                    <span className="text-[0.833rem] text-[color:var(--ob-muted)]">
                       Next bill: March 14, 2025
                     </span>
                   </p>
@@ -355,7 +358,7 @@ function InfoDot(): ReactNode {
   return (
     <span
       aria-hidden
-      className="grid size-[11px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.452rem] text-[color:var(--ob-muted)]"
+      className="grid size-[12px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.5rem] text-[color:var(--ob-muted)]"
     >
       i
     </span>
@@ -379,7 +382,7 @@ function DottedArea({ points }: { points: number[] }) {
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
-      className="h-[83px] w-full"
+      className="h-[92px] w-full"
       preserveAspectRatio="none"
       role="img"
       aria-label="Metric over the selected window"
