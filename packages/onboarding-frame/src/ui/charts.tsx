@@ -56,6 +56,8 @@ export interface LineChartProps {
   xLabels?: string[];
   /** Labels along the y axis, top value first. */
   yLabels?: string[];
+  /** Which side the value scale sits on. Some products set it right. */
+  yLabelSide?: "left" | "right";
   min?: number;
   max?: number;
   smooth?: boolean;
@@ -70,6 +72,7 @@ export function LineChart({
   height = 180,
   xLabels,
   yLabels,
+  yLabelSide = "left",
   min,
   max,
   smooth = false,
@@ -87,10 +90,13 @@ export function LineChart({
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex gap-3">
+      <div className={cn("flex gap-3", yLabelSide === "right" && "flex-row-reverse")}>
         {yLabels && (
           <div
-            className="flex shrink-0 flex-col justify-between text-right text-[0.7rem] tabular-nums text-[color:var(--ob-muted)]"
+            className={cn(
+              "flex shrink-0 flex-col justify-between text-[0.7rem] tabular-nums text-[color:var(--ob-muted)]",
+              yLabelSide === "right" ? "text-left" : "text-right",
+            )}
             style={{ height }}
           >
             {yLabels.map((label) => (
@@ -207,6 +213,8 @@ export interface BarChartProps {
   max?: number;
   /** Draws a dashed reference line with a chip, e.g. an average. */
   average?: { value: number; label?: string };
+  /** Which side the value scale sits on. Some products set it right. */
+  yLabelSide?: "left" | "right";
   className?: string;
 }
 
@@ -214,6 +222,7 @@ export function BarChart({
   values,
   xLabels,
   yLabels,
+  yLabelSide = "left",
   height = 180,
   color = "var(--ob-brand)",
   max,
@@ -224,10 +233,13 @@ export function BarChart({
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex gap-3">
+      <div className={cn("flex gap-3", yLabelSide === "right" && "flex-row-reverse")}>
         {yLabels && (
           <div
-            className="flex shrink-0 flex-col justify-between text-right text-[0.7rem] tabular-nums text-[color:var(--ob-muted)]"
+            className={cn(
+              "flex shrink-0 flex-col justify-between text-[0.7rem] tabular-nums text-[color:var(--ob-muted)]",
+              yLabelSide === "right" ? "text-left" : "text-right",
+            )}
             style={{ height }}
           >
             {yLabels.map((label) => (

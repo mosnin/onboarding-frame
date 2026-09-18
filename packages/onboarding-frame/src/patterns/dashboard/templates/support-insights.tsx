@@ -6,13 +6,29 @@ import { cn } from "../../../lib/cn";
 import { Surface, supportInsightsTokens } from "./tokens";
 import { Chip, Main, Select, Shell } from "./chrome";
 import type { TemplateProps } from "./props";
+import {
+  BellIcon,
+  ChevronDown,
+  FlaskIcon,
+  GhostIcon,
+  Icon,
+  SlidersIcon,
+  type IconName,
+} from "../../../ui/icons";
 
-const RAIL = ["✉", "⚯", "✦", "📊", "◎", "⚙"];
+const RAIL: IconName[] = [
+  "mail",
+  "share",
+  "sparkle",
+  "barChart",
+  "lifebuoy",
+  "settings",
+];
 
 const SECTION_NAV = [
-  { id: "reporting", label: "Reporting", glyph: "📊", active: true, chevron: true },
-  { id: "issues", label: "Top issues", glyph: "◬" },
-  { id: "themes", label: "Themes", glyph: "✦", badge: "Beta" },
+  { id: "reporting", label: "Reporting", icon: "barChart" as IconName, active: true, chevron: true },
+  { id: "issues", label: "Top issues", icon: "alert" as IconName },
+  { id: "themes", label: "Themes", icon: "sparkle" as IconName, badge: "Beta" },
 ];
 
 /** A metric block: label, big value with a unit, then its own chart. */
@@ -69,9 +85,9 @@ export function SupportInsightsTemplate({
       <Shell className={cn(className)} bg="var(--ob-bg)">
         {/* Product rail */}
         <aside className="hidden w-[68px] shrink-0 flex-col items-center gap-6 py-4 sm:flex">
-          <Placeholder width={34} height={34} radius={9} glyph="▦" />
+          <Placeholder width={34} height={34} radius={9} />
           <nav className="grid gap-4 text-[color:var(--ob-fg-soft)]">
-            {RAIL.map((glyph, i) => (
+            {RAIL.map((name, i) => (
               <button
                 key={i}
                 type="button"
@@ -82,14 +98,16 @@ export function SupportInsightsTemplate({
                     : "opacity-60 hover:opacity-100",
                 )}
               >
-                {glyph}
+                <Icon name={name} width={19} height={19} />
               </button>
             ))}
           </nav>
           <div className="mt-auto grid gap-4 text-[color:var(--ob-fg-soft)]">
-            <button type="button" aria-label="Notifications" className="opacity-60">⌾</button>
+            <button type="button" aria-label="Notifications" className="opacity-60">
+              <BellIcon width={19} height={19} />
+            </button>
             <button type="button" aria-label="Help" className="opacity-60">?</button>
-            <Placeholder shape="circle" width={30} height={30} glyph="◍" />
+            <Placeholder shape="circle" width={30} height={30} />
           </div>
         </aside>
 
@@ -103,7 +121,9 @@ export function SupportInsightsTemplate({
                   {brandName} support
                 </p>
               </div>
-              <button type="button" aria-label="Filters" className="opacity-50">▣</button>
+              <button type="button" aria-label="Filters" className="opacity-50">
+                <SlidersIcon width={17} height={17} />
+              </button>
             </div>
           </div>
           <nav className="grid gap-0.5 px-2">
@@ -119,9 +139,13 @@ export function SupportInsightsTemplate({
                     : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
                 )}
               >
-                <span aria-hidden className="w-4 text-center opacity-80">{item.glyph}</span>
+                <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-80" />
                 <span className="flex-1">{item.label}</span>
-                {item.badge && <Chip tone="brand">⚗ {item.badge}</Chip>}
+                {item.badge && (
+                  <Chip tone="brand">
+                    <FlaskIcon width={11} height={11} /> {item.badge}
+                  </Chip>
+                )}
                 {item.chevron && <span aria-hidden className="opacity-40">›</span>}
               </button>
             ))}
@@ -151,7 +175,7 @@ export function SupportInsightsTemplate({
               type="button"
               className="mt-8 flex items-center gap-1.5 text-lg font-bold tracking-tight"
             >
-              Overview <span aria-hidden className="text-sm opacity-50">⌄</span>
+              Overview <ChevronDown width={17} height={17} className="opacity-50" />
             </button>
 
             <div className="mt-5 grid gap-10 lg:grid-cols-3">
@@ -168,6 +192,7 @@ export function SupportInsightsTemplate({
                     },
                   ]}
                   yLabels={["6", "3", "0"]}
+                  yLabelSide="right"
                   xLabels={["Jun 3", "Today"]}
                   gridLines={2}
                 />
@@ -204,12 +229,11 @@ export function SupportInsightsTemplate({
               </Metric>
 
               <Metric label="Median resolution time" value="N/A" unit="last 7 days">
-                <div
-                  className="grid place-items-center rounded-[8px] border border-[color:var(--ob-border)]"
-                  style={{ height: 150 }}
-                >
+                {/* The reference draws no frame here — just the mark and the
+                    words, so the empty panel stays visibly empty. */}
+                <div className="grid place-items-center" style={{ height: 150 }}>
                   <span className="flex items-center gap-2 text-[0.88rem] text-[color:var(--ob-muted)]">
-                    <span aria-hidden>👻</span> No data
+                    <GhostIcon width={16} height={16} /> No data
                   </span>
                 </div>
                 <div className="flex justify-between text-[0.7rem] text-[color:var(--ob-muted)]">
@@ -223,7 +247,7 @@ export function SupportInsightsTemplate({
               type="button"
               className="mt-12 flex items-center gap-1.5 text-lg font-bold tracking-tight"
             >
-              Support volume <span aria-hidden className="text-sm opacity-50">⌄</span>
+              Support volume <ChevronDown width={17} height={17} className="opacity-50" />
             </button>
 
             <div className="mt-5 grid gap-10 lg:grid-cols-2">
@@ -232,6 +256,7 @@ export function SupportInsightsTemplate({
                   values={[0, 0, 0, 4, 0, 0, 0]}
                   max={5}
                   yLabels={["5", "4", "3", "2", "1", "0"]}
+                  yLabelSide="right"
                   xLabels={["Jun 1", "Jun 3", "Jun 5", "Today"]}
                   average={{ value: 1, label: "Average" }}
                   height={190}
@@ -244,6 +269,7 @@ export function SupportInsightsTemplate({
                   values={[0, 0, 0, 0, 4, 0, 0]}
                   max={5}
                   yLabels={["5", "4", "3", "2", "1", "0"]}
+                  yLabelSide="right"
                   xLabels={["Jun 1", "Jun 3", "Jun 5", "Today"]}
                   average={{ value: 1, label: "Average" }}
                   height={190}
@@ -256,6 +282,7 @@ export function SupportInsightsTemplate({
                   values={[0, 0, 3, 0, 0, 0, 0]}
                   max={3}
                   yLabels={["3", "0"]}
+                  yLabelSide="right"
                   xLabels={["Jun 1", "Jun 5", "Today"]}
                   height={150}
                   color="var(--ob-brand)"
