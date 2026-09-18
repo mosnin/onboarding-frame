@@ -527,7 +527,7 @@ export function BrandLockup({
 }) {
   return (
     <div className={cn("flex items-center gap-2", className)}>
-      <Placeholder width={size} height={size} radius={6} glyph="▦" />
+      <Placeholder width={size} height={size} radius={6} />
       <span className="text-[0.98rem] font-extrabold tracking-tight">{name}</span>
     </div>
   );

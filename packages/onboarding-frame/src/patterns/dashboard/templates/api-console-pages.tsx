@@ -87,7 +87,7 @@ export function ApiConsoleSubpage({
           {CATALOGUE.map((model) => (
             <Card key={model.id} className="flex flex-col gap-3">
               <div className="flex items-start gap-3">
-                <Placeholder width={32} height={32} radius={7} glyph="▶" />
+                <Placeholder width={32} height={32} radius={7} />
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-[0.95rem]">
                     {model.org && (

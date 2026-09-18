@@ -19,6 +19,7 @@ import type { TemplateProps } from "./props";
 import {
   AlertIcon,
   BellIcon,
+  Check,
   ChevronDown,
   CpuIcon,
   FileIcon,
@@ -27,6 +28,7 @@ import {
   Icon,
   KeyIcon,
   LayersIcon,
+  ReceiptIcon,
   RocketIcon,
   SettingsIcon,
   Sparkle,
@@ -113,7 +115,7 @@ export function ApiConsoleTemplate({
       </Banner>
 
       <TopBar>
-        <Placeholder width={30} height={30} radius={7} glyph="▦" />
+        <Placeholder width={30} height={30} radius={7} />
         <span className="text-[color:var(--ob-muted)]">/</span>
         <span className="font-semibold">Home</span>
         <SearchField
@@ -143,7 +145,7 @@ export function ApiConsoleTemplate({
         <button type="button" aria-label="Notifications" className="px-1 opacity-55">
           <BellIcon width={18} height={18} />
         </button>
-        <Placeholder width={30} height={30} radius={7} glyph="◍" />
+        <Placeholder shape="circle" width={30} height={30} />
       </TopBar>
 
       {/* Second-level product navigation */}
@@ -231,7 +233,7 @@ export function ApiConsoleTemplate({
                             : "bg-[color:var(--ob-surface-3)]",
                         )}
                       >
-                        {item.done ? "✓" : ""}
+                        {item.done ? <Check width={12} height={12} /> : null}
                       </span>
                       <span
                         className={cn(
@@ -318,7 +320,7 @@ export function ApiConsoleTemplate({
                   ))}
                 </ul>
                 <div className="flex items-center gap-3">
-                  <span aria-hidden className="opacity-60">▦</span>
+                  <GridIcon width={15} height={15} className="opacity-60" />
                   <span className="text-[0.98rem] font-semibold">Explore all models</span>
                 </div>
               </div>
@@ -338,7 +340,9 @@ export function ApiConsoleTemplate({
                 </p>
                 <p className="mt-1 text-2xl font-extrabold">$0.00</p>
               </div>
-              <Btn tone="neutral" size="sm" className="mt-auto">▤ Go to billing</Btn>
+              <Btn tone="neutral" size="sm" className="mt-auto">
+                <ReceiptIcon width={14} height={14} /> Go to billing
+              </Btn>
             </div>
 
             {[

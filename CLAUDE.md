@@ -107,6 +107,20 @@ Check every template at 390px before calling it done.
 - [ ] Typeface is this template's own, matched to the reference
 - [ ] Reflows at 390px with nothing clipped
 
+## The audit
+
+`pnpm audit:fidelity` scans every template's source for banned glyphs and
+reports the count per file, worst first. It is the worklist: a template is not
+done while it appears there, unless the characters are ones its own reference
+genuinely prints (Canny's heading really does carry a party popper).
+
+`pnpm capture:templates` renders every template at 1512px — the width the
+reference screenshots were taken at — so measurements compare directly without
+rescaling. With captures present, the audit also reports layout boundaries in
+both images side by side.
+
+Run the audit before claiming any template is finished.
+
 ## Conventions
 
 - pnpm workspace. `pnpm typecheck` and `pnpm build` must pass.
