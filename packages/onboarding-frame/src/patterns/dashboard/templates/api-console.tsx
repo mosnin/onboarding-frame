@@ -108,6 +108,7 @@ export function ApiConsoleTemplate({
       <Banner tone="dark">
         <span className="flex items-center gap-1.5 font-semibold">
           <Sparkle width={13} height={13} /> {brandName} Assets is now live!
+          <Sparkle width={13} height={13} />
         </span>
       </Banner>
 

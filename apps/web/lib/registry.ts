@@ -35,7 +35,8 @@ export interface RegistryItem {
 /** Package root, resolved from the web app's working directory at build time. */
 const PACKAGE_ROOT = path.join(process.cwd(), "..", "..", "packages", "onboarding-frame");
 
-const RUNTIME_DEPENDENCIES = ["clsx", "tailwind-merge"];
+// ui/icons.tsx re-exports Lucide, so an ejected piece needs it installed.
+const RUNTIME_DEPENDENCIES = ["clsx", "tailwind-merge", "lucide-react"];
 
 /**
  * Files every ejected piece needs. Splitting these into their own item means a
