@@ -5,9 +5,34 @@ import { cn } from "../../../lib/cn";
 import { Surface, guidedSetupTokens } from "./tokens";
 import { Btn, Card, Chip, Fab, Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
+import {
+  BarChartIcon,
+  BellIcon,
+  BuildingIcon,
+  ChevronDown,
+  ChevronRight,
+  FileIcon,
+  Icon,
+  LightbulbIcon,
+  MegaphoneIcon,
+  Plus,
+  RobotIcon,
+  SendIcon,
+  UploadIcon,
+  UserIcon,
+  WandIcon,
+  type IconName,
+} from "../../../ui/icons";
 
-const RAIL = ["💡", "⬆", "👤", "🤖", "▤", "📊"];
-const RAIL_BOTTOM = ["✈", "📣", "⌾"];
+const RAIL: IconName[] = [
+  "lightbulb",
+  "upload",
+  "user",
+  "robot",
+  "file",
+  "barChart",
+];
+const RAIL_BOTTOM: IconName[] = ["send", "megaphone", "bell"];
 
 const STEPS = [
   {
@@ -36,33 +61,38 @@ export function GuidedSetupTemplate({
     <Surface tokens={guidedSetupTokens}>
     <Shell className={cn(className)}>
       {/* Narrow icon rail */}
-      <aside className="hidden w-[64px] shrink-0 flex-col items-center gap-6 bg-[#e8e9fd] py-5 sm:flex">
-        <Placeholder width={30} height={30} radius={7} glyph="▦" />
-        <nav className="grid gap-5 text-[color:var(--ob-fg-soft)]">
-          {RAIL.map((glyph, i) => (
-            <button key={i} type="button" className="text-lg opacity-70 hover:opacity-100">
-              {glyph}
+      {/* Measured off the reference: a 48px icon rail on #eaecff. */}
+      <aside className="hidden w-12 shrink-0 flex-col items-center gap-6 bg-[#eaecff] py-4 sm:flex">
+        <Placeholder width={22} height={22} radius={6} />
+        <nav className="grid gap-[22px] text-[color:var(--ob-fg-soft)]">
+          {RAIL.map((name) => (
+            <button key={name} type="button" className="opacity-65 hover:opacity-100">
+              <Icon name={name} width={19} height={19} />
             </button>
           ))}
         </nav>
-        <div className="mt-auto grid gap-5 text-[color:var(--ob-fg-soft)]">
-          {RAIL_BOTTOM.map((glyph, i) => (
-            <button key={i} type="button" className="relative text-lg opacity-70 hover:opacity-100">
-              {glyph}
+        <div className="mt-auto grid gap-[22px] text-[color:var(--ob-fg-soft)]">
+          {RAIL_BOTTOM.map((name, i) => (
+            <button key={name} type="button" className="relative opacity-65 hover:opacity-100">
+              <Icon name={name} width={19} height={19} />
               {i === 1 && (
-                <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-[#ef4444]" />
+                <span className="absolute -right-1 -top-1 size-[7px] rounded-full bg-[#ef4444]" />
               )}
             </button>
           ))}
-          <Placeholder shape="circle" width={28} height={28} glyph="◍" />
+          <Placeholder shape="circle" width={26} height={26} />
         </div>
       </aside>
 
       <Main className="relative">
-        <div className="grid gap-10 px-6 py-10 sm:px-12 lg:grid-cols-[minmax(0,420px)_1fr]">
+        {/* Measured: the rail is 48px, content starts at 104, the left column
+            runs to 553 and the panel from 650 to 1449 — so 449 + a 97px gutter
+            + 800. At the old 420 the subtitle and the Autopilot description
+            both wrapped, which the reference does not do. */}
+        <div className="grid gap-[97px] px-6 py-10 sm:px-14 lg:grid-cols-[minmax(0,449px)_minmax(0,800px)]">
           <div className="grid content-start gap-7">
             <div>
-              <h1 className="text-[2.4rem] font-extrabold tracking-tight">
+              <h1 className="text-[2.6rem] font-extrabold tracking-[-0.025em]">
                 Welcome to {brandName} 🎉
               </h1>
               <p className="mt-2 text-[1.05rem] text-[color:var(--ob-muted)]">
@@ -70,16 +100,19 @@ export function GuidedSetupTemplate({
               </p>
             </div>
 
+            {/*
+              The chip sits on the title's row only. Sharing a flex row with
+              the description narrowed it enough to wrap onto a second line,
+              which the reference does not do.
+            */}
             <Card className="border-[color:var(--ob-border-strong)] p-5">
               <div className="flex items-start gap-3">
-                <div className="flex-1">
-                  <h3 className="font-bold">Autopilot</h3>
-                  <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
-                    Automatically capture feedback from your sources
-                  </p>
-                </div>
+                <h3 className="flex-1 font-bold">Autopilot</h3>
                 <Chip tone="success" className="px-2.5 py-1">Start</Chip>
               </div>
+              <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
+                Automatically capture feedback from your sources
+              </p>
             </Card>
 
             <div>
@@ -88,7 +121,7 @@ export function GuidedSetupTemplate({
                 className="flex w-full items-center gap-2 py-2 text-left font-semibold"
               >
                 <span className="flex-1">Set up other products</span>
-                <span aria-hidden className="opacity-50">⌄</span>
+                <ChevronDown width={17} height={17} className="opacity-45" />
               </button>
               <div className="flex items-start gap-3 py-3">
                 <div className="flex-1">
@@ -97,8 +130,8 @@ export function GuidedSetupTemplate({
                     Let users post and vote on feedback
                   </p>
                 </div>
-                <button type="button" aria-label="Add portal" className="text-lg opacity-50">
-                  ＋
+                <button type="button" aria-label="Add portal" className="opacity-45">
+                  <Plus width={17} height={17} />
                 </button>
               </div>
             </div>
@@ -126,11 +159,13 @@ export function GuidedSetupTemplate({
                   </div>
                   {step.action && (
                     <Btn tone="neutral" size="sm" className={step.disabled ? "opacity-60" : undefined}>
-                      {step.n === 1 && <span aria-hidden>✨</span>}
+                      {step.n === 1 && <WandIcon width={15} height={15} />}
                       {step.action}
                     </Btn>
                   )}
-                  {step.chevron && <span aria-hidden className="text-lg opacity-40">›</span>}
+                  {step.chevron && (
+                    <ChevronRight width={18} height={18} className="opacity-40" />
+                  )}
                 </div>
 
                 {step.expanded && (
@@ -146,11 +181,13 @@ export function GuidedSetupTemplate({
                           type="button"
                           className="flex items-center gap-2 rounded-[10px] border border-[color:var(--ob-border)] px-3.5 py-2.5 text-left text-[0.92rem] text-[color:var(--ob-muted)]"
                         >
-                          <span aria-hidden className="opacity-60">
-                            {label === "User" ? "☺" : "▤"}
-                          </span>
+                          {label === "User" ? (
+                            <UserIcon width={16} height={16} className="opacity-55" />
+                          ) : (
+                            <BuildingIcon width={16} height={16} className="opacity-55" />
+                          )}
                           <span className="flex-1">{label}</span>
-                          <span aria-hidden className="opacity-50">⌄</span>
+                          <ChevronDown width={15} height={15} className="opacity-45" />
                         </button>
                       ))}
                     </div>
@@ -164,7 +201,7 @@ export function GuidedSetupTemplate({
           </div>
         </div>
 
-        <Fab glyph="💬" tone="#5b5bd6" />
+        <Fab tone="#5b5bd6" />
       </Main>
     </Shell>
     </Surface>
