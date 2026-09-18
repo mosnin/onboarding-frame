@@ -4,16 +4,19 @@ import type { ReactNode } from "react";
 import {
   ArticleIcon,
   BellIcon,
+  BriefcaseIcon,
   BrowsersIcon,
   CardIcon,
   CaretDownIcon,
   ChatDotsIcon,
+  ConfettiIcon,
+  CrossIcon,
   GlobeIcon,
   GridFourIcon,
+  PaletteIcon,
+  ShareIcon,
   SparkleIcon,
   UsersIcon,
-  PaletteIcon,
-  BriefcaseIcon,
 } from "../../../ui/icons-solid";
 import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
@@ -112,7 +115,7 @@ export function FreelanceAnalyticsTemplate({
             </span>
 
             <span className="flex items-center gap-2 rounded-full border border-[color:var(--ob-border-strong)] px-5 py-2.5 text-[1rem] font-medium">
-              <span aria-hidden>⤳</span> Share profile
+              <ShareIcon size={14} /> Share profile
             </span>
             <ChatDotsIcon size={14} />
             <BellIcon size={14} />
@@ -217,10 +220,8 @@ export function FreelanceAnalyticsTemplate({
             className="absolute bottom-6 right-8 flex items-center gap-3 rounded-full px-6 py-3.5 text-[1.05rem] font-semibold text-white"
             style={{ background: "linear-gradient(90deg,#7c5cff,#a855f7)" }}
           >
-            <span aria-hidden>🎉</span> New features unlocked!
-            <span aria-hidden className="pl-2 opacity-70">
-              ✕
-            </span>
+            <ConfettiIcon size={16} /> New features unlocked!
+            <CrossIcon size={13} className="ml-2 opacity-70" />
           </span>
         </Main>
       </Shell>

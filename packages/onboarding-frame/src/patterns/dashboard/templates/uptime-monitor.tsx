@@ -2,22 +2,23 @@
 
 import {
   ArrowsUpDownIcon,
+  BellIcon,
   BrowsersIcon,
   CardIcon,
   CaretDownIcon,
   CaretLeftIcon,
   GearIcon,
   GlobeIcon,
-  PathIcon,
-  UserIcon,
-  WarningIcon,
   HeartbeatIcon,
+  InfoIcon,
+  PathIcon,
+  PauseIcon,
   PhoneIcon,
-  TreeStructureIcon,
   QuestionIcon,
   SunIcon,
-  InfoIcon,
-  PauseIcon,
+  TreeStructureIcon,
+  UserIcon,
+  WarningIcon,
 } from "../../../ui/icons-solid";
 import { Avatar } from "../../../ui/avatar";
 import { BrandMark } from "../../../ui/brand";
@@ -148,8 +149,8 @@ export function UptimeMonitorTemplate({
 
         <Main className="overflow-auto">
           <header className="flex h-[76px] shrink-0 items-center gap-4 px-8">
-            <span className="ml-auto relative" aria-hidden>
-              ⌾
+            <span className="relative ml-auto">
+              <BellIcon size={17} />
               <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-[#e8a33d]" />
             </span>
             <span className="flex items-center gap-2.5">

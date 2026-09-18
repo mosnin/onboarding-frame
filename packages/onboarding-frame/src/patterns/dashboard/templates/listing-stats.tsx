@@ -16,12 +16,12 @@ import {
   ListChecksIcon,
   MegaphoneIcon,
   PencilIcon,
+  QuestionIcon,
   ReceiptIcon,
   SearchIcon,
   SparkleIcon,
   TagIcon,
   TargetIcon,
-  QuestionIcon,
 } from "../../../ui/icons-solid";
 import { Avatar, Thumb } from "../../../ui/avatar";
 import { BrandMark } from "../../../ui/brand";
@@ -200,9 +200,7 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
           <span className="mt-[15px] inline-flex items-center gap-[6px] rounded-full border border-[color:var(--ob-fg)] px-[15px] py-[9px] text-[0.79rem]">
             <span className="font-bold">Date Range</span>
             Last 7 Days: Mar 01 - Mar 07
-            <span aria-hidden className="text-[0.527rem]">
-              ▾
-            </span>
+            <CaretDownIcon size={10} weight="fill" />
           </span>
 
           <section className="mt-[21px] rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[18px]">

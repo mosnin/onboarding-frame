@@ -7,13 +7,15 @@ import {
   CaretRightIcon,
   CaretUpIcon,
   CheckIcon,
+  CircleFillIcon,
+  CloudIcon,
+  DatabaseIcon,
   HardDrivesIcon,
   HouseIcon,
+  PulseIcon,
   SearchIcon,
   SparkleIcon,
   TerminalIcon,
-  CloudIcon,
-  PulseIcon,
 } from "../../../ui/icons-solid";
 import { Avatar } from "../../../ui/avatar";
 import { Wordmark } from "../../../ui/wordmark";
@@ -220,9 +222,7 @@ export function WarehouseCostTemplate({
           <div className="flex items-center gap-[12px]">
             <h1 className="flex-1 text-[1.399rem] font-semibold">Cost Management</h1>
             <span className="flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.756rem] font-medium">
-              <span aria-hidden className="text-[color:var(--ob-success)]">
-                ●
-              </span>
+              <CircleFillIcon size={7} className="text-[color:var(--ob-success)]" />
               COMPUTE_WH
             </span>
           </div>
@@ -290,9 +290,7 @@ export function WarehouseCostTemplate({
               <ul className="grid gap-[11px]">
                 {WAREHOUSES.map((warehouse) => (
                   <li key={warehouse.id} className="flex items-center gap-[12px]">
-                    <span aria-hidden className="text-[color:var(--ob-muted)]">
-                      ⛃
-                    </span>
+                    <DatabaseIcon size={14} className="text-[color:var(--ob-muted)]" />
                     <span className="w-[166px] shrink-0 truncate text-[0.756rem]">
                       {warehouse.name}
                     </span>

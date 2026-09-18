@@ -24,12 +24,10 @@ import {
   LifebuoyIcon,
   ListChecksIcon,
   PathIcon,
-  RobotIcon,
   SearchIcon,
   ShieldIcon,
   SparkleIcon,
   StorefrontIcon,
-  TreeIcon,
   TriangleIcon,
 } from "../../../ui/icons-solid";
 import { Avatar } from "../../../ui/avatar";

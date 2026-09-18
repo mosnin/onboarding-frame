@@ -18,8 +18,8 @@ import {
   RocketIcon,
   SearchIcon,
   ShieldIcon,
-  UsersIcon,
   UserPlusIcon,
+  UsersIcon,
 } from "../../../ui/icons-solid";
 import { Avatar } from "../../../ui/avatar";
 import { Wordmark } from "../../../ui/wordmark";

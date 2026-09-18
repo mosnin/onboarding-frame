@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ArrowsDownUpIcon,
   ArrowsUpDownIcon,
   ArticleIcon,
   BrowsersIcon,
@@ -176,7 +177,7 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
         <Main className="relative overflow-auto bg-[color:var(--ob-surface)]">
           {/* The environment tab hangs from the top edge of the content pane. */}
           <span className="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[color:var(--ob-danger)] px-3.5 py-1.5 text-[0.88rem] font-semibold text-white">
-            Development ⇅
+            Development <ArrowsDownUpIcon size={12} className="inline align-[-1px]" />
           </span>
 
           <div className="px-12 pb-10 pt-14">

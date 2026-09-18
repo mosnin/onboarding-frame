@@ -7,13 +7,18 @@ import {
   BrowsersIcon,
   CardIcon,
   CaretDownIcon,
+  CaretLineLeftIcon,
   CaretRightIcon,
   CheckIcon,
   CheckSquareIcon,
   ClipboardIcon,
+  ExternalSquareIcon,
+  GearIcon,
   HardDrivesIcon,
   HouseIcon,
+  MegaphoneIcon,
   PathIcon,
+  QuestionIcon,
   SearchIcon,
   ShieldIcon,
   UserIcon,
@@ -127,11 +132,9 @@ export function ComplianceControlsTemplate({
         <header className="flex h-[49px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[18px]">
           <Wordmark name={brandName} size={11} mark={15} radius={4} />
           <span className="ml-auto flex items-center gap-[12px] text-[color:var(--ob-fg-soft)]">
-            {["?", "📣", "⚙"].map((glyph) => (
-              <span key={glyph} aria-hidden>
-                {glyph}
-              </span>
-            ))}
+            <QuestionIcon size={15} />
+            <MegaphoneIcon size={15} />
+            <GearIcon size={15} />
             <Avatar name={userName} size={23} />
           </span>
         </header>
@@ -193,11 +196,8 @@ export function ComplianceControlsTemplate({
               <NavItem label="Integrations" glyph={<PathIcon size={14} />} />
             </nav>
 
-            <span
-              aria-hidden
-              className="mt-auto px-[15px] pb-[15px] text-right text-[color:var(--ob-muted)]"
-            >
-              ⇤
+            <span className="mt-auto flex justify-end px-[15px] pb-[15px] text-[color:var(--ob-muted)]">
+              <CaretLineLeftIcon size={14} />
             </span>
           </Sidebar>
 
@@ -383,9 +383,7 @@ function SubMeter({ label, count, pct }: { label: string; count: string; pct: nu
       <p className="flex items-center gap-[6px] text-[0.759rem]">
         <span className="flex flex-1 items-center gap-[5px] font-medium">
           {label}
-          <span aria-hidden className="text-[0.569rem] text-[color:var(--ob-muted)]">
-            ↗
-          </span>
+          <ExternalSquareIcon size={10} className="text-[color:var(--ob-muted)]" />
         </span>
         <span className="tabular-nums text-[color:var(--ob-fg-soft)]">{count}</span>
       </p>

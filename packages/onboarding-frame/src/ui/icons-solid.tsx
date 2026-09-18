@@ -54,17 +54,20 @@ import {
   Cloud,
   Code,
   Coin,
+  Confetti,
   Copy,
   Copyright,
   Cpu,
   CreditCard,
   Crosshair,
+  Crown,
   Cube,
   CurrencyCircleDollar,
   CurrencyDollar,
   Database,
   DotsThree,
   DotsThreeVertical,
+  DownloadSimple,
   Envelope,
   FileText,
   Flag,
@@ -104,6 +107,7 @@ import {
   Nut,
   Package,
   Palette,
+  PaperPlaneTilt,
   Paperclip,
   Path,
   PauseCircle,
@@ -119,9 +123,12 @@ import {
   Receipt,
   Robot,
   Rocket,
+  ShareNetwork,
   Shield,
   ShieldCheck,
+  ShieldStar,
   Sidebar,
+  SidebarSimple,
   Signpost,
   SlidersHorizontal,
   Sparkle,
@@ -135,6 +142,7 @@ import {
   Target,
   Terminal,
   TerminalWindow,
+  ThumbsUp,
   Ticket,
   Tree,
   TreeStructure,
@@ -404,6 +412,16 @@ export const MonitorPlayIcon = solid(MonitorPlay, "regular");
 export const GiftIcon = solid(Gift, "regular");
 export const ChartLineUpIcon = solid(ChartLineUp, "regular");
 export const WavesIcon = solid(Waves, "regular");
+export const PaperPlaneIcon = solid(PaperPlaneTilt, "fill");
+export const SidebarSimpleIcon = solid(SidebarSimple, "regular");
+export const CrownIcon = solid(Crown, "fill");
+export const ShieldStarIcon = solid(ShieldStar, "fill");
+export const DownloadIcon = solid(DownloadSimple, "regular");
+export const ShareIcon = solid(ShareNetwork, "regular");
+export const ThumbsUpIcon = solid(ThumbsUp, "fill");
+export const SlidersHorizontalIcon = solid(SlidersHorizontal, "regular");
+export const ArrowsDownUpIcon = solid(ArrowsDownUp, "regular");
+export const ConfettiIcon = solid(Confetti, "fill");
 export const GitBranchIcon = solid(GitBranch, "regular");
 export const NotePencilIcon = solid(NotePencil, "regular");
 export const PlugsIcon = solid(Plugs, "regular");

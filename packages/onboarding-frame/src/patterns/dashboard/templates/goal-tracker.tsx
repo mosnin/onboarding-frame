@@ -14,7 +14,9 @@ import {
   LightningIcon,
   ListChecksIcon,
   LockIcon,
+  SlidersHorizontalIcon,
   StarIcon,
+  ThumbsUpIcon,
   TreeIcon,
   UsersIcon,
   WarningIcon,
@@ -154,9 +156,7 @@ export function GoalTrackerTemplate({
               <p className="flex items-center gap-[8px] text-[0.826rem] font-bold">
                 Attract 2 new clients
                 <CaretDownIcon size={14} />
-                <span aria-hidden className="text-[color:var(--ob-muted)]">
-                  👍
-                </span>
+                <ThumbsUpIcon size={13} className="text-[color:var(--ob-muted)]" />
                 <StarIcon size={14} />
               </p>
             </div>
@@ -231,7 +231,7 @@ export function GoalTrackerTemplate({
                     <WarningIcon size={14} /> No sub-goals connected
                   </span>
                   <span className="ml-auto flex items-center gap-[5px] text-[0.714rem] text-[color:var(--ob-fg-soft)]">
-                    <span aria-hidden>⇶</span> Progress settings
+                    <SlidersHorizontalIcon size={13} /> Progress settings
                   </span>
                 </div>
 

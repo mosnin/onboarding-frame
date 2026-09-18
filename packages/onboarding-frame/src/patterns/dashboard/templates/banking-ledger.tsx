@@ -2,20 +2,16 @@
 
 import type { ReactNode } from "react";
 import {
-  ArrowDownIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowsLeftRightIcon,
-  BellIcon,
-  CaretUpIcon,
-  PaperclipIcon,
-  PlusIcon,
-  SearchIcon,
   ArrowsUpDownIcon,
   BankSolid,
+  BellIcon,
   BookmarkIcon,
-  CaretDownIcon,
   CardIcon,
+  CaretDownIcon,
+  CaretUpIcon,
   ChartBarIcon,
   FileTextIcon,
   FunnelIcon,
@@ -24,7 +20,9 @@ import {
   HouseIcon,
   ListChecksIcon,
   NoteIcon,
+  PaperclipIcon,
   ReceiptIcon,
+  SearchIcon,
   TrendUpIcon,
 } from "../../../ui/icons-solid";
 import { Avatar } from "../../../ui/avatar";

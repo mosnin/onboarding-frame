@@ -8,15 +8,18 @@ import {
   CaretRightIcon,
   CaretUpIcon,
   ChatDotsIcon,
+  CircleFillIcon,
   CloudIcon,
   EnvelopeIcon,
   GridFourIcon,
+  MapPinIcon,
   MegaphoneIcon,
   PathIcon,
   PencilIcon,
   SearchIcon,
+  SidebarSimpleIcon,
+  SparkleIcon,
   UsersIcon,
-  MapPinIcon,
 } from "../../../ui/icons-solid";
 import { Avatar, Thumb } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
@@ -90,9 +93,7 @@ export function AudienceAnalyticsTemplate({
           </div>
           <span className="flex items-center gap-[9px]">
             <span className="flex items-center gap-[6px] rounded-full bg-[color-mix(in_oklab,#ffe01b_35%,white)] px-[12px] py-[8px] text-[0.751rem] font-medium">
-              <span aria-hidden className="text-[color:var(--ob-success)]">
-                ●
-              </span>
+              <CircleFillIcon size={7} className="text-[color:var(--ob-success)]" />
               Live expert help
             </span>
             <Avatar name={userName} size={29} />
@@ -163,9 +164,7 @@ export function AudienceAnalyticsTemplate({
               ))}
             </nav>
 
-            <span aria-hidden className="mt-auto px-[18px] pb-[18px] text-[color:var(--ob-fg-soft)]">
-              ◫
-            </span>
+            <SidebarSimpleIcon size={17} className="mt-auto mx-[18px] mb-[18px] text-[color:var(--ob-fg-soft)]" />
           </Sidebar>
 
           <Main className="overflow-auto bg-[color:var(--ob-surface-2)]">
@@ -429,9 +428,7 @@ function AudienceDashboard() {
                   </span>
                 )}
               </span>
-              <span aria-hidden className="text-[0.864rem] text-[color:var(--ob-fg-soft)]">
-                ➤
-              </span>
+              <CaretRightIcon size={13} className="text-[color:var(--ob-fg-soft)]" />
             </div>
           ))}
         </section>
@@ -442,9 +439,7 @@ function AudienceDashboard() {
       <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
         <div className="border-b border-[color:var(--ob-border)] px-[21px] py-[18px]">
           <h2 className="flex flex-wrap items-center gap-[9px]">
-            <span aria-hidden className="text-[0.977rem]">
-              🔮
-            </span>
+            <SparkleIcon size={16} className="text-[color:var(--ob-brand)]" />
             <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[1.315rem] font-medium text-[color:var(--ob-brand)]">
               Predicted demographics
             </span>

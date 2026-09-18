@@ -5,6 +5,7 @@ import {
   ArrowClockwiseIcon,
   BellIcon,
   BrowsersIcon,
+  CircleFillIcon,
   LinkChainIcon,
   ListChecksIcon,
   PencilIcon,
@@ -208,7 +209,7 @@ export function EventConsoleTemplate({
                       Cookie Meet-Up: Taste, Trade, &amp; Chat
                     </h3>
                     <p className="flex items-center gap-[6px] pt-[6px] text-[0.778rem] text-[color:var(--ob-success)]">
-                      ● Live
+                      <CircleFillIcon size={7} /> Live
                     </p>
                   </div>
                   <span className="flex items-center gap-[12px] text-[color:var(--ob-fg-soft)]">

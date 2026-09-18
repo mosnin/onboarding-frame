@@ -1,16 +1,17 @@
 "use client";
 
 import {
+  ArrowsLeftRightIcon,
   CardIcon,
   CaretRightIcon,
   ClockIcon,
   CloudIcon,
+  CrossIcon,
   GlobeIcon,
   GridFourIcon,
   LightningIcon,
-  SearchIcon,
-  ArrowsLeftRightIcon,
   QuestionIcon,
+  SearchIcon,
 } from "../../../ui/icons-solid";
 import { BrandMark } from "../../../ui/brand";
 import { Avatar } from "../../../ui/avatar";
@@ -70,9 +71,7 @@ export function AutomationAppsTemplate({
     <Surface tokens={automationTokens} className={className}>
       <Shell className="flex-col">
         <header className="flex h-[70px] shrink-0 items-center gap-[15px] px-[24px]">
-          <span aria-hidden className="text-[0.986rem] text-[color:var(--ob-fg-soft)]">
-            ✕
-          </span>
+          <CrossIcon size={15} className="text-[color:var(--ob-fg-soft)]" />
           <Wordmark name={brandName} size={15} mark={20} radius={5} />
           <SearchIcon size={14} />
           <Avatar name={userName} size={30} />
@@ -168,13 +167,12 @@ export function AutomationAppsTemplate({
               <div>
                 <p className="flex items-center gap-[9px] text-[0.835rem] font-bold">
                   Follow us
-                  {["f", "in", "◉", "𝕏", "▶"].map((glyph) => (
+                  {["facebook", "linkedin", "instagram", "x", "youtube"].map((slug) => (
                     <span
-                      key={glyph}
-                      aria-hidden
-                      className="grid size-[27px] place-items-center rounded-full bg-[color:var(--ob-surface-3)] text-[0.721rem] font-normal"
+                      key={slug}
+                      className="grid size-[27px] place-items-center rounded-full bg-[color:var(--ob-surface-3)]"
                     >
-                      {glyph}
+                      <BrandMark brand={slug} size={13} colored={false} />
                     </span>
                   ))}
                 </p>
