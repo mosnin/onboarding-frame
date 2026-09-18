@@ -116,7 +116,7 @@ essentially empty (one dot of fill).
 "RSVPs" card: 6 + green "↑100%" chip.
 
 | 21 | 077 | Reddit mod tools | community-traffic | REMEASURED |
-| 22 | 078 | Asana goal detail | goal-tracker | DONE |
+| 22 | 078 | Asana goal detail | goal-tracker | REMEASURED |
 | 23 | 079 | Supabase reports | platform-reports (dark) | REMEASURED |
 | 24 | 080 | Vercel analytics | deploy-analytics | REMEASURED |
 | 25 | 081 | StackAI project analytics | token-usage | REMEASURED |

@@ -177,7 +177,7 @@ export function MarketTerminalTemplate({
 
           <div className="mt-[25px] border-t border-[color:var(--ob-border)]" />
 
-          <nav className="flex gap-[28px] pt-[12px]">
+          <nav className="flex gap-[86px] pt-[12px]">
             {[
               { id: "markets", label: "Markets", Icon: ChartLineIcon },
               { id: "insider", label: "Insider", Icon: BrowsersIcon },
@@ -186,16 +186,16 @@ export function MarketTerminalTemplate({
               <span
                 key={tab.id}
                 className={cn(
-                  "flex items-center gap-[6px] pb-[6px] text-[0.756rem]",
+                  "flex items-center gap-[9px] pb-[6px] text-[0.95rem]",
                   tab.id === page
                     ? "border-t-2 border-[color:var(--ob-brand)] -mt-[12px] pt-[12px] font-medium text-[color:var(--ob-fg)]"
                     : "text-[color:var(--ob-muted)]",
                 )}
               >
-                <tab.Icon size={11} />
+                <tab.Icon size={15} />
                 {tab.label}
                 {tab.soon && (
-                  <span className="rounded-full bg-[color:var(--ob-surface-2)] px-[6px] py-[2px] text-[0.54rem] text-[color:var(--ob-muted)]">
+                  <span className="rounded-full bg-[color:var(--ob-surface-2)] px-[8px] py-[3px] text-[0.66rem] text-[color:var(--ob-muted)]">
                     Coming soon
                   </span>
                 )}

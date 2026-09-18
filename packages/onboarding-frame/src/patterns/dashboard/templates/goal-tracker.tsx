@@ -147,8 +147,8 @@ export function GoalTrackerTemplate({
             />
           </div>
 
-          <header className="flex items-center gap-[9px] border-b border-[color:var(--ob-border)] px-[18px] py-[12px]">
-            <Avatar name={brandName} size={33} rounded={6} />
+          <header className="flex items-center gap-[13px] border-b border-[color:var(--ob-border)] px-[20px] py-[14px]">
+            <Avatar name={brandName} size={60} rounded={10} />
             <div className="min-w-[0px] flex-1">
               <p className="flex items-center gap-[5px] text-[0.676rem] text-[color:var(--ob-muted)]">
                 My workspace goals <CaretRightIcon size={14} />
@@ -167,8 +167,8 @@ export function GoalTrackerTemplate({
           </header>
 
           <div className="flex flex-1 gap-[30px] overflow-auto px-[30px] py-[24px]">
-            <div className="min-w-[0px] flex-1">
-              <h1 className="text-[1.803rem] font-bold tracking-[-0.02em]">
+            <div className="min-w-[0px] flex-1 lg:max-w-[660px]">
+              <h1 className="pt-[38px] text-center text-[1.803rem] font-normal tracking-[-0.01em]">
                 Attract 2 new clients
               </h1>
 
