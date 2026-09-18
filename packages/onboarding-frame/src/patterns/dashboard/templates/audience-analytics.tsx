@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
+import { AvatarSlot, LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, audienceTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./api-console";
@@ -167,6 +167,9 @@ export function AudienceAnalyticsTemplate({
               </span>
             </header>
 
+            {page === "dashboard" ? (
+              <AudienceDashboard />
+            ) : (
             <div className="grid gap-6 p-8">
               <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-8 pb-6 pt-5">
                 <div className="flex flex-wrap items-center justify-center gap-7 pb-4">
@@ -253,6 +256,7 @@ export function AudienceAnalyticsTemplate({
                 <GrowthChart />
               </section>
             </div>
+            )}
           </Main>
 
           {/* A feedback tab pinned to the window edge, rotated in place. */}
@@ -362,6 +366,139 @@ function GrowthChart() {
           />
           <span className="pl-1">Main list</span>
         </p>
+      </div>
+    </div>
+  );
+}
+
+const SOURCES = [
+  { id: "import", pct: "33%", name: "Aug 1st Import", sub: "Copy/Pasted File", color: "#3b1f4e" },
+  { id: "popup", pct: "33%", name: "Popup Form", color: "#9dc5e8" },
+  { id: "embedded", pct: "34%", name: "Embedded Form", color: "#7a9a3e" },
+];
+
+/**
+ * Audience dashboard.
+ *
+ * The demographics card is a paid feature the account does not have, so it is
+ * shown as an upsell in place of the chart rather than hidden. Keeping the
+ * locked card in the flow — with its own illustration and its own call to
+ * action — is what the reference does, and removing it would quietly change
+ * what the page is for.
+ */
+function AudienceDashboard() {
+  return (
+    <div className="grid gap-6 p-8">
+      <div className="grid gap-6 lg:grid-cols-2">
+        <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
+          {SOURCES.map((source, index) => (
+            <div
+              key={source.id}
+              className={cn(
+                "flex items-center gap-5 px-7 py-6",
+                index > 0 && "border-t border-[color:var(--ob-border)]",
+              )}
+            >
+              <span
+                aria-hidden
+                className="size-3.5 shrink-0 rounded-full"
+                style={{ background: source.color }}
+              />
+              <span className="w-[5.5rem] shrink-0 text-[2rem] font-bold tabular-nums leading-none">
+                {source.pct}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-[1.1rem] font-semibold">{source.name}</span>
+                {source.sub && (
+                  <span className="block text-[1rem] text-[color:var(--ob-fg-soft)]">
+                    {source.sub}
+                  </span>
+                )}
+              </span>
+              <span aria-hidden className="text-[1.15rem] text-[color:var(--ob-fg-soft)]">
+                ➤
+              </span>
+            </div>
+          ))}
+        </section>
+
+        <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]" />
+      </div>
+
+      <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
+        <div className="border-b border-[color:var(--ob-border)] px-7 py-6">
+          <h2 className="flex flex-wrap items-center gap-3">
+            <span aria-hidden className="text-[1.3rem]">
+              🔮
+            </span>
+            <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-0.5 text-[1.75rem] font-medium text-[color:var(--ob-brand)]">
+              Predicted demographics
+            </span>
+            <span className="rounded-full bg-[color-mix(in_oklab,#7a9a3e_18%,transparent)] px-3 py-1 text-[0.95rem] font-medium text-[#4d661f]">
+              Paid feature
+            </span>
+          </h2>
+          <p className="pt-2 text-[1.08rem] text-[color:var(--ob-fg-soft)]">
+            Your contacts broken down by their predicted gender and age.
+          </p>
+        </div>
+
+        <div className="grid justify-items-center px-7 py-14 text-center">
+          <Placeholder width={190} height={190} radius={12} label="" />
+          <h3
+            className="pt-6 text-[2rem] font-bold tracking-[-0.01em]"
+            style={{ fontFamily: "var(--ob-font-display)" }}
+          >
+            Know your people even better
+          </h3>
+          <p className="pt-3 text-[1.15rem] text-[color:var(--ob-fg-soft)]">
+            Send targeted campaigns based on your contacts&rsquo; demographics.
+          </p>
+          <span className="mt-6 rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] px-6 py-3 text-[1.05rem] font-semibold text-white">
+            Upgrade Now
+          </span>
+        </div>
+      </section>
+
+      <h2
+        className="pt-2 text-[2rem] font-bold tracking-[-0.01em]"
+        style={{ fontFamily: "var(--ob-font-display)" }}
+      >
+        Engagement
+      </h2>
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        {[
+          {
+            id: "email",
+            glyph: "✉",
+            title: "Email marketing engagement",
+            body: "See how your contacts have been interacting with your email campaigns over time.",
+          },
+          {
+            id: "locations",
+            glyph: "📍",
+            title: "Top locations",
+            body: "Based on your contacts\u2019 IP addresses, here is where most of them are.",
+          },
+        ].map((card) => (
+          <section
+            key={card.id}
+            className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-7 py-6"
+          >
+            <h3 className="flex items-center gap-3">
+              <span aria-hidden className="text-[1.2rem]">
+                {card.glyph}
+              </span>
+              <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-0.5 text-[1.5rem] font-medium text-[color:var(--ob-brand)]">
+                {card.title}
+              </span>
+            </h3>
+            <p className="pt-3 text-[1.08rem] text-[color:var(--ob-fg-soft)]">
+              {card.body}
+            </p>
+          </section>
+        ))}
       </div>
     </div>
   );

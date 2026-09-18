@@ -28,6 +28,10 @@ import {
   ListingStatsTemplate,
   AudienceAnalyticsTemplate,
   CapTableTemplate,
+  WalletHomeTemplate,
+  WarehouseCostTemplate,
+  WealthPortfolioTemplate,
+  BillingBenchmarksTemplate,
   type ApiConsolePage,
   type CrmPage,
   type FinancePage,
@@ -46,6 +50,10 @@ import {
   type ListingPage,
   type AudiencePage,
   type CapTablePage,
+  type WalletPage,
+  type WarehousePage,
+  type WealthPage,
+  type BenchmarkPage,
 } from "onboarding-frame";
 
 /** Renders a template by slug, shared by the viewer and the shelf preview. */
@@ -73,6 +81,14 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
       return <SupportInsightsTemplate />;
     case "finance-overview":
       return <FinanceOverviewTemplate page={page as FinancePage} />;
+    case "wallet-home":
+      return <WalletHomeTemplate page={page as WalletPage} />;
+    case "warehouse-cost":
+      return <WarehouseCostTemplate page={page as WarehousePage} />;
+    case "wealth-portfolio":
+      return <WealthPortfolioTemplate page={page as WealthPage} />;
+    case "billing-benchmarks":
+      return <BillingBenchmarksTemplate page={page as BenchmarkPage} />;
     case "compliance-controls":
       return <ComplianceControlsTemplate page={page as CompliancePage} />;
     case "listing-stats":

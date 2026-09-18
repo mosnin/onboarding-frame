@@ -314,3 +314,107 @@ Table w/ checkbox column: Date / Type / Share class / Shares / Total shares /
 Price per share / Investment amount / Transfer amount, each row ending in an outlined
 "More ⌄" button. Rows: 27 Oct 2023 Shares issued COM 8 8 $0.00 $0.00 -;
 31 Oct 2023 Share split COM 1.00:1 8 - - -; 31 Oct 2023 Buy back COM -4 4 $1.00 $4.00 -.
+
+| 31 | 087 | Coinbase wallet | wallet-home (dark) | DONE |
+| 32 | 088 | Snowflake cost mgmt | warehouse-cost | DONE |
+| 33 | 089 | Origin portfolio | wealth-portfolio | DONE |
+| 34 | 090 | Stripe benchmarking | billing-benchmarks | DONE |
+| 35 | 091 | Mailchimp audience dashboard | audience-analytics `dashboard` page | DONE |
+
+## 31 Coinbase (087) DARK
+#0a0b0d page, cards #121416, blue #1652f0 brand, rounded-2xl, big friendly type.
+Sidebar 320px: logo square top-left; nav pills w/ round icon + label — Home (ACTIVE: deep
+blue fill #0a2472 + blue icon + blue text), Assets, Apps; rule; then circular-icon rows
+Buy / Swap / Send / Receive (each a dark circle w/ a glyph). Bottom-left a ‹ collapse.
+Top bar: a wide rounded-full dark search "Search coins, NFTs, apps…" centred-right, then two
+round icon buttons (wallet, gear).
+Tabs: Trending (ACTIVE, blue + blue underline) / Explore / Create.
+Hero card, 2 cols: left #121416 padding 40px — an outlined rounded-full chip "FRESH DROP"
+(blue-green gradient border), then a small square avatar + small-caps "NYGILIA",
+a 3.2rem bold two-line title, a 2-line grey blurb, then a FULL-WIDTH gradient button
+(blue→cyan) "Mint +1000 points". Right: a square image placeholder filling the cell, with a
+round share button top-right.
+Identity strip: a rounded-2xl card with a GRADIENT BORDER (purple→blue→green): avatar +
+bold "name.cb.id"; right two dark inner cards each w/ a round coloured icon + big number +
+small-caps label ("100 POINTS", "# --- MY RANK").
+"Trending onchain" bold 1.8rem + grey sub "The onchain experiences everyone's doing today";
+right blue link "See experiences". Then a row of 4 wide image-placeholder cards, each w/ a
+round share button in the corner.
+
+## 32 Snowflake (088)
+White, blue #1a73e8 accent, hairline borders, compact 0.95rem type.
+Sidebar 320px: wordmark; "+ Create"; rule; Home/Search/Projects/Data/Data Products/AI & ML/
+Monitoring/Admin(open) w/ children Cost Management(ACTIVE grey-blue fill + blue text)/
+Warehouses/Compute Pools/Users & Roles/Security/Contacts/Billing & Terms.
+Bottom: a bordered trial card — "$301 credits left" + info + "···", a blue progress bar
+(~65%), grey "Trial ends in 23 days", full-width blue "Upgrade". Then avatar + "Alex Smith /
+ACCOUNTADMIN" + ⌃.
+Main: H1 "Cost Management"; right an outlined pill w/ a green dot + "COMPUTE_WH".
+Tabs: Organization Overview / Account Overview(ACTIVE, blue + underline) / Consumption /
+Budgets / Resource Monitors. Rule under tabs.
+Line: "Account spend for **AR48742**ⓘ from  **Apr 9 - Apr 16** ⌄" (the date is a big
+clickable bold with a caret).
+5 figures in a row: $98.65 Spend in currency / 28.15 Spend in credits / $3.70 Compute
+price/credit ⓘ / $12.33 Average daily cost / 3.52 Average daily credits. Then a rule.
+Card "Top warehouses by cost" + right "View All ›": rows = warehouse glyph + monospace-ish
+name (truncated w/ …), a horizontal BAR on a light track, right-aligned number.
+(COMPUTE_WH 24.60 full bar, SYSTEM$STREAMLIT_NOTEBO… 3.49 short, SNOWFLAKE_LEARNING_WH 0.41
+sliver, CLOUD_SERVICES_ONLY 0.00 no bar.)
+Card "Cost insights ⓘ": rule, grey line "We checked for the following insight types but did
+not find savings opportunities:", then 7 rows each a GREEN CHECK CIRCLE + bold label.
+Card "Most expensive queries" + "View All ›": table, small-caps grey headers truncated with
+ellipsis (QUERY / PARAMETERIZED QU… / TOTAL EXECUT… / # OF QU… / AVERAGE EXEC… /
+WAREHOUSE N… / USER / ROLE); the query and hash columns are MONOSPACE.
+
+## 33 Origin (089)
+Off-white #f7f7f5 page, white cards rounded-2xl, near-black ink, green #1f9d55 data,
+MONOSPACE small-caps labels (letter-spaced), pill tabs.
+Sidebar 358px on the page bg: wordmark; nav rows w/ line icons — Home/Spending/
+Portfolio(ACTIVE grey pill)/Invest/Advice/Estate Planning/Equity/Tax.
+Top: H1 "Portfolio"; right a black pill "🎁 Get $25", an outlined pill "+ ACCOUNT"
+(mono small-caps), "?", bell w/ red dot, avatar.
+Pill tabs: Overview(active, grey pill) / Holdings.
+Left col 470px:
+- Card "ACCOUNTS" (mono small-caps) + outlined pill "ADD"; rule; "Investments" label;
+  rows: round logo slot, bold name, grey "• 56 seconds ago", right bold amount and a green
+  "+5.99% ↗".
+- A LIGHT-GREEN card: bold 1.5rem "High interest is in your interest", 2-line body,
+  a black pill "START SAVING" (mono) + underlined "HIDE", and an illustration slot bottom-right.
+- Card "QUESTION OF THE DAY" (mono) + rule + a 1.5rem bold 3-line question + a full-width
+  outlined rounded-full button "✦ ASK SIDEKICK".
+- Card "RECENT ACTIVITY" (clipped).
+Right col:
+- Card "PORTFOLIO" (mono) + right a 2-button segmented icon toggle (line chart / area chart).
+  "Total balance ⓘ", "$3" 2.2rem bold, green "$0 (5.74%)".
+  Chart: y labels on the RIGHT in mono ($3.6 $2.7 $1.8 $0.9 $0), dotted horizontal
+  gridlines, a green line flat at 0 for most of the range then a near-vertical rise at the
+  end with a green gradient fill and a dot at the end.
+  Range row centred: 1W  1M(active: outlined circle pill)  3M  6M  YTD  1Y.
+- Card "HOLDINGS" (mono) + outlined pill "SEE ALL HOLDINGS"; two inner bordered cards:
+  "Total Value" rows (round token logo slot, bold ticker + grey name, right amount) and
+  "Top Movers" rows (same + a small green sparkline + a green-tinted % chip).
+
+## 34 Stripe (090)
+White, indigo #635bff brand, grey-50 chart bands, 0.95rem type, hairline rules.
+Sidebar 320px: avatar square + "Content-acme" bold; nav Home/Balances/Transactions/
+Customers/Product catalogue; small-caps grey "Shortcuts" + "Billing overview";
+small-caps "Products" + Payments ⌄ / Billing ⌃ (open, indigo) w/ children Overview(ACTIVE
+indigo) / Subscriptions / Invoices / Meters / Revenue recovery; Reporting ⌄; More ⌄;
+bottom "Developers".
+Top bar: a wide grey-50 rounded search; right "Test mode" + a toggle (off), then glyphs
+(apps, ?, bell w/ blue dot, gear) and an indigo circular "+".
+H1 "Billing overview"; right indigo "+ Create", outlined "💬 Give feedback", "···".
+Tabs: Revenue / Subscribers / Trials / Churn / Collections / Benchmarking(ACTIVE indigo
+underline) + a grey outlined chip "Preview".
+Grey line: "Compare your key performance metrics against similar companies using Stripe to
+power their subscription business."
+Filter row: three labelled selects, each with the label + ⓘ on the left and a grey
+right-aligned "You: US$0" above the select: ARR "Less than $100K", ARPU "Less than $50",
+Business model "B2C".
+2x2 grid of benchmark panels separated by hairlines (no card borders): title + ⓘ + a
+PERCENTILE CHIP (amber for low: "48th percentile", "1st percentile"; green for high:
+"92nd percentile", "99th percentile"); then "0% 0% median" (your value bold, median grey);
+then a chart: a grey BAND (the peer range) with a thin slate median line inside it, and
+YOUR value as a flat coloured line (green when good, orange when bad) pinned at the
+bottom/edge; y labels top-left and bottom-left (8.0% / -4.0%); x "January 2024" left and
+"December 2024" right in grey.

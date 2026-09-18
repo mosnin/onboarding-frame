@@ -701,3 +701,94 @@ export const capTableTokens: TemplateTokens = {
   radiusSm: "0.5rem",
   radiusLg: "0.875rem",
 };
+
+/** Coinbase: near-black with a saturated blue, large radii, generous type. */
+export const walletTokens: TemplateTokens = {
+  scheme: "dark",
+  bg: "#0a0b0d",
+  surface: "#121416",
+  surface2: "#1a1d20",
+  surface3: "#24282c",
+  border: "#23272b",
+  borderStrong: "#343a40",
+  fg: "#f7f8f8",
+  fgSoft: "#c7cbd0",
+  muted: "#8a9199",
+  brand: "#1652f0",
+  brandFg: "#ffffff",
+  ctaBg: "#1652f0",
+  ctaFg: "#ffffff",
+  success: "#27ad75",
+  radius: "1rem",
+  radiusSm: "0.625rem",
+  radiusLg: "1.25rem",
+};
+
+/** Snowflake: dense admin console, hairlines, one blue, compact type. */
+export const warehouseTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f5f7fa",
+  surface3: "#e8ecf1",
+  border: "#e3e7ed",
+  borderStrong: "#ccd3dc",
+  fg: "#16191d",
+  fgSoft: "#3b4149",
+  muted: "#737b85",
+  brand: "#1a73e8",
+  brandFg: "#ffffff",
+  ctaBg: "#1a73e8",
+  ctaFg: "#ffffff",
+  success: "#1e8e3e",
+  radius: "0.5rem",
+  radiusSm: "0.375rem",
+  radiusLg: "0.625rem",
+};
+
+/**
+ * Origin: warm off-white with monospace small-caps labels. The label typeface
+ * is the whole identity here, so it is bound as the display face and used on
+ * headers rather than headings.
+ */
+export const wealthTokens: TemplateTokens = {
+  bg: "#f7f7f5",
+  surface: "#ffffff",
+  surface2: "#f2f2ef",
+  surface3: "#e6e6e1",
+  border: "#e6e6e1",
+  borderStrong: "#cfcfc8",
+  fg: "#14150f",
+  fgSoft: "#3a3b33",
+  muted: "#7a7b70",
+  brand: "#1f9d55",
+  brandFg: "#ffffff",
+  ctaBg: "#14150f",
+  ctaFg: "#ffffff",
+  success: "#1f9d55",
+  radius: "1rem",
+  radiusSm: "0.625rem",
+  radiusLg: "1.5rem",
+  fontDisplay: 'ui-monospace, "SF Mono", Menlo, Consolas, monospace',
+};
+
+/** Stripe: indigo on white, panels divided by hairlines rather than cards. */
+export const benchmarkTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f6f8fa",
+  surface3: "#eaeef2",
+  border: "#e6ebf1",
+  borderStrong: "#cfd7e0",
+  fg: "#1a1f36",
+  fgSoft: "#3c4257",
+  muted: "#6b7385",
+  brand: "#635bff",
+  brandFg: "#ffffff",
+  ctaBg: "#635bff",
+  ctaFg: "#ffffff",
+  success: "#3fa66a",
+  danger: "#e5772d",
+  radius: "0.5rem",
+  radiusSm: "0.375rem",
+  radiusLg: "0.625rem",
+};

@@ -44,6 +44,14 @@ export { AudienceAnalyticsTemplate } from "./audience-analytics";
 export type { AudiencePage, AudienceAnalyticsProps } from "./audience-analytics";
 export { CapTableTemplate } from "./cap-table";
 export type { CapTablePage, CapTableProps } from "./cap-table";
+export { WalletHomeTemplate } from "./wallet-home";
+export type { WalletPage, WalletHomeProps } from "./wallet-home";
+export { WarehouseCostTemplate } from "./warehouse-cost";
+export type { WarehousePage, WarehouseCostProps } from "./warehouse-cost";
+export { WealthPortfolioTemplate } from "./wealth-portfolio";
+export type { WealthPage, WealthPortfolioProps } from "./wealth-portfolio";
+export { BillingBenchmarksTemplate } from "./billing-benchmarks";
+export type { BenchmarkPage, BillingBenchmarksProps } from "./billing-benchmarks";
 export { CrmWorkspaceTemplate } from "./crm-workspace";
 export type { CrmPage, CrmWorkspaceProps } from "./crm-workspace";
 
@@ -248,7 +256,10 @@ export const templateCatalog: TemplateMeta[] = [
     name: "Audience analytics",
     blurb:
       "Email audience growth where every zero day carries a dot, so a month with two sign-ups reads as data rather than a broken chart.",
-    pages: [{ id: "audience", label: "Audience" }],
+    pages: [
+      { id: "audience", label: "Audience" },
+      { id: "dashboard", label: "Audience dashboard" },
+    ],
   },
   {
     slug: "cap-table",
@@ -256,6 +267,34 @@ export const templateCatalog: TemplateMeta[] = [
     blurb:
       "Equity summary that keeps unavailable instruments visible but disabled, with setup progress riding in the top bar as a ring.",
     pages: [{ id: "shareholders", label: "Shareholders" }],
+  },
+  {
+    slug: "wallet-home",
+    name: "Wallet home",
+    blurb:
+      "Consumer crypto home where a gradient border marks the identity strip, and an unranked wallet honestly reports \u201c# ---\u201d.",
+    pages: [{ id: "trending", label: "Trending" }],
+  },
+  {
+    slug: "warehouse-cost",
+    name: "Warehouse cost",
+    blurb:
+      "Dense cloud-spend console whose insight list is seven green checks under a sentence saying nothing was found.",
+    pages: [{ id: "account", label: "Account Overview" }],
+  },
+  {
+    slug: "wealth-portfolio",
+    name: "Wealth portfolio",
+    blurb:
+      "Warm off-white wealth app with monospace small-caps headers and a right-hand axis, on a portfolio funded yesterday.",
+    pages: [{ id: "overview", label: "Overview" }],
+  },
+  {
+    slug: "billing-benchmarks",
+    name: "Billing benchmarks",
+    blurb:
+      "Peer-range bands rather than series, where a customer with no revenue lands 1st percentile on value and 99th on churn.",
+    pages: [{ id: "benchmarking", label: "Benchmarking" }],
   },
   {
     slug: "crm-workspace",
