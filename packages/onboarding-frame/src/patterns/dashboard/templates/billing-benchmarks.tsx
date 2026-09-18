@@ -118,30 +118,30 @@ export function BillingBenchmarksTemplate({
   return (
     <Surface tokens={benchmarkTokens} className={className}>
       <Shell>
-        <Sidebar width={320} bg="var(--ob-surface)">
-          <div className="flex items-center gap-2.5 px-5 pb-4 pt-4">
-            <LogoSlot size={30} label="" radius={7} />
-            <span className="text-[1.1rem] font-bold">Content-acme</span>
+        <Sidebar width={240} bg="var(--ob-surface)">
+          <div className="flex items-center gap-[7px] px-[15px] pb-[12px] pt-[12px]">
+            <LogoSlot size={22} label="" radius={5} />
+            <span className="text-[0.824rem] font-bold">Content-acme</span>
           </div>
 
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid gap-[1px] px-[9px]">
             {NAV.map((item) => (
               <NavItem key={item.id} label={item.label} glyph={item.glyph} />
             ))}
           </nav>
 
           <NavSection label="Shortcuts" />
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid gap-[1px] px-[9px]">
             <NavItem label="Billing overview" glyph="🕐" />
           </nav>
 
           <NavSection label="Products" />
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid gap-[1px] px-[9px]">
             <NavItem
               label="Payments"
               glyph="▭"
               trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
+                <span aria-hidden className="text-[0.524rem] opacity-50">
                   ⌄
                 </span>
               }
@@ -151,7 +151,7 @@ export function BillingBenchmarksTemplate({
               glyph="▥"
               className="text-[color:var(--ob-brand)]"
               trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
+                <span aria-hidden className="text-[0.524rem] opacity-50">
                   ⌃
                 </span>
               }
@@ -172,7 +172,7 @@ export function BillingBenchmarksTemplate({
               label="Reporting"
               glyph="▦"
               trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
+                <span aria-hidden className="text-[0.524rem] opacity-50">
                   ⌄
                 </span>
               }
@@ -181,14 +181,14 @@ export function BillingBenchmarksTemplate({
               label="More"
               glyph="···"
               trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
+                <span aria-hidden className="text-[0.524rem] opacity-50">
                   ⌄
                 </span>
               }
             />
           </nav>
 
-          <nav className="mt-auto grid gap-0.5 px-3 pb-5">
+          <nav className="mt-auto grid gap-[1px] px-[9px] pb-[15px]">
             <NavItem label="Developers" glyph="❯_" />
           </nav>
         </Sidebar>
@@ -198,15 +198,15 @@ export function BillingBenchmarksTemplate({
             <MerchantOverview />
           ) : (
           <>
-          <header className="flex h-16 shrink-0 items-center gap-4 px-6">
-            <div className="flex w-full max-w-[760px] items-center gap-2.5 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-4 py-2.5 text-[0.98rem] text-[color:var(--ob-muted)]">
+          <header className="flex h-[48px] shrink-0 items-center gap-[12px] px-[18px]">
+            <div className="flex w-full max-w-[569px] items-center gap-[7px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[12px] py-[7px] text-[0.734rem] text-[color:var(--ob-muted)]">
               <span aria-hidden>⌕</span> Search
             </div>
-            <span className="ml-auto flex items-center gap-3">
-              <span className="text-[0.98rem] font-medium">Test mode</span>
+            <span className="ml-auto flex items-center gap-[9px]">
+              <span className="text-[0.734rem] font-medium">Test mode</span>
               {/* Off: the account is looking at live numbers. */}
-              <span className="grid h-6 w-11 items-center rounded-full bg-[color:var(--ob-surface-3)] px-1">
-                <span className="size-4 rounded-full bg-[color:var(--ob-surface)] shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
+              <span className="grid h-[18px] w-[33px] items-center rounded-full bg-[color:var(--ob-surface-3)] px-[3px]">
+                <span className="size-[12px] rounded-full bg-[color:var(--ob-surface)] shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
               </span>
               {["▦", "?", "⌾", "⚙"].map((glyph) => (
                 <span key={glyph} aria-hidden className="text-[color:var(--ob-fg-soft)]">
@@ -215,22 +215,22 @@ export function BillingBenchmarksTemplate({
               ))}
               <span
                 aria-hidden
-                className="grid size-8 place-items-center rounded-full bg-[color:var(--ob-brand)] text-white"
+                className="grid size-[24px] place-items-center rounded-full bg-[color:var(--ob-brand)] text-white"
               >
                 +
               </span>
             </span>
           </header>
 
-          <div className="px-8 pb-8">
-            <div className="flex flex-wrap items-center gap-3">
-              <h1 className="flex-1 text-[2rem] font-bold tracking-[-0.01em]">
+          <div className="px-[24px] pb-[24px]">
+            <div className="flex flex-wrap items-center gap-[9px]">
+              <h1 className="flex-1 text-[1.498rem] font-bold tracking-[-0.01em]">
                 Billing overview
               </h1>
-              <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-4 py-2 text-[0.98rem] font-semibold text-white">
+              <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[12px] py-[6px] text-[0.734rem] font-semibold text-white">
                 + Create
               </span>
-              <span className="flex items-center gap-2 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-2 text-[0.98rem] font-medium">
+              <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.734rem] font-medium">
                 <span aria-hidden>💬</span> Give feedback
               </span>
               <span aria-hidden className="text-[color:var(--ob-muted)]">
@@ -238,7 +238,7 @@ export function BillingBenchmarksTemplate({
               </span>
             </div>
 
-            <nav className="flex gap-7 border-b border-[color:var(--ob-border)] pt-5">
+            <nav className="flex gap-[21px] border-b border-[color:var(--ob-border)] pt-[15px]">
               {[
                 { id: "revenue", label: "Revenue" },
                 { id: "subscribers", label: "Subscribers" },
@@ -250,7 +250,7 @@ export function BillingBenchmarksTemplate({
                 <span
                   key={tab.id}
                   className={cn(
-                    "-mb-px flex items-center gap-2.5 pb-3 text-[1.02rem]",
+                    "-mb-px flex items-center gap-[7px] pb-[9px] text-[0.764rem]",
                     tab.id === page
                       ? "border-b-2 border-[color:var(--ob-brand)] font-semibold text-[color:var(--ob-brand)]"
                       : "text-[color:var(--ob-fg-soft)]",
@@ -258,7 +258,7 @@ export function BillingBenchmarksTemplate({
                 >
                   {tab.label}
                   {tab.preview && (
-                    <span className="rounded-[4px] border border-[color:var(--ob-border-strong)] px-1.5 py-0.5 text-[0.82rem] font-normal text-[color:var(--ob-fg-soft)]">
+                    <span className="rounded-[3px] border border-[color:var(--ob-border-strong)] px-[4px] py-[1px] text-[0.614rem] font-normal text-[color:var(--ob-fg-soft)]">
                       Preview
                     </span>
                   )}
@@ -266,16 +266,16 @@ export function BillingBenchmarksTemplate({
               ))}
             </nav>
 
-            <p className="pt-5 text-[1.05rem] text-[color:var(--ob-fg-soft)]">
+            <p className="pt-[15px] text-[0.787rem] text-[color:var(--ob-fg-soft)]">
               Compare your key performance metrics against similar companies using the
               platform to power their subscription business.
             </p>
 
-            <div className="grid gap-5 pt-4 sm:grid-cols-3">
+            <div className="grid gap-[15px] pt-[12px] sm:grid-cols-3">
               {FILTERS.map((filter) => (
                 <div key={filter.id}>
-                  <p className="flex items-center gap-1.5 pb-1.5 text-[0.98rem]">
-                    <span className="flex items-center gap-1.5 font-semibold">
+                  <p className="flex items-center gap-[4px] pb-[4px] text-[0.734rem]">
+                    <span className="flex items-center gap-[4px] font-semibold">
                       {filter.label}
                       <InfoDot />
                     </span>
@@ -285,9 +285,9 @@ export function BillingBenchmarksTemplate({
                       </span>
                     )}
                   </p>
-                  <span className="flex items-center gap-3 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-2.5 text-[1rem]">
+                  <span className="flex items-center gap-[9px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[7px] text-[0.749rem]">
                     <span className="flex-1">{filter.value}</span>
-                    <span aria-hidden className="text-[0.7rem] opacity-60">
+                    <span aria-hidden className="text-[0.524rem] opacity-60">
                       ⌃⌄
                     </span>
                   </span>
@@ -296,23 +296,23 @@ export function BillingBenchmarksTemplate({
             </div>
 
             {/* Hairlines instead of card borders keep four charts readable. */}
-            <div className="mt-6 grid border-t border-[color:var(--ob-border)] lg:grid-cols-2">
+            <div className="mt-[18px] grid border-t border-[color:var(--ob-border)] lg:grid-cols-2">
               {PANELS.map((panel, index) => (
                 <section
                   key={panel.id}
                   className={cn(
-                    "border-b border-[color:var(--ob-border)] py-6",
-                    index % 2 === 0 ? "lg:pr-8" : "lg:border-l lg:pl-8",
+                    "border-b border-[color:var(--ob-border)] py-[18px]",
+                    index % 2 === 0 ? "lg:pr-[24px]" : "lg:border-l lg:pl-[24px]",
                   )}
                 >
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h2 className="flex items-center gap-2 text-[1.25rem] font-bold">
+                  <div className="flex flex-wrap items-center gap-[9px]">
+                    <h2 className="flex items-center gap-[6px] text-[0.936rem] font-bold">
                       {panel.title}
                       <InfoDot />
                     </h2>
                     <span
                       className={cn(
-                        "rounded-[4px] px-2 py-1 text-[0.92rem] font-semibold",
+                        "rounded-[3px] px-[6px] py-[3px] text-[0.689rem] font-semibold",
                         panel.good
                           ? "bg-[color-mix(in_oklab,#3fa66a_18%,transparent)] text-[#2b7a4b]"
                           : "bg-[color-mix(in_oklab,#e5a92d_24%,transparent)] text-[#8a6212]",
@@ -322,9 +322,9 @@ export function BillingBenchmarksTemplate({
                     </span>
                   </div>
 
-                  <p className="pt-2 text-[1.35rem] font-bold">
+                  <p className="pt-[6px] text-[1.011rem] font-bold">
                     {panel.value}{" "}
-                    <span className="text-[1.02rem] font-normal text-[color:var(--ob-muted)]">
+                    <span className="text-[0.764rem] font-normal text-[color:var(--ob-muted)]">
                       {panel.median}
                     </span>
                   </p>
@@ -369,27 +369,27 @@ const NAV_TABS = [
 function MerchantOverview() {
   return (
     <div className="relative">
-      <div className="flex h-14 shrink-0 items-center gap-4 border-b border-[color:var(--ob-border)] px-6">
-        <span className="flex items-center gap-2.5 text-[1rem] font-medium">
+      <div className="flex h-[42px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[18px]">
+        <span className="flex items-center gap-[7px] text-[0.749rem] font-medium">
           <span aria-hidden>▤</span> Jane
-          <span aria-hidden className="text-[0.7rem] opacity-60">
+          <span aria-hidden className="text-[0.524rem] opacity-60">
             ⌄
           </span>
         </span>
-        <span className="flex items-center gap-2 rounded-full bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-3.5 py-1.5 text-[0.95rem] font-medium text-[#b3363a]">
+        <span className="flex items-center gap-[6px] rounded-full bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-[10px] py-[4px] text-[0.712rem] font-medium text-[#b3363a]">
           Action required <span aria-hidden>⚠</span>
         </span>
-        <span className="mx-auto flex w-full max-w-[560px] items-center gap-2.5 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-4 py-2 text-[0.98rem] text-[color:var(--ob-muted)]">
+        <span className="mx-auto flex w-full max-w-[419px] items-center gap-[7px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[12px] py-[6px] text-[0.734rem] text-[color:var(--ob-muted)]">
           <span aria-hidden>⌕</span> Search…
         </span>
-        <span className="flex items-center gap-4 text-[0.98rem]">
-          <span className="flex items-center gap-5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-1.5 font-medium">
+        <span className="flex items-center gap-[12px] text-[0.734rem]">
+          <span className="flex items-center gap-[15px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[4px] font-medium">
             Create
-            <span aria-hidden className="text-[0.7rem] opacity-60">
+            <span aria-hidden className="text-[0.524rem] opacity-60">
               ⌄
             </span>
           </span>
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-[4px]">
             <span aria-hidden>?</span> Help
           </span>
           {["⌾", "⚙", "👤"].map((glyph) => (
@@ -400,64 +400,64 @@ function MerchantOverview() {
         </span>
       </div>
 
-      <div className="flex h-14 shrink-0 items-center gap-6 border-b-2 border-[#f6821f] px-6">
+      <div className="flex h-[42px] shrink-0 items-center gap-[18px] border-b-2 border-[#f6821f] px-[18px]">
         {NAV_TABS.map((tab, index) => (
           <span
             key={tab}
             className={cn(
-              "text-[1rem]",
+              "text-[0.749rem]",
               index === 0
-                ? "rounded-full bg-[color:var(--ob-brand)] px-4 py-1.5 font-semibold text-white"
+                ? "rounded-full bg-[color:var(--ob-brand)] px-[12px] py-[4px] font-semibold text-white"
                 : "font-medium text-[color:var(--ob-fg-soft)]",
             )}
           >
             {tab}
           </span>
         ))}
-        <span className="flex items-center gap-1.5 text-[1rem] font-medium text-[color:var(--ob-fg-soft)]">
-          More <span aria-hidden className="text-[0.7rem] opacity-60">⌄</span>
+        <span className="flex items-center gap-[4px] text-[0.749rem] font-medium text-[color:var(--ob-fg-soft)]">
+          More <span aria-hidden className="text-[0.524rem] opacity-60">⌄</span>
         </span>
-        <span className="ml-auto flex items-center gap-4 text-[1rem] font-medium">
+        <span className="ml-auto flex items-center gap-[12px] text-[0.749rem] font-medium">
           <span>Developers</span>
           <span className="text-[#c2410c]">Test mode</span>
           {/* On: the orange knob sits right. */}
-          <span className="grid h-6 w-11 justify-items-end rounded-full bg-[#f6821f] p-1">
-            <span className="size-4 rounded-full bg-white" />
+          <span className="grid h-[18px] w-[33px] justify-items-end rounded-full bg-[#f6821f] p-[3px]">
+            <span className="size-[12px] rounded-full bg-white" />
           </span>
         </span>
       </div>
 
-      <span className="absolute left-1/2 top-[7rem] -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[#f6821f] px-3 py-1 text-[0.82rem] font-bold uppercase tracking-wide text-white">
+      <span className="absolute left-1/2 top-[5.243rem] -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[#f6821f] px-[9px] py-[3px] text-[0.614rem] font-bold uppercase tracking-wide text-white">
         Test data
       </span>
 
-      <div className="px-8 py-7">
-        <div className="flex items-center gap-4">
-          <h1 className="flex-1 text-[2rem] font-bold tracking-[-0.01em]">
+      <div className="px-[24px] py-[21px]">
+        <div className="flex items-center gap-[12px]">
+          <h1 className="flex-1 text-[1.498rem] font-bold tracking-[-0.01em]">
             Your overview
           </h1>
-          <span className="flex items-center gap-2 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-2 text-[0.98rem] font-medium">
+          <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.734rem] font-medium">
             <span aria-hidden>⚙</span> Edit overview
           </span>
         </div>
 
-        <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-[color:var(--ob-border)] pt-5">
+        <div className="mt-[15px] flex flex-wrap items-center gap-[9px] border-t border-[color:var(--ob-border)] pt-[15px]">
           <OverviewSelect>Last 7 days</OverviewSelect>
           <OverviewSelect glyph="🗓">Mar 15–Mar 21</OverviewSelect>
-          <span className="text-[0.98rem] text-[color:var(--ob-muted)]">compared to</span>
+          <span className="text-[0.734rem] text-[color:var(--ob-muted)]">compared to</span>
           <OverviewSelect>Previous period</OverviewSelect>
           <OverviewSelect caret="⇅">Daily</OverviewSelect>
         </div>
 
-        <div className="grid gap-8 pt-7 lg:grid-cols-3">
+        <div className="grid gap-[24px] pt-[21px] lg:grid-cols-3">
           <Widget title="Payments" info>
             {/* Test mode: this panel genuinely has nothing to show. */}
-            <div className="mt-4 grid h-[300px] place-items-center rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-6 text-center">
+            <div className="mt-[12px] grid h-[225px] place-items-center rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[18px] text-center">
               <span>
-                <span aria-hidden className="block text-[1.6rem] text-[color:var(--ob-muted)]">
+                <span aria-hidden className="block text-[1.199rem] text-[color:var(--ob-muted)]">
                   ⚠
                 </span>
-                <span className="block pt-3 text-[1.02rem] text-[color:var(--ob-muted)]">
+                <span className="block pt-[9px] text-[0.764rem] text-[color:var(--ob-muted)]">
                   This content is only available for live data.
                 </span>
               </span>
@@ -465,14 +465,14 @@ function MerchantOverview() {
           </Widget>
 
           <Widget title="Gross volume" info chip="+∞">
-            <div className="flex gap-8 pt-4">
+            <div className="flex gap-[24px] pt-[12px]">
               <Legend label="Last 7 days" value="$41.54" color="var(--ob-brand)" />
               <Legend label="Previous period" value="$0.00" color="var(--ob-border-strong)" />
             </div>
-            <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">$41.54</p>
+            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">$41.54</p>
             <svg
               viewBox="0 0 600 260"
-              className="h-[260px] w-full"
+              className="h-[195px] w-full"
               preserveAspectRatio="none"
               role="img"
               aria-label="Gross volume over the last seven days"
@@ -494,14 +494,14 @@ function MerchantOverview() {
                 vectorEffect="non-scaling-stroke"
               />
             </svg>
-            <p className="flex text-[0.95rem] text-[color:var(--ob-muted)]">
+            <p className="flex text-[0.712rem] text-[color:var(--ob-muted)]">
               <span className="flex-1">$0.00</span>
             </p>
-            <p className="flex pt-1 text-[0.95rem] text-[color:var(--ob-muted)]">
+            <p className="flex pt-[3px] text-[0.712rem] text-[color:var(--ob-muted)]">
               <span className="flex-1">Mar 15</span>
               <span>Today</span>
             </p>
-            <p className="flex items-center gap-3 pt-4 text-[0.98rem]">
+            <p className="flex items-center gap-[9px] pt-[12px] text-[0.734rem]">
               <span className="flex-1 font-medium text-[color:var(--ob-brand)]">
                 View all payments
               </span>
@@ -511,43 +511,43 @@ function MerchantOverview() {
             </p>
           </Widget>
 
-          <section className="relative rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] p-7 text-center">
-            <span aria-hidden className="absolute right-5 top-5 text-[color:var(--ob-muted)]">
+          <section className="relative rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] p-[21px] text-center">
+            <span aria-hidden className="absolute right-[15px] top-[15px] text-[color:var(--ob-muted)]">
               ✕
             </span>
-            <h2 className="text-[1.3rem] font-bold leading-snug">
+            <h2 className="text-[0.974rem] font-bold leading-snug">
               Get quick access
               <br />
               to key business insights
             </h2>
-            <p className="pt-3 text-[1.02rem] text-[color:var(--ob-fg-soft)]">
+            <p className="pt-[9px] text-[0.764rem] text-[color:var(--ob-fg-soft)]">
               Missing anything? You can always add it again by editing your overview.
             </p>
-            <p className="pt-4 text-[1.05rem] font-semibold text-[color:var(--ob-brand)]">
+            <p className="pt-[12px] text-[0.787rem] font-semibold text-[color:var(--ob-brand)]">
               Add to your overview ⊕
             </p>
-            <div className="pt-6">
-              <Placeholder height={210} radius={10} label="Widget preview" />
+            <div className="pt-[18px]">
+              <Placeholder height={157} radius={7} label="Widget preview" />
             </div>
           </section>
 
           <Widget title="Net volume from sales" info chip="+∞">
-            <div className="flex gap-8 pt-4">
+            <div className="flex gap-[24px] pt-[12px]">
               <Legend label="Last 7 days" value="$29.62" color="var(--ob-brand)" />
               <Legend label="Previous period" value="$0.00" color="var(--ob-border-strong)" />
             </div>
-            <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">$29.62</p>
+            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">$29.62</p>
           </Widget>
 
           <Widget title="Failed payments" info>
-            <p className="pt-4 text-[1.35rem] font-bold tabular-nums">$4.00</p>
-            <p className="flex items-center gap-3 pt-2 text-[0.98rem] text-[color:var(--ob-muted)]">
+            <p className="pt-[12px] text-[1.011rem] font-bold tabular-nums">$4.00</p>
+            <p className="flex items-center gap-[9px] pt-[6px] text-[0.734rem] text-[color:var(--ob-muted)]">
               <span className="flex-1">Mar 21, 3:35 AM · jane2@example.test</span>
-              <span className="rounded bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-2 py-0.5 font-medium text-[#b3363a]">
+              <span className="rounded bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-[6px] py-[1px] font-medium text-[#b3363a]">
                 Failed
               </span>
             </p>
-            <p className="flex items-center gap-3 pt-4 text-[0.98rem]">
+            <p className="flex items-center gap-[9px] pt-[12px] text-[0.734rem]">
               <span className="flex-1 font-medium text-[color:var(--ob-brand)]">
                 1 of 1 result
               </span>
@@ -556,11 +556,11 @@ function MerchantOverview() {
           </Widget>
 
           <Widget title="New customers" info chip="+∞">
-            <div className="flex gap-8 pt-4">
+            <div className="flex gap-[24px] pt-[12px]">
               <Legend label="Last 7 days" value="3" color="var(--ob-brand)" />
               <Legend label="Previous period" value="0" color="var(--ob-border-strong)" />
             </div>
-            <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">3</p>
+            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">3</p>
           </Widget>
         </div>
       </div>
@@ -581,16 +581,16 @@ function Widget({
 }) {
   return (
     <section>
-      <h2 className="flex flex-wrap items-center gap-2.5 text-[1.3rem] font-bold">
+      <h2 className="flex flex-wrap items-center gap-[7px] text-[0.974rem] font-bold">
         {title}
         {info && <InfoDot />}
         {chip && (
-          <span className="rounded bg-[color-mix(in_oklab,#3fa66a_18%,transparent)] px-2 py-0.5 text-[0.92rem] font-semibold text-[#2b7a4b]">
+          <span className="rounded bg-[color-mix(in_oklab,#3fa66a_18%,transparent)] px-[6px] py-[1px] text-[0.689rem] font-semibold text-[#2b7a4b]">
             {chip}
           </span>
         )}
       </h2>
-      <p className="border-b border-[color:var(--ob-border)] pb-3 pt-1 text-[1.02rem] text-[color:var(--ob-muted)]">
+      <p className="border-b border-[color:var(--ob-border)] pb-[9px] pt-[3px] text-[0.764rem] text-[color:var(--ob-muted)]">
         Last 7 days
       </p>
       {children}
@@ -609,11 +609,11 @@ function Legend({
 }) {
   return (
     <span>
-      <span className="flex items-center gap-2.5 text-[1rem] text-[color:var(--ob-fg-soft)]">
-        <span aria-hidden className="h-0.5 w-5 rounded-full" style={{ background: color }} />
+      <span className="flex items-center gap-[7px] text-[0.749rem] text-[color:var(--ob-fg-soft)]">
+        <span aria-hidden className="h-[1px] w-[15px] rounded-full" style={{ background: color }} />
         {label}
       </span>
-      <span className="block pt-1 text-[1.35rem] font-bold tabular-nums">{value}</span>
+      <span className="block pt-[3px] text-[1.011rem] font-bold tabular-nums">{value}</span>
     </span>
   );
 }
@@ -628,8 +628,8 @@ function OverviewSelect({
   caret?: string;
 }) {
   return (
-    <span className="inline-flex items-center gap-4 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.98rem] font-medium">
-      <span className="flex items-center gap-2">
+    <span className="inline-flex items-center gap-[12px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[6px] text-[0.734rem] font-medium">
+      <span className="flex items-center gap-[6px]">
         {glyph && (
           <span aria-hidden className="text-[color:var(--ob-muted)]">
             {glyph}
@@ -637,7 +637,7 @@ function OverviewSelect({
         )}
         {children}
       </span>
-      <span aria-hidden className="text-[0.7rem] opacity-60">
+      <span aria-hidden className="text-[0.524rem] opacity-60">
         {caret}
       </span>
     </span>
@@ -664,10 +664,10 @@ function BandChart({ panel }: { panel: (typeof PANELS)[number] }) {
 
   return (
     <>
-      <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">{panel.top}</p>
+      <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">{panel.top}</p>
       <svg
         viewBox={`0 0 ${width} ${height}`}
-        className="h-[210px] w-full"
+        className="h-[157px] w-full"
         preserveAspectRatio="none"
         role="img"
         aria-label={`${panel.title}: your value against the peer range`}
@@ -690,8 +690,8 @@ function BandChart({ panel }: { panel: (typeof PANELS)[number] }) {
           vectorEffect="non-scaling-stroke"
         />
       </svg>
-      <p className="text-[0.95rem] text-[color:var(--ob-muted)]">{panel.bottom}</p>
-      <p className="flex pt-1 text-[0.95rem] text-[color:var(--ob-muted)]">
+      <p className="text-[0.712rem] text-[color:var(--ob-muted)]">{panel.bottom}</p>
+      <p className="flex pt-[3px] text-[0.712rem] text-[color:var(--ob-muted)]">
         <span className="flex-1">January 2024</span>
         <span>December 2024</span>
       </p>
@@ -703,7 +703,7 @@ function InfoDot(): ReactNode {
   return (
     <span
       aria-hidden
-      className="grid size-[15px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.6rem] font-normal text-[color:var(--ob-muted)]"
+      className="grid size-[11px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.449rem] font-normal text-[color:var(--ob-muted)]"
     >
       i
     </span>

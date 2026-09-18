@@ -74,30 +74,30 @@ export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverv
   return (
     <Surface tokens={zoneTokens} className={className}>
       <Shell className="flex-col">
-        <header className="flex h-[76px] shrink-0 items-center gap-5 border-b border-[color:var(--ob-border)] px-6">
-          <WordmarkSlot width={150} height={34} label="" />
-          <span className="ml-auto flex items-center gap-2.5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-2.5 text-[1rem] text-[color:var(--ob-muted)]">
+        <header className="flex h-[57px] shrink-0 items-center gap-[15px] border-b border-[color:var(--ob-border)] px-[18px]">
+          <WordmarkSlot width={113} height={26} label="" />
+          <span className="ml-auto flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.753rem] text-[color:var(--ob-muted)]">
             <span aria-hidden>⌕</span>
-            <span className="w-[130px]">Go to…</span>
-            <kbd className="rounded border border-[color:var(--ob-border)] px-1.5 py-0.5 text-[0.72rem] font-semibold">
+            <span className="w-[98px]">Go to…</span>
+            <kbd className="rounded border border-[color:var(--ob-border)] px-[5px] py-[2px] text-[0.542rem] font-semibold">
               ⌘K
             </kbd>
           </span>
-          <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-5 py-2.5 text-[1rem] font-semibold text-white">
+          <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[15px] py-[8px] text-[0.753rem] font-semibold text-white">
             Add ▾
           </span>
-          <span className="text-[1.02rem] font-medium">Support ▾</span>
-          <span className="text-[1.02rem] font-medium">Profile ▾</span>
+          <span className="text-[0.768rem] font-medium">Support ▾</span>
+          <span className="text-[0.768rem] font-medium">Profile ▾</span>
         </header>
 
-        <div className="flex min-h-0 flex-1">
-          <Sidebar width={345} bg="var(--ob-surface)">
-            <p className="flex items-center gap-3 px-5 py-4 text-[1.15rem] font-medium">
+        <div className="flex min-h-[0px] flex-1">
+          <Sidebar width={260} bg="var(--ob-surface)">
+            <p className="flex items-center gap-[9px] px-[15px] py-[12px] text-[0.866rem] font-medium">
               <span aria-hidden>←</span> Alex Smith
             </p>
-            <div className="mx-0 border-t border-[color:var(--ob-border)]" />
+            <div className="mx-[0px] border-t border-[color:var(--ob-border)]" />
 
-            <nav className="grid gap-0.5 py-2">
+            <nav className="grid gap-[2px] py-[6px]">
               {NAV.map((item) => {
                 const active = item.id === page;
                 return (
@@ -105,15 +105,15 @@ export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverv
                     key={item.id}
                     className={cn(
                       active &&
-                        "border-l-[3px] border-[color:var(--ob-brand)] bg-[color-mix(in_oklab,#0051c3_6%,transparent)]",
+                        "border-l-[2px] border-[color:var(--ob-brand)] bg-[color-mix(in_oklab,#0051c3_6%,transparent)]",
                     )}
                   >
                     <NavItem
                       label={
                         item.badge ? (
-                          <span className="flex items-center gap-2.5">
+                          <span className="flex items-center gap-[8px]">
                             {item.label}
-                            <span className="rounded-full bg-[color-mix(in_oklab,#f6821f_22%,transparent)] px-2 py-0.5 text-[0.78rem] font-semibold text-[#9a5209]">
+                            <span className="rounded-full bg-[color-mix(in_oklab,#f6821f_22%,transparent)] px-[6px] py-[2px] text-[0.587rem] font-semibold text-[#9a5209]">
                               {item.badge}
                             </span>
                           </span>
@@ -124,13 +124,13 @@ export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverv
                       glyph={item.glyph}
                       trailing={
                         item.caret ? (
-                          <span aria-hidden className="text-[0.7rem] opacity-50">
+                          <span aria-hidden className="text-[0.527rem] opacity-50">
                             ▾
                           </span>
                         ) : undefined
                       }
                       className={cn(
-                        "rounded-none text-[1.08rem]",
+                        "rounded-none text-[0.813rem]",
                         active &&
                           "bg-transparent font-medium text-[color:var(--ob-brand)]",
                       )}
@@ -140,84 +140,84 @@ export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverv
               })}
             </nav>
 
-            <p className="mt-auto border-t border-[color:var(--ob-border)] px-5 py-4 text-[1.02rem] text-[color:var(--ob-fg-soft)]">
+            <p className="mt-auto border-t border-[color:var(--ob-border)] px-[15px] py-[12px] text-[0.768rem] text-[color:var(--ob-fg-soft)]">
               <span aria-hidden>«</span> Collapse sidebar
             </p>
           </Sidebar>
 
           <Main className="overflow-auto">
-            <div className="flex flex-wrap items-center gap-3 border-b border-[color:var(--ob-border)] px-6 py-4">
-              <span aria-hidden className="text-[1.15rem] text-[color:var(--ob-muted)]">
+            <div className="flex flex-wrap items-center gap-[9px] border-b border-[color:var(--ob-border)] px-[18px] py-[12px]">
+              <span aria-hidden className="text-[0.866rem] text-[color:var(--ob-muted)]">
                 ▭
               </span>
-              <span className="text-[1.25rem] font-medium">content-acme.org</span>
-              <span aria-hidden className="text-[0.75rem] text-[color:var(--ob-muted)]">
+              <span className="text-[0.941rem] font-medium">content-acme.org</span>
+              <span aria-hidden className="text-[0.565rem] text-[color:var(--ob-muted)]">
                 ⇅
               </span>
-              <span className="ml-2 flex items-center gap-1.5 rounded-full bg-[color-mix(in_oklab,#1d8102_16%,transparent)] px-3 py-1 text-[0.95rem] font-medium text-[color:var(--ob-success)]">
+              <span className="ml-[6px] flex items-center gap-[5px] rounded-full bg-[color-mix(in_oklab,#1d8102_16%,transparent)] px-[9px] py-[3px] text-[0.715rem] font-medium text-[color:var(--ob-success)]">
                 ✓ Active
               </span>
-              <span className="rounded-full border border-[color:var(--ob-border-strong)] px-3 py-1 text-[0.95rem]">
+              <span className="rounded-full border border-[color:var(--ob-border-strong)] px-[9px] py-[3px] text-[0.715rem]">
                 ☆ Star
               </span>
-              <span className="rounded-full border border-[color:var(--ob-border-strong)] px-3 py-1 text-[0.95rem]">
+              <span className="rounded-full border border-[color:var(--ob-border-strong)] px-[9px] py-[3px] text-[0.715rem]">
                 Free plan
               </span>
             </div>
 
-            <div className="flex items-center gap-3 border-b border-[color:var(--ob-border)] bg-[color-mix(in_oklab,#0051c3_5%,transparent)] px-6 py-4">
-              <p className="flex-1 text-[1.08rem]">
+            <div className="flex items-center gap-[9px] border-b border-[color:var(--ob-border)] bg-[color-mix(in_oklab,#0051c3_5%,transparent)] px-[18px] py-[12px]">
+              <p className="flex-1 text-[0.813rem]">
                 Why did you choose a Free plan?{" "}
                 <span className="font-medium underline">Share your feedback</span>{" "}
-                <span aria-hidden className="text-[0.85rem]">
+                <span aria-hidden className="text-[0.64rem]">
                   ↗
                 </span>
               </p>
-              <span aria-hidden className="text-[1.15rem] text-[color:var(--ob-muted)]">
+              <span aria-hidden className="text-[0.866rem] text-[color:var(--ob-muted)]">
                 ✕
               </span>
             </div>
 
-            <div className="grid gap-10 px-8 py-7 xl:grid-cols-[minmax(0,1fr)_440px]">
+            <div className="grid gap-[30px] px-[24px] py-[21px] xl:grid-cols-[minmax(0,1fr)_440px]">
               <div>
-                <p className="text-[1.05rem] text-[color:var(--ob-fg-soft)]">Overview</p>
-                <h1 className="pt-2 text-[2.1rem] font-normal">content-acme.org</h1>
-                <p className="max-w-[62ch] pt-3 text-[1.08rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+                <p className="text-[0.791rem] text-[color:var(--ob-fg-soft)]">Overview</p>
+                <h1 className="pt-[6px] text-[1.581rem] font-normal">content-acme.org</h1>
+                <p className="max-w-[62ch] pt-[9px] text-[0.813rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
                   Monitor security and performance for content-acme.org. Configure
                   products and services from the menu.
                 </p>
-                <span className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-[color:var(--ob-brand)] px-5 py-2.5 text-[1.02rem] font-medium text-[color:var(--ob-brand)]">
+                <span className="mt-[15px] inline-flex items-center gap-[8px] rounded-full border border-[color:var(--ob-brand)] px-[15px] py-[8px] text-[0.768rem] font-medium text-[color:var(--ob-brand)]">
                   <span aria-hidden>▤</span> Review fundamentals
                 </span>
 
-                <div className="flex flex-wrap items-baseline gap-6 pt-7">
+                <div className="flex flex-wrap items-baseline gap-[18px] pt-[21px]">
                   {["24 Hours", "7 Days", "30 Days"].map((range, index) => (
                     <span
                       key={range}
                       className={cn(
-                        "text-[1.05rem]",
+                        "text-[0.791rem]",
                         index === 0
-                          ? "border-b-2 border-[color:var(--ob-brand)] pb-1 font-medium text-[color:var(--ob-brand)]"
+                          ? "border-b-2 border-[color:var(--ob-brand)] pb-[3px] font-medium text-[color:var(--ob-brand)]"
                           : "text-[color:var(--ob-fg-soft)]",
                       )}
                     >
                       {range}
                     </span>
                   ))}
-                  <span className="ml-auto text-[0.92rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
+                  <span className="ml-auto text-[0.693rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
                     15 February — 16 February
                   </span>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-[12px]">
                   {METRICS.map((metric) => (
                     <div
                       key={metric.id}
-                      className="grid items-center gap-6 border-t border-[color:var(--ob-border)] py-5 sm:grid-cols-[210px_minmax(0,1fr)]"
+                      className="grid items-center gap-[18px] border-t border-[color:var(--ob-border)] py-[15px] sm:grid-cols-[210px_minmax(0,1fr)]"
                     >
                       <div>
-                        <p className="text-[1.08rem]">{metric.label}</p>
-                        <p className="pt-1 text-[1.9rem] font-bold leading-none tabular-nums">
+                        <p className="text-[0.813rem]">{metric.label}</p>
+                        <p className="pt-[3px] text-[1.431rem] font-bold leading-none tabular-nums">
                           {metric.value}
                         </p>
                       </div>
@@ -227,19 +227,19 @@ export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverv
                 </div>
               </div>
 
-              <aside className="grid content-start gap-7">
+              <aside className="grid content-start gap-[21px]">
                 <section>
-                  <h2 className="pb-3 text-[1.5rem] font-normal">DNS</h2>
-                  <p className="flex items-center gap-2 pb-3 text-[1.08rem]">
+                  <h2 className="pb-[9px] text-[1.13rem] font-normal">DNS</h2>
+                  <p className="flex items-center gap-[6px] pb-[9px] text-[0.813rem]">
                     DNS Setup: Full <InfoDot />
                   </p>
-                  <p className="border-t border-[color:var(--ob-border)] pt-3 text-[1.08rem] font-medium text-[color:var(--ob-brand)] underline">
+                  <p className="border-t border-[color:var(--ob-border)] pt-[9px] text-[0.813rem] font-medium text-[color:var(--ob-brand)] underline">
                     DNS Records
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="pb-4 text-[1.5rem] font-normal">Quick Actions</h2>
+                  <h2 className="pb-[12px] text-[1.13rem] font-normal">Quick Actions</h2>
                   {[
                     {
                       id: "attack",
@@ -256,55 +256,55 @@ export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverv
                   ].map((row) => (
                     <div
                       key={row.id}
-                      className="flex items-start gap-5 border-b border-[color:var(--ob-border)] py-4"
+                      className="flex items-start gap-[15px] border-b border-[color:var(--ob-border)] py-[12px]"
                     >
                       <div className="flex-1">
-                        <h3 className="text-[1.12rem] font-medium">{row.title}</h3>
-                        <p className="pt-1.5 text-[1.02rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+                        <h3 className="text-[0.843rem] font-medium">{row.title}</h3>
+                        <p className="pt-[5px] text-[0.768rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
                           {row.body}
                         </p>
-                        <p className="pt-2 text-[1.02rem] font-medium text-[color:var(--ob-brand)] underline">
+                        <p className="pt-[6px] text-[0.768rem] font-medium text-[color:var(--ob-brand)] underline">
                           {row.link}{" "}
-                          <span aria-hidden className="text-[0.85rem]">
+                          <span aria-hidden className="text-[0.64rem]">
                             ↗
                           </span>
                         </p>
                       </div>
                       {/* Off states the word: the knob carries an explicit ✕. */}
-                      <span className="mt-1 grid h-7 w-14 shrink-0 grid-cols-2 items-center rounded-full bg-[color:var(--ob-surface-3)] px-1">
-                        <span className="size-5 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
+                      <span className="mt-[3px] grid h-[21px] w-[42px] shrink-0 grid-cols-2 items-center rounded-full bg-[color:var(--ob-surface-3)] px-[3px]">
+                        <span className="size-[15px] rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
                         <span
                           aria-hidden
-                          className="text-center text-[0.72rem] text-[color:var(--ob-fg-soft)]"
+                          className="text-center text-[0.542rem] text-[color:var(--ob-fg-soft)]"
                         >
                           ✕
                         </span>
                       </span>
                     </div>
                   ))}
-                  <p className="pt-4 text-[1.08rem] font-medium text-[color:var(--ob-brand)] underline">
+                  <p className="pt-[12px] text-[0.813rem] font-medium text-[color:var(--ob-brand)] underline">
                     Run speed test
                   </p>
-                  <p className="pt-3 text-[1.08rem] font-medium text-[color:var(--ob-brand)] underline">
+                  <p className="pt-[9px] text-[0.813rem] font-medium text-[color:var(--ob-brand)] underline">
                     Configure caching
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="pb-3 text-[1.5rem] font-normal">Domain Registration</h2>
-                  <p className="text-[1.08rem]">Registrar: Unknown</p>
-                  <p className="pt-3 text-[1.08rem] font-medium text-[color:var(--ob-brand)] underline">
+                  <h2 className="pb-[9px] text-[1.13rem] font-normal">Domain Registration</h2>
+                  <p className="text-[0.813rem]">Registrar: Unknown</p>
+                  <p className="pt-[9px] text-[0.813rem] font-medium text-[color:var(--ob-brand)] underline">
                     Transfer to us
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="pb-3 text-[1.5rem] font-normal">Active Subscriptions</h2>
-                  <p className="flex items-center gap-3 text-[1.08rem]">
+                  <h2 className="pb-[9px] text-[1.13rem] font-normal">Active Subscriptions</h2>
+                  <p className="flex items-center gap-[9px] text-[0.813rem]">
                     <span className="flex-1 font-medium text-[color:var(--ob-brand)] underline">
                       Billing
                     </span>
-                    <span className="text-[1rem] text-[color:var(--ob-muted)]">
+                    <span className="text-[0.753rem] text-[color:var(--ob-muted)]">
                       Next bill: March 14, 2025
                     </span>
                   </p>
@@ -322,7 +322,7 @@ function InfoDot(): ReactNode {
   return (
     <span
       aria-hidden
-      className="grid size-[15px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.6rem] text-[color:var(--ob-muted)]"
+      className="grid size-[11px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.452rem] text-[color:var(--ob-muted)]"
     >
       i
     </span>
@@ -346,7 +346,7 @@ function DottedArea({ points }: { points: number[] }) {
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
-      className="h-[110px] w-full"
+      className="h-[83px] w-full"
       preserveAspectRatio="none"
       role="img"
       aria-label="Metric over the selected window"

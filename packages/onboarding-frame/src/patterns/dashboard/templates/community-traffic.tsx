@@ -95,75 +95,75 @@ export function CommunityTrafficTemplate({
   return (
     <Surface tokens={communityTokens} className={className}>
       <Shell className="flex-col">
-        <header className="flex h-14 shrink-0 items-center gap-3 border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-4">
-          <span aria-hidden className="text-[1.15rem]">
+        <header className="flex h-[42px] shrink-0 items-center gap-[9px] border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[12px]">
+          <span aria-hidden className="text-[0.869rem]">
             ☰
           </span>
-          <span className="flex items-center gap-2">
-            <LogoSlot size={26} label="" radius={13} />
-            <WordmarkSlot width={64} height={15} label="" />
+          <span className="flex items-center gap-[6px]">
+            <LogoSlot size={20} label="" radius={10} />
+            <WordmarkSlot width={48} height={11} label="" />
           </span>
-          <span className="flex items-center gap-2 pl-3 text-[0.95rem] font-medium">
-            <LogoSlot size={22} label="" radius={11} />
+          <span className="flex items-center gap-[6px] pl-[9px] text-[0.718rem] font-medium">
+            <LogoSlot size={17} label="" radius={8} />
             r/Acme_Mods
-            <span aria-hidden className="text-[0.7rem] opacity-50">
+            <span aria-hidden className="text-[0.529rem] opacity-50">
               ⌄
             </span>
           </span>
 
-          <div className="mx-auto flex w-full max-w-[640px] items-center gap-2 rounded-full bg-[color:var(--ob-surface-2)] px-3 py-2">
+          <div className="mx-auto flex w-full max-w-[484px] items-center gap-[6px] rounded-full bg-[color:var(--ob-surface-2)] px-[9px] py-[6px]">
             <span aria-hidden className="text-[color:var(--ob-muted)]">
               ⌕
             </span>
             {/* The scoped-search pill lives inside the field in the reference. */}
-            <span className="flex items-center gap-1.5 rounded-full bg-[color-mix(in_oklab,#0079d3_16%,transparent)] px-2 py-0.5 text-[0.85rem] font-medium text-[color:var(--ob-brand)]">
-              <LogoSlot size={16} label="" radius={8} />
+            <span className="flex items-center gap-[5px] rounded-full bg-[color-mix(in_oklab,#0079d3_16%,transparent)] px-[6px] py-[2px] text-[0.642rem] font-medium text-[color:var(--ob-brand)]">
+              <LogoSlot size={12} label="" radius={6} />
               r/Acme_Mods
               <span aria-hidden>⊗</span>
             </span>
-            <span className="text-[0.92rem] text-[color:var(--ob-muted)]">
+            <span className="text-[0.695rem] text-[color:var(--ob-muted)]">
               Search Reddit
             </span>
           </div>
 
-          <span className="flex items-center gap-3 text-[color:var(--ob-fg-soft)]">
+          <span className="flex items-center gap-[9px] text-[color:var(--ob-fg-soft)]">
             {["↗", "©", "◫", "⛉", "💬", "⌾", "+"].map((glyph, index) => (
               <span key={index} aria-hidden>
                 {glyph}
               </span>
             ))}
           </span>
-          <span className="flex items-center gap-1.5 rounded-full bg-[color:var(--ob-surface-2)] px-3 py-1.5 text-[0.88rem] font-semibold">
+          <span className="flex items-center gap-[5px] rounded-full bg-[color:var(--ob-surface-2)] px-[9px] py-[5px] text-[0.665rem] font-semibold">
             <span aria-hidden>◔</span> Advertise
           </span>
-          <span className="flex items-center gap-2 pl-1">
-            <AvatarSlot size={30} />
+          <span className="flex items-center gap-[6px] pl-[3px]">
+            <AvatarSlot size={23} />
             <span className="leading-tight">
-              <span className="block text-[0.85rem] font-medium">Mod_Account</span>
-              <span className="block text-[0.76rem] text-[color:var(--ob-muted)]">
+              <span className="block text-[0.642rem] font-medium">Mod_Account</span>
+              <span className="block text-[0.574rem] text-[color:var(--ob-muted)]">
                 ⚙ 1 karma
               </span>
             </span>
-            <span aria-hidden className="text-[0.7rem] opacity-50">
+            <span aria-hidden className="text-[0.529rem] opacity-50">
               ⌄
             </span>
           </span>
         </header>
 
-        <div className="flex items-center gap-2 border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-4 py-2.5 text-[0.78rem] font-bold uppercase tracking-wide">
-          <LogoSlot size={20} label="" radius={10} />
+        <div className="flex items-center gap-[6px] border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[12px] py-[8px] text-[0.59rem] font-bold uppercase tracking-wide">
+          <LogoSlot size={15} label="" radius={8} />
           <span className="text-[color:var(--ob-cta-bg)]">r/Acme_Mods</span>
           <span className="text-[color:var(--ob-muted)]">/</span>
           <span>Traffic stats</span>
         </div>
 
-        <div className="flex min-h-0 flex-1">
-          <Sidebar width={390} bg="var(--ob-surface)">
-            <div className="grid gap-1 py-3">
+        <div className="flex min-h-[0px] flex-1">
+          <Sidebar width={295} bg="var(--ob-surface)">
+            <div className="grid gap-[3px] py-[9px]">
               {GROUPS.map((group) => (
                 <div key={group.label}>
-                  <p className="flex items-center gap-2.5 px-6 pb-1 pt-4 text-[0.78rem] font-bold uppercase tracking-wide text-[color:var(--ob-muted)]">
-                    <span aria-hidden className="text-[0.95rem] opacity-80">
+                  <p className="flex items-center gap-[8px] px-[18px] pb-[3px] pt-[12px] text-[0.59rem] font-bold uppercase tracking-wide text-[color:var(--ob-muted)]">
+                    <span aria-hidden className="text-[0.718rem] opacity-80">
                       {group.glyph}
                     </span>
                     {group.label}
@@ -176,20 +176,20 @@ export function CommunityTrafficTemplate({
                         type="button"
                         aria-current={active ? "page" : undefined}
                         className={cn(
-                          "flex w-full items-center gap-2 py-2.5 pl-6 pr-5 text-left text-[1rem]",
+                          "flex w-full items-center gap-[6px] py-[8px] pl-[18px] pr-[15px] text-left text-[0.756rem]",
                           active
-                            ? "border-l-[3px] border-[color:var(--ob-cta-bg)] bg-[color:var(--ob-surface-2)] pl-[calc(1.5rem-3px)] font-medium"
+                            ? "border-l-[2px] border-[color:var(--ob-cta-bg)] bg-[color:var(--ob-surface-2)] pl-[calc(1.5rem-3px)] font-medium"
                             : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
                         )}
                       >
                         <span className="flex-1">{item.label}</span>
                         {"badge" in item && item.badge && (
-                          <span className="rounded-[2px] bg-[color:var(--ob-cta-bg)] px-1.5 py-0.5 text-[0.7rem] font-bold text-white">
+                          <span className="rounded-[2px] bg-[color:var(--ob-cta-bg)] px-[5px] py-[2px] text-[0.529rem] font-bold text-white">
                             {item.badge}
                           </span>
                         )}
                         {"external" in item && item.external && (
-                          <span aria-hidden className="text-[0.85rem] opacity-50">
+                          <span aria-hidden className="text-[0.642rem] opacity-50">
                             ↗
                           </span>
                         )}
@@ -206,21 +206,21 @@ export function CommunityTrafficTemplate({
             </div>
           </Sidebar>
 
-          <Main className="overflow-auto p-6">
-            <h1 className="pb-4 text-[1.35rem] font-bold">
+          <Main className="overflow-auto p-[18px]">
+            <h1 className="pb-[12px] text-[1.02rem] font-bold">
               Traffic Stats{" "}
-              <span className="text-[1rem] font-normal text-[color:var(--ob-muted)]">
+              <span className="text-[0.756rem] font-normal text-[color:var(--ob-muted)]">
                 updating every hour
               </span>
             </h1>
 
-            <section className="rounded-[var(--ob-radius-lg)] bg-[color:var(--ob-surface)] p-6">
-              <nav className="flex gap-6 pb-6">
+            <section className="rounded-[var(--ob-radius-lg)] bg-[color:var(--ob-surface)] p-[18px]">
+              <nav className="flex gap-[18px] pb-[18px]">
                 {["Pageviews", "Uniques", "Members"].map((tab, index) => (
                   <span
                     key={tab}
                     className={cn(
-                      "pb-1 text-[1.05rem] font-semibold",
+                      "pb-[3px] text-[0.794rem] font-semibold",
                       index === 0
                         ? "border-b-2 border-[color:var(--ob-brand)] text-[color:var(--ob-brand)]"
                         : "",
@@ -231,7 +231,7 @@ export function CommunityTrafficTemplate({
                 ))}
               </nav>
 
-              <div className="grid gap-4 pb-8 sm:grid-cols-3">
+              <div className="grid gap-[12px] pb-[24px] sm:grid-cols-3">
                 {[
                   { value: "21", label: "Total - last 24 hours" },
                   { value: "21", label: "Total - last 7 days" },
@@ -239,29 +239,29 @@ export function CommunityTrafficTemplate({
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-5 py-4"
+                    className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[15px] py-[12px]"
                   >
-                    <p className="text-[2rem] font-normal tabular-nums leading-none">
+                    <p className="text-[1.512rem] font-normal tabular-nums leading-none">
                       {stat.value}
                     </p>
-                    <p className="pt-2 text-[0.78rem] font-bold uppercase tracking-wide text-[color:var(--ob-muted)]">
+                    <p className="pt-[6px] text-[0.59rem] font-bold uppercase tracking-wide text-[color:var(--ob-muted)]">
                       {stat.label}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="flex gap-8">
+              <div className="flex gap-[24px]">
                 <RuledChart />
-                <ul className="grid content-start gap-3 pt-6">
+                <ul className="grid content-start gap-[9px] pt-[18px]">
                   {PLATFORMS.map((platform) => (
-                    <li key={platform.id} className="flex items-center gap-3">
+                    <li key={platform.id} className="flex items-center gap-[9px]">
                       <span
                         aria-hidden
-                        className="size-4 rounded-[2px]"
+                        className="size-[12px] rounded-[2px]"
                         style={{ background: platform.color }}
                       />
-                      <span className="text-[1rem] text-[color:var(--ob-fg-soft)]">
+                      <span className="text-[0.756rem] text-[color:var(--ob-fg-soft)]">
                         {platform.label}
                       </span>
                     </li>
@@ -269,30 +269,30 @@ export function CommunityTrafficTemplate({
                 </ul>
               </div>
 
-              <div className="flex items-center gap-4 pt-4">
-                <span aria-hidden className="text-[1.3rem]">
+              <div className="flex items-center gap-[12px] pt-[12px]">
+                <span aria-hidden className="text-[0.983rem]">
                   ←
                 </span>
-                <span className="mx-auto flex items-center gap-4 text-[1rem] font-semibold">
+                <span className="mx-auto flex items-center gap-[12px] text-[0.756rem] font-semibold">
                   <span>Hour</span>
-                  <span className="rounded bg-[color-mix(in_oklab,#0079d3_12%,transparent)] px-2 py-0.5 text-[color:var(--ob-brand)]">
+                  <span className="rounded bg-[color-mix(in_oklab,#0079d3_12%,transparent)] px-[6px] py-[2px] text-[color:var(--ob-brand)]">
                     Day
                   </span>
                   <span>Month</span>
                 </span>
-                <span aria-hidden className="text-[1.3rem] opacity-30">
+                <span aria-hidden className="text-[0.983rem] opacity-30">
                   →
                 </span>
               </div>
             </section>
 
-            <section className="mt-5 rounded-[var(--ob-radius-lg)] bg-[color:var(--ob-surface)] p-6">
-              <nav className="flex gap-6 pb-5">
+            <section className="mt-[15px] rounded-[var(--ob-radius-lg)] bg-[color:var(--ob-surface)] p-[18px]">
+              <nav className="flex gap-[18px] pb-[15px]">
                 {["Day", "Day of week", "Month"].map((tab, index) => (
                   <span
                     key={tab}
                     className={cn(
-                      "pb-1 text-[1.05rem] font-semibold",
+                      "pb-[3px] text-[0.794rem] font-semibold",
                       index === 0
                         ? "border-b-2 border-[color:var(--ob-brand)] text-[color:var(--ob-brand)]"
                         : "",
@@ -303,12 +303,12 @@ export function CommunityTrafficTemplate({
                 ))}
               </nav>
 
-              <table className="w-full border-collapse text-[1rem]">
+              <table className="w-full border-collapse text-[0.756rem]">
                 <thead>
-                  <tr className="bg-[color:var(--ob-surface-2)] text-[0.78rem] font-bold uppercase tracking-wide text-[color:var(--ob-fg-soft)]">
+                  <tr className="bg-[color:var(--ob-surface-2)] text-[0.59rem] font-bold uppercase tracking-wide text-[color:var(--ob-fg-soft)]">
                     <Th>
                       Day{" "}
-                      <span aria-hidden className="pl-1 text-[0.7rem]">
+                      <span aria-hidden className="pl-[3px] text-[0.529rem]">
                         ▾
                       </span>
                     </Th>
@@ -338,7 +338,7 @@ export function CommunityTrafficTemplate({
 
 function Th({ children }: { children: ReactNode }) {
   return (
-    <th className="border border-[color:var(--ob-border)] px-5 py-3 text-left font-bold">
+    <th className="border border-[color:var(--ob-border)] px-[15px] py-[9px] text-left font-bold">
       {children}
     </th>
   );
@@ -346,7 +346,7 @@ function Th({ children }: { children: ReactNode }) {
 
 function Td({ children }: { children: ReactNode }) {
   return (
-    <td className="border border-[color:var(--ob-border)] px-5 py-3.5 tabular-nums">
+    <td className="border border-[color:var(--ob-border)] px-[15px] py-[11px] tabular-nums">
       {children}
     </td>
   );
@@ -369,19 +369,19 @@ function RuledChart() {
     points.map((value, i) => `${i === 0 ? "M" : "L"}${i * step},${y(value)}`).join(" ");
 
   return (
-    <div className="flex min-w-0 flex-1 gap-3">
+    <div className="flex min-w-[0px] flex-1 gap-[9px]">
       <span className="flex items-center">
         <span
-          className="whitespace-nowrap text-[0.85rem] font-bold text-[color:var(--ob-fg-soft)]"
+          className="whitespace-nowrap text-[0.642rem] font-bold text-[color:var(--ob-fg-soft)]"
           style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
           Pageviews
         </span>
       </span>
 
-      <div className="min-w-0 flex-1">
+      <div className="min-w-[0px] flex-1">
         <div className="flex">
-          <div className="grid shrink-0 pr-2 text-right text-[0.82rem] tabular-nums text-[color:var(--ob-fg-soft)]">
+          <div className="grid shrink-0 pr-[6px] text-right text-[0.62rem] tabular-nums text-[color:var(--ob-fg-soft)]">
             {[25, 20, 15, 10, 5, 0].map((tick, index) => (
               <span
                 key={tick}
@@ -394,7 +394,7 @@ function RuledChart() {
 
           <svg
             viewBox={`0 0 ${width} ${height}`}
-            className="h-[350px] min-w-0 flex-1"
+            className="h-[265px] min-w-[0px] flex-1"
             preserveAspectRatio="none"
             role="img"
             aria-label="Pageviews per day"
@@ -441,12 +441,12 @@ function RuledChart() {
           </svg>
         </div>
 
-        <div className="flex pl-[1.9rem] pt-2">
+        <div className="flex pl-[1.436rem] pt-[6px]">
           {DAYS.map((day, index) => (
             <span
               key={day}
               className={cn(
-                "flex-1 text-[0.82rem] text-[color:var(--ob-fg-soft)]",
+                "flex-1 text-[0.62rem] text-[color:var(--ob-fg-soft)]",
                 index === 0
                   ? "text-left"
                   : index === DAYS.length - 1

@@ -60,77 +60,77 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
   return (
     <Surface tokens={listingTokens} className={className}>
       <Shell>
-        <Sidebar width={340} bg="var(--ob-surface)">
-          <div className="flex items-center gap-3 px-6 pb-4 pt-5">
-            <h2 className="flex-1 text-[1.35rem] font-bold">Shop Manager</h2>
-            <span aria-hidden className="text-[1.2rem]">
+        <Sidebar width={256} bg="var(--ob-surface)">
+          <div className="flex items-center gap-[9px] px-[18px] pb-[12px] pt-[15px]">
+            <h2 className="flex-1 text-[1.016rem] font-bold">Shop Manager</h2>
+            <span aria-hidden className="text-[0.903rem]">
               ☰
             </span>
           </div>
 
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid gap-[2px] px-[9px]">
             {NAV.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
                 glyph={item.glyph}
-                className="rounded-[var(--ob-radius-sm)] text-[1.05rem]"
+                className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
               />
             ))}
           </nav>
 
-          <div className="px-3 pt-1">
+          <div className="px-[9px] pt-[3px]">
             <NavItem
               label="Stats"
               glyph="▥"
               active
               trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
+                <span aria-hidden className="text-[0.527rem] opacity-50">
                   ⌃
                 </span>
               }
-              className="rounded-[var(--ob-radius-sm)] text-[1.05rem]"
+              className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
             />
           </div>
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid gap-[2px] px-[9px]">
             {STATS_CHILDREN.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
                 indent
                 active={item.id === page}
-                className="rounded-[var(--ob-radius-sm)] text-[1.05rem]"
+                className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
               />
             ))}
           </nav>
 
-          <nav className="grid gap-0.5 px-3 pt-1">
+          <nav className="grid gap-[2px] px-[9px] pt-[3px]">
             <NavItem
               label="Customer service stats"
               glyph="✷"
-              className="rounded-[var(--ob-radius-sm)] text-[1.05rem]"
+              className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
             />
             <NavItem
               label="Policy violations"
               glyph="⚑"
-              className="rounded-[var(--ob-radius-sm)] text-[1.05rem]"
+              className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
             />
             <NavItem
               label="Marketing"
               glyph="📣"
               trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
+                <span aria-hidden className="text-[0.527rem] opacity-50">
                   ⌃
                 </span>
               }
-              className="rounded-[var(--ob-radius-sm)] text-[1.05rem]"
+              className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
             />
             {MARKETING_CHILDREN.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
                 indent
-                className="rounded-[var(--ob-radius-sm)] text-[1.05rem]"
+                className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
               />
             ))}
             {[
@@ -145,22 +145,22 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
                 glyph={item.glyph}
                 trailing={
                   item.caret ? (
-                    <span aria-hidden className="text-[0.7rem] opacity-50">
+                    <span aria-hidden className="text-[0.527rem] opacity-50">
                       ⌄
                     </span>
                   ) : undefined
                 }
-                className="rounded-[var(--ob-radius-sm)] text-[1.05rem]"
+                className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
               />
             ))}
           </nav>
 
-          <p className="px-6 pb-2 pt-6 text-[0.92rem] text-[color:var(--ob-muted)]">
+          <p className="px-[18px] pb-[6px] pt-[18px] text-[0.692rem] text-[color:var(--ob-muted)]">
             Sales channels
           </p>
-          <div className="flex items-center gap-3 px-6">
-            <LogoSlot size={26} label="" radius={4} />
-            <span className="min-w-0 flex-1 text-[1rem] leading-snug">
+          <div className="flex items-center gap-[9px] px-[18px]">
+            <LogoSlot size={20} label="" radius={3} />
+            <span className="min-w-[0px] flex-1 text-[0.752rem] leading-snug">
               HomemadeGoodsByAlex
             </span>
             <span aria-hidden className="text-[color:var(--ob-muted)]">
@@ -168,17 +168,17 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
             </span>
           </div>
 
-          <div className="mt-auto flex items-center gap-3 border-t border-[color:var(--ob-border)] px-6 py-4">
-            <AvatarSlot size={32} />
-            <span className="flex-1 text-[1.05rem]">Alex</span>
-            <span aria-hidden className="text-[0.7rem] opacity-50">
+          <div className="mt-auto flex items-center gap-[9px] border-t border-[color:var(--ob-border)] px-[18px] py-[12px]">
+            <AvatarSlot size={24} />
+            <span className="flex-1 text-[0.79rem]">Alex</span>
+            <span aria-hidden className="text-[0.527rem] opacity-50">
               ⌃
             </span>
           </div>
         </Sidebar>
 
-        <Main className="overflow-auto px-10 py-7">
-          <p className="flex items-center gap-2 text-[1rem]">
+        <Main className="overflow-auto px-[30px] py-[21px]">
+          <p className="flex items-center gap-[6px] text-[0.752rem]">
             <span className="underline">Stats</span>
             <span aria-hidden className="text-[color:var(--ob-muted)]">
               ›
@@ -186,51 +186,51 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
             <span className="text-[color:var(--ob-fg-soft)]">Listing stats</span>
           </p>
 
-          <h1 className="pt-3 text-[1.9rem] font-bold">Listing stats</h1>
+          <h1 className="pt-[9px] text-[1.43rem] font-bold">Listing stats</h1>
 
-          <span className="mt-5 inline-flex items-center gap-2 rounded-full border border-[color:var(--ob-fg)] px-5 py-3 text-[1.05rem]">
+          <span className="mt-[15px] inline-flex items-center gap-[6px] rounded-full border border-[color:var(--ob-fg)] px-[15px] py-[9px] text-[0.79rem]">
             <span className="font-bold">Date Range</span>
             Last 7 Days: Mar 01 - Mar 07
-            <span aria-hidden className="text-[0.7rem]">
+            <span aria-hidden className="text-[0.527rem]">
               ▾
             </span>
           </span>
 
-          <section className="mt-7 rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-6">
-            <div className="flex gap-7">
-              <Placeholder width={228} height={182} radius={8} label="Listing photo" />
-              <div className="min-w-0 flex-1">
-                <div className="flex items-start gap-5">
-                  <h2 className="flex-1 text-[1.5rem] font-bold leading-snug">
+          <section className="mt-[21px] rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[18px]">
+            <div className="flex gap-[21px]">
+              <Placeholder width={172} height={137} radius={6} label="Listing photo" />
+              <div className="min-w-[0px] flex-1">
+                <div className="flex items-start gap-[15px]">
+                  <h2 className="flex-1 text-[1.129rem] font-bold leading-snug">
                     Natural Thyme, Red Pepper, Pul Biber Spice Blend | Cooking Seasoning
                   </h2>
-                  <span className="shrink-0 rounded-full border border-[color:var(--ob-fg)] px-5 py-2.5 text-[1rem] font-medium">
+                  <span className="shrink-0 rounded-full border border-[color:var(--ob-fg)] px-[15px] py-[8px] text-[0.752rem] font-medium">
                     View item
                   </span>
                 </div>
 
-                <div className="grid gap-2 pt-6 sm:grid-cols-2">
-                  <p className="text-[1.05rem]">
+                <div className="grid gap-[6px] pt-[18px] sm:grid-cols-2">
+                  <p className="text-[0.79rem]">
                     <span className="text-[color:var(--ob-fg-soft)]">Price:</span> $7.99 -
                     $10.99
                   </p>
-                  <p className="text-[1.05rem]">
+                  <p className="text-[0.79rem]">
                     <span className="text-[color:var(--ob-fg-soft)]">Status:</span> Inactive
                   </p>
-                  <p className="text-[1.05rem]">
+                  <p className="text-[0.79rem]">
                     <span className="text-[color:var(--ob-fg-soft)]">Current stock:</span>{" "}
                     100
                   </p>
                 </div>
 
-                <div className="mt-6 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-5">
-                  <div className="flex items-start gap-4">
+                <div className="mt-[18px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[15px]">
+                  <div className="flex items-start gap-[12px]">
                     <h3 className="flex-1 font-bold">Improvement Suggestions</h3>
-                    <span className="shrink-0 text-[1rem] underline">Edit listing</span>
+                    <span className="shrink-0 text-[0.752rem] underline">Edit listing</span>
                   </div>
-                  <ul className="list-disc pl-5 pt-3">
+                  <ul className="list-disc pl-[15px] pt-[9px]">
                     {SUGGESTIONS.map((suggestion) => (
-                      <li key={suggestion} className="pt-1 text-[1.02rem] leading-relaxed">
+                      <li key={suggestion} className="pt-[3px] text-[0.767rem] leading-relaxed">
                         {suggestion}
                       </li>
                     ))}
@@ -240,7 +240,7 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
             </div>
           </section>
 
-          <section className="mt-5 grid rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] sm:grid-cols-3">
+          <section className="mt-[15px] grid rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] sm:grid-cols-3">
             <MetricCell
               label="Visits"
               value="5"
@@ -264,20 +264,20 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
             />
           </section>
 
-          <section className="mt-7 grid gap-8 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)]">
+          <section className="mt-[21px] grid gap-[24px] lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)]">
             <div>
-              <h2 className="text-[1.35rem] font-bold">Explore your data</h2>
-              <p className="max-w-[40ch] pt-2 text-[1.02rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+              <h2 className="text-[1.016rem] font-bold">Explore your data</h2>
+              <p className="max-w-[40ch] pt-[6px] text-[0.767rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
                 How many visits result in an order? Look for trends and relationships
                 between your numbers.
               </p>
             </div>
 
-            <div className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-5">
-              <div className="flex flex-wrap items-center gap-4">
+            <div className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[15px]">
+              <div className="flex flex-wrap items-center gap-[12px]">
                 <Picker label="Total views" value="5" color="#e8734a" />
                 <Picker label="Orders" value="1" color="#4aa8d8" />
-                <span className="ml-auto flex items-center gap-1.5 text-[0.95rem] text-[color:var(--ob-muted)]">
+                <span className="ml-auto flex items-center gap-[5px] text-[0.715rem] text-[color:var(--ob-muted)]">
                   <span aria-hidden>🕐</span> Updated Just now
                 </span>
               </div>
@@ -311,27 +311,27 @@ function MetricCell({
     ) + ` L${width},${height} L0,${height} Z`;
 
   return (
-    <div className="border-l border-[color:var(--ob-border)] px-6 py-5 first:border-l-0">
-      <div className="flex items-center gap-2">
-        <span className="text-[0.88rem] font-bold uppercase tracking-wide underline">
+    <div className="border-l border-[color:var(--ob-border)] px-[18px] py-[15px] first:border-l-0">
+      <div className="flex items-center gap-[6px]">
+        <span className="text-[0.662rem] font-bold uppercase tracking-wide underline">
           {label}
         </span>
-        <span className="text-[0.88rem] text-[color:var(--ob-muted)] underline">
+        <span className="text-[0.662rem] text-[color:var(--ob-muted)] underline">
           --% YoY
         </span>
-        <span className="ml-auto flex items-center gap-1.5 text-[0.92rem] text-[color:var(--ob-muted)]">
+        <span className="ml-auto flex items-center gap-[5px] text-[0.692rem] text-[color:var(--ob-muted)]">
           <span aria-hidden>🕐</span> Just now
         </span>
       </div>
 
-      <p className="pt-2 text-[2.2rem] font-bold leading-none tabular-nums">{value}</p>
+      <p className="pt-[6px] text-[1.655rem] font-bold leading-none tabular-nums">{value}</p>
 
-      <div className="pt-5">
-        <p className="text-[0.92rem] text-[color:var(--ob-muted)]">{axis}</p>
+      <div className="pt-[15px]">
+        <p className="text-[0.692rem] text-[color:var(--ob-muted)]">{axis}</p>
         <div className="border-t border-[color:var(--ob-border)]">
           <svg
             viewBox={`0 0 ${width} ${height}`}
-            className="h-[120px] w-full"
+            className="h-[90px] w-full"
             preserveAspectRatio="none"
             role="img"
             aria-label={`${label} over the last seven days`}
@@ -339,14 +339,14 @@ function MetricCell({
             <path d={area} fill={color} />
           </svg>
         </div>
-        <p className="flex pt-2 text-[0.92rem] text-[color:var(--ob-muted)]">
+        <p className="flex pt-[6px] text-[0.692rem] text-[color:var(--ob-muted)]">
           <span className="flex-1">01 Mar</span>
           <span>07 Mar</span>
         </p>
       </div>
 
-      <p className="flex items-center gap-2.5 pt-4 text-[1rem]">
-        <span aria-hidden className="size-3 rounded-full" style={{ background: color }} />
+      <p className="flex items-center gap-[8px] pt-[12px] text-[0.752rem]">
+        <span aria-hidden className="size-[9px] rounded-full" style={{ background: color }} />
         <span className="flex-1">Marketplace</span>
         <span>{legend}</span>
       </p>
@@ -364,19 +364,19 @@ function Picker({
   color: string;
 }): ReactNode {
   return (
-    <span className="inline-flex min-w-[170px] items-center gap-6 rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-fg)] px-5 py-3">
+    <span className="inline-flex min-w-[128px] items-center gap-[18px] rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-fg)] px-[15px] py-[9px]">
       <span>
         <span
-          className="block text-[0.82rem] font-bold uppercase tracking-wide"
+          className="block text-[0.617rem] font-bold uppercase tracking-wide"
           style={{ color }}
         >
           {label}
         </span>
-        <span className="block pt-0.5 text-[1.6rem] font-bold leading-none tabular-nums">
+        <span className="block pt-[2px] text-[1.204rem] font-bold leading-none tabular-nums">
           {value}
         </span>
       </span>
-      <span aria-hidden className={cn("ml-auto text-[0.7rem] opacity-60")}>
+      <span aria-hidden className={cn("ml-auto text-[0.527rem] opacity-60")}>
         ⌄
       </span>
     </span>

@@ -61,41 +61,41 @@ export function AudienceAnalyticsTemplate({
     <Surface tokens={audienceTokens} className={className}>
       <Shell className="flex-col">
         {/* The brand appears as a band, not as a button colour. */}
-        <span className="h-1.5 shrink-0 bg-[color:var(--ob-cta-bg)]" />
+        <span className="h-[5px] shrink-0 bg-[color:var(--ob-cta-bg)]" />
 
-        <header className="flex h-[70px] shrink-0 items-center gap-4 border-b border-[color:var(--ob-border)] px-6">
-          <LogoSlot size={38} label="" radius={19} />
-          <div className="mx-auto flex w-full max-w-[790px] items-center gap-2.5 rounded-full border border-[color:var(--ob-border-strong)] px-5 py-3 text-[1.05rem] text-[color:var(--ob-fg-soft)]">
+        <header className="flex h-[53px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[18px]">
+          <LogoSlot size={29} label="" radius={14} />
+          <div className="mx-auto flex w-full max-w-[594px] items-center gap-[8px] rounded-full border border-[color:var(--ob-border-strong)] px-[15px] py-[9px] text-[0.789rem] text-[color:var(--ob-fg-soft)]">
             <span aria-hidden>⌕</span> Search
           </div>
-          <span className="flex items-center gap-3">
-            <span className="flex items-center gap-2 rounded-full bg-[color-mix(in_oklab,#ffe01b_35%,white)] px-4 py-2.5 text-[1rem] font-medium">
+          <span className="flex items-center gap-[9px]">
+            <span className="flex items-center gap-[6px] rounded-full bg-[color-mix(in_oklab,#ffe01b_35%,white)] px-[12px] py-[8px] text-[0.751rem] font-medium">
               <span aria-hidden className="text-[color:var(--ob-success)]">
                 ●
               </span>
               Live expert help
             </span>
-            <AvatarSlot size={38} />
+            <AvatarSlot size={29} />
           </span>
         </header>
 
-        <div className="flex min-h-0 flex-1">
-          <Sidebar width={350} bg="var(--ob-surface)" className="border-r-0">
-            <div className="px-5 pb-5 pt-5">
-              <span className="flex items-center justify-center gap-2.5 rounded-full border border-[color:var(--ob-fg)] py-3.5 text-[1.1rem] font-medium">
+        <div className="flex min-h-[0px] flex-1">
+          <Sidebar width={263} bg="var(--ob-surface)" className="border-r-0">
+            <div className="px-[15px] pb-[15px] pt-[15px]">
+              <span className="flex items-center justify-center gap-[8px] rounded-full border border-[color:var(--ob-fg)] py-[11px] text-[0.826rem] font-medium">
                 <span aria-hidden>✎</span> Create
               </span>
             </div>
 
-            <nav className="grid gap-0.5 px-3">
+            <nav className="grid gap-[2px] px-[9px]">
               {NAV.map((item) => (
                 <NavItem
                   key={item.id}
                   label={
                     item.badge ? (
-                      <span className="flex items-center gap-2">
+                      <span className="flex items-center gap-[6px]">
                         {item.label}
-                        <span className="rounded bg-[color-mix(in_oklab,#8b5cf6_16%,transparent)] px-1.5 py-0.5 text-[0.76rem] font-semibold text-[#6d3fd4]">
+                        <span className="rounded bg-[color-mix(in_oklab,#8b5cf6_16%,transparent)] px-[5px] py-[2px] text-[0.571rem] font-semibold text-[#6d3fd4]">
                           {item.badge}
                         </span>
                       </span>
@@ -105,11 +105,11 @@ export function AudienceAnalyticsTemplate({
                   }
                   glyph={item.glyph}
                   trailing={
-                    <span aria-hidden className="text-[0.7rem] opacity-50">
+                    <span aria-hidden className="text-[0.526rem] opacity-50">
                       ⌄
                     </span>
                   }
-                  className="text-[1.08rem]"
+                  className="text-[0.811rem]"
                 />
               ))}
 
@@ -118,11 +118,11 @@ export function AudienceAnalyticsTemplate({
                 glyph="▥"
                 active
                 trailing={
-                  <span aria-hidden className="text-[0.7rem] opacity-50">
+                  <span aria-hidden className="text-[0.526rem] opacity-50">
                     ⌃
                   </span>
                 }
-                className="text-[1.08rem]"
+                className="text-[0.811rem]"
               />
               {ANALYTICS_CHILDREN.map((item) => (
                 <NavItem
@@ -130,7 +130,7 @@ export function AudienceAnalyticsTemplate({
                   label={item.label}
                   indent
                   active={item.id === page}
-                  className="text-[1.05rem]"
+                  className="text-[0.789rem]"
                 />
               ))}
 
@@ -140,29 +140,29 @@ export function AudienceAnalyticsTemplate({
                   label={item.label}
                   glyph={item.glyph}
                   trailing={
-                    <span aria-hidden className="text-[0.7rem] opacity-50">
+                    <span aria-hidden className="text-[0.526rem] opacity-50">
                       ⌄
                     </span>
                   }
-                  className="text-[1.08rem]"
+                  className="text-[0.811rem]"
                 />
               ))}
             </nav>
 
-            <span aria-hidden className="mt-auto px-6 pb-6 text-[color:var(--ob-fg-soft)]">
+            <span aria-hidden className="mt-auto px-[18px] pb-[18px] text-[color:var(--ob-fg-soft)]">
               ◫
             </span>
           </Sidebar>
 
           <Main className="overflow-auto bg-[color:var(--ob-surface-2)]">
-            <header className="flex items-center gap-4 border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-10 py-5">
+            <header className="flex items-center gap-[12px] border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[30px] py-[15px]">
               <h1
-                className="flex-1 text-[2rem] font-bold tracking-[-0.01em]"
+                className="flex-1 text-[1.503rem] font-bold tracking-[-0.01em]"
                 style={{ fontFamily: "var(--ob-font-display)" }}
               >
                 Audience analytics
               </h1>
-              <span className="text-[1.05rem] font-medium text-[color:var(--ob-brand)]">
+              <span className="text-[0.789rem] font-medium text-[color:var(--ob-brand)]">
                 Manage contacts
               </span>
             </header>
@@ -170,65 +170,65 @@ export function AudienceAnalyticsTemplate({
             {page === "dashboard" ? (
               <AudienceDashboard />
             ) : (
-            <div className="grid gap-6 p-8">
-              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-8 pb-6 pt-5">
-                <div className="flex flex-wrap items-center justify-center gap-7 pb-4">
+            <div className="grid gap-[18px] p-[24px]">
+              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[24px] pb-[18px] pt-[15px]">
+                <div className="flex flex-wrap items-center justify-center gap-[21px] pb-[12px]">
                   {[
                     { label: "Subscribed", color: "#7a9a3e" },
                     { label: "Unsubscribed", color: "#c9d97a" },
                     { label: "Non-subscribed", color: "#9dc5e8" },
                   ].map((item) => (
-                    <span key={item.label} className="flex items-center gap-2.5">
+                    <span key={item.label} className="flex items-center gap-[8px]">
                       <span
                         aria-hidden
-                        className="h-2 w-5 rounded-full"
+                        className="h-[6px] w-[15px] rounded-full"
                         style={{ background: item.color }}
                       />
-                      <span className="text-[1rem] text-[color:var(--ob-fg-soft)]">
+                      <span className="text-[0.751rem] text-[color:var(--ob-fg-soft)]">
                         {item.label}
                       </span>
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-center gap-6 border-b border-[color:var(--ob-border)] pb-5 text-[1.05rem]">
+                <div className="flex items-center justify-center gap-[18px] border-b border-[color:var(--ob-border)] pb-[15px] text-[0.789rem]">
                   <span className="tabular-nums">0 - 16 of 30</span>
-                  <span className="flex items-center gap-1.5 text-[color:var(--ob-fg-soft)]">
+                  <span className="flex items-center gap-[5px] text-[color:var(--ob-fg-soft)]">
                     <span aria-hidden>‹</span> Previous
                   </span>
-                  <span className="flex items-center gap-1.5 font-medium text-[color:var(--ob-brand)]">
+                  <span className="flex items-center gap-[5px] font-medium text-[color:var(--ob-brand)]">
                     Next <span aria-hidden>›</span>
                   </span>
                 </div>
 
-                <p className="pt-5 text-[1.02rem] text-[color:var(--ob-fg-soft)]">
+                <p className="pt-[15px] text-[0.766rem] text-[color:var(--ob-fg-soft)]">
                   Note: This new way of viewing your subscriber data by channel was
                   launched April 1, 2024
                 </p>
               </section>
 
-              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-8 py-7">
+              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[24px] py-[21px]">
                 <h2
-                  className="text-[2rem] font-bold tracking-[-0.01em]"
+                  className="text-[1.503rem] font-bold tracking-[-0.01em]"
                   style={{ fontFamily: "var(--ob-font-display)" }}
                 >
                   What&apos;s changed
                 </h2>
-                <p className="pt-1 text-[1.05rem] text-[color:var(--ob-fg-soft)]">
+                <p className="pt-[3px] text-[0.789rem] text-[color:var(--ob-fg-soft)]">
                   Jul 7, 2024 - Aug 5, 2024
                 </p>
 
-                <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-[color:var(--ob-border)] pt-6">
+                <div className="mt-[18px] flex flex-wrap items-center gap-[12px] border-t border-[color:var(--ob-border)] pt-[18px]">
                   {/* Dotted underline marks a term with a definition on hover. */}
-                  <h3 className="flex-1 border-b-2 border-dotted border-[color:var(--ob-brand)] pb-0.5 text-[1.25rem] font-medium">
+                  <h3 className="flex-1 border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[0.939rem] font-medium">
                     Total net subscriptions growth
                   </h3>
-                  <span className="inline-flex rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] p-1">
+                  <span className="inline-flex rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] p-[3px]">
                     {["Day", "Week", "Month"].map((range, index) => (
                       <span
                         key={range}
                         className={cn(
-                          "px-6 py-2 text-[1.05rem]",
+                          "px-[18px] py-[6px] text-[0.789rem]",
                           index === 0
                             ? "rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface)] font-medium shadow-[0_1px_3px_rgba(0,0,0,0.12)]"
                             : "border-l border-[color:var(--ob-border)] text-[color:var(--ob-fg-soft)]",
@@ -240,15 +240,15 @@ export function AudienceAnalyticsTemplate({
                   </span>
                 </div>
 
-                <p className="flex items-center gap-4 pt-5">
-                  <span className="text-[1.7rem] font-bold tabular-nums">4</span>
+                <p className="flex items-center gap-[12px] pt-[15px]">
+                  <span className="text-[1.277rem] font-bold tabular-nums">4</span>
                   <span
                     aria-hidden
-                    className="grid size-8 place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[color:var(--ob-muted)]"
+                    className="grid size-[24px] place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[color:var(--ob-muted)]"
                   >
                     --
                   </span>
-                  <span className="text-[1.05rem] text-[color:var(--ob-fg-soft)]">
+                  <span className="text-[0.789rem] text-[color:var(--ob-fg-soft)]">
                     compared to last year
                   </span>
                 </p>
@@ -260,9 +260,9 @@ export function AudienceAnalyticsTemplate({
           </Main>
 
           {/* A feedback tab pinned to the window edge, rotated in place. */}
-          <span className="hidden shrink-0 items-start pt-40 xl:flex">
+          <span className="hidden shrink-0 items-start pt-[120px] xl:flex">
             <span
-              className="rounded-l-[var(--ob-radius-sm)] bg-[color:var(--ob-surface-2)] px-2 py-5 text-[0.92rem] text-[color:var(--ob-fg-soft)]"
+              className="rounded-l-[var(--ob-radius-sm)] bg-[color:var(--ob-surface-2)] px-[6px] py-[15px] text-[0.691rem] text-[color:var(--ob-fg-soft)]"
               style={{ writingMode: "vertical-rl" }}
             >
               Feedback
@@ -285,8 +285,8 @@ function GrowthChart() {
   ).join(" ");
 
   return (
-    <div className="flex gap-3 pt-5">
-      <div className="grid shrink-0 pr-1 text-right text-[0.95rem] tabular-nums text-[color:var(--ob-fg-soft)]">
+    <div className="flex gap-[9px] pt-[15px]">
+      <div className="grid shrink-0 pr-[3px] text-right text-[0.714rem] tabular-nums text-[color:var(--ob-fg-soft)]">
         {[4, 3, 2, 1, 0].map((tick, index) => (
           <span
             key={tick}
@@ -297,10 +297,10 @@ function GrowthChart() {
         ))}
       </div>
 
-      <div className="min-w-0 flex-1">
+      <div className="min-w-[0px] flex-1">
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="h-[360px] w-full"
+          className="h-[270px] w-full"
           preserveAspectRatio="none"
           role="img"
           aria-label="Net subscriptions per day"
@@ -346,11 +346,11 @@ function GrowthChart() {
           ))}
         </svg>
 
-        <div className="flex pt-3">
+        <div className="flex pt-[9px]">
           {DAYS.map((day) => (
             <span
               key={day}
-              className="flex-1 whitespace-nowrap text-[0.8rem] text-[color:var(--ob-fg-soft)]"
+              className="flex-1 whitespace-nowrap text-[0.601rem] text-[color:var(--ob-fg-soft)]"
               style={{ transform: "rotate(-45deg)", transformOrigin: "left top" }}
             >
               {day}
@@ -358,13 +358,13 @@ function GrowthChart() {
           ))}
         </div>
 
-        <p className="flex items-center justify-end gap-2.5 pt-12 text-[1rem]">
-          <span aria-hidden className="h-0.5 w-5 bg-[color:var(--ob-success)]" />
+        <p className="flex items-center justify-end gap-[8px] pt-[36px] text-[0.751rem]">
+          <span aria-hidden className="h-[2px] w-[15px] bg-[color:var(--ob-success)]" />
           <span
             aria-hidden
-            className="-ml-4 size-2.5 rounded-full bg-[color:var(--ob-success)]"
+            className="-ml-[12px] size-[8px] rounded-full bg-[color:var(--ob-success)]"
           />
-          <span className="pl-1">Main list</span>
+          <span className="pl-[3px]">Main list</span>
         </p>
       </div>
     </div>
@@ -388,34 +388,34 @@ const SOURCES = [
  */
 function AudienceDashboard() {
   return (
-    <div className="grid gap-6 p-8">
-      <div className="grid gap-6 lg:grid-cols-2">
+    <div className="grid gap-[18px] p-[24px]">
+      <div className="grid gap-[18px] lg:grid-cols-2">
         <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
           {SOURCES.map((source, index) => (
             <div
               key={source.id}
               className={cn(
-                "flex items-center gap-5 px-7 py-6",
+                "flex items-center gap-[15px] px-[21px] py-[18px]",
                 index > 0 && "border-t border-[color:var(--ob-border)]",
               )}
             >
               <span
                 aria-hidden
-                className="size-3.5 shrink-0 rounded-full"
+                className="size-[11px] shrink-0 rounded-full"
                 style={{ background: source.color }}
               />
-              <span className="w-[5.5rem] shrink-0 text-[2rem] font-bold tabular-nums leading-none">
+              <span className="w-[4.132rem] shrink-0 text-[1.503rem] font-bold tabular-nums leading-none">
                 {source.pct}
               </span>
-              <span className="min-w-0 flex-1">
-                <span className="block text-[1.1rem] font-semibold">{source.name}</span>
+              <span className="min-w-[0px] flex-1">
+                <span className="block text-[0.826rem] font-semibold">{source.name}</span>
                 {source.sub && (
-                  <span className="block text-[1rem] text-[color:var(--ob-fg-soft)]">
+                  <span className="block text-[0.751rem] text-[color:var(--ob-fg-soft)]">
                     {source.sub}
                   </span>
                 )}
               </span>
-              <span aria-hidden className="text-[1.15rem] text-[color:var(--ob-fg-soft)]">
+              <span aria-hidden className="text-[0.864rem] text-[color:var(--ob-fg-soft)]">
                 ➤
               </span>
             </div>
@@ -426,48 +426,48 @@ function AudienceDashboard() {
       </div>
 
       <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
-        <div className="border-b border-[color:var(--ob-border)] px-7 py-6">
-          <h2 className="flex flex-wrap items-center gap-3">
-            <span aria-hidden className="text-[1.3rem]">
+        <div className="border-b border-[color:var(--ob-border)] px-[21px] py-[18px]">
+          <h2 className="flex flex-wrap items-center gap-[9px]">
+            <span aria-hidden className="text-[0.977rem]">
               🔮
             </span>
-            <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-0.5 text-[1.75rem] font-medium text-[color:var(--ob-brand)]">
+            <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[1.315rem] font-medium text-[color:var(--ob-brand)]">
               Predicted demographics
             </span>
-            <span className="rounded-full bg-[color-mix(in_oklab,#7a9a3e_18%,transparent)] px-3 py-1 text-[0.95rem] font-medium text-[#4d661f]">
+            <span className="rounded-full bg-[color-mix(in_oklab,#7a9a3e_18%,transparent)] px-[9px] py-[3px] text-[0.714rem] font-medium text-[#4d661f]">
               Paid feature
             </span>
           </h2>
-          <p className="pt-2 text-[1.08rem] text-[color:var(--ob-fg-soft)]">
+          <p className="pt-[6px] text-[0.811rem] text-[color:var(--ob-fg-soft)]">
             Your contacts broken down by their predicted gender and age.
           </p>
         </div>
 
-        <div className="grid justify-items-center px-7 py-14 text-center">
-          <Placeholder width={190} height={190} radius={12} label="" />
+        <div className="grid justify-items-center px-[21px] py-[42px] text-center">
+          <Placeholder width={143} height={143} radius={9} label="" />
           <h3
-            className="pt-6 text-[2rem] font-bold tracking-[-0.01em]"
+            className="pt-[18px] text-[1.503rem] font-bold tracking-[-0.01em]"
             style={{ fontFamily: "var(--ob-font-display)" }}
           >
             Know your people even better
           </h3>
-          <p className="pt-3 text-[1.15rem] text-[color:var(--ob-fg-soft)]">
+          <p className="pt-[9px] text-[0.864rem] text-[color:var(--ob-fg-soft)]">
             Send targeted campaigns based on your contacts&rsquo; demographics.
           </p>
-          <span className="mt-6 rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] px-6 py-3 text-[1.05rem] font-semibold text-white">
+          <span className="mt-[18px] rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] px-[18px] py-[9px] text-[0.789rem] font-semibold text-white">
             Upgrade Now
           </span>
         </div>
       </section>
 
       <h2
-        className="pt-2 text-[2rem] font-bold tracking-[-0.01em]"
+        className="pt-[6px] text-[1.503rem] font-bold tracking-[-0.01em]"
         style={{ fontFamily: "var(--ob-font-display)" }}
       >
         Engagement
       </h2>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-[18px] lg:grid-cols-2">
         {[
           {
             id: "email",
@@ -484,17 +484,17 @@ function AudienceDashboard() {
         ].map((card) => (
           <section
             key={card.id}
-            className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-7 py-6"
+            className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[21px] py-[18px]"
           >
-            <h3 className="flex items-center gap-3">
-              <span aria-hidden className="text-[1.2rem]">
+            <h3 className="flex items-center gap-[9px]">
+              <span aria-hidden className="text-[0.902rem]">
                 {card.glyph}
               </span>
-              <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-0.5 text-[1.5rem] font-medium text-[color:var(--ob-brand)]">
+              <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[1.127rem] font-medium text-[color:var(--ob-brand)]">
                 {card.title}
               </span>
             </h3>
-            <p className="pt-3 text-[1.08rem] text-[color:var(--ob-fg-soft)]">
+            <p className="pt-[9px] text-[0.811rem] text-[color:var(--ob-fg-soft)]">
               {card.body}
             </p>
           </section>

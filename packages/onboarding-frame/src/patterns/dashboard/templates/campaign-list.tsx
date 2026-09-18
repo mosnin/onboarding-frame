@@ -127,47 +127,47 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
   return (
     <Surface tokens={campaignTokens} className={className}>
       <Shell className="flex-col">
-        <span className="h-1.5 shrink-0 bg-[#f6821f]" />
+        <span className="h-[5px] shrink-0 bg-[#f6821f]" />
 
-        <div className="flex min-h-0 flex-1">
-          <Sidebar width={68} bg="var(--ob-surface)" className="items-center">
+        <div className="flex min-h-[0px] flex-1">
+          <Sidebar width={53} bg="var(--ob-surface)" className="items-center">
             <span
               aria-hidden
-              className="mt-4 grid size-10 place-items-center rounded-[var(--ob-radius)] bg-[color-mix(in_oklab,#3ecf8e_20%,transparent)] text-[1.1rem]"
+              className="mt-[13px] grid size-[31px] place-items-center rounded-[var(--ob-radius)] bg-[color-mix(in_oklab,#3ecf8e_20%,transparent)] text-[0.863rem]"
             >
               ⌘
             </span>
             <span
               aria-hidden
-              className="mt-3 grid size-10 place-items-center text-[1.1rem] text-[color:var(--ob-muted)]"
+              className="mt-[9px] grid size-[31px] place-items-center text-[0.863rem] text-[color:var(--ob-muted)]"
             >
               ✳
             </span>
           </Sidebar>
 
-          <Sidebar width={285} bg="var(--ob-surface)">
-            <div className="flex items-center gap-3 px-5 pb-4 pt-5">
-              <h2 className="flex-1 text-[1.3rem] font-bold">Journeys</h2>
+          <Sidebar width={224} bg="var(--ob-surface)">
+            <div className="flex items-center gap-[9px] px-[16px] pb-[13px] pt-[16px]">
+              <h2 className="flex-1 text-[1.02rem] font-bold">Journeys</h2>
               <span aria-hidden className="text-[color:var(--ob-muted)]">
                 «
               </span>
             </div>
 
-            <nav className="grid gap-0.5 px-3">
+            <nav className="grid gap-[2px] px-[9px]">
               {NAV.map((item) => (
                 <NavItem
                   key={item.id}
                   label={item.label}
                   glyph={item.glyph}
                   active={item.id === page}
-                  className="text-[1.02rem]"
+                  className="text-[0.8rem]"
                 />
               ))}
             </nav>
 
-            <div className="mx-5 my-4 border-t border-[color:var(--ob-border)]" />
+            <div className="mx-[16px] my-[13px] border-t border-[color:var(--ob-border)]" />
 
-            <nav className="grid gap-0.5 px-3">
+            <nav className="grid gap-[2px] px-[9px]">
               {DATA_NAV.map((item) => (
                 <NavItem
                   key={item.id}
@@ -175,47 +175,47 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                   glyph={item.glyph}
                   trailing={
                     item.caret ? (
-                      <span aria-hidden className="text-[0.7rem] opacity-50">
+                      <span aria-hidden className="text-[0.549rem] opacity-50">
                         ⌄
                       </span>
                     ) : undefined
                   }
-                  className="text-[1.02rem]"
+                  className="text-[0.8rem]"
                 />
               ))}
             </nav>
 
-            <div className="mx-5 my-4 border-t border-[color:var(--ob-border)]" />
+            <div className="mx-[16px] my-[13px] border-t border-[color:var(--ob-border)]" />
 
-            <nav className="grid gap-0.5 px-3">
+            <nav className="grid gap-[2px] px-[9px]">
               <NavItem
                 label="Content"
                 glyph="▦"
                 trailing={
-                  <span aria-hidden className="text-[0.7rem] opacity-50">
+                  <span aria-hidden className="text-[0.549rem] opacity-50">
                     ⌄
                   </span>
                 }
-                className="text-[1.02rem]"
+                className="text-[0.8rem]"
               />
             </nav>
           </Sidebar>
 
           <Main className="overflow-auto">
-            <header className="flex h-[70px] shrink-0 items-center gap-4 bg-[#16232a] px-6 text-white">
-              <span className="flex items-center gap-2.5 text-[1.05rem]">
+            <header className="flex h-[55px] shrink-0 items-center gap-[13px] bg-[#16232a] px-[19px] text-white">
+              <span className="flex items-center gap-[8px] text-[0.824rem]">
                 acme.com production
-                <span aria-hidden className="text-[0.7rem] opacity-60">
+                <span aria-hidden className="text-[0.549rem] opacity-60">
                   ⇅
                 </span>
               </span>
-              <span className="ml-auto flex items-center gap-5 text-[1.02rem]">
-                <span className="flex items-center gap-2">
+              <span className="ml-auto flex items-center gap-[16px] text-[0.8rem]">
+                <span className="flex items-center gap-[6px]">
                   <span aria-hidden>?</span> Need help?
                 </span>
                 <span className="relative" aria-hidden>
                   ⌾
-                  <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-[#3ecf8e]" />
+                  <span className="absolute -right-[2px] -top-[2px] size-[6px] rounded-full bg-[#3ecf8e]" />
                 </span>
                 <span aria-hidden>💬</span>
                 <span aria-hidden>⚙</span>
@@ -223,27 +223,27 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
               </span>
             </header>
 
-            <div className="px-8 py-6">
-              <div className="flex items-center gap-4">
-                <h1 className="flex-1 text-[2rem] font-bold tracking-[-0.01em]">
+            <div className="px-[25px] py-[19px]">
+              <div className="flex items-center gap-[13px]">
+                <h1 className="flex-1 text-[1.569rem] font-bold tracking-[-0.01em]">
                   Campaigns
                 </h1>
-                <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-cta-bg)] px-5 py-3 text-[1.05rem] font-semibold text-white">
+                <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-cta-bg)] px-[16px] py-[9px] text-[0.824rem] font-semibold text-white">
                   Create Campaign
                 </span>
               </div>
 
-              <div className="grid gap-5 pt-5 sm:grid-cols-2 xl:grid-cols-5">
+              <div className="grid gap-[16px] pt-[16px] sm:grid-cols-2 xl:grid-cols-5">
                 {FILTERS.map((filter) => (
                   <div key={filter.id}>
-                    <p className="pb-1.5 text-[0.85rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
+                    <p className="pb-[5px] text-[0.667rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
                       {filter.label}
                     </p>
-                    <span className="flex items-center gap-2.5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-2.5 text-[1rem] text-[color:var(--ob-muted)]">
+                    <span className="flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[11px] py-[8px] text-[0.784rem] text-[color:var(--ob-muted)]">
                       {filter.search && <span aria-hidden>⌕</span>}
                       <span className="flex-1 truncate">{filter.control}</span>
                       {!filter.search && (
-                        <span aria-hidden className="text-[0.7rem] opacity-60">
+                        <span aria-hidden className="text-[0.549rem] opacity-60">
                           ⌄
                         </span>
                       )}
@@ -252,7 +252,7 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                 ))}
               </div>
 
-              <nav className="flex gap-7 border-b border-[color:var(--ob-border)] pt-6">
+              <nav className="flex gap-[22px] border-b border-[color:var(--ob-border)] pt-[19px]">
                 {[
                   { id: "active", label: "Active", count: "24", on: true },
                   { id: "archived", label: "Archived", count: "0" },
@@ -260,31 +260,31 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                   <span
                     key={tab.id}
                     className={cn(
-                      "-mb-px flex items-center gap-2.5 pb-3 text-[1.08rem]",
+                      "-mb-px flex items-center gap-[8px] pb-[9px] text-[0.847rem]",
                       tab.on
                         ? "border-b-2 border-[color:var(--ob-brand)] font-semibold"
                         : "text-[color:var(--ob-fg-soft)]",
                     )}
                   >
                     {tab.label}
-                    <span className="rounded bg-[color:var(--ob-surface-3)] px-2 py-0.5 text-[0.9rem] font-medium">
+                    <span className="rounded bg-[color:var(--ob-surface-3)] px-[6px] py-[2px] text-[0.706rem] font-medium">
                       {tab.count}
                     </span>
                   </span>
                 ))}
               </nav>
 
-              <div className="flex flex-wrap items-center gap-4 py-5">
-                <h2 className="text-[1.2rem] font-bold">24 Campaigns</h2>
-                <span className="flex items-center gap-1.5 text-[1rem] text-[color:var(--ob-muted)]">
+              <div className="flex flex-wrap items-center gap-[13px] py-[16px]">
+                <h2 className="text-[0.941rem] font-bold">24 Campaigns</h2>
+                <span className="flex items-center gap-[5px] text-[0.784rem] text-[color:var(--ob-muted)]">
                   Metric definitions <InfoDot glyph="?" />
                 </span>
-                <span className="flex items-center gap-2.5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[1rem]">
+                <span className="flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[11px] py-[6px] text-[0.784rem]">
                   <span aria-hidden>🗓</span> Mar 11, 2024 - Apr 09, 2024
                 </span>
-                <span className="flex items-center gap-6 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[1rem]">
+                <span className="flex items-center gap-[19px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[11px] py-[6px] text-[0.784rem]">
                   Delivered
-                  <span aria-hidden className="text-[0.7rem] opacity-60">
+                  <span aria-hidden className="text-[0.549rem] opacity-60">
                     ▾
                   </span>
                 </span>
@@ -293,19 +293,19 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                 </span>
                 <span
                   aria-hidden
-                  className="grid size-9 place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)]"
+                  className="grid size-[28px] place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)]"
                 >
                   ▥
                 </span>
-                <span className="ml-auto text-[1rem]">
+                <span className="ml-auto text-[0.784rem]">
                   1 – 20 <span className="text-[color:var(--ob-muted)]">of 24</span>
                 </span>
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-center gap-[5px]">
                   {["|‹", "‹", "›", "›|"].map((glyph) => (
                     <span
                       key={glyph}
                       aria-hidden
-                      className="grid size-9 place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] text-[0.9rem]"
+                      className="grid size-[28px] place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] text-[0.706rem]"
                     >
                       {glyph}
                     </span>
@@ -314,7 +314,7 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
               </div>
 
               <div className="overflow-x-auto rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)]">
-                <div className="grid min-w-[1100px] grid-cols-[minmax(0,1.5fr)_150px_repeat(4,minmax(0,0.75fr))_70px] border-b border-[color:var(--ob-border)] px-5 py-3 text-[0.88rem] font-semibold uppercase tracking-wide">
+                <div className="grid min-w-[863px] grid-cols-[minmax(0,1.5fr)_150px_repeat(4,minmax(0,0.75fr))_70px] border-b border-[color:var(--ob-border)] px-[16px] py-[9px] text-[0.69rem] font-semibold uppercase tracking-wide">
                   <span>Name ⌄</span>
                   <span />
                   <span className="text-right text-[color:var(--ob-brand)]">
@@ -331,64 +331,64 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                 {CAMPAIGNS.map((campaign) => (
                   <div
                     key={campaign.id}
-                    className="grid min-w-[1100px] grid-cols-[minmax(0,1.5fr)_150px_repeat(4,minmax(0,0.75fr))_70px] items-start border-b border-[color:var(--ob-border)] px-5 py-5 last:border-b-0"
+                    className="grid min-w-[863px] grid-cols-[minmax(0,1.5fr)_150px_repeat(4,minmax(0,0.75fr))_70px] items-start border-b border-[color:var(--ob-border)] px-[16px] py-[16px] last:border-b-0"
                   >
                     <div>
-                      <p className="flex items-center gap-3">
+                      <p className="flex items-center gap-[9px]">
                         <span aria-hidden className="text-[color:var(--ob-muted)]">
                           ⌾
                         </span>
-                        <span className="text-[1.12rem] font-semibold text-[color:var(--ob-brand)]">
+                        <span className="text-[0.878rem] font-semibold text-[color:var(--ob-brand)]">
                           {campaign.name}
                         </span>
                         {campaign.note && (
                           <span
                             aria-hidden
-                            className="grid size-6 place-items-center rounded-full bg-[color-mix(in_oklab,#e8c33d_35%,transparent)] text-[0.7rem]"
+                            className="grid size-[19px] place-items-center rounded-full bg-[color-mix(in_oklab,#e8c33d_35%,transparent)] text-[0.549rem]"
                           >
                             ▤
                           </span>
                         )}
                       </p>
-                      <p className="flex items-center gap-5 pl-8 pt-2 text-[1rem] text-[color:var(--ob-fg-soft)]">
-                        <span className="flex items-center gap-1.5 tabular-nums">
+                      <p className="flex items-center gap-[16px] pl-[25px] pt-[6px] text-[0.784rem] text-[color:var(--ob-fg-soft)]">
+                        <span className="flex items-center gap-[5px] tabular-nums">
                           {campaign.emails} <span aria-hidden>✉</span>
                         </span>
-                        <span className="flex items-center gap-1.5 tabular-nums">
+                        <span className="flex items-center gap-[5px] tabular-nums">
                           {campaign.timers} <span aria-hidden>⏱</span>
                         </span>
                       </p>
                       {campaign.more && (
-                        <p className="pl-8 pt-2 text-[1rem] font-medium text-[color:var(--ob-brand)] underline">
+                        <p className="pl-[25px] pt-[6px] text-[0.784rem] font-medium text-[color:var(--ob-brand)] underline">
                           {campaign.more}
                         </p>
                       )}
                     </div>
 
-                    <div className="pl-4 pt-0.5">
-                      <span className="rounded bg-[color-mix(in_oklab,#2f9e5f_16%,transparent)] px-2.5 py-1 text-[0.95rem] font-medium text-[#1f7a48]">
+                    <div className="pl-[13px] pt-[2px]">
+                      <span className="rounded bg-[color-mix(in_oklab,#2f9e5f_16%,transparent)] px-[8px] py-[3px] text-[0.745rem] font-medium text-[#1f7a48]">
                         ● Running
                       </span>
                     </div>
 
                     {[0, 1, 2, 3].map((index) => (
-                      <div key={index} className="pl-4 text-right">
+                      <div key={index} className="pl-[13px] text-right">
                         {campaign.hidden ? (
                           // Hidden by permission, not by loading.
                           <span
                             aria-label="Hidden"
-                            className="ml-auto block h-4 w-16 rounded bg-[color:var(--ob-surface-3)] blur-[3px]"
+                            className="ml-auto block h-[13px] w-[50px] rounded bg-[color:var(--ob-surface-3)] blur-[2px]"
                           />
                         ) : (
-                          <span className="text-[1.05rem] tabular-nums">
+                          <span className="text-[0.824rem] tabular-nums">
                             {campaign.values?.[index]}
                           </span>
                         )}
-                        <span className="mt-3 block">
+                        <span className="mt-[9px] block">
                           <Sparkline
                             points={campaign.series[index]!}
                             color="#4a4ad6"
-                            height={30}
+                            height={24}
                           />
                         </span>
                       </div>
@@ -396,7 +396,7 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
 
                     <span
                       aria-hidden
-                      className="ml-auto grid size-9 place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)]"
+                      className="ml-auto grid size-[28px] place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)]"
                     >
                       ···
                     </span>
@@ -415,7 +415,7 @@ function InfoDot({ glyph = "i" }: { glyph?: string }): ReactNode {
   return (
     <span
       aria-hidden
-      className="grid size-[16px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.62rem] font-normal normal-case"
+      className="grid size-[13px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.486rem] font-normal normal-case"
     >
       {glyph}
     </span>
