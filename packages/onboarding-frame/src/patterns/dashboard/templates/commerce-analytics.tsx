@@ -6,26 +6,46 @@ import { cn } from "../../../lib/cn";
 import { Surface, commerceTokens } from "./tokens";
 import { Btn, Card, Main, Select, Shell, Sidebar, TopBar } from "./chrome";
 import type { TemplateProps } from "./props";
+import {
+  BarChartIcon,
+  BellIcon,
+  CalendarIcon,
+  ChevronRight,
+  FileIcon,
+  Icon,
+  MoreIcon,
+  SearchIcon,
+  SettingsIcon,
+  Sparkle,
+  SwapIcon,
+  type IconName,
+} from "../../../ui/icons";
 
-const NAV = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "orders", label: "Orders", glyph: "🧾", badge: "4" },
-  { id: "products", label: "Products", glyph: "🏷" },
-  { id: "customers", label: "Customers", glyph: "👤" },
-  { id: "growth", label: "Growth", glyph: "📈" },
-  { id: "discounts", label: "Discounts", glyph: "％" },
-  { id: "content", label: "Content", glyph: "▤" },
-  { id: "markets", label: "Markets", glyph: "🌐" },
-  { id: "finance", label: "Finance", glyph: "🏛" },
-  { id: "analytics", label: "Analytics", glyph: "📊", active: true },
+const NAV: {
+  id: string;
+  label: string;
+  icon: IconName;
+  badge?: string;
+  active?: boolean;
+}[] = [
+  { id: "home", label: "Home", icon: "home" },
+  { id: "orders", label: "Orders", icon: "receipt", badge: "4" },
+  { id: "products", label: "Products", icon: "tag" },
+  { id: "customers", label: "Customers", icon: "user" },
+  { id: "growth", label: "Growth", icon: "trendUp" },
+  { id: "discounts", label: "Discounts", icon: "coins" },
+  { id: "content", label: "Content", icon: "file" },
+  { id: "markets", label: "Markets", icon: "globe" },
+  { id: "finance", label: "Finance", icon: "bank" },
+  { id: "analytics", label: "Analytics", icon: "barChart", active: true },
 ];
 
 const SUB = ["Reports", "Live view"];
 
-const CHANNELS = [
-  { id: "store", label: "Online store", glyph: "🛍" },
-  { id: "agent", label: "Agentic", glyph: "✳" },
-  { id: "pos", label: "Point of sale", glyph: "🏪" },
+const CHANNELS: { id: string; label: string; icon: IconName }[] = [
+  { id: "store", label: "Online store", icon: "store" },
+  { id: "agent", label: "Agentic", icon: "sparkle" },
+  { id: "pos", label: "Point of sale", icon: "creditCard" },
 ];
 
 const KPIS = [
@@ -64,20 +84,24 @@ export function CommerceAnalyticsTemplate({
       <Shell className={cn("flex-col", className)}>
         <TopBar bg="#1a1a1a" border={false} className="text-white">
           <div className="flex items-center gap-2">
-            <Placeholder width={26} height={26} radius={6} glyph="▦" />
+            <Placeholder width={26} height={26} radius={6} />
             <span className="font-bold">{brandName}</span>
             <span className="rounded border border-white/25 px-1.5 py-0.5 text-[0.7rem]">
               Spring &apos;26
             </span>
           </div>
           <div className="mx-auto hidden w-full max-w-[720px] items-center gap-2 rounded-[8px] bg-white/10 px-3 py-2 text-[0.88rem] text-white/60 md:flex">
-            <span aria-hidden>⌕</span>
+            <SearchIcon width={16} height={16} />
             <span className="flex-1">Search</span>
             <kbd className="rounded border border-white/25 px-1.5 text-[0.68rem]">⌘K</kbd>
           </div>
           <div className="flex items-center gap-3 text-white/80">
-            <button type="button" aria-label="Assistant">✳</button>
-            <button type="button" aria-label="Notifications">⌾</button>
+            <button type="button" aria-label="Assistant">
+              <Sparkle width={18} height={18} />
+            </button>
+            <button type="button" aria-label="Notifications">
+              <BellIcon width={18} height={18} />
+            </button>
             <span className="flex items-center gap-2 rounded-[8px] bg-white/10 px-2 py-1">
               <Placeholder shape="circle" width={22} height={22} />
               <span className="text-[0.86rem] text-white">Store admin</span>
@@ -100,7 +124,7 @@ export function CommerceAnalyticsTemplate({
                       : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-3)]",
                   )}
                 >
-                  <span aria-hidden className="w-4 text-center opacity-70">{item.glyph}</span>
+                  <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-70" />
                   <span className="flex-1">{item.label}</span>
                   {item.badge && (
                     <span className="rounded bg-[color:var(--ob-surface-3)] px-1.5 text-[0.72rem] font-semibold">
@@ -130,53 +154,98 @@ export function CommerceAnalyticsTemplate({
                   type="button"
                   className="flex items-center gap-3 rounded-[8px] px-3 py-2 text-left text-[0.9rem] text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-3)]"
                 >
-                  <span aria-hidden className="w-4 text-center opacity-70">{item.glyph}</span>
+                  <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-70" />
                   {item.label}
                 </button>
               ))}
             </nav>
 
+            {/* The reference continues past the channels: an apps group, a
+                forms row carrying an unread dot, and a list of recent
+                assistant conversations. */}
+            <button
+              type="button"
+              className="flex items-center gap-1.5 px-6 pb-1 pt-5 text-left text-[0.85rem] font-semibold text-[color:var(--ob-fg-soft)]"
+            >
+              Apps <ChevronRight width={13} height={13} className="opacity-60" />
+            </button>
+            <button
+              type="button"
+              className="flex items-center gap-3 px-6 py-2 text-left text-[0.9rem] text-[color:var(--ob-fg-soft)]"
+            >
+              <FileIcon width={17} height={17} className="opacity-70" />
+              <span className="flex-1">Forms</span>
+              <span className="size-1.5 rounded-full bg-[color:var(--ob-fg-soft)]" />
+            </button>
+
+            <button
+              type="button"
+              className="flex items-center gap-1.5 px-6 pb-1 pt-6 text-left text-[0.85rem] text-[color:var(--ob-fg-soft)]"
+            >
+              Sidekick conversations
+              <ChevronRight width={13} height={13} className="opacity-60" />
+            </button>
+            <div className="grid gap-1.5 px-6 pt-1">
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  className="truncate text-[0.9rem] text-[color:var(--ob-fg-soft)]"
+                >
+                  Understanding collections in …
+                </span>
+              ))}
+            </div>
+
             <button
               type="button"
               className="mt-auto flex items-center gap-3 px-6 py-3 text-left text-[0.9rem] text-[color:var(--ob-fg-soft)]"
             >
-              <span aria-hidden>⚙</span> Settings
+              <SettingsIcon width={17} height={17} /> Settings
             </button>
           </Sidebar>
 
           <Main className="p-4 pl-0">
             <div className="flex flex-wrap items-center gap-3">
               <h1 className="flex items-center gap-2 text-[1.4rem] font-extrabold tracking-tight">
-                <span aria-hidden>📊</span> Analytics
+                <BarChartIcon width={21} height={21} /> Analytics
               </h1>
               <span className="text-[0.88rem] text-[color:var(--ob-muted)]">
                 Last refreshed: 8:55 PM
               </span>
               <div className="ml-auto flex items-center gap-2">
-                <Btn tone="neutral" size="sm">⋯</Btn>
+                <Btn tone="neutral" size="sm">
+                  <MoreIcon width={16} height={16} />
+                </Btn>
                 <Select label="Try targets" />
                 <Btn tone="dark" size="sm">New exploration</Btn>
               </div>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              <Select label="Last 30 days" glyph="🗓" />
-              <Select label="May 12 – Jun 11, 2026" glyph="🗓" />
-              <Select label="USD $" glyph="⇄" />
+              <Select label="Last 30 days" glyph={<CalendarIcon width={15} height={15} />} />
+              <Select label="May 12 – Jun 11, 2026" glyph={<CalendarIcon width={15} height={15} />} />
+              <Select label="USD $" glyph={<SwapIcon width={15} height={15} />} />
             </div>
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
               {KPIS.map((kpi) => (
-                <Card key={kpi.id} className="flex items-center gap-4">
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-[0.88rem] font-semibold underline decoration-dotted underline-offset-4">
-                      {kpi.label}
-                    </p>
-                    <p className="mt-1.5 text-[1.3rem] font-extrabold tabular-nums">
+                /*
+                  The label takes the card's full width and the value sits on
+                  the row beneath with the sparkline. Sharing one row with the
+                  sparkline left too little for "Returning customer rate",
+                  which then wrapped and pushed that card out of step with the
+                  three beside it.
+                */
+                <Card key={kpi.id}>
+                  <p className="text-[0.88rem] font-semibold underline decoration-dotted underline-offset-4">
+                    {kpi.label}
+                  </p>
+                  <div className="mt-1.5 flex items-center gap-4">
+                    <p className="flex-1 text-[1.3rem] font-extrabold tabular-nums">
                       {kpi.value} <span className="text-[color:var(--ob-muted)]">—</span>
                     </p>
+                    <Sparkline points={kpi.spark} color="var(--ob-brand)" className="w-24" />
                   </div>
-                  <Sparkline points={kpi.spark} color="var(--ob-brand)" className="w-24" />
                 </Card>
               ))}
             </div>
