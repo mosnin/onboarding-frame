@@ -19,7 +19,7 @@ import {
   Shuffle as LuShuffle, SlidersHorizontal, Sparkles, Star as LuStar, Store,
   Sun as LuSun, Table, Tag, Target, Terminal, TrendingDown, TrendingUp,
   TriangleAlert, Trash2, Trophy, Truck, Upload, User, UserPlus, Users, Video,
-  Wallet, Wand2, X, Zap,
+  Wallet, Wand2, X, Zap, VenetianMask,
 } from "lucide-react";
 
 /**
@@ -204,6 +204,7 @@ export const BriefcaseIcon = ic(Briefcase);
 export const MagnetIcon = ic(Magnet);
 export const ClipboardIcon = ic(Clipboard);
 export const GemIcon = ic(Gem);
+export const IncognitoIcon = ic(VenetianMask);
 
 /**
  * Icons addressed by name.

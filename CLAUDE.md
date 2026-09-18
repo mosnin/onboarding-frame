@@ -19,8 +19,12 @@ settings. They render in whatever font the OS supplies, so weight, size and
 baseline vary per machine and none of it resembles the reference.
 
 - Icons come from **`lucide-react`**. Nothing else.
-- Do not hand-roll an icon set. A maintained one already exists and the
-  reference products' icons look like it.
+- Do not hand-roll an icon set, and do not hand-draw individual SVG paths for
+  an icon. A maintained library already exists and the reference products'
+  icons look like it. This applies to the site chrome in `apps/web` exactly as
+  it applies to the library.
+- Drawing inline SVG is only acceptable for data visualisation (charts,
+  sparklines) and for the dotted placeholder slots — things no icon set ships.
 - Do not put emoji in body copy as decoration ("Can't wait 🧁",
   "Getting started 🚀"). If the reference has no emoji there, neither do we.
 - The only acceptable literal characters are ones the reference itself shows
