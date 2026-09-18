@@ -41,6 +41,7 @@ import {
   CheckSquare,
   Circle,
   CircleDashed,
+  CircleNotch,
   CirclesThree,
   ClipboardText,
   Clock,
@@ -59,6 +60,7 @@ import {
   FileText,
   Flag,
   FlowArrow,
+  Folder,
   FunnelSimple,
   Gear,
   GitBranch,
@@ -75,8 +77,10 @@ import {
   Lightning,
   Link,
   LinkSimple,
+  ListBullets,
   ListChecks,
   Lock,
+  LockKey,
   MagnifyingGlass,
   MapPin,
   Megaphone,
@@ -115,6 +119,7 @@ import {
   Table,
   Tag,
   Target,
+  Terminal,
   TerminalWindow,
   Ticket,
   Tree,
@@ -360,6 +365,12 @@ export const BriefcaseIcon = solid(Briefcase, "regular");
 export const HeartbeatIcon = solid(Heartbeat, "regular");
 export const PhoneIcon = solid(Phone, "regular");
 export const CaretUpDownIcon = solid(CaretUpDown, "bold", 13);
+export const TableGridIcon = solid(Table, "regular");
+export const TerminalWindowIcon = solid(Terminal, "regular");
+export const LockKeyIcon = solid(LockKey, "regular");
+export const FolderIcon = solid(Folder, "regular");
+export const ListBulletsIcon = solid(ListBullets, "regular");
+export const CircleNotchIcon = solid(CircleNotch, "regular");
 export const GitBranchIcon = solid(GitBranch, "regular");
 export const NotePencilIcon = solid(NotePencil, "regular");
 export const PlugsIcon = solid(Plugs, "regular");

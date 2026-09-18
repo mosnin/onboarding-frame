@@ -117,7 +117,7 @@ essentially empty (one dot of fill).
 
 | 21 | 077 | Reddit mod tools | community-traffic | DONE |
 | 22 | 078 | Asana goal detail | goal-tracker | DONE |
-| 23 | 079 | Supabase reports | platform-reports (dark) | DONE |
+| 23 | 079 | Supabase reports | platform-reports (dark) | REMEASURED |
 | 24 | 080 | Vercel analytics | deploy-analytics | DONE |
 | 25 | 081 | StackAI project analytics | token-usage | REMEASURED |
 
