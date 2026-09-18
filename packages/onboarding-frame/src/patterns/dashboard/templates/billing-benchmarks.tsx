@@ -2,7 +2,33 @@
 
 import type { ReactNode } from "react";
 import { cn } from "../../../lib/cn";
-import { LogoSlot, Placeholder } from "../../../ui/placeholder";
+import { Placeholder } from "../../../ui/placeholder";
+import { Avatar } from "../../../ui/avatar";
+import {
+  ArrowsLeftRightIcon,
+  ArrowsUpDownIcon,
+  ChatDotsIcon,
+  CrossIcon,
+  WarningIcon,
+  BellIcon,
+  BooksIcon,
+  CalendarIcon,
+  CaretDownIcon,
+  CaretUpIcon,
+  ChartBarIcon,
+  ClockIcon,
+  DotsThreeIcon,
+  GearIcon,
+  GridFourIcon,
+  HouseIcon,
+  MoreVerticalIcon,
+  PackageIcon,
+  QuestionIcon,
+  ReceiptIcon,
+  SearchIcon,
+  TerminalIcon,
+  UserIcon,
+} from "../../../ui/icons-solid";
 import { Surface, benchmarkTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -14,11 +40,11 @@ export interface BillingBenchmarksProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "balances", label: "Balances", glyph: "▤" },
-  { id: "transactions", label: "Transactions", glyph: "⇄" },
-  { id: "customers", label: "Customers", glyph: "👤" },
-  { id: "catalogue", label: "Product catalogue", glyph: "📦" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "balances", label: "Balances", Icon: BooksIcon },
+  { id: "transactions", label: "Transactions", Icon: ArrowsLeftRightIcon },
+  { id: "customers", label: "Customers", Icon: UserIcon },
+  { id: "catalogue", label: "Product catalogue", Icon: PackageIcon },
 ];
 
 const BILLING = [
@@ -120,41 +146,33 @@ export function BillingBenchmarksTemplate({
       <Shell>
         <Sidebar width={240} bg="var(--ob-surface)">
           <div className="flex items-center gap-[7px] px-[15px] pb-[12px] pt-[12px]">
-            <LogoSlot size={22} label="" radius={5} />
-            <span className="text-[0.824rem] font-bold">Content-acme</span>
+            <Avatar name="Content-mobbin" size={22} rounded={5} />
+            <span className="text-[0.824rem] font-bold">Content-mobbin</span>
           </div>
 
           <nav className="grid gap-[1px] px-[9px]">
             {NAV.map((item) => (
-              <NavItem key={item.id} label={item.label} glyph={item.glyph} />
+              <NavItem key={item.id} label={item.label} glyph={<item.Icon size={15} />} className="py-[3px] text-[0.8rem]" />
             ))}
           </nav>
 
-          <NavSection label="Shortcuts" />
+          <NavSection label="Shortcuts" className="normal-case tracking-normal" />
           <nav className="grid gap-[1px] px-[9px]">
-            <NavItem label="Billing overview" glyph="🕐" />
+            <NavItem label="Billing overview" glyph={<ClockIcon size={15} />} />
           </nav>
 
-          <NavSection label="Products" />
+          <NavSection label="Products" className="normal-case tracking-normal" />
           <nav className="grid gap-[1px] px-[9px]">
             <NavItem
               label="Payments"
-              glyph="▭"
-              trailing={
-                <span aria-hidden className="text-[0.524rem] opacity-50">
-                  ⌄
-                </span>
-              }
+              glyph={<ReceiptIcon size={15} />}
+              trailing={<CaretDownIcon size={10} className="text-[color:var(--ob-muted)]" />}
             />
             <NavItem
               label="Billing"
-              glyph="▥"
+              glyph={<ReceiptIcon size={15} />}
               className="text-[color:var(--ob-brand)]"
-              trailing={
-                <span aria-hidden className="text-[0.524rem] opacity-50">
-                  ⌃
-                </span>
-              }
+              trailing={<CaretUpIcon size={10} className="text-[color:var(--ob-muted)]" />}
             />
             {BILLING.map((item) => (
               <NavItem
@@ -170,26 +188,18 @@ export function BillingBenchmarksTemplate({
             ))}
             <NavItem
               label="Reporting"
-              glyph="▦"
-              trailing={
-                <span aria-hidden className="text-[0.524rem] opacity-50">
-                  ⌄
-                </span>
-              }
+              glyph={<ChartBarIcon size={15} />}
+              trailing={<CaretDownIcon size={10} className="text-[color:var(--ob-muted)]" />}
             />
             <NavItem
               label="More"
-              glyph="···"
-              trailing={
-                <span aria-hidden className="text-[0.524rem] opacity-50">
-                  ⌄
-                </span>
-              }
+              glyph={<DotsThreeIcon size={15} />}
+              trailing={<CaretDownIcon size={10} className="text-[color:var(--ob-muted)]" />}
             />
           </nav>
 
           <nav className="mt-auto grid gap-[1px] px-[9px] pb-[15px]">
-            <NavItem label="Developers" glyph="❯_" />
+            <NavItem label="Developers" glyph={<TerminalIcon size={15} />} />
           </nav>
         </Sidebar>
 
@@ -200,7 +210,7 @@ export function BillingBenchmarksTemplate({
           <>
           <header className="flex h-[48px] shrink-0 items-center gap-[12px] px-[18px]">
             <div className="flex w-full max-w-[569px] items-center gap-[7px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[12px] py-[7px] text-[0.734rem] text-[color:var(--ob-muted)]">
-              <span aria-hidden>⌕</span> Search
+              <SearchIcon size={14} /> Search
             </div>
             <span className="ml-auto flex items-center gap-[9px]">
               <span className="text-[0.734rem] font-medium">Test mode</span>
@@ -208,9 +218,9 @@ export function BillingBenchmarksTemplate({
               <span className="grid h-[18px] w-[33px] items-center rounded-full bg-[color:var(--ob-surface-3)] px-[3px]">
                 <span className="size-[12px] rounded-full bg-[color:var(--ob-surface)] shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
               </span>
-              {["▦", "?", "⌾", "⚙"].map((glyph) => (
-                <span key={glyph} aria-hidden className="text-[color:var(--ob-fg-soft)]">
-                  {glyph}
+              {[GridFourIcon, QuestionIcon, BellIcon, GearIcon].map((Mark, i) => (
+                <span key={i} className="text-[color:var(--ob-fg-soft)]">
+                  <Mark size={15} />
                 </span>
               ))}
               <span
@@ -231,7 +241,7 @@ export function BillingBenchmarksTemplate({
                 + Create
               </span>
               <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.734rem] font-medium">
-                <span aria-hidden>💬</span> Give feedback
+                <ChatDotsIcon size={14} /> Give feedback
               </span>
               <span aria-hidden className="text-[color:var(--ob-muted)]">
                 ···
@@ -288,7 +298,7 @@ export function BillingBenchmarksTemplate({
                   <span className="flex items-center gap-[9px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[7px] text-[0.749rem]">
                     <span className="flex-1">{filter.value}</span>
                     <span aria-hidden className="text-[0.524rem] opacity-60">
-                      ⌃⌄
+                      <ArrowsUpDownIcon size={11} />
                     </span>
                   </span>
                 </div>
@@ -371,30 +381,30 @@ function MerchantOverview() {
     <div className="relative">
       <div className="flex h-[42px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[18px]">
         <span className="flex items-center gap-[7px] text-[0.749rem] font-medium">
-          <span aria-hidden>▤</span> Jane
+          <BooksIcon size={14} /> Jane
           <span aria-hidden className="text-[0.524rem] opacity-60">
-            ⌄
+            <CaretDownIcon size={10} />
           </span>
         </span>
         <span className="flex items-center gap-[6px] rounded-full bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-[10px] py-[4px] text-[0.712rem] font-medium text-[#b3363a]">
-          Action required <span aria-hidden>⚠</span>
+          Action required <WarningIcon size={13} />
         </span>
         <span className="mx-auto flex w-full max-w-[419px] items-center gap-[7px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[12px] py-[6px] text-[0.734rem] text-[color:var(--ob-muted)]">
-          <span aria-hidden>⌕</span> Search…
+          <SearchIcon size={14} /> Search…
         </span>
         <span className="flex items-center gap-[12px] text-[0.734rem]">
           <span className="flex items-center gap-[15px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[4px] font-medium">
             Create
             <span aria-hidden className="text-[0.524rem] opacity-60">
-              ⌄
+              <CaretDownIcon size={10} />
             </span>
           </span>
           <span className="flex items-center gap-[4px]">
             <span aria-hidden>?</span> Help
           </span>
-          {["⌾", "⚙", "👤"].map((glyph) => (
-            <span key={glyph} aria-hidden className="text-[color:var(--ob-fg-soft)]">
-              {glyph}
+          {[BellIcon, GearIcon, UserIcon].map((Mark, i) => (
+            <span key={i} className="text-[color:var(--ob-fg-soft)]">
+              <Mark size={15} />
             </span>
           ))}
         </span>
@@ -415,7 +425,7 @@ function MerchantOverview() {
           </span>
         ))}
         <span className="flex items-center gap-[4px] text-[0.749rem] font-medium text-[color:var(--ob-fg-soft)]">
-          More <span aria-hidden className="text-[0.524rem] opacity-60">⌄</span>
+          More <CaretDownIcon size={10} className="text-[color:var(--ob-muted)]" />
         </span>
         <span className="ml-auto flex items-center gap-[12px] text-[0.749rem] font-medium">
           <span>Developers</span>
@@ -437,16 +447,16 @@ function MerchantOverview() {
             Your overview
           </h1>
           <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.734rem] font-medium">
-            <span aria-hidden>⚙</span> Edit overview
+            <GearIcon size={14} /> Edit overview
           </span>
         </div>
 
         <div className="mt-[15px] flex flex-wrap items-center gap-[9px] border-t border-[color:var(--ob-border)] pt-[15px]">
           <OverviewSelect>Last 7 days</OverviewSelect>
-          <OverviewSelect glyph="🗓">Mar 15–Mar 21</OverviewSelect>
+          <OverviewSelect glyph={<CalendarIcon size={13} />}>Mar 15–Mar 21</OverviewSelect>
           <span className="text-[0.734rem] text-[color:var(--ob-muted)]">compared to</span>
           <OverviewSelect>Previous period</OverviewSelect>
-          <OverviewSelect caret="⇅">Daily</OverviewSelect>
+          <OverviewSelect caret={<ArrowsUpDownIcon size={11} />}>Daily</OverviewSelect>
         </div>
 
         <div className="grid gap-[24px] pt-[21px] lg:grid-cols-3">
@@ -455,7 +465,7 @@ function MerchantOverview() {
             <div className="mt-[12px] grid h-[225px] place-items-center rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[18px] text-center">
               <span>
                 <span aria-hidden className="block text-[1.199rem] text-[color:var(--ob-muted)]">
-                  ⚠
+                  <WarningIcon size={13} />
                 </span>
                 <span className="block pt-[9px] text-[0.764rem] text-[color:var(--ob-muted)]">
                   This content is only available for live data.
@@ -506,14 +516,14 @@ function MerchantOverview() {
                 View all payments
               </span>
               <span className="text-[color:var(--ob-muted)]">
-                Updated at 4:57 AM 🕐
+                Updated at 4:57 AM <ClockIcon size={12} />
               </span>
             </p>
           </Widget>
 
           <section className="relative rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] p-[21px] text-center">
             <span aria-hidden className="absolute right-[15px] top-[15px] text-[color:var(--ob-muted)]">
-              ✕
+              <CrossIcon size={12} />
             </span>
             <h2 className="text-[0.974rem] font-bold leading-snug">
               Get quick access
@@ -551,7 +561,7 @@ function MerchantOverview() {
               <span className="flex-1 font-medium text-[color:var(--ob-brand)]">
                 1 of 1 result
               </span>
-              <span className="text-[color:var(--ob-muted)]">Updated at 4:57 AM 🕐</span>
+              <span className="text-[color:var(--ob-muted)]">Updated at 4:57 AM <ClockIcon size={12} /></span>
             </p>
           </Widget>
 
@@ -621,11 +631,11 @@ function Legend({
 function OverviewSelect({
   children,
   glyph,
-  caret = "⌄",
+  caret = <CaretDownIcon size={10} />,
 }: {
   children: ReactNode;
-  glyph?: string;
-  caret?: string;
+  glyph?: ReactNode;
+  caret?: ReactNode;
 }) {
   return (
     <span className="inline-flex items-center gap-[12px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[6px] text-[0.734rem] font-medium">

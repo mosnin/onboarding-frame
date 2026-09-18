@@ -78,9 +78,21 @@ export function Main({
 
 /* ------------------------------ Nav ------------------------------ */
 
-export function NavSection({ label }: { label: string }) {
+export function NavSection({
+  label,
+  className,
+}: {
+  label: string;
+  /** Lets a template drop the small caps, which not every product uses. */
+  className?: string;
+}) {
   return (
-    <p className="px-3 pb-1.5 pt-5 text-[0.7rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
+    <p
+      className={cn(
+        "px-3 pb-1.5 pt-5 text-[0.7rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]",
+        className,
+      )}
+    >
       {label}
     </p>
   );

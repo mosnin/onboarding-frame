@@ -1,6 +1,32 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  ArrowDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowsLeftRightIcon,
+  BellIcon,
+  CaretUpIcon,
+  PaperclipIcon,
+  PlusIcon,
+  SearchIcon,
+  ArrowsUpDownIcon,
+  BankSolid,
+  BookmarkIcon,
+  CaretDownIcon,
+  CardIcon,
+  ChartBarIcon,
+  FileTextIcon,
+  FunnelIcon,
+  GearIcon,
+  GridFourIcon,
+  HouseIcon,
+  ListChecksIcon,
+  NoteIcon,
+  ReceiptIcon,
+  TrendUpIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
 import { Surface, bankingTokens } from "./tokens";
@@ -14,12 +40,12 @@ export interface BankingLedgerProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "tasks", label: "Tasks", glyph: "▭" },
-  { id: "transactions", label: "Transactions", glyph: "≣" },
-  { id: "payments", label: "Payments", glyph: "⇄", caret: true },
-  { id: "cards", label: "Cards", glyph: "▬" },
-  { id: "capital", label: "Capital", glyph: "📈" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "tasks", label: "Tasks", Icon: ListChecksIcon },
+  { id: "transactions", label: "Transactions", Icon: ReceiptIcon },
+  { id: "payments", label: "Payments", Icon: ArrowsLeftRightIcon, caret: true },
+  { id: "cards", label: "Cards", Icon: CardIcon },
+  { id: "capital", label: "Capital", Icon: TrendUpIcon },
 ];
 
 const ACCOUNTS = [
@@ -29,10 +55,10 @@ const ACCOUNTS = [
 ];
 
 const WORKFLOWS = [
-  { id: "bills", label: "Bill Pay", glyph: "🧾" },
-  { id: "invoicing", label: "Invoicing", glyph: "🗎", caret: true },
-  { id: "reimbursements", label: "Reimbursements", glyph: "◉" },
-  { id: "accounting", label: "Accounting", glyph: "▤" },
+  { id: "bills", label: "Bill Pay", Icon: ReceiptIcon },
+  { id: "invoicing", label: "Invoicing", Icon: FileTextIcon, caret: true },
+  { id: "reimbursements", label: "Reimbursements", Icon: NoteIcon },
+  { id: "accounting", label: "Accounting", Icon: ChartBarIcon },
 ];
 
 /**
@@ -73,7 +99,7 @@ export function BankingLedgerTemplate({
             <LogoSlot size={30} label="" radius={7} />
             <span className="flex-1 text-[1.12rem] font-semibold">Acme</span>
             <span aria-hidden className="text-[0.7rem] opacity-50">
-              ⇅
+              <ArrowsUpDownIcon size={12} />
             </span>
           </div>
 
@@ -82,12 +108,12 @@ export function BankingLedgerTemplate({
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={15} />}
                 active={item.id === page}
                 trailing={
                   item.caret ? (
                     <span aria-hidden className="text-[0.7rem] opacity-50">
-                      ⌄
+                      <CaretDownIcon size={10} />
                     </span>
                   ) : undefined
                 }
@@ -96,10 +122,10 @@ export function BankingLedgerTemplate({
             ))}
             <NavItem
               label="Accounts"
-              glyph="🏦"
+              glyph={<BankSolid size={15} />}
               trailing={
                 <span aria-hidden className="text-[0.7rem] opacity-50">
-                  ⌃
+                  <CaretUpIcon size={10} />
                 </span>
               }
               className="text-[1.08rem]"
@@ -126,11 +152,11 @@ export function BankingLedgerTemplate({
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={15} />}
                 trailing={
                   item.caret ? (
                     <span aria-hidden className="text-[0.7rem] opacity-50">
-                      ⌄
+                      <CaretDownIcon size={10} />
                     </span>
                   ) : undefined
                 }
@@ -143,7 +169,7 @@ export function BankingLedgerTemplate({
         <Main className="relative overflow-auto">
           <header className="flex h-[76px] shrink-0 items-center gap-4 px-7">
             <span className="flex w-full max-w-[860px] items-center gap-2.5 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-4 py-3 text-[1.05rem] text-[color:var(--ob-muted)]">
-              <span aria-hidden>⌕</span>
+              <SearchIcon size={14} />
               <span className="flex-1">Search for anything</span>
               <kbd className="rounded border border-[color:var(--ob-border)] px-1.5 py-0.5 text-[0.72rem] font-semibold">
                 ⌘K
@@ -153,14 +179,14 @@ export function BankingLedgerTemplate({
               <span className="flex items-center gap-5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-5 py-2.5 text-[1.08rem] font-medium">
                 Move Money
                 <span aria-hidden className="text-[0.7rem] opacity-60">
-                  ⌄
+                  <CaretDownIcon size={10} />
                 </span>
               </span>
               <span aria-hidden className="text-[color:var(--ob-fg-soft)]">
                 ⊘
               </span>
               <span className="relative" aria-hidden>
-                ⌾
+                <BellIcon size={15} />
                 <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-[color:var(--ob-brand)]" />
               </span>
               <AvatarSlot size={36} />
@@ -173,14 +199,14 @@ export function BankingLedgerTemplate({
                 Transactions
               </h1>
               <span className="flex items-center gap-2 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-2.5 text-[1.05rem] font-medium">
-                <span aria-hidden>▤</span> Match Receipts
+                <PaperclipIcon size={13} /> Match Receipts
               </span>
             </div>
 
             <div className="flex flex-wrap items-center gap-3 pt-5">
               {[
-                { id: "views", label: "Data Views", glyph: "🔖", caret: true },
-                { id: "filters", label: "Filters", glyph: "⇶" },
+                { id: "views", label: "Data Views", Icon: BookmarkIcon, caret: true },
+                { id: "filters", label: "Filters", Icon: FunnelIcon },
                 { id: "date", label: "Date", caret: true },
                 { id: "keywords", label: "Keywords", caret: true },
                 { id: "amount", label: "Amount", caret: true },
@@ -189,19 +215,19 @@ export function BankingLedgerTemplate({
                   key={pill.id}
                   className="flex items-center gap-2.5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-2 text-[1.05rem]"
                 >
-                  {pill.glyph && <span aria-hidden>{pill.glyph}</span>}
+                  {pill.Icon && <pill.Icon size={13} />}
                   {pill.label}
                   {pill.caret && (
                     <span aria-hidden className="text-[0.7rem] opacity-60">
-                      ⌄
+                      <CaretDownIcon size={10} />
                     </span>
                   )}
                 </span>
               ))}
               <span className="ml-auto flex items-center gap-4 text-[color:var(--ob-fg-soft)]">
-                {["▦", "⇵", "⚙"].map((glyph) => (
-                  <span key={glyph} aria-hidden>
-                    {glyph}
+                {[GridFourIcon, ArrowsUpDownIcon, GearIcon].map((Mark, i) => (
+                  <span key={i}>
+                    <Mark size={14} />
                   </span>
                 ))}
                 <span className="flex items-center gap-2 text-[1.05rem] font-medium">
@@ -252,14 +278,14 @@ export function BankingLedgerTemplate({
                   <span className="flex items-center gap-2">
                     To/From
                     <span aria-hidden className="text-[0.7rem] opacity-60">
-                      ⌄
+                      <CaretDownIcon size={10} />
                     </span>
                   </span>
                   <span className="ml-auto flex items-center gap-2">
-                    <span aria-hidden>▤</span> Group Table
+                    <GridFourIcon size={13} /> Group Table
                   </span>
                   <span aria-hidden className="text-[0.7rem] opacity-60">
-                    ⌃
+                    <CaretUpIcon size={10} />
                   </span>
                 </p>
 
@@ -290,7 +316,7 @@ export function BankingLedgerTemplate({
                       />
                     </th>
                     {[
-                      "Date ↓",
+                      "Date",
                       "To/From",
                       "Amount",
                       "Account",
@@ -349,21 +375,29 @@ export function BankingLedgerTemplate({
                       <td className="px-4 py-4">{row.account}</td>
                       <td className="px-4 py-4">
                         <span className="flex items-center gap-2.5">
-                          <span aria-hidden className="text-[color:var(--ob-muted)]">
-                            {row.card ? "▬" : row.method.startsWith("Transfer In") ? "→" : row.method.startsWith("Transfer Out") ? "←" : "➤"}
+                          <span className="text-[color:var(--ob-muted)]">
+                            {row.card ? (
+                              <CardIcon size={14} />
+                            ) : row.method.startsWith("Transfer In") ? (
+                              <ArrowRightIcon size={14} />
+                            ) : row.method.startsWith("Transfer Out") ? (
+                              <ArrowLeftIcon size={14} />
+                            ) : (
+                              <ArrowsLeftRightIcon size={14} />
+                            )}
                           </span>
                           {row.method}
                         </span>
                       </td>
                       <td className="px-4 py-4">
                         <span className="flex h-9 w-full items-center justify-end rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-3 text-[0.75rem] text-[color:var(--ob-muted)]">
-                          ⌄
+                          <CaretDownIcon size={10} />
                         </span>
                       </td>
                       <td className="px-4 py-4 text-right">
                         {row.attachment ? (
-                          <span aria-hidden className="text-[color:var(--ob-fg-soft)]">
-                            ▤
+                          <span className="text-[color:var(--ob-fg-soft)]">
+                            <PaperclipIcon size={14} />
                           </span>
                         ) : (
                           <span

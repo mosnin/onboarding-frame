@@ -14,6 +14,13 @@ import {
   CircleDashed,
   CreditCard,
   Gear,
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  ArrowsDownUp,
+  ArrowsLeftRight,
+  Bell,
+  Books,
   Buildings,
   CaretDown,
   CaretRight,
@@ -28,11 +35,44 @@ import {
   IdentificationCard,
   LinkSimple,
   MagnifyingGlass,
+  Bookmark,
+  Broadcast,
+  CaretDoubleLeft,
+  CaretDoubleRight,
+  CaretLeft,
+  ChartPieSlice,
+  CirclesThree,
+  Clock,
+  Circle,
+  Cube,
+  Database,
+  Envelope,
+  DotsThree,
+  FileText,
+  FunnelSimple,
+  Info,
+  ListChecks,
+  Megaphone,
+  Money,
+  Note,
+  Pulse,
+  SlidersHorizontal,
+  Table,
+  TrendUp,
+  GridFour,
   MapPin,
   Notepad,
+  Package,
+  Paperclip,
+  Plus,
+  Receipt,
+  TerminalWindow,
   SquaresFour,
+  Sparkle,
   Target,
   User,
+  Warning,
+  X,
   UsersThree,
   Leaf,
   Lightbulb,
@@ -165,3 +205,52 @@ export const CaretUpIcon = solid(CaretUp, "bold", 12);
 export const CheckIcon = solid(Check, "bold", 12);
 export const CrosshairIcon = solid(Crosshair, "regular");
 export const CurrencyIcon = solid(CurrencyDollar, "regular");
+
+/* Stripe's rail is a hairline outline set at 15px. */
+export const BooksIcon = solid(Books, "regular");
+export const ArrowsLeftRightIcon = solid(ArrowsLeftRight, "regular");
+export const PackageIcon = solid(Package, "regular");
+export const ClockIcon = solid(Clock, "regular");
+export const ReceiptIcon = solid(Receipt, "regular");
+export const DotsThreeIcon = solid(DotsThree, "bold");
+export const TerminalIcon = solid(TerminalWindow, "regular");
+export const BellIcon = solid(Bell, "regular");
+export const GridFourIcon = solid(GridFour, "regular");
+
+export const ArrowsUpDownIcon = solid(ArrowsDownUp, "bold", 12);
+export const WarningIcon = solid(Warning, "fill", 14);
+export const CrossIcon = solid(X, "bold", 12);
+
+/* Customer.io and Mercury draw hairline outline rails. */
+export const MegaphoneIcon = solid(Megaphone, "regular");
+export const BroadcastIcon = solid(Broadcast, "regular");
+export const DatabaseIcon = solid(Database, "regular");
+export const CubeIcon = solid(Cube, "regular");
+export const CirclesThreeIcon = solid(CirclesThree, "regular");
+export const PulseIcon = solid(Pulse, "regular");
+export const ChartPieIcon = solid(ChartPieSlice, "regular");
+export const InfoIcon = solid(Info, "regular", 13);
+export const CaretLeftIcon = solid(CaretLeft, "bold", 12);
+export const CaretFirstIcon = solid(CaretDoubleLeft, "bold", 12);
+export const CaretLastIcon = solid(CaretDoubleRight, "bold", 12);
+export const FileTextIcon = solid(FileText, "regular");
+export const NoteIcon = solid(Note, "regular");
+export const BookmarkIcon = solid(Bookmark, "regular");
+export const FunnelIcon = solid(FunnelSimple, "regular");
+export const SlidersIcon = solid(SlidersHorizontal, "regular");
+export const ListChecksIcon = solid(ListChecks, "regular");
+export const TableIcon = solid(Table, "regular");
+export const TrendUpIcon = solid(TrendUp, "regular");
+export const MoneyIcon = solid(Money, "regular");
+
+export const EnvelopeIcon = solid(Envelope, "regular");
+export const SparkleIcon = solid(Sparkle, "fill", 14);
+export const CircleFillIcon = solid(Circle, "fill", 8);
+
+export const CardIcon = solid(CreditCard, "regular");
+
+export const ArrowDownIcon = solid(ArrowDown, "bold", 13);
+export const ArrowLeftIcon = solid(ArrowLeft, "bold", 13);
+export const ArrowRightIcon = solid(ArrowRight, "bold", 13);
+export const PaperclipIcon = solid(Paperclip, "regular");
+export const PlusIcon = solid(Plus, "bold", 13);

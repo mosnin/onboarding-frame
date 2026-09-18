@@ -2,6 +2,38 @@
 
 import type { ReactNode } from "react";
 import { Sparkline } from "../../../ui/charts";
+import {
+  BellIcon,
+  BroadcastIcon,
+  CalendarIcon,
+  CaretDownIcon,
+  ChatDotsIcon,
+  CircleFillIcon,
+  ClockIcon,
+  EnvelopeIcon,
+  GearIcon,
+  ListChecksIcon,
+  SearchIcon,
+  SlidersIcon,
+  SparkleIcon,
+  ArrowsUpDownIcon,
+  TableIcon,
+  CaretFirstIcon,
+  CaretLastIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+  ChartBarIcon,
+  CirclesThreeIcon,
+  CubeIcon,
+  DatabaseIcon,
+  GridFourIcon,
+  InfoIcon,
+  MegaphoneIcon,
+  PulseIcon,
+  TargetIcon,
+  TerminalIcon,
+  UserIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { LogoSlot } from "../../../ui/placeholder";
 import { Surface, campaignTokens } from "./tokens";
@@ -15,20 +47,20 @@ export interface CampaignListProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "dashboard", label: "Dashboard", glyph: "◎" },
-  { id: "analysis", label: "Analysis", glyph: "▥" },
-  { id: "campaigns", label: "Campaigns", glyph: "⌾" },
-  { id: "broadcasts", label: "Broadcasts", glyph: "📣" },
-  { id: "transactional", label: "Transactional", glyph: "❯_" },
-  { id: "deliveries", label: "Deliveries & Drafts", glyph: "▤" },
+  { id: "dashboard", label: "Dashboard", Icon: GridFourIcon },
+  { id: "analysis", label: "Analysis", Icon: ChartBarIcon },
+  { id: "campaigns", label: "Campaigns", Icon: TargetIcon },
+  { id: "broadcasts", label: "Broadcasts", Icon: BroadcastIcon },
+  { id: "transactional", label: "Transactional", Icon: TerminalIcon },
+  { id: "deliveries", label: "Deliveries & Drafts", Icon: MegaphoneIcon },
 ];
 
 const DATA_NAV = [
-  { id: "people", label: "People", glyph: "👤" },
-  { id: "objects", label: "Custom Objects", glyph: "📦" },
-  { id: "segments", label: "Segments", glyph: "◉" },
-  { id: "logs", label: "Activity Logs", glyph: "◍" },
-  { id: "data", label: "Data & Integrations", glyph: "⛁", caret: true },
+  { id: "people", label: "People", Icon: UserIcon },
+  { id: "objects", label: "Custom Objects", Icon: CubeIcon },
+  { id: "segments", label: "Segments", Icon: CirclesThreeIcon },
+  { id: "logs", label: "Activity Logs", Icon: PulseIcon },
+  { id: "data", label: "Data & Integrations", Icon: DatabaseIcon, caret: true },
 ];
 
 const FILTERS = [
@@ -141,7 +173,7 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
               aria-hidden
               className="mt-[9px] grid size-[31px] place-items-center text-[0.863rem] text-[color:var(--ob-muted)]"
             >
-              ✳
+              <SparkleIcon size={14} />
             </span>
           </Sidebar>
 
@@ -158,7 +190,7 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                 <NavItem
                   key={item.id}
                   label={item.label}
-                  glyph={item.glyph}
+                  glyph={<item.Icon size={15} />}
                   active={item.id === page}
                   className="text-[0.8rem]"
                 />
@@ -172,11 +204,11 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                 <NavItem
                   key={item.id}
                   label={item.label}
-                  glyph={item.glyph}
+                  glyph={<item.Icon size={15} />}
                   trailing={
                     item.caret ? (
                       <span aria-hidden className="text-[0.549rem] opacity-50">
-                        ⌄
+                        <CaretDownIcon size={10} />
                       </span>
                     ) : undefined
                   }
@@ -190,10 +222,10 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
             <nav className="grid gap-[2px] px-[9px]">
               <NavItem
                 label="Content"
-                glyph="▦"
+                glyph={<ChartBarIcon size={15} />}
                 trailing={
                   <span aria-hidden className="text-[0.549rem] opacity-50">
-                    ⌄
+                    <CaretDownIcon size={10} />
                   </span>
                 }
                 className="text-[0.8rem]"
@@ -206,7 +238,7 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
               <span className="flex items-center gap-[8px] text-[0.824rem]">
                 acme.com production
                 <span aria-hidden className="text-[0.549rem] opacity-60">
-                  ⇅
+                  <ArrowsUpDownIcon size={12} />
                 </span>
               </span>
               <span className="ml-auto flex items-center gap-[16px] text-[0.8rem]">
@@ -214,12 +246,12 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                   <span aria-hidden>?</span> Need help?
                 </span>
                 <span className="relative" aria-hidden>
-                  ⌾
+                  <BellIcon size={15} />
                   <span className="absolute -right-[2px] -top-[2px] size-[6px] rounded-full bg-[#3ecf8e]" />
                 </span>
-                <span aria-hidden>💬</span>
-                <span aria-hidden>⚙</span>
-                <span aria-hidden>👤</span>
+                <ChatDotsIcon size={15} />
+                <GearIcon size={15} />
+                <UserIcon size={15} />
               </span>
             </header>
 
@@ -240,11 +272,11 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                       {filter.label}
                     </p>
                     <span className="flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[11px] py-[8px] text-[0.784rem] text-[color:var(--ob-muted)]">
-                      {filter.search && <span aria-hidden>⌕</span>}
+                      {filter.search && <SearchIcon size={13} />}
                       <span className="flex-1 truncate">{filter.control}</span>
                       {!filter.search && (
                         <span aria-hidden className="text-[0.549rem] opacity-60">
-                          ⌄
+                          <CaretDownIcon size={10} />
                         </span>
                       )}
                     </span>
@@ -277,37 +309,37 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
               <div className="flex flex-wrap items-center gap-[13px] py-[16px]">
                 <h2 className="text-[0.941rem] font-bold">24 Campaigns</h2>
                 <span className="flex items-center gap-[5px] text-[0.784rem] text-[color:var(--ob-muted)]">
-                  Metric definitions <InfoDot glyph="?" />
+                  Metric definitions <InfoDot />
                 </span>
                 <span className="flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[11px] py-[6px] text-[0.784rem]">
-                  <span aria-hidden>🗓</span> Mar 11, 2024 - Apr 09, 2024
+                  <CalendarIcon size={13} /> Mar 11, 2024 - Apr 09, 2024
                 </span>
                 <span className="flex items-center gap-[19px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[11px] py-[6px] text-[0.784rem]">
                   Delivered
                   <span aria-hidden className="text-[0.549rem] opacity-60">
-                    ▾
+                    <CaretDownIcon size={10} />
                   </span>
                 </span>
                 <span aria-hidden className="text-[color:var(--ob-fg-soft)]">
-                  ⇵
+                  <ArrowsUpDownIcon size={12} />
                 </span>
                 <span
                   aria-hidden
                   className="grid size-[28px] place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)]"
                 >
-                  ▥
+                  <TableIcon size={14} />
                 </span>
                 <span className="ml-auto text-[0.784rem]">
                   1 – 20 <span className="text-[color:var(--ob-muted)]">of 24</span>
                 </span>
                 <span className="flex items-center gap-[5px]">
-                  {["|‹", "‹", "›", "›|"].map((glyph) => (
+                  {[CaretFirstIcon, CaretLeftIcon, CaretRightIcon, CaretLastIcon].map((Mark, i) => (
                     <span
-                      key={glyph}
+                      key={i}
                       aria-hidden
                       className="grid size-[28px] place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] text-[0.706rem]"
                     >
-                      {glyph}
+                      <Mark size={11} />
                     </span>
                   ))}
                 </span>
@@ -315,15 +347,15 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
 
               <div className="overflow-x-auto rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)]">
                 <div className="grid min-w-[863px] grid-cols-[minmax(0,1.5fr)_150px_repeat(4,minmax(0,0.75fr))_70px] border-b border-[color:var(--ob-border)] px-[16px] py-[9px] text-[0.69rem] font-semibold uppercase tracking-wide">
-                  <span>Name ⌄</span>
+                  <span className="inline-flex items-center gap-1">Name <CaretDownIcon size={10} /></span>
                   <span />
                   <span className="text-right text-[color:var(--ob-brand)]">
-                    Delivered ⌄
+                    Delivered <CaretDownIcon size={10} />
                   </span>
-                  <span className="text-right text-[color:var(--ob-muted)]">Opened ⌄</span>
-                  <span className="text-right text-[color:var(--ob-muted)]">Clicked ⌄</span>
+                  <span className="text-right text-[color:var(--ob-muted)]" ><span className="inline-flex items-center justify-end gap-1">Opened <CaretDownIcon size={10} /></span></span>
+                  <span className="text-right text-[color:var(--ob-muted)]" ><span className="inline-flex items-center justify-end gap-1">Clicked <CaretDownIcon size={10} /></span></span>
                   <span className="text-right text-[color:var(--ob-muted)]">
-                    Converted ⌄
+                    Converted <CaretDownIcon size={10} />
                   </span>
                   <span />
                 </div>
@@ -336,7 +368,7 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                     <div>
                       <p className="flex items-center gap-[9px]">
                         <span aria-hidden className="text-[color:var(--ob-muted)]">
-                          ⌾
+                          <BellIcon size={15} />
                         </span>
                         <span className="text-[0.878rem] font-semibold text-[color:var(--ob-brand)]">
                           {campaign.name}
@@ -346,16 +378,16 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                             aria-hidden
                             className="grid size-[19px] place-items-center rounded-full bg-[color-mix(in_oklab,#e8c33d_35%,transparent)] text-[0.549rem]"
                           >
-                            ▤
+                            <SlidersIcon size={13} />
                           </span>
                         )}
                       </p>
                       <p className="flex items-center gap-[16px] pl-[25px] pt-[6px] text-[0.784rem] text-[color:var(--ob-fg-soft)]">
                         <span className="flex items-center gap-[5px] tabular-nums">
-                          {campaign.emails} <span aria-hidden>✉</span>
+                          {campaign.emails} <EnvelopeIcon size={12} />
                         </span>
                         <span className="flex items-center gap-[5px] tabular-nums">
-                          {campaign.timers} <span aria-hidden>⏱</span>
+                          {campaign.timers} <ClockIcon size={12} />
                         </span>
                       </p>
                       {campaign.more && (
@@ -367,7 +399,7 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
 
                     <div className="pl-[13px] pt-[2px]">
                       <span className="rounded bg-[color-mix(in_oklab,#2f9e5f_16%,transparent)] px-[8px] py-[3px] text-[0.745rem] font-medium text-[#1f7a48]">
-                        ● Running
+                        <CircleFillIcon size={8} /> Running
                       </span>
                     </div>
 
@@ -411,13 +443,13 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
   );
 }
 
-function InfoDot({ glyph = "i" }: { glyph?: string }): ReactNode {
+function InfoDot(): ReactNode {
   return (
     <span
       aria-hidden
       className="grid size-[13px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.486rem] font-normal normal-case"
     >
-      {glyph}
+      <InfoIcon size={11} />
     </span>
   );
 }
