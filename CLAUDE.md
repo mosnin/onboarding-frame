@@ -91,6 +91,25 @@ the differences enumerated and closed.
 `docs/dashboard-references.md` maps every reference to its template. A row
 does not say DONE until that comparison happened.
 
+### 6b. A measurement window that clips is worse than no measurement
+
+Measuring a heading means choosing an x-window, and a window that cuts the
+text short returns a smaller number with no sign that anything went wrong.
+It has produced two corrections in the wrong direction: modeling-home's
+greeting measured 99px against the reference's 105 and was rescaled to match,
+when the window had caught six characters of a line that was actually **1.5x
+too large**; banking-ledger's read 86 for the same reason.
+
+So: choose the window wider than the text can possibly be, check that the run
+does not touch either edge, and compare **px per character** when the two
+strings differ in length — "Welcome to Causal, Jane!" against "Welcome to
+Acme, Jane!" is two characters shorter and will measure shorter at the same
+size.
+
+And not every difference is a uniform scale error. modeling-home's nav, cards
+and body all matched while its heading alone was half again too big; a
+whole-file rescale would have broken three correct things to fix one.
+
 ### 6a. Weight is measured, not eyeballed
 
 Type that is one weight step too heavy reads as wrong even when the size and

@@ -94,15 +94,15 @@ export function ModelingHomeTemplate({
     <Surface tokens={modelingTokens} className={className}>
       <Shell>
         {/* Measured off the reference: 253px. */}
-        <Sidebar width={253} bg="var(--ob-surface)">
-          <div className="flex items-center gap-2 px-4 pb-3 pt-4">
+        <Sidebar width={248} bg="var(--ob-surface)">
+          <div className="flex items-center gap-[8px] px-[16px] pb-[12px] pt-[16px]">
             <Wordmark name={brandName} size={13} mark={22} radius={11} />
             <span className="ml-auto">
               <Avatar name={userName} size={24} />
             </span>
           </div>
 
-          <div className="flex items-center gap-2 px-4 pb-4">
+          <div className="flex items-center gap-[8px] px-[16px] pb-[16px]">
             <SearchField placeholder="Search" shortcut="⌘K" rounded="md" className="flex-1" />
             <button
               type="button"
@@ -112,7 +112,7 @@ export function ModelingHomeTemplate({
             </button>
           </div>
 
-          <nav className="grid gap-0.5 px-2.5">
+          <nav className="grid gap-[2px] px-[10px]">
             {NAV.map((item) => (
               <NavItem
                 key={item.id}
@@ -124,30 +124,30 @@ export function ModelingHomeTemplate({
           </nav>
 
           <NavSection label="Models" />
-          <nav className="grid gap-0.5 px-2.5">
+          <nav className="grid gap-[2px] px-[10px]">
             <NavItem
               label="Getting started (Cloned)"
               glyph={<BoxIcon width={16} height={16} />}
             />
           </nav>
 
-          <div className="mt-auto flex items-center gap-3 px-4 py-4 text-[0.85rem]">
-            <span className="flex items-center gap-2 text-[color:var(--ob-fg-soft)]">
+          <div className="mt-auto flex items-center gap-[12px] px-[16px] py-[16px] text-[0.85rem]">
+            <span className="flex items-center gap-[8px] text-[color:var(--ob-fg-soft)]">
               <BookIcon width={16} height={16} /> Documentation
             </span>
-            <span className="ml-auto flex items-center gap-1.5 rounded-full border border-[color:var(--ob-border-strong)] px-2.5 py-1 text-[0.82rem] font-medium">
+            <span className="ml-auto flex items-center gap-[6px] rounded-full border border-[color:var(--ob-border-strong)] px-[10px] py-[4px] text-[0.82rem] font-medium">
               <ChatIcon width={15} height={15} className="text-[color:var(--ob-brand)]" /> Chat
             </span>
           </div>
         </Sidebar>
 
-        <Main className="overflow-auto px-10 py-8">
+        <Main className="overflow-auto px-[40px] py-[32px] xl:px-[161px]">
           <div className="mx-auto w-full max-w-[1250px]">
             <p className="text-[0.95rem] text-[color:var(--ob-muted)]">18 August, 2023</p>
-            <h1 className="pt-1 text-[2.1rem] font-bold tracking-[-0.02em]">
+            <h1 className="pt-[4px] text-[1.48rem] font-bold tracking-[-0.02em]">
               Welcome to Acme, Jane!
             </h1>
-            <div className="mt-7 border-t border-[color:var(--ob-border)]" />
+            <div className="mt-[28px] border-t border-[color:var(--ob-border)]" />
 
             {page === "overview" && <Overview />}
             {page === "data" && <DataSources />}
@@ -164,9 +164,9 @@ function Overview() {
     <>
       <button
         type="button"
-        className="mt-7 flex w-full items-center gap-4 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-5 py-4 text-left shadow-[var(--ob-shadow)]"
+        className="mt-[28px] flex w-full items-center gap-[16px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[20px] py-[16px] text-left shadow-[var(--ob-shadow)]"
       >
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[color:var(--ob-surface2,var(--ob-surface-2))] text-[1.1rem]">
+        <span className="grid h-[40px] w-[40px] shrink-0 place-items-center rounded-full bg-[color:var(--ob-surface2,var(--ob-surface-2))] text-[1.1rem]">
           +
         </span>
         <span className="flex-1">
@@ -178,14 +178,14 @@ function Overview() {
         <CaretRightIcon size={14} />
       </button>
 
-      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+      <div className="mt-[16px] grid gap-[16px] lg:grid-cols-2">
         {WIZARDS.map((wizard) => (
           <WizardCard key={wizard.id} wizard={wizard} />
         ))}
       </div>
 
-      <div className="flex items-center gap-3 pb-4 pt-10">
-        <h2 className="flex-1 text-[1.15rem] font-semibold">Templates</h2>
+      <div className="flex items-center gap-[12px] pb-[16px] pt-[40px]">
+        <h2 className="flex-1 text-[1.151rem] font-semibold">Templates</h2>
         <SearchIcon width={17} height={17} className="text-[color:var(--ob-muted)]" />
       </div>
 
@@ -194,7 +194,7 @@ function Overview() {
           <article
             key={template.id}
             className={cn(
-              "grid gap-6 p-6 sm:grid-cols-[340px_minmax(0,1fr)]",
+              "grid gap-[24px] p-[24px] sm:grid-cols-[340px_minmax(0,1fr)]",
               index > 0 && "border-t border-[color:var(--ob-border)]",
             )}
           >
@@ -203,7 +203,7 @@ function Overview() {
             </span>
             <div>
               <h3 className="font-bold">{template.name}</h3>
-              <p className="max-w-[62ch] pt-2 text-[0.95rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+              <p className="max-w-[62ch] pt-[8px] text-[0.95rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
                 {template.body}
               </p>
             </div>
@@ -217,22 +217,22 @@ function Overview() {
 function WizardCard({ wizard }: { wizard: (typeof WIZARDS)[number] }) {
   return (
     <section className="relative h-[236px] overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
-      <div className="flex items-center gap-3 px-6 pt-5">
+      <div className="flex items-center gap-[12px] px-[24px] pt-[20px]">
         <h3 className="flex-1 text-[1.05rem] font-semibold">{wizard.title}</h3>
         <ChevronRight width={17} height={17} className="text-[color:var(--ob-muted)]" />
       </div>
-      <p className="max-w-[46ch] px-6 pt-2 text-[0.92rem] leading-relaxed text-[color:var(--ob-muted)]">
+      <p className="max-w-[46ch] px-[24px] pt-[8px] text-[0.92rem] leading-relaxed text-[color:var(--ob-muted)]">
         {wizard.body}
       </p>
 
       {/* The peek is clipped by the card, not fitted to it. */}
-      <div className="absolute inset-x-6 top-[112px] grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-start">
-        <div className="mt-8 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] shadow-[0_6px_18px_rgba(16,24,40,0.07)]">
+      <div className="absolute inset-x-[24px] top-[112px] grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-start">
+        <div className="mt-[32px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] shadow-[0_6px_18px_rgba(16,24,40,0.07)]">
           {wizard.sources.map((source, index) => (
             <div
               key={source}
               className={cn(
-                "flex items-center gap-2.5 px-3 py-2.5 text-[0.88rem] font-medium",
+                "flex items-center gap-[10px] px-[12px] py-[10px] text-[0.88rem] font-medium",
                 index > 0 && "border-t border-[color:var(--ob-border)]",
               )}
             >
@@ -243,7 +243,7 @@ function WizardCard({ wizard }: { wizard: (typeof WIZARDS)[number] }) {
         </div>
 
         <div className="rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] shadow-[0_6px_18px_rgba(16,24,40,0.07)]">
-          <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-center gap-3 px-3.5 pb-2 pt-3">
+          <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-center gap-[12px] px-[14px] pb-[8px] pt-[12px]">
             <div>
               <p className="text-[0.82rem] text-[color:var(--ob-muted)]">
                 {wizard.metric.label}
@@ -255,13 +255,13 @@ function WizardCard({ wizard }: { wizard: (typeof WIZARDS)[number] }) {
             <MiniTrend points={wizard.points} />
           </div>
           <div className="flex border-t border-[color:var(--ob-border)] text-[0.85rem]">
-            <span className="flex-1 px-3.5 py-2 text-[color:var(--ob-fg-soft)]">
+            <span className="flex-1 px-[14px] py-[8px] text-[color:var(--ob-fg-soft)]">
               {wizard.row.label}
             </span>
-            <span className="border-l border-[color:var(--ob-border)] px-3.5 py-2 font-medium tabular-nums">
+            <span className="border-l border-[color:var(--ob-border)] px-[14px] py-[8px] font-medium tabular-nums">
               {wizard.row.value}
             </span>
-            <span className="w-10 border-l border-[color:var(--ob-border)]" />
+            <span className="w-[40px] border-l border-[color:var(--ob-border)]" />
           </div>
         </div>
       </div>
@@ -283,7 +283,7 @@ function MiniTrend({ points }: { points: number[] }) {
         gridLines={0}
         className="[&_text]:hidden"
       />
-      <span className="pointer-events-none absolute inset-y-0 left-[45%] border-l border-dashed border-[color:var(--ob-border-strong)]" />
+      <span className="pointer-events-none absolute inset-y-[0px] left-[45%] border-l border-dashed border-[color:var(--ob-border-strong)]" />
     </div>
   );
 }
@@ -299,13 +299,13 @@ function DataSources() {
 
   return (
     <>
-      <p className="max-w-[60ch] pt-7 text-[0.95rem] text-[color:var(--ob-fg-soft)]">
+      <p className="max-w-[60ch] pt-[28px] text-[0.95rem] text-[color:var(--ob-fg-soft)]">
         Models read from whatever is connected here. A source that has never synced
         shows no timestamp rather than a zero.
       </p>
 
-      <div className="mt-5 overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)]">
-        <div className="grid grid-cols-[minmax(0,1.4fr)_120px_160px_140px] bg-[color:var(--ob-surface-2)] px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
+      <div className="mt-[20px] overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)]">
+        <div className="grid grid-cols-[minmax(0,1.4fr)_120px_160px_140px] bg-[color:var(--ob-surface-2)] px-[20px] py-[10px] text-[0.78rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
           <span>Source</span>
           <span>Type</span>
           <span>Last synced</span>
@@ -314,9 +314,9 @@ function DataSources() {
         {rows.map((row) => (
           <div
             key={row.name}
-            className="grid grid-cols-[minmax(0,1.4fr)_120px_160px_140px] items-center border-t border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-5 py-3 text-[0.9rem]"
+            className="grid grid-cols-[minmax(0,1.4fr)_120px_160px_140px] items-center border-t border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[20px] py-[12px] text-[0.9rem]"
           >
-            <span className="flex items-center gap-2.5 font-medium">
+            <span className="flex items-center gap-[10px] font-medium">
               <BrandMark brand={row.name} size={24} />
               {row.name}
             </span>
@@ -368,26 +368,26 @@ function Categories() {
 
   return (
     <>
-      <p className="max-w-[60ch] pt-7 text-[0.95rem] text-[color:var(--ob-fg-soft)]">
+      <p className="max-w-[60ch] pt-[28px] text-[0.95rem] text-[color:var(--ob-fg-soft)]">
         Categories map ledger accounts onto model lines. Anything left unmapped is
         labelled as such, because a silently dropped account is what makes a forecast
         wrong.
       </p>
 
-      <div className="mt-5 grid gap-4">
+      <div className="mt-[20px] grid gap-[16px]">
         {groups.map((group) => (
           <section
             key={group.heading}
             className="overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]"
           >
-            <h3 className="border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface-2)] px-5 py-2.5 text-[0.85rem] font-semibold">
+            <h3 className="border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface-2)] px-[20px] py-[10px] text-[0.85rem] font-semibold">
               {group.heading}
             </h3>
             {group.items.map((item, index) => (
               <div
                 key={item.label}
                 className={cn(
-                  "grid grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] items-center px-5 py-3 text-[0.9rem]",
+                  "grid grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] items-center px-[20px] py-[12px] text-[0.9rem]",
                   index > 0 && "border-t border-[color:var(--ob-border)]",
                 )}
               >
