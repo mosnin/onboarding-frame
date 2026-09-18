@@ -4,36 +4,51 @@ import { Placeholder } from "../../../ui/placeholder";
 import { cn } from "../../../lib/cn";
 import { Surface, brandStudioTokens } from "./tokens";
 import { Btn, Card, Chip, Main, Shell, Sidebar, TopBar } from "./chrome";
+import {
+  ArchiveIcon,
+  ChevronDown,
+  CoinsIcon,
+  ExternalIcon,
+  Icon,
+  LightbulbIcon,
+  Lock,
+  MoreIcon,
+  PaletteIcon,
+  SidebarIcon,
+  UploadIcon,
+  UserPlusIcon,
+  type IconName,
+} from "../../../ui/icons";
 import type { TemplateProps } from "./props";
 
 const NAV = [
-  { id: "overview", label: "Overview", glyph: "⌂", active: true },
-  { id: "images", label: "Images", glyph: "🖼" },
-  { id: "ideas", label: "Ideas", glyph: "💡" },
-  { id: "ads", label: "Ad library", glyph: "🗄", badge: "NEW" },
+  { id: "overview", label: "Overview", icon: "home", active: true },
+  { id: "images", label: "Images", icon: "image" },
+  { id: "ideas", label: "Ideas", icon: "lightbulb" },
+  { id: "ads", label: "Ad library", icon: "archive", badge: "NEW" },
 ];
 
 const ASSETS = [
-  { id: "uploads", label: "Uploads", glyph: "⬆" },
-  { id: "brand", label: "Brand", glyph: "◈" },
+  { id: "uploads", label: "Uploads", icon: "upload" },
+  { id: "brand", label: "Brand", icon: "palette" },
 ];
 
 const FOOTER = [
-  { id: "agent", label: "Agent", glyph: "✳" },
-  { id: "mcp", label: "MCP", glyph: "</>" },
+  { id: "agent", label: "Agent", icon: "sparkle" },
+  { id: "mcp", label: "MCP", icon: "code" },
 ];
 
 const SUPPORT = [
-  { id: "feedback", label: "Feedback", glyph: "💬" },
-  { id: "help", label: "Help", glyph: "?" },
-  { id: "community", label: "Community", glyph: "◇", external: true },
+  { id: "feedback", label: "Feedback", icon: "chat" },
+  { id: "help", label: "Help", icon: "lifebuoy" },
+  { id: "community", label: "Community", icon: "users", external: true },
 ];
 
 const IDEA_TILES = [
-  { id: "social", label: "Social media", glyph: "#" },
-  { id: "advertising", label: "Advertising", glyph: "📣" },
-  { id: "product", label: "Product shot", glyph: "📦" },
-  { id: "blog", label: "Blog & content", glyph: "🗎" },
+  { id: "social", label: "Social media", icon: "tag" },
+  { id: "advertising", label: "Advertising", icon: "megaphone" },
+  { id: "product", label: "Product shot", icon: "box" },
+  { id: "blog", label: "Blog & content", icon: "file" },
 ];
 
 /**
@@ -49,8 +64,42 @@ export function BrandStudioTemplate({
 }: TemplateProps) {
   return (
     <Surface tokens={brandStudioTokens}>
-      <Shell className={cn(className)}>
-        <Sidebar width={272} bg="var(--ob-surface)">
+      <Shell className={cn("flex-col", className)}>
+        {/*
+          The reference's top bar spans the whole window with the rail beneath
+          it, so the workspace switcher sits above the navigation rather than
+          beside it.
+        */}
+        <TopBar className="shrink-0">
+          <Placeholder width={24} height={24} radius={12} />
+          <span className="text-[color:var(--ob-muted)]">/</span>
+          <span className="font-semibold">{userName}&apos;s team</span>
+          <ChevronDown width={14} height={14} className="opacity-40" />
+          <button type="button" aria-label="Collapse rail" className="opacity-45">
+            <SidebarIcon width={17} height={17} />
+          </button>
+          <button
+            type="button"
+            className="ml-3 flex items-center gap-2 rounded-[8px] border border-[color:var(--ob-border)] px-3 py-1.5 text-[0.88rem]"
+          >
+            example.com <ChevronDown width={14} height={14} className="opacity-40" />
+          </button>
+          <button type="button" aria-label="More" className="opacity-50">
+            <MoreIcon width={17} height={17} />
+          </button>
+          <div className="ml-auto flex items-center gap-2.5">
+            <Btn tone="neutral" size="sm">
+              <CoinsIcon width={15} height={15} /> Upgrade
+            </Btn>
+            <Btn tone="neutral" size="sm">
+              <UserPlusIcon width={15} height={15} /> Invite team
+            </Btn>
+            <Placeholder shape="circle" width={30} height={30} />
+          </div>
+        </TopBar>
+
+        <div className="flex min-h-0 flex-1">
+        <Sidebar width={225} bg="var(--ob-surface)">
           <nav className="grid gap-0.5 px-3 pt-4">
             {NAV.map((item) => (
               <button
@@ -64,7 +113,7 @@ export function BrandStudioTemplate({
                     : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
                 )}
               >
-                <span aria-hidden className="w-4 text-center opacity-70">{item.glyph}</span>
+                <Icon name={item.icon as IconName} width={17} height={17} className="shrink-0 opacity-70" />
                 <span className="flex-1">{item.label}</span>
                 {item.badge && (
                   <span className="rounded bg-[color:var(--ob-brand-soft)] px-1.5 py-0.5 text-[0.62rem] font-extrabold text-[color:var(--ob-brand)]">
@@ -84,7 +133,7 @@ export function BrandStudioTemplate({
                 type="button"
                 className="flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem] text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]"
               >
-                <span aria-hidden className="w-4 text-center opacity-70">{item.glyph}</span>
+                <Icon name={item.icon as IconName} width={17} height={17} className="shrink-0 opacity-70" />
                 {item.label}
               </button>
             ))}
@@ -97,7 +146,7 @@ export function BrandStudioTemplate({
                 type="button"
                 className="flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem] text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]"
               >
-                <span aria-hidden className="w-4 text-center opacity-70">{item.glyph}</span>
+                <Icon name={item.icon as IconName} width={17} height={17} className="shrink-0 opacity-70" />
                 {item.label}
               </button>
             ))}
@@ -108,33 +157,17 @@ export function BrandStudioTemplate({
                 type="button"
                 className="flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem] text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]"
               >
-                <span aria-hidden className="w-4 text-center opacity-70">{item.glyph}</span>
+                <Icon name={item.icon as IconName} width={17} height={17} className="shrink-0 opacity-70" />
                 <span className="flex-1">{item.label}</span>
-                {item.external && <span aria-hidden className="opacity-40">↗</span>}
+                {item.external && (
+                  <ExternalIcon width={13} height={13} className="opacity-40" />
+                )}
               </button>
             ))}
           </nav>
         </Sidebar>
 
         <Main>
-          <TopBar>
-            <Placeholder width={24} height={24} radius={12} />
-            <span className="text-[color:var(--ob-muted)]">/</span>
-            <span className="font-semibold">{userName}&apos;s team</span>
-            <span aria-hidden className="opacity-40">⌄</span>
-            <button
-              type="button"
-              className="ml-3 flex items-center gap-2 rounded-[8px] border border-[color:var(--ob-border)] px-3 py-1.5 text-[0.88rem]"
-            >
-              example.com <span aria-hidden className="opacity-40">⌄</span>
-            </button>
-            <button type="button" aria-label="More" className="opacity-50">⋯</button>
-            <div className="ml-auto flex items-center gap-2.5">
-              <Btn tone="neutral" size="sm">◍ Upgrade</Btn>
-              <Btn tone="neutral" size="sm">👥 Invite team</Btn>
-              <Placeholder shape="circle" width={30} height={30} glyph="◍" />
-            </div>
-          </TopBar>
 
           <div className="grid gap-5 px-6 py-8 sm:px-8">
             <header>
@@ -154,7 +187,7 @@ export function BrandStudioTemplate({
               <Card className="grid gap-6 p-6 sm:grid-cols-2 sm:items-center">
                 <div>
                   <p className="flex items-center gap-2 text-[0.88rem] text-[color:var(--ob-muted)]">
-                    <span aria-hidden>🗄</span> Ad library
+                    <ArchiveIcon width={16} height={16} /> Ad library
                   </p>
                   <h2
                     className="mt-4 text-[2rem] leading-[1.1] tracking-tight"
@@ -178,13 +211,14 @@ export function BrandStudioTemplate({
               <Card className="grid content-center justify-items-center gap-5 p-6 text-center">
                 <div className="flex gap-2">
                   {[0, 1, 2, 3, 4].map((i) => (
-                    <Placeholder
-                      key={i}
-                      width={54}
-                      height={54}
-                      radius={8}
-                      glyph={i === 0 ? undefined : "🔒"}
-                    />
+                    <span key={i} className="relative">
+                      <Placeholder width={62} height={80} radius={8} />
+                      {i > 0 && (
+                        <span className="absolute inset-0 grid place-items-center text-[color:var(--ob-muted)]">
+                          <Lock width={15} height={15} />
+                        </span>
+                      )}
+                    </span>
                   ))}
                 </div>
                 <h3
@@ -208,7 +242,12 @@ export function BrandStudioTemplate({
                       key={tile.id}
                       className="grid gap-2 rounded-[10px] border border-[color:var(--ob-border)] p-4"
                     >
-                      <span aria-hidden className="opacity-60">{tile.glyph}</span>
+                      <Icon
+                        name={tile.icon as IconName}
+                        width={19}
+                        height={19}
+                        className="opacity-55"
+                      />
                       <span className="text-[0.85rem] text-[color:var(--ob-muted)]">
                         {tile.label}
                       </span>
@@ -217,7 +256,7 @@ export function BrandStudioTemplate({
                 </div>
                 <div className="mt-auto">
                   <p className="flex items-center gap-2 text-[0.88rem] text-[color:var(--ob-muted)]">
-                    <span aria-hidden>💡</span> Ideas
+                    <LightbulbIcon width={16} height={16} /> Ideas
                   </p>
                   <h3
                     className="mt-2 text-[1.5rem] tracking-tight"
@@ -239,7 +278,7 @@ export function BrandStudioTemplate({
                 />
                 <div className="mt-auto">
                   <p className="flex items-center gap-2 text-[0.88rem] text-[color:var(--ob-muted)]">
-                    <span aria-hidden>◈</span> Brand
+                    <PaletteIcon width={16} height={16} /> Brand
                   </p>
                   <div className="mt-2 flex items-start gap-3">
                     <h3
@@ -271,15 +310,12 @@ export function BrandStudioTemplate({
               </Card>
 
               <Card className="flex flex-col gap-5 p-6">
-                <Placeholder
-                  ratio={16 / 9}
-                  radius={10}
-                  label="Drop images here"
-                  glyph="⬆"
-                />
+                <div className="grid aspect-[16/9] place-items-center rounded-[10px] bg-[color:var(--ob-surface-2)] text-[color:var(--ob-muted)]">
+                  <UploadIcon width={34} height={34} />
+                </div>
                 <div className="mt-auto">
                   <p className="flex items-center gap-2 text-[0.88rem] text-[color:var(--ob-muted)]">
-                    <span aria-hidden>⬆</span> Uploads
+                    <UploadIcon width={16} height={16} /> Uploads
                   </p>
                   <h3
                     className="mt-2 text-[1.5rem] tracking-tight"
@@ -295,6 +331,7 @@ export function BrandStudioTemplate({
             </div>
           </div>
         </Main>
+        </div>
       </Shell>
     </Surface>
   );
