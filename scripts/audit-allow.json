@@ -1,0 +1,11 @@
+{
+  "_comment": "Characters a reference genuinely prints, per template. The audit subtracts these so the worklist shows only real defects. Adding an entry is a claim that the reference image shows that character in that place — check before adding.",
+  "guided-setup": {
+    "chars": "✨🎉",
+    "why": "Canny's own headings carry a party popper and a sparkle."
+  },
+  "social-scheduler": {
+    "chars": "👋🧯🌀🏔💬🧁",
+    "why": "Buffer renders a wave in the greeting tile, emoji as the four template-card marks, and a cupcake inside the quoted comment."
+  }
+}

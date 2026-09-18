@@ -74,10 +74,26 @@ def edges(px, w, y, tol=12, min_gap=6):
     return out
 
 
-def scan_glyphs(root: pathlib.Path):
+def scan_glyphs(root: pathlib.Path, allow_path="scripts/audit-allow.json"):
+    """Glyphs per template, minus the ones its reference genuinely prints.
+
+    A handful of references really do show emoji — Canny's heading carries a
+    party popper, Buffer sets its template-card marks in emoji. Reproducing
+    those is the rule, so they are recorded per template rather than counted
+    as defects. Everything else is a defect.
+    """
+    allow = {}
+    ap = pathlib.Path(allow_path)
+    if ap.exists():
+        allow = {
+            k: set(v["chars"])
+            for k, v in json.loads(ap.read_text()).items()
+            if isinstance(v, dict) and "chars" in v
+        }
     found = {}
     for f in sorted(root.glob("*.tsx")):
-        hits = [c for c in GLYPH.findall(f.read_text()) if c not in ALLOWED]
+        ok = ALLOWED | allow.get(f.stem, set())
+        hits = [c for c in GLYPH.findall(f.read_text()) if c not in ok]
         if hits:
             found[f.stem] = hits
     return found

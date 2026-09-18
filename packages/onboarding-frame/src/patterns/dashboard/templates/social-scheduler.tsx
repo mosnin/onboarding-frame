@@ -7,6 +7,16 @@ import { AvatarSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, schedulerTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
+import {
+  ChatIcon,
+  ExternalIcon,
+  Icon,
+  LeafIcon,
+  Plus,
+  SidebarIcon,
+  TrendUpIcon,
+  type IconName,
+} from "../../../ui/icons";
 
 export type SchedulerPage = "home" | "publish" | "community";
 
@@ -15,12 +25,12 @@ export interface SocialSchedulerProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "create", label: "Create", glyph: "✎" },
-  { id: "publish", label: "Publish", glyph: "▦", badge: "3" },
-  { id: "community", label: "Community", glyph: "◎", badge: "1" },
-  { id: "start", label: "Start Page", glyph: "▤", external: true },
-  { id: "analytics", label: "Analytics", glyph: "▥", external: true },
+  { id: "home", label: "Home", icon: "home" as IconName },
+  { id: "create", label: "Create", icon: "lightbulb" as IconName },
+  { id: "publish", label: "Publish", icon: "calendar" as IconName, badge: "3" },
+  { id: "community", label: "Community", icon: "chat" as IconName, badge: "1" },
+  { id: "start", label: "Start Page", icon: "bookmark" as IconName, external: true },
+  { id: "analytics", label: "Analytics", icon: "barChart" as IconName, external: true },
 ];
 
 const CHANNELS = [
@@ -55,7 +65,8 @@ const SCORES = [
     display: "60",
     color: "#e8a33d",
     label: "Comment Score",
-    sub: "↗ 100% from last week",
+    sub: "100% from last week",
+    trend: true,
   },
 ];
 
@@ -113,11 +124,11 @@ export function SocialSchedulerTemplate({
   return (
     <Surface tokens={schedulerTokens} className={className}>
       <Shell>
-        <Sidebar width={318} bg="var(--ob-surface)" className="border-r-0">
+        <Sidebar width={240} bg="var(--ob-surface)" className="border-r-0">
           <div className="flex items-center gap-2 px-5 pb-4 pt-5">
             <WordmarkSlot width={92} height={16} label="" />
             <span className="ml-auto flex items-center gap-1 text-[0.8rem] text-[color:var(--ob-muted)]">
-              <span aria-hidden>🌱</span>1
+              <LeafIcon width={16} height={16} />1
             </span>
           </div>
 
@@ -135,13 +146,13 @@ export function SocialSchedulerTemplate({
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<Icon name={item.icon} width={17} height={17} />}
                 active={item.id === page}
                 badge={item.badge}
                 trailing={
                   item.external ? (
                     <span aria-hidden className="text-[0.75rem] text-[color:var(--ob-muted)]">
-                      ↗
+                      <ExternalIcon width={12} height={12} />
                     </span>
                   ) : undefined
                 }
@@ -163,6 +174,13 @@ export function SocialSchedulerTemplate({
                       <span className="absolute -left-2 top-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--ob-success)]" />
                     )}
                     <AvatarSlot size={22} />
+                    {/* Platform mark, which is the channel's own logo. */}
+                    <Placeholder
+                      width={11}
+                      height={11}
+                      radius={4}
+                      className="absolute -bottom-0.5 -right-0.5"
+                    />
                   </span>
                 }
                 className="rounded-full"
@@ -180,7 +198,11 @@ export function SocialSchedulerTemplate({
                 className="rounded-full"
               />
             ))}
-            <NavItem label="More channels" glyph="+" className="rounded-full" />
+            <NavItem
+              label="More channels"
+              glyph={<Plus width={17} height={17} />}
+              className="rounded-full"
+            />
           </nav>
 
           <div className="mt-auto flex items-center gap-2.5 px-5 py-5">
@@ -191,7 +213,7 @@ export function SocialSchedulerTemplate({
                 Team Plan
               </span>
             </span>
-            <span aria-hidden className="text-[color:var(--ob-muted)]">◧</span>
+            <SidebarIcon width={17} height={17} className="text-[color:var(--ob-muted)]" />
           </div>
         </Sidebar>
 
@@ -220,10 +242,10 @@ function Home() {
         </div>
         <span className="flex items-center gap-2 pt-2">
           <span className="grid h-8 w-8 place-items-center rounded-full text-[color:var(--ob-muted)]">
-            ✉
+            <ChatIcon width={19} height={19} />
           </span>
           <span className="grid h-8 w-8 place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[color:var(--ob-success)]">
-            ◔
+            <Icon name="activity" width={19} height={19} />
           </span>
         </span>
       </header>
@@ -247,7 +269,12 @@ function Home() {
                 {score.label}
                 <InfoDot />
               </p>
-              <p className="text-[0.92rem] text-[color:var(--ob-fg-soft)]">{score.sub}</p>
+              <p className="flex items-center gap-1 text-[0.92rem] text-[color:var(--ob-fg-soft)]">
+                {"trend" in score && score.trend && (
+                  <TrendUpIcon width={14} height={14} className="text-[color:var(--ob-success)]" />
+                )}
+                {score.sub}
+              </p>
             </div>
           </div>
         ))}
