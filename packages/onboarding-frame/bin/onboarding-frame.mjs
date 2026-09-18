@@ -17,7 +17,7 @@ import process from "node:process";
 // when pointing at a fork or a local `next start`.
 const DEFAULT_REGISTRY =
   process.env.ONBOARDING_FRAME_REGISTRY ??
-  "https://onboarding-frame-mosnins-projects.vercel.app/registry";
+  "https://onboarding-frame.vercel.app/registry";
 const DEFAULT_DIR = "components/onboarding";
 
 const HELP = `

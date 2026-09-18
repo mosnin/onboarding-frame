@@ -155,9 +155,9 @@ is depends on that setting, so both are kept identical and correct for a build
 whose working directory is `apps/web`. Changing the Root Directory means
 revisiting both.
 
-The CLI's default registry points at the deployed site. Set
-`ONBOARDING_FRAME_REGISTRY` (or pass `--registry`) to eject from a fork or from
-a local `next start`.
+The site is live at <https://onboarding-frame.vercel.app>, which is also the
+CLI's default registry. Set `ONBOARDING_FRAME_REGISTRY` (or pass `--registry`)
+to eject from a fork or from a local `next start` instead.
 
 ## A note on the payment screens
 
