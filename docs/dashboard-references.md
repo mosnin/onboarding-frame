@@ -50,3 +50,51 @@ Two columns: "Up Next · 2 posts scheduled" -> post cards (avatar+platform badge
 "Post on hello.asmith", square image placeholder right); "Comments · 1 unanswered" -> comment
 card (avatar+badge, @user0, body).
 "Templates" -> 4 cards each with an emoji/icon, bold 2-line title, 3-line truncated body.
+
+| 17 | 073 | Fey | market-terminal (dark) | TODO |
+| 18 | 074 | Sweatpals | event-analytics (dark) | TODO |
+| 19 | 075 | Klaviyo, Overview dashboard | guides-assistant | TODO add `dashboards` page |
+| 20 | 076 | HoneyBook, Finance | setup-checklist | TODO add `finance` page |
+
+## 17 Fey (073)  DARK
+Near-black #0a0a0b page, cards #121214 w/ faint border, white text, grey-500 labels.
+Left icon-only rail (~72px) w/ logo top, 5 glyphs, active one has a blue left bar.
+Header: "Analysis" 2rem bold + grey "Thursday, February 15"; right: pill buttons
+"For you" / "Screener" (dark w/ hairline border) + search glyph; hairline rule.
+Tab row under rule: Markets / Insider (active, blue top-border) / Events + grey
+"Coming soon" chip.
+Card "Large transactions" w/ right-aligned toggle "Officer | Director"; rows:
+round logo slot, bold ticker, grey name, red % , mono value, tiny circular P/S badge
+(green P for purchase, red S for sale).
+Card "Daily filings": legend dots Purchases (white) / Sales (red); dense spiky
+two-line chart on a dotted-grid plot; range row 1M 3M 6M(active, blue underline) YTD All
+and right grey "Chart updated daily".
+Section "Latest insider purchases" -> wide table, header row grey small caps:
+Company name / Trade type / Insider / Date / Price / Owned / Change / Total value / </>.
+Rows: logo slot, bold ticker + grey name, green-tinted "Purchase" chip, "10% Owner",
+date, price, owned, change "+10,100 (+0.20%)", bold total, P badge. First row highlighted
+with a lighter fill + border.
+
+## 18 Sweatpals (074)  DARK
+Pure #000 page, cards #0c0c0c, rounded-2xl, border #1c1c1c. Sidebar #000 w/ wordmark,
+nav Overview/Experiences/Schedule/Members/Plans/Discount Codes/Perks/Transactions/
+Market & Pricing, group "Front Desk" (Check-in, Point of Sale), "Campaigns" (Email & SMS),
+"Other" (Settings, Team, Integrations, Embeds), "Help" (Resource Center ↗).
+A round collapse chevron floats on the sidebar's right edge.
+Top bar: "‹ Back", right a store glyph then a bordered box "COMMUNITY / ASMobbin" + caret.
+Event header card: square image placeholder, "ASMobbin gathering" + 3 small glyph buttons,
+grey "Jul 11th, 12:00 AM - 2:00 AM CDT · Chicago, IL"; right pill buttons
+"Add attendee", "Edit", "···".
+Tabs RSVPs / Analytics(active, white underline) / Tracking links.
+Pill segmented "All time | 7d | 14d | 30d" in a dark rounded container; right a circular
+refresh button.
+3 stat cards: label + big number (RSVPs 6, Event page views 7, Conversion Rate 71% w/ info).
+"Tickets Sales" card: big PURPLE ring (thin, ~8px) w/ "6 / Tickets sold" centred, legend
+right: purple square "Free" ... 6 + "100%" chip.
+"Retention Rate" card w/ chevron: GREEN ring w/ a small white "5" bubble on the ring's
+left edge; legend First Timer 5 100%, Returning 0 0%.
+"Event Capacity" card, right "10 spots": rows Spots Taken 6 / Spots Remaining 4 + a green
+progress bar (60%).
+"Check-in" card, right "6 tickets": Checked-in 0 / "No shows yet" 6 + a bar that is
+essentially empty (one dot of fill).
+"RSVPs" card: 6 + green "↑100%" chip.

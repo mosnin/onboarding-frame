@@ -3,6 +3,7 @@
 import { Placeholder } from "../../../ui/placeholder";
 import { cn } from "../../../lib/cn";
 import { Surface, guidesTokens } from "./tokens";
+import { LineChart } from "../../../ui/charts";
 import { Btn, Card, Chip, Main, SearchField, Shell, Sidebar, Table, TopBar } from "./chrome";
 import type { TemplateProps } from "./api-console";
 
@@ -35,11 +36,18 @@ const IDEAS = [
  * right that suggests next actions. The guide rows carry their own state —
  * done, in progress, needs review — so progress is legible at a glance.
  */
+export type GuidesPage = "started" | "dashboards";
+
+export interface GuidesAssistantProps extends TemplateProps {
+  page?: GuidesPage;
+}
+
 export function GuidesAssistantTemplate({
   brandName = "Beacon",
   userName = "Sam",
   className,
-}: TemplateProps) {
+  page = "started",
+}: GuidesAssistantProps) {
   return (
     <Surface tokens={guidesTokens}>
       <Shell className={cn(className)}>
@@ -132,6 +140,9 @@ export function GuidesAssistantTemplate({
             </div>
           </TopBar>
 
+          {page === "dashboards" ? (
+            <ReportingPage />
+          ) : (
           <div className="flex flex-1 gap-5 p-5">
             {/* Guide column */}
             <div className="flex-1 rounded-[14px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-8">
@@ -319,8 +330,215 @@ export function GuidesAssistantTemplate({
               </div>
             </aside>
           </div>
+          )}
         </Main>
       </Shell>
     </Surface>
+  );
+}
+
+/**
+ * The "Overview dashboard" report.
+ *
+ * Widget cards carry a drag handle at the top centre and an overflow menu at
+ * the top right, because the page is a rearrangeable dashboard rather than a
+ * fixed report. The rate rows are graded against benchmarks (Poor/Excellent)
+ * instead of only stating a number — a 0.00% open rate on 13 recipients is the
+ * kind of figure that needs the label to be readable.
+ */
+function ReportingPage() {
+  const rates = [
+    { id: "open", label: "Open rate", grade: "Poor", value: "0.00%", delta: "0.00%", color: "#2563eb", bad: true },
+    { id: "click", label: "Click rate", grade: "Excellent", value: "8.33%", delta: ">999%", color: "#43c59e", bad: false },
+    { id: "order", label: "Placed Order rate", grade: "Poor", value: "0.00%", delta: "0.00%", color: "#e8c33d", bad: true },
+  ];
+
+  const messages = [
+    {
+      id: "m1",
+      name: "AI Generated: Is Your Portfolio Ready for a Makeover?",
+      sub: "AI Generated: Is Your Portfolio Ready for a Makeover?",
+      sent: "Jul 23, 2026",
+      time: "9:45 AM",
+      recipients: 8,
+      delivered: 7,
+      opens: 0,
+      openPct: "0.00%",
+      clicks: 1,
+      clickPct: "14.29%",
+    },
+    {
+      id: "m2",
+      name: "Email Campaign",
+      sub: "Email Campaign",
+      sent: "Jul 16, 2026",
+      time: "12:00 AM",
+      recipients: 5,
+      delivered: 5,
+      opens: 0,
+      openPct: "0.00%",
+      clicks: 0,
+      clickPct: "0.00%",
+    },
+  ];
+
+  return (
+    <div className="flex-1 p-5">
+      <p className="pb-4 text-[0.95rem] text-[color:var(--ob-fg-soft)]">
+        Dashboards <span className="px-1 text-[color:var(--ob-muted)]">/</span>{" "}
+        <span className="font-medium">Overview dashboard</span>
+      </p>
+
+      <Widget title="Campaign message performance">
+        <div className="grid gap-8 pt-4 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+          <div>
+            <span className="inline-flex items-center gap-8 rounded-[8px] border border-[color:var(--ob-border-strong)] bg-[color:var(--ob-surface)] px-3.5 py-2 text-[0.92rem]">
+              All campaign messages
+              <span aria-hidden className="text-[0.7rem] opacity-60">⌄</span>
+            </span>
+
+            <p className="pt-6 text-[1.9rem] font-bold tabular-nums leading-none">13</p>
+            <p className="pt-2 font-semibold">Total campaign recipients</p>
+            <p className="flex items-center gap-2 pt-2">
+              <Chip tone="success">↗ &gt;999%</Chip>
+              <span className="text-[0.92rem] text-[color:var(--ob-muted)]">
+                vs. previous period
+              </span>
+            </p>
+
+            <ul className="grid gap-5 pt-7">
+              {rates.map((rate) => (
+                <li key={rate.id} className="flex items-center gap-4">
+                  <span
+                    aria-hidden
+                    className="size-3 shrink-0 rounded-full"
+                    style={{ background: rate.color }}
+                  />
+                  <span className="w-40 shrink-0 font-semibold">{rate.label}</span>
+                  <Chip tone={rate.bad ? "danger" : "success"}>{rate.grade}</Chip>
+                  <span className="w-20 text-right tabular-nums">{rate.value}</span>
+                  <span
+                    className={cn(
+                      "w-24 text-right font-bold tabular-nums",
+                      rate.bad
+                        ? "text-[color:var(--ob-danger)]"
+                        : "text-[#1f8f6f]",
+                    )}
+                  >
+                    {rate.delta}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* One campaign landed in the window, so the line is flat then spikes. */}
+          <LineChart
+            height={215}
+            gridLines={3}
+            yLabels={["0.0%", "5.0%", "10.0%", "15.0%"]}
+            xLabels={[
+              "Jun 24",
+              "Jun 28",
+              "Jul 02",
+              "Jul 06",
+              "Jul 10",
+              "Jul 14",
+              "Jul 18",
+              "Jul 22",
+            ]}
+            series={[
+              {
+                id: "click",
+                points: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14.3, 0],
+                color: "#43c59e",
+              },
+            ]}
+          />
+        </div>
+      </Widget>
+
+      <div className="pt-5">
+        <Widget title="Campaign message performance detail">
+          <div className="overflow-x-auto pt-4">
+            <table className="w-full min-w-[820px] border-collapse text-[0.92rem]">
+              <thead>
+                <tr className="text-[color:var(--ob-muted)]">
+                  {["Name", "Sent date", "Recipients", "Delivered", "Unique Opens", "Unique Clicks"].map(
+                    (head, index) => (
+                      <th
+                        key={head}
+                        className={cn(
+                          "border-b border-[color:var(--ob-border)] px-3 py-2.5 font-normal",
+                          index === 0 ? "text-left" : "text-right",
+                        )}
+                      >
+                        {head}
+                      </th>
+                    ),
+                  )}
+                </tr>
+              </thead>
+              <tbody>
+                {messages.map((row) => (
+                  <tr key={row.id}>
+                    <td className="border-b border-[color:var(--ob-border)] px-3 py-3.5">
+                      <span className="block max-w-[26rem] font-medium text-[color:var(--ob-brand)]">
+                        {row.name}
+                      </span>
+                      <span className="block text-[0.86rem] text-[color:var(--ob-muted)]">
+                        {row.sub}
+                      </span>
+                    </td>
+                    <td className="border-b border-[color:var(--ob-border)] px-3 py-3.5 text-right">
+                      <span className="block tabular-nums">{row.sent}</span>
+                      <span className="block text-[0.86rem] tabular-nums text-[color:var(--ob-muted)]">
+                        {row.time}
+                      </span>
+                    </td>
+                    <td className="border-b border-[color:var(--ob-border)] px-3 py-3.5 text-right tabular-nums">
+                      {row.recipients}
+                    </td>
+                    <td className="border-b border-[color:var(--ob-border)] px-3 py-3.5 text-right tabular-nums">
+                      {row.delivered}
+                    </td>
+                    <td className="border-b border-[color:var(--ob-border)] px-3 py-3.5 text-right">
+                      <span className="block tabular-nums">{row.opens}</span>
+                      <span className="block text-[0.86rem] tabular-nums text-[color:var(--ob-muted)]">
+                        {row.openPct}
+                      </span>
+                    </td>
+                    <td className="border-b border-[color:var(--ob-border)] px-3 py-3.5 text-right">
+                      <span className="block tabular-nums">{row.clicks}</span>
+                      <span className="block text-[0.86rem] tabular-nums text-[color:var(--ob-muted)]">
+                        {row.clickPct}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Widget>
+      </div>
+    </div>
+  );
+}
+
+function Widget({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="relative rounded-[14px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
+      <span
+        aria-hidden
+        className="absolute left-1/2 top-2 -translate-x-1/2 text-[0.7rem] tracking-[0.2em] text-[color:var(--ob-muted)]"
+      >
+        ⠿
+      </span>
+      <span aria-hidden className="absolute right-5 top-5 text-[color:var(--ob-muted)]">
+        ⋮
+      </span>
+      <h2 className="text-[1.2rem] font-bold">{title}</h2>
+      {children}
+    </section>
   );
 }

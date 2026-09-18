@@ -443,3 +443,57 @@ export const schedulerTokens: TemplateTokens = {
   radiusSm: "0.625rem",
   radiusLg: "1.25rem",
 };
+
+/**
+ * Fey: a dark investing terminal. Near-black rather than true black, one blue
+ * accent reserved for the active tab, and red/white as data colours only — so
+ * the chart carries the meaning and the chrome stays out of the way.
+ */
+export const terminalTokens: TemplateTokens = {
+  scheme: "dark",
+  bg: "#0a0a0b",
+  surface: "#121214",
+  surface2: "#1a1a1d",
+  surface3: "#232327",
+  border: "#232327",
+  borderStrong: "#33333a",
+  fg: "#f4f4f5",
+  fgSoft: "#c9c9ce",
+  muted: "#77777f",
+  brand: "#3b82f6",
+  brandFg: "#ffffff",
+  ctaBg: "#f4f4f5",
+  ctaFg: "#0a0a0b",
+  success: "#4ade80",
+  danger: "#f2555a",
+  radius: "0.875rem",
+  radiusSm: "0.5rem",
+  radiusLg: "1.125rem",
+};
+
+/**
+ * Sweatpals: true black with barely-there card borders and saturated ring
+ * colours. Distinct from the terminal above, which sits on charcoal — the
+ * difference between the two is the point of scoping tokens per template.
+ */
+export const eventTokens: TemplateTokens = {
+  scheme: "dark",
+  bg: "#000000",
+  surface: "#0c0c0c",
+  surface2: "#151515",
+  surface3: "#1f1f1f",
+  border: "#1e1e1e",
+  borderStrong: "#2e2e2e",
+  fg: "#fafafa",
+  fgSoft: "#d4d4d4",
+  muted: "#8b8b8b",
+  brand: "#b96bff",
+  brandFg: "#ffffff",
+  ctaBg: "#1a1a1a",
+  ctaFg: "#fafafa",
+  success: "#5ddb9a",
+  danger: "#ff5f8a",
+  radius: "1rem",
+  radiusSm: "0.625rem",
+  radiusLg: "1.25rem",
+};

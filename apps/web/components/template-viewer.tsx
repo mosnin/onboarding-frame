@@ -17,11 +17,17 @@ import {
   CrmWorkspaceTemplate,
   ModelingHomeTemplate,
   SocialSchedulerTemplate,
+  MarketTerminalTemplate,
+  EventAnalyticsTemplate,
   type ApiConsolePage,
   type CrmPage,
   type FinancePage,
   type ModelingPage,
   type SchedulerPage,
+  type TerminalPage,
+  type EventPage,
+  type GuidesPage,
+  type ChecklistPage,
 } from "onboarding-frame";
 
 /** Renders a template by slug, shared by the viewer and the shelf preview. */
@@ -30,7 +36,7 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
     case "api-console":
       return <ApiConsoleTemplate page={page as ApiConsolePage} />;
     case "setup-checklist":
-      return <SetupChecklistTemplate />;
+      return <SetupChecklistTemplate page={page as ChecklistPage} />;
     case "guided-setup":
       return <GuidedSetupTemplate />;
     case "assistant-home":
@@ -40,7 +46,7 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
     case "creative-studio":
       return <CreativeStudioTemplate />;
     case "guides-assistant":
-      return <GuidesAssistantTemplate />;
+      return <GuidesAssistantTemplate page={page as GuidesPage} />;
     case "brand-studio":
       return <BrandStudioTemplate />;
     case "commerce-analytics":
@@ -49,6 +55,10 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
       return <SupportInsightsTemplate />;
     case "finance-overview":
       return <FinanceOverviewTemplate page={page as FinancePage} />;
+    case "market-terminal":
+      return <MarketTerminalTemplate page={page as TerminalPage} />;
+    case "event-analytics":
+      return <EventAnalyticsTemplate page={page as EventPage} />;
     case "modeling-home":
       return <ModelingHomeTemplate page={page as ModelingPage} />;
     case "social-scheduler":

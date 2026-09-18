@@ -5,12 +5,14 @@ export type { TemplateProps } from "./api-console";
 export { ApiConsoleTemplate } from "./api-console";
 export type { ApiConsolePage, ApiConsoleProps } from "./api-console";
 export { SetupChecklistTemplate } from "./setup-checklist";
+export type { ChecklistPage, SetupChecklistProps } from "./setup-checklist";
 export { GuidedSetupTemplate } from "./guided-setup";
 export { AssistantHomeTemplate } from "./assistant-home";
 export { FileLibraryTemplate } from "./file-library";
 export { CreativeStudioTemplate } from "./creative-studio";
 export { DiscoveryFeedTemplate } from "./discovery-feed";
 export { GuidesAssistantTemplate } from "./guides-assistant";
+export type { GuidesPage, GuidesAssistantProps } from "./guides-assistant";
 export { BrandStudioTemplate } from "./brand-studio";
 export { CommerceAnalyticsTemplate } from "./commerce-analytics";
 export { SupportInsightsTemplate } from "./support-insights";
@@ -20,6 +22,10 @@ export { ModelingHomeTemplate } from "./modeling-home";
 export type { ModelingPage, ModelingHomeProps } from "./modeling-home";
 export { SocialSchedulerTemplate } from "./social-scheduler";
 export type { SchedulerPage, SocialSchedulerProps } from "./social-scheduler";
+export { MarketTerminalTemplate } from "./market-terminal";
+export type { TerminalPage, MarketTerminalProps } from "./market-terminal";
+export { EventAnalyticsTemplate } from "./event-analytics";
+export type { EventPage, EventAnalyticsProps } from "./event-analytics";
 export { CrmWorkspaceTemplate } from "./crm-workspace";
 export type { CrmPage, CrmWorkspaceProps } from "./crm-workspace";
 
@@ -56,7 +62,10 @@ export const templateCatalog: TemplateMeta[] = [
     name: "Setup checklist",
     blurb:
       "Near-black nav rail carrying persistent setup progress, with a step-by-step task list as the whole page.",
-    pages: [{ id: "setup", label: "Setup" }],
+    pages: [
+      { id: "setup", label: "Setup" },
+      { id: "finance", label: "Finance" },
+    ],
   },
   {
     slug: "guided-setup",
@@ -91,7 +100,10 @@ export const templateCatalog: TemplateMeta[] = [
     name: "Guides with assistant",
     blurb:
       "Personalised setup guide down the middle with a docked assistant that suggests the next action.",
-    pages: [{ id: "started", label: "Get started" }],
+    pages: [
+      { id: "started", label: "Get started" },
+      { id: "dashboards", label: "Overview dashboard" },
+    ],
   },
   {
     slug: "brand-studio",
@@ -144,6 +156,24 @@ export const templateCatalog: TemplateMeta[] = [
       { id: "home", label: "Home" },
       { id: "publish", label: "Publish" },
       { id: "community", label: "Community" },
+    ],
+  },
+  {
+    slug: "market-terminal",
+    name: "Market terminal",
+    blurb:
+      "Charcoal investing terminal: dense filing tables, a dotted plot grid, and trade direction carried by a one-letter badge so rows stay on one line.",
+    pages: [{ id: "insider", label: "Insider" }],
+  },
+  {
+    slug: "event-analytics",
+    name: "Event analytics",
+    blurb:
+      "True-black event report where the capacity and check-in meters stay honestly near-empty, because the event has not happened yet.",
+    pages: [
+      { id: "analytics", label: "Analytics" },
+      { id: "rsvps", label: "RSVPs" },
+      { id: "tracking", label: "Tracking links" },
     ],
   },
   {
