@@ -97,29 +97,29 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
   return (
     <Surface tokens={authTokens} className={className}>
       <Shell>
-        <Sidebar width={418} bg="var(--ob-bg)" className="border-r-0 p-3">
+        <Sidebar width={325} bg="var(--ob-bg)" className="border-r-0 p-[9px]">
           <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
-            <div className="flex items-center gap-3 px-3.5 py-3">
-              <Avatar name="Personal account" size={32} />
-              <span className="flex-1 text-[1.08rem] font-medium">Personal account</span>
-              <ArrowsUpDownIcon size={14} />
+            <div className="flex items-center gap-[9px] px-[11px] py-[9px]">
+              <Avatar name="Personal account" size={25} />
+              <span className="flex-1 text-[0.839rem] font-medium">Personal account</span>
+              <ArrowsUpDownIcon size={11} />
             </div>
-            <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] px-3.5 py-3">
-              <BrandMark brand="MyApp" size={30} label="MyApp" />
-              <span className="flex-1 text-[1.08rem] font-medium">MyApp</span>
-              <ArrowsUpDownIcon size={14} />
+            <div className="flex items-center gap-[9px] border-t border-[color:var(--ob-border)] px-[11px] py-[9px]">
+              <BrandMark brand="MyApp" size={23} label="MyApp" />
+              <span className="flex-1 text-[0.839rem] font-medium">MyApp</span>
+              <ArrowsUpDownIcon size={11} />
             </div>
           </div>
 
-          <nav className="grid gap-0.5 pt-2">
+          <nav className="grid gap-[2px] pt-[6px]">
             {TOP.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={<item.Icon size={14} />}
+                glyph={<item.Icon size={11} />}
                 active={item.id === page}
                 className={cn(
-                  "text-[1.08rem]",
+                  "text-[0.839rem]",
                   item.id === page &&
                     "border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] text-[color:var(--ob-brand)]",
                 )}
@@ -128,107 +128,107 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
           </nav>
 
           <NavSection label="Configure" />
-          <nav className="grid gap-0.5">
+          <nav className="grid gap-[2px]">
             {CONFIGURE.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={<item.Icon size={14} />}
+                glyph={<item.Icon size={11} />}
                 trailing={
                   item.chevron ? (
-                    <CaretRightIcon size={14} />
+                    <CaretRightIcon size={11} />
                   ) : undefined
                 }
-                className="text-[1.08rem]"
+                className="text-[0.839rem]"
               />
             ))}
           </nav>
 
           <NavSection label="Developers" />
-          <nav className="grid gap-0.5">
+          <nav className="grid gap-[2px]">
             {DEVELOPERS.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={<item.Icon size={14} />}
-                className="text-[1.08rem]"
+                glyph={<item.Icon size={11} />}
+                className="text-[0.839rem]"
               />
             ))}
           </nav>
 
           <NavSection label="Application" />
-          <nav className="grid gap-0.5">
+          <nav className="grid gap-[2px]">
             {APPLICATION.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={<item.Icon size={14} />}
-                className="text-[1.08rem]"
+                glyph={<item.Icon size={11} />}
+                className="text-[0.839rem]"
               />
             ))}
           </nav>
 
-          <div className="mt-auto flex items-center gap-3 px-3 py-4">
-            <Avatar name="Jane Doe" size={32} />
-            <span className="text-[1.08rem] font-medium">Jane Doe</span>
+          <div className="mt-auto flex items-center gap-[9px] px-[9px] py-[12px]">
+            <Avatar name="Jane Doe" size={25} />
+            <span className="text-[0.839rem] font-medium">Jane Doe</span>
           </div>
         </Sidebar>
 
         <Main className="relative overflow-auto bg-[color:var(--ob-surface)]">
           {/* The environment tab hangs from the top edge of the content pane. */}
-          <span className="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[color:var(--ob-danger)] px-3.5 py-1.5 text-[0.88rem] font-semibold text-white">
-            Development <ArrowsDownUpIcon size={12} className="inline align-[-1px]" />
+          <span className="absolute left-1/2 top-[0px] -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[color:var(--ob-danger)] px-[11px] py-[5px] text-[0.683rem] font-semibold text-white">
+            Development <ArrowsDownUpIcon size={9} className="inline align-[-1px]" />
           </span>
 
-          <div className="px-12 pb-10 pt-14">
-            <p className="flex items-center gap-3 text-[1.05rem]">
+          <div className="px-[37px] pb-[31px] pt-[43px]">
+            <p className="flex items-center gap-[9px] text-[0.815rem]">
               <span className="text-[color:var(--ob-fg-soft)]">Home</span>
-              <CaretRightIcon size={14} />
+              <CaretRightIcon size={11} />
               <span className="font-medium">MyApp</span>
             </p>
 
-            <h1 className="pt-5 text-[2.05rem] font-bold tracking-[-0.01em]">
+            <h1 className="pt-[16px] text-[1.592rem] font-bold tracking-[-0.01em]">
               Congratulations, your application now has users!
             </h1>
-            <p className="max-w-[72ch] pt-3 text-[1.12rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+            <p className="max-w-[72ch] pt-[9px] text-[0.87rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
               The platform handles all the authentication and user management pieces for
               you. Next, you can learn how to access this data and use it in your
               application, customize the look and feel of your components, and get your
               app ready for production.
             </p>
 
-            <div className="grid gap-5 pt-8 lg:grid-cols-3">
+            <div className="grid gap-[16px] pt-[25px] lg:grid-cols-3">
               {LEARN.map((card) => (
                 <section
                   key={card.id}
-                  className="grid justify-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-6 py-8"
+                  className="grid justify-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[19px] py-[25px]"
                 >
-                  <card.Icon size={14} />
-                  <p className="pt-4 text-center text-[1.08rem] font-semibold">
+                  <card.Icon size={11} />
+                  <p className="pt-[12px] text-center text-[0.839rem] font-semibold">
                     {card.label}
                   </p>
                 </section>
               ))}
             </div>
 
-            <div className="grid gap-5 pt-5 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-[16px] pt-[16px] sm:grid-cols-2 xl:grid-cols-4">
               {STATS.map((stat) => (
                 <section
                   key={stat.id}
-                  className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-6 py-6"
+                  className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[19px] py-[19px]"
                 >
-                  <h2 className="text-[1.2rem] font-bold">{stat.title}</h2>
-                  <p className="pt-1 text-[1.05rem] text-[color:var(--ob-muted)]">
+                  <h2 className="text-[0.932rem] font-bold">{stat.title}</h2>
+                  <p className="pt-[3px] text-[0.815rem] text-[color:var(--ob-muted)]">
                     {stat.sub}
                   </p>
-                  <p className="pt-6 text-[1.7rem] font-medium tabular-nums leading-none">
+                  <p className="pt-[19px] text-[1.32rem] font-medium tabular-nums leading-none">
                     {stat.value}
                   </p>
                 </section>
               ))}
             </div>
 
-            <div className="grid gap-5 pt-5 lg:grid-cols-2">
+            <div className="grid gap-[16px] pt-[16px] lg:grid-cols-2">
               <RecentCard title="Recent sign-ups" rows={SIGNUPS} />
               <RecentCard title="Recent sign-ins" rows={SIGNINS} />
             </div>
@@ -247,14 +247,14 @@ function RecentCard({
   rows: { id: string; email: string; when: string }[];
 }) {
   return (
-    <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-7 py-6">
-      <h2 className="pb-5 text-[1.2rem] font-bold">{title}</h2>
-      <ul className="grid gap-4">
+    <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[22px] py-[19px]">
+      <h2 className="pb-[16px] text-[0.932rem] font-bold">{title}</h2>
+      <ul className="grid gap-[12px]">
         {rows.map((row) => (
-          <li key={row.id} className="flex items-center gap-3.5">
-            <Avatar name={row.email} size={34} />
-            <span className="min-w-0 flex-1 truncate text-[1.08rem]">{row.email}</span>
-            <span className="shrink-0 text-[1.05rem] text-[color:var(--ob-muted)]">
+          <li key={row.id} className="flex items-center gap-[11px]">
+            <Avatar name={row.email} size={26} />
+            <span className="min-w-[0px] flex-1 truncate text-[0.839rem]">{row.email}</span>
+            <span className="shrink-0 text-[0.815rem] text-[color:var(--ob-muted)]">
               {row.when}
             </span>
           </li>

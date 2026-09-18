@@ -233,8 +233,8 @@ Two cards: "Input token trend" and "Output token trend" — slate BARS, y 0/150/
 | 26 | 082 | Vanta | compliance-controls | DONE |
 | 27 | 083 | Vercel, hover tooltip + crosshair | deploy-analytics | DONE (hover readout) |
 | 28 | 084 | Etsy Shop Manager | listing-stats | DONE |
-| 29 | 085 | Mailchimp audience | audience-analytics | DONE |
-| 30 | 086 | Cake Equity | cap-table | DONE |
+| 29 | 085 | Mailchimp audience | audience-analytics | REMEASURED |
+| 30 | 086 | Cake Equity | cap-table | REMEASURED |
 
 ## 26 Vanta (082)
 White, purple #6b46e5 brand, grey-50 chips, small radii (6-8px). Top bar white w/ wordmark
@@ -436,7 +436,7 @@ bottom/edge; y labels top-left and bottom-left (8.0% / -4.0%); x "January 2024" 
 "December 2024" right in grey.
 
 | 36 | 092 | Contra analytics | freelance-analytics | DONE |
-| 37 | 093 | Clerk dashboard | auth-console | DONE |
+| 37 | 093 | Clerk dashboard | auth-console | REMEASURED |
 | 38 | 094 | Better Stack uptime | uptime-monitor (dark) | DONE |
 | 39 | 095 | Cloudflare zone overview | zone-overview | REMEASURED |
 | 40 | 096 | Zapier My Apps | automation-apps | DONE |

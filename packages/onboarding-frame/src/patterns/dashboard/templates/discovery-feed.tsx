@@ -56,34 +56,34 @@ export function DiscoveryFeedTemplate({
   return (
     <Surface tokens={discoveryFeedTokens}>
       <Shell className={cn(className)}>
-        <aside className="hidden w-[72px] shrink-0 flex-col items-center gap-7 border-r border-[color:var(--ob-border)] py-5 sm:flex">
-          <Avatar name={userName} size={30} />
-          <nav className="mt-auto grid gap-6 text-[color:var(--ob-fg-soft)]">
+        <aside className="hidden w-[55px] shrink-0 flex-col items-center gap-[22px] border-r border-[color:var(--ob-border)] py-[15px] sm:flex">
+          <Avatar name={userName} size={23} />
+          <nav className="mt-auto grid gap-[18px] text-[color:var(--ob-fg-soft)]">
             {RAIL.map((name, i) => (
               <button
                 key={name}
                 type="button"
                 className={cn(
-                  "relative grid size-9 place-items-center rounded-[10px] transition-colors",
+                  "relative grid size-[28px] place-items-center rounded-[8px] transition-colors",
                   i === 1 ? "bg-[color:var(--ob-surface-2)]" : "opacity-60 hover:opacity-100",
                 )}
               >
-                <Icon name={name} width={21} height={21} />
+                <Icon name={name} width={16} height={16} />
                 {i === 3 && (
-                  <span className="absolute -right-0.5 -top-0.5 grid size-4 place-items-center rounded-full bg-[#e0332c] text-[0.6rem] font-bold text-white">
+                  <span className="absolute -right-[2px] -top-[2px] grid size-[12px] place-items-center rounded-full bg-[#e0332c] text-[0.462rem] font-bold text-white">
                     2
                   </span>
                 )}
               </button>
             ))}
           </nav>
-          <button type="button" aria-label="Settings" className="mb-1 mt-auto opacity-60">
-            <SettingsIcon width={21} height={21} />
+          <button type="button" aria-label="Settings" className="mb-[3px] mt-auto opacity-60">
+            <SettingsIcon width={16} height={16} />
           </button>
         </aside>
 
         <Main>
-          <header className="flex items-center gap-7 px-7 py-5">
+          <header className="flex items-center gap-[22px] px-[22px] py-[15px]">
             {TABS.map((tab, i) => (
               <button
                 key={tab}
@@ -92,51 +92,51 @@ export function DiscoveryFeedTemplate({
                 className={cn(
                   // Flex, so the caret sits beside the label rather than
                   // wrapping under it as an inline block.
-                  "flex items-center text-[0.98rem]",
+                  "flex items-center text-[0.754rem]",
                   i === 2
                     ? "font-bold text-[color:var(--ob-fg)]"
                     : "text-[color:var(--ob-muted)] hover:text-[color:var(--ob-fg)]",
                 )}
               >
                 {tab}
-                {i === 3 && <ChevronDown width={14} height={14} className="ml-1 opacity-50" />}
+                {i === 3 && <ChevronDown width={11} height={11} className="ml-[3px] opacity-50" />}
               </button>
             ))}
             <button type="button" aria-label="Search" className="ml-auto opacity-60">
-              <SearchIcon width={19} height={19} />
+              <SearchIcon width={15} height={15} />
             </button>
           </header>
 
-          <div className="grid grid-cols-2 gap-4 px-7 pb-10 md:grid-cols-3 xl:grid-cols-5">
+          <div className="grid grid-cols-2 gap-[12px] px-[22px] pb-[31px] md:grid-cols-3 xl:grid-cols-5">
             {columns.map((column, i) => (
-              <div key={i} className="grid content-start gap-7">
+              <div key={i} className="grid content-start gap-[22px]">
                 {column.map((item) => (
                   <article key={item.id}>
                     <div className="relative">
                       <span className="block" style={{ height: item.h }}>
-                        <Thumb seed={item.author + item.h} alt="Post image" radius={10} />
+                        <Thumb seed={item.author + item.h} alt="Post image" radius={8} />
                       </span>
                       {item.badges.length > 0 && (
-                        <div className="absolute bottom-3 left-3 flex gap-1.5">
+                        <div className="absolute bottom-[9px] left-[9px] flex gap-[5px]">
                           {item.badges.map((badge, j) => (
                             <span
                               key={j}
-                              className="flex items-center gap-1 rounded-full bg-white/92 px-2 py-1 text-[0.72rem] font-bold text-[#111] [box-shadow:var(--ob-shadow)]"
+                              className="flex items-center gap-[3px] rounded-full bg-white/92 px-[6px] py-[3px] text-[0.554rem] font-bold text-[#111] [box-shadow:var(--ob-shadow)]"
                             >
-                              <Icon name={badge.icon} width={12} height={12} />
+                              <Icon name={badge.icon} width={9} height={9} />
                               {badge.n}
                             </span>
                           ))}
                         </div>
                       )}
                     </div>
-                    <p className="mt-3 text-[0.68rem] font-bold uppercase tracking-wide text-[color:var(--ob-muted)]">
+                    <p className="mt-[9px] text-[0.523rem] font-bold uppercase tracking-wide text-[color:var(--ob-muted)]">
                       {item.cat}
                     </p>
-                    <p className="mt-1.5 text-[0.95rem] leading-snug">{item.title}</p>
-                    <div className="mt-2.5 flex items-center gap-2">
-                      <Avatar name={item.author} size={18} />
-                      <span className="text-[0.82rem] text-[color:var(--ob-muted)]">
+                    <p className="mt-[5px] text-[0.731rem] leading-snug">{item.title}</p>
+                    <div className="mt-[8px] flex items-center gap-[6px]">
+                      <Avatar name={item.author} size={14} />
+                      <span className="text-[0.631rem] text-[color:var(--ob-muted)]">
                         {item.author}
                       </span>
                     </div>

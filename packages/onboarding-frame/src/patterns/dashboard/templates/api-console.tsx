@@ -109,24 +109,24 @@ export function ApiConsoleTemplate({
     <Surface tokens={apiConsoleTokens}>
     <Shell className={cn("flex-col", className)}>
       <Banner tone="dark">
-        <span className="flex items-center gap-1.5 font-semibold">
-          <Sparkle width={13} height={13} /> {brandName} Assets is now live!
-          <Sparkle width={13} height={13} />
+        <span className="flex items-center gap-[5px] font-semibold">
+          <Sparkle width={11} height={11} /> {brandName} Assets is now live!
+          <Sparkle width={11} height={11} />
         </span>
       </Banner>
 
       <TopBar>
-        <Avatar name={brandName} size={30} rounded={7} />
+        <Avatar name={brandName} size={24} rounded={7} />
         <span className="text-[color:var(--ob-muted)]">/</span>
         <span className="font-semibold">Home</span>
         <SearchField
           placeholder="Search anything"
           shortcut="⌘K"
           rounded="md"
-          className="ml-auto hidden w-[340px] md:flex"
+          className="ml-auto hidden w-[275px] md:flex"
         />
-        <div className="hidden items-center gap-2 rounded-[8px] border border-[color:var(--ob-border)] px-3 py-2 text-[0.86rem] sm:flex">
-          <GridIcon width={14} height={14} className="opacity-45" />
+        <div className="hidden items-center gap-[6px] rounded-[6px] border border-[color:var(--ob-border)] px-[10px] py-[6px] text-[0.696rem] sm:flex">
+          <GridIcon width={11} height={11} className="opacity-45" />
           <span className="text-[color:var(--ob-muted)]">Credits:</span>
           <span className="font-semibold">$0.00</span>
         </div>
@@ -134,40 +134,40 @@ export function ApiConsoleTemplate({
           The reference splits this: "Docs" opens the docs, the caret beside it
           opens a menu, with a hairline between the two halves.
         */}
-        <div className="hidden items-center rounded-[8px] border border-[color:var(--ob-border-strong)] sm:flex">
-          <button type="button" className="px-3 py-1.5 text-[0.86rem] font-semibold">
+        <div className="hidden items-center rounded-[6px] border border-[color:var(--ob-border-strong)] sm:flex">
+          <button type="button" className="px-[10px] py-[5px] text-[0.696rem] font-semibold">
             Docs
           </button>
-          <span className="h-5 w-px bg-[color:var(--ob-border)]" />
-          <button type="button" aria-label="Docs menu" className="px-2 py-1.5">
-            <ChevronDown width={14} height={14} className="opacity-50" />
+          <span className="h-[16px] w-px bg-[color:var(--ob-border)]" />
+          <button type="button" aria-label="Docs menu" className="px-[6px] py-[5px]">
+            <ChevronDown width={11} height={11} className="opacity-50" />
           </button>
         </div>
-        <button type="button" aria-label="Notifications" className="px-1 opacity-55">
-          <BellIcon width={18} height={18} />
+        <button type="button" aria-label="Notifications" className="px-[3px] opacity-55">
+          <BellIcon width={15} height={15} />
         </button>
-        <Avatar name={userName} size={30} />
+        <Avatar name={userName} size={24} />
       </TopBar>
 
       {/* Second-level product navigation */}
-      <nav className="flex items-center gap-5 overflow-x-auto border-b border-[color:var(--ob-border)] px-4 sm:px-6">
+      <nav className="flex items-center gap-[16px] overflow-x-auto border-b border-[color:var(--ob-border)] px-[13px] sm:px-[19px]">
         {TABS.map((tab) => (
           <button
             key={tab.id}
             type="button"
             aria-current={tab.id === page ? "page" : undefined}
             className={cn(
-              "relative flex items-center gap-1.5 whitespace-nowrap border-b-2 py-3 text-[0.9rem] transition-colors",
+              "relative flex items-center gap-[5px] whitespace-nowrap border-b-2 py-[10px] text-[0.728rem] transition-colors",
               tab.id === page
                 ? "border-[color:var(--ob-fg)] font-semibold"
                 : "border-transparent text-[color:var(--ob-fg-soft)] hover:text-[color:var(--ob-fg)]",
             )}
           >
-            <Icon name={tab.icon} width={15} height={15} className="opacity-70" />
+            <Icon name={tab.icon} width={12} height={12} className="opacity-70" />
             {tab.label}
-            {tab.caret && <ChevronDown width={13} height={13} className="opacity-40" />}
+            {tab.caret && <ChevronDown width={11} height={11} className="opacity-40" />}
             {tab.badge && (
-              <span className="absolute -top-0.5 right-0 translate-x-full rounded-full bg-[#efe7ff] px-1.5 text-[0.6rem] font-bold text-[#6b46e5]">
+              <span className="absolute -top-[2px] right-[0px] translate-x-full rounded-full bg-[#efe7ff] px-[5px] text-[0.485rem] font-bold text-[#6b46e5]">
                 {tab.badge}
               </span>
             )}
@@ -180,65 +180,65 @@ export function ApiConsoleTemplate({
           <ApiConsoleSubpage page={page} brandName={brandName} />
         ) : (
         <>
-        <div className="border-b border-[color:var(--ob-border)] px-6 py-7 sm:px-10">
-          <div className="flex flex-wrap items-end gap-4">
-            <div className="min-w-0 flex-1">
-              <h1 className="text-[2rem] font-extrabold tracking-tight">Dashboard</h1>
-              <p className="mt-1 text-[color:var(--ob-muted)]">
+        <div className="border-b border-[color:var(--ob-border)] px-[19px] py-[23px] sm:px-[32px]">
+          <div className="flex flex-wrap items-end gap-[13px]">
+            <div className="min-w-[0px] flex-1">
+              <h1 className="text-[1.618rem] font-extrabold tracking-tight">Dashboard</h1>
+              <p className="mt-[3px] text-[color:var(--ob-muted)]">
                 Start exploring {brandName}&apos;s capabilities{" "}
-                <span className="px-1">·</span>
+                <span className="px-[3px]">·</span>
                 <button type="button" className="hover:text-[color:var(--ob-fg)]">
                   Hide getting started guide
                 </button>
               </p>
             </div>
-            <div className="flex min-w-0 items-center gap-2 text-[0.9rem]">
+            <div className="flex min-w-[0px] items-center gap-[6px] text-[0.728rem]">
               <span className="text-[color:var(--ob-muted)]">I&apos;m here</span>
               <span className="font-mono opacity-60">&lt;/&gt;</span>
               <span className="font-semibold">To build with code</span>
-              <ChevronDown width={14} height={14} className="opacity-40" />
+              <ChevronDown width={11} height={11} className="opacity-40" />
             </div>
           </div>
         </div>
 
-        <div className="grid gap-10 px-6 py-8 sm:px-10">
-          <section className="grid gap-5">
-            <div className="flex flex-wrap items-end gap-4">
-              <div className="min-w-0 flex-1">
+        <div className="grid gap-[32px] px-[19px] py-[26px] sm:px-[32px]">
+          <section className="grid gap-[16px]">
+            <div className="flex flex-wrap items-end gap-[13px]">
+              <div className="min-w-[0px] flex-1">
                 <h2 className="text-xl font-extrabold tracking-tight">Getting started</h2>
-                <p className="mt-0.5 text-[0.92rem] text-[color:var(--ob-muted)]">
+                <p className="mt-[2px] text-[0.744rem] text-[color:var(--ob-muted)]">
                   Start exploring {brandName}&apos;s capabilities
                 </p>
               </div>
               <Btn tone="neutral" size="sm">Don&apos;t show this</Btn>
             </div>
 
-            <div className="grid min-w-0 divide-y divide-[color:var(--ob-border)] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+            <div className="grid min-w-[0px] divide-y divide-[color:var(--ob-border)] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
               {/* Setup checklist */}
-              <div className="flex min-w-0 flex-col gap-5 p-6">
+              <div className="flex min-w-[0px] flex-col gap-[16px] p-[19px]">
                 <div>
                   <h3 className="font-bold">Welcome to {brandName}!</h3>
-                  <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
+                  <p className="mt-[3px] text-[0.744rem] text-[color:var(--ob-muted)]">
                     Let&apos;s get your account ready to generate content or call the API.
                   </p>
                 </div>
-                <ul className="mt-auto grid gap-3">
+                <ul className="mt-auto grid gap-[10px]">
                   {SETUP.map((item) => (
-                    <li key={item.id} className="flex items-center gap-3">
+                    <li key={item.id} className="flex items-center gap-[10px]">
                       <span
                         aria-hidden
                         className={cn(
-                          "grid size-6 shrink-0 place-items-center rounded-full text-[0.7rem]",
+                          "grid size-[19px] shrink-0 place-items-center rounded-full text-[0.566rem]",
                           item.done
                             ? "bg-[color-mix(in_oklab,var(--ob-success)_18%,transparent)] text-[color:var(--ob-success)]"
                             : "bg-[color:var(--ob-surface-3)]",
                         )}
                       >
-                        {item.done ? <Check width={12} height={12} /> : null}
+                        {item.done ? <Check width={10} height={10} /> : null}
                       </span>
                       <span
                         className={cn(
-                          "flex-1 text-[0.95rem]",
+                          "flex-1 text-[0.769rem]",
                           item.done && "text-[color:var(--ob-muted)] line-through",
                         )}
                       >
@@ -247,7 +247,7 @@ export function ApiConsoleTemplate({
                       {item.action && (
                         <Btn tone={item.primary ? "dark" : "neutral"} size="sm">
                           {item.icon && (
-                            <Icon name={item.icon as IconName} width={13} height={13} />
+                            <Icon name={item.icon as IconName} width={11} height={11} />
                           )}
                           {item.action}
                         </Btn>
@@ -258,91 +258,91 @@ export function ApiConsoleTemplate({
               </div>
 
               {/* API quickstart */}
-              <div className="flex min-w-0 flex-col gap-5 p-6">
+              <div className="flex min-w-[0px] flex-col gap-[16px] p-[19px]">
                 <div>
                   <h3 className="font-bold">Getting started with the API</h3>
-                  <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
+                  <p className="mt-[3px] text-[0.744rem] text-[color:var(--ob-muted)]">
                     Start building with {brandName} in minutes.
                   </p>
                 </div>
-                <ul className="mt-auto grid gap-4">
+                <ul className="mt-auto grid gap-[13px]">
                   {API_LINKS.map((link) => (
-                    <li key={link.id} className="flex items-center gap-3">
+                    <li key={link.id} className="flex items-center gap-[10px]">
                       <span
                         aria-hidden
-                        className="grid size-8 shrink-0 place-items-center rounded-[8px]"
+                        className="grid size-[26px] shrink-0 place-items-center rounded-[6px]"
                         style={{ background: link.tone, color: link.ink }}
                       >
-                        <link.Glyph width={16} height={16} />
+                        <link.Glyph width={13} height={13} />
                       </span>
-                      <span className="text-[0.98rem]">{link.label}</span>
+                      <span className="text-[0.793rem]">{link.label}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {/* Model catalogue */}
-              <div className="flex min-w-0 flex-col gap-4 p-6">
+              <div className="flex min-w-[0px] flex-col gap-[13px] p-[19px]">
                 <div>
                   <h3 className="font-bold">Explore the latest models</h3>
-                  <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
+                  <p className="mt-[3px] text-[0.744rem] text-[color:var(--ob-muted)]">
                     Top tools for image, video and audio generation.
                   </p>
                 </div>
-                <div className="flex items-center gap-3 rounded-[8px] border border-[color:var(--ob-border)] p-2.5">
-                  <AlertIcon width={15} height={15} className="shrink-0 text-[#d99b22]" />
-                  <span className="flex-1 text-[0.86rem]">
+                <div className="flex items-center gap-[10px] rounded-[6px] border border-[color:var(--ob-border)] p-[8px]">
+                  <AlertIcon width={12} height={12} className="shrink-0 text-[#d99b22]" />
+                  <span className="flex-1 text-[0.696rem]">
                     Add a payment method to use {brandName}
                   </span>
                   <Btn tone="dark" size="sm">Learn more</Btn>
                 </div>
-                <ul className="grid min-w-0 gap-3">
+                <ul className="grid min-w-[0px] gap-[10px]">
                   {MODELS.map((model) => (
-                    <li key={model.id} className="flex min-w-0 gap-3">
+                    <li key={model.id} className="flex min-w-[0px] gap-[10px]">
                       <span
                         aria-hidden
-                        className="grid size-[26px] shrink-0 place-items-center rounded-[6px]"
+                        className="grid size-[21px] shrink-0 place-items-center rounded-[5px]"
                         style={{ background: "#e4edfd", color: "#3f72d4" }}
                       >
-                        <VideoIcon width={14} height={14} />
+                        <VideoIcon width={11} height={11} />
                       </span>
-                      <div className="min-w-0">
-                        <p className="truncate text-[0.9rem]">
+                      <div className="min-w-[0px]">
+                        <p className="truncate text-[0.728rem]">
                           {model.org && (
                             <span className="text-[color:var(--ob-muted)]">{model.org}/</span>
                           )}
                           <span className="font-bold">{model.name}</span>
                         </p>
-                        <p className="truncate text-[0.8rem] text-[color:var(--ob-muted)]">
+                        <p className="truncate text-[0.647rem] text-[color:var(--ob-muted)]">
                           {model.desc}
                         </p>
                       </div>
                     </li>
                   ))}
                 </ul>
-                <div className="flex items-center gap-3">
-                  <GridIcon width={15} height={15} className="opacity-60" />
-                  <span className="text-[0.98rem] font-semibold">Explore all models</span>
+                <div className="flex items-center gap-[10px]">
+                  <GridIcon width={12} height={12} className="opacity-60" />
+                  <span className="text-[0.793rem] font-semibold">Explore all models</span>
                 </div>
               </div>
             </div>
           </section>
 
           {/* Usage strip */}
-          <div className="grid min-w-0 divide-y divide-[color:var(--ob-border)] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
-            <div className="flex flex-wrap gap-10 p-5">
+          <div className="grid min-w-[0px] divide-y divide-[color:var(--ob-border)] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+            <div className="flex flex-wrap gap-[32px] p-[16px]">
               <div>
-                <p className="text-[0.86rem] text-[color:var(--ob-muted)]">Credits balance</p>
-                <p className="mt-1 text-2xl font-extrabold">$0.00</p>
+                <p className="text-[0.696rem] text-[color:var(--ob-muted)]">Credits balance</p>
+                <p className="mt-[3px] text-2xl font-extrabold">$0.00</p>
               </div>
               <div>
-                <p className="text-[0.86rem] text-[color:var(--ob-muted)]">
+                <p className="text-[0.696rem] text-[color:var(--ob-muted)]">
                   Cost estimate in the last 7 days
                 </p>
-                <p className="mt-1 text-2xl font-extrabold">$0.00</p>
+                <p className="mt-[3px] text-2xl font-extrabold">$0.00</p>
               </div>
               <Btn tone="neutral" size="sm" className="mt-auto">
-                <ReceiptIcon width={14} height={14} /> Go to billing
+                <ReceiptIcon width={11} height={11} /> Go to billing
               </Btn>
             </div>
 
@@ -350,18 +350,18 @@ export function ApiConsoleTemplate({
               { id: "requests", label: "Requests in the last 7 days", color: "#7c4dff" },
               { id: "errors", label: "Errors in the last 7 days", color: "#e8365d" },
             ].map((strip) => (
-              <div key={strip.id} className="flex items-center gap-5 p-5">
+              <div key={strip.id} className="flex items-center gap-[16px] p-[16px]">
                 <div className="shrink-0">
-                  <p className="text-[0.86rem] text-[color:var(--ob-muted)]">{strip.label}</p>
-                  <p className="mt-1 text-2xl font-extrabold">0</p>
-                  <Btn tone="neutral" size="sm" className="mt-3">
+                  <p className="text-[0.696rem] text-[color:var(--ob-muted)]">{strip.label}</p>
+                  <p className="mt-[3px] text-2xl font-extrabold">0</p>
+                  <Btn tone="neutral" size="sm" className="mt-[10px]">
                     {strip.id === "requests" ? "Check usage" : "See analytics"}
                   </Btn>
                 </div>
                 {/* Zero-state series: a flat dashed baseline rather than a fake trend. */}
-                <div className="flex h-24 flex-1 items-end rounded-[8px] bg-[color:var(--ob-surface-2)] p-3">
+                <div className="flex h-[78px] flex-1 items-end rounded-[6px] bg-[color:var(--ob-surface-2)] p-[10px]">
                   <div
-                    className="h-0.5 w-full"
+                    className="h-[2px] w-full"
                     style={{
                       backgroundImage: `repeating-linear-gradient(90deg, ${strip.color} 0 10px, transparent 10px 16px)`,
                     }}
@@ -371,17 +371,17 @@ export function ApiConsoleTemplate({
             ))}
           </div>
 
-          <section className="grid gap-4">
+          <section className="grid gap-[13px]">
             <h2 className="text-xl font-extrabold tracking-tight">Recently active models</h2>
-            <Card className="grid min-h-[180px] place-items-center">
-              <div className="grid justify-items-center gap-3 text-center">
+            <Card className="grid min-h-[146px] place-items-center">
+              <div className="grid justify-items-center gap-[10px] text-center">
                 <span
                   aria-hidden
-                  className="grid size-10 place-items-center rounded-[8px] border border-[color:var(--ob-border)]"
+                  className="grid size-[32px] place-items-center rounded-[6px] border border-[color:var(--ob-border)]"
                 >
                   ∿
                 </span>
-                <p className="text-[0.9rem] text-[color:var(--ob-muted)]">
+                <p className="text-[0.728rem] text-[color:var(--ob-muted)]">
                   Models you call will appear here.
                 </p>
               </div>

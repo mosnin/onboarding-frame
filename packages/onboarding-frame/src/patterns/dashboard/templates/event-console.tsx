@@ -91,16 +91,16 @@ export function EventConsoleTemplate({
   return (
     <Surface tokens={eventConsoleTokens} className={className}>
       <Shell className="flex-col">
-        <header className="flex h-[77px] shrink-0 items-center gap-[15px] px-4 sm:px-[24px]">
-          <Wordmark name={brandName} size={16} mark={21} radius={6} />
+        <header className="flex h-[72px] shrink-0 items-center gap-[14px] px-[15px] sm:px-[23px]">
+          <Wordmark name={brandName} size={15} mark={21} radius={6} />
 
           {/* The nav is a floating pill, not a bar. */}
-          <nav className="mx-auto flex max-w-full items-center gap-[6px] overflow-x-auto rounded-full bg-[color:var(--ob-surface-2)] px-[9px] py-[7px]">
+          <nav className="mx-auto flex max-w-full items-center gap-[6px] overflow-x-auto rounded-full bg-[color:var(--ob-surface-2)] px-[8px] py-[7px]">
             {TABS.map((tab) => (
               <span
                 key={tab}
                 className={cn(
-                  "rounded-full px-[15px] py-[6px] text-[0.8rem]",
+                  "rounded-full px-[14px] py-[6px] text-[0.75rem]",
                   tab.toLowerCase() === page
                     ? "font-semibold text-[color:var(--ob-fg)]"
                     : "text-[color:var(--ob-muted)]",
@@ -111,33 +111,33 @@ export function EventConsoleTemplate({
             ))}
           </nav>
 
-          <span className="flex shrink-0 items-center gap-2 sm:gap-[15px]">
-            <Avatar name={userName} size={27} />
-            <BellIcon size={14} />
-            <ListChecksIcon size={14} />
+          <span className="flex shrink-0 items-center gap-[8px] sm:gap-[14px]">
+            <Avatar name={userName} size={25} />
+            <BellIcon size={13} />
+            <ListChecksIcon size={13} />
           </span>
         </header>
 
-        <Main className="overflow-auto px-[24px] pb-[30px]">
-          <div className="grid gap-[24px] xl:grid-cols-[minmax(0,1fr)_420px]">
+        <Main className="overflow-auto px-[23px] pb-[28px]">
+          <div className="grid gap-[23px] xl:grid-cols-[minmax(0,1fr)_420px]">
             <div>
-              <div className="flex flex-wrap items-center gap-[15px]">
-                <BrandMark brand="Acme" size={53} label="Acme" />
-                <h1 className="text-[1.63rem] font-bold tracking-[-0.01em]">Acme</h1>
+              <div className="flex flex-wrap items-center gap-[14px]">
+                <BrandMark brand="Acme" size={50} label="Acme" />
+                <h1 className="text-[1.529rem] font-bold tracking-[-0.01em]">Acme</h1>
 
-                <span className="flex items-center gap-[7px] pl-[12px] text-[0.8rem]">
-                  <TreeIcon size={14} />
+                <span className="flex items-center gap-[7px] pl-[11px] text-[0.75rem]">
+                  <TreeIcon size={13} />
                   Apprentice
                   <span
                     aria-hidden
-                    className="grid size-[15px] place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.504rem] text-[color:var(--ob-muted)]"
+                    className="grid size-[14px] place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.473rem] text-[color:var(--ob-muted)]"
                   >
                     ?
                   </span>
                 </span>
 
-                <span className="ml-auto flex min-w-[237px] flex-col gap-[6px]">
-                  <span className="text-right text-[0.8rem] text-[color:var(--ob-fg-soft)]">
+                <span className="ml-auto flex min-w-[222px] flex-col gap-[6px]">
+                  <span className="text-right text-[0.75rem] text-[color:var(--ob-fg-soft)]">
                     $0 / $100,000
                   </span>
                   {/* Nothing earned yet, so the track stays empty. */}
@@ -145,39 +145,39 @@ export function EventConsoleTemplate({
                 </span>
               </div>
 
-              <div className="flex flex-wrap items-stretch gap-[15px] pt-[18px]">
+              <div className="flex flex-wrap items-stretch gap-[14px] pt-[17px]">
                 {[
                   { id: "events", label: "Events", value: "4" },
                   { id: "attendees", label: "Total attendees", value: "3" },
                 ].map((stat) => (
                   <section
                     key={stat.id}
-                    className="grid flex-1 justify-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[24px] py-[18px]"
+                    className="grid flex-1 justify-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[23px] py-[17px]"
                   >
-                    <p className="text-[0.704rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
+                    <p className="text-[0.66rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
                       {stat.label}
                     </p>
-                    <p className="pt-[6px] text-[1.407rem] font-bold leading-none tabular-nums">
+                    <p className="pt-[6px] text-[1.32rem] font-bold leading-none tabular-nums">
                       {stat.value}
                     </p>
                   </section>
                 ))}
-                <span className="grid place-items-center rounded-full bg-[color:var(--ob-cta-bg)] px-[27px] text-[0.852rem] font-semibold text-[color:var(--ob-cta-fg)]">
+                <span className="grid place-items-center rounded-full bg-[color:var(--ob-cta-bg)] px-[25px] text-[0.799rem] font-semibold text-[color:var(--ob-cta-fg)]">
                   + Create New Event
                 </span>
               </div>
 
-              <section className="relative mt-[15px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[18px]">
-                <ArrowClockwiseIcon size={14} />
+              <section className="relative mt-[14px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[17px]">
+                <ArrowClockwiseIcon size={13} />
                 <TicketChart />
               </section>
 
-              <div className="flex flex-wrap items-end gap-[12px] pt-[15px]">
+              <div className="flex flex-wrap items-end gap-[11px] pt-[14px]">
                 <div className="flex-1">
-                  <p className="text-[0.704rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
+                  <p className="text-[0.66rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
                     Tickets this week
                   </p>
-                  <p className="pt-[3px] text-[1.185rem] font-bold tabular-nums leading-none">
+                  <p className="pt-[3px] text-[1.112rem] font-bold tabular-nums leading-none">
                     4
                   </p>
                 </div>
@@ -186,7 +186,7 @@ export function EventConsoleTemplate({
                     <span
                       key={range}
                       className={cn(
-                        "rounded-[var(--ob-radius-sm)] px-[15px] py-[6px] text-[0.778rem]",
+                        "rounded-[var(--ob-radius-sm)] px-[14px] py-[6px] text-[0.73rem]",
                         index === 0
                           ? "bg-[color:var(--ob-surface-2)] font-semibold"
                           : "text-[color:var(--ob-muted)]",
@@ -198,38 +198,38 @@ export function EventConsoleTemplate({
                 </span>
               </div>
 
-              <h2 className="pb-[12px] pt-[27px] text-[1.185rem] font-bold">Events</h2>
-              <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[18px]">
-                <div className="flex items-start gap-[12px]">
+              <h2 className="pb-[11px] pt-[25px] text-[1.112rem] font-bold">Events</h2>
+              <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[17px]">
+                <div className="flex items-start gap-[11px]">
                   <div className="flex-1">
-                    <p className="text-[0.778rem] italic text-[color:var(--ob-muted)]">
+                    <p className="text-[0.73rem] italic text-[color:var(--ob-muted)]">
                       Event series:
                     </p>
-                    <h3 className="pt-[3px] text-[1.111rem] font-bold">
+                    <h3 className="pt-[3px] text-[1.042rem] font-bold">
                       Cookie Meet-Up: Taste, Trade, &amp; Chat
                     </h3>
-                    <p className="flex items-center gap-[6px] pt-[6px] text-[0.778rem] text-[color:var(--ob-success)]">
+                    <p className="flex items-center gap-[6px] pt-[6px] text-[0.73rem] text-[color:var(--ob-success)]">
                       <CircleFillIcon size={7} /> Live
                     </p>
                   </div>
-                  <span className="flex items-center gap-[12px] text-[color:var(--ob-fg-soft)]">
-                    <PencilIcon size={14} />
-                    <BrowsersIcon size={14} />
+                  <span className="flex items-center gap-[11px] text-[color:var(--ob-fg-soft)]">
+                    <PencilIcon size={13} />
+                    <BrowsersIcon size={13} />
                   </span>
                 </div>
 
-                <div className="relative mt-[15px] overflow-hidden rounded-[var(--ob-radius)]">
-                  <span className="block h-[141px]">
+                <div className="relative mt-[14px] overflow-hidden rounded-[var(--ob-radius)]">
+                  <span className="block h-[132px]">
                     <Thumb seed="cookie-meet-up" radius={0} alt="Event banner" />
                   </span>
-                  <span className="absolute inset-x-[18px] bottom-[18px] flex items-end gap-[12px]">
-                    <span className="flex-1 text-[0.963rem] font-bold">
+                  <span className="absolute inset-x-[17px] bottom-[17px] flex items-end gap-[11px]">
+                    <span className="flex-1 text-[0.903rem] font-bold">
                       Cookie Meet-Up: Taste, Trade, &amp; Chat
                     </span>
                     {["3", "13"].map((value) => (
                       <span
                         key={value}
-                        className="grid h-[41px] w-[59px] place-items-center rounded-[var(--ob-radius)] bg-[color-mix(in_oklab,#000000_55%,transparent)] text-[0.889rem] font-bold tabular-nums"
+                        className="grid h-[38px] w-[55px] place-items-center rounded-[var(--ob-radius)] bg-[color-mix(in_oklab,#000000_55%,transparent)] text-[0.834rem] font-bold tabular-nums"
                       >
                         {value}
                       </span>
@@ -240,43 +240,43 @@ export function EventConsoleTemplate({
             </div>
 
             <aside>
-              <h2 className="pb-[12px] text-[1.185rem] font-bold">Orders</h2>
+              <h2 className="pb-[11px] text-[1.112rem] font-bold">Orders</h2>
 
-              <span className="flex items-center gap-[9px] pb-[12px]">
-                <SearchIcon size={14} />
-                <span className="flex-1 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[12px] py-[9px] text-[0.756rem] text-[color:var(--ob-muted)]">
+              <span className="flex items-center gap-[8px] pb-[11px]">
+                <SearchIcon size={13} />
+                <span className="flex-1 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[11px] py-[8px] text-[0.709rem] text-[color:var(--ob-muted)]">
                   Search (Event Name, Attendee Name, Email, Order
                 </span>
               </span>
 
-              <div className="grid gap-[12px]">
+              <div className="grid gap-[11px]">
                 {ORDERS.map((order) => (
                   <article
                     key={order.id}
-                    className="flex items-start gap-[12px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface)] p-[15px]"
+                    className="flex items-start gap-[11px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface)] p-[14px]"
                   >
                     {order.avatar ? (
-                      <Avatar name={order.name} size={41} />
+                      <Avatar name={order.name} size={38} />
                     ) : (
-                      <UserIcon size={14} />
+                      <UserIcon size={13} />
                     )}
                     <div className="min-w-[0px] flex-1">
-                      <p className="text-[0.852rem] font-semibold">{order.name}</p>
-                      <p className="pt-[3px] text-[0.756rem] text-[color:var(--ob-muted)]">
+                      <p className="text-[0.799rem] font-semibold">{order.name}</p>
+                      <p className="pt-[3px] text-[0.709rem] text-[color:var(--ob-muted)]">
                         {order.when}
                       </p>
-                      <p className="truncate pt-[1px] text-[0.756rem] text-[color:var(--ob-muted)]">
+                      <p className="truncate pt-[1px] text-[0.709rem] text-[color:var(--ob-muted)]">
                         {order.event}
                       </p>
                       {order.series && (
-                        <span className="mt-[6px] inline-flex items-center gap-[4px] rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface-2)] px-[7px] py-[3px] text-[0.704rem] text-[color:var(--ob-fg-soft)]">
-                          <LinkChainIcon size={14} /> series
+                        <span className="mt-[6px] inline-flex items-center gap-[4px] rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface-2)] px-[7px] py-[3px] text-[0.66rem] text-[color:var(--ob-fg-soft)]">
+                          <LinkChainIcon size={13} /> series
                         </span>
                       )}
                     </div>
                     <div className="shrink-0 text-right">
-                      <p className="text-[0.778rem]">Order {order.order}</p>
-                      <p className="pt-[6px] text-[0.889rem] font-bold tabular-nums">
+                      <p className="text-[0.73rem]">Order {order.order}</p>
+                      <p className="pt-[6px] text-[0.834rem] font-bold tabular-nums">
                         {order.total}
                       </p>
                     </div>
@@ -284,7 +284,7 @@ export function EventConsoleTemplate({
                 ))}
               </div>
 
-              <span className="mt-[12px] block rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] py-[12px] text-center text-[0.83rem] font-medium">
+              <span className="mt-[11px] block rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] py-[11px] text-center text-[0.779rem] font-medium">
                 View More
               </span>
             </aside>
@@ -313,8 +313,8 @@ function TicketChart(): ReactNode {
   }, "");
 
   return (
-    <div className="flex gap-[12px]">
-      <div className="grid shrink-0 text-right text-[0.741rem] tabular-nums text-[color:var(--ob-muted)]">
+    <div className="flex gap-[11px]">
+      <div className="grid shrink-0 text-right text-[0.695rem] tabular-nums text-[color:var(--ob-muted)]">
         {[3, 2, 1, 0].map((tick, index) => (
           <span
             key={tick}
@@ -328,7 +328,7 @@ function TicketChart(): ReactNode {
       <div className="min-w-[0px] flex-1">
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="h-[311px] w-full"
+          className="h-[292px] w-full"
           preserveAspectRatio="none"
           role="img"
           aria-label="Tickets sold per day"
@@ -362,9 +362,9 @@ function TicketChart(): ReactNode {
           />
         </svg>
 
-        <div className="flex pt-[9px]">
+        <div className="flex pt-[8px]">
           {DAYS.map((day) => (
-            <span key={day} className="flex-1 text-[0.704rem] text-[color:var(--ob-muted)]">
+            <span key={day} className="flex-1 text-[0.66rem] text-[color:var(--ob-muted)]">
               <span
                 className="inline-block whitespace-nowrap"
                 style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}

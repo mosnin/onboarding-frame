@@ -84,27 +84,27 @@ export function AudienceAnalyticsTemplate({
     <Surface tokens={audienceTokens} className={className}>
       <Shell className="flex-col">
         {/* The brand appears as a band, not as a button colour. */}
-        <span className="h-[5px] shrink-0 bg-[color:var(--ob-cta-bg)]" />
+        <span className="h-[4px] shrink-0 bg-[color:var(--ob-cta-bg)]" />
 
-        <header className="flex h-[53px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[18px]">
-          <Avatar name={brandName} size={29} />
-          <div className="mx-auto flex w-full max-w-[594px] items-center gap-[8px] rounded-full border border-[color:var(--ob-border-strong)] px-[15px] py-[9px] text-[0.789rem] text-[color:var(--ob-fg-soft)]">
-            <SearchIcon size={14} /> Search
+        <header className="flex h-[50px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[17px]">
+          <Avatar name={brandName} size={28} />
+          <div className="mx-auto flex w-full max-w-[558px] items-center gap-[7px] rounded-full border border-[color:var(--ob-border-strong)] px-[14px] py-[9px] text-[0.741rem] text-[color:var(--ob-fg-soft)]">
+            <SearchIcon size={13} /> Search
           </div>
           <span className="flex items-center gap-[9px]">
-            <span className="flex items-center gap-[6px] rounded-full bg-[color-mix(in_oklab,#ffe01b_35%,white)] px-[12px] py-[8px] text-[0.751rem] font-medium">
+            <span className="flex items-center gap-[6px] rounded-full bg-[color-mix(in_oklab,#ffe01b_35%,white)] px-[12px] py-[7px] text-[0.706rem] font-medium">
               <CircleFillIcon size={7} className="text-[color:var(--ob-success)]" />
               Live expert help
             </span>
-            <Avatar name={userName} size={29} />
+            <Avatar name={userName} size={28} />
           </span>
         </header>
 
         <div className="flex min-h-[0px] flex-1">
           <Sidebar width={263} bg="var(--ob-surface)" className="border-r-0">
-            <div className="px-[15px] pb-[15px] pt-[15px]">
-              <span className="flex items-center justify-center gap-[8px] rounded-full border border-[color:var(--ob-fg)] py-[11px] text-[0.826rem] font-medium">
-                <PencilIcon size={14} /> Create
+            <div className="px-[14px] pb-[14px] pt-[14px]">
+              <span className="flex items-center justify-center gap-[7px] rounded-full border border-[color:var(--ob-fg)] py-[10px] text-[0.776rem] font-medium">
+                <PencilIcon size={13} /> Create
               </span>
             </div>
 
@@ -116,7 +116,7 @@ export function AudienceAnalyticsTemplate({
                     item.badge ? (
                       <span className="flex items-center gap-[6px]">
                         {item.label}
-                        <span className="rounded bg-[color-mix(in_oklab,#8b5cf6_16%,transparent)] px-[5px] py-[2px] text-[0.571rem] font-semibold text-[#6d3fd4]">
+                        <span className="rounded bg-[color-mix(in_oklab,#8b5cf6_16%,transparent)] px-[4px] py-[2px] text-[0.537rem] font-semibold text-[#6d3fd4]">
                           {item.badge}
                         </span>
                       </span>
@@ -124,22 +124,22 @@ export function AudienceAnalyticsTemplate({
                       item.label
                     )
                   }
-                  glyph={<item.Icon size={14} />}
+                  glyph={<item.Icon size={13} />}
                   trailing={
-                    <CaretDownIcon size={14} />
+                    <CaretDownIcon size={13} />
                   }
-                  className="text-[0.811rem]"
+                  className="text-[0.762rem]"
                 />
               ))}
 
               <NavItem
                 label="Analytics"
-                glyph={<BrowsersIcon size={14} />}
+                glyph={<BrowsersIcon size={13} />}
                 active
                 trailing={
-                  <CaretUpIcon size={14} />
+                  <CaretUpIcon size={13} />
                 }
-                className="text-[0.811rem]"
+                className="text-[0.762rem]"
               />
               {ANALYTICS_CHILDREN.map((item) => (
                 <NavItem
@@ -147,7 +147,7 @@ export function AudienceAnalyticsTemplate({
                   label={item.label}
                   indent
                   active={item.id === page}
-                  className="text-[0.789rem]"
+                  className="text-[0.741rem]"
                 />
               ))}
 
@@ -155,27 +155,27 @@ export function AudienceAnalyticsTemplate({
                 <NavItem
                   key={item.id}
                   label={item.label}
-                  glyph={<item.Icon size={14} />}
+                  glyph={<item.Icon size={13} />}
                   trailing={
-                    <CaretDownIcon size={14} />
+                    <CaretDownIcon size={13} />
                   }
-                  className="text-[0.811rem]"
+                  className="text-[0.762rem]"
                 />
               ))}
             </nav>
 
-            <SidebarSimpleIcon size={17} className="mt-auto mx-[18px] mb-[18px] text-[color:var(--ob-fg-soft)]" />
+            <SidebarSimpleIcon size={16} className="mt-auto mx-[17px] mb-[17px] text-[color:var(--ob-fg-soft)]" />
           </Sidebar>
 
           <Main className="overflow-auto bg-[color:var(--ob-surface-2)]">
-            <header className="flex items-center gap-[12px] border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[30px] py-[15px]">
+            <header className="flex items-center gap-[12px] border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[28px] py-[14px]">
               <h1
-                className="flex-1 text-[1.503rem] font-bold tracking-[-0.01em]"
+                className="flex-1 text-[1.412rem] font-bold tracking-[-0.01em]"
                 style={{ fontFamily: "var(--ob-font-display)" }}
               >
                 Audience analytics
               </h1>
-              <span className="text-[0.789rem] font-medium text-[color:var(--ob-brand)]">
+              <span className="text-[0.741rem] font-medium text-[color:var(--ob-brand)]">
                 Manage contacts
               </span>
             </header>
@@ -183,57 +183,57 @@ export function AudienceAnalyticsTemplate({
             {page === "dashboard" ? (
               <AudienceDashboard />
             ) : (
-            <div className="grid gap-[18px] p-[24px]">
-              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[24px] pb-[18px] pt-[15px]">
-                <div className="flex flex-wrap items-center justify-center gap-[21px] pb-[12px]">
+            <div className="grid gap-[17px] p-[22px]">
+              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[22px] pb-[17px] pt-[14px]">
+                <div className="flex flex-wrap items-center justify-center gap-[20px] pb-[12px]">
                   {[
                     { label: "Subscribed", color: "#7a9a3e" },
                     { label: "Unsubscribed", color: "#c9d97a" },
                     { label: "Non-subscribed", color: "#9dc5e8" },
                   ].map((item) => (
-                    <span key={item.label} className="flex items-center gap-[8px]">
+                    <span key={item.label} className="flex items-center gap-[7px]">
                       <span
                         aria-hidden
-                        className="h-[6px] w-[15px] rounded-full"
+                        className="h-[6px] w-[14px] rounded-full"
                         style={{ background: item.color }}
                       />
-                      <span className="text-[0.751rem] text-[color:var(--ob-fg-soft)]">
+                      <span className="text-[0.706rem] text-[color:var(--ob-fg-soft)]">
                         {item.label}
                       </span>
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-center gap-[18px] border-b border-[color:var(--ob-border)] pb-[15px] text-[0.789rem]">
+                <div className="flex items-center justify-center gap-[17px] border-b border-[color:var(--ob-border)] pb-[14px] text-[0.741rem]">
                   <span className="tabular-nums">0 - 16 of 30</span>
-                  <span className="flex items-center gap-[5px] text-[color:var(--ob-fg-soft)]">
-                    <CaretLeftIcon size={14} /> Previous
+                  <span className="flex items-center gap-[4px] text-[color:var(--ob-fg-soft)]">
+                    <CaretLeftIcon size={13} /> Previous
                   </span>
-                  <span className="flex items-center gap-[5px] font-medium text-[color:var(--ob-brand)]">
-                    Next <CaretRightIcon size={14} />
+                  <span className="flex items-center gap-[4px] font-medium text-[color:var(--ob-brand)]">
+                    Next <CaretRightIcon size={13} />
                   </span>
                 </div>
 
-                <p className="pt-[15px] text-[0.766rem] text-[color:var(--ob-fg-soft)]">
+                <p className="pt-[14px] text-[0.719rem] text-[color:var(--ob-fg-soft)]">
                   Note: This new way of viewing your subscriber data by channel was
                   launched April 1, 2024
                 </p>
               </section>
 
-              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[24px] py-[21px]">
+              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[22px] py-[20px]">
                 <h2
-                  className="text-[1.503rem] font-bold tracking-[-0.01em]"
+                  className="text-[1.412rem] font-bold tracking-[-0.01em]"
                   style={{ fontFamily: "var(--ob-font-display)" }}
                 >
                   What&apos;s changed
                 </h2>
-                <p className="pt-[3px] text-[0.789rem] text-[color:var(--ob-fg-soft)]">
+                <p className="pt-[3px] text-[0.741rem] text-[color:var(--ob-fg-soft)]">
                   Jul 7, 2024 - Aug 5, 2024
                 </p>
 
-                <div className="mt-[18px] flex flex-wrap items-center gap-[12px] border-t border-[color:var(--ob-border)] pt-[18px]">
+                <div className="mt-[17px] flex flex-wrap items-center gap-[12px] border-t border-[color:var(--ob-border)] pt-[17px]">
                   {/* Dotted underline marks a term with a definition on hover. */}
-                  <h3 className="flex-1 border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[0.939rem] font-medium">
+                  <h3 className="flex-1 border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[0.882rem] font-medium">
                     Total net subscriptions growth
                   </h3>
                   <span className="inline-flex rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] p-[3px]">
@@ -241,7 +241,7 @@ export function AudienceAnalyticsTemplate({
                       <span
                         key={range}
                         className={cn(
-                          "px-[18px] py-[6px] text-[0.789rem]",
+                          "px-[17px] py-[6px] text-[0.741rem]",
                           index === 0
                             ? "rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface)] font-medium shadow-[0_1px_3px_rgba(0,0,0,0.12)]"
                             : "border-l border-[color:var(--ob-border)] text-[color:var(--ob-fg-soft)]",
@@ -253,15 +253,15 @@ export function AudienceAnalyticsTemplate({
                   </span>
                 </div>
 
-                <p className="flex items-center gap-[12px] pt-[15px]">
-                  <span className="text-[1.277rem] font-bold tabular-nums">4</span>
+                <p className="flex items-center gap-[12px] pt-[14px]">
+                  <span className="text-[1.199rem] font-bold tabular-nums">4</span>
                   <span
                     aria-hidden
-                    className="grid size-[24px] place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[color:var(--ob-muted)]"
+                    className="grid size-[22px] place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[color:var(--ob-muted)]"
                   >
                     --
                   </span>
-                  <span className="text-[0.789rem] text-[color:var(--ob-fg-soft)]">
+                  <span className="text-[0.741rem] text-[color:var(--ob-fg-soft)]">
                     compared to last year
                   </span>
                 </p>
@@ -273,9 +273,9 @@ export function AudienceAnalyticsTemplate({
           </Main>
 
           {/* A feedback tab pinned to the window edge, rotated in place. */}
-          <span className="hidden shrink-0 items-start pt-[120px] xl:flex">
+          <span className="hidden shrink-0 items-start pt-[112px] xl:flex">
             <span
-              className="rounded-l-[var(--ob-radius-sm)] bg-[color:var(--ob-surface-2)] px-[6px] py-[15px] text-[0.691rem] text-[color:var(--ob-fg-soft)]"
+              className="rounded-l-[var(--ob-radius-sm)] bg-[color:var(--ob-surface-2)] px-[6px] py-[14px] text-[0.649rem] text-[color:var(--ob-fg-soft)]"
               style={{ writingMode: "vertical-rl" }}
             >
               Feedback
@@ -298,8 +298,8 @@ function GrowthChart() {
   ).join(" ");
 
   return (
-    <div className="flex gap-[9px] pt-[15px]">
-      <div className="grid shrink-0 pr-[3px] text-right text-[0.714rem] tabular-nums text-[color:var(--ob-fg-soft)]">
+    <div className="flex gap-[9px] pt-[14px]">
+      <div className="grid shrink-0 pr-[3px] text-right text-[0.671rem] tabular-nums text-[color:var(--ob-fg-soft)]">
         {[4, 3, 2, 1, 0].map((tick, index) => (
           <span
             key={tick}
@@ -313,7 +313,7 @@ function GrowthChart() {
       <div className="min-w-[0px] flex-1">
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="h-[270px] w-full"
+          className="h-[254px] w-full"
           preserveAspectRatio="none"
           role="img"
           aria-label="Net subscriptions per day"
@@ -363,7 +363,7 @@ function GrowthChart() {
           {DAYS.map((day) => (
             <span
               key={day}
-              className="flex-1 whitespace-nowrap text-[0.601rem] text-[color:var(--ob-fg-soft)]"
+              className="flex-1 whitespace-nowrap text-[0.564rem] text-[color:var(--ob-fg-soft)]"
               style={{ transform: "rotate(-45deg)", transformOrigin: "left top" }}
             >
               {day}
@@ -371,11 +371,11 @@ function GrowthChart() {
           ))}
         </div>
 
-        <p className="flex items-center justify-end gap-[8px] pt-[36px] text-[0.751rem]">
-          <span aria-hidden className="h-[2px] w-[15px] bg-[color:var(--ob-success)]" />
+        <p className="flex items-center justify-end gap-[7px] pt-[34px] text-[0.706rem]">
+          <span aria-hidden className="h-[2px] w-[14px] bg-[color:var(--ob-success)]" />
           <span
             aria-hidden
-            className="-ml-[12px] size-[8px] rounded-full bg-[color:var(--ob-success)]"
+            className="-ml-[12px] size-[7px] rounded-full bg-[color:var(--ob-success)]"
           />
           <span className="pl-[3px]">Main list</span>
         </p>
@@ -401,34 +401,34 @@ const SOURCES = [
  */
 function AudienceDashboard() {
   return (
-    <div className="grid gap-[18px] p-[24px]">
-      <div className="grid gap-[18px] lg:grid-cols-2">
+    <div className="grid gap-[17px] p-[22px]">
+      <div className="grid gap-[17px] lg:grid-cols-2">
         <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
           {SOURCES.map((source, index) => (
             <div
               key={source.id}
               className={cn(
-                "flex items-center gap-[15px] px-[21px] py-[18px]",
+                "flex items-center gap-[14px] px-[20px] py-[17px]",
                 index > 0 && "border-t border-[color:var(--ob-border)]",
               )}
             >
               <span
                 aria-hidden
-                className="size-[11px] shrink-0 rounded-full"
+                className="size-[10px] shrink-0 rounded-full"
                 style={{ background: source.color }}
               />
-              <span className="w-[4.132rem] shrink-0 text-[1.503rem] font-bold tabular-nums leading-none">
+              <span className="w-[3.881rem] shrink-0 text-[1.412rem] font-bold tabular-nums leading-none">
                 {source.pct}
               </span>
               <span className="min-w-[0px] flex-1">
-                <span className="block text-[0.826rem] font-semibold">{source.name}</span>
+                <span className="block text-[0.776rem] font-semibold">{source.name}</span>
                 {source.sub && (
-                  <span className="block text-[0.751rem] text-[color:var(--ob-fg-soft)]">
+                  <span className="block text-[0.706rem] text-[color:var(--ob-fg-soft)]">
                     {source.sub}
                   </span>
                 )}
               </span>
-              <CaretRightIcon size={13} className="text-[color:var(--ob-fg-soft)]" />
+              <CaretRightIcon size={12} className="text-[color:var(--ob-fg-soft)]" />
             </div>
           ))}
         </section>
@@ -437,48 +437,48 @@ function AudienceDashboard() {
       </div>
 
       <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
-        <div className="border-b border-[color:var(--ob-border)] px-[21px] py-[18px]">
+        <div className="border-b border-[color:var(--ob-border)] px-[20px] py-[17px]">
           <h2 className="flex flex-wrap items-center gap-[9px]">
-            <SparkleIcon size={16} className="text-[color:var(--ob-brand)]" />
-            <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[1.315rem] font-medium text-[color:var(--ob-brand)]">
+            <SparkleIcon size={15} className="text-[color:var(--ob-brand)]" />
+            <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[1.235rem] font-medium text-[color:var(--ob-brand)]">
               Predicted demographics
             </span>
-            <span className="rounded-full bg-[color-mix(in_oklab,#7a9a3e_18%,transparent)] px-[9px] py-[3px] text-[0.714rem] font-medium text-[#4d661f]">
+            <span className="rounded-full bg-[color-mix(in_oklab,#7a9a3e_18%,transparent)] px-[9px] py-[3px] text-[0.671rem] font-medium text-[#4d661f]">
               Paid feature
             </span>
           </h2>
-          <p className="pt-[6px] text-[0.811rem] text-[color:var(--ob-fg-soft)]">
+          <p className="pt-[6px] text-[0.762rem] text-[color:var(--ob-fg-soft)]">
             Your contacts broken down by their predicted gender and age.
           </p>
         </div>
 
-        <div className="grid justify-items-center px-[21px] py-[42px] text-center">
-          <span className="block size-[143px]">
+        <div className="grid justify-items-center px-[20px] py-[39px] text-center">
+          <span className="block size-[134px]">
             <Thumb seed="audience-empty" radius={9} alt="Illustration" />
           </span>
           <h3
-            className="pt-[18px] text-[1.503rem] font-bold tracking-[-0.01em]"
+            className="pt-[17px] text-[1.412rem] font-bold tracking-[-0.01em]"
             style={{ fontFamily: "var(--ob-font-display)" }}
           >
             Know your people even better
           </h3>
-          <p className="pt-[9px] text-[0.864rem] text-[color:var(--ob-fg-soft)]">
+          <p className="pt-[9px] text-[0.811rem] text-[color:var(--ob-fg-soft)]">
             Send targeted campaigns based on your contacts&rsquo; demographics.
           </p>
-          <span className="mt-[18px] rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] px-[18px] py-[9px] text-[0.789rem] font-semibold text-white">
+          <span className="mt-[17px] rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] px-[17px] py-[9px] text-[0.741rem] font-semibold text-white">
             Upgrade Now
           </span>
         </div>
       </section>
 
       <h2
-        className="pt-[6px] text-[1.503rem] font-bold tracking-[-0.01em]"
+        className="pt-[6px] text-[1.412rem] font-bold tracking-[-0.01em]"
         style={{ fontFamily: "var(--ob-font-display)" }}
       >
         Engagement
       </h2>
 
-      <div className="grid gap-[18px] lg:grid-cols-2">
+      <div className="grid gap-[17px] lg:grid-cols-2">
         {[
           {
             id: "email",
@@ -495,15 +495,15 @@ function AudienceDashboard() {
         ].map((card) => (
           <section
             key={card.id}
-            className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[21px] py-[18px]"
+            className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[20px] py-[17px]"
           >
             <h3 className="flex items-center gap-[9px]">
-              <card.Icon size={14} />
-              <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[1.127rem] font-medium text-[color:var(--ob-brand)]">
+              <card.Icon size={13} />
+              <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[1.059rem] font-medium text-[color:var(--ob-brand)]">
                 {card.title}
               </span>
             </h3>
-            <p className="pt-[9px] text-[0.811rem] text-[color:var(--ob-fg-soft)]">
+            <p className="pt-[9px] text-[0.762rem] text-[color:var(--ob-fg-soft)]">
               {card.body}
             </p>
           </section>

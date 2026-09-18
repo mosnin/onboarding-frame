@@ -151,6 +151,16 @@ reports the count per file, worst first. It is the worklist: a template is not
 done while it appears there, unless the characters are ones its own reference
 genuinely prints (Canny's heading really does carry a party popper).
 
+`pnpm audit:scale` compares each template's rendered capture against its
+reference and reports the scale factor between them, so the error that has
+been in almost every template — everything off by one uniform multiple, which
+reads as "a bit roomy" rather than as wrong — is found without measuring a
+heading by hand. It needs the normalised images in `.audit/refs1512` and
+`.audit/shots1512`. Read the confidence before acting: a template whose rail
+and main pane were built at different scales has no single factor, and one
+with few vertical rules gives a sharp peak on a weak fit. Both are marked
+inconclusive and mean: measure that one by hand.
+
 `pnpm capture:templates` renders every template at 1512px — the width the
 reference screenshots were taken at — so measurements compare directly without
 rescaling. With captures present, the audit also reports layout boundaries in
