@@ -5,23 +5,50 @@ import { cn } from "../../../lib/cn";
 import { Surface, setupChecklistTokens } from "./tokens";
 import { ProgressBar } from "../../../ui/primitives";
 import { BarChart, LineChart } from "../../../ui/charts";
-import { Banner, Btn, Card, Main, SearchField, Shell, Sidebar, Tabs, TopBar } from "./chrome";
+import {
+  Banner,
+  Btn,
+  Card,
+  Fab,
+  Main,
+  SearchField,
+  Shell,
+  Sidebar,
+  Tabs,
+  TopBar,
+} from "./chrome";
 import type { TemplateProps } from "./props";
+import {
+  BellIcon,
+  Check,
+  ChevronDown,
+  ChevronRight,
+  GemIcon,
+  Icon,
+  Sparkle,
+  type IconName,
+} from "../../../ui/icons";
 
-const NAV = [
-  { id: "setup", label: "Setup", glyph: "🚀", active: true },
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "projects", label: "Projects", glyph: "💼" },
-  { id: "leads", label: "Lead capture", glyph: "🧲", caret: true },
-  { id: "calendar", label: "Calendar", glyph: "🗓" },
-  { id: "services", label: "Services", glyph: "≡$" },
-  { id: "files", label: "Files", glyph: "🗎", caret: true },
-  { id: "templates", label: "Templates", glyph: "⊞", caret: true },
-  { id: "finance", label: "Finance", glyph: "$", caret: true },
-  { id: "automations", label: "Automations", glyph: "⚡", caret: true },
-  { id: "tools", label: "Tools", glyph: "☰", caret: true },
-  { id: "reports", label: "Reports", glyph: "📊" },
-  { id: "contacts", label: "Contacts", glyph: "👤" },
+const NAV: {
+  id: string;
+  label: string;
+  icon: IconName;
+  active?: boolean;
+  caret?: boolean;
+}[] = [
+  { id: "setup", label: "Setup", icon: "rocket", active: true },
+  { id: "home", label: "Home", icon: "home" },
+  { id: "projects", label: "Projects", icon: "briefcase" },
+  { id: "leads", label: "Lead capture", icon: "magnet", caret: true },
+  { id: "calendar", label: "Calendar", icon: "calendar" },
+  { id: "services", label: "Services", icon: "list" },
+  { id: "files", label: "Files", icon: "file", caret: true },
+  { id: "templates", label: "Templates", icon: "layout", caret: true },
+  { id: "finance", label: "Finance", icon: "dollar", caret: true },
+  { id: "automations", label: "Automations", icon: "zap", caret: true },
+  { id: "tools", label: "Tools", icon: "menu", caret: true },
+  { id: "reports", label: "Reports", icon: "barChart" },
+  { id: "contacts", label: "Contacts", icon: "user" },
 ];
 
 const TASKS = [
@@ -34,11 +61,11 @@ const TASKS = [
   { id: "contact", title: "Add your first contact", mins: "1 min", body: "Add a client or lead to begin tracking communication and bookings." },
 ];
 
-const RESOURCES = [
-  { id: "account", label: "Setting up your account", glyph: "▤" },
-  { id: "pro", label: "Hire a certified pro", glyph: "⬡" },
-  { id: "community", label: "Join the community", glyph: "👥" },
-  { id: "help", label: "Visit the help centre", glyph: "?" },
+const RESOURCES: { id: string; label: string; icon: IconName }[] = [
+  { id: "account", label: "Setting up your account", icon: "book" },
+  { id: "pro", label: "Hire a certified pro", icon: "shieldCheck" },
+  { id: "community", label: "Join the community", icon: "users" },
+  { id: "help", label: "Visit the help centre", icon: "lifebuoy" },
 ];
 
 /**
@@ -73,13 +100,14 @@ export function SetupChecklistTemplate({
             View plans
           </button>
         </span>
-        <span aria-hidden>✦</span>
+        <Sparkle width={15} height={15} className="text-[#f5c451]" />
       </Banner>
 
       <div className="flex flex-1">
-        <Sidebar width={290} bg="#141414" className="border-r-0 text-white">
+        {/* Measured off the reference: 240px on #121416. */}
+        <Sidebar width={240} bg="#121416" className="border-r-0 text-white">
           <div className="p-4">
-            <Placeholder width={44} height={40} radius={6} glyph="▦" />
+            <Placeholder width={44} height={40} radius={6} />
           </div>
 
           {/* Persistent setup progress lives above the nav, not inside it. */}
@@ -112,40 +140,42 @@ export function SetupChecklistTemplate({
                     : "text-white/75 hover:bg-white/5",
                 )}
               >
-                <span aria-hidden className="w-4 text-center opacity-80">{item.glyph}</span>
+                <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-80" />
                 <span className="flex-1">{item.label}</span>
-                {item.caret && <span aria-hidden className="opacity-40">⌄</span>}
+                {item.caret && <ChevronDown width={14} height={14} className="opacity-40" />}
               </button>
             ))}
           </nav>
 
           <div className="mt-auto grid gap-1 p-2">
             {[
-              { id: "settings", label: "Settings", glyph: "⚙" },
-              { id: "resources", label: "Resources", glyph: "◎" },
+              { id: "settings", label: "Settings", icon: "settings" as IconName },
+              { id: "resources", label: "Resources", icon: "book" as IconName },
             ].map((item) => (
               <button
                 key={item.id}
                 type="button"
                 className="flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem] text-white/75 hover:bg-white/5"
               >
-                <span aria-hidden>{item.glyph}</span>
+                <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-80" />
                 {item.label}
               </button>
             ))}
           </div>
         </Sidebar>
 
-        <Main>
+        <Main className="relative">
           <TopBar border={false} className="gap-4">
             <SearchField placeholder="Search" className="w-[220px]" />
             <div className="ml-auto flex items-center gap-4">
               <button type="button" className="flex items-center gap-1.5 text-[0.9rem] font-semibold text-[#5b4bd6]">
-                <span aria-hidden>💎</span> See pricing
+                <GemIcon width={16} height={16} /> See pricing
               </button>
-              <button type="button" aria-label="Notifications" className="relative">
-                ⌾
-                <span className="absolute -right-1.5 -top-1.5 grid size-4 place-items-center rounded-full bg-[#3b82f6] text-[0.6rem] font-bold text-white">
+              <button type="button" aria-label="Notifications" className="relative opacity-70">
+                <BellIcon width={20} height={20} />
+                {/* The reference sets this as a small blue rounded square
+                    clearing the bell, not a disc sitting on top of it. */}
+                <span className="absolute -right-2 -top-2 grid h-[17px] min-w-[17px] place-items-center rounded-[5px] bg-[#3b82f6] px-1 text-[0.62rem] font-bold text-white">
                   3
                 </span>
               </button>
@@ -177,7 +207,9 @@ export function SetupChecklistTemplate({
                   {TASKS.map((task) => (
                     <li
                       key={task.id}
-                      className="flex items-center gap-4 rounded-[10px] border border-[color:var(--ob-border)] p-4 transition-colors hover:border-[color:var(--ob-border-strong)]"
+                      /* Measured: the reference's rows run ~125px, which is
+                         what gives the list its unhurried rhythm. */
+                      className="flex items-center gap-4 rounded-[10px] border border-[color:var(--ob-border)] px-5 py-6 transition-colors hover:border-[color:var(--ob-border-strong)]"
                     >
                       <span
                         aria-hidden
@@ -190,11 +222,11 @@ export function SetupChecklistTemplate({
                             {task.mins}
                           </span>
                         </p>
-                        <p className="mt-0.5 text-[0.9rem] text-[color:var(--ob-muted)]">
+                        <p className="mt-1.5 text-[0.92rem] text-[color:var(--ob-muted)]">
                           {task.body}
                         </p>
                       </div>
-                      <span aria-hidden className="shrink-0 text-lg opacity-40">›</span>
+                      <ChevronRight width={20} height={20} className="shrink-0 opacity-40" />
                     </li>
                   ))}
                 </ul>
@@ -250,14 +282,11 @@ export function SetupChecklistTemplate({
                   label="Tutorial video thumbnail"
                   radius={10}
                   className="mt-4"
-                  glyph="▶"
                 />
                 <ul className="mt-5 grid gap-4">
                   {RESOURCES.map((item) => (
                     <li key={item.id} className="flex items-center gap-3 text-[0.95rem]">
-                      <span aria-hidden className="w-5 text-center opacity-60">
-                        {item.glyph}
-                      </span>
+                      <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-60" />
                       {item.label}
                     </li>
                   ))}
@@ -321,13 +350,14 @@ function FinancePage() {
                 </p>
               </div>
               <span className="flex items-center gap-2 text-[0.92rem]">
-                <span className="grid h-5 w-9 place-items-center rounded-full bg-[color:var(--ob-fg)] text-[0.6rem] text-white">
-                  <span className="ml-2">✓</span>
+                {/* Switch in its on state: the knob sits right, check inside. */}
+                <span className="flex h-5 w-9 items-center justify-end rounded-full bg-[color:var(--ob-fg)] px-[3px] text-white">
+                  <Check width={11} height={11} />
                 </span>
                 Show net income
               </span>
               <span className="inline-flex items-center gap-10 rounded-[8px] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem]">
-                This year <span aria-hidden className="text-[0.7rem] opacity-60">⌄</span>
+                This year <ChevronDown width={13} height={13} className="opacity-60" />
               </span>
             </div>
 
@@ -395,7 +425,7 @@ function FinancePage() {
                 </p>
               </div>
               <span className="inline-flex items-center gap-10 rounded-[8px] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem]">
-                This year <span aria-hidden className="text-[0.7rem] opacity-60">⌄</span>
+                This year <ChevronDown width={13} height={13} className="opacity-60" />
               </span>
             </div>
 
@@ -423,13 +453,13 @@ function FinancePage() {
             {[
               {
                 id: "balance",
-                glyph: "🏦",
+                icon: "bank" as IconName,
                 label: "Accounts balance",
                 blurb: "Connect your bank accounts to view your accounts balance.",
               },
               {
                 id: "cards",
-                glyph: "💳",
+                icon: "creditCard" as IconName,
                 label: "Credit card spending",
                 blurb: "Connect your cards to view your credit card spending.",
               },
@@ -442,7 +472,7 @@ function FinancePage() {
                 )}
               >
                 <h3 className="flex items-center gap-2 font-semibold">
-                  <span aria-hidden>{slot.glyph}</span>
+                  <Icon name={slot.icon} width={17} height={17} className="opacity-70" />
                   {slot.label}
                   <InfoDot />
                 </h3>
