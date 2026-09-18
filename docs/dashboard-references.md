@@ -437,7 +437,7 @@ bottom/edge; y labels top-left and bottom-left (8.0% / -4.0%); x "January 2024" 
 
 | 36 | 092 | Contra analytics | freelance-analytics | DONE |
 | 37 | 093 | Clerk dashboard | auth-console | REMEASURED |
-| 38 | 094 | Better Stack uptime | uptime-monitor (dark) | DONE |
+| 38 | 094 | Better Stack uptime | uptime-monitor (dark) | REMEASURED |
 | 39 | 095 | Cloudflare zone overview | zone-overview | REMEASURED |
 | 40 | 096 | Zapier My Apps | automation-apps | DONE |
 
@@ -557,7 +557,7 @@ the wordmark and "© 2022 Acme Inc." + Manage cookies | Legal | Privacy.
 | 43 | 099 | Customer.io campaigns | campaign-list | DONE |
 | 44 | 100 | Mixpanel home | product-analytics | REMEASURED |
 | 45 | 101 | Whop creator | creator-revenue | REMEASURED |
-| 46 | 102 | Mercury transactions | banking-ledger | DONE |
+| 46 | 102 | Mercury transactions | banking-ledger | REMEASURED |
 | 47 | 103 | Posh events | event-console (dark) | DONE |
 | 48 | 104-108 | Twenty CRM | crm-workspace | DONE |
 
