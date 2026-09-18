@@ -390,26 +390,29 @@ export const supportInsightsTokens: TemplateTokens = {
 
 /** Personal finance: airy white, green gains, generous radii, soft shadows. */
 export const financeTokens: TemplateTokens = {
-  bg: "#fbfcfc",
+  // Sampled off the reference: the page is a barely-tinted white, the ink a
+  // deep navy rather than black, and every border a single hairline of #eef1f0.
+  bg: "#f8faf9",
   surface: "#ffffff",
-  surface2: "#f5f7f7",
-  surface3: "#eaefee",
-  border: "#eaeeed",
-  borderStrong: "#cdd6d4",
-  fg: "#11221c",
-  fgSoft: "#3d4b45",
-  muted: "#74837c",
-  brand: "#16c164",
-  brandFg: "#05230f",
-  ctaBg: "#11221c",
+  surface2: "#f6f6f6",
+  surface3: "#f0f1f2",
+  border: "#eef1f0",
+  borderStrong: "#dfe3e2",
+  fg: "#14293d",
+  fgSoft: "#3b4d60",
+  muted: "#7c8493",
+  brand: "#10bf50",
+  brandFg: "#ffffff",
+  ctaBg: "#14293d",
   ctaFg: "#ffffff",
-  success: "#16c164",
+  success: "#187b3c",
   danger: "#ef4444",
   radius: "1rem",
   radiusSm: "0.625rem",
   radiusLg: "1.25rem",
-  font: GEOMETRIC,
-  shadow: "0 1px 2px rgb(16 40 32 / 0.04), 0 10px 30px -18px rgb(16 40 32 / 0.25)",
+  font: FIGTREE,
+  // The cards read flat against the page; only a hairline separates them.
+  shadow: "none",
 };
 
 /** CRM workspace: dense, hairline borders, small type, minimal colour. */

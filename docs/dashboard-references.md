@@ -2,24 +2,40 @@
 refs/ holds the images. Dashboard N = file 057+(N-1) for N=1..47; 48 = 104-108.
 Several references are EXTRA PAGES of the same product (e.g. 15+16 Copilot Money).
 
+**State column.**
+
+- `DONE` — built from this reference in the first pass. Not verified.
+- `RETYPE` — rebuilt and diffed against its reference, but before we found
+  that the headless captures were rendering in a fallback face rather than
+  the template's own (the typefaces were loaded from fonts.googleapis.com and
+  that request never completed in the capture browser). Layout, palette and
+  icons on these rows were measured against the reference and are good; the
+  type sizes were matched to a face that was not the one that ships, so every
+  one of them needs its type pass redone now that the faces are self-hosted.
+- `REMEASURED` — finished: pixel-measured against its own reference with the
+  real typefaces rendering, captured at 1512px, diffed side by side until the
+  list was empty, and checked at 390px.
+
+Only `REMEASURED` rows are done.
+
 | # | file | product | template | state |
 |---|------|---------|----------|-------|
-| 1 | 057 | fal | api-console | DONE |
-| 2 | 058 | Perplexity | assistant-home | DONE |
-| 3 | 059 | Canny | guided-setup | DONE |
-| 4 | 060 | Descript | creative-studio | DONE |
-| 5 | 061 | MagicPath | file-library | DONE |
-| 6 | 062 | HoneyBook | setup-checklist | DONE |
-| 7 | 063 | Curater | discovery-feed | DONE |
-| 8 | 064 | Klaviyo (assistant open) | guides-assistant | DONE |
-| 9 | 065 | Klaviyo (assistant closed) | guides-assistant | DONE (same page) |
-| 10 | 066 | Bloom | brand-studio | DONE |
-| 11 | 067 | Causal | modeling-home | DONE |
-| 12 | 068 | Plain | support-insights | DONE |
-| 13 | 069 | Shopify | commerce-analytics | DONE |
-| 14 | 070 | Buffer | social-scheduler | DONE |
-| 15 | 071 | Copilot Money, Dashboard | finance-overview | DONE |
-| 16 | 072 | Copilot Money, Accounts | finance-overview `accounts` page | DONE |
+| 1 | 057 | fal | api-console | RETYPE |
+| 2 | 058 | Perplexity | assistant-home | RETYPE |
+| 3 | 059 | Canny | guided-setup | RETYPE |
+| 4 | 060 | Descript | creative-studio | RETYPE |
+| 5 | 061 | MagicPath | file-library | RETYPE |
+| 6 | 062 | HoneyBook | setup-checklist | RETYPE |
+| 7 | 063 | Curater | discovery-feed | RETYPE |
+| 8 | 064 | Klaviyo (assistant open) | guides-assistant | RETYPE |
+| 9 | 065 | Klaviyo (assistant closed) | guides-assistant | RETYPE |
+| 10 | 066 | Bloom | brand-studio | RETYPE |
+| 11 | 067 | Causal | modeling-home | RETYPE |
+| 12 | 068 | Plain | support-insights | RETYPE |
+| 13 | 069 | Shopify | commerce-analytics | RETYPE |
+| 14 | 070 | Buffer | social-scheduler | RETYPE |
+| 15 | 071 | Copilot Money, Dashboard | finance-overview | REMEASURED |
+| 16 | 072 | Copilot Money, Accounts | finance-overview `accounts` page | REMEASURED |
 
 ## 11 Causal (067)
 White, blue accent (#3b5bdb-ish), Inter. Left rail: wordmark + avatar, Search (cmd K) + `+`,

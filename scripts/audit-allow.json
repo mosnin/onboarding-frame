@@ -7,5 +7,9 @@
   "social-scheduler": {
     "chars": "👋🧯🌀🏔💬🧁",
     "why": "Buffer renders a wave in the greeting tile, emoji as the four template-card marks, and a cupcake inside the quoted comment."
+  },
+  "finance-overview": {
+    "chars": "❤️🏠💰📖📱🛍",
+    "why": "Copilot Money lets people pick an emoji per spending category, and the reference prints those in the category list, the recurring rows and the category chips."
   }
 }

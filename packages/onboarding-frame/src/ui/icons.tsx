@@ -1,9 +1,11 @@
 import type { ComponentType } from "react";
 import type { LucideProps } from "lucide-react";
 import {
-  Activity, Archive, ArrowDown, ArrowLeft as LuArrowLeft, ArrowLeftRight,
-  ArrowRight as LuArrowRight, ArrowUp, ArrowUpDown, Bell, Book, Bookmark, Bot,
-  Box, Briefcase, Building2, Calendar, ChartColumn, ChartLine, ChartPie,
+  Activity, Archive, ArrowDown, ArrowDownRight, ArrowLeft as LuArrowLeft,
+  ArrowLeftRight, ArrowRight as LuArrowRight, ArrowUp, ArrowUpDown, ArrowUpRight,
+  Asterisk, Bell, Book, Bookmark, Bot,
+  Box, Briefcase, Building2, Calendar, ChartColumn, ChartColumnIncreasing,
+  ChartLine, ChartPie, CircleDashed,
   Check as LuCheck, ChevronDown as LuChevronDown, ChevronLeft as LuChevronLeft,
   ChevronRight as LuChevronRight, ChevronUp as LuChevronUp, Circle, CircleCheck,
   CircleX, Clipboard, Clock, Cloud, Code, Coins, Columns3, Command, Copy, Cpu,
@@ -14,12 +16,13 @@ import {
   LifeBuoy, Lightbulb, Link, List, LoaderCircle, Lock as LuLock, LockOpen,
   Magnet, Mail, Map, MapPin, Maximize2, Megaphone, Menu, MessageSquare, Mic,
   Monitor, Moon as LuMoon, Music, Palette, PanelLeft, Pause, Pencil, Phone,
-  Play, Plus as LuPlus, Puzzle, Receipt, RefreshCw, Rocket, Search, Send,
+  Play, Plus as LuPlus, Puzzle, Navigation, Receipt, RefreshCcwDot, RefreshCw,
+  Rocket, Search, Send,
   Server, Settings, Share2, Shield, ShieldCheck, ShoppingCart,
   Shuffle as LuShuffle, SlidersHorizontal, Sparkles, Star as LuStar, Store,
   Sun as LuSun, Table, Tag, Target, Terminal, TrendingDown, TrendingUp,
   TriangleAlert, Trash2, Trophy, Truck, Upload, User, UserPlus, Users, Video,
-  Wallet, Wand2, X, Zap, VenetianMask, FlaskConical, Ghost,
+  Equal, Wallet, Wand2, X, Zap, VenetianMask, FlaskConical, Ghost,
 } from "lucide-react";
 
 /**
@@ -52,6 +55,9 @@ export const ChevronUp = ic(LuChevronUp, 20);
 export const ArrowRight = ic(LuArrowRight, 18);
 export const ArrowLeft = ic(LuArrowLeft, 18);
 export const ArrowUpIcon = ic(ArrowUp);
+export const ArrowUpRightIcon = ic(ArrowUpRight, 14);
+export const ArrowDownRightIcon = ic(ArrowDownRight, 14);
+export const EqualIcon = ic(Equal, 14);
 export const ArrowDownIcon = ic(ArrowDown);
 
 /* carried over from the previous module so call sites keep working */
@@ -75,6 +81,8 @@ export const ListIcon = ic(List);
 export const LayoutIcon = ic(LayoutDashboard);
 export const SidebarIcon = ic(PanelLeft);
 export const LayersIcon = ic(Layers);
+/** Copilot Money's cursor mark; the reference fills it rather than outlining. */
+export const NavigationIcon = ic(Navigation);
 export const PanelIcon = ic(PanelLeft);
 export const ColumnsIcon = ic(Columns3);
 export const TableIcon = ic(Table);
@@ -123,6 +131,7 @@ export const TrendDownIcon = ic(TrendingDown);
 export const ActivityIcon = ic(Activity);
 export const TargetIcon = ic(Target);
 export const GaugeIcon = ic(Gauge);
+export const ChartUpIcon = ic(ChartColumnIncreasing);
 
 /* money */
 export const CreditCardIcon = ic(CreditCard);
@@ -164,6 +173,9 @@ export const HeartIcon = ic(Heart);
 export const CheckCircleIcon = ic(CircleCheck);
 export const XCircleIcon = ic(CircleX);
 export const CircleIcon = ic(Circle);
+export const CircleDashedIcon = ic(CircleDashed);
+export const RecurringIcon = ic(RefreshCcwDot);
+export const AsteriskIcon = ic(Asterisk);
 export const DotIcon = (p: IconProps) => (
   <Circle size={16} fill="currentColor" strokeWidth={0} aria-hidden {...p} />
 );
