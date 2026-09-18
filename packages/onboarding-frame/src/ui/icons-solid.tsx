@@ -14,8 +14,26 @@ import {
   CircleDashed,
   CreditCard,
   Gear,
+  Buildings,
+  CaretDown,
+  CaretRight,
+  CaretUp,
+  Check,
+  Crosshair,
+  CurrencyDollar,
+  CheckSquare,
+  ChatCircleDots,
+  DotsThreeVertical,
   House,
   IdentificationCard,
+  LinkSimple,
+  MagnifyingGlass,
+  MapPin,
+  Notepad,
+  SquaresFour,
+  Target,
+  User,
+  UsersThree,
   Leaf,
   Lightbulb,
   NavigationArrow,
@@ -123,3 +141,27 @@ export const ExternalSquareIcon = solid(ArrowSquareOut, "regular", 14);
 export const LeafIcon = solid(Leaf, "regular");
 export const QuestionIcon = solid(Question, "regular");
 export const StackMark = solid(Stack, "fill", 20);
+
+/*
+ * Twenty's rail sets each mark in a tinted tile, so these are drawn at
+ * regular weight and coloured by the call site rather than filled.
+ */
+export const BuildingsIcon = solid(Buildings, "regular");
+export const UserIcon = solid(User, "regular");
+export const TargetIcon = solid(Target, "regular");
+export const CheckSquareIcon = solid(CheckSquare, "regular");
+export const NotepadIcon = solid(Notepad, "regular");
+export const SquaresFourIcon = solid(SquaresFour, "regular");
+export const SearchIcon = solid(MagnifyingGlass, "regular");
+export const ChatDotsIcon = solid(ChatCircleDots, "regular");
+export const CaretDownIcon = solid(CaretDown, "bold", 12);
+export const CaretRightIcon = solid(CaretRight, "bold", 12);
+export const MoreVerticalIcon = solid(DotsThreeVertical, "bold");
+export const LinkIcon = solid(LinkSimple, "regular");
+export const UsersThreeIcon = solid(UsersThree, "regular");
+export const MapPinIcon = solid(MapPin, "regular");
+
+export const CaretUpIcon = solid(CaretUp, "bold", 12);
+export const CheckIcon = solid(Check, "bold", 12);
+export const CrosshairIcon = solid(Crosshair, "regular");
+export const CurrencyIcon = solid(CurrencyDollar, "regular");
