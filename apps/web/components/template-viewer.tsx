@@ -15,8 +15,13 @@ import {
   SetupChecklistTemplate,
   FinanceOverviewTemplate,
   CrmWorkspaceTemplate,
+  ModelingHomeTemplate,
+  SocialSchedulerTemplate,
   type ApiConsolePage,
   type CrmPage,
+  type FinancePage,
+  type ModelingPage,
+  type SchedulerPage,
 } from "onboarding-frame";
 
 /** Renders a template by slug, shared by the viewer and the shelf preview. */
@@ -43,7 +48,11 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
     case "support-insights":
       return <SupportInsightsTemplate />;
     case "finance-overview":
-      return <FinanceOverviewTemplate />;
+      return <FinanceOverviewTemplate page={page as FinancePage} />;
+    case "modeling-home":
+      return <ModelingHomeTemplate page={page as ModelingPage} />;
+    case "social-scheduler":
+      return <SocialSchedulerTemplate page={page as SchedulerPage} />;
     case "crm-workspace":
       return <CrmWorkspaceTemplate page={page as CrmPage} />;
     case "discovery-feed":

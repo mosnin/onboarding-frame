@@ -394,3 +394,52 @@ export const crmTokens: TemplateTokens = {
   radiusLg: "0.5rem",
   font: GEOMETRIC,
 };
+
+/**
+ * Causal: a spreadsheet-modelling tool, so the chrome is deliberately plain —
+ * near-white rail, hairline borders, blue only on the active row — and the
+ * screenshot peeks inside the wizard cards carry all the colour.
+ */
+export const modelingTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f4f5f7",
+  surface3: "#eaecef",
+  border: "#e6e8eb",
+  borderStrong: "#d6d9de",
+  fg: "#16181d",
+  fgSoft: "#3c4149",
+  muted: "#8a9199",
+  brand: "#2f6fed",
+  brandFg: "#ffffff",
+  ctaBg: "#16181d",
+  ctaFg: "#ffffff",
+  radius: "0.625rem",
+  radiusSm: "0.375rem",
+  radiusLg: "0.875rem",
+  shadow: "0 1px 2px rgba(16,24,40,0.05)",
+};
+
+/**
+ * Buffer: consumer-soft. Mint primary, grey-50 card fills with no borders at
+ * all, and generous 16px radii — the opposite of the CRM's hairlines.
+ */
+export const schedulerTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f6f6f6",
+  surface3: "#ededed",
+  border: "#e8e8e8",
+  borderStrong: "#dcdcdc",
+  fg: "#191919",
+  fgSoft: "#3d3d3d",
+  muted: "#8a8a8a",
+  brand: "#2c4bff",
+  brandFg: "#ffffff",
+  ctaBg: "#b9e6a2",
+  ctaFg: "#14370a",
+  success: "#2f9e44",
+  radius: "1rem",
+  radiusSm: "0.625rem",
+  radiusLg: "1.25rem",
+};

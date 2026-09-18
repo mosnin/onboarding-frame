@@ -55,6 +55,7 @@ const UPCOMING = [
 ];
 
 const RANGES = ["1W", "1M", "3M", "YTD", "1Y", "All"];
+const RANGE_ITEMS = RANGES.map((id) => ({ id, label: id }));
 
 /**
  * Personal finance overview.
@@ -63,7 +64,16 @@ const RANGES = ["1W", "1M", "3M", "YTD", "1Y", "All"];
  * shows the budget line as a dashed guide with actual spend beneath it, and
  * labels the gap directly rather than leaving the reader to infer it.
  */
-export function FinanceOverviewTemplate({ className }: TemplateProps) {
+export type FinancePage = "dashboard" | "accounts";
+
+export interface FinanceOverviewProps extends TemplateProps {
+  page?: FinancePage;
+}
+
+export function FinanceOverviewTemplate({
+  className,
+  page = "dashboard",
+}: FinanceOverviewProps) {
   return (
     <Surface tokens={financeTokens}>
       <Shell className={cn(className)}>
@@ -81,7 +91,7 @@ export function FinanceOverviewTemplate({ className }: TemplateProps) {
                 aria-current={item.active ? "page" : undefined}
                 className={cn(
                   "flex items-center gap-3 rounded-[10px] px-3 py-2.5 text-left text-[0.95rem]",
-                  item.active
+                  (item.active ? page === "dashboard" : item.id === page)
                     ? "bg-[color-mix(in_oklab,#3b82f6_10%,transparent)] font-semibold text-[#2563eb]"
                     : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
                 )}
@@ -151,10 +161,20 @@ export function FinanceOverviewTemplate({ className }: TemplateProps) {
         </Sidebar>
 
         <Main>
-          <header className="border-b border-[color:var(--ob-border)] px-8 py-4">
-            <h1 className="text-[1.05rem] font-semibold">Dashboard</h1>
+          <header className="flex items-center border-b border-[color:var(--ob-border)] px-8 py-4">
+            <h1 className="flex-1 text-[1.05rem] font-semibold">
+              {page === "accounts" ? "Accounts" : "Dashboard"}
+            </h1>
+            {page === "accounts" && (
+              <button type="button" aria-label="Add account" className="opacity-50">
+                +
+              </button>
+            )}
           </header>
 
+          {page === "accounts" ? (
+            <AccountsPage />
+          ) : (
           <div className="grid gap-5 p-6 sm:p-8 lg:grid-cols-2">
             {/* Monthly spending */}
             <Card className="[box-shadow:var(--ob-shadow)]">
@@ -351,8 +371,274 @@ export function FinanceOverviewTemplate({ className }: TemplateProps) {
               </ul>
             </Card>
           </div>
+          )}
         </Main>
       </Shell>
     </Surface>
+  );
+}
+
+/** Accounts, with the per-account detail panel docked on the right. */
+const ACCOUNT_ROWS = [
+  {
+    heading: "Depository",
+    total: { change: "999%", tone: "up", value: "$4,179.15" },
+    rows: [
+      { name: "Savings", mask: "3567", change: "999%", tone: "up", value: "$4,179.15" },
+    ],
+  },
+  {
+    heading: "Investments",
+    total: { change: "1.69%", tone: "up", value: "$1,319,328.02" },
+    rows: [
+      {
+        name: "Main Investment",
+        mask: "9786",
+        change: "1.71%",
+        tone: "up",
+        value: "$1,305,499.92",
+        selected: true,
+      },
+      {
+        name: "Robinhood Investment",
+        mask: "2345",
+        change: "0.00%",
+        tone: "flat",
+        value: "$13,828.10",
+      },
+    ],
+  },
+  {
+    heading: "Loans",
+    total: { change: "0.00%", tone: "flat", value: "$100.00" },
+    rows: [
+      { name: "SoFi Personal Loan", mask: "2390", change: "0.00%", tone: "flat", value: "$100.00" },
+    ],
+  },
+];
+
+const ALLOCATIONS = [
+  { label: "Crypto", pct: 98, display: "98%" },
+  { label: "Equity", pct: 1, display: "1%" },
+  { label: "ETF", pct: 0.4, display: "< 1%" },
+];
+
+const HOLDINGS = [
+  { ticker: "BTC", name: "Bitcoin", change: "2.87%", down: true, price: "$64,020.45" },
+  { ticker: "SPY", name: "State Street SPDR …", change: "0.81%", down: true, price: "$746.74" },
+  { ticker: "META", name: "Meta Platforms, In…", change: "1.80%", down: true, price: "$577.22" },
+  { ticker: "GOOGL", name: "Alphabet Inc. Clas…", change: "0.44%", down: true, price: "$368.03" },
+  { ticker: "NVDA", name: "Nvidia Corp", change: "0.25%", down: false, price: "$210.69" },
+];
+
+function Delta({ value, tone }: { value: string; tone: string }) {
+  const up = tone === "up";
+  const flat = tone === "flat";
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.78rem] font-semibold tabular-nums",
+        flat
+          ? "bg-[color:var(--ob-surface-3)] text-[color:var(--ob-muted)]"
+          : up
+            ? "bg-[color-mix(in_oklab,#22c55e_16%,transparent)] text-[#15803d]"
+            : "bg-[color-mix(in_oklab,#ef4444_14%,transparent)] text-[color:var(--ob-danger)]",
+      )}
+    >
+      <span aria-hidden>{flat ? "=" : up ? "↗" : "↘"}</span>
+      {value}
+    </span>
+  );
+}
+
+function AccountsPage() {
+  return (
+    <div className="flex flex-1 overflow-hidden">
+      <div className="flex-1 overflow-auto p-6 sm:p-8">
+        <Card className="[box-shadow:var(--ob-shadow)]">
+          <div className="text-center">
+            <p className="text-[0.95rem] text-[color:var(--ob-fg-soft)]">Net worth</p>
+            <p className="pt-1 text-[1.9rem] font-extrabold tracking-tight">$1,323,530</p>
+            <span className="mt-2 inline-flex">
+              <Delta value="999%" tone="up" />
+            </span>
+          </div>
+
+          {/* Balance is a step, not a slope: one deposit cleared mid-week. */}
+          <div className="mt-5">
+            <LineChart
+              height={135}
+              gridLines={0}
+              series={[
+                {
+                  id: "net-worth",
+                  points: [17, 17, 17, 17, 62, 62, 62, 62, 62, 62, 62],
+                  color: "#22c55e",
+                  area: true,
+                  dashedFrom: 8,
+                  endDot: true,
+                },
+              ]}
+            />
+          </div>
+
+          <div className="flex justify-center pt-3">
+            <Segmented items={RANGE_ITEMS} active="1W" />
+          </div>
+        </Card>
+
+        <div className="pt-6">
+          {ACCOUNT_ROWS.map((group) => (
+            <section key={group.heading} className="pb-6">
+              <h2 className="flex items-center gap-1.5 pb-1 text-[0.95rem] font-semibold">
+                <span aria-hidden className="text-[0.7rem] opacity-50">▾</span>
+                {group.heading}
+              </h2>
+              {group.rows.map((row) => (
+                <div
+                  key={row.mask}
+                  className={cn(
+                    "flex items-center gap-3 rounded-[12px] px-3 py-3",
+                    "selected" in row && row.selected
+                      ? "bg-[color-mix(in_oklab,#3b82f6_8%,transparent)]"
+                      : "",
+                  )}
+                >
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[0.95rem]">
+                    🏦
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="flex items-baseline gap-2">
+                      <span className="truncate font-semibold">{row.name}</span>
+                      <span className="shrink-0 text-[0.88rem] text-[color:var(--ob-muted)]">
+                        {row.mask}
+                      </span>
+                    </span>
+                    <span className="block text-[0.88rem] text-[color:var(--ob-muted)]">
+                      Manual account
+                    </span>
+                  </span>
+                  <Delta value={row.change} tone={row.tone} />
+                  <span className="w-36 shrink-0 text-right font-semibold tabular-nums">
+                    {row.value}
+                  </span>
+                </div>
+              ))}
+              <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] px-3 pt-3">
+                <span className="flex-1" />
+                <Delta value={group.total.change} tone={group.total.tone} />
+                <span className="w-36 shrink-0 text-right font-semibold tabular-nums">
+                  {group.total.value}
+                </span>
+              </div>
+            </section>
+          ))}
+        </div>
+      </div>
+
+      <aside className="hidden w-[420px] shrink-0 overflow-auto border-l border-[color:var(--ob-border)] xl:block">
+        <div className="flex items-center gap-2 px-5 py-4">
+          <h2 className="flex-1 text-[1.05rem] font-semibold">Other</h2>
+          <span aria-hidden className="opacity-50">···</span>
+          <span aria-hidden className="opacity-50">✕</span>
+        </div>
+
+        <div className="border-b border-[color:var(--ob-border)] px-5 pb-5">
+          <div className="flex items-center gap-2.5">
+            <span className="grid size-7 place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[0.8rem]">
+              🏦
+            </span>
+            <span className="text-[0.92rem] font-semibold tabular-nums">9786</span>
+            <span className="text-[0.92rem] text-[color:var(--ob-muted)]">
+              Manual account
+            </span>
+            <span className="ml-auto flex items-center gap-1.5">
+              <span className="rounded-full bg-[color-mix(in_oklab,#22c55e_16%,transparent)] px-2 py-0.5 text-[0.76rem] font-semibold text-[#15803d]">
+                + $21,942
+              </span>
+              <Delta value="1.71%" tone="up" />
+            </span>
+          </div>
+
+          <div className="flex items-baseline gap-3 pt-2">
+            <h3 className="flex-1 text-[1.3rem] font-bold tracking-tight">
+              Main Investment
+            </h3>
+            <p className="text-[1.3rem] font-bold tabular-nums">$1,305,499.92</p>
+          </div>
+
+          {/* Leading dotted run marks the stretch before this account existed. */}
+          <div className="pt-3">
+            <LineChart
+              height={120}
+              smooth
+              gridLines={0}
+              series={[
+                {
+                  id: "account",
+                  points: [0, 0, 0, 0, 12, 40, 62, 68, 66, 63],
+                  color: "#22c55e",
+                  area: true,
+                  dashedFrom: 7,
+                  endDot: true,
+                },
+              ]}
+            />
+          </div>
+
+          <div className="flex justify-center pt-2">
+            <Segmented items={RANGE_ITEMS} active="1W" />
+          </div>
+        </div>
+
+        <div className="border-b border-[color:var(--ob-border)] px-5 py-5">
+          <div className="flex items-center gap-3 pb-4">
+            <h3 className="flex-1 font-bold">Allocations</h3>
+            <span className="text-[0.76rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
+              By percentage
+            </span>
+          </div>
+          <ul className="grid gap-3">
+            {ALLOCATIONS.map((row) => (
+              <li key={row.label} className="flex items-center gap-3">
+                <span className="w-16 shrink-0 text-[0.92rem]">{row.label}</span>
+                <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-[color:var(--ob-surface-3)]">
+                  <span
+                    className="block h-full rounded-full bg-[#3b82f6]"
+                    style={{ width: `${Math.max(row.pct, 0.8)}%` }}
+                  />
+                </span>
+                <span className="w-12 shrink-0 text-right text-[0.9rem] font-semibold tabular-nums">
+                  {row.display}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="px-5 py-5">
+          <div className="flex items-center gap-3 pb-3">
+            <h3 className="flex-1 font-bold">Holdings</h3>
+            <span className="text-[0.76rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
+              Last price
+            </span>
+          </div>
+          <ul>
+            {HOLDINGS.map((row) => (
+              <li key={row.ticker} className="flex items-center gap-3 py-2.5">
+                <span className="w-14 shrink-0 text-[0.88rem] font-semibold text-[color:var(--ob-muted)]">
+                  {row.ticker}
+                </span>
+                <span className="min-w-0 flex-1 truncate text-[0.92rem]">{row.name}</span>
+                <Delta value={row.change} tone={row.down ? "down" : "up"} />
+                <span className="w-24 shrink-0 text-right text-[0.92rem] font-semibold tabular-nums">
+                  {row.price}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
   );
 }

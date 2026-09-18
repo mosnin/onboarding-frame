@@ -15,6 +15,11 @@ export { BrandStudioTemplate } from "./brand-studio";
 export { CommerceAnalyticsTemplate } from "./commerce-analytics";
 export { SupportInsightsTemplate } from "./support-insights";
 export { FinanceOverviewTemplate } from "./finance-overview";
+export type { FinancePage, FinanceOverviewProps } from "./finance-overview";
+export { ModelingHomeTemplate } from "./modeling-home";
+export type { ModelingPage, ModelingHomeProps } from "./modeling-home";
+export { SocialSchedulerTemplate } from "./social-scheduler";
+export type { SchedulerPage, SocialSchedulerProps } from "./social-scheduler";
 export { CrmWorkspaceTemplate } from "./crm-workspace";
 export type { CrmPage, CrmWorkspaceProps } from "./crm-workspace";
 
@@ -114,7 +119,32 @@ export const templateCatalog: TemplateMeta[] = [
     name: "Finance overview",
     blurb:
       "Spend dashboard where the actual-spend line stops at today and the budget continues as a dashed guide, so the gap is the story.",
-    pages: [{ id: "overview", label: "Overview" }],
+    pages: [
+      { id: "dashboard", label: "Dashboard" },
+      { id: "accounts", label: "Accounts" },
+    ],
+  },
+  {
+    slug: "modeling-home",
+    name: "Modelling home",
+    blurb:
+      "Plain spreadsheet-tool chrome where each wizard card shows a clipped screenshot of the tool it opens, bleeding past the card edge.",
+    pages: [
+      { id: "overview", label: "Overview" },
+      { id: "data", label: "Data" },
+      { id: "categories", label: "Categories" },
+    ],
+  },
+  {
+    slug: "social-scheduler",
+    name: "Social scheduler",
+    blurb:
+      "Borderless consumer surface: mint CTA, grey card fills and progress rings, with a brand-new account’s honestly small counts.",
+    pages: [
+      { id: "home", label: "Home" },
+      { id: "publish", label: "Publish" },
+      { id: "community", label: "Community" },
+    ],
   },
   {
     slug: "crm-workspace",
