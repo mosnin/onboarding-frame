@@ -336,10 +336,13 @@ export function Segmented({
   items,
   active,
   className,
+  activeClassName,
 }: {
   items: { id: string; label: ReactNode }[];
   active: string;
   className?: string;
+  /** Some products tint the selected pill rather than leaving it white. */
+  activeClassName?: string;
 }) {
   return (
     <div
@@ -356,7 +359,7 @@ export function Segmented({
           className={cn(
             "rounded-full px-3 py-1.5 text-[0.82rem] font-semibold transition-colors",
             item.id === active
-              ? "bg-[color:var(--ob-surface)] [box-shadow:var(--ob-shadow)]"
+              ? activeClassName ?? "bg-[color:var(--ob-surface)] [box-shadow:var(--ob-shadow)]"
               : "text-[color:var(--ob-muted)]",
           )}
         >

@@ -8,7 +8,7 @@ import {
   ChevronRight as LuChevronRight, ChevronUp as LuChevronUp, Circle, CircleCheck,
   CircleX, Clipboard, Clock, Cloud, Code, Coins, Columns3, Command, Copy, Cpu,
   CreditCard, Database, DollarSign, Download, Ellipsis, EllipsisVertical,
-  ExternalLink, File, Files, Filter, Flag, Folder, Gauge, Gem, Gift as LuGift,
+  Eye, ExternalLink, File, Files, Filter, Flag, Folder, Gauge, Gem, Gift as LuGift,
   GitBranch, Globe, Hand, Heart, History, House, Image, Info as LuInfo,
   KanbanSquare, Key, Landmark, Layers, LayoutDashboard, LayoutGrid, Leaf,
   LifeBuoy, Lightbulb, Link, List, LoaderCircle, Lock as LuLock, LockOpen,
@@ -204,6 +204,7 @@ export const BriefcaseIcon = ic(Briefcase);
 export const MagnetIcon = ic(Magnet);
 export const ClipboardIcon = ic(Clipboard);
 export const GemIcon = ic(Gem);
+export const EyeIcon = ic(Eye);
 export const IncognitoIcon = ic(VenetianMask);
 
 /**
