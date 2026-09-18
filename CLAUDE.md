@@ -120,6 +120,22 @@ A build shipped with every bold one step heavy — 600 where the reference set
 500, 700 where it set 600 — while every measured width matched exactly.
 Widths matching is not the same as the type matching.
 
+**Do it by hand, on the same text box in both images.** Automating it across
+the catalogue was tried and does not work, twice over:
+
+- *Ink per unit area* rises with type size as well as weight, and the
+  reference images are downscaled WebP whose strokes resampling softens. Every
+  template read 20-50% "heavier" — more than any weight step can produce — and
+  it flagged screens that had been rebuilt from scratch and verified.
+- *Stem width over cap height* is the right quantity and there is not enough
+  resolution to measure it. At the sizes this UI sets, a stem is one or two
+  pixels; the difference between 500 and 600 lives in the anti-aliasing, and
+  the reference's anti-aliasing is not ours because it was resampled.
+
+So compare a heading you have identified in both, not a row a script paired by
+position. Pairing by position is its own trap: a template and its reference
+rarely have the same rows at the same offsets.
+
 ### 6. Templates must not share one typeface
 
 Every template carries its own face in `tokens.tsx`. A previous build pointed
