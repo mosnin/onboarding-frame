@@ -2,12 +2,12 @@
 
 import type { ReactNode } from "react";
 import { cn } from "../../../lib/cn";
-import { LogoSlot } from "../../../ui/placeholder";
+import { LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, benchmarkTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./api-console";
 
-export type BenchmarkPage = "benchmarking" | "revenue" | "churn";
+export type BenchmarkPage = "benchmarking" | "overview" | "revenue" | "churn";
 
 export interface BillingBenchmarksProps extends TemplateProps {
   page?: BenchmarkPage;
@@ -194,6 +194,10 @@ export function BillingBenchmarksTemplate({
         </Sidebar>
 
         <Main className="overflow-auto">
+          {page === "overview" ? (
+            <MerchantOverview />
+          ) : (
+          <>
           <header className="flex h-16 shrink-0 items-center gap-4 px-6">
             <div className="flex w-full max-w-[760px] items-center gap-2.5 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-4 py-2.5 text-[0.98rem] text-[color:var(--ob-muted)]">
               <span aria-hidden>⌕</span> Search
@@ -330,9 +334,313 @@ export function BillingBenchmarksTemplate({
               ))}
             </div>
           </div>
+          </>
+          )}
         </Main>
       </Shell>
     </Surface>
+  );
+}
+
+const NAV_TABS = [
+  "Home",
+  "Payments",
+  "Balances",
+  "Customers",
+  "Products",
+  "Billing",
+  "Reports",
+  "Connect",
+];
+
+/**
+ * Merchant overview.
+ *
+ * The chrome flips from a sidebar to a horizontal nav on this surface, which
+ * is a real difference between the two products' shells rather than a styling
+ * choice — so the page rebuilds its own header instead of reusing the one
+ * above.
+ *
+ * Two details are kept because they carry meaning: the payments widget is a
+ * grey panel reading "only available for live data" (the account is in test
+ * mode), and the growth chips read "+∞" because the previous period was
+ * exactly zero. A percentage would be a lie there.
+ */
+function MerchantOverview() {
+  return (
+    <div className="relative">
+      <div className="flex h-14 shrink-0 items-center gap-4 border-b border-[color:var(--ob-border)] px-6">
+        <span className="flex items-center gap-2.5 text-[1rem] font-medium">
+          <span aria-hidden>▤</span> Jane
+          <span aria-hidden className="text-[0.7rem] opacity-60">
+            ⌄
+          </span>
+        </span>
+        <span className="flex items-center gap-2 rounded-full bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-3.5 py-1.5 text-[0.95rem] font-medium text-[#b3363a]">
+          Action required <span aria-hidden>⚠</span>
+        </span>
+        <span className="mx-auto flex w-full max-w-[560px] items-center gap-2.5 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-4 py-2 text-[0.98rem] text-[color:var(--ob-muted)]">
+          <span aria-hidden>⌕</span> Search…
+        </span>
+        <span className="flex items-center gap-4 text-[0.98rem]">
+          <span className="flex items-center gap-5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-1.5 font-medium">
+            Create
+            <span aria-hidden className="text-[0.7rem] opacity-60">
+              ⌄
+            </span>
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span aria-hidden>?</span> Help
+          </span>
+          {["⌾", "⚙", "👤"].map((glyph) => (
+            <span key={glyph} aria-hidden className="text-[color:var(--ob-fg-soft)]">
+              {glyph}
+            </span>
+          ))}
+        </span>
+      </div>
+
+      <div className="flex h-14 shrink-0 items-center gap-6 border-b-2 border-[#f6821f] px-6">
+        {NAV_TABS.map((tab, index) => (
+          <span
+            key={tab}
+            className={cn(
+              "text-[1rem]",
+              index === 0
+                ? "rounded-full bg-[color:var(--ob-brand)] px-4 py-1.5 font-semibold text-white"
+                : "font-medium text-[color:var(--ob-fg-soft)]",
+            )}
+          >
+            {tab}
+          </span>
+        ))}
+        <span className="flex items-center gap-1.5 text-[1rem] font-medium text-[color:var(--ob-fg-soft)]">
+          More <span aria-hidden className="text-[0.7rem] opacity-60">⌄</span>
+        </span>
+        <span className="ml-auto flex items-center gap-4 text-[1rem] font-medium">
+          <span>Developers</span>
+          <span className="text-[#c2410c]">Test mode</span>
+          {/* On: the orange knob sits right. */}
+          <span className="grid h-6 w-11 justify-items-end rounded-full bg-[#f6821f] p-1">
+            <span className="size-4 rounded-full bg-white" />
+          </span>
+        </span>
+      </div>
+
+      <span className="absolute left-1/2 top-[7rem] -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[#f6821f] px-3 py-1 text-[0.82rem] font-bold uppercase tracking-wide text-white">
+        Test data
+      </span>
+
+      <div className="px-8 py-7">
+        <div className="flex items-center gap-4">
+          <h1 className="flex-1 text-[2rem] font-bold tracking-[-0.01em]">
+            Your overview
+          </h1>
+          <span className="flex items-center gap-2 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-2 text-[0.98rem] font-medium">
+            <span aria-hidden>⚙</span> Edit overview
+          </span>
+        </div>
+
+        <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-[color:var(--ob-border)] pt-5">
+          <OverviewSelect>Last 7 days</OverviewSelect>
+          <OverviewSelect glyph="🗓">Mar 15–Mar 21</OverviewSelect>
+          <span className="text-[0.98rem] text-[color:var(--ob-muted)]">compared to</span>
+          <OverviewSelect>Previous period</OverviewSelect>
+          <OverviewSelect caret="⇅">Daily</OverviewSelect>
+        </div>
+
+        <div className="grid gap-8 pt-7 lg:grid-cols-3">
+          <Widget title="Payments" info>
+            {/* Test mode: this panel genuinely has nothing to show. */}
+            <div className="mt-4 grid h-[300px] place-items-center rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-6 text-center">
+              <span>
+                <span aria-hidden className="block text-[1.6rem] text-[color:var(--ob-muted)]">
+                  ⚠
+                </span>
+                <span className="block pt-3 text-[1.02rem] text-[color:var(--ob-muted)]">
+                  This content is only available for live data.
+                </span>
+              </span>
+            </div>
+          </Widget>
+
+          <Widget title="Gross volume" info chip="+∞">
+            <div className="flex gap-8 pt-4">
+              <Legend label="Last 7 days" value="$41.54" color="var(--ob-brand)" />
+              <Legend label="Previous period" value="$0.00" color="var(--ob-border-strong)" />
+            </div>
+            <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">$41.54</p>
+            <svg
+              viewBox="0 0 600 260"
+              className="h-[260px] w-full"
+              preserveAspectRatio="none"
+              role="img"
+              aria-label="Gross volume over the last seven days"
+            >
+              <path
+                d="M0,258 L470,258 L600,4"
+                fill="none"
+                stroke="var(--ob-brand)"
+                strokeWidth={2}
+                vectorEffect="non-scaling-stroke"
+              />
+              <line
+                x1={0}
+                x2={600}
+                y1={258}
+                y2={258}
+                stroke="var(--ob-border-strong)"
+                strokeWidth={1.5}
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+            <p className="flex text-[0.95rem] text-[color:var(--ob-muted)]">
+              <span className="flex-1">$0.00</span>
+            </p>
+            <p className="flex pt-1 text-[0.95rem] text-[color:var(--ob-muted)]">
+              <span className="flex-1">Mar 15</span>
+              <span>Today</span>
+            </p>
+            <p className="flex items-center gap-3 pt-4 text-[0.98rem]">
+              <span className="flex-1 font-medium text-[color:var(--ob-brand)]">
+                View all payments
+              </span>
+              <span className="text-[color:var(--ob-muted)]">
+                Updated at 4:57 AM 🕐
+              </span>
+            </p>
+          </Widget>
+
+          <section className="relative rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] p-7 text-center">
+            <span aria-hidden className="absolute right-5 top-5 text-[color:var(--ob-muted)]">
+              ✕
+            </span>
+            <h2 className="text-[1.3rem] font-bold leading-snug">
+              Get quick access
+              <br />
+              to key business insights
+            </h2>
+            <p className="pt-3 text-[1.02rem] text-[color:var(--ob-fg-soft)]">
+              Missing anything? You can always add it again by editing your overview.
+            </p>
+            <p className="pt-4 text-[1.05rem] font-semibold text-[color:var(--ob-brand)]">
+              Add to your overview ⊕
+            </p>
+            <div className="pt-6">
+              <Placeholder height={210} radius={10} label="Widget preview" />
+            </div>
+          </section>
+
+          <Widget title="Net volume from sales" info chip="+∞">
+            <div className="flex gap-8 pt-4">
+              <Legend label="Last 7 days" value="$29.62" color="var(--ob-brand)" />
+              <Legend label="Previous period" value="$0.00" color="var(--ob-border-strong)" />
+            </div>
+            <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">$29.62</p>
+          </Widget>
+
+          <Widget title="Failed payments" info>
+            <p className="pt-4 text-[1.35rem] font-bold tabular-nums">$4.00</p>
+            <p className="flex items-center gap-3 pt-2 text-[0.98rem] text-[color:var(--ob-muted)]">
+              <span className="flex-1">Mar 21, 3:35 AM · jane2@example.test</span>
+              <span className="rounded bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-2 py-0.5 font-medium text-[#b3363a]">
+                Failed
+              </span>
+            </p>
+            <p className="flex items-center gap-3 pt-4 text-[0.98rem]">
+              <span className="flex-1 font-medium text-[color:var(--ob-brand)]">
+                1 of 1 result
+              </span>
+              <span className="text-[color:var(--ob-muted)]">Updated at 4:57 AM 🕐</span>
+            </p>
+          </Widget>
+
+          <Widget title="New customers" info chip="+∞">
+            <div className="flex gap-8 pt-4">
+              <Legend label="Last 7 days" value="3" color="var(--ob-brand)" />
+              <Legend label="Previous period" value="0" color="var(--ob-border-strong)" />
+            </div>
+            <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">3</p>
+          </Widget>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Widget({
+  title,
+  info,
+  chip,
+  children,
+}: {
+  title: string;
+  info?: boolean;
+  chip?: string;
+  children: ReactNode;
+}) {
+  return (
+    <section>
+      <h2 className="flex flex-wrap items-center gap-2.5 text-[1.3rem] font-bold">
+        {title}
+        {info && <InfoDot />}
+        {chip && (
+          <span className="rounded bg-[color-mix(in_oklab,#3fa66a_18%,transparent)] px-2 py-0.5 text-[0.92rem] font-semibold text-[#2b7a4b]">
+            {chip}
+          </span>
+        )}
+      </h2>
+      <p className="border-b border-[color:var(--ob-border)] pb-3 pt-1 text-[1.02rem] text-[color:var(--ob-muted)]">
+        Last 7 days
+      </p>
+      {children}
+    </section>
+  );
+}
+
+function Legend({
+  label,
+  value,
+  color,
+}: {
+  label: string;
+  value: string;
+  color: string;
+}) {
+  return (
+    <span>
+      <span className="flex items-center gap-2.5 text-[1rem] text-[color:var(--ob-fg-soft)]">
+        <span aria-hidden className="h-0.5 w-5 rounded-full" style={{ background: color }} />
+        {label}
+      </span>
+      <span className="block pt-1 text-[1.35rem] font-bold tabular-nums">{value}</span>
+    </span>
+  );
+}
+
+function OverviewSelect({
+  children,
+  glyph,
+  caret = "⌄",
+}: {
+  children: ReactNode;
+  glyph?: string;
+  caret?: string;
+}) {
+  return (
+    <span className="inline-flex items-center gap-4 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.98rem] font-medium">
+      <span className="flex items-center gap-2">
+        {glyph && (
+          <span aria-hidden className="text-[color:var(--ob-muted)]">
+            {glyph}
+          </span>
+        )}
+        {children}
+      </span>
+      <span aria-hidden className="text-[0.7rem] opacity-60">
+        {caret}
+      </span>
+    </span>
   );
 }
 

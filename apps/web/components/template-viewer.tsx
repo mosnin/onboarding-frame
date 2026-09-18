@@ -37,6 +37,12 @@ import {
   UptimeMonitorTemplate,
   ZoneOverviewTemplate,
   AutomationAppsTemplate,
+  PeopleAnalyticsTemplate,
+  CampaignListTemplate,
+  ProductAnalyticsTemplate,
+  CreatorRevenueTemplate,
+  BankingLedgerTemplate,
+  EventConsoleTemplate,
   type ApiConsolePage,
   type CrmPage,
   type FinancePage,
@@ -64,6 +70,12 @@ import {
   type UptimePage,
   type ZonePage,
   type AutomationPage,
+  type PeoplePage,
+  type CampaignPage,
+  type ProductPage,
+  type CreatorPage,
+  type BankingPage,
+  type ConsolePage,
 } from "onboarding-frame";
 
 /** Renders a template by slug, shared by the viewer and the shelf preview. */
@@ -91,6 +103,18 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
       return <SupportInsightsTemplate />;
     case "finance-overview":
       return <FinanceOverviewTemplate page={page as FinancePage} />;
+    case "people-analytics":
+      return <PeopleAnalyticsTemplate page={page as PeoplePage} />;
+    case "campaign-list":
+      return <CampaignListTemplate page={page as CampaignPage} />;
+    case "product-analytics":
+      return <ProductAnalyticsTemplate page={page as ProductPage} />;
+    case "creator-revenue":
+      return <CreatorRevenueTemplate page={page as CreatorPage} />;
+    case "banking-ledger":
+      return <BankingLedgerTemplate page={page as BankingPage} />;
+    case "event-console":
+      return <EventConsoleTemplate page={page as ConsolePage} />;
     case "freelance-analytics":
       return <FreelanceAnalyticsTemplate page={page as FreelancePage} />;
     case "auth-console":

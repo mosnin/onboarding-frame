@@ -535,3 +535,158 @@ then a chevron ›.
 Footer (inside the content area): "Follow us" + 5 round social glyph circles; right a row
 of links (Pricing, Help, Developer Platform, Press, Jobs, ... , Transfer); below,
 the wordmark and "© 2022 Acme Inc." + Manage cookies | Legal | Privacy.
+
+| 41 | 097 | Stripe, Your overview | billing-benchmarks `overview` page | DONE |
+| 42 | 098 | Deel HR analytics | people-analytics | DONE |
+| 43 | 099 | Customer.io campaigns | campaign-list | DONE |
+| 44 | 100 | Mixpanel home | product-analytics | DONE |
+| 45 | 101 | Whop creator | creator-revenue | DONE |
+| 46 | 102 | Mercury transactions | banking-ledger | DONE |
+| 47 | 103 | Posh events | event-console (dark) | DONE |
+| 48 | 104-108 | Twenty CRM | crm-workspace | DONE |
+
+## 41 Stripe overview (097)
+Same shell as 34 but the top nav is HORIZONTAL not a sidebar: pill "Home"(indigo fill) then
+Payments/Balances/Customers/Products/Billing/Reports/Connect/"More ⌄"; right "Developers"
+and "Test mode" + an ORANGE toggle (ON). Above that a thin bar: store glyph + "Jane ⌄",
+a pink chip "Action required ⚠", centred search, right "Create ⌄", "? Help", bell, gear, user.
+An ORANGE "TEST DATA" tab hangs from the top edge of the content area, centred.
+H1 "Your overview" + right outlined "⚙ Edit overview". Rule.
+Control row: "Last 7 days ⌄", "🗓 Mar 15–Mar 21", grey "compared to", "Previous period ⌄",
+"Daily ⇅".
+3-column widget grid separated by whitespace, each widget: bold title + ⓘ (+ a green "+∞"
+chip where growth is infinite), grey sub "Last 7 days", rule, then content.
+ - "Payments": a grey-50 empty panel with a ⚠ glyph and centred grey
+   "This content is only available for live data."
+ - "Gross volume +∞": legend rows "— Last 7 days $41.54" and "— Previous period $0.00"
+   (indigo and grey short dashes); y max label "$41.54" top-left, "$0.00" at the baseline;
+   a line flat at zero then a steep diagonal to the top-right corner; x "Mar 15" / "Today";
+   footer indigo "View all payments" + grey "Updated at 4:57 AM 🕐".
+ - A dismissible grey-50 promo card: ✕ top-right, centred bold 2-line
+   "Get quick access to key business insights", 2-line grey copy, indigo
+   "Add to your overview ⊕", and a screenshot placeholder of a stacked-bar
+   "Outstanding invoices" widget.
+ - "Net volume from sales +∞" ($29.62 vs $0.00), "Failed payments" ($4.00, a row w/ date +
+   email + a pink "Failed" chip, footer "1 of 1 result"), "New customers +∞" (3 vs 0).
+A right EDGE rail holds a "+" button and a "❯_" button in small squares.
+
+## 42 Deel (098)
+Warm off-white #faf9f7 page, white cards rounded-2xl, purple #7c5cff "NEW" chips,
+grey-500 body. Sidebar 365px: wordmark + avatar + bell + search glyph;
+a bordered row w/ a round icon + "JD Mob / Jane's Group" + "⋮"; a thin full-width rule
+with dots at both ends.
+small-caps grey "GROUP": Home, People, Add people, Tracker, Analytics(ACTIVE white card),
+Documents, Compliance + purple NEW, Payments, Group Settings.
+small-caps "ORGANIZATION": App Store, Services, Expenses, Global Payroll + NEW,
+Organization Settings. Rule, then "🚀 Get started with HR" + NEW.
+Main: a card ending in a full-width grey-50 button "▦ View Dashboard"; above it two mini
+cards with a SLIDER-like axis: a coloured track with a dot at the right end and month
+labels May Jul Sep Nov Jan Apr underneath.
+Section header row: a round grey-50 avatar-ish icon (56px) + "Diversity, equity and
+inclusion" 1.8rem bold + grey sub "Collected insights into DE&I across your organization";
+right "Last 12 months ⌄".
+Big card, grey-50 inner panel: left col "Diversity by headcount ⓘ" + bold 2-line date range
+"April 1st 2023 - March 31st 2024 · All countries"; then three grey-50 rows, each a label
+on the left and a right-aligned value: "Age / Not available · 66.67% ⏎ <29 · 33.33%",
+"Gender / Not specified · 100%", "Ethnicity / Not specified · 100%".
+Right two white cards:
+ - "Average compensation by gender ⓘ": a butterfly-and-blob illustration placeholder and
+   centred grey 2-line "No average compensation by gender available to show".
+ - "Headcount by ethnicity ⓘ": big "3" then a THICK DARK-GREY DONUT (nearly closed, one
+   thin white gap on the right edge).
+Then another full-width "▦ View Dashboard" button.
+
+## 43 Customer.io (099)
+White; a thin ORANGE bar across the very top; then a DARK NAVY #1a2b32 top bar;
+green #3ecf8e logo; blue #1a6ef5 links; 0.95rem.
+Far-left icon rail 68px (white, hairline): a green-tinted active square then a grey glyph.
+Second sidebar 285px: "Journeys" bold + a "«" collapse; nav Dashboard/Analysis/
+Campaigns(ACTIVE grey fill)/Broadcasts/Transactional/Deliveries & Drafts; rule;
+People/Custom Objects/Segments/Activity Logs/"Data & Integrations ⌄"; rule; "Content ⌄".
+Dark top bar: "mobbin.com production ⇅" left; right "? Need help?", bell w/ green dot,
+chat, gear, user.
+Main: H1 "Campaigns" + right a BLACK "Create Campaign" button.
+Filter row with small-caps grey labels above each control: FILTER BY (a search input),
+TRIGGERED BY ("All ▾"), STATUS ("Campaign state ⌄"), TOPIC, TAGS.
+Tabs: "Active 24"(active, blue underline, count in a grey pill) / "Archived 0".
+Toolbar: "24 Campaigns" bold + grey "Metric definitions ?" + a date-range box
+"🗓 Mar 11, 2024 - Apr 09, 2024" + a select "Delivered ▾" + a sort icon + a columns icon +
+right "1 – 20 of 24" and four pager buttons |‹ ‹ › ›|.
+Table header: NAME ⌄ | DELIVERED ⌄ (blue, the sorted column) | OPENED ⌄ | CLICKED ⌄ |
+CONVERTED ⌄.
+Each ROW IS TWO LINES TALL: line 1 = a target glyph + a BLUE bold campaign name + a green
+"● Running" chip + the four metric values; line 2 = counts "5 ✉  5 ⏱" under the name and a
+small SPARKLINE under each metric column. Some rows' metric values are BLURRED (a privacy
+state) — reproduce as grey blurred bars. One row has "Show 1 more" in blue under it.
+
+## 45 Whop (101)
+White, indigo #5b5bd6 brand, rounded-xl, 0.95rem.
+Sidebar 348px: "⌾ Go to hub" + a collapse box; a bordered card "$500 IN 7 DAYS" +
+a FLIP-CLOCK countdown (four pairs of digit tiles) labelled DAYS HRS MINS SECS +
+a full-width indigo "View milestone"; then avatar + "ASMobbin ⌄";
+nav Home(ACTIVE grey)/Users/Links/Milestones/"Growth Hacks ●"/Marketing ⌄/Finances ⌄/
+Operations ⌄/Settings ⌄; bottom a lavender card "Partner Program / Earn 30% of recurring
+revenue for life!"; footer a bordered "EN" and a round "?".
+Top bar: a bordered pill "🏆 Milestones"; right a search box "Search ⌘K", then glyphs
+(book, $, bell), avatar.
+Banners: a YELLOW banner "In order to view some of the data for this company, you must
+enable two factor authentication…" + right "Set up two factor authentication ›";
+a LAVENDER banner about sharing stats with an ↗ glyph.
+"Today" 2rem bold + right an indigo pill "🎓 Need help? Join Whop University".
+Card "Gross revenue ⓘ": "$2" 2.6rem + a green chip "$2 ↑"; chart: y label "$1" top-left,
+faint vertical BANDS behind, an indigo line with a DOT ON EVERY HOUR flat at 0 with one
+square-topped plateau near the right (two adjacent dots at $1); x "12:00 AM" / "11:00 PM".
+Card "To-do list": one lavender row "👋 Welcome 12 new users ›".
+"Stats" 2rem + controls "Last 7 days ⌄", "🗓 Jul 24 - 30, 2024", grey "compared to",
+"Previous period ⌄", "Daily ⌄"; right "+ Add" and "⚙ Edit".
+Then cards "MRR ⓘ $0", "ARR ⓘ $0" (each w/ an ↗ open-in-new box) and
+"Payments breakdown ⓘ" w/ a segmented horizontal bar (green / yellow / thin red / grey).
+
+## 46 Mercury (102)
+White, hairline table, pink/magenta #e5457f as the outflow colour and green for inflow.
+Sidebar 288px: a square avatar + "Acme ⇅"; nav Home/Tasks/Transactions(ACTIVE grey)/
+Payments ⌄/Cards/Capital/"Accounts ⌃" w/ children "Credit Card", "Checking ••2502 $972.04",
+"Savings ••5679 $1,020.00" (two-line rows w/ the balance under the name);
+small-caps grey "Workflows": Bill Pay, Invoicing ⌄, Reimbursements, Accounting.
+Top bar: a wide search "Search for anything ⌘K"; right a bordered "Move Money ⌄",
+an eye-off glyph, bell w/ pink dot, avatar.
+H1 "Transactions" + right an outlined "▤ Match Receipts".
+Toolbar of outlined pills: "🔖 Data Views ⌄", "⇶ Filters", "Date ⌄", "Keywords ⌄",
+"Amount ⌄"; right four icon buttons and "⤓ Export All".
+Summary strip (3 cells divided by hairlines):
+ - left: grey "Net change this month", "−$6.41" 2rem (the cents smaller), grey
+   "vs. −$3.55 last month"; then two rows with a coloured left TICK: green "Money in $0.00",
+   pink "Money out −$6.41".
+ - middle: an area chart, y "$7"/"$3", x Nov 1..Nov 7, a pink curve rising to a plateau
+   with a pink gradient fill, and a flat green line at the bottom.
+ - right: "To/From ⌄" + "▤ Group Table" + "⌃"; a two-bar chart (one grey, one pink)
+   labelled "Google Workspace".
+A dark TOOLTIP card floats over the table: bold "Google Workspace", "Net change −$6.41",
+then pink/green ticked rows "Money in $0.00" / "Money out −$6.41".
+Table: checkbox | Date ↓ | To/From | Amount | Account | Method | (a select) | Attachment.
+Rows: round logo slot, name, amount (green for in, dark for out, with SMALLER CENTS),
+account name, method (glyph + "Wire Payment" / "ACH Payment" / "Transfer In" / "Transfer
+Out" / a card number), an empty dropdown, and a "+" circle. One row is
+"GOOGLE *TEMPORARY …" with a pink "Failed" chip and a STRUCK-THROUGH "$0.00".
+
+## 47 Posh (103)  DARK
+Pure #000, cards #111, crimson #e8134b data, rounded-xl, white sans.
+Top bar: "posh" wordmark left; a CENTRED pill-shaped nav container (#161616) holding
+Overview(active, white text)/Marketing/Team/Finance/Profile/Settings; right avatar, bell,
+hamburger.
+Header: a round white logo slot (72px) + "Acme" 2.2rem bold; then a small glyph +
+"Apprentice" + "?" ; right "$0 / $100,000" over a full-width thin grey progress track
+(empty).
+Two bordered stat cards side by side: centred small-caps grey "EVENTS" + "4",
+"TOTAL ATTENDEES" + "3"; then a white pill button "+ Create New Event".
+Big chart card: y 0/1/2/3 with DASHED gridlines, x Jan 21..Jan 28 with VERTICAL rotated
+labels, a crimson curve flat at 0 then a smooth hump to 3 and down; crimson gradient fill;
+a round refresh button top-right.
+Under the chart: small-caps "TICKETS THIS WEEK" + "4"; right a segmented 1W(active)/1M/ALL.
+Right column "Orders": a search input "Search (Event Name, Attendee Name, Email, Order";
+then order cards (#111): round avatar slot, bold name, grey timestamp, grey truncated event
+name, sometimes a small "🔗 series" chip; right "Order #22291646" and bold "$0.00";
+then a full-width bordered "View More".
+Section "Events": a card with italic grey "Event series:" then a 1.5rem bold title,
+a green "● Live" row, then a wide banner-image placeholder with the title over it and two
+rounded stat tiles ("3", "13") to the right; a pencil and an eye glyph top-right.

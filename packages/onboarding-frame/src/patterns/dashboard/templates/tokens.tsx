@@ -898,3 +898,132 @@ export const automationTokens: TemplateTokens = {
   radiusSm: "0.5rem",
   radiusLg: "0.75rem",
 };
+
+/** Deel: warm off-white with purple "new" chips and soft 16px cards. */
+export const peopleTokens: TemplateTokens = {
+  bg: "#faf9f7",
+  surface: "#ffffff",
+  surface2: "#f4f3f0",
+  surface3: "#e9e7e2",
+  border: "#e8e6e1",
+  borderStrong: "#d3d0c9",
+  fg: "#1b1b1a",
+  fgSoft: "#43423f",
+  muted: "#78766f",
+  brand: "#7c5cff",
+  brandFg: "#ffffff",
+  ctaBg: "#1b1b1a",
+  ctaFg: "#ffffff",
+  radius: "1rem",
+  radiusSm: "0.625rem",
+  radiusLg: "1.25rem",
+};
+
+/** Customer.io: navy chrome, green mark, blue links, dense table type. */
+export const campaignTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f4f6f7",
+  surface3: "#e7ebed",
+  border: "#e2e7e9",
+  borderStrong: "#c9d1d5",
+  fg: "#16232a",
+  fgSoft: "#3a474e",
+  muted: "#6d7a81",
+  brand: "#1a6ef5",
+  brandFg: "#ffffff",
+  ctaBg: "#16232a",
+  ctaFg: "#ffffff",
+  success: "#2f9e5f",
+  radius: "0.375rem",
+  radiusSm: "0.25rem",
+  radiusLg: "0.5rem",
+};
+
+/** Mixpanel: indigo primary with an amber upgrade, board thumbnails as content. */
+export const productTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f7f7fa",
+  surface3: "#ececf3",
+  border: "#e7e7ef",
+  borderStrong: "#d3d3de",
+  fg: "#18181f",
+  fgSoft: "#3e3e4a",
+  muted: "#7b7b8a",
+  brand: "#4b3fe4",
+  brandFg: "#ffffff",
+  ctaBg: "#f5b52a",
+  ctaFg: "#1b1500",
+  radius: "0.625rem",
+  radiusSm: "0.5rem",
+  radiusLg: "0.875rem",
+};
+
+/** Whop: indigo on white with lavender and yellow banners carrying warnings. */
+export const creatorTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f6f6fa",
+  surface3: "#ececf4",
+  border: "#e8e8f0",
+  borderStrong: "#d3d3e0",
+  fg: "#16161d",
+  fgSoft: "#3b3b47",
+  muted: "#77778a",
+  brand: "#5b5bd6",
+  brandFg: "#ffffff",
+  ctaBg: "#5b5bd6",
+  ctaFg: "#ffffff",
+  success: "#2f9e5f",
+  radius: "0.75rem",
+  radiusSm: "0.5rem",
+  radiusLg: "1rem",
+};
+
+/**
+ * Mercury: magenta for money out and green for money in — direction carried by
+ * hue, which is why the palette has no conventional "brand" colour at all.
+ */
+export const bankingTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f7f7f8",
+  surface3: "#eeeef0",
+  border: "#e8e8ea",
+  borderStrong: "#d3d3d7",
+  fg: "#17171a",
+  fgSoft: "#3c3c42",
+  muted: "#78787f",
+  brand: "#e5457f",
+  brandFg: "#ffffff",
+  ctaBg: "#17171a",
+  ctaFg: "#ffffff",
+  success: "#1f9d55",
+  danger: "#e5457f",
+  radius: "0.5rem",
+  radiusSm: "0.375rem",
+  radiusLg: "0.625rem",
+};
+
+/** Posh: true black with crimson data and a floating pill nav. */
+export const eventConsoleTokens: TemplateTokens = {
+  scheme: "dark",
+  bg: "#000000",
+  surface: "#111111",
+  surface2: "#171717",
+  surface3: "#222222",
+  border: "#232323",
+  borderStrong: "#343434",
+  fg: "#fafafa",
+  fgSoft: "#d0d0d0",
+  muted: "#8a8a8a",
+  brand: "#e8134b",
+  brandFg: "#ffffff",
+  ctaBg: "#fafafa",
+  ctaFg: "#000000",
+  success: "#3ddc84",
+  radius: "0.875rem",
+  radiusSm: "0.625rem",
+  radiusLg: "1.125rem",
+};

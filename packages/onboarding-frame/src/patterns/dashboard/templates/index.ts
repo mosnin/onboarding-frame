@@ -62,6 +62,18 @@ export { ZoneOverviewTemplate } from "./zone-overview";
 export type { ZonePage, ZoneOverviewProps } from "./zone-overview";
 export { AutomationAppsTemplate } from "./automation-apps";
 export type { AutomationPage, AutomationAppsProps } from "./automation-apps";
+export { PeopleAnalyticsTemplate } from "./people-analytics";
+export type { PeoplePage, PeopleAnalyticsProps } from "./people-analytics";
+export { CampaignListTemplate } from "./campaign-list";
+export type { CampaignPage, CampaignListProps } from "./campaign-list";
+export { ProductAnalyticsTemplate } from "./product-analytics";
+export type { ProductPage, ProductAnalyticsProps } from "./product-analytics";
+export { CreatorRevenueTemplate } from "./creator-revenue";
+export type { CreatorPage, CreatorRevenueProps } from "./creator-revenue";
+export { BankingLedgerTemplate } from "./banking-ledger";
+export type { BankingPage, BankingLedgerProps } from "./banking-ledger";
+export { EventConsoleTemplate } from "./event-console";
+export type { ConsolePage, EventConsoleProps } from "./event-console";
 export { CrmWorkspaceTemplate } from "./crm-workspace";
 export type { CrmPage, CrmWorkspaceProps } from "./crm-workspace";
 
@@ -304,7 +316,10 @@ export const templateCatalog: TemplateMeta[] = [
     name: "Billing benchmarks",
     blurb:
       "Peer-range bands rather than series, where a customer with no revenue lands 1st percentile on value and 99th on churn.",
-    pages: [{ id: "benchmarking", label: "Benchmarking" }],
+    pages: [
+      { id: "benchmarking", label: "Benchmarking" },
+      { id: "overview", label: "Merchant overview" },
+    ],
   },
   {
     slug: "freelance-analytics",
@@ -340,6 +355,48 @@ export const templateCatalog: TemplateMeta[] = [
     blurb:
       "Connected-apps page with an honestly empty usage bar and a footer left in the flow, because two rows do not fill a screen.",
     pages: [{ id: "apps", label: "My Apps" }],
+  },
+  {
+    slug: "people-analytics",
+    name: "People analytics",
+    blurb:
+      "HR insights at three employees, where every demographic row honestly reads \u201cNot specified\u201d rather than inventing a distribution.",
+    pages: [{ id: "analytics", label: "Analytics" }],
+  },
+  {
+    slug: "campaign-list",
+    name: "Campaign list",
+    blurb:
+      "Two-line campaign rows pairing each metric with its own sparkline, and permission-hidden values blurred rather than faked.",
+    pages: [{ id: "campaigns", label: "Campaigns" }],
+  },
+  {
+    slug: "product-analytics",
+    name: "Product analytics",
+    blurb:
+      "Analytics home with schematic board thumbnails instead of screenshots, and dotted tails separating projection from measurement.",
+    pages: [{ id: "home", label: "Home" }],
+  },
+  {
+    slug: "creator-revenue",
+    name: "Creator revenue",
+    blurb:
+      "Creator dashboard that stacks a blocking two-factor notice above a promotional one, with a flip-clock milestone countdown.",
+    pages: [{ id: "home", label: "Home" }],
+  },
+  {
+    slug: "banking-ledger",
+    name: "Banking ledger",
+    blurb:
+      "Business banking where direction is carried entirely by hue, and a failed charge keeps its struck-through zero instead of vanishing.",
+    pages: [{ id: "transactions", label: "Transactions" }],
+  },
+  {
+    slug: "event-console",
+    name: "Event console",
+    blurb:
+      "True-black organiser console with a floating pill nav, an empty revenue track and four honest $0.00 orders for a free event.",
+    pages: [{ id: "overview", label: "Overview" }],
   },
   {
     slug: "crm-workspace",
