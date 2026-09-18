@@ -230,7 +230,7 @@ back to 0 at Apr 21.
 Two cards: "Input token trend" and "Output token trend" — slate BARS, y 0/150/300/470 and
 0/60/120/180/240, x Apr 15..Apr 21, bars only on Apr 15,16,17,20 (Apr 18/19/21 empty).
 
-| 26 | 082 | Vanta | compliance-controls | DONE |
+| 26 | 082 | Vanta | compliance-controls | REMEASURED |
 | 27 | 083 | Vercel, hover tooltip + crosshair | deploy-analytics | DONE (hover readout) |
 | 28 | 084 | Etsy Shop Manager | listing-stats | DONE |
 | 29 | 085 | Mailchimp audience | audience-analytics | REMEASURED |

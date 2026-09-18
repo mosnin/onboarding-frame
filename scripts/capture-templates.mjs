@@ -39,11 +39,38 @@ const slugs = await page.evaluate(() =>
 const unique = [...new Set(slugs)];
 console.log(`capturing ${unique.length} templates`);
 
+/**
+ * A capture that renders unstyled still looks page-shaped, so it passes every
+ * check the script used to make and silently overwrites a good capture with a
+ * useless one. It has happened twice, both times because a stale server held
+ * the port and served an older build's HTML against the new build's asset
+ * hashes, 404ing every stylesheet. So: record failed asset requests per page,
+ * and confirm the stylesheet actually applied before writing the file.
+ */
+const failed = [];
+page.on("response", (r) => {
+  if (r.status() >= 400 && /\.(css|js)(\?|$)/.test(r.url())) {
+    failed.push(`${r.status()} ${r.url()}`);
+  }
+});
+
 const results = [];
 for (const slug of unique) {
   try {
+    failed.length = 0;
     await page.goto(`${BASE}/templates/${slug}`, { waitUntil: "networkidle" });
     await page.waitForTimeout(700);
+    if (failed.length) {
+      throw new Error(`assets 404ed (stale server?): ${failed[0]}`);
+    }
+    const styled = await page.evaluate(() => {
+      const el = document.querySelector('[class*="transition-[max-width]"]');
+      if (!el) return false;
+      // Tailwind's preflight sets this; without the stylesheet the UA default
+      // (usually a serif) comes through instead.
+      return !/^(Times|serif)/i.test(getComputedStyle(document.body).fontFamily);
+    });
+    if (!styled) throw new Error("rendered unstyled - stylesheet did not apply");
     const frame = page.locator('[class*="transition-[max-width]"]').first();
     await frame.waitFor({ state: "visible", timeout: 15000 });
     // The site header is sticky and paints over the template's own chrome.

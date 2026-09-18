@@ -74,13 +74,31 @@ def edges(px, w, y, tol=12, min_gap=6):
     return out
 
 
+# Every directory that ships UI. The audit was pointed at the dashboard
+# templates alone, so it reported zero while 161 glyph sites sat in the
+# onboarding presets, the wizard and pricing patterns, and the site chrome —
+# rule 1 covers all of them equally, and a scanner that cannot see a file
+# cannot report it.
+SCAN_ROOTS = (
+    "packages/onboarding-frame/src/patterns",
+    "packages/onboarding-frame/src/presets",
+    "packages/onboarding-frame/src/ui",
+    "apps/web/app",
+    "apps/web/components",
+    "apps/web/lib",
+)
+
+
 def scan_glyphs(root: pathlib.Path, allow_path="scripts/audit-allow.json"):
-    """Glyphs per template, minus the ones its reference genuinely prints.
+    """Glyphs per source file, minus the ones its reference genuinely prints.
 
     A handful of references really do show emoji — Canny's heading carries a
     party popper, Buffer sets its template-card marks in emoji. Reproducing
-    those is the rule, so they are recorded per template rather than counted
+    those is the rule, so they are recorded per file rather than counted
     as defects. Everything else is a defect.
+
+    `root` may be a single directory or a repo root; in the latter case every
+    directory in SCAN_ROOTS is walked.
     """
     allow = {}
     ap = pathlib.Path(allow_path)
@@ -90,12 +108,25 @@ def scan_glyphs(root: pathlib.Path, allow_path="scripts/audit-allow.json"):
             for k, v in json.loads(ap.read_text()).items()
             if isinstance(v, dict) and "chars" in v
         }
+    if (root / "package.json").exists() and (root / "scripts").is_dir():
+        files = [
+            f
+            for d in SCAN_ROOTS
+            for ext in ("*.tsx", "*.ts")
+            for f in (root / d).rglob(ext)
+            if (root / d).is_dir() and "node_modules" not in f.parts
+        ]
+        key = lambda f: str(f.relative_to(root))
+    else:
+        files = list(root.glob("*.tsx")) + list(root.glob("*.ts"))
+        key = lambda f: f.stem
+
     found = {}
-    for f in sorted(root.glob("*.tsx")):
+    for f in sorted(set(files)):
         ok = ALLOWED | allow.get(f.stem, set())
         hits = [c for c in GLYPH.findall(f.read_text()) if c not in ok]
         if hits:
-            found[f.stem] = hits
+            found[key(f)] = hits
     return found
 
 
@@ -121,8 +152,8 @@ def main():
     ap.add_argument("--shots", default=".audit/shots")
     ap.add_argument("--refs", default=None)
     ap.add_argument("--map", default="docs/dashboard-references.md")
-    ap.add_argument("--templates",
-                    default="packages/onboarding-frame/src/patterns/dashboard/templates")
+    ap.add_argument("--templates", default=".",
+                    help="repo root (scans every UI directory) or one directory")
     args = ap.parse_args()
 
     print("=" * 72)

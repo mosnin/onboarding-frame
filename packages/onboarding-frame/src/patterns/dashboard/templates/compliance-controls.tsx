@@ -3,15 +3,15 @@
 import type { ReactNode } from "react";
 import { Donut } from "../../../ui/charts";
 import {
-  ArrowsUpDownIcon,
   BrowsersIcon,
   CardIcon,
   CaretDownIcon,
-  CaretLineLeftIcon,
+  ArrowLineLeftIcon,
   CaretRightIcon,
-  CheckIcon,
+  CheckCircleIcon,
   CheckSquareIcon,
   ClipboardIcon,
+  DotsThreeIcon,
   ExternalSquareIcon,
   GearIcon,
   HardDrivesIcon,
@@ -21,7 +21,8 @@ import {
   QuestionIcon,
   SearchIcon,
   ShieldIcon,
-  UserIcon,
+  SlidersIcon,
+  UserCircleDashedIcon,
   UsersIcon,
   WarningIcon,
 } from "../../../ui/icons-solid";
@@ -55,7 +56,7 @@ const COMPLIANCE = [
 
 const REST = [
   { id: "trust", label: "Trust Center", Icon: ShieldIcon },
-  { id: "risk", label: "Risk", Icon: WarningIcon },
+  { id: "risk", label: "Risk", Icon: WarningIcon, weight: "regular" as const },
   { id: "vendor", label: "Vendor", Icon: CardIcon },
   { id: "assets", label: "Assets", Icon: HardDrivesIcon },
   { id: "personnel", label: "Personnel", Icon: UsersIcon },
@@ -129,13 +130,18 @@ export function ComplianceControlsTemplate({
   return (
     <Surface tokens={complianceTokens} className={className}>
       <Shell className="flex-col">
-        <header className="flex h-[49px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[18px]">
-          <Wordmark name={brandName} size={11} mark={15} radius={4} />
-          <span className="ml-auto flex items-center gap-[12px] text-[color:var(--ob-fg-soft)]">
-            <QuestionIcon size={15} />
-            <MegaphoneIcon size={15} />
-            <GearIcon size={15} />
-            <Avatar name={userName} size={23} />
+        <header className="flex h-[59px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[22px]">
+          <Wordmark
+            name={brandName}
+            size={22}
+            mark="none"
+            className="text-[#16013a]"
+          />
+          <span className="ml-auto flex items-center gap-[25px] text-[color:var(--ob-fg-soft)]">
+            <QuestionIcon size={17} />
+            <MegaphoneIcon size={17} />
+            <GearIcon size={17} />
+            <Avatar name={userName} size={28} />
           </span>
         </header>
 
@@ -151,7 +157,11 @@ export function ComplianceControlsTemplate({
 
             <nav className="grid gap-[2px] px-[9px]">
               {TOP.map((item) => (
-                <NavItem key={item.id} label={item.label} glyph={<item.Icon size={14} />} />
+                <NavItem
+                  key={item.id}
+                  label={item.label}
+                  glyph={<item.Icon size={14} />}
+                />
               ))}
             </nav>
 
@@ -162,9 +172,7 @@ export function ComplianceControlsTemplate({
               <NavItem
                 label="Compliance"
                 glyph={<ClipboardIcon size={14} />}
-                trailing={
-                  <CaretDownIcon size={14} />
-                }
+                trailing={<CaretDownIcon size={14} />}
               />
             </div>
             <nav className="grid gap-[2px] px-[9px]">
@@ -183,10 +191,8 @@ export function ComplianceControlsTemplate({
                 <NavItem
                   key={item.id}
                   label={item.label}
-                  glyph={<item.Icon size={14} />}
-                  trailing={
-                    <CaretRightIcon size={14} />
-                  }
+                  glyph={<item.Icon size={14} weight={item.weight} />}
+                  trailing={<CaretRightIcon size={14} />}
                 />
               ))}
             </nav>
@@ -197,7 +203,7 @@ export function ComplianceControlsTemplate({
             </nav>
 
             <span className="mt-auto flex justify-end px-[15px] pb-[15px] text-[color:var(--ob-muted)]">
-              <CaretLineLeftIcon size={14} />
+              <ArrowLineLeftIcon size={14} />
             </span>
           </Sidebar>
 
@@ -222,40 +228,61 @@ export function ComplianceControlsTemplate({
 
             <div className="grid gap-[15px] pt-[15px] lg:grid-cols-2">
               <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[21px]">
-                <h2 className="pb-[15px] text-[1.025rem] font-bold">Assignment</h2>
+                <h2 className="pb-[15px] text-[1.294rem] font-bold">
+                  Assignment
+                </h2>
                 <div className="flex items-center gap-[30px]">
                   <Donut
                     size={156}
                     thickness={8}
                     segments={[
                       { id: "assigned", value: 4, color: "var(--ob-brand)" },
-                      { id: "unassigned", value: 96, color: "var(--ob-surface-3)" },
+                      {
+                        id: "unassigned",
+                        value: 96,
+                        color: "var(--ob-surface-3)",
+                      },
                     ]}
                     center={
                       <span className="grid place-items-center">
-                        <span className="text-[1.519rem] font-bold leading-none">4%</span>
+                        <span className="text-[1.944rem] font-bold leading-none">
+                          4%
+                        </span>
                         <span className="pt-[3px] text-[0.721rem] text-[color:var(--ob-fg-soft)]">
                           Assigned
                         </span>
                       </span>
                     }
                   />
-                  <ul className="grid flex-1 gap-[12px]">
+                  <ul className="grid flex-1 gap-[16px]">
                     {[
-                      { label: "Unassigned", value: 100, color: "var(--ob-surface-3)" },
+                      {
+                        label: "Unassigned",
+                        value: 100,
+                        color: "var(--ob-surface-3)",
+                      },
                       { label: "Assigned", value: 4, color: "var(--ob-brand)" },
-                      { label: "Needs reassignment", value: 0, color: "#e0562d" },
+                      {
+                        label: "Needs reassignment",
+                        value: 0,
+                        color: "#e0562d",
+                      },
                     ].map((row) => (
-                      <li key={row.label} className="flex items-center gap-[9px]">
+                      <li
+                        key={row.label}
+                        className="flex items-center gap-[9px]"
+                      >
                         <span
                           aria-hidden
                           className="size-[9px] rounded-[2px]"
                           style={{ background: row.color }}
                         />
-                        <span className="flex-1 text-[0.797rem] text-[color:var(--ob-fg-soft)]">
+                        <span className="flex-1 text-[0.93rem] text-[color:var(--ob-fg-soft)]">
                           {row.label}
                         </span>
-                        <span className="text-[0.797rem] tabular-nums">{row.value}</span>
+                        <span className="text-[0.93rem] tabular-nums">
+                          {row.value}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -263,13 +290,15 @@ export function ComplianceControlsTemplate({
               </section>
 
               <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[21px]">
-                <h2 className="pb-[15px] text-[1.025rem] font-bold">Completion</h2>
+                <h2 className="pb-[15px] text-[1.294rem] font-bold">
+                  Completion
+                </h2>
                 <div className="flex gap-[24px]">
                   <div className="min-w-[0px] flex-1">
                     <p className="text-[0.797rem] text-[color:var(--ob-fg-soft)]">
                       Controls OK
                     </p>
-                    <p className="pt-[3px] text-[1.67rem] font-bold leading-none tabular-nums">
+                    <p className="pt-[3px] text-[1.837rem] font-bold leading-none tabular-nums">
                       99%
                     </p>
                     <span className="mt-[15px] block h-[6px] overflow-hidden rounded-full bg-[color:var(--ob-surface-3)]">
@@ -305,70 +334,83 @@ export function ComplianceControlsTemplate({
                   <CaretDownIcon size={14} />
                 </span>
               ))}
-              <ArrowsUpDownIcon size={14} />
+              <span className="ml-auto grid size-[33px] place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] text-[color:var(--ob-fg-soft)]">
+                <SlidersIcon size={16} />
+              </span>
             </div>
 
-            <div className="mt-[15px] overflow-hidden rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)]">
-              <div className="grid grid-cols-[120px_minmax(0,1.5fr)_200px_160px_240px_120px_60px] bg-[color:var(--ob-surface-2)] px-[18px] py-[11px] text-[0.721rem] font-semibold">
-                <span className="flex items-center gap-[5px]">
-                  ID <InfoDot />
-                </span>
-                <span>Control</span>
-                <span>Owner</span>
-                <span>Source</span>
-                <span>Frameworks</span>
-                <span>Tests</span>
-                <span />
-              </div>
-
-              {CONTROLS.map((control) => (
-                <div
-                  key={control.id}
-                  className="grid grid-cols-[120px_minmax(0,1.5fr)_200px_160px_240px_120px_60px] items-center border-t border-[color:var(--ob-border)] px-[18px] py-[15px]"
-                >
-                  <span className="self-start pt-[3px] text-[0.721rem] text-[color:var(--ob-fg-soft)]">
-                    {control.id}
+            <div className="mt-[15px] overflow-x-auto rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)]">
+              <div className="min-w-[781px]">
+                <div className="grid grid-cols-[110px_minmax(0,1fr)_182px_134px_187px_90px_42px] bg-[color:var(--ob-surface-2)] px-[18px] py-[11px] text-[0.721rem] font-semibold">
+                  <span className="flex items-center gap-[5px]">
+                    ID <InfoDot />
                   </span>
-                  <span className="pr-[24px]">
-                    <span className="block text-[0.797rem] font-semibold">
-                      {control.title}
-                    </span>
-                    <span className="block pt-[3px] text-[0.721rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
-                      {control.body}
-                    </span>
-                  </span>
-                  <span className="flex items-center gap-[8px] text-[0.759rem]">
-                    {/* A dashed ring reads as "no one here yet" rather than a person. */}
-                    <UserIcon size={14} />
-                    Unassigned
-                  </span>
-                  <span className="flex items-center gap-[8px] text-[0.759rem]">
-                    <BrandMark brand="Acme" size={17} label="Acme" />
-                    Acme
-                  </span>
-                  <span className="grid justify-items-start gap-[5px]">
-                    {control.codes.map((code, index) => (
-                      <span key={code} className="flex items-center gap-[5px]">
-                        <span className="rounded-[3px] bg-[color:var(--ob-surface-2)] px-[6px] py-[3px] text-[0.668rem]">
-                          {code}
-                        </span>
-                        {index === control.codes.length - 1 && control.extra && (
-                          <span className="text-[0.668rem] text-[color:var(--ob-muted)]">
-                            {control.extra}
-                          </span>
-                        )}
-                      </span>
-                    ))}
-                  </span>
-                  <span className="flex items-center gap-[6px] text-[0.759rem]">
-                    <CheckIcon size={14} />
-                    {control.tests}
-                  </span>
-                  <span aria-hidden className="text-right text-[color:var(--ob-muted)]">
-                    ···
-                  </span>
+                  <span>Control</span>
+                  <span>Owner</span>
+                  <span>Source</span>
+                  <span>Frameworks</span>
+                  <span>Tests</span>
+                  <span />
                 </div>
-              ))}
+
+                {CONTROLS.map((control) => (
+                  <div
+                    key={control.id}
+                    className="grid grid-cols-[110px_minmax(0,1fr)_182px_134px_187px_90px_42px] items-center border-t border-[color:var(--ob-border)] px-[18px] py-[15px]"
+                  >
+                    <span className="self-start pt-[3px] text-[0.721rem] text-[color:var(--ob-fg-soft)]">
+                      {control.id}
+                    </span>
+                    <span className="pr-[24px]">
+                      <span className="block text-[0.797rem] font-semibold">
+                        {control.title}
+                      </span>
+                      <span className="block pt-[3px] text-[0.721rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+                        {control.body}
+                      </span>
+                    </span>
+                    <span className="flex items-center gap-[8px] text-[0.759rem]">
+                      {/* A dashed ring reads as "no one here yet" rather than a person. */}
+                      <UserCircleDashedIcon size={17} />
+                      Unassigned
+                    </span>
+                    <span className="flex items-center text-[0.759rem]">
+                      <Wordmark
+                        name={brandName}
+                        size={12}
+                        mark={17}
+                        radius={4}
+                        tone="#16013a"
+                      />
+                    </span>
+                    <span className="grid justify-items-start gap-[5px]">
+                      {control.codes.map((code, index) => (
+                        <span
+                          key={code}
+                          className="flex items-center gap-[5px]"
+                        >
+                          <span className="rounded-[3px] bg-[color:var(--ob-surface-2)] px-[6px] py-[3px] text-[0.668rem]">
+                            {code}
+                          </span>
+                          {index === control.codes.length - 1 &&
+                            control.extra && (
+                              <span className="text-[0.668rem] text-[color:var(--ob-muted)]">
+                                {control.extra}
+                              </span>
+                            )}
+                        </span>
+                      ))}
+                    </span>
+                    <span className="flex items-center gap-[6px] text-[0.759rem]">
+                      <CheckCircleIcon size={16} className="text-[#4c994b]" />
+                      {control.tests}
+                    </span>
+                    <span className="flex justify-end text-[color:var(--ob-muted)]">
+                      <DotsThreeIcon size={17} />
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </Main>
         </div>
@@ -377,15 +419,28 @@ export function ComplianceControlsTemplate({
   );
 }
 
-function SubMeter({ label, count, pct }: { label: string; count: string; pct: number }) {
+function SubMeter({
+  label,
+  count,
+  pct,
+}: {
+  label: string;
+  count: string;
+  pct: number;
+}) {
   return (
     <div className="rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[12px] py-[9px]">
       <p className="flex items-center gap-[6px] text-[0.759rem]">
         <span className="flex flex-1 items-center gap-[5px] font-medium">
           {label}
-          <ExternalSquareIcon size={10} className="text-[color:var(--ob-muted)]" />
+          <ExternalSquareIcon
+            size={10}
+            className="text-[color:var(--ob-muted)]"
+          />
         </span>
-        <span className="tabular-nums text-[color:var(--ob-fg-soft)]">{count}</span>
+        <span className="tabular-nums text-[color:var(--ob-fg-soft)]">
+          {count}
+        </span>
       </p>
       <p className="flex items-center gap-[6px] pt-[6px]">
         <span className="h-[6px] flex-1 overflow-hidden rounded-full bg-[color:var(--ob-surface-3)]">

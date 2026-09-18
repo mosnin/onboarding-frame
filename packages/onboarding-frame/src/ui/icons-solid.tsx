@@ -6,6 +6,7 @@ import {
   ArrowClockwise,
   ArrowDown,
   ArrowLeft,
+  ArrowLineLeft,
   ArrowRight,
   ArrowSquareOut,
   ArrowUp,
@@ -44,6 +45,7 @@ import {
   ChatCircleDots,
   Chats,
   Check,
+  CheckCircle,
   CheckSquare,
   Circle,
   CircleDashed,
@@ -150,6 +152,7 @@ import {
   Triangle,
   Trophy,
   User,
+  UserCircleDashed,
   UserPlus,
   Users,
   UsersThree,
@@ -432,3 +435,7 @@ export const SunIcon = solid(Sun, "regular");
 export const PauseIcon = solid(PauseCircle, "regular");
 
 export const ArrowUpIcon = solid(ArrowUp, "bold", 13);
+
+export const CheckCircleIcon = solid(CheckCircle, "fill");
+export const UserCircleDashedIcon = solid(UserCircleDashed, "regular");
+export const ArrowLineLeftIcon = solid(ArrowLineLeft, "regular");
