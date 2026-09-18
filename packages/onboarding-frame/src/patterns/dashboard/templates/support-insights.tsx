@@ -2,6 +2,9 @@
 
 import { Placeholder } from "../../../ui/placeholder";
 import { BarChart, Heatmap, LineChart } from "../../../ui/charts";
+import {
+  CaretRightIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { Surface, supportInsightsTokens } from "./tokens";
 import { Chip, Main, Select, Shell } from "./chrome";
@@ -146,7 +149,7 @@ export function SupportInsightsTemplate({
                     <FlaskIcon width={11} height={11} /> {item.badge}
                   </Chip>
                 )}
-                {item.chevron && <span aria-hidden className="opacity-40">›</span>}
+                {item.chevron && <CaretRightIcon size={14} />}
               </button>
             ))}
           </nav>

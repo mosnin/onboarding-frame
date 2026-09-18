@@ -2,6 +2,9 @@
 
 import { Placeholder } from "../../../ui/placeholder";
 import { BarList, Donut, LineChart, Sparkline } from "../../../ui/charts";
+import {
+  CaretRightIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { Surface, commerceTokens } from "./tokens";
 import { Btn, Card, Main, Select, Shell, Sidebar, TopBar } from "./chrome";
@@ -145,7 +148,7 @@ export function CommerceAnalyticsTemplate({
             </nav>
 
             <p className="flex items-center gap-1 px-6 pb-1 pt-4 text-[0.82rem] font-semibold text-[color:var(--ob-muted)]">
-              Sales channels <span aria-hidden className="opacity-50">›</span>
+              Sales channels <CaretRightIcon size={14} />
             </p>
             <nav className="grid gap-0.5 px-3">
               {CHANNELS.map((item) => (

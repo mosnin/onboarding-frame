@@ -1,7 +1,34 @@
 "use client";
 
+import type { ComponentType } from "react";
+
 import type { ReactNode } from "react";
 import { LineChart } from "../../../ui/charts";
+import {
+  BrowsersIcon,
+  CalendarIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  ChartLineIcon,
+  ChartPieIcon,
+  CloudIcon,
+  CubeIcon,
+  FlagIcon,
+  FlowArrowIcon,
+  GearIcon,
+  GlobeIcon,
+  HardDrivesIcon,
+  LifebuoyIcon,
+  ListChecksIcon,
+  PathIcon,
+  RobotIcon,
+  SearchIcon,
+  ShieldIcon,
+  SparkleIcon,
+  StorefrontIcon,
+  TreeIcon,
+  TriangleIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
 import { Surface, deployTokens } from "./tokens";
@@ -15,31 +42,31 @@ export interface DeployAnalyticsProps extends TemplateProps {
 }
 
 const NAV_TOP = [
-  { id: "overview", label: "Overview", glyph: "◬" },
-  { id: "deployments", label: "Deployments", glyph: "⬢" },
-  { id: "logs", label: "Logs", glyph: "≣" },
-  { id: "analytics", label: "Analytics", glyph: "📈" },
-  { id: "speed", label: "Speed Insights", glyph: "◔" },
-  { id: "observability", label: "Observability", glyph: "◉", chevron: true },
-  { id: "firewall", label: "Firewall", glyph: "⛉", chevron: true },
-  { id: "cdn", label: "CDN", glyph: "🌐", chevron: true },
+  { id: "overview", label: "Overview", Icon: TriangleIcon },
+  { id: "deployments", label: "Deployments", Icon: CubeIcon },
+  { id: "logs", label: "Logs", Icon: ListChecksIcon },
+  { id: "analytics", label: "Analytics", Icon: ChartLineIcon },
+  { id: "speed", label: "Speed Insights", Icon: ChartPieIcon },
+  { id: "observability", label: "Observability", Icon: BrowsersIcon, chevron: true },
+  { id: "firewall", label: "Firewall", Icon: ShieldIcon, chevron: true },
+  { id: "cdn", label: "CDN", Icon: GlobeIcon, chevron: true },
 ];
 
 const NAV_MID = [
-  { id: "domains", label: "Domains", glyph: "▭" },
-  { id: "integrations", label: "Integrations", glyph: "🏪" },
-  { id: "storage", label: "Storage", glyph: "⛁" },
-  { id: "flags", label: "Flags", glyph: "◎", chevron: true },
-  { id: "agent", label: "Agent", glyph: "⁂", chevron: true },
-  { id: "gateway", label: "AI Gateway", glyph: "⑄", chevron: true },
-  { id: "sandboxes", label: "Sandboxes", glyph: "▨" },
-  { id: "workflows", label: "Workflows", glyph: "⚯" },
+  { id: "domains", label: "Domains", Icon: GlobeIcon },
+  { id: "integrations", label: "Integrations", Icon: StorefrontIcon },
+  { id: "storage", label: "Storage", Icon: HardDrivesIcon },
+  { id: "flags", label: "Flags", Icon: FlagIcon, chevron: true },
+  { id: "agent", label: "Agent", Icon: SparkleIcon, chevron: true },
+  { id: "gateway", label: "AI Gateway", Icon: PathIcon, chevron: true },
+  { id: "sandboxes", label: "Sandboxes", Icon: CloudIcon },
+  { id: "workflows", label: "Workflows", Icon: FlowArrowIcon },
 ];
 
 const NAV_BOTTOM = [
-  { id: "usage", label: "Usage", glyph: "◔" },
-  { id: "support", label: "Support", glyph: "⛑" },
-  { id: "settings", label: "Settings", glyph: "⚙", chevron: true },
+  { id: "usage", label: "Usage", Icon: ChartPieIcon },
+  { id: "support", label: "Support", Icon: LifebuoyIcon },
+  { id: "settings", label: "Settings", Icon: GearIcon, chevron: true },
 ];
 
 const REFERRERS = [
@@ -80,7 +107,7 @@ export function DeployAnalyticsTemplate({
 
           <div className="px-[13px] pb-[10px]">
             <div className="flex items-center gap-[7px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-[10px] py-[7px] text-[0.768rem] text-[color:var(--ob-muted)]">
-              <span aria-hidden>⌕</span>
+              <SearchIcon size={14} />
               <span className="flex-1">Find…</span>
               <kbd className="rounded border border-[color:var(--ob-border)] px-[5px] py-[2px] text-[0.568rem] font-semibold">
                 F
@@ -124,9 +151,7 @@ export function DeployAnalyticsTemplate({
 
           <div className="flex flex-wrap items-center gap-[10px] px-[20px] py-[13px]">
             <span className="flex items-center gap-[7px] text-[0.793rem]">
-              <span aria-hidden className="text-[color:var(--ob-muted)]">
-                🌐
-              </span>
+              <GlobeIcon size={14} />
               newlandingpage-gold.example.app
               <span aria-hidden className="text-[0.668rem] text-[color:var(--ob-muted)]">
                 ↗
@@ -141,7 +166,7 @@ export function DeployAnalyticsTemplate({
             </span>
             <span className="ml-auto flex items-center gap-[10px]">
               <Select>Production</Select>
-              <Select glyph="🗓">Last 7 Days</Select>
+              <Select glyph={<CalendarIcon size={14} />}>Last 7 Days</Select>
             </span>
           </div>
 
@@ -233,7 +258,12 @@ function NavList({
   items,
   active,
 }: {
-  items: { id: string; label: string; glyph: string; chevron?: boolean }[];
+  items: {
+    id: string;
+    label: string;
+    Icon: ComponentType<{ size?: number }>;
+    chevron?: boolean;
+  }[];
   active: string;
 }) {
   return (
@@ -250,13 +280,13 @@ function NavList({
               : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
           )}
         >
-          <span aria-hidden className="w-[13px] shrink-0 text-center opacity-70">
-            {item.glyph}
+          <span className="shrink-0 text-[color:var(--ob-muted)]">
+            <item.Icon size={14} />
           </span>
           <span className="flex-1">{item.label}</span>
           {item.chevron && (
-            <span aria-hidden className="text-[0.668rem] opacity-40">
-              ›
+            <span className="text-[color:var(--ob-muted)]">
+              <CaretRightIcon size={10} />
             </span>
           )}
         </button>
@@ -293,7 +323,7 @@ function Stat({
   );
 }
 
-function Select({ children, glyph }: { children: ReactNode; glyph?: string }) {
+function Select({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
   return (
     <span className="inline-flex items-center gap-[33px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-[12px] py-[7px] text-[0.768rem]">
       <span className="flex items-center gap-[7px]">
@@ -304,9 +334,7 @@ function Select({ children, glyph }: { children: ReactNode; glyph?: string }) {
         )}
         {children}
       </span>
-      <span aria-hidden className="text-[0.584rem] opacity-60">
-        ⌄
-      </span>
+      <CaretDownIcon size={14} />
     </span>
   );
 }

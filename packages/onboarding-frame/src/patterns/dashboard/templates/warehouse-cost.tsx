@@ -1,6 +1,20 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  BrowsersIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  CaretUpIcon,
+  CheckIcon,
+  HardDrivesIcon,
+  HouseIcon,
+  SearchIcon,
+  SparkleIcon,
+  TerminalIcon,
+  CloudIcon,
+  PulseIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, warehouseTokens } from "./tokens";
@@ -14,13 +28,13 @@ export interface WarehouseCostProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "search", label: "Search", glyph: "⌕" },
-  { id: "projects", label: "Projects", glyph: "❯_" },
-  { id: "data", label: "Data", glyph: "⛁" },
-  { id: "products", label: "Data Products", glyph: "☁" },
-  { id: "ai", label: "AI & ML", glyph: "✦" },
-  { id: "monitoring", label: "Monitoring", glyph: "◍" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "search", label: "Search", Icon: SearchIcon },
+  { id: "projects", label: "Projects", Icon: TerminalIcon },
+  { id: "data", label: "Data", Icon: HardDrivesIcon },
+  { id: "products", label: "Data Products", Icon: CloudIcon },
+  { id: "ai", label: "AI & ML", Icon: SparkleIcon },
+  { id: "monitoring", label: "Monitoring", Icon: PulseIcon },
 ];
 
 const ADMIN = [
@@ -138,11 +152,11 @@ export function WarehouseCostTemplate({
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 className="text-[0.771rem]"
               />
             ))}
-            <NavItem label="Admin" glyph="◉" className="text-[0.771rem]" />
+            <NavItem label="Admin" glyph={<BrowsersIcon size={14} />} className="text-[0.771rem]" />
           </nav>
 
           <nav className="grid gap-[2px] px-[9px]">
@@ -195,9 +209,7 @@ export function WarehouseCostTemplate({
                   ACCOUNTADMIN
                 </span>
               </span>
-              <span aria-hidden className="text-[0.529rem] opacity-50">
-                ⌃
-              </span>
+              <CaretUpIcon size={14} />
             </div>
           </div>
         </Sidebar>
@@ -244,9 +256,7 @@ export function WarehouseCostTemplate({
             from
             <span className="flex items-center gap-[6px] pl-[6px] font-bold">
               Apr 9 - Apr 16
-              <span aria-hidden className="text-[0.567rem] font-normal opacity-60">
-                ⌄
-              </span>
+              <CaretDownIcon size={14} />
             </span>
           </p>
 
@@ -271,7 +281,7 @@ export function WarehouseCostTemplate({
                   Top warehouses by cost
                 </h2>
                 <span className="flex items-center gap-[5px] text-[0.756rem] font-medium">
-                  View All <span aria-hidden>›</span>
+                  View All <CaretRightIcon size={14} />
                 </span>
               </div>
 
@@ -312,12 +322,7 @@ export function WarehouseCostTemplate({
               <ul className="grid gap-[11px] pt-[12px]">
                 {INSIGHTS.map((insight) => (
                   <li key={insight} className="flex items-center gap-[9px]">
-                    <span
-                      aria-hidden
-                      className="grid size-[15px] shrink-0 place-items-center rounded-full bg-[color:var(--ob-success)] text-[0.491rem] text-white"
-                    >
-                      ✓
-                    </span>
+                    <CheckIcon size={14} />
                     <span className="text-[0.794rem] font-semibold">{insight}</span>
                   </li>
                 ))}
@@ -331,7 +336,7 @@ export function WarehouseCostTemplate({
                 Most expensive queries
               </h2>
               <span className="flex items-center gap-[5px] text-[0.756rem] font-medium">
-                View All <span aria-hidden>›</span>
+                View All <CaretRightIcon size={14} />
               </span>
             </div>
 

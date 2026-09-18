@@ -1,5 +1,17 @@
 "use client";
 
+import {
+  CardIcon,
+  CaretRightIcon,
+  ClockIcon,
+  CloudIcon,
+  GlobeIcon,
+  GridFourIcon,
+  LightningIcon,
+  SearchIcon,
+  ArrowsLeftRightIcon,
+  QuestionIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, automationTokens } from "./tokens";
@@ -13,13 +25,13 @@ export interface AutomationAppsProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "dashboard", label: "Dashboard", glyph: "▨" },
-  { id: "zaps", label: "Workflows", glyph: "⚡" },
-  { id: "transfers", label: "Transfers", glyph: "⇄" },
-  { id: "apps", label: "My Apps", glyph: "▦" },
-  { id: "history", label: "Run History", glyph: "🕐" },
-  { id: "explore", label: "Explore", glyph: "🌐" },
-  { id: "help", label: "Get Help", glyph: "?" },
+  { id: "dashboard", label: "Dashboard", Icon: CloudIcon },
+  { id: "zaps", label: "Workflows", Icon: LightningIcon },
+  { id: "transfers", label: "Transfers", Icon: ArrowsLeftRightIcon },
+  { id: "apps", label: "My Apps", Icon: GridFourIcon },
+  { id: "history", label: "Run History", Icon: ClockIcon },
+  { id: "explore", label: "Explore", Icon: GlobeIcon },
+  { id: "help", label: "Get Help", Icon: QuestionIcon },
 ];
 
 const APPS = [
@@ -58,9 +70,7 @@ export function AutomationAppsTemplate({
             ✕
           </span>
           <WordmarkSlot width={91} height={20} label="" />
-          <span aria-hidden className="ml-auto text-[0.948rem] text-[color:var(--ob-fg-soft)]">
-            ⌕
-          </span>
+          <SearchIcon size={14} />
           <AvatarSlot size={30} />
         </header>
 
@@ -77,7 +87,7 @@ export function AutomationAppsTemplate({
                 <NavItem
                   key={item.id}
                   label={item.label}
-                  glyph={item.glyph}
+                  glyph={<item.Icon size={14} />}
                   active={item.id === page}
                   className={cn(
                     "px-[12px] py-[9px] text-[0.873rem]",
@@ -92,9 +102,7 @@ export function AutomationAppsTemplate({
 
             <div className="px-[18px]">
               <h2 className="flex items-center gap-[9px] pb-[15px] text-[0.91rem] font-bold">
-                <span aria-hidden className="text-[color:var(--ob-fg-soft)]">
-                  ▭
-                </span>
+                <CardIcon size={14} />
                 Free Plan
               </h2>
 
@@ -129,7 +137,7 @@ export function AutomationAppsTemplate({
             <div className="flex flex-wrap items-center gap-[15px]">
               <h1 className="flex-1 text-[1.669rem] font-bold">Apps</h1>
               <span className="flex w-[212px] items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[9px] text-[0.797rem] text-[color:var(--ob-muted)]">
-                <span aria-hidden>⌕</span> Search apps
+                <SearchIcon size={14} /> Search apps
               </span>
               <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[18px] py-[9px] text-[0.819rem] font-semibold text-white">
                 <span aria-hidden>+</span> Add connection
@@ -146,9 +154,7 @@ export function AutomationAppsTemplate({
                   <h2 className="flex-1 text-[1.062rem] font-bold">{app.name}</h2>
                   <Stat value={app.connections} label="Connection" />
                   <Stat value={app.workflows} label="Workflow" />
-                  <span aria-hidden className="pl-[12px] text-[0.986rem] text-[color:var(--ob-muted)]">
-                    ›
-                  </span>
+                  <CaretRightIcon size={14} />
                 </article>
               ))}
             </div>

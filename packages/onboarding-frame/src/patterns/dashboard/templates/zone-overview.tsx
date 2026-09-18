@@ -1,6 +1,34 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  ArrowsUpDownIcon,
+  ArticleIcon,
+  BrowsersIcon,
+  CardIcon,
+  ChartPieIcon,
+  ClipboardIcon,
+  CloudIcon,
+  EnvelopeIcon,
+  FlagIcon,
+  FlowArrowIcon,
+  GearIcon,
+  GlobeIcon,
+  GridFourIcon,
+  HardDrivesIcon,
+  LightningIcon,
+  LinkChainIcon,
+  ListChecksIcon,
+  LockIcon,
+  PathIcon,
+  RobotIcon,
+  SearchIcon,
+  ShieldIcon,
+  SignpostIcon,
+  TagIcon,
+  TreeIcon,
+  WrenchIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, zoneTokens } from "./tokens";
@@ -14,24 +42,24 @@ export interface ZoneOverviewProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "overview", label: "Overview", glyph: "📋" },
-  { id: "audit", label: "AI Audit", glyph: "🤖", badge: "Beta" },
-  { id: "analytics", label: "Analytics & Logs", glyph: "◔", caret: true },
-  { id: "dns", label: "DNS", glyph: "⑄", caret: true },
-  { id: "email", label: "Email", glyph: "✉", caret: true },
-  { id: "ssl", label: "SSL/TLS", glyph: "🔒", caret: true },
-  { id: "security", label: "Security", glyph: "⛉", caret: true },
-  { id: "access", label: "Access", glyph: "⊕" },
-  { id: "speed", label: "Speed", glyph: "⚡", caret: true },
-  { id: "caching", label: "Caching", glyph: "⛁", caret: true },
-  { id: "workers", label: "Workers Routes", glyph: "◈" },
-  { id: "rules", label: "Rules", glyph: "⚟", caret: true },
-  { id: "network", label: "Network", glyph: "◎" },
-  { id: "traffic", label: "Traffic", glyph: "⤳", caret: true },
-  { id: "pages", label: "Custom Pages", glyph: "▤" },
-  { id: "apps", label: "Apps", glyph: "▦" },
-  { id: "scrape", label: "Scrape Shield", glyph: "▥" },
-  { id: "tags", label: "Tag Manager", glyph: "≣", caret: true },
+  { id: "overview", label: "Overview", Icon: ClipboardIcon },
+  { id: "audit", label: "AI Audit", Icon: RobotIcon, badge: "Beta" },
+  { id: "analytics", label: "Analytics & Logs", Icon: ChartPieIcon, caret: true },
+  { id: "dns", label: "DNS", Icon: PathIcon, caret: true },
+  { id: "email", label: "Email", Icon: EnvelopeIcon, caret: true },
+  { id: "ssl", label: "SSL/TLS", Icon: LockIcon, caret: true },
+  { id: "security", label: "Security", Icon: ShieldIcon, caret: true },
+  { id: "access", label: "Access", Icon: LinkChainIcon },
+  { id: "speed", label: "Speed", Icon: LightningIcon, caret: true },
+  { id: "caching", label: "Caching", Icon: HardDrivesIcon, caret: true },
+  { id: "workers", label: "Workers Routes", Icon: FlowArrowIcon },
+  { id: "rules", label: "Rules", Icon: SignpostIcon, caret: true },
+  { id: "network", label: "Network", Icon: GlobeIcon },
+  { id: "traffic", label: "Traffic", Icon: TreeIcon, caret: true },
+  { id: "pages", label: "Custom Pages", Icon: ArticleIcon },
+  { id: "apps", label: "Apps", Icon: GridFourIcon },
+  { id: "scrape", label: "Scrape Shield", Icon: BrowsersIcon },
+  { id: "tags", label: "Tag Manager", Icon: TagIcon, caret: true },
 ];
 
 /**
@@ -77,7 +105,7 @@ export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverv
         <header className="flex h-[57px] shrink-0 items-center gap-[15px] border-b border-[color:var(--ob-border)] px-[18px]">
           <WordmarkSlot width={113} height={26} label="" />
           <span className="ml-auto flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.753rem] text-[color:var(--ob-muted)]">
-            <span aria-hidden>⌕</span>
+            <SearchIcon size={14} />
             <span className="w-[98px]">Go to…</span>
             <kbd className="rounded border border-[color:var(--ob-border)] px-[5px] py-[2px] text-[0.542rem] font-semibold">
               ⌘K
@@ -121,7 +149,7 @@ export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverv
                           item.label
                         )
                       }
-                      glyph={item.glyph}
+                      glyph={<item.Icon size={15} />}
                       trailing={
                         item.caret ? (
                           <span aria-hidden className="text-[0.527rem] opacity-50">
@@ -147,13 +175,9 @@ export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverv
 
           <Main className="overflow-auto">
             <div className="flex flex-wrap items-center gap-[9px] border-b border-[color:var(--ob-border)] px-[18px] py-[12px]">
-              <span aria-hidden className="text-[0.866rem] text-[color:var(--ob-muted)]">
-                ▭
-              </span>
+              <CardIcon size={14} />
               <span className="text-[0.941rem] font-medium">content-acme.org</span>
-              <span aria-hidden className="text-[0.565rem] text-[color:var(--ob-muted)]">
-                ⇅
-              </span>
+              <ArrowsUpDownIcon size={14} />
               <span className="ml-[6px] flex items-center gap-[5px] rounded-full bg-[color-mix(in_oklab,#1d8102_16%,transparent)] px-[9px] py-[3px] text-[0.715rem] font-medium text-[color:var(--ob-success)]">
                 ✓ Active
               </span>
@@ -187,7 +211,7 @@ export function ZoneOverviewTemplate({ className, page = "overview" }: ZoneOverv
                   products and services from the menu.
                 </p>
                 <span className="mt-[15px] inline-flex items-center gap-[8px] rounded-full border border-[color:var(--ob-brand)] px-[15px] py-[8px] text-[0.768rem] font-medium text-[color:var(--ob-brand)]">
-                  <span aria-hidden>▤</span> Review fundamentals
+                  <ArticleIcon size={14} /> Review fundamentals
                 </span>
 
                 <div className="flex flex-wrap items-baseline gap-[18px] pt-[21px]">

@@ -2,6 +2,25 @@
 
 import type { ReactNode } from "react";
 import { Donut } from "../../../ui/charts";
+import {
+  BellIcon,
+  BrowsersIcon,
+  CardIcon,
+  CaretDownIcon,
+  CubeIcon,
+  FileTextIcon,
+  GearIcon,
+  GlobeIcon,
+  GridFourIcon,
+  HouseIcon,
+  ListChecksIcon,
+  ReceiptIcon,
+  RocketIcon,
+  SearchIcon,
+  ShieldIcon,
+  UsersIcon,
+  UserPlusIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, peopleTokens } from "./tokens";
@@ -15,23 +34,23 @@ export interface PeopleAnalyticsProps extends TemplateProps {
 }
 
 const GROUP = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "people", label: "People", glyph: "👥" },
-  { id: "add", label: "Add people", glyph: "⊕" },
-  { id: "tracker", label: "Tracker", glyph: "≣" },
-  { id: "analytics", label: "Analytics", glyph: "▥" },
-  { id: "documents", label: "Documents", glyph: "🗎" },
-  { id: "compliance", label: "Compliance", glyph: "⛉", badge: "NEW" },
-  { id: "payments", label: "Payments", glyph: "▭" },
-  { id: "settings", label: "Group Settings", glyph: "⚙" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "people", label: "People", Icon: UsersIcon },
+  { id: "add", label: "Add people", Icon: UserPlusIcon },
+  { id: "tracker", label: "Tracker", Icon: ListChecksIcon },
+  { id: "analytics", label: "Analytics", Icon: BrowsersIcon },
+  { id: "documents", label: "Documents", Icon: FileTextIcon },
+  { id: "compliance", label: "Compliance", Icon: ShieldIcon, badge: "NEW" },
+  { id: "payments", label: "Payments", Icon: CardIcon },
+  { id: "settings", label: "Group Settings", Icon: GearIcon },
 ];
 
 const ORGANIZATION = [
-  { id: "store", label: "App Store", glyph: "🧩" },
-  { id: "services", label: "Services", glyph: "▦" },
-  { id: "expenses", label: "Expenses", glyph: "🧾" },
-  { id: "payroll", label: "Global Payroll", glyph: "◎", badge: "NEW" },
-  { id: "orgsettings", label: "Organization Settings", glyph: "⚙" },
+  { id: "store", label: "App Store", Icon: CubeIcon },
+  { id: "services", label: "Services", Icon: GridFourIcon },
+  { id: "expenses", label: "Expenses", Icon: ReceiptIcon },
+  { id: "payroll", label: "Global Payroll", Icon: GlobeIcon, badge: "NEW" },
+  { id: "orgsettings", label: "Organization Settings", Icon: GearIcon },
 ];
 
 /**
@@ -69,18 +88,13 @@ export function PeopleAnalyticsTemplate({
             <WordmarkSlot width={92} height={24} label="" />
             <span className="ml-auto flex items-center gap-3 text-[color:var(--ob-fg-soft)]">
               <AvatarSlot size={28} />
-              <span aria-hidden>⌾</span>
-              <span aria-hidden>⌕</span>
+              <BellIcon size={14} />
+              <SearchIcon size={14} />
             </span>
           </div>
 
           <div className="mx-4 flex items-center gap-3 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-4 py-3">
-            <span
-              aria-hidden
-              className="grid size-10 place-items-center rounded-full bg-[color:var(--ob-surface-2)]"
-            >
-              👥
-            </span>
+            <UsersIcon size={14} />
             <span className="flex-1 leading-tight">
               <span className="block text-[0.95rem] text-[color:var(--ob-muted)]">
                 JD Mob
@@ -115,7 +129,7 @@ export function PeopleAnalyticsTemplate({
                     item.label
                   )
                 }
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 active={item.id === page}
                 className={cn(
                   "px-4 py-3 text-[1.12rem]",
@@ -143,7 +157,7 @@ export function PeopleAnalyticsTemplate({
                     item.label
                   )
                 }
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 className="px-4 py-3 text-[1.12rem]"
               />
             ))}
@@ -160,7 +174,7 @@ export function PeopleAnalyticsTemplate({
                   </span>
                 </span>
               }
-              glyph="🚀"
+              glyph={<RocketIcon size={14} />}
               className="px-4 py-3 text-[1.12rem]"
             />
           </nav>
@@ -202,12 +216,7 @@ export function PeopleAnalyticsTemplate({
           </section>
 
           <div className="flex flex-wrap items-center gap-5 pb-5 pt-9">
-            <span
-              aria-hidden
-              className="grid size-[70px] shrink-0 place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[1.5rem]"
-            >
-              👥
-            </span>
+            <UsersIcon size={14} />
             <div className="min-w-0 flex-1">
               <h1 className="text-[1.8rem] font-bold tracking-[-0.01em]">
                 Diversity, equity and inclusion
@@ -218,9 +227,7 @@ export function PeopleAnalyticsTemplate({
             </div>
             <span className="flex items-center gap-6 text-[1.12rem]">
               Last 12 months
-              <span aria-hidden className="text-[0.7rem] opacity-60">
-                ⌄
-              </span>
+              <CaretDownIcon size={14} />
             </span>
           </div>
 
@@ -293,7 +300,7 @@ export function PeopleAnalyticsTemplate({
 function ViewDashboard() {
   return (
     <span className="mt-5 flex items-center justify-center gap-3 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] py-4 text-[1.15rem] font-medium">
-      <span aria-hidden>▦</span> View Dashboard
+      <GridFourIcon size={14} /> View Dashboard
     </span>
   );
 }

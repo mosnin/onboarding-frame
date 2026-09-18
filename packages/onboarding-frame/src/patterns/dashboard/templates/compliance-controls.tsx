@@ -2,6 +2,24 @@
 
 import type { ReactNode } from "react";
 import { Donut } from "../../../ui/charts";
+import {
+  ArrowsUpDownIcon,
+  BrowsersIcon,
+  CardIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  CheckIcon,
+  CheckSquareIcon,
+  ClipboardIcon,
+  HardDrivesIcon,
+  HouseIcon,
+  PathIcon,
+  SearchIcon,
+  ShieldIcon,
+  UserIcon,
+  UsersIcon,
+  WarningIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, complianceTokens } from "./tokens";
@@ -15,9 +33,9 @@ export interface ComplianceControlsProps extends TemplateProps {
 }
 
 const TOP = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "tests", label: "Tests", glyph: "☑" },
-  { id: "reports", label: "Reports", glyph: "▥" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "tests", label: "Tests", Icon: CheckSquareIcon },
+  { id: "reports", label: "Reports", Icon: BrowsersIcon },
 ];
 
 const COMPLIANCE = [
@@ -29,11 +47,11 @@ const COMPLIANCE = [
 ];
 
 const REST = [
-  { id: "trust", label: "Trust Center", glyph: "⛉" },
-  { id: "risk", label: "Risk", glyph: "!" },
-  { id: "vendor", label: "Vendor", glyph: "▭" },
-  { id: "assets", label: "Assets", glyph: "⛁" },
-  { id: "personnel", label: "Personnel", glyph: "👥" },
+  { id: "trust", label: "Trust Center", Icon: ShieldIcon },
+  { id: "risk", label: "Risk", Icon: WarningIcon },
+  { id: "vendor", label: "Vendor", Icon: CardIcon },
+  { id: "assets", label: "Assets", Icon: HardDrivesIcon },
+  { id: "personnel", label: "Personnel", Icon: UsersIcon },
 ];
 
 const FILTERS = [
@@ -118,7 +136,7 @@ export function ComplianceControlsTemplate({
           <Sidebar width={228} bg="var(--ob-surface)">
             <div className="px-[12px] pb-[9px] pt-[12px]">
               <div className="flex items-center gap-[6px] rounded-full bg-[color:var(--ob-surface-2)] px-[11px] py-[6px] text-[0.699rem] text-[color:var(--ob-muted)]">
-                <span aria-hidden>⌕</span>
+                <SearchIcon size={14} />
                 <span className="flex-1">Help…</span>
                 <span className="text-[0.623rem]">⌘+K</span>
               </div>
@@ -126,7 +144,7 @@ export function ComplianceControlsTemplate({
 
             <nav className="grid gap-[2px] px-[9px]">
               {TOP.map((item) => (
-                <NavItem key={item.id} label={item.label} glyph={item.glyph} />
+                <NavItem key={item.id} label={item.label} glyph={<item.Icon size={14} />} />
               ))}
             </nav>
 
@@ -136,11 +154,9 @@ export function ComplianceControlsTemplate({
             <div className="border-l-[2px] border-[color:var(--ob-brand)] pl-[calc(0.75rem-3px)] pr-[9px]">
               <NavItem
                 label="Compliance"
-                glyph="📋"
+                glyph={<ClipboardIcon size={14} />}
                 trailing={
-                  <span aria-hidden className="text-[0.532rem] opacity-50">
-                    ⌄
-                  </span>
+                  <CaretDownIcon size={14} />
                 }
               />
             </div>
@@ -160,11 +176,9 @@ export function ComplianceControlsTemplate({
                 <NavItem
                   key={item.id}
                   label={item.label}
-                  glyph={item.glyph}
+                  glyph={<item.Icon size={14} />}
                   trailing={
-                    <span aria-hidden className="text-[0.607rem] opacity-40">
-                      ›
-                    </span>
+                    <CaretRightIcon size={14} />
                   }
                 />
               ))}
@@ -172,7 +186,7 @@ export function ComplianceControlsTemplate({
 
             <div className="mx-[12px] my-[9px] border-t border-[color:var(--ob-border)]" />
             <nav className="grid gap-[2px] px-[9px]">
-              <NavItem label="Integrations" glyph="⑄" />
+              <NavItem label="Integrations" glyph={<PathIcon size={14} />} />
             </nav>
 
             <span
@@ -190,9 +204,7 @@ export function ComplianceControlsTemplate({
               </h1>
               <span className="inline-flex items-center gap-[18px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.721rem] font-medium">
                 More
-                <span aria-hidden className="text-[0.532rem] opacity-60">
-                  ⌄
-                </span>
+                <CaretDownIcon size={14} />
               </span>
               {/* Nothing can be added until a framework is picked, so it is off. */}
               <span
@@ -200,9 +212,7 @@ export function ComplianceControlsTemplate({
                 className="inline-flex items-center gap-[18px] rounded-[var(--ob-radius)] px-[12px] py-[8px] text-[0.721rem] font-medium text-[color:var(--ob-muted)] opacity-60"
               >
                 Add control
-                <span aria-hidden className="text-[0.532rem]">
-                  ⌄
-                </span>
+                <CaretDownIcon size={14} />
               </span>
             </div>
 
@@ -280,7 +290,7 @@ export function ComplianceControlsTemplate({
 
             <div className="flex flex-wrap items-center gap-[15px] pt-[18px]">
               <div className="flex w-[213px] items-center gap-[6px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[11px] py-[8px] text-[0.721rem] text-[color:var(--ob-muted)]">
-                <span aria-hidden>⌕</span> Search controls
+                <SearchIcon size={14} /> Search controls
               </div>
               {FILTERS.map((filter) => (
                 <span
@@ -288,17 +298,10 @@ export function ComplianceControlsTemplate({
                   className="flex items-center gap-[5px] text-[0.759rem] font-semibold"
                 >
                   {filter}
-                  <span aria-hidden className="text-[0.532rem] opacity-60">
-                    ⌄
-                  </span>
+                  <CaretDownIcon size={14} />
                 </span>
               ))}
-              <span
-                aria-hidden
-                className="ml-auto grid size-[30px] place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)]"
-              >
-                ⇵
-              </span>
+              <ArrowsUpDownIcon size={14} />
             </div>
 
             <div className="mt-[15px] overflow-hidden rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)]">
@@ -332,12 +335,7 @@ export function ComplianceControlsTemplate({
                   </span>
                   <span className="flex items-center gap-[8px] text-[0.759rem]">
                     {/* A dashed ring reads as "no one here yet" rather than a person. */}
-                    <span
-                      aria-hidden
-                      className="grid size-[21px] place-items-center rounded-full border border-dashed border-[color:var(--ob-border-strong)] text-[0.569rem] text-[color:var(--ob-muted)]"
-                    >
-                      👤
-                    </span>
+                    <UserIcon size={14} />
                     Unassigned
                   </span>
                   <span className="flex items-center gap-[8px] text-[0.759rem]">
@@ -359,12 +357,7 @@ export function ComplianceControlsTemplate({
                     ))}
                   </span>
                   <span className="flex items-center gap-[6px] text-[0.759rem]">
-                    <span
-                      aria-hidden
-                      className="grid size-[15px] place-items-center rounded-full bg-[color:var(--ob-success)] text-[0.494rem] text-white"
-                    >
-                      ✓
-                    </span>
+                    <CheckIcon size={14} />
                     {control.tests}
                   </span>
                   <span aria-hidden className="text-right text-[color:var(--ob-muted)]">

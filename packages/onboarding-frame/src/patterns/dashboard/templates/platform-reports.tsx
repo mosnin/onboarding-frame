@@ -1,6 +1,15 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  ArrowClockwiseIcon,
+  BellIcon,
+  CalendarIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  ChatDotsIcon,
+  ClockIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { LogoSlot } from "../../../ui/placeholder";
 import { Surface, platformTokens } from "./tokens";
@@ -133,36 +142,29 @@ export function PlatformReportsTemplate({
             <span className="text-[0.95rem] font-medium">New Website</span>
             <span className="ml-auto flex items-center gap-2.5">
               <OutlineBtn glyph="?">Help</OutlineBtn>
-              <OutlineBtn glyph="💬">Feedback</OutlineBtn>
-              <span
-                aria-hidden
-                className="grid size-9 place-items-center rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] text-[color:var(--ob-fg-soft)]"
-              >
-                ⌾
-              </span>
+              <OutlineBtn glyph={<ChatDotsIcon size={14} />}>Feedback</OutlineBtn>
+              <BellIcon size={14} />
             </span>
           </header>
 
           <div className="px-8 py-7">
             <div className="flex items-center gap-3">
               <h1 className="flex-1 text-[2rem] font-semibold">API</h1>
-              <OutlineBtn glyph="↻">Refresh</OutlineBtn>
+              <OutlineBtn glyph={<ArrowClockwiseIcon size={14} />}>Refresh</OutlineBtn>
             </div>
 
             <div className="flex flex-wrap items-center gap-3 pt-5">
               <span className="inline-flex overflow-hidden rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)]">
                 <span className="flex items-center gap-2 bg-[color:var(--ob-surface-2)] px-3.5 py-2 text-[0.92rem] font-medium">
-                  <span aria-hidden>🕐</span> Last 24 hours
+                  <ClockIcon size={14} /> Last 24 hours
                 </span>
                 <span className="flex items-center gap-2 border-l border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem] text-[color:var(--ob-fg-soft)]">
-                  <span aria-hidden>🗓</span> Custom
+                  <CalendarIcon size={14} /> Custom
                 </span>
               </span>
               <span className="inline-flex items-center gap-10 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem]">
                 All Requests
-                <span aria-hidden className="text-[0.7rem] opacity-60">
-                  ⌄
-                </span>
+                <CaretDownIcon size={14} />
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-[var(--ob-radius-sm)] border border-dashed border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem] text-[color:var(--ob-fg-soft)]">
                 + Add filter
@@ -255,9 +257,7 @@ function ReportCard({
             key={row.id}
             className="flex items-center gap-3 border-b border-[color:var(--ob-border)] px-4 py-3 last:border-b-0"
           >
-            <span aria-hidden className="text-[0.85rem] text-[color:var(--ob-muted)]">
-              ›
-            </span>
+            <CaretRightIcon size={14} />
             <span className="rounded-[3px] bg-[color:var(--ob-surface-3)] px-2 py-0.5 font-mono text-[0.8rem] text-[color:var(--ob-fg-soft)]">
               {row.method}
             </span>
@@ -282,7 +282,7 @@ function ReportCard({
   );
 }
 
-function OutlineBtn({ children, glyph }: { children: ReactNode; glyph?: string }) {
+function OutlineBtn({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
   return (
     <span className="inline-flex items-center gap-2 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem] font-medium">
       {glyph && (

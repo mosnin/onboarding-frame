@@ -1,6 +1,28 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  BankSolid,
+  BrowsersIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  CaretUpIcon,
+  ChatDotsIcon,
+  ClockIcon,
+  FlagIcon,
+  GearIcon,
+  GridFourIcon,
+  HouseIcon,
+  ListChecksIcon,
+  MegaphoneIcon,
+  PencilIcon,
+  ReceiptIcon,
+  SearchIcon,
+  SparkleIcon,
+  TagIcon,
+  TargetIcon,
+  QuestionIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, listingTokens } from "./tokens";
@@ -14,12 +36,12 @@ export interface ListingStatsProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "search", label: "Search", glyph: "⌕" },
-  { id: "dashboard", label: "Dashboard", glyph: "⌂" },
-  { id: "listings", label: "Listings", glyph: "🏷" },
-  { id: "messages", label: "Messages", glyph: "💬" },
-  { id: "orders", label: "Orders", glyph: "🧾" },
-  { id: "visibility", label: "Shop search visibility", glyph: "🔭" },
+  { id: "search", label: "Search", Icon: SearchIcon },
+  { id: "dashboard", label: "Dashboard", Icon: HouseIcon },
+  { id: "listings", label: "Listings", Icon: TagIcon },
+  { id: "messages", label: "Messages", Icon: ChatDotsIcon },
+  { id: "orders", label: "Orders", Icon: ReceiptIcon },
+  { id: "visibility", label: "Shop search visibility", Icon: TargetIcon },
 ];
 
 const STATS_CHILDREN = [
@@ -63,9 +85,7 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
         <Sidebar width={256} bg="var(--ob-surface)">
           <div className="flex items-center gap-[9px] px-[18px] pb-[12px] pt-[15px]">
             <h2 className="flex-1 text-[1.016rem] font-bold">Shop Manager</h2>
-            <span aria-hidden className="text-[0.903rem]">
-              ☰
-            </span>
+            <ListChecksIcon size={14} />
           </div>
 
           <nav className="grid gap-[2px] px-[9px]">
@@ -73,7 +93,7 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
               />
             ))}
@@ -82,12 +102,10 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
           <div className="px-[9px] pt-[3px]">
             <NavItem
               label="Stats"
-              glyph="▥"
+              glyph={<BrowsersIcon size={14} />}
               active
               trailing={
-                <span aria-hidden className="text-[0.527rem] opacity-50">
-                  ⌃
-                </span>
+                <CaretUpIcon size={14} />
               }
               className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
             />
@@ -107,21 +125,19 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
           <nav className="grid gap-[2px] px-[9px] pt-[3px]">
             <NavItem
               label="Customer service stats"
-              glyph="✷"
+              glyph={<SparkleIcon size={14} />}
               className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
             />
             <NavItem
               label="Policy violations"
-              glyph="⚑"
+              glyph={<FlagIcon size={14} />}
               className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
             />
             <NavItem
               label="Marketing"
-              glyph="📣"
+              glyph={<MegaphoneIcon size={14} />}
               trailing={
-                <span aria-hidden className="text-[0.527rem] opacity-50">
-                  ⌃
-                </span>
+                <CaretUpIcon size={14} />
               }
               className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
             />
@@ -134,20 +150,18 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
               />
             ))}
             {[
-              { id: "finances", label: "Finances", glyph: "🏦", caret: true },
-              { id: "apps", label: "Apps", glyph: "▦" },
-              { id: "help", label: "Help", glyph: "?", caret: true },
-              { id: "settings", label: "Settings", glyph: "⚙", caret: true },
+              { id: "finances", label: "Finances", Icon: BankSolid, caret: true },
+              { id: "apps", label: "Apps", Icon: GridFourIcon },
+              { id: "help", label: "Help", Icon: QuestionIcon, caret: true },
+              { id: "settings", label: "Settings", Icon: GearIcon, caret: true },
             ].map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 trailing={
                   item.caret ? (
-                    <span aria-hidden className="text-[0.527rem] opacity-50">
-                      ⌄
-                    </span>
+                    <CaretDownIcon size={14} />
                   ) : undefined
                 }
                 className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
@@ -163,26 +177,20 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
             <span className="min-w-[0px] flex-1 text-[0.752rem] leading-snug">
               HomemadeGoodsByAlex
             </span>
-            <span aria-hidden className="text-[color:var(--ob-muted)]">
-              ✎
-            </span>
+            <PencilIcon size={14} />
           </div>
 
           <div className="mt-auto flex items-center gap-[9px] border-t border-[color:var(--ob-border)] px-[18px] py-[12px]">
             <AvatarSlot size={24} />
             <span className="flex-1 text-[0.79rem]">Alex</span>
-            <span aria-hidden className="text-[0.527rem] opacity-50">
-              ⌃
-            </span>
+            <CaretUpIcon size={14} />
           </div>
         </Sidebar>
 
         <Main className="overflow-auto px-[30px] py-[21px]">
           <p className="flex items-center gap-[6px] text-[0.752rem]">
             <span className="underline">Stats</span>
-            <span aria-hidden className="text-[color:var(--ob-muted)]">
-              ›
-            </span>
+            <CaretRightIcon size={14} />
             <span className="text-[color:var(--ob-fg-soft)]">Listing stats</span>
           </p>
 
@@ -278,7 +286,7 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
                 <Picker label="Total views" value="5" color="#e8734a" />
                 <Picker label="Orders" value="1" color="#4aa8d8" />
                 <span className="ml-auto flex items-center gap-[5px] text-[0.715rem] text-[color:var(--ob-muted)]">
-                  <span aria-hidden>🕐</span> Updated Just now
+                  <ClockIcon size={14} /> Updated Just now
                 </span>
               </div>
             </div>
@@ -320,7 +328,7 @@ function MetricCell({
           --% YoY
         </span>
         <span className="ml-auto flex items-center gap-[5px] text-[0.692rem] text-[color:var(--ob-muted)]">
-          <span aria-hidden>🕐</span> Just now
+          <ClockIcon size={14} /> Just now
         </span>
       </div>
 
@@ -376,9 +384,7 @@ function Picker({
           {value}
         </span>
       </span>
-      <span aria-hidden className={cn("ml-auto text-[0.527rem] opacity-60")}>
-        ⌄
-      </span>
+      <CaretDownIcon size={14} />
     </span>
   );
 }

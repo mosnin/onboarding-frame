@@ -2,6 +2,30 @@
 
 import type { ReactNode } from "react";
 import { Ring } from "../../../ui/charts";
+import {
+  ArrowClockwiseIcon,
+  ArrowRightIcon,
+  BellIcon,
+  CakeIcon,
+  PathIcon,
+  QuestionIcon,
+  UserPlusIcon,
+  ArticleIcon,
+  BuildingsIcon,
+  CardIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  ChartPieIcon,
+  FileTextIcon,
+  GlobeIcon,
+  GridFourIcon,
+  HardDrivesIcon,
+  MegaphoneIcon,
+  SparkleIcon,
+  TrophyIcon,
+  UsersIcon,
+  WrenchIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, capTableTokens } from "./tokens";
@@ -15,8 +39,8 @@ export interface CapTableProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "start", label: "Getting Started", glyph: "🎂" },
-  { id: "dashboard", label: "Dashboard", glyph: "▦" },
+  { id: "start", label: "Getting Started", Icon: CakeIcon },
+  { id: "dashboard", label: "Dashboard", Icon: GridFourIcon },
 ];
 
 const CAP_CHILDREN = [
@@ -26,13 +50,13 @@ const CAP_CHILDREN = [
 ];
 
 const TAIL = [
-  { id: "plans", label: "Equity plans", glyph: "◔", chevron: true },
-  { id: "tools", label: "Tools", glyph: "🛠", chevron: true },
-  { id: "comms", label: "Communication", glyph: "📣" },
-  { id: "dataroom", label: "Data room", glyph: "🗄" },
-  { id: "secondaries", label: "Secondaries", glyph: "▭" },
-  { id: "documents", label: "Documents", glyph: "🗂", chevron: true },
-  { id: "company", label: "Company", glyph: "🏢", chevron: true },
+  { id: "plans", label: "Equity plans", Icon: ChartPieIcon, chevron: true },
+  { id: "tools", label: "Tools", Icon: WrenchIcon, chevron: true },
+  { id: "comms", label: "Communication", Icon: MegaphoneIcon },
+  { id: "dataroom", label: "Data room", Icon: HardDrivesIcon },
+  { id: "secondaries", label: "Secondaries", Icon: CardIcon },
+  { id: "documents", label: "Documents", Icon: ArticleIcon, chevron: true },
+  { id: "company", label: "Company", Icon: BuildingsIcon, chevron: true },
 ];
 
 const WHATS_NEW = ["2FA security", "Bare trusts & SPVs", "Reporting"];
@@ -103,13 +127,11 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
             <span className="rounded-full bg-[color:var(--ob-surface-3)] px-2.5 py-0.5 text-[0.85rem] text-[color:var(--ob-muted)]">
               Free
             </span>
-            <span aria-hidden className="text-[0.7rem] opacity-50">
-              ⌄
-            </span>
+            <CaretDownIcon size={14} />
           </span>
 
           <span className="flex items-center gap-2 rounded-[var(--ob-radius-sm)] bg-[color-mix(in_oklab,#5b2ff5_10%,transparent)] px-3.5 py-2 text-[0.98rem] font-medium">
-            <span aria-hidden>◎</span> Issue overseas equity right
+            <GlobeIcon size={14} /> Issue overseas equity right
           </span>
 
           {/* Setup progress rides in the top bar rather than a banner. */}
@@ -125,21 +147,19 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
                 </span>
               }
             />
-            <span className="text-[1.05rem] font-medium">Getting started 🚀</span>
-            <span aria-hidden className="text-[0.7rem] opacity-50">
-              ⌄
-            </span>
+            <span className="text-[1.05rem] font-medium">Getting started</span>
+            <CaretDownIcon size={14} />
           </span>
 
           <span className="flex items-center gap-4 text-[color:var(--ob-fg-soft)]">
-            {["⌾", "?", "⤳"].map((glyph) => (
-              <span key={glyph} aria-hidden>
-                {glyph}
+            {[BellIcon, QuestionIcon, PathIcon].map((Mark, i) => (
+              <span key={i}>
+                <Mark size={15} />
               </span>
             ))}
           </span>
           <span className="flex items-center gap-1.5 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.98rem] font-medium">
-            <span aria-hidden>👤+</span> Invite co-pilots
+            <UserPlusIcon size={14} /> Invite co-pilots
           </span>
           <span className="rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] px-4 py-2 text-[0.98rem] font-semibold text-white">
             Upgrade
@@ -160,17 +180,15 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
                 <NavItem
                   key={item.id}
                   label={item.label}
-                  glyph={item.glyph}
+                  glyph={<item.Icon size={14} />}
                   className="text-[1.05rem]"
                 />
               ))}
               <NavItem
                 label="Cap table"
-                glyph="👥"
+                glyph={<UsersIcon size={14} />}
                 trailing={
-                  <span aria-hidden className="text-[0.7rem] opacity-50">
-                    ⌄
-                  </span>
+                  <CaretDownIcon size={14} />
                 }
                 className="text-[1.05rem]"
               />
@@ -203,12 +221,10 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
                 <NavItem
                   key={item.id}
                   label={item.label}
-                  glyph={item.glyph}
+                  glyph={<item.Icon size={14} />}
                   trailing={
                     item.chevron ? (
-                      <span aria-hidden className="text-[0.8rem] opacity-40">
-                        ›
-                      </span>
+                      <CaretRightIcon size={14} />
                     ) : undefined
                   }
                   className="text-[1.05rem]"
@@ -219,9 +235,7 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
             <div className="mt-auto p-4">
               <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] p-4">
                 <h3 className="flex items-center gap-2 pb-3 text-[1.1rem] font-semibold">
-                  <span aria-hidden className="text-[color:var(--ob-brand)]">
-                    ✦
-                  </span>
+                  <SparkleIcon size={14} />
                   What&apos;s New
                 </h3>
                 <ul className="grid gap-2.5">
@@ -235,7 +249,7 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
                         aria-hidden
                         className="grid size-6 place-items-center rounded-full border border-[color:var(--ob-brand)] text-[0.7rem] text-[color:var(--ob-brand)]"
                       >
-                        →
+                        <ArrowRightIcon size={13} />
                       </span>
                     </li>
                   ))}
@@ -243,7 +257,7 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
               </div>
 
               <p className="flex items-center gap-2.5 pt-4 text-[1.05rem]">
-                <span aria-hidden>↻</span> Update available
+                <ArrowClockwiseIcon size={14} /> Update available
               </p>
               <p className="pt-3 text-right text-[0.82rem] text-[color:var(--ob-muted)]">
                 version: b513e7b0
@@ -297,7 +311,7 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
             <section className="mt-5 flex items-center gap-8 rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] px-8 py-6">
               <h2 className="text-[1.5rem] font-bold">Documents</h2>
               <span className="flex items-center gap-2.5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-2.5">
-                <span aria-hidden>🗎</span>
+                <FileTextIcon size={14} />
                 <span className="text-[1.02rem] underline">
                   Shareholder Certificate 1 - Jane Smith - J…
                 </span>
@@ -307,16 +321,14 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
             <div className="flex flex-wrap items-center gap-3 pb-4 pt-8">
               <h2 className="flex-1 text-[1.6rem] font-bold">Transaction history</h2>
               <span className="flex items-center gap-2 rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-5 py-3 text-[1rem] font-semibold text-white">
-                <span aria-hidden>↻</span> Re-Issue share certificate
+                <ArrowClockwiseIcon size={14} /> Re-Issue share certificate
               </span>
               <span className="flex items-center gap-2 rounded-[var(--ob-radius)] bg-[color-mix(in_oklab,#5b2ff5_14%,white)] px-5 py-3 text-[1rem] font-semibold">
-                <span aria-hidden>🎖</span> Download share certificate
+                <TrophyIcon size={14} /> Download share certificate
               </span>
               <span className="flex items-center gap-5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-3 text-[1rem] font-medium">
                 More
-                <span aria-hidden className="text-[0.7rem] opacity-60">
-                  ⌄
-                </span>
+                <CaretDownIcon size={14} />
               </span>
             </div>
 
@@ -375,9 +387,7 @@ export function CapTableTemplate({ className, page = "shareholders" }: CapTableP
                       <td className="px-4 py-5 text-right">
                         <span className="inline-flex items-center gap-4 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.95rem] font-medium">
                           More
-                          <span aria-hidden className="text-[0.7rem] opacity-60">
-                            ⌄
-                          </span>
+                          <CaretDownIcon size={14} />
                         </span>
                       </td>
                     </tr>

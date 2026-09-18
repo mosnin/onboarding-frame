@@ -1,5 +1,27 @@
 "use client";
 
+import {
+  ArrowsUpDownIcon,
+  ArticleIcon,
+  BrowsersIcon,
+  BuildingsIcon,
+  CardIcon,
+  CaretRightIcon,
+  CheckIcon,
+  ClipboardIcon,
+  CloudIcon,
+  FlowArrowIcon,
+  GearIcon,
+  GlobeIcon,
+  HouseIcon,
+  LinkChainIcon,
+  LockIcon,
+  PathIcon,
+  PencilIcon,
+  ShieldIcon,
+  SparkleIcon,
+  UserIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
 import { Surface, authTokens } from "./tokens";
@@ -13,37 +35,37 @@ export interface AuthConsoleProps extends TemplateProps {
 }
 
 const TOP = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "users", label: "Users", glyph: "👤" },
-  { id: "organizations", label: "Organizations", glyph: "🏢" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "users", label: "Users", Icon: UserIcon },
+  { id: "organizations", label: "Organizations", Icon: BuildingsIcon },
 ];
 
 const CONFIGURE = [
-  { id: "auth", label: "User & Authentication", glyph: "☝", chevron: true },
-  { id: "orgsettings", label: "Organizations Settings", glyph: "📋" },
-  { id: "sessions", label: "Sessions", glyph: "▤" },
-  { id: "portal", label: "Account Portal", glyph: "◉" },
-  { id: "customization", label: "Customization", glyph: "✎", chevron: true },
-  { id: "integrations", label: "Integrations", glyph: "⑄" },
-  { id: "jwt", label: "JWT Templates", glyph: "✳" },
-  { id: "webhooks", label: "Webhooks", glyph: "⚯" },
+  { id: "auth", label: "User & Authentication", Icon: UserIcon, chevron: true },
+  { id: "orgsettings", label: "Organizations Settings", Icon: ClipboardIcon },
+  { id: "sessions", label: "Sessions", Icon: ArticleIcon },
+  { id: "portal", label: "Account Portal", Icon: BrowsersIcon },
+  { id: "customization", label: "Customization", Icon: PencilIcon, chevron: true },
+  { id: "integrations", label: "Integrations", Icon: PathIcon },
+  { id: "jwt", label: "JWT Templates", Icon: SparkleIcon },
+  { id: "webhooks", label: "Webhooks", Icon: FlowArrowIcon },
 ];
 
 const DEVELOPERS = [
-  { id: "keys", label: "API Keys", glyph: "🔑" },
-  { id: "paths", label: "Paths", glyph: "🔗" },
-  { id: "domains", label: "Domains", glyph: "🌐" },
+  { id: "keys", label: "API Keys", Icon: LockIcon },
+  { id: "paths", label: "Paths", Icon: LinkChainIcon },
+  { id: "domains", label: "Domains", Icon: GlobeIcon },
 ];
 
 const APPLICATION = [
-  { id: "billing", label: "Plan & Billing", glyph: "▭" },
-  { id: "settings", label: "Settings", glyph: "⚙" },
+  { id: "billing", label: "Plan & Billing", Icon: CardIcon },
+  { id: "settings", label: "Settings", Icon: GearIcon },
 ];
 
 const LEARN = [
-  { id: "deploy", glyph: "✓", label: "Deploy your app to production" },
-  { id: "auth", glyph: "⛉", label: "Learn about authentication" },
-  { id: "custom", glyph: "▨", label: "Learn about Component Customization" },
+  { id: "deploy", Icon: CheckIcon, label: "Deploy your app to production" },
+  { id: "auth", Icon: ShieldIcon, label: "Learn about authentication" },
+  { id: "custom", Icon: CloudIcon, label: "Learn about Component Customization" },
 ];
 
 const STATS = [
@@ -78,16 +100,12 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
             <div className="flex items-center gap-3 px-3.5 py-3">
               <AvatarSlot size={32} />
               <span className="flex-1 text-[1.08rem] font-medium">Personal account</span>
-              <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
-                ⇅
-              </span>
+              <ArrowsUpDownIcon size={14} />
             </div>
             <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] px-3.5 py-3">
               <LogoSlot size={30} label="" radius={15} />
               <span className="flex-1 text-[1.08rem] font-medium">MyApp</span>
-              <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
-                ⇅
-              </span>
+              <ArrowsUpDownIcon size={14} />
             </div>
           </div>
 
@@ -96,7 +114,7 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 active={item.id === page}
                 className={cn(
                   "text-[1.08rem]",
@@ -113,12 +131,10 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 trailing={
                   item.chevron ? (
-                    <span aria-hidden className="text-[0.8rem] opacity-40">
-                      ›
-                    </span>
+                    <CaretRightIcon size={14} />
                   ) : undefined
                 }
                 className="text-[1.08rem]"
@@ -132,7 +148,7 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 className="text-[1.08rem]"
               />
             ))}
@@ -144,7 +160,7 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 className="text-[1.08rem]"
               />
             ))}
@@ -165,9 +181,7 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
           <div className="px-12 pb-10 pt-14">
             <p className="flex items-center gap-3 text-[1.05rem]">
               <span className="text-[color:var(--ob-fg-soft)]">Home</span>
-              <span aria-hidden className="text-[color:var(--ob-muted)]">
-                ›
-              </span>
+              <CaretRightIcon size={14} />
               <span className="font-medium">MyApp</span>
             </p>
 
@@ -187,12 +201,7 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
                   key={card.id}
                   className="grid justify-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-6 py-8"
                 >
-                  <span
-                    aria-hidden
-                    className="text-[1.5rem] text-[color:var(--ob-muted)]"
-                  >
-                    {card.glyph}
-                  </span>
+                  <card.Icon size={14} />
                   <p className="pt-4 text-center text-[1.08rem] font-semibold">
                     {card.label}
                   </p>

@@ -16,6 +16,7 @@ import {
   Gear,
   ArrowDown,
   ArrowLeft,
+  ArrowUp,
   ArrowRight,
   ArrowsDownUp,
   ArrowsLeftRight,
@@ -43,13 +44,31 @@ import {
   ChartPieSlice,
   CirclesThree,
   Clock,
+  Article,
+  Barcode,
+  Browsers,
+  Cake,
+  ChartLine,
   Circle,
+  ClipboardText,
+  Cloud,
+  Code,
+  Coin,
+  Cpu,
   Cube,
   Database,
   Envelope,
   DotsThree,
   FileText,
+  Flag,
+  FlowArrow,
   FunnelSimple,
+  Globe,
+  HardDrives,
+  Lifebuoy,
+  Lightning,
+  Link,
+  Lock,
   Info,
   ListChecks,
   Megaphone,
@@ -62,8 +81,33 @@ import {
   GridFour,
   MapPin,
   Notepad,
+  Briefcase,
+  Heartbeat,
   Package,
+  Palette,
   Paperclip,
+  PauseCircle,
+  Phone,
+  PencilSimple,
+  Path,
+  Percent,
+  Robot,
+  Rocket,
+  Shield,
+  ShieldCheck,
+  Signpost,
+  Star,
+  Storefront,
+  Sun,
+  Tag,
+  Ticket,
+  Tree,
+  TreeStructure,
+  Triangle,
+  Trophy,
+  UserPlus,
+  Users,
+  Wrench,
   Plus,
   Receipt,
   TerminalWindow,
@@ -254,3 +298,53 @@ export const ArrowLeftIcon = solid(ArrowLeft, "bold", 13);
 export const ArrowRightIcon = solid(ArrowRight, "bold", 13);
 export const PaperclipIcon = solid(Paperclip, "regular");
 export const PlusIcon = solid(Plus, "bold", 13);
+
+/* Cloudflare, Vercel, Whop and Sweatpals rails. */
+export const ClipboardIcon = solid(ClipboardText, "regular");
+export const RobotIcon = solid(Robot, "regular");
+export const ChartLineIcon = solid(ChartLine, "regular");
+export const ShieldIcon = solid(Shield, "regular");
+export const ShieldCheckIcon = solid(ShieldCheck, "regular");
+export const LightningIcon = solid(Lightning, "regular");
+export const HardDrivesIcon = solid(HardDrives, "regular");
+export const CloudIcon = solid(Cloud, "regular");
+export const GlobeIcon = solid(Globe, "regular");
+export const PathIcon = solid(Path, "regular");
+export const TagIcon = solid(Tag, "regular");
+export const LinkChainIcon = solid(Link, "regular");
+export const TrophyIcon = solid(Trophy, "regular");
+export const RocketIcon = solid(Rocket, "regular");
+export const StorefrontIcon = solid(Storefront, "regular");
+export const FlagIcon = solid(Flag, "regular");
+export const CpuIcon = solid(Cpu, "regular");
+export const LifebuoyIcon = solid(Lifebuoy, "regular");
+export const TicketIcon = solid(Ticket, "regular");
+export const StarIcon = solid(Star, "regular");
+export const PercentIcon = solid(Percent, "regular");
+export const BarcodeIcon = solid(Barcode, "regular");
+export const UsersIcon = solid(Users, "regular");
+export const CodeIcon = solid(Code, "regular");
+export const LockIcon = solid(Lock, "regular");
+export const ArticleIcon = solid(Article, "regular");
+export const TreeIcon = solid(Tree, "regular");
+export const FlowArrowIcon = solid(FlowArrow, "regular");
+export const BrowsersIcon = solid(Browsers, "regular");
+export const WrenchIcon = solid(Wrench, "regular");
+export const SignpostIcon = solid(Signpost, "regular");
+export const CoinIcon = solid(Coin, "regular");
+
+export const TriangleIcon = solid(Triangle, "fill", 14);
+
+export const CakeIcon = solid(Cake, "regular");
+export const UserPlusIcon = solid(UserPlus, "regular");
+
+export const PencilIcon = solid(PencilSimple, "regular");
+export const PaletteIcon = solid(Palette, "regular");
+export const BriefcaseIcon = solid(Briefcase, "regular");
+export const HeartbeatIcon = solid(Heartbeat, "regular");
+export const PhoneIcon = solid(Phone, "regular");
+export const TreeStructureIcon = solid(TreeStructure, "regular");
+export const SunIcon = solid(Sun, "regular");
+export const PauseIcon = solid(PauseCircle, "regular");
+
+export const ArrowUpIcon = solid(ArrowUp, "bold", 13);

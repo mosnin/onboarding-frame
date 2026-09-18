@@ -1,6 +1,24 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  ArticleIcon,
+  BellIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  ChartLineIcon,
+  CheckIcon,
+  EnvelopeIcon,
+  GlobeIcon,
+  HouseIcon,
+  LightningIcon,
+  ListChecksIcon,
+  LockIcon,
+  StarIcon,
+  TreeIcon,
+  UsersIcon,
+  WarningIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, goalTokens } from "./tokens";
@@ -14,9 +32,9 @@ export interface GoalTrackerProps extends TemplateProps {
 }
 
 const TOP = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "tasks", label: "My tasks", glyph: "✓" },
-  { id: "inbox", label: "Inbox", glyph: "⌾", dot: true },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "tasks", label: "My tasks", Icon: CheckIcon },
+  { id: "inbox", label: "Inbox", Icon: BellIcon, dot: true },
 ];
 
 const SECTIONS = [
@@ -24,9 +42,9 @@ const SECTIONS = [
     label: "Insights",
     add: true,
     items: [
-      { id: "reporting", label: "Reporting", glyph: "📈" },
-      { id: "portfolios", label: "Portfolios", glyph: "🗂" },
-      { id: "goals", label: "Goals", glyph: "◎" },
+      { id: "reporting", label: "Reporting", Icon: ChartLineIcon },
+      { id: "portfolios", label: "Portfolios", Icon: ArticleIcon },
+      { id: "goals", label: "Goals", Icon: GlobeIcon },
     ],
   },
   {
@@ -34,12 +52,12 @@ const SECTIONS = [
     add: true,
     items: [
       { id: "design", label: "Design Project", dot: "#4ecdc4" },
-      { id: "portfolio", label: "My first portfolio", glyph: "🗂", chevron: true },
+      { id: "portfolio", label: "My first portfolio", Icon: ArticleIcon, chevron: true },
     ],
   },
   {
     label: "Team",
-    items: [{ id: "workspace", label: "My workspace", glyph: "👥", chevron: true }],
+    items: [{ id: "workspace", label: "My workspace", Icon: UsersIcon, chevron: true }],
   },
 ];
 
@@ -64,9 +82,7 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
       <Shell>
         <Sidebar width={239} bg="#2e2e30" className="border-r-0 text-white">
           <div className="flex items-center gap-[9px] px-[15px] pb-[12px] pt-[12px]">
-            <span aria-hidden className="text-[0.864rem]">
-              ☰
-            </span>
+            <ListChecksIcon size={14} />
             <span className="flex items-center gap-[6px] rounded-full bg-white/10 px-[9px] py-[5px] text-[0.714rem] font-semibold">
               <span className="grid size-[15px] place-items-center rounded-full bg-[color:var(--ob-cta-bg)] text-[0.601rem]">
                 +
@@ -77,7 +93,7 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
 
           <nav className="grid gap-[2px] px-[9px]">
             {TOP.map((item) => (
-              <DarkNavItem key={item.id} label={item.label} glyph={item.glyph} dot={item.dot} />
+              <DarkNavItem key={item.id} label={item.label} glyph={<item.Icon size={14} />} dot={item.dot} />
             ))}
           </nav>
 
@@ -96,7 +112,7 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
                   <DarkNavItem
                     key={item.id}
                     label={item.label}
-                    glyph={"glyph" in item ? item.glyph : undefined}
+                    glyph={"Icon" in item && item.Icon ? <item.Icon size={14} /> : undefined}
                     swatch={"dot" in item ? (item.dot as string) : undefined}
                     chevron={"chevron" in item ? item.chevron : undefined}
                     active={item.id === page}
@@ -108,7 +124,7 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
 
           <div className="mt-auto grid gap-[12px] px-[15px] pb-[18px]">
             <span className="flex items-center justify-center gap-[6px] rounded-[var(--ob-radius)] border border-white/25 py-[8px] text-[0.714rem] font-medium">
-              <span aria-hidden>✉</span> Invite teammates
+              <EnvelopeIcon size={14} /> Invite teammates
             </span>
             <span className="text-center text-[0.691rem] text-white/50">
               Help with Goals
@@ -128,24 +144,20 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
             <Placeholder width={33} height={33} radius={6} label="" glyph="◬" />
             <div className="min-w-[0px] flex-1">
               <p className="flex items-center gap-[5px] text-[0.676rem] text-[color:var(--ob-muted)]">
-                My workspace goals <span aria-hidden>›</span>
+                My workspace goals <CaretRightIcon size={14} />
               </p>
               <p className="flex items-center gap-[8px] text-[0.826rem] font-bold">
                 Attract 2 new clients
-                <span aria-hidden className="text-[0.526rem] opacity-50">
-                  ⌄
-                </span>
+                <CaretDownIcon size={14} />
                 <span aria-hidden className="text-[color:var(--ob-muted)]">
                   👍
                 </span>
-                <span aria-hidden className="text-[color:var(--ob-muted)]">
-                  ☆
-                </span>
+                <StarIcon size={14} />
               </p>
             </div>
             <AvatarSlot size={23} />
             <span className="flex items-center gap-[5px] rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] px-[11px] py-[6px] text-[0.676rem] font-semibold text-white">
-              <span aria-hidden>🔒</span> Share
+              <LockIcon size={14} /> Share
             </span>
           </header>
 
@@ -208,12 +220,10 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
                 <div className="flex flex-wrap items-center gap-[9px]">
                   <h2 className="flex items-center gap-[8px] text-[0.977rem] font-bold">
                     Progress
-                    <span aria-hidden className="text-[color:#e8c33d]">
-                      ⚡
-                    </span>
+                    <LightningIcon size={14} />
                   </h2>
                   <span className="flex items-center gap-[5px] text-[0.714rem] text-[color:var(--ob-muted)]">
-                    <span aria-hidden>⚠</span> No sub-goals connected
+                    <WarningIcon size={14} /> No sub-goals connected
                   </span>
                   <span className="ml-auto flex items-center gap-[5px] text-[0.714rem] text-[color:var(--ob-fg-soft)]">
                     <span aria-hidden>⇶</span> Progress settings
@@ -223,7 +233,7 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
                 <TargetRamp />
 
                 <div className="flex items-center gap-[15px] pt-[12px]">
-                  <Placeholder width={83} height={59} radius={6} label="" glyph="⛰" />
+                  <Placeholder width={83} height={59} radius={6} label="" glyph={<TreeIcon size={14} />} />
                   <div>
                     <p className="text-[0.789rem]">
                       Use sub-goals to automatically update this goal&apos;s progress.
@@ -323,9 +333,7 @@ function DarkNavItem({
       <span className="flex-1 truncate">{label}</span>
       {dot && <span aria-hidden className="size-[5px] rounded-full bg-[#e8c33d]" />}
       {chevron && (
-        <span aria-hidden className="text-[0.601rem] opacity-50">
-          ›
-        </span>
+        <CaretRightIcon size={14} />
       )}
     </button>
   );

@@ -1,6 +1,25 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  BellIcon,
+  CalendarIcon,
+  CardIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  CaretUpIcon,
+  ChartBarIcon,
+  ClipboardIcon,
+  CoinIcon,
+  GearIcon,
+  HouseIcon,
+  LinkChainIcon,
+  MegaphoneIcon,
+  RocketIcon,
+  SearchIcon,
+  TrophyIcon,
+  UserIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot } from "../../../ui/placeholder";
 import { Surface, creatorTokens } from "./tokens";
@@ -14,15 +33,15 @@ export interface CreatorRevenueProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "users", label: "Users", glyph: "👤" },
-  { id: "links", label: "Links", glyph: "🔗" },
-  { id: "milestones", label: "Milestones", glyph: "🏆" },
-  { id: "growth", label: "Growth Hacks", glyph: "🚀", dot: true },
-  { id: "marketing", label: "Marketing", glyph: "📣", caret: true },
-  { id: "finances", label: "Finances", glyph: "▭", caret: true },
-  { id: "operations", label: "Operations", glyph: "📋", caret: true },
-  { id: "settings", label: "Settings", glyph: "⚙", caret: true },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "users", label: "Users", Icon: UserIcon },
+  { id: "links", label: "Links", Icon: LinkChainIcon },
+  { id: "milestones", label: "Milestones", Icon: TrophyIcon },
+  { id: "growth", label: "Growth Hacks", Icon: RocketIcon, dot: true },
+  { id: "marketing", label: "Marketing", Icon: MegaphoneIcon, caret: true },
+  { id: "finances", label: "Finances", Icon: CardIcon, caret: true },
+  { id: "operations", label: "Operations", Icon: ClipboardIcon, caret: true },
+  { id: "settings", label: "Settings", Icon: GearIcon, caret: true },
 ];
 
 const COUNTDOWN = [
@@ -60,7 +79,7 @@ export function CreatorRevenueTemplate({
         <Sidebar width={265} bg="var(--ob-surface)">
           <div className="flex items-center gap-[9px] px-[15px] pb-[15px] pt-[15px]">
             <span className="flex items-center gap-[6px] text-[0.822rem] font-medium">
-              <span aria-hidden>⌾</span> Go to hub
+              <BellIcon size={14} /> Go to hub
             </span>
             <span
               aria-hidden
@@ -73,9 +92,7 @@ export function CreatorRevenueTemplate({
           <div className="mx-[12px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] p-[12px]">
             <p className="flex items-center gap-[9px] pb-[12px] text-[0.7rem] font-bold uppercase tracking-wide">
               <span className="flex-1">$500 in 7 days</span>
-              <span aria-hidden className="text-[0.533rem] opacity-50">
-                ⌃
-              </span>
+              <CaretUpIcon size={14} />
             </p>
 
             {/* A flip-clock countdown: each digit is its own tile. */}
@@ -114,9 +131,7 @@ export function CreatorRevenueTemplate({
           <div className="flex items-center gap-[9px] px-[15px] py-[15px]">
             <AvatarSlot size={29} />
             <span className="flex-1 text-[0.913rem] font-semibold">ASAcme</span>
-            <span aria-hidden className="text-[0.533rem] opacity-50">
-              ⌄
-            </span>
+            <CaretDownIcon size={14} />
           </div>
 
           <nav className="grid gap-[2px] px-[9px]">
@@ -136,13 +151,11 @@ export function CreatorRevenueTemplate({
                     item.label
                   )
                 }
-                glyph={item.glyph}
+                glyph={<item.Icon size={15} />}
                 active={item.id === page}
                 trailing={
                   item.caret ? (
-                    <span aria-hidden className="text-[0.533rem] opacity-50">
-                      ⌄
-                    </span>
+                    <CaretDownIcon size={14} />
                   ) : undefined
                 }
                 className="px-[12px] py-[9px] text-[0.875rem]"
@@ -176,10 +189,10 @@ export function CreatorRevenueTemplate({
         <Main className="overflow-auto">
           <header className="flex h-[67px] shrink-0 items-center gap-[12px] px-[21px]">
             <span className="flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.822rem] font-medium">
-              <span aria-hidden>🏆</span> Milestones
+              <TrophyIcon size={14} /> Milestones
             </span>
             <span className="ml-auto flex w-[228px] items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.799rem] text-[color:var(--ob-muted)]">
-              <span aria-hidden>⌕</span>
+              <SearchIcon size={14} />
               <span className="flex-1">Search</span>
               <kbd className="rounded border border-[color:var(--ob-border)] px-[5px] py-[2px] text-[0.548rem] font-semibold">
                 ⌘K
@@ -203,7 +216,7 @@ export function CreatorRevenueTemplate({
                 factor authentication on your account.
               </p>
               <span className="flex items-center gap-[5px] text-[0.799rem] font-medium">
-                Set up two factor authentication <span aria-hidden>›</span>
+                Set up two factor authentication <CaretRightIcon size={14} />
               </span>
             </div>
 
@@ -222,7 +235,7 @@ export function CreatorRevenueTemplate({
             <div className="flex flex-wrap items-center gap-[12px] pt-[9px]">
               <h1 className="flex-1 text-[1.522rem] font-bold tracking-[-0.01em]">Today</h1>
               <span className="flex items-center gap-[8px] rounded-full bg-[color:var(--ob-brand)] px-[15px] py-[8px] text-[0.799rem] font-semibold text-white">
-                <span aria-hidden>🎓</span> Need help? Join Acme University
+                <TrophyIcon size={14} /> Need help? Join Acme University
               </span>
             </div>
 
@@ -255,9 +268,7 @@ export function CreatorRevenueTemplate({
                   <span className="flex-1 text-[0.852rem] font-medium">
                     Welcome 12 new users
                   </span>
-                  <span aria-hidden className="text-[color:var(--ob-muted)]">
-                    ›
-                  </span>
+                  <CaretRightIcon size={14} />
                 </div>
               </section>
             </div>
@@ -265,7 +276,7 @@ export function CreatorRevenueTemplate({
             <div className="flex flex-wrap items-center gap-[9px] pt-[15px]">
               <h2 className="text-[1.522rem] font-bold tracking-[-0.01em]">Stats</h2>
               <Select>Last 7 days</Select>
-              <Select glyph="🗓">Jul 24 - 30, 2024</Select>
+              <Select glyph={<CalendarIcon size={14} />}>Jul 24 - 30, 2024</Select>
               <span className="text-[0.799rem] text-[color:var(--ob-muted)]">
                 compared to
               </span>
@@ -276,7 +287,7 @@ export function CreatorRevenueTemplate({
                   <span aria-hidden>+</span> Add
                 </span>
                 <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.799rem] font-medium">
-                  <span aria-hidden>⚙</span> Edit
+                  <GearIcon size={14} /> Edit
                 </span>
               </span>
             </div>
@@ -333,7 +344,7 @@ export function CreatorRevenueTemplate({
   );
 }
 
-function Select({ children, glyph }: { children: ReactNode; glyph?: string }) {
+function Select({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
   return (
     <span className="inline-flex items-center gap-[12px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.799rem]">
       <span className="flex items-center gap-[6px]">
@@ -344,9 +355,7 @@ function Select({ children, glyph }: { children: ReactNode; glyph?: string }) {
         )}
         {children}
       </span>
-      <span aria-hidden className="text-[0.533rem] opacity-60">
-        ⌄
-      </span>
+      <CaretDownIcon size={14} />
     </span>
   );
 }

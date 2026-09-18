@@ -12,6 +12,7 @@ import { Plus, TrendUpIcon } from "../../../ui/icons";
 import {
   CalendarIcon,
   ChartBarIcon,
+  ChatDotsIcon,
   ChatsIcon,
   ExternalSquareIcon,
   HouseIcon,
@@ -113,7 +114,7 @@ const TEMPLATES = [
   },
   {
     id: "t4",
-    glyph: "💬",
+    Icon: ChatDotsIcon,
     title: "My “Ask Me Anything” moment",
     body: "Invite your audience to ask you questions about your journey, work, or expertise.…",
   },

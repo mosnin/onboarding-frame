@@ -1,6 +1,9 @@
 "use client";
 
 import { Placeholder } from "../../../ui/placeholder";
+import {
+  CaretRightIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { Surface, setupChecklistTokens } from "./tokens";
 import { ProgressBar } from "../../../ui/primitives";
@@ -114,7 +117,7 @@ export function SetupChecklistTemplate({
           <div className="mx-3 rounded-[10px] border border-white/15 p-3.5">
             <div className="flex items-center gap-2">
               <span className="flex-1 font-semibold">Set up your account</span>
-              <span aria-hidden className="opacity-60">›</span>
+              <CaretRightIcon size={14} />
             </div>
             <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/15">
               <div
@@ -238,7 +241,7 @@ export function SetupChecklistTemplate({
               <Card className="p-0">
                 <div className="flex items-center gap-2 p-5 pb-3">
                   <h3 className="flex-1 font-extrabold">Brand elements</h3>
-                  <span aria-hidden className="opacity-40">›</span>
+                  <CaretRightIcon size={14} />
                 </div>
                 <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] p-5">
                   <Placeholder
@@ -258,7 +261,7 @@ export function SetupChecklistTemplate({
               <Card className="p-0">
                 <div className="flex items-center gap-2 p-5 pb-3">
                   <h3 className="flex-1 font-extrabold">Integrations</h3>
-                  <span aria-hidden className="opacity-40">›</span>
+                  <CaretRightIcon size={14} />
                 </div>
                 <div className="flex flex-wrap gap-2.5 p-5 pt-2">
                   {["Mail", "Meetings", "Design", "Calendar", "Accounting"].map((name) => (
@@ -409,7 +412,7 @@ function FinancePage() {
                 Last updated 46 minutes ago
               </p>
               <span className="flex items-center gap-1 text-[0.92rem] font-semibold">
-                View expenses <span aria-hidden>›</span>
+                View expenses <CaretRightIcon size={14} />
               </span>
             </div>
           </Card>

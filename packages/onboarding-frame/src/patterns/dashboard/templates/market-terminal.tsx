@@ -1,6 +1,16 @@
 "use client";
 
+import type { ReactNode } from "react";
+
 import { LineChart } from "../../../ui/charts";
+import {
+  ArticleIcon,
+  BrowsersIcon,
+  GlobeIcon,
+  GridFourIcon,
+  SearchIcon,
+  ChartLineIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { LogoSlot } from "../../../ui/placeholder";
 import { Surface, terminalTokens } from "./tokens";
@@ -146,11 +156,9 @@ export function MarketTerminalTemplate({
               </p>
             </div>
             <div className="flex items-center gap-2.5 pt-2">
-              <Pill glyph="◎">For you</Pill>
-              <Pill glyph="▤">Screener</Pill>
-              <span aria-hidden className="px-1 text-[color:var(--ob-fg-soft)]">
-                ⌕
-              </span>
+              <Pill glyph={<GlobeIcon size={14} />}>For you</Pill>
+              <Pill glyph={<ArticleIcon size={14} />}>Screener</Pill>
+              <SearchIcon size={14} />
             </div>
           </header>
 
@@ -158,9 +166,9 @@ export function MarketTerminalTemplate({
 
           <nav className="flex gap-9 pt-4">
             {[
-              { id: "markets", label: "Markets", glyph: "◍" },
-              { id: "insider", label: "Insider", glyph: "▥" },
-              { id: "events", label: "Events", glyph: "▦", soon: true },
+              { id: "markets", label: "Markets", Icon: ChartLineIcon },
+              { id: "insider", label: "Insider", Icon: BrowsersIcon },
+              { id: "events", label: "Events", Icon: GridFourIcon, soon: true },
             ].map((tab) => (
               <span
                 key={tab.id}
@@ -171,7 +179,7 @@ export function MarketTerminalTemplate({
                     : "text-[color:var(--ob-muted)]",
                 )}
               >
-                <span aria-hidden>{tab.glyph}</span>
+                <tab.Icon size={14} />
                 {tab.label}
                 {tab.soon && (
                   <span className="rounded-full bg-[color:var(--ob-surface-2)] px-2 py-0.5 text-[0.7rem] text-[color:var(--ob-muted)]">
@@ -356,7 +364,7 @@ export function MarketTerminalTemplate({
   );
 }
 
-function Pill({ children, glyph }: { children: string; glyph: string }) {
+function Pill({ children, glyph }: { children: string; glyph?: ReactNode }) {
   return (
     <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--ob-border-strong)] bg-[color:var(--ob-surface)] px-4 py-2 text-[0.92rem] font-medium">
       <span aria-hidden className="text-[color:var(--ob-muted)]">

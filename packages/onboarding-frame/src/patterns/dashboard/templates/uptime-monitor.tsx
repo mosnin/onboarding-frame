@@ -1,5 +1,24 @@
 "use client";
 
+import {
+  ArrowsUpDownIcon,
+  BrowsersIcon,
+  CardIcon,
+  CaretDownIcon,
+  CaretLeftIcon,
+  GearIcon,
+  GlobeIcon,
+  PathIcon,
+  UserIcon,
+  WarningIcon,
+  HeartbeatIcon,
+  PhoneIcon,
+  TreeStructureIcon,
+  QuestionIcon,
+  SunIcon,
+  InfoIcon,
+  PauseIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, uptimeTokens } from "./tokens";
@@ -13,20 +32,20 @@ export interface UptimeMonitorProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "monitors", label: "Monitors", glyph: "🌐" },
-  { id: "heartbeats", label: "Heartbeats", glyph: "◍" },
-  { id: "oncall", label: "Who's on-call?", glyph: "☎" },
-  { id: "incidents", label: "Incidents", glyph: "⚠", badge: "2" },
-  { id: "team", label: "Team members", glyph: "👤" },
-  { id: "status", label: "Status pages", glyph: "◉" },
-  { id: "escalation", label: "Escalation policies", glyph: "⇶" },
-  { id: "integrations", label: "Integrations", glyph: "⑄" },
+  { id: "monitors", label: "Monitors", Icon: GlobeIcon },
+  { id: "heartbeats", label: "Heartbeats", Icon: HeartbeatIcon },
+  { id: "oncall", label: "Who's on-call?", Icon: PhoneIcon },
+  { id: "incidents", label: "Incidents", Icon: WarningIcon, badge: "2" },
+  { id: "team", label: "Team members", Icon: UserIcon },
+  { id: "status", label: "Status pages", Icon: BrowsersIcon },
+  { id: "escalation", label: "Escalation policies", Icon: TreeStructureIcon },
+  { id: "integrations", label: "Integrations", Icon: PathIcon },
 ];
 
 const TAIL = [
-  { id: "billing", label: "Billing", glyph: "▭" },
-  { id: "help", label: "Help & Support", glyph: "?" },
-  { id: "theme", label: "Light mode", glyph: "☀" },
+  { id: "billing", label: "Billing", Icon: CardIcon },
+  { id: "help", label: "Help & Support", Icon: QuestionIcon },
+  { id: "theme", label: "Light mode", Icon: SunIcon },
 ];
 
 const TIMES = [
@@ -85,9 +104,7 @@ export function UptimeMonitorTemplate({
         <Sidebar width={310} bg="#171a21">
           <div className="flex items-center gap-2 px-5 pb-6 pt-5">
             <WordmarkSlot width={130} height={22} label="" />
-            <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
-              ⌄
-            </span>
+            <CaretDownIcon size={14} />
           </div>
 
           <nav className="grid gap-0.5 px-3">
@@ -95,7 +112,7 @@ export function UptimeMonitorTemplate({
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 badge={item.badge}
                 active={item.id === "monitors" && page === "monitor"}
                 className="text-[1.05rem]"
@@ -108,7 +125,7 @@ export function UptimeMonitorTemplate({
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 className="text-[1.05rem]"
               />
             ))}
@@ -122,9 +139,7 @@ export function UptimeMonitorTemplate({
               </span>
               <span className="block text-[1rem] font-semibold">JDAcme</span>
             </span>
-            <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
-              ⇅
-            </span>
+            <ArrowsUpDownIcon size={14} />
           </div>
         </Sidebar>
 
@@ -137,15 +152,13 @@ export function UptimeMonitorTemplate({
             <span className="flex items-center gap-2.5">
               <AvatarSlot size={34} />
               <span className="text-[1.05rem] font-medium">Jane Smith</span>
-              <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
-                ⌄
-              </span>
+              <CaretDownIcon size={14} />
             </span>
           </header>
 
           <div className="px-10 pb-10">
             <p className="flex items-center gap-2 text-[1.05rem] text-[color:var(--ob-muted)]">
-              <span aria-hidden>‹</span> Monitors
+              <CaretLeftIcon size={14} /> Monitors
             </p>
 
             <div className="flex items-center gap-5 pt-5">
@@ -169,18 +182,16 @@ export function UptimeMonitorTemplate({
 
             <div className="flex flex-wrap items-center gap-8 pt-7">
               {[
-                { id: "alert", glyph: "⚠", label: "Send test alert" },
-                { id: "incidents", glyph: "ⓘ", label: "Incidents" },
-                { id: "pause", glyph: "⏸", label: "Pause this monitor" },
-                { id: "configure", glyph: "⚙", label: "Configure" },
+                { id: "alert", Icon: WarningIcon, label: "Send test alert" },
+                { id: "incidents", Icon: InfoIcon, label: "Incidents" },
+                { id: "pause", Icon: PauseIcon, label: "Pause this monitor" },
+                { id: "configure", Icon: GearIcon, label: "Configure" },
               ].map((action) => (
                 <span
                   key={action.id}
                   className="flex items-center gap-2.5 text-[1.08rem] font-medium"
                 >
-                  <span aria-hidden className="text-[color:var(--ob-muted)]">
-                    {action.glyph}
-                  </span>
+                  <action.Icon size={14} />
                   {action.label}
                 </span>
               ))}

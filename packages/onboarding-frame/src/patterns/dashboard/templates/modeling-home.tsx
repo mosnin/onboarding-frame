@@ -2,6 +2,9 @@
 
 import type { ReactNode } from "react";
 import { LineChart } from "../../../ui/charts";
+import {
+  CaretRightIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, modelingTokens } from "./tokens";
@@ -169,9 +172,7 @@ function Overview() {
             Create a new model from scratch
           </span>
         </span>
-        <span aria-hidden className="text-[color:var(--ob-muted)]">
-          ›
-        </span>
+        <CaretRightIcon size={14} />
       </button>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2">

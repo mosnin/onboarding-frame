@@ -1,6 +1,17 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  BrowsersIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  ChartPieIcon,
+  EnvelopeIcon,
+  GearIcon,
+  ListChecksIcon,
+  SearchIcon,
+  QuestionIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, communityTokens } from "./tokens";
@@ -16,12 +27,12 @@ export interface CommunityTrafficProps extends TemplateProps {
 const GROUPS = [
   {
     label: "Content",
-    glyph: "≣",
+    Icon: ListChecksIcon,
     items: [{ id: "scheduled", label: "Scheduled posts" }],
   },
   {
     label: "Other",
-    glyph: "⚙",
+    Icon: GearIcon,
     items: [
       { id: "awards", label: "Awards" },
       { id: "wiki", label: "Wiki pages" },
@@ -31,12 +42,12 @@ const GROUPS = [
   },
   {
     label: "Modmail",
-    glyph: "✉",
+    Icon: EnvelopeIcon,
     items: [{ id: "modmail", label: "Modmail", external: true }],
   },
   {
     label: "Community activity",
-    glyph: "▥",
+    Icon: BrowsersIcon,
     items: [
       { id: "traffic", label: "Traffic stats" },
       { id: "modlog", label: "Mod log" },
@@ -44,7 +55,7 @@ const GROUPS = [
   },
   {
     label: "Mod help center",
-    glyph: "?",
+    Icon: QuestionIcon,
     items: [
       { id: "help", label: "Mod help center", external: true },
       { id: "education", label: "Mod education site", external: true },
@@ -96,9 +107,7 @@ export function CommunityTrafficTemplate({
     <Surface tokens={communityTokens} className={className}>
       <Shell className="flex-col">
         <header className="flex h-[42px] shrink-0 items-center overflow-x-auto gap-[9px] border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[12px]">
-          <span aria-hidden className="text-[0.869rem]">
-            ☰
-          </span>
+          <ListChecksIcon size={14} />
           <span className="flex items-center gap-[6px]">
             <LogoSlot size={20} label="" radius={10} />
             <WordmarkSlot width={48} height={11} label="" />
@@ -106,15 +115,11 @@ export function CommunityTrafficTemplate({
           <span className="flex items-center gap-[6px] pl-[9px] text-[0.718rem] font-medium">
             <LogoSlot size={17} label="" radius={8} />
             r/Acme_Mods
-            <span aria-hidden className="text-[0.529rem] opacity-50">
-              ⌄
-            </span>
+            <CaretDownIcon size={14} />
           </span>
 
           <div className="mx-auto flex w-full max-w-[484px] items-center gap-[6px] rounded-full bg-[color:var(--ob-surface-2)] px-[9px] py-[6px]">
-            <span aria-hidden className="text-[color:var(--ob-muted)]">
-              ⌕
-            </span>
+            <SearchIcon size={14} />
             {/* The scoped-search pill lives inside the field in the reference. */}
             <span className="flex items-center gap-[5px] rounded-full bg-[color-mix(in_oklab,#0079d3_16%,transparent)] px-[6px] py-[2px] text-[0.642rem] font-medium text-[color:var(--ob-brand)]">
               <LogoSlot size={12} label="" radius={6} />
@@ -134,7 +139,7 @@ export function CommunityTrafficTemplate({
             ))}
           </span>
           <span className="flex items-center gap-[5px] rounded-full bg-[color:var(--ob-surface-2)] px-[9px] py-[5px] text-[0.665rem] font-semibold">
-            <span aria-hidden>◔</span> Advertise
+            <ChartPieIcon size={14} /> Advertise
           </span>
           <span className="flex items-center gap-[6px] pl-[3px]">
             <AvatarSlot size={23} />
@@ -144,9 +149,7 @@ export function CommunityTrafficTemplate({
                 ⚙ 1 karma
               </span>
             </span>
-            <span aria-hidden className="text-[0.529rem] opacity-50">
-              ⌄
-            </span>
+            <CaretDownIcon size={14} />
           </span>
         </header>
 
@@ -163,9 +166,7 @@ export function CommunityTrafficTemplate({
               {GROUPS.map((group) => (
                 <div key={group.label}>
                   <p className="flex items-center gap-[8px] px-[18px] pb-[3px] pt-[12px] text-[0.59rem] font-bold uppercase tracking-wide text-[color:var(--ob-muted)]">
-                    <span aria-hidden className="text-[0.718rem] opacity-80">
-                      {group.glyph}
-                    </span>
+                    <group.Icon size={14} />
                     {group.label}
                   </p>
                   {group.items.map((item) => {
@@ -194,9 +195,7 @@ export function CommunityTrafficTemplate({
                           </span>
                         )}
                         {"chevron" in item && item.chevron && (
-                          <span aria-hidden className="opacity-40">
-                            ›
-                          </span>
+                          <CaretRightIcon size={14} />
                         )}
                       </button>
                     );

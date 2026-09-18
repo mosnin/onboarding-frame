@@ -1,5 +1,23 @@
 "use client";
 
+import {
+  ArticleIcon,
+  BrowsersIcon,
+  CaretDownIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+  CaretUpIcon,
+  ChatDotsIcon,
+  CloudIcon,
+  EnvelopeIcon,
+  GridFourIcon,
+  MegaphoneIcon,
+  PathIcon,
+  PencilIcon,
+  SearchIcon,
+  UsersIcon,
+  MapPinIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, audienceTokens } from "./tokens";
@@ -13,10 +31,10 @@ export interface AudienceAnalyticsProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "campaigns", label: "Campaigns", glyph: "📣", caret: true },
-  { id: "automations", label: "Automations", glyph: "⑄", caret: true },
-  { id: "sms", label: "SMS", glyph: "💬", badge: "New", caret: true },
-  { id: "audiences", label: "Audience", glyph: "👥", caret: true },
+  { id: "campaigns", label: "Campaigns", Icon: MegaphoneIcon, caret: true },
+  { id: "automations", label: "Automations", Icon: PathIcon, caret: true },
+  { id: "sms", label: "SMS", Icon: ChatDotsIcon, badge: "New", caret: true },
+  { id: "audiences", label: "Audience", Icon: UsersIcon, caret: true },
 ];
 
 const ANALYTICS_CHILDREN = [
@@ -27,9 +45,9 @@ const ANALYTICS_CHILDREN = [
 ];
 
 const TAIL = [
-  { id: "website", label: "Website", glyph: "▤", caret: true },
-  { id: "content", label: "Content", glyph: "▨", caret: true },
-  { id: "integrations", label: "Integrations", glyph: "▦", caret: true },
+  { id: "website", label: "Website", Icon: ArticleIcon, caret: true },
+  { id: "content", label: "Content", Icon: CloudIcon, caret: true },
+  { id: "integrations", label: "Integrations", Icon: GridFourIcon, caret: true },
 ];
 
 const DAYS = [
@@ -66,7 +84,7 @@ export function AudienceAnalyticsTemplate({
         <header className="flex h-[53px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[18px]">
           <LogoSlot size={29} label="" radius={14} />
           <div className="mx-auto flex w-full max-w-[594px] items-center gap-[8px] rounded-full border border-[color:var(--ob-border-strong)] px-[15px] py-[9px] text-[0.789rem] text-[color:var(--ob-fg-soft)]">
-            <span aria-hidden>⌕</span> Search
+            <SearchIcon size={14} /> Search
           </div>
           <span className="flex items-center gap-[9px]">
             <span className="flex items-center gap-[6px] rounded-full bg-[color-mix(in_oklab,#ffe01b_35%,white)] px-[12px] py-[8px] text-[0.751rem] font-medium">
@@ -83,7 +101,7 @@ export function AudienceAnalyticsTemplate({
           <Sidebar width={263} bg="var(--ob-surface)" className="border-r-0">
             <div className="px-[15px] pb-[15px] pt-[15px]">
               <span className="flex items-center justify-center gap-[8px] rounded-full border border-[color:var(--ob-fg)] py-[11px] text-[0.826rem] font-medium">
-                <span aria-hidden>✎</span> Create
+                <PencilIcon size={14} /> Create
               </span>
             </div>
 
@@ -103,11 +121,9 @@ export function AudienceAnalyticsTemplate({
                       item.label
                     )
                   }
-                  glyph={item.glyph}
+                  glyph={<item.Icon size={14} />}
                   trailing={
-                    <span aria-hidden className="text-[0.526rem] opacity-50">
-                      ⌄
-                    </span>
+                    <CaretDownIcon size={14} />
                   }
                   className="text-[0.811rem]"
                 />
@@ -115,12 +131,10 @@ export function AudienceAnalyticsTemplate({
 
               <NavItem
                 label="Analytics"
-                glyph="▥"
+                glyph={<BrowsersIcon size={14} />}
                 active
                 trailing={
-                  <span aria-hidden className="text-[0.526rem] opacity-50">
-                    ⌃
-                  </span>
+                  <CaretUpIcon size={14} />
                 }
                 className="text-[0.811rem]"
               />
@@ -138,11 +152,9 @@ export function AudienceAnalyticsTemplate({
                 <NavItem
                   key={item.id}
                   label={item.label}
-                  glyph={item.glyph}
+                  glyph={<item.Icon size={14} />}
                   trailing={
-                    <span aria-hidden className="text-[0.526rem] opacity-50">
-                      ⌄
-                    </span>
+                    <CaretDownIcon size={14} />
                   }
                   className="text-[0.811rem]"
                 />
@@ -194,10 +206,10 @@ export function AudienceAnalyticsTemplate({
                 <div className="flex items-center justify-center gap-[18px] border-b border-[color:var(--ob-border)] pb-[15px] text-[0.789rem]">
                   <span className="tabular-nums">0 - 16 of 30</span>
                   <span className="flex items-center gap-[5px] text-[color:var(--ob-fg-soft)]">
-                    <span aria-hidden>‹</span> Previous
+                    <CaretLeftIcon size={14} /> Previous
                   </span>
                   <span className="flex items-center gap-[5px] font-medium text-[color:var(--ob-brand)]">
-                    Next <span aria-hidden>›</span>
+                    Next <CaretRightIcon size={14} />
                   </span>
                 </div>
 
@@ -471,13 +483,13 @@ function AudienceDashboard() {
         {[
           {
             id: "email",
-            glyph: "✉",
+            Icon: EnvelopeIcon,
             title: "Email marketing engagement",
             body: "See how your contacts have been interacting with your email campaigns over time.",
           },
           {
             id: "locations",
-            glyph: "📍",
+            Icon: MapPinIcon,
             title: "Top locations",
             body: "Based on your contacts\u2019 IP addresses, here is where most of them are.",
           },
@@ -487,9 +499,7 @@ function AudienceDashboard() {
             className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[21px] py-[18px]"
           >
             <h3 className="flex items-center gap-[9px]">
-              <span aria-hidden className="text-[0.902rem]">
-                {card.glyph}
-              </span>
+              <card.Icon size={14} />
               <span className="border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[1.127rem] font-medium text-[color:var(--ob-brand)]">
                 {card.title}
               </span>

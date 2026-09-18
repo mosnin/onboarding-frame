@@ -1,6 +1,15 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  CaretDownIcon,
+  GearIcon,
+  GridFourIcon,
+  HardDrivesIcon,
+  HouseIcon,
+  SearchIcon,
+  StarIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, productTokens } from "./tokens";
@@ -63,40 +72,34 @@ export function ProductAnalyticsTemplate({
                 All Project Data
               </span>
             </span>
-            <span aria-hidden className="text-[0.532rem] opacity-50">
-              ⌄
-            </span>
+            <CaretDownIcon size={14} />
           </div>
 
           <div className="px-[12px] pb-[9px]">
             <span className="flex items-center justify-center gap-[6px] rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] py-[9px] text-[0.836rem] font-semibold text-white">
               <span aria-hidden>+</span> Create New
-              <span aria-hidden className="ml-auto pr-[3px] text-[0.532rem] opacity-70">
-                ⌄
-              </span>
+              <CaretDownIcon size={14} />
             </span>
           </div>
 
           <nav className="grid gap-[2px] px-[9px]">
             <NavItem
               label="Search"
-              glyph="⌕"
+              glyph={<SearchIcon size={14} />}
               badge="⌘ + K"
               className="text-[0.821rem]"
             />
             <NavItem
               label="Home"
-              glyph="⌂"
+              glyph={<HouseIcon size={14} />}
               active={page === "home"}
               className="text-[0.821rem]"
             />
             <NavItem
               label="Data"
-              glyph="⛁"
+              glyph={<HardDrivesIcon size={14} />}
               trailing={
-                <span aria-hidden className="text-[0.532rem] opacity-50">
-                  ⌄
-                </span>
+                <CaretDownIcon size={14} />
               }
               className="text-[0.821rem]"
             />
@@ -124,15 +127,15 @@ export function ProductAnalyticsTemplate({
 
           <div className="mt-auto p-[12px]">
             <span className="flex items-center justify-center gap-[8px] rounded-[var(--ob-radius)] bg-[color:var(--ob-cta-bg)] py-[9px] text-[0.821rem] font-semibold text-[color:var(--ob-cta-fg)]">
-              <span aria-hidden>◆</span> Upgrade Plan
+              <StarIcon size={14} /> Upgrade Plan
             </span>
             <div className="flex items-center gap-[15px] px-[6px] pt-[12px] text-[color:var(--ob-fg-soft)]">
-              <span aria-hidden>▦</span>
+              <GridFourIcon size={14} />
               <span className="relative" aria-hidden>
                 ?
                 <span className="absolute -right-[3px] -top-[3px] size-[6px] rounded-full bg-[#e0562d]" />
               </span>
-              <span aria-hidden>⚙</span>
+              <GearIcon size={14} />
               <span aria-hidden className="ml-auto">
                 ⇤
               </span>
@@ -194,9 +197,7 @@ export function ProductAnalyticsTemplate({
                 <ul className="grid gap-[12px]">
                   {BOARDS.map((board) => (
                     <li key={board} className="flex items-center gap-[11px]">
-                      <span aria-hidden className="text-[0.836rem]">
-                        ▦
-                      </span>
+                      <GridFourIcon size={14} />
                       <span className="flex-1 text-[0.821rem]">{board}</span>
                       <AvatarSlot size={23} />
                     </li>

@@ -1,6 +1,17 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  CaretLeftIcon,
+  ChartPieIcon,
+  GlobeIcon,
+  HouseIcon,
+  SearchIcon,
+  PlusIcon,
+  ArrowsLeftRightIcon,
+  ArrowUpIcon,
+  ArrowDownIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, walletTokens } from "./tokens";
@@ -14,16 +25,16 @@ export interface WalletHomeProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "assets", label: "Assets", glyph: "◔" },
-  { id: "apps", label: "Apps", glyph: "◎" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "assets", label: "Assets", Icon: ChartPieIcon },
+  { id: "apps", label: "Apps", Icon: GlobeIcon },
 ];
 
 const ACTIONS = [
-  { id: "buy", label: "Buy", glyph: "+" },
-  { id: "swap", label: "Swap", glyph: "⇄" },
-  { id: "send", label: "Send", glyph: "↑" },
-  { id: "receive", label: "Receive", glyph: "↓" },
+  { id: "buy", label: "Buy", Icon: PlusIcon },
+  { id: "swap", label: "Swap", Icon: ArrowsLeftRightIcon },
+  { id: "send", label: "Send", Icon: ArrowUpIcon },
+  { id: "receive", label: "Receive", Icon: ArrowDownIcon },
 ];
 
 const TRENDING = ["Mint pass", "Onchain quiz", "Season pass", "Creator drop"];
@@ -56,9 +67,7 @@ export function WalletHomeTemplate({ className, page = "trending" }: WalletHomeP
                     : "text-[color:var(--ob-fg-soft)]",
                 )}
               >
-                <span aria-hidden className="text-[1.15rem]">
-                  {item.glyph}
-                </span>
+                <item.Icon size={14} />
                 {item.label}
               </span>
             ))}
@@ -72,29 +81,19 @@ export function WalletHomeTemplate({ className, page = "trending" }: WalletHomeP
                 key={action.id}
                 className="flex items-center gap-4 rounded-full px-3 py-2.5 text-[1.15rem] font-semibold"
               >
-                <span
-                  aria-hidden
-                  className="grid size-10 place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[1.05rem]"
-                >
-                  {action.glyph}
-                </span>
+                <action.Icon size={14} />
                 {action.label}
               </span>
             ))}
           </nav>
 
-          <span
-            aria-hidden
-            className="mt-auto px-7 pb-8 text-[color:var(--ob-muted)]"
-          >
-            ‹
-          </span>
+          <CaretLeftIcon size={14} />
         </Sidebar>
 
         <Main className="overflow-auto">
           <header className="flex h-[104px] shrink-0 items-center gap-4 border-b border-[color:var(--ob-border)] px-8">
             <div className="ml-auto flex w-full max-w-[720px] items-center gap-3 rounded-full bg-[color:var(--ob-surface-2)] px-6 py-3.5 text-[1.05rem] text-[color:var(--ob-muted)]">
-              <span aria-hidden>⌕</span> Search coins, NFTs, apps…
+              <SearchIcon size={14} /> Search coins, NFTs, apps…
             </div>
             {["▭", "⚙"].map((glyph) => (
               <span

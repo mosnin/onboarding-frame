@@ -1,6 +1,20 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  ArticleIcon,
+  BellIcon,
+  BrowsersIcon,
+  CardIcon,
+  CaretDownIcon,
+  ChatDotsIcon,
+  GlobeIcon,
+  GridFourIcon,
+  SparkleIcon,
+  UsersIcon,
+  PaletteIcon,
+  BriefcaseIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, freelanceTokens } from "./tokens";
@@ -14,19 +28,19 @@ export interface FreelanceAnalyticsProps extends TemplateProps {
 }
 
 const RAIL = [
-  { id: "home", glyph: "▥" },
-  { id: "messages", glyph: "💬" },
-  { id: "network", glyph: "👥" },
+  { id: "home", Icon: BrowsersIcon },
+  { id: "messages", Icon: ChatDotsIcon },
+  { id: "network", Icon: UsersIcon },
   { id: "divider-1", divider: true },
-  { id: "profile", glyph: "◉" },
-  { id: "analytics", glyph: "▦", active: true },
-  { id: "portfolio", glyph: "🎨" },
+  { id: "profile", Icon: BrowsersIcon },
+  { id: "analytics", Icon: GridFourIcon, active: true },
+  { id: "portfolio", Icon: PaletteIcon },
   { id: "divider-2", divider: true },
-  { id: "explore", glyph: "◎" },
-  { id: "jobs", glyph: "💼" },
+  { id: "explore", Icon: GlobeIcon },
+  { id: "jobs", Icon: BriefcaseIcon },
   { id: "divider-3", divider: true },
-  { id: "docs", glyph: "▤" },
-  { id: "wallet", glyph: "▭" },
+  { id: "docs", Icon: ArticleIcon },
+  { id: "wallet", Icon: CardIcon },
 ];
 
 /**
@@ -62,24 +76,20 @@ export function FreelanceAnalyticsTemplate({
               ) : (
                 <span
                   key={item.id}
-                  aria-hidden
                   className={cn(
-                    "grid size-10 place-items-center rounded-[var(--ob-radius-sm)] text-[1.05rem]",
+                    "grid size-10 place-items-center rounded-[var(--ob-radius-sm)]",
                     item.active
                       ? "bg-[color-mix(in_oklab,#7c5cff_14%,transparent)] text-[#5b40d6]"
                       : "text-[color:var(--ob-muted)]",
                   )}
                 >
-                  {item.glyph}
+                  {item.Icon ? <item.Icon size={18} /> : null}
                 </span>
               ),
             )}
           </nav>
-          <span
-            aria-hidden
-            className="mt-auto mb-6 grid size-11 place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[1.05rem]"
-          >
-            💬
+          <span className="mb-6 mt-auto grid size-11 place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[color:var(--ob-fg-soft)]">
+            <ChatDotsIcon size={18} />
           </span>
         </Sidebar>
 
@@ -93,9 +103,7 @@ export function FreelanceAnalyticsTemplate({
               style={{ background: "linear-gradient(90deg,#f5a623,#e0562d,#7c5cff)" }}
             >
               <span className="flex items-center gap-2 rounded-full bg-[color:var(--ob-surface)] px-5 py-2.5 text-[1rem] font-medium">
-                <span aria-hidden className="text-[#e0a23d]">
-                  ✦
-                </span>
+                <SparkleIcon size={14} />
                 Acme Pro
               </span>
             </span>
@@ -103,20 +111,14 @@ export function FreelanceAnalyticsTemplate({
             <span className="flex items-center gap-2 rounded-full border border-[color:var(--ob-border-strong)] px-5 py-2.5 text-[1rem] font-medium">
               <span aria-hidden>⤳</span> Share profile
             </span>
-            <span aria-hidden className="pl-1 text-[1.2rem] text-[color:var(--ob-fg-soft)]">
-              💬
-            </span>
-            <span aria-hidden className="text-[1.2rem] text-[color:var(--ob-fg-soft)]">
-              ⌾
-            </span>
+            <ChatDotsIcon size={14} />
+            <BellIcon size={14} />
           </header>
 
           <div className="px-8 py-6">
             <span className="inline-flex items-center gap-8 rounded-full border border-[color:var(--ob-border-strong)] px-5 py-2.5 text-[1.05rem] font-medium">
               Last 30 days
-              <span aria-hidden className="text-[0.7rem] opacity-60">
-                ⌄
-              </span>
+              <CaretDownIcon size={14} />
             </span>
 
             <h2 className="pb-4 pt-7 text-[1.5rem] font-semibold text-[color:var(--ob-muted)]">
@@ -226,9 +228,7 @@ export function FreelanceAnalyticsTemplate({
 function ProBadge() {
   return (
     <span className="flex shrink-0 items-center gap-1.5 text-[0.88rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
-      <span aria-hidden className="text-[#e0a23d]">
-        ✦
-      </span>
+      <SparkleIcon size={14} />
       Pro
     </span>
   );

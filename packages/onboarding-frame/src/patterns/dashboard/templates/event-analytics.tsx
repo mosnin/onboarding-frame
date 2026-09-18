@@ -2,6 +2,27 @@
 
 import type { ReactNode } from "react";
 import { Donut } from "../../../ui/charts";
+import {
+  ArticleIcon,
+  BarcodeIcon,
+  CalendarIcon,
+  CardIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+  CodeIcon,
+  EnvelopeIcon,
+  GearIcon,
+  GridFourIcon,
+  LifebuoyIcon,
+  PencilIcon,
+  PercentIcon,
+  StarIcon,
+  StorefrontIcon,
+  TicketIcon,
+  UserIcon,
+  UsersIcon,
+  WrenchIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, eventTokens } from "./tokens";
@@ -15,27 +36,27 @@ export interface EventAnalyticsProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "overview", label: "Overview", glyph: "▥" },
-  { id: "experiences", label: "Experiences", glyph: "▦" },
-  { id: "schedule", label: "Schedule", glyph: "▤" },
-  { id: "members", label: "Members", glyph: "👥" },
-  { id: "plans", label: "Plans", glyph: "◆" },
-  { id: "codes", label: "Discount Codes", glyph: "◎" },
-  { id: "perks", label: "Perks", glyph: "★" },
-  { id: "transactions", label: "Transactions", glyph: "▭" },
-  { id: "pricing", label: "Market & Pricing", glyph: "%" },
+  { id: "overview", label: "Overview", Icon: GridFourIcon },
+  { id: "experiences", label: "Experiences", Icon: TicketIcon },
+  { id: "schedule", label: "Schedule", Icon: CalendarIcon },
+  { id: "members", label: "Members", Icon: UsersIcon },
+  { id: "plans", label: "Plans", Icon: StarIcon },
+  { id: "codes", label: "Discount Codes", Icon: BarcodeIcon },
+  { id: "perks", label: "Perks", Icon: StarIcon },
+  { id: "transactions", label: "Transactions", Icon: CardIcon },
+  { id: "pricing", label: "Market & Pricing", Icon: PercentIcon },
 ];
 
 const GROUPS = [
-  { label: "Front Desk", items: [{ id: "checkin", label: "Check-in", glyph: "▨" }, { id: "pos", label: "Point of Sale", glyph: "▣" }] },
-  { label: "Campaigns", items: [{ id: "email", label: "Email & SMS", glyph: "✉" }] },
+  { label: "Front Desk", items: [{ id: "checkin", label: "Check-in", Icon: StorefrontIcon }, { id: "pos", label: "Point of Sale", Icon: CardIcon }] },
+  { label: "Campaigns", items: [{ id: "email", label: "Email & SMS", Icon: EnvelopeIcon }] },
   {
     label: "Other",
     items: [
-      { id: "settings", label: "Settings", glyph: "⚙" },
-      { id: "team", label: "Team", glyph: "👤" },
-      { id: "integrations", label: "Integrations", glyph: "⑄" },
-      { id: "embeds", label: "Embeds", glyph: "</>" },
+      { id: "settings", label: "Settings", Icon: GearIcon },
+      { id: "team", label: "Team", Icon: UserIcon },
+      { id: "integrations", label: "Integrations", Icon: WrenchIcon },
+      { id: "embeds", label: "Embeds", Icon: CodeIcon },
     ],
   },
 ];
@@ -68,7 +89,7 @@ export function EventAnalyticsTemplate({
 
           <nav className="grid gap-0.5 px-3">
             {NAV.map((item) => (
-              <NavItem key={item.id} label={item.label} glyph={item.glyph} />
+              <NavItem key={item.id} label={item.label} glyph={<item.Icon size={15} />} />
             ))}
           </nav>
 
@@ -77,7 +98,7 @@ export function EventAnalyticsTemplate({
               <NavSection label={group.label} />
               <nav className="grid gap-0.5 px-3">
                 {group.items.map((item) => (
-                  <NavItem key={item.id} label={item.label} glyph={item.glyph} />
+                  <NavItem key={item.id} label={item.label} glyph={<item.Icon size={15} />} />
                 ))}
               </nav>
             </div>
@@ -87,7 +108,7 @@ export function EventAnalyticsTemplate({
           <nav className="grid gap-0.5 px-3 pb-5">
             <NavItem
               label="Resource Center"
-              glyph="▤"
+              glyph={<ArticleIcon size={14} />}
               trailing={
                 <span aria-hidden className="text-[0.75rem] text-[color:var(--ob-muted)]">
                   ↗
@@ -105,11 +126,9 @@ export function EventAnalyticsTemplate({
         <Main className="overflow-auto">
           <header className="flex items-center gap-3 px-6 py-4">
             <span className="flex items-center gap-2 text-[0.98rem] font-medium">
-              <span aria-hidden>‹</span> Back
+              <CaretLeftIcon size={14} /> Back
             </span>
-            <span className="ml-auto" aria-hidden>
-              ▣
-            </span>
+            <CardIcon size={14} />
             <span className="flex items-center gap-2.5 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] px-3 py-1.5">
               <AvatarSlot size={22} />
               <span className="leading-tight">
@@ -141,8 +160,8 @@ export function EventAnalyticsTemplate({
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-2.5">
-                <OutlinePill glyph="👤">Add attendee</OutlinePill>
-                <OutlinePill glyph="✎">Edit</OutlinePill>
+                <OutlinePill glyph={<UserIcon size={14} />}>Add attendee</OutlinePill>
+                <OutlinePill glyph={<PencilIcon size={14} />}>Edit</OutlinePill>
                 <OutlinePill>···</OutlinePill>
               </div>
             </section>
@@ -220,9 +239,7 @@ function Analytics() {
         <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
           <div className="flex items-center gap-3">
             <h2 className="flex-1 text-[1.12rem] font-bold">Tickets Sales</h2>
-            <span aria-hidden className="text-[color:var(--ob-muted)]">
-              ✎
-            </span>
+            <PencilIcon size={14} />
           </div>
 
           <div className="flex items-center gap-10 pt-6">
@@ -256,9 +273,7 @@ function Analytics() {
         <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
           <div className="flex items-center gap-3">
             <h2 className="flex-1 text-[1.12rem] font-bold">Retention Rate</h2>
-            <span aria-hidden className="text-[color:var(--ob-muted)]">
-              ›
-            </span>
+            <CaretRightIcon size={14} />
           </div>
 
           <div className="grid justify-items-center pt-5">
@@ -321,9 +336,7 @@ function Analytics() {
       <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
         <div className="flex items-center gap-3">
           <h2 className="flex-1 text-[1.12rem] font-bold">RSVPs</h2>
-          <span aria-hidden className="text-[color:var(--ob-muted)]">
-            ›
-          </span>
+          <CaretRightIcon size={14} />
         </div>
         <p className="flex items-center gap-2.5 pt-3">
           <span className="text-[1.6rem] font-bold tabular-nums">6</span>
@@ -387,7 +400,7 @@ function GlyphBtn({ children }: { children: ReactNode }) {
   );
 }
 
-function OutlinePill({ children, glyph }: { children: ReactNode; glyph?: string }) {
+function OutlinePill({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
   return (
     <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.9rem] font-medium">
       {glyph && (

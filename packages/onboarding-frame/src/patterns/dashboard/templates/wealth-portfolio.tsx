@@ -2,6 +2,17 @@
 
 import type { ReactNode } from "react";
 import { Sparkline } from "../../../ui/charts";
+import {
+  ArticleIcon,
+  BrowsersIcon,
+  CardIcon,
+  ChartPieIcon,
+  GlobeIcon,
+  GridFourIcon,
+  HouseIcon,
+  SparkleIcon,
+  TrendUpIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, wealthTokens } from "./tokens";
@@ -15,14 +26,14 @@ export interface WealthPortfolioProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "spending", label: "Spending", glyph: "▭" },
-  { id: "portfolio", label: "Portfolio", glyph: "◔" },
-  { id: "invest", label: "Invest", glyph: "↗" },
-  { id: "advice", label: "Advice", glyph: "◎" },
-  { id: "estate", label: "Estate Planning", glyph: "▤" },
-  { id: "equity", label: "Equity", glyph: "▥" },
-  { id: "tax", label: "Tax", glyph: "▦" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "spending", label: "Spending", Icon: CardIcon },
+  { id: "portfolio", label: "Portfolio", Icon: ChartPieIcon },
+  { id: "invest", label: "Invest", Icon: TrendUpIcon },
+  { id: "advice", label: "Advice", Icon: GlobeIcon },
+  { id: "estate", label: "Estate Planning", Icon: ArticleIcon },
+  { id: "equity", label: "Equity", Icon: BrowsersIcon },
+  { id: "tax", label: "Tax", Icon: GridFourIcon },
 ];
 
 const ACCOUNTS = [
@@ -69,7 +80,7 @@ export function WealthPortfolioTemplate({
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={14} />}
                 active={item.id === "portfolio"}
                 className="rounded-[var(--ob-radius-sm)] px-4 py-3 text-[1.12rem]"
               />
@@ -196,7 +207,7 @@ export function WealthPortfolioTemplate({
                   <span className="mt-5 flex items-center justify-center gap-2.5 rounded-full border border-[color:var(--ob-border-strong)] py-3.5 text-[0.95rem] font-semibold uppercase tracking-wide"
                     style={{ fontFamily: "var(--ob-font-display)" }}
                   >
-                    <span aria-hidden>✦</span> Ask sidekick
+                    <SparkleIcon size={14} /> Ask sidekick
                   </span>
                 </div>
               </Card>

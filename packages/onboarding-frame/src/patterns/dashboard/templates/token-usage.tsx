@@ -2,6 +2,12 @@
 
 import type { ReactNode } from "react";
 import { BarChart, LineChart } from "../../../ui/charts";
+import {
+  CalendarIcon,
+  GridFourIcon,
+  RocketIcon,
+  RobotIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { LogoSlot } from "../../../ui/placeholder";
 import { Surface, usageTokens } from "./tokens";
@@ -66,12 +72,7 @@ export function TokenUsageTemplate({ className, page = "models" }: TokenUsagePro
           </nav>
 
           <nav className="mt-auto grid gap-3 pb-5">
-            <span
-              aria-hidden
-              className="grid size-9 place-items-center rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-ctaBg,var(--ob-cta-bg))] text-[0.95rem] text-[color:var(--ob-cta-fg)]"
-            >
-              🚀
-            </span>
+            <RocketIcon size={14} />
             {["⌾", "?", "◍"].map((glyph) => (
               <span
                 key={glyph}
@@ -89,14 +90,14 @@ export function TokenUsageTemplate({ className, page = "models" }: TokenUsagePro
           <header className="flex h-16 shrink-0 items-center gap-3 border-b border-[color:var(--ob-border)] px-6">
             <h1 className="flex-1 text-[1.15rem] font-semibold">Project Analytics</h1>
             <Select>Last 7 days</Select>
-            <Select glyph="🗓">Apr 15, 2026 - Apr 21, 2026</Select>
+            <Select glyph={<CalendarIcon size={14} />}>Apr 15, 2026 - Apr 21, 2026</Select>
           </header>
 
           <div className="p-6">
             <div className="inline-flex gap-1 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] p-1">
               {[
-                { id: "overview", label: "Overview", glyph: "▦" },
-                { id: "models", label: "Models", glyph: "🤖" },
+                { id: "overview", label: "Overview", Icon: GridFourIcon },
+                { id: "models", label: "Models", Icon: RobotIcon },
               ].map((tab) => (
                 <span
                   key={tab.id}
@@ -107,7 +108,7 @@ export function TokenUsageTemplate({ className, page = "models" }: TokenUsagePro
                       : "text-[color:var(--ob-fg-soft)]",
                   )}
                 >
-                  <span aria-hidden>{tab.glyph}</span>
+                  <tab.Icon size={14} />
                   {tab.label}
                 </span>
               ))}
@@ -246,7 +247,7 @@ function TrendCard({
   );
 }
 
-function Select({ children, glyph }: { children: ReactNode; glyph?: string }) {
+function Select({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
   return (
     <span className="inline-flex items-center gap-6 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem]">
       <span className="flex items-center gap-2">

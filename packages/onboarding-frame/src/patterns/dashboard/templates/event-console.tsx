@@ -1,6 +1,17 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  ArrowClockwiseIcon,
+  BellIcon,
+  BrowsersIcon,
+  LinkChainIcon,
+  ListChecksIcon,
+  PencilIcon,
+  SearchIcon,
+  TreeIcon,
+  UserIcon,
+} from "../../../ui/icons-solid";
 import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, eventConsoleTokens } from "./tokens";
@@ -94,12 +105,8 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
 
           <span className="flex shrink-0 items-center gap-2 sm:gap-[15px]">
             <AvatarSlot size={27} />
-            <span aria-hidden className="text-[0.852rem]">
-              ⌾
-            </span>
-            <span aria-hidden className="text-[0.963rem]">
-              ☰
-            </span>
+            <BellIcon size={14} />
+            <ListChecksIcon size={14} />
           </span>
         </header>
 
@@ -111,9 +118,7 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
                 <h1 className="text-[1.63rem] font-bold tracking-[-0.01em]">Acme</h1>
 
                 <span className="flex items-center gap-[7px] pl-[12px] text-[0.8rem]">
-                  <span aria-hidden className="text-[color:var(--ob-muted)]">
-                    ⛰
-                  </span>
+                  <TreeIcon size={14} />
                   Apprentice
                   <span
                     aria-hidden
@@ -155,12 +160,7 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
               </div>
 
               <section className="relative mt-[15px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[18px]">
-                <span
-                  aria-hidden
-                  className="absolute right-[18px] top-[18px] grid size-[30px] place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[0.741rem]"
-                >
-                  ↻
-                </span>
+                <ArrowClockwiseIcon size={14} />
                 <TicketChart />
               </section>
 
@@ -205,8 +205,8 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
                     </p>
                   </div>
                   <span className="flex items-center gap-[12px] text-[color:var(--ob-fg-soft)]">
-                    <span aria-hidden>✎</span>
-                    <span aria-hidden>◉</span>
+                    <PencilIcon size={14} />
+                    <BrowsersIcon size={14} />
                   </span>
                 </div>
 
@@ -233,9 +233,7 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
               <h2 className="pb-[12px] text-[1.185rem] font-bold">Orders</h2>
 
               <span className="flex items-center gap-[9px] pb-[12px]">
-                <span aria-hidden className="text-[0.852rem] text-[color:var(--ob-muted)]">
-                  ⌕
-                </span>
+                <SearchIcon size={14} />
                 <span className="flex-1 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[12px] py-[9px] text-[0.756rem] text-[color:var(--ob-muted)]">
                   Search (Event Name, Attendee Name, Email, Order
                 </span>
@@ -250,12 +248,7 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
                     {order.avatar ? (
                       <AvatarSlot size={41} />
                     ) : (
-                      <span
-                        aria-hidden
-                        className="grid size-[41px] shrink-0 place-items-center rounded-full bg-[color:var(--ob-surface-3)] text-[0.963rem] text-[color:var(--ob-muted)]"
-                      >
-                        👤
-                      </span>
+                      <UserIcon size={14} />
                     )}
                     <div className="min-w-[0px] flex-1">
                       <p className="text-[0.852rem] font-semibold">{order.name}</p>
@@ -267,7 +260,7 @@ export function EventConsoleTemplate({ className, page = "overview" }: EventCons
                       </p>
                       {order.series && (
                         <span className="mt-[6px] inline-flex items-center gap-[4px] rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface-2)] px-[7px] py-[3px] text-[0.704rem] text-[color:var(--ob-fg-soft)]">
-                          <span aria-hidden>🔗</span> series
+                          <LinkChainIcon size={14} /> series
                         </span>
                       )}
                     </div>
