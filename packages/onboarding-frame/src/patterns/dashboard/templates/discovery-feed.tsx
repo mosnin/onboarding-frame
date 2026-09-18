@@ -56,7 +56,7 @@ export function DiscoveryFeedTemplate({
   return (
     <Surface tokens={discoveryFeedTokens}>
       <Shell className={cn(className)}>
-        <aside className="hidden w-[55px] shrink-0 flex-col items-center gap-[22px] border-r border-[color:var(--ob-border)] py-[15px] sm:flex">
+        <aside className="hidden w-[80px] shrink-0 flex-col items-center gap-[22px] border-r border-[color:var(--ob-border)] py-[15px] sm:flex">
           <Avatar name={userName} size={23} />
           <nav className="mt-auto grid gap-[18px] text-[color:var(--ob-fg-soft)]">
             {RAIL.map((name, i) => (
@@ -83,7 +83,7 @@ export function DiscoveryFeedTemplate({
         </aside>
 
         <Main>
-          <header className="flex items-center gap-[22px] px-[22px] py-[15px]">
+          <header className="flex items-center gap-[22px] px-[22px] py-[15px] xl:pl-[48px]">
             {TABS.map((tab, i) => (
               <button
                 key={tab}
@@ -92,7 +92,7 @@ export function DiscoveryFeedTemplate({
                 className={cn(
                   // Flex, so the caret sits beside the label rather than
                   // wrapping under it as an inline block.
-                  "flex items-center text-[0.754rem]",
+                  "flex items-center text-[0.965rem]",
                   i === 2
                     ? "font-bold text-[color:var(--ob-fg)]"
                     : "text-[color:var(--ob-muted)] hover:text-[color:var(--ob-fg)]",
@@ -107,7 +107,7 @@ export function DiscoveryFeedTemplate({
             </button>
           </header>
 
-          <div className="grid grid-cols-2 gap-[12px] px-[22px] pb-[31px] md:grid-cols-3 xl:grid-cols-5">
+          <div className="grid grid-cols-2 gap-[16px] px-[22px] pb-[31px] md:grid-cols-3 xl:grid-cols-5 xl:pl-[48px] xl:pr-[50px]">
             {columns.map((column, i) => (
               <div key={i} className="grid content-start gap-[22px]">
                 {column.map((item) => (

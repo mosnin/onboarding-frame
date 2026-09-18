@@ -435,7 +435,7 @@ YOUR value as a flat coloured line (green when good, orange when bad) pinned at 
 bottom/edge; y labels top-left and bottom-left (8.0% / -4.0%); x "January 2024" left and
 "December 2024" right in grey.
 
-| 36 | 092 | Contra analytics | freelance-analytics | DONE |
+| 36 | 092 | Contra analytics | freelance-analytics | REMEASURED |
 | 37 | 093 | Clerk dashboard | auth-console | REMEASURED |
 | 38 | 094 | Better Stack uptime | uptime-monitor (dark) | REMEASURED |
 | 39 | 095 | Cloudflare zone overview | zone-overview | REMEASURED |
@@ -558,7 +558,7 @@ the wordmark and "© 2022 Acme Inc." + Manage cookies | Legal | Privacy.
 | 44 | 100 | Mixpanel home | product-analytics | REMEASURED |
 | 45 | 101 | Whop creator | creator-revenue | REMEASURED |
 | 46 | 102 | Mercury transactions | banking-ledger | REMEASURED |
-| 47 | 103 | Posh events | event-console (dark) | DONE |
+| 47 | 103 | Posh events | event-console (dark) | REMEASURED |
 | 48 | 104-108 | Twenty CRM | crm-workspace | DONE |
 
 ## 41 Stripe overview (097)

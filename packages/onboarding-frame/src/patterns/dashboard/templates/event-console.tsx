@@ -14,7 +14,6 @@ import {
   UserIcon,
 } from "../../../ui/icons-solid";
 import { Avatar, Thumb } from "../../../ui/avatar";
-import { BrandMark } from "../../../ui/brand";
 import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
 import { Surface, eventConsoleTokens } from "./tokens";
@@ -118,11 +117,11 @@ export function EventConsoleTemplate({
           </span>
         </header>
 
-        <Main className="overflow-auto px-[23px] pb-[28px]">
+        <Main className="overflow-auto px-[23px] pb-[28px] xl:px-[116px]">
           <div className="grid gap-[23px] xl:grid-cols-[minmax(0,1fr)_420px]">
             <div>
               <div className="flex flex-wrap items-center gap-[14px]">
-                <BrandMark brand="Acme" size={50} label="Acme" />
+                <Avatar name={brandName} size={56} />
                 <h1 className="text-[1.529rem] font-bold tracking-[-0.01em]">Acme</h1>
 
                 <span className="flex items-center gap-[7px] pl-[11px] text-[0.75rem]">
@@ -136,7 +135,7 @@ export function EventConsoleTemplate({
                   </span>
                 </span>
 
-                <span className="ml-auto flex min-w-[222px] flex-col gap-[6px]">
+                <span className="ml-[11px] flex min-w-[222px] flex-1 flex-col gap-[6px]">
                   <span className="text-right text-[0.75rem] text-[color:var(--ob-fg-soft)]">
                     $0 / $100,000
                   </span>

@@ -65,7 +65,7 @@ export function FreelanceAnalyticsTemplate({
   return (
     <Surface tokens={freelanceTokens} className={className}>
       <Shell>
-        <Sidebar width={76} bg="var(--ob-surface)" className="items-center">
+        <Sidebar width={64} bg="var(--ob-surface)" className="items-center">
           <div className="pb-[22px] pt-[14px]">
             <Avatar name={brandName} size={27} rounded={8} />
           </div>
@@ -100,7 +100,7 @@ export function FreelanceAnalyticsTemplate({
         </Sidebar>
 
         <Main className="relative overflow-auto">
-          <header className="flex h-[80px] shrink-0 items-center gap-[11px] border-b border-[color:var(--ob-border)] px-[29px]">
+          <header className="flex h-[80px] shrink-0 items-center gap-[11px] border-b border-[color:var(--ob-border)] px-[29px] xl:px-[32px]">
             <h1 className="flex-1 text-[1.449rem] font-bold">Analytics</h1>
 
             {/* Gradient outline marks the upgrade path without a fill. */}
@@ -121,7 +121,7 @@ export function FreelanceAnalyticsTemplate({
             <BellIcon size={13} />
           </header>
 
-          <div className="px-[29px] py-[22px]">
+          <div className="px-[29px] py-[22px] xl:px-[172px]">
             <span className="inline-flex items-center gap-[29px] rounded-full border border-[color:var(--ob-border-strong)] px-[18px] py-[9px] text-[0.951rem] font-medium">
               Last 30 days
               <CaretDownIcon size={13} />
