@@ -67,7 +67,7 @@ Two columns: "Up Next · 2 posts scheduled" -> post cards (avatar+platform badge
 card (avatar+badge, @user0, body).
 "Templates" -> 4 cards each with an emoji/icon, bold 2-line title, 3-line truncated body.
 
-| 17 | 073 | Fey | market-terminal (dark) | DONE |
+| 17 | 073 | Fey | market-terminal (dark) | REMEASURED |
 | 18 | 074 | Sweatpals | event-analytics (dark) | REMEASURED |
 | 19 | 075 | Klaviyo, Overview dashboard | guides-assistant `dashboards` page | DONE |
 | 20 | 076 | HoneyBook, Finance | setup-checklist `finance` page | DONE |
@@ -118,7 +118,7 @@ essentially empty (one dot of fill).
 | 21 | 077 | Reddit mod tools | community-traffic | REMEASURED |
 | 22 | 078 | Asana goal detail | goal-tracker | DONE |
 | 23 | 079 | Supabase reports | platform-reports (dark) | REMEASURED |
-| 24 | 080 | Vercel analytics | deploy-analytics | DONE |
+| 24 | 080 | Vercel analytics | deploy-analytics | REMEASURED |
 | 25 | 081 | StackAI project analytics | token-usage | REMEASURED |
 
 ## 21 Reddit (077)
@@ -333,7 +333,7 @@ Price per share / Investment amount / Transfer amount, each row ending in an out
 
 | 31 | 087 | Coinbase wallet | wallet-home (dark) | DONE |
 | 32 | 088 | Snowflake cost mgmt | warehouse-cost | DONE |
-| 33 | 089 | Origin portfolio | wealth-portfolio | DONE |
+| 33 | 089 | Origin portfolio | wealth-portfolio | REMEASURED |
 | 34 | 090 | Stripe benchmarking | billing-benchmarks | DONE |
 | 35 | 091 | Mailchimp audience dashboard | audience-analytics `dashboard` page | DONE |
 
@@ -555,7 +555,7 @@ the wordmark and "© 2022 Acme Inc." + Manage cookies | Legal | Privacy.
 | 41 | 097 | Stripe, Your overview | billing-benchmarks `overview` page | DONE |
 | 42 | 098 | Deel HR analytics | people-analytics | DONE |
 | 43 | 099 | Customer.io campaigns | campaign-list | DONE |
-| 44 | 100 | Mixpanel home | product-analytics | DONE |
+| 44 | 100 | Mixpanel home | product-analytics | REMEASURED |
 | 45 | 101 | Whop creator | creator-revenue | REMEASURED |
 | 46 | 102 | Mercury transactions | banking-ledger | DONE |
 | 47 | 103 | Posh events | event-console (dark) | DONE |

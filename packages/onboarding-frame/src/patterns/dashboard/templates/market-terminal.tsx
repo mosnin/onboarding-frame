@@ -5,11 +5,15 @@ import type { ReactNode } from "react";
 import { LineChart } from "../../../ui/charts";
 import {
   ArticleIcon,
+  BookOpenIcon,
+  BookmarkIcon,
   BrowsersIcon,
+  ChartLineIcon,
   GlobeIcon,
   GridFourIcon,
+  HouseIcon,
+  NutIcon,
   SearchIcon,
-  ChartLineIcon,
 } from "../../../ui/icons-solid";
 import { BrandMark } from "../../../ui/brand";
 import { Avatar } from "../../../ui/avatar";
@@ -24,7 +28,16 @@ export interface MarketTerminalProps extends TemplateProps {
   page?: TerminalPage;
 }
 
-const RAIL = ["⌂", "◎", "▤", "🔖", "◉"];
+/* Read off a 5x crop of the reference: home, a magnifier over a trend line
+ * (active, with a blue bar at the rail's edge), an open book, a bookmark and
+ * a hex nut. */
+const RAIL = [
+  { id: "home", Icon: HouseIcon },
+  { id: "screener", Icon: SearchIcon },
+  { id: "reading", Icon: BookOpenIcon },
+  { id: "saved", Icon: BookmarkIcon },
+  { id: "settings", Icon: NutIcon },
+];
 
 const LARGE = [
   { id: "hlxb", ticker: "HLXB", who: "Chen Bihua", pct: "-160%", value: "+$24,000,000", side: "P" },
@@ -123,50 +136,48 @@ export function MarketTerminalTemplate({
   return (
     <Surface tokens={terminalTokens} className={className}>
       <Shell>
-        <Sidebar width={72} bg="var(--ob-bg)" className="items-center border-r-0">
-          <div className="pb-8 pt-5">
+        <Sidebar width={52} bg="var(--ob-bg)" className="items-center border-r-0">
+          <div className="pt-[31px]">
             <Avatar name={brandName} size={26} rounded={7} />
           </div>
-          <nav className="grid gap-5">
-            {RAIL.map((glyph, index) => (
-              <span key={index} className="relative grid place-items-center">
+          <nav className="my-auto grid gap-[32px]">
+            {RAIL.map((item, index) => (
+              <span key={item.id} className="relative grid place-items-center">
                 {index === 1 && (
-                  <span className="absolute -left-4 h-6 w-[2px] rounded-full bg-[color:var(--ob-brand)]" />
+                  <span className="absolute -left-[12px] h-[19px] w-[2px] rounded-full bg-[color:var(--ob-brand)]" />
                 )}
                 <span
-                  aria-hidden
                   className={cn(
-                    "text-[1.05rem]",
                     index === 1
                       ? "text-[color:var(--ob-brand)]"
                       : "text-[color:var(--ob-muted)]",
                   )}
                 >
-                  {glyph}
+                  <item.Icon size={14} />
                 </span>
               </span>
             ))}
           </nav>
         </Sidebar>
 
-        <Main className="overflow-auto px-9 py-7">
-          <header className="flex items-start gap-4">
+        <Main className="overflow-auto px-[105px] py-[42px]">
+          <header className="flex items-start gap-[12px]">
             <div className="flex-1">
-              <h1 className="text-[2rem] font-bold tracking-[-0.02em]">Analysis</h1>
-              <p className="pt-0.5 text-[1.05rem] text-[color:var(--ob-muted)]">
+              <h1 className="text-[1.543rem] font-bold tracking-[-0.02em]">Analysis</h1>
+              <p className="pt-[2px] text-[0.81rem] text-[color:var(--ob-muted)]">
                 Thursday, February 15
               </p>
             </div>
-            <div className="flex items-center gap-2.5 pt-2">
-              <Pill glyph={<GlobeIcon size={14} />}>For you</Pill>
-              <Pill glyph={<ArticleIcon size={14} />}>Screener</Pill>
-              <SearchIcon size={14} />
+            <div className="flex items-center gap-[8px] pt-[6px]">
+              <Pill glyph={<GlobeIcon size={11} />}>For you</Pill>
+              <Pill glyph={<ArticleIcon size={11} />}>Screener</Pill>
+              <SearchIcon size={11} />
             </div>
           </header>
 
-          <div className="mt-8 border-t border-[color:var(--ob-border)]" />
+          <div className="mt-[25px] border-t border-[color:var(--ob-border)]" />
 
-          <nav className="flex gap-9 pt-4">
+          <nav className="flex gap-[28px] pt-[12px]">
             {[
               { id: "markets", label: "Markets", Icon: ChartLineIcon },
               { id: "insider", label: "Insider", Icon: BrowsersIcon },
@@ -175,16 +186,16 @@ export function MarketTerminalTemplate({
               <span
                 key={tab.id}
                 className={cn(
-                  "flex items-center gap-2 pb-2 text-[0.98rem]",
+                  "flex items-center gap-[6px] pb-[6px] text-[0.756rem]",
                   tab.id === page
-                    ? "border-t-2 border-[color:var(--ob-brand)] -mt-4 pt-4 font-medium text-[color:var(--ob-fg)]"
+                    ? "border-t-2 border-[color:var(--ob-brand)] -mt-[12px] pt-[12px] font-medium text-[color:var(--ob-fg)]"
                     : "text-[color:var(--ob-muted)]",
                 )}
               >
-                <tab.Icon size={14} />
+                <tab.Icon size={11} />
                 {tab.label}
                 {tab.soon && (
-                  <span className="rounded-full bg-[color:var(--ob-surface-2)] px-2 py-0.5 text-[0.7rem] text-[color:var(--ob-muted)]">
+                  <span className="rounded-full bg-[color:var(--ob-surface-2)] px-[6px] py-[2px] text-[0.54rem] text-[color:var(--ob-muted)]">
                     Coming soon
                   </span>
                 )}
@@ -192,33 +203,33 @@ export function MarketTerminalTemplate({
             ))}
           </nav>
 
-          <div className="grid gap-5 pt-6 lg:grid-cols-2">
-            <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
-              <div className="flex items-center gap-6">
-                <h2 className="flex-1 text-[1.15rem] font-semibold">
+          <div className="grid gap-[15px] pt-[19px] lg:grid-cols-2">
+            <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[19px]">
+              <div className="flex items-center gap-[19px]">
+                <h2 className="flex-1 text-[0.887rem] font-semibold">
                   Large transactions
                 </h2>
-                <span className="text-[0.92rem] font-semibold">Officer</span>
-                <span className="text-[0.92rem] text-[color:var(--ob-muted)]">
+                <span className="text-[0.71rem] font-semibold">Officer</span>
+                <span className="text-[0.71rem] text-[color:var(--ob-muted)]">
                   Director
                 </span>
               </div>
 
-              <ul className="pt-5">
+              <ul className="pt-[15px]">
                 {LARGE.map((row) => (
                   <li
                     key={row.id}
-                    className="flex items-center gap-3 border-b border-[color:var(--ob-border)] py-2.5 last:border-b-0"
+                    className="flex items-center gap-[9px] border-b border-[color:var(--ob-border)] py-[8px] last:border-b-0"
                   >
-                    <BrandMark brand={row.ticker} size={22} />
-                    <span className="w-14 shrink-0 font-semibold">{row.ticker}</span>
-                    <span className="min-w-0 flex-1 truncate text-[0.95rem] text-[color:var(--ob-fg-soft)]">
+                    <BrandMark brand={row.ticker} size={17} />
+                    <span className="w-[43px] shrink-0 font-semibold">{row.ticker}</span>
+                    <span className="min-w-[0px] flex-1 truncate text-[0.733rem] text-[color:var(--ob-fg-soft)]">
                       {row.who}
                     </span>
-                    <span className="shrink-0 text-[0.92rem] tabular-nums text-[color:var(--ob-danger)]">
+                    <span className="shrink-0 text-[0.71rem] tabular-nums text-[color:var(--ob-danger)]">
                       {row.pct}
                     </span>
-                    <span className="w-[8.5rem] shrink-0 text-right text-[0.95rem] tabular-nums">
+                    <span className="w-[6.559rem] shrink-0 text-right text-[0.733rem] tabular-nums">
                       {row.value}
                     </span>
                     <SideBadge side={row.side} />
@@ -227,16 +238,16 @@ export function MarketTerminalTemplate({
               </ul>
             </section>
 
-            <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
-              <div className="flex items-center gap-5">
-                <h2 className="flex-1 text-[1.15rem] font-semibold">Daily filings</h2>
+            <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[19px]">
+              <div className="flex items-center gap-[15px]">
+                <h2 className="flex-1 text-[0.887rem] font-semibold">Daily filings</h2>
                 <Legend color="#f4f4f5">Purchases</Legend>
                 <Legend color="#f2555a">Sales</Legend>
               </div>
 
               {/* Dotted plot grid, as in the reference — it reads as a terminal. */}
               <div
-                className="mt-5 rounded-[var(--ob-radius-sm)]"
+                className="mt-[15px] rounded-[var(--ob-radius-sm)]"
                 style={{
                   backgroundImage:
                     "radial-gradient(circle at center, rgba(255,255,255,0.07) 1px, transparent 1px)",
@@ -244,7 +255,7 @@ export function MarketTerminalTemplate({
                 }}
               >
                 <LineChart
-                  height={195}
+                  height={150}
                   gridLines={0}
                   series={[
                     { id: "sales", points: SALES, color: "#f2555a" },
@@ -253,59 +264,59 @@ export function MarketTerminalTemplate({
                 />
               </div>
 
-              <div className="flex items-center gap-6 pt-4 text-[0.92rem]">
+              <div className="flex items-center gap-[19px] pt-[12px] text-[0.71rem]">
                 {["1M", "3M", "6M", "YTD", "All"].map((range) => (
                   <span
                     key={range}
                     className={cn(
                       range === "6M"
-                        ? "border-t-2 border-[color:var(--ob-brand)] pt-1 font-medium"
-                        : "pt-1 text-[color:var(--ob-muted)]",
+                        ? "border-t-2 border-[color:var(--ob-brand)] pt-[3px] font-medium"
+                        : "pt-[3px] text-[color:var(--ob-muted)]",
                     )}
                   >
                     {range}
                   </span>
                 ))}
-                <span className="ml-auto text-[0.88rem] text-[color:var(--ob-muted)]">
+                <span className="ml-auto text-[0.679rem] text-[color:var(--ob-muted)]">
                   Chart updated daily
                 </span>
               </div>
             </section>
           </div>
 
-          <h2 className="pb-4 pt-9 text-[1.35rem] font-semibold text-[color:var(--ob-fg-soft)]">
+          <h2 className="pb-[12px] pt-[28px] text-[1.042rem] font-semibold text-[color:var(--ob-fg-soft)]">
             Latest insider purchases
           </h2>
 
-          <div className="min-w-0 overflow-x-auto">
-            <table className="w-full min-w-[1080px] border-collapse text-[0.92rem]">
+          <div className="min-w-[0px] overflow-x-auto">
+            <table className="w-full min-w-[833px] border-collapse text-[0.71rem]">
               <thead>
-                <tr className="text-[0.85rem] text-[color:var(--ob-muted)]">
-                  <th className="border-b border-[color:var(--ob-border)] px-4 py-3 text-left font-normal">
+                <tr className="text-[0.656rem] text-[color:var(--ob-muted)]">
+                  <th className="border-b border-[color:var(--ob-border)] px-[12px] py-[9px] text-left font-normal">
                     Company name
                   </th>
-                  <th className="border-b border-[color:var(--ob-border)] px-4 py-3 text-left font-normal">
+                  <th className="border-b border-[color:var(--ob-border)] px-[12px] py-[9px] text-left font-normal">
                     Trade type
                   </th>
-                  <th className="border-b border-[color:var(--ob-border)] px-4 py-3 text-left font-normal">
+                  <th className="border-b border-[color:var(--ob-border)] px-[12px] py-[9px] text-left font-normal">
                     Insider
                   </th>
-                  <th className="border-b border-[color:var(--ob-border)] px-4 py-3 text-right font-normal">
+                  <th className="border-b border-[color:var(--ob-border)] px-[12px] py-[9px] text-right font-normal">
                     Date
                   </th>
-                  <th className="border-b border-[color:var(--ob-border)] px-4 py-3 text-right font-normal">
+                  <th className="border-b border-[color:var(--ob-border)] px-[12px] py-[9px] text-right font-normal">
                     Price
                   </th>
-                  <th className="border-b border-[color:var(--ob-border)] px-4 py-3 text-right font-normal">
+                  <th className="border-b border-[color:var(--ob-border)] px-[12px] py-[9px] text-right font-normal">
                     Owned
                   </th>
-                  <th className="border-b border-[color:var(--ob-border)] px-4 py-3 text-right font-normal">
+                  <th className="border-b border-[color:var(--ob-border)] px-[12px] py-[9px] text-right font-normal">
                     Change
                   </th>
-                  <th className="border-b border-[color:var(--ob-border)] px-4 py-3 text-right font-normal">
+                  <th className="border-b border-[color:var(--ob-border)] px-[12px] py-[9px] text-right font-normal">
                     Total value
                   </th>
-                  <th className="border-b border-[color:var(--ob-border)] px-4 py-3 text-right font-normal">
+                  <th className="border-b border-[color:var(--ob-border)] px-[12px] py-[9px] text-right font-normal">
                     &lt;/&gt;
                   </th>
                 </tr>
@@ -320,39 +331,39 @@ export function MarketTerminalTemplate({
                         : "",
                     )}
                   >
-                    <td className="border-b border-[color:var(--ob-border)] px-4 py-3.5">
-                      <span className="flex items-center gap-2.5">
-                        <BrandMark brand={row.ticker} size={22} />
+                    <td className="border-b border-[color:var(--ob-border)] px-[12px] py-[11px]">
+                      <span className="flex items-center gap-[8px]">
+                        <BrandMark brand={row.ticker} size={17} />
                         <span className="font-semibold">{row.ticker}</span>
                         <span className="truncate text-[color:var(--ob-muted)]">
                           {row.name}
                         </span>
                       </span>
                     </td>
-                    <td className="border-b border-[color:var(--ob-border)] px-4 py-3.5">
-                      <span className="rounded-[6px] bg-[color-mix(in_oklab,#4ade80_16%,transparent)] px-2.5 py-1 text-[0.82rem] text-[#7ae0a5]">
+                    <td className="border-b border-[color:var(--ob-border)] px-[12px] py-[11px]">
+                      <span className="rounded-[5px] bg-[color-mix(in_oklab,#4ade80_16%,transparent)] px-[8px] py-[3px] text-[0.633rem] text-[#7ae0a5]">
                         Purchase
                       </span>
                     </td>
-                    <td className="border-b border-[color:var(--ob-border)] px-4 py-3.5 font-medium">
+                    <td className="border-b border-[color:var(--ob-border)] px-[12px] py-[11px] font-medium">
                       {row.insider}
                     </td>
-                    <td className="border-b border-[color:var(--ob-border)] px-4 py-3.5 text-right tabular-nums text-[color:var(--ob-fg-soft)]">
+                    <td className="border-b border-[color:var(--ob-border)] px-[12px] py-[11px] text-right tabular-nums text-[color:var(--ob-fg-soft)]">
                       {row.date}
                     </td>
-                    <td className="border-b border-[color:var(--ob-border)] px-4 py-3.5 text-right tabular-nums">
+                    <td className="border-b border-[color:var(--ob-border)] px-[12px] py-[11px] text-right tabular-nums">
                       {row.price}
                     </td>
-                    <td className="border-b border-[color:var(--ob-border)] px-4 py-3.5 text-right tabular-nums">
+                    <td className="border-b border-[color:var(--ob-border)] px-[12px] py-[11px] text-right tabular-nums">
                       {row.owned}
                     </td>
-                    <td className="border-b border-[color:var(--ob-border)] px-4 py-3.5 text-right tabular-nums text-[color:var(--ob-fg-soft)]">
+                    <td className="border-b border-[color:var(--ob-border)] px-[12px] py-[11px] text-right tabular-nums text-[color:var(--ob-fg-soft)]">
                       {row.change}
                     </td>
-                    <td className="border-b border-[color:var(--ob-border)] px-4 py-3.5 text-right font-semibold tabular-nums">
+                    <td className="border-b border-[color:var(--ob-border)] px-[12px] py-[11px] text-right font-semibold tabular-nums">
                       {row.total}
                     </td>
-                    <td className="border-b border-[color:var(--ob-border)] px-4 py-3.5 text-right">
+                    <td className="border-b border-[color:var(--ob-border)] px-[12px] py-[11px] text-right">
                       <SideBadge side="P" />
                     </td>
                   </tr>
@@ -368,7 +379,7 @@ export function MarketTerminalTemplate({
 
 function Pill({ children, glyph }: { children: string; glyph?: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--ob-border-strong)] bg-[color:var(--ob-surface)] px-4 py-2 text-[0.92rem] font-medium">
+    <span className="inline-flex items-center gap-[6px] rounded-full border border-[color:var(--ob-border-strong)] bg-[color:var(--ob-surface)] px-[12px] py-[6px] text-[0.71rem] font-medium">
       <span aria-hidden className="text-[color:var(--ob-muted)]">
         {glyph}
       </span>
@@ -379,8 +390,8 @@ function Pill({ children, glyph }: { children: string; glyph?: ReactNode }) {
 
 function Legend({ children, color }: { children: string; color: string }) {
   return (
-    <span className="flex items-center gap-2 text-[0.92rem] text-[color:var(--ob-fg-soft)]">
-      <span aria-hidden className="size-2 rounded-full" style={{ background: color }} />
+    <span className="flex items-center gap-[6px] text-[0.71rem] text-[color:var(--ob-fg-soft)]">
+      <span aria-hidden className="size-[6px] rounded-full" style={{ background: color }} />
       {children}
     </span>
   );
@@ -391,7 +402,7 @@ function SideBadge({ side }: { side: string }) {
   return (
     <span
       className={cn(
-        "grid size-[18px] shrink-0 place-items-center rounded-full text-[0.65rem] font-bold",
+        "grid size-[14px] shrink-0 place-items-center rounded-full text-[0.502rem] font-bold",
         buy
           ? "bg-[color-mix(in_oklab,#4ade80_22%,transparent)] text-[#7ae0a5]"
           : "bg-[color-mix(in_oklab,#f2555a_20%,transparent)] text-[#ff8b8f]",

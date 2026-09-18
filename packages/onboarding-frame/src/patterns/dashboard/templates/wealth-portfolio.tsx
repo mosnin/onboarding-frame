@@ -3,15 +3,22 @@
 import type { ReactNode } from "react";
 import { Sparkline } from "../../../ui/charts";
 import {
+  ArrowUpRightIcon,
   ArticleIcon,
+  BellIcon,
   BrowsersIcon,
   CardIcon,
+  ChartLineUpIcon,
   ChartPieIcon,
+  GiftIcon,
   GlobeIcon,
   GridFourIcon,
   HouseIcon,
+  PlusIcon,
+  QuestionIcon,
   SparkleIcon,
   TrendUpIcon,
+  WavesIcon,
 } from "../../../ui/icons-solid";
 import { BrandMark } from "../../../ui/brand";
 import { Avatar, Thumb } from "../../../ui/avatar";
@@ -75,46 +82,44 @@ export function WealthPortfolioTemplate({
   return (
     <Surface tokens={wealthTokens} className={className}>
       <Shell>
-        <Sidebar width={358} bg="var(--ob-bg)" className="border-r-0">
-          <div className="px-7 pb-7 pt-6">
-            <Wordmark name={brandName} size={22} mark={30} radius={8} />
+        <Sidebar width={270} bg="var(--ob-bg)" className="border-r-0">
+          <div className="px-[21px] pb-[21px] pt-[18px]">
+            <Wordmark name={brandName} size={17} mark={30} radius={6} />
           </div>
-          <nav className="grid gap-1 px-4">
+          <nav className="grid gap-[3px] px-[12px]">
             {NAV.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={<item.Icon size={14} />}
+                glyph={<item.Icon size={11} />}
                 active={item.id === "portfolio"}
-                className="rounded-[var(--ob-radius-sm)] px-4 py-3 text-[1.12rem]"
+                className="rounded-[var(--ob-radius-sm)] px-[12px] py-[9px] text-[0.845rem]"
               />
             ))}
           </nav>
         </Sidebar>
 
-        <Main className="overflow-auto px-8 py-6">
-          <header className="flex flex-wrap items-center gap-3">
-            <h1 className="flex-1 text-[2rem] font-bold tracking-[-0.01em]">Portfolio</h1>
-            <span className="flex items-center gap-2 rounded-full bg-[color:var(--ob-cta-bg)] px-5 py-2.5 text-[1rem] font-semibold text-[color:var(--ob-cta-fg)]">
-              <span aria-hidden>🎁</span> Get $25
+        <Main className="overflow-auto px-[24px] py-[18px]">
+          <header className="flex flex-wrap items-center gap-[9px]">
+            <h1 className="flex-1 text-[1.508rem] font-bold tracking-[-0.01em]">Portfolio</h1>
+            <span className="flex items-center gap-[6px] rounded-full bg-[color:var(--ob-cta-bg)] px-[15px] py-[8px] text-[0.754rem] font-semibold text-[color:var(--ob-cta-fg)]">
+              <GiftIcon size={12} /> Get $25
             </span>
             <span
-              className="flex items-center gap-2 rounded-full border border-[color:var(--ob-border-strong)] px-5 py-2.5 text-[0.95rem] font-medium uppercase tracking-wide"
+              className="flex items-center gap-[6px] rounded-full border border-[color:var(--ob-border-strong)] px-[15px] py-[8px] text-[0.716rem] font-medium uppercase tracking-wide"
               style={{ fontFamily: "var(--ob-font-display)" }}
             >
-              <span aria-hidden>+</span> Account
+              <PlusIcon size={11} /> Account
             </span>
-            <span aria-hidden className="px-1 text-[1.15rem]">
-              ?
+            <QuestionIcon size={14} className="mx-[3px]" />
+            <span className="relative">
+              <BellIcon size={14} />
+              <span className="absolute -right-[2px] -top-[2px] size-[6px] rounded-full bg-[#e5484d]" />
             </span>
-            <span className="relative" aria-hidden>
-              ⌾
-              <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-[#e5484d]" />
-            </span>
-            <Avatar name={userName} size={38} />
+            <Avatar name={userName} size={29} />
           </header>
 
-          <nav className="flex gap-2 pt-5">
+          <nav className="flex gap-[6px] pt-[15px]">
             {[
               { id: "overview", label: "Overview" },
               { id: "holdings", label: "Holdings" },
@@ -122,7 +127,7 @@ export function WealthPortfolioTemplate({
               <span
                 key={tab.id}
                 className={cn(
-                  "rounded-full px-5 py-2.5 text-[1.05rem]",
+                  "rounded-full px-[15px] py-[8px] text-[0.792rem]",
                   tab.id === page
                     ? "bg-[color:var(--ob-surface-3)] font-semibold"
                     : "text-[color:var(--ob-fg-soft)]",
@@ -133,40 +138,43 @@ export function WealthPortfolioTemplate({
             ))}
           </nav>
 
-          <div className="grid gap-5 pt-5 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,1fr)]">
-            <div className="grid content-start gap-5">
+          <div className="grid gap-[15px] pt-[15px] lg:grid-cols-[minmax(0,0.45fr)_minmax(0,1fr)]">
+            <div className="grid content-start gap-[15px]">
               <Card>
-                <div className="flex items-center gap-3 pb-4">
+                <div className="flex items-center gap-[9px] pb-[12px]">
                   <MonoLabel className="flex-1">Accounts</MonoLabel>
                   <span
-                    className="rounded-full border border-[color:var(--ob-border-strong)] px-5 py-2 text-[0.9rem] font-medium uppercase tracking-wide"
+                    className="rounded-full border border-[color:var(--ob-border-strong)] px-[15px] py-[6px] text-[0.679rem] font-medium uppercase tracking-wide"
                     style={{ fontFamily: "var(--ob-font-display)" }}
                   >
                     Add
                   </span>
                 </div>
 
-                <div className="border-t border-[color:var(--ob-border)] pt-4">
-                  <p className="pb-3 text-[1.1rem]">Investments</p>
-                  <ul className="grid gap-4">
+                <div className="border-t border-[color:var(--ob-border)] pt-[12px]">
+                  <p className="pb-[9px] text-[0.83rem]">Investments</p>
+                  <ul className="grid gap-[12px]">
                     {ACCOUNTS.map((account) => (
-                      <li key={account.id} className="flex items-center gap-3.5">
-                        <BrandMark brand={account.name} size={44} />
-                        <span className="min-w-0 flex-1">
-                          <span className="block text-[1.1rem] font-semibold">
+                      <li key={account.id} className="flex items-center gap-[11px]">
+                        <BrandMark brand={account.name} size={33} />
+                        <span className="min-w-[0px] flex-1">
+                          <span className="block text-[0.83rem] font-semibold">
                             {account.name}
                           </span>
-                          <span className="block text-[0.95rem] text-[color:var(--ob-muted)]">
+                          <span className="block text-[0.716rem] text-[color:var(--ob-muted)]">
                             • {account.when}
                           </span>
                         </span>
                         <span className="text-right">
-                          <span className="block text-[1.1rem] font-semibold tabular-nums">
+                          <span className="block text-[0.83rem] font-semibold tabular-nums">
                             {account.value}
                           </span>
                           {account.change && (
-                            <span className="block text-[0.95rem] tabular-nums text-[color:var(--ob-success)]">
-                              {account.change} ↗
+                            <span className="block text-[0.716rem] tabular-nums text-[color:var(--ob-success)]">
+                              <span className="inline-flex items-center gap-[2px]">
+                                {account.change}
+                                <ArrowUpRightIcon size={8} weight="bold" />
+                              </span>
                             </span>
                           )}
                         </span>
@@ -176,29 +184,29 @@ export function WealthPortfolioTemplate({
                 </div>
               </Card>
 
-              <section className="rounded-[var(--ob-radius-lg)] bg-[#dfe9c2] p-7">
-                <h2 className="text-[1.5rem] font-bold tracking-[-0.01em]">
+              <section className="rounded-[var(--ob-radius-lg)] bg-[#dfe9c2] p-[21px]">
+                <h2 className="text-[1.131rem] font-bold tracking-[-0.01em]">
                   High interest is in your interest
                 </h2>
-                <p className="max-w-[36ch] pt-3 text-[1.08rem] leading-relaxed">
+                <p className="max-w-[36ch] pt-[9px] text-[0.814rem] leading-relaxed">
                   Earn 4.08% APY on your cash savings, with no fees or minimums.
                 </p>
-                <div className="flex items-center gap-6 pt-6">
+                <div className="flex items-center gap-[18px] pt-[18px]">
                   <span
-                    className="rounded-full bg-[color:var(--ob-cta-bg)] px-6 py-3.5 text-[0.95rem] font-semibold uppercase tracking-wide text-[color:var(--ob-cta-fg)]"
+                    className="rounded-full bg-[color:var(--ob-cta-bg)] px-[18px] py-[11px] text-[0.716rem] font-semibold uppercase tracking-wide text-[color:var(--ob-cta-fg)]"
                     style={{ fontFamily: "var(--ob-font-display)" }}
                   >
                     Start saving
                   </span>
                   <span
-                    className="text-[0.95rem] font-semibold uppercase tracking-wide underline"
+                    className="text-[0.716rem] font-semibold uppercase tracking-wide underline"
                     style={{ fontFamily: "var(--ob-font-display)" }}
                   >
                     Hide
                   </span>
                   <span className="ml-auto">
-                    <span className="block h-[56px] w-[72px]">
-                      <Thumb seed="savings-card" radius={10} alt="Savings" />
+                    <span className="block h-[42px] w-[54px]">
+                      <Thumb seed="savings-card" radius={8} alt="Savings" />
                     </span>
                   </span>
                 </div>
@@ -206,14 +214,14 @@ export function WealthPortfolioTemplate({
 
               <Card>
                 <MonoLabel>Question of the day</MonoLabel>
-                <div className="border-t border-[color:var(--ob-border)] pt-5">
-                  <h2 className="text-[1.5rem] font-bold leading-snug tracking-[-0.01em]">
+                <div className="border-t border-[color:var(--ob-border)] pt-[15px]">
+                  <h2 className="text-[1.131rem] font-bold leading-snug tracking-[-0.01em]">
                     How did my investments perform over the last 3 months?
                   </h2>
-                  <span className="mt-5 flex items-center justify-center gap-2.5 rounded-full border border-[color:var(--ob-border-strong)] py-3.5 text-[0.95rem] font-semibold uppercase tracking-wide"
+                  <span className="mt-[15px] flex items-center justify-center gap-[8px] rounded-full border border-[color:var(--ob-border-strong)] py-[11px] text-[0.716rem] font-semibold uppercase tracking-wide"
                     style={{ fontFamily: "var(--ob-font-display)" }}
                   >
-                    <SparkleIcon size={14} /> Ask sidekick
+                    <SparkleIcon size={11} /> Ask sidekick
                   </span>
                 </div>
               </Card>
@@ -223,38 +231,38 @@ export function WealthPortfolioTemplate({
               </Card>
             </div>
 
-            <div className="grid content-start gap-5">
+            <div className="grid content-start gap-[15px]">
               <Card>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-[9px]">
                   <MonoLabel className="flex-1">Portfolio</MonoLabel>
                   <span className="inline-flex overflow-hidden rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)]">
-                    <span className="bg-[color:var(--ob-surface-2)] px-3 py-2 text-[0.9rem]">
-                      📈
+                    <span className="grid place-items-center bg-[color:var(--ob-surface-2)] px-[9px] py-[6px]">
+                      <ChartLineUpIcon size={11} />
                     </span>
-                    <span className="border-l border-[color:var(--ob-border)] px-3 py-2 text-[0.9rem] text-[color:var(--ob-muted)]">
-                      ◠
+                    <span className="grid place-items-center border-l border-[color:var(--ob-border)] px-[9px] py-[6px] text-[color:var(--ob-muted)]">
+                      <WavesIcon size={11} />
                     </span>
                   </span>
                 </div>
 
-                <p className="flex items-center gap-1.5 pt-5 text-[1.05rem] text-[color:var(--ob-fg-soft)]">
+                <p className="flex items-center gap-[5px] pt-[15px] text-[0.792rem] text-[color:var(--ob-fg-soft)]">
                   Total balance <InfoDot />
                 </p>
-                <p className="pt-1 text-[2.2rem] font-bold leading-none tabular-nums">$3</p>
-                <p className="pt-1.5 text-[1rem] tabular-nums text-[color:var(--ob-success)]">
+                <p className="pt-[3px] text-[1.659rem] font-bold leading-none tabular-nums">$3</p>
+                <p className="pt-[5px] text-[0.754rem] tabular-nums text-[color:var(--ob-success)]">
                   $0 (5.74%)
                 </p>
 
                 <BalanceChart />
 
-                <div className="flex items-center justify-center gap-8 pt-5">
+                <div className="flex items-center justify-center gap-[24px] pt-[15px]">
                   {RANGES.map((range) => (
                     <span
                       key={range}
                       className={cn(
-                        "text-[1.02rem]",
+                        "text-[0.769rem]",
                         range === "1M"
-                          ? "rounded-full border border-[color:var(--ob-border-strong)] px-5 py-2.5 font-medium"
+                          ? "rounded-full border border-[color:var(--ob-border-strong)] px-[15px] py-[8px] font-medium"
                           : "text-[color:var(--ob-fg-soft)]",
                       )}
                     >
@@ -265,32 +273,32 @@ export function WealthPortfolioTemplate({
               </Card>
 
               <Card>
-                <div className="flex items-center gap-3 pb-5">
+                <div className="flex items-center gap-[9px] pb-[15px]">
                   <MonoLabel className="flex-1">Holdings</MonoLabel>
                   <span
-                    className="rounded-full border border-[color:var(--ob-border-strong)] px-5 py-2 text-[0.9rem] font-medium uppercase tracking-wide"
+                    className="rounded-full border border-[color:var(--ob-border-strong)] px-[15px] py-[6px] text-[0.679rem] font-medium uppercase tracking-wide"
                     style={{ fontFamily: "var(--ob-font-display)" }}
                   >
                     See all holdings
                   </span>
                 </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-5">
-                    <h3 className="pb-4 text-[1.1rem] font-semibold">Total Value</h3>
-                    <ul className="grid gap-4">
+                <div className="grid gap-[15px] sm:grid-cols-2">
+                  <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[15px]">
+                    <h3 className="pb-[12px] text-[0.83rem] font-semibold">Total Value</h3>
+                    <ul className="grid gap-[12px]">
                       {HOLDINGS.map((holding) => (
-                        <li key={holding.id} className="flex items-center gap-3">
-                          <BrandMark brand={holding.ticker} size={38} />
-                          <span className="min-w-0 flex-1">
-                            <span className="block text-[1.05rem] font-semibold">
+                        <li key={holding.id} className="flex items-center gap-[9px]">
+                          <BrandMark brand={holding.ticker} size={29} />
+                          <span className="min-w-[0px] flex-1">
+                            <span className="block text-[0.792rem] font-semibold">
                               {holding.ticker}
                             </span>
-                            <span className="block text-[0.92rem] text-[color:var(--ob-muted)]">
+                            <span className="block text-[0.694rem] text-[color:var(--ob-muted)]">
                               {holding.name}
                             </span>
                           </span>
-                          <span className="text-[1.05rem] tabular-nums">
+                          <span className="text-[0.792rem] tabular-nums">
                             {holding.value}
                           </span>
                         </li>
@@ -298,28 +306,28 @@ export function WealthPortfolioTemplate({
                     </ul>
                   </div>
 
-                  <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-5">
-                    <h3 className="pb-4 text-[1.1rem] font-semibold">Top Movers</h3>
-                    <ul className="grid gap-4">
+                  <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[15px]">
+                    <h3 className="pb-[12px] text-[0.83rem] font-semibold">Top Movers</h3>
+                    <ul className="grid gap-[12px]">
                       {HOLDINGS.map((holding) => (
-                        <li key={holding.id} className="flex items-center gap-3">
-                          <BrandMark brand={holding.ticker} size={38} />
-                          <span className="min-w-0 flex-1">
-                            <span className="block text-[1.05rem] font-semibold">
+                        <li key={holding.id} className="flex items-center gap-[9px]">
+                          <BrandMark brand={holding.ticker} size={29} />
+                          <span className="min-w-[0px] flex-1">
+                            <span className="block text-[0.792rem] font-semibold">
                               {holding.ticker}
                             </span>
-                            <span className="block text-[0.92rem] text-[color:var(--ob-muted)]">
+                            <span className="block text-[0.694rem] text-[color:var(--ob-muted)]">
                               {holding.name}
                             </span>
                           </span>
-                          <span className="w-20 shrink-0">
+                          <span className="w-[60px] shrink-0">
                             <Sparkline
                               points={[0, 0, 0, 0, 0, 1, 3]}
                               color="var(--ob-success)"
-                              height={26}
+                              height={20}
                             />
                           </span>
-                          <span className="rounded-full bg-[color-mix(in_oklab,#1f9d55_14%,transparent)] px-2.5 py-1 text-[0.9rem] tabular-nums text-[color:var(--ob-success)]">
+                          <span className="rounded-full bg-[color-mix(in_oklab,#1f9d55_14%,transparent)] px-[8px] py-[3px] text-[0.679rem] tabular-nums text-[color:var(--ob-success)]">
                             {holding.change}
                           </span>
                         </li>
@@ -338,7 +346,7 @@ export function WealthPortfolioTemplate({
 
 function Card({ children }: { children: ReactNode }) {
   return (
-    <section className="rounded-[var(--ob-radius-lg)] bg-[color:var(--ob-surface)] p-6">
+    <section className="rounded-[var(--ob-radius-lg)] bg-[color:var(--ob-surface)] p-[18px]">
       {children}
     </section>
   );
@@ -354,7 +362,7 @@ function MonoLabel({
   return (
     <h2
       className={cn(
-        "text-[0.95rem] font-medium uppercase tracking-[0.08em] text-[color:var(--ob-fg-soft)]",
+        "text-[0.716rem] font-medium uppercase tracking-[0.08em] text-[color:var(--ob-fg-soft)]",
         className,
       )}
       style={{ fontFamily: "var(--ob-font-display)" }}
@@ -368,7 +376,7 @@ function InfoDot(): ReactNode {
   return (
     <span
       aria-hidden
-      className="grid size-[15px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.6rem] text-[color:var(--ob-muted)]"
+      className="grid size-[11px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.452rem] text-[color:var(--ob-muted)]"
     >
       i
     </span>
@@ -388,11 +396,11 @@ function BalanceChart() {
   const area = `${line} L${width},${height} L0,${height} Z`;
 
   return (
-    <div className="flex gap-4 pt-6">
-      <div className="min-w-0 flex-1">
+    <div className="flex gap-[12px] pt-[18px]">
+      <div className="min-w-[0px] flex-1">
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="h-[300px] w-full"
+          className="h-[226px] w-full"
           preserveAspectRatio="none"
           role="img"
           aria-label="Total balance over the last month"
@@ -434,7 +442,7 @@ function BalanceChart() {
       </div>
 
       <div
-        className="grid shrink-0 text-[0.9rem] tabular-nums text-[color:var(--ob-muted)]"
+        className="grid shrink-0 text-[0.679rem] tabular-nums text-[color:var(--ob-muted)]"
         style={{ fontFamily: "var(--ob-font-display)" }}
       >
         {["$3.6", "$2.7", "$1.8", "$0.9", "$0"].map((tick, index) => (

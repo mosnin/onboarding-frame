@@ -5,14 +5,17 @@ import type { ComponentType } from "react";
 import type { ReactNode } from "react";
 import { LineChart } from "../../../ui/charts";
 import {
+  BellIcon,
   BrowsersIcon,
   CalendarIcon,
   CaretDownIcon,
   CaretRightIcon,
+  CaretUpDownIcon,
   ChartLineIcon,
   ChartPieIcon,
   CloudIcon,
   CubeIcon,
+  ExternalSquareIcon,
   FlagIcon,
   FlowArrowIcon,
   GearIcon,
@@ -101,9 +104,7 @@ export function DeployAnalyticsTemplate({
             <span className="rounded-full bg-[color-mix(in_oklab,#0062ff_12%,transparent)] px-[7px] py-[2px] text-[0.634rem] font-semibold text-[color:var(--ob-brand)]">
               Pro Trial
             </span>
-            <span aria-hidden className="text-[0.584rem] text-[color:var(--ob-muted)]">
-              ⌃⌄
-            </span>
+            <span className="text-[color:var(--ob-muted)]"><CaretUpDownIcon size={12} /></span>
           </div>
 
           <div className="px-[13px] pb-[10px]">
@@ -129,7 +130,7 @@ export function DeployAnalyticsTemplate({
               ···
             </span>
             <span className="relative" aria-hidden>
-              ⌾
+              <BellIcon size={15} />
               <span className="absolute -right-[2px] -top-[2px] size-[7px] rounded-full bg-[color:var(--ob-brand)]" />
             </span>
           </div>
@@ -140,9 +141,7 @@ export function DeployAnalyticsTemplate({
             <span className="flex items-center gap-[7px] text-[0.793rem] font-medium">
               <BrandMark brand="Analytics" size={17} label="Analytics" />
               newlandingpage
-              <span aria-hidden className="text-[0.584rem] text-[color:var(--ob-muted)]">
-                ⌃⌄
-              </span>
+              <span className="text-[color:var(--ob-muted)]"><CaretUpDownIcon size={12} /></span>
             </span>
             <span className="mx-auto text-[0.793rem] font-medium">Analytics</span>
             <span aria-hidden className="text-[color:var(--ob-muted)]">
@@ -154,9 +153,7 @@ export function DeployAnalyticsTemplate({
             <span className="flex items-center gap-[7px] text-[0.793rem]">
               <GlobeIcon size={14} />
               newlandingpage-gold.example.app
-              <span aria-hidden className="text-[0.668rem] text-[color:var(--ob-muted)]">
-                ↗
-              </span>
+              <span className="text-[color:var(--ob-muted)]"><ExternalSquareIcon size={12} /></span>
             </span>
             <span className="flex items-center gap-[7px] pl-[10px] text-[0.793rem] text-[color:var(--ob-muted)]">
               <span

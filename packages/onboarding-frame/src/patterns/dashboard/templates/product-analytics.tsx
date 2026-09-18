@@ -2,11 +2,15 @@
 
 import type { ReactNode } from "react";
 import {
+  ArrowRightIcon,
   CaretDownIcon,
+  CaretLineLeftIcon,
   GearIcon,
   GridFourIcon,
   HardDrivesIcon,
   HouseIcon,
+  MonitorPlayIcon,
+  QuestionIcon,
   SearchIcon,
   StarIcon,
 } from "../../../ui/icons-solid";
@@ -107,18 +111,22 @@ export function ProductAnalyticsTemplate({
             {["Events", "Users", "Lexicon"].map((label) => (
               <NavItem key={label} label={label} indent className="text-[0.798rem]" />
             ))}
-            <NavItem label="Session Replay" glyph="▶" className="text-[0.821rem]" />
+            <NavItem
+              label="Session Replay"
+              glyph={<MonitorPlayIcon size={15} />}
+              className="text-[0.821rem]"
+            />
           </nav>
 
           <p className="px-[15px] pb-[6px] pt-[18px] text-[0.699rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
-            ⌄ Pinned
+            <CaretDownIcon size={9} weight="bold" className="inline align-[0px]" /> Pinned
           </p>
           <nav className="grid gap-[2px] px-[9px]">
             <NavItem label="🌱 Starter Board" className="text-[0.821rem]" />
           </nav>
 
           <p className="px-[15px] pb-[6px] pt-[15px] text-[0.699rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
-            ⌄ Your boards
+            <CaretDownIcon size={9} weight="bold" className="inline align-[0px]" /> Your boards
           </p>
           <nav className="grid gap-[2px] px-[9px]">
             {["Core User Metrics", "Main Dashboard"].map((label) => (
@@ -132,14 +140,12 @@ export function ProductAnalyticsTemplate({
             </span>
             <div className="flex items-center gap-[15px] px-[6px] pt-[12px] text-[color:var(--ob-fg-soft)]">
               <GridFourIcon size={14} />
-              <span className="relative" aria-hidden>
-                ?
+              <span className="relative">
+                <QuestionIcon size={14} />
                 <span className="absolute -right-[3px] -top-[3px] size-[6px] rounded-full bg-[#e0562d]" />
               </span>
               <GearIcon size={14} />
-              <span aria-hidden className="ml-auto">
-                ⇤
-              </span>
+              <CaretLineLeftIcon size={14} className="ml-auto" />
             </div>
           </div>
         </Sidebar>
@@ -162,9 +168,7 @@ export function ProductAnalyticsTemplate({
               </article>
             ))}
             <article className="grid place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[12px] py-[18px] text-center">
-              <span aria-hidden className="text-[0.912rem]">
-                →
-              </span>
+              <ArrowRightIcon size={15} className="text-[color:var(--ob-fg-soft)]" />
               <span className="pt-[6px] text-[0.775rem]">See All</span>
             </article>
           </div>

@@ -37,6 +37,7 @@ import {
   CaretUpDown,
   ChartBar,
   ChartLine,
+  ChartLineUp,
   ChartPieSlice,
   Chat,
   ChatCenteredText,
@@ -72,6 +73,7 @@ import {
   Folder,
   FunnelSimple,
   Gear,
+  Gift,
   GitBranch,
   Globe,
   GridFour,
@@ -94,10 +96,12 @@ import {
   MapPin,
   Megaphone,
   Money,
+  MonitorPlay,
   NavigationArrow,
   Note,
   NotePencil,
   Notepad,
+  Nut,
   Package,
   Palette,
   Paperclip,
@@ -143,6 +147,7 @@ import {
   UsersThree,
   VideoCamera,
   Warning,
+  Waves,
   Wrench,
   X,
   XCircle,
@@ -394,6 +399,11 @@ export const FlowerIcon = solid(Flower, "regular");
 export const ArrowUpRightIcon = solid(ArrowUpRight, "regular");
 export const CopyIcon = solid(Copy, "regular");
 export const QrCodeIcon = solid(QrCode, "regular");
+export const NutIcon = solid(Nut, "regular");
+export const MonitorPlayIcon = solid(MonitorPlay, "regular");
+export const GiftIcon = solid(Gift, "regular");
+export const ChartLineUpIcon = solid(ChartLineUp, "regular");
+export const WavesIcon = solid(Waves, "regular");
 export const GitBranchIcon = solid(GitBranch, "regular");
 export const NotePencilIcon = solid(NotePencil, "regular");
 export const PlugsIcon = solid(Plugs, "regular");

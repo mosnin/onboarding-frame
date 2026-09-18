@@ -15,5 +15,9 @@
   "creator-revenue": {
     "chars": "🤑💪👋",
     "why": "Whop's own promotion banner prints a money-mouth face after \"social media\" and a flexed arm after \"flex your stats\", and the to-do row carries a waving hand beside \"Welcome 12 new users\"."
+  },
+  "product-analytics": {
+    "chars": "🌱",
+    "why": "Mixpanel's sidebar prints a seedling before \"Starter Board\" — it is the board's own emoji, shown in the Pinned list and again in the Recents and boards rows."
   }
 }
