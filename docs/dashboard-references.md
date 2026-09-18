@@ -556,7 +556,7 @@ the wordmark and "© 2022 Acme Inc." + Manage cookies | Legal | Privacy.
 | 42 | 098 | Deel HR analytics | people-analytics | DONE |
 | 43 | 099 | Customer.io campaigns | campaign-list | DONE |
 | 44 | 100 | Mixpanel home | product-analytics | DONE |
-| 45 | 101 | Whop creator | creator-revenue | DONE |
+| 45 | 101 | Whop creator | creator-revenue | REMEASURED |
 | 46 | 102 | Mercury transactions | banking-ledger | DONE |
 | 47 | 103 | Posh events | event-console (dark) | DONE |
 | 48 | 104-108 | Twenty CRM | crm-workspace | DONE |

@@ -2,7 +2,9 @@
 
 import type { ReactNode } from "react";
 import {
+  ArrowUpIcon,
   BellIcon,
+  BookOpenIcon,
   CalendarIcon,
   CardIcon,
   CaretDownIcon,
@@ -10,7 +12,10 @@ import {
   CaretUpIcon,
   ChartBarIcon,
   ClipboardIcon,
+  CaretLineLeftIcon,
   CoinIcon,
+  CurrencyCircleIcon,
+  ExternalSquareIcon,
   GearIcon,
   HouseIcon,
   LinkChainIcon,
@@ -70,6 +75,7 @@ const HOURS = [
  * lose which is which.
  */
 export function CreatorRevenueTemplate({
+  brandName = "Acme",
   userName = "Alex Rivera",
   className,
   page = "home",
@@ -79,33 +85,44 @@ export function CreatorRevenueTemplate({
       <Shell>
         <Sidebar width={265} bg="var(--ob-surface)">
           <div className="flex items-center gap-[9px] px-[15px] pb-[15px] pt-[15px]">
-            <span className="flex items-center gap-[6px] text-[0.822rem] font-medium">
-              <BellIcon size={14} /> Go to hub
+            <span className="flex items-center gap-[8px] rounded-full border border-[color:var(--ob-border)] bg-white px-[12px] py-[7px] text-[0.822rem] font-medium shadow-[0_1px_2px_rgba(9,9,11,0.05)]">
+              <Avatar
+                name={brandName}
+                size={15}
+                rounded={4}
+                variant="neutral"
+                letters={1}
+              />
+              Go to hub
             </span>
-            <span
-              aria-hidden
-              className="ml-auto grid size-[27px] place-items-center rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] text-[0.647rem]"
-            >
-              ⇤
+            <span className="ml-auto grid size-[27px] place-items-center rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] text-[color:var(--ob-muted)]">
+              <CaretLineLeftIcon size={13} />
             </span>
           </div>
 
-          <div className="mx-[12px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] p-[12px]">
+          {/*
+            Measured off the reference: a grey panel rather than a bordered
+            white card, spanning x=16 to x=248. The digit tiles are white on
+            that grey, 20 wide by 32 tall — flip-clock cards, not squares. At
+            27px square the four pairs did not fit and the seconds ran off the
+            edge of the rail.
+          */}
+          <div className="mx-[16px] rounded-[12px] bg-[color:var(--ob-surface-2)] p-[12px]">
             <p className="flex items-center gap-[9px] pb-[12px] text-[0.7rem] font-bold uppercase tracking-wide">
               <span className="flex-1">$500 in 7 days</span>
               <CaretUpIcon size={14} />
             </p>
 
             {/* A flip-clock countdown: each digit is its own tile. */}
-            <div className="flex items-start gap-[6px]">
+            <div className="flex items-start gap-[7px]">
               {COUNTDOWN.map((unit, index) => (
                 <span key={unit.id} className="flex items-start gap-[6px]">
                   <span className="grid justify-items-center">
-                    <span className="flex gap-[3px]">
+                    <span className="flex gap-[2px]">
                       {unit.value.map((digit, digitIndex) => (
                         <span
                           key={digitIndex}
-                          className="grid size-[27px] place-items-center rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface-2)] text-[0.913rem] font-semibold tabular-nums"
+                          className="grid h-[32px] w-[20px] place-items-center rounded-[5px] bg-white text-[0.913rem] font-semibold tabular-nums shadow-[0_1px_1px_rgba(9,9,11,0.06)]"
                         >
                           {digit}
                         </span>
@@ -116,8 +133,9 @@ export function CreatorRevenueTemplate({
                     </span>
                   </span>
                   {index < COUNTDOWN.length - 1 && (
-                    <span aria-hidden className="pt-[5px] text-[0.837rem] font-bold">
-                      :
+                    <span aria-hidden className="grid gap-[7px] pt-[11px]">
+                      <span className="size-[2px] rounded-full bg-[color:var(--ob-border-strong)]" />
+                      <span className="size-[2px] rounded-full bg-[color:var(--ob-border-strong)]" />
                     </span>
                   )}
                 </span>
@@ -200,11 +218,10 @@ export function CreatorRevenueTemplate({
               </kbd>
             </span>
             <span className="flex items-center gap-[12px] text-[color:var(--ob-fg-soft)]">
-              {["▤", "$", "⌾"].map((glyph) => (
-                <span key={glyph} aria-hidden>
-                  {glyph}
-                </span>
-              ))}
+              <BookOpenIcon size={16} />
+              <CurrencyCircleIcon size={16} />
+              <BellIcon size={16} />
+              <span className="h-[18px] w-px bg-[color:var(--ob-border-strong)]" />
               <Avatar name={userName} size={27} />
             </span>
           </header>
@@ -223,12 +240,13 @@ export function CreatorRevenueTemplate({
 
             <div className="rounded-[var(--ob-radius)] bg-[color-mix(in_oklab,#5b5bd6_9%,white)] px-[18px] py-[12px]">
               <p className="text-[0.822rem] leading-relaxed">
-                You can now share your stats on social media 🥳. Creators who add the
+                You can now share your stats on social media 🤑. Creators who add the
                 marketplace and category ranking widgets to their dash and share on
                 socials are 10% more likely to get users. Click on{" "}
-                <span aria-hidden className="text-[color:var(--ob-brand)]">
-                  ↗
-                </span>{" "}
+                <ExternalSquareIcon
+                  size={13}
+                  className="inline align-[-2px] text-[color:var(--ob-brand)]"
+                />{" "}
                 on a widget below to flex your stats 💪
               </p>
             </div>
@@ -250,7 +268,9 @@ export function CreatorRevenueTemplate({
                     $2
                   </span>
                   <span className="rounded-[var(--ob-radius-sm)] bg-[color-mix(in_oklab,#2f9e5f_16%,transparent)] px-[8px] py-[3px] text-[0.761rem] font-semibold text-[#1f7a48]">
-                    $2 ↑
+                    <span className="flex items-center gap-[2px]">
+                      $2 <ArrowUpIcon size={10} weight="bold" />
+                    </span>
                   </span>
                 </p>
 
@@ -306,11 +326,8 @@ export function CreatorRevenueTemplate({
                     <span className="flex flex-1 items-center gap-[6px]">
                       {stat.label} <InfoDot />
                     </span>
-                    <span
-                      aria-hidden
-                      className="grid size-[21px] place-items-center rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] text-[0.609rem]"
-                    >
-                      ↗
+                    <span className="grid size-[21px] place-items-center rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] text-[color:var(--ob-muted)]">
+                      <ExternalSquareIcon size={11} />
                     </span>
                   </p>
                   <p className="pt-[12px] text-[1.826rem] font-bold leading-none tabular-nums">

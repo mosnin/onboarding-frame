@@ -16,6 +16,7 @@ import {
   Barcode,
   Bell,
   BookBookmark,
+  BookOpen,
   Bookmark,
   Books,
   Briefcase,
@@ -28,6 +29,7 @@ import {
   CaretDoubleRight,
   CaretDown,
   CaretLeft,
+  CaretLineLeft,
   CaretRight,
   CaretUp,
   CaretUpDown,
@@ -52,6 +54,7 @@ import {
   CreditCard,
   Crosshair,
   Cube,
+  CurrencyCircleDollar,
   CurrencyDollar,
   Database,
   DotsThree,
@@ -371,6 +374,9 @@ export const LockKeyIcon = solid(LockKey, "regular");
 export const FolderIcon = solid(Folder, "regular");
 export const ListBulletsIcon = solid(ListBullets, "regular");
 export const CircleNotchIcon = solid(CircleNotch, "regular");
+export const BookOpenIcon = solid(BookOpen, "regular");
+export const CurrencyCircleIcon = solid(CurrencyCircleDollar, "regular");
+export const CaretLineLeftIcon = solid(CaretLineLeft, "regular");
 export const GitBranchIcon = solid(GitBranch, "regular");
 export const NotePencilIcon = solid(NotePencil, "regular");
 export const PlugsIcon = solid(Plugs, "regular");
