@@ -490,7 +490,7 @@ function ReportingPage() {
           <LineChart
             height={215}
             gridLines={3}
-            yLabels={["0.0%", "5.0%", "10.0%", "15.0%"]}
+            yLabels={["15.0%", "10.0%", "5.0%", "0.0%"]}
             xLabels={[
               "Jun 24",
               "Jun 28",

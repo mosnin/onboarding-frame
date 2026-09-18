@@ -386,7 +386,7 @@ function FinancePage() {
                 color="#2f9e44"
                 max={15000}
                 xLabels={FINANCE_MONTHS}
-                yLabels={["-$10K", "-$5K", "$0", "$5K", "$10K", "$15K"]}
+                yLabels={["$15K", "$10K", "$5K", "$0", "-$5K", "-$10K"]}
               />
               {/* Expenses ride the same plot as a second, differently coloured bar. */}
               <div className="pointer-events-none absolute inset-x-5 bottom-2 top-0">

@@ -210,7 +210,7 @@ export function DeployAnalyticsTemplate({
                 <LineChart
                   height={351}
                   gridLines={2}
-                  yLabels={["0", "5", "10"]}
+                  yLabels={["10", "5", "0"]}
                   xLabels={[
                     "Apr 16",
                     "Apr 17",

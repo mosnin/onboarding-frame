@@ -34,9 +34,10 @@ function hash(seed: string): number {
   return Math.abs(h);
 }
 
-function initials(name: string): string {
+function initials(name: string, letters: 1 | 2 = 2): string {
   const words = name.replace(/[^\p{L}\p{N} ]/gu, " ").trim().split(/\s+/);
   if (words.length === 0 || !words[0]) return "?";
+  if (letters === 1) return words[0][0]!.toUpperCase();
   if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
   return (words[0][0]! + words[words.length - 1]![0]!).toUpperCase();
 }
@@ -48,6 +49,15 @@ export interface AvatarProps {
   rounded?: "full" | number;
   /** A platform badge pinned to the bottom-right, as channel lists show. */
   badge?: ReactNode;
+  /**
+   * "tint" is a coloured gradient, which is what most products draw for a
+   * person. "neutral" is a grey tile with a dark letter, which is what they
+   * draw for a workspace or an account switcher — StackAI's rail has one at
+   * each end. Using the coloured one there is a visible mismatch.
+   */
+  variant?: "tint" | "neutral";
+  /** One initial rather than two; several rails set a single letter. */
+  letters?: 1 | 2;
   className?: string;
 }
 
@@ -56,10 +66,12 @@ export function Avatar({
   size = 32,
   rounded = "full",
   badge,
+  variant = "tint",
+  letters = 2,
   className,
 }: AvatarProps) {
   const hue = hash(name) % 360;
-  const text = initials(name);
+  const text = initials(name, letters);
   return (
     <span className={cn("relative inline-block shrink-0", className)} style={{ width: size, height: size }}>
       <span
@@ -70,7 +82,11 @@ export function Avatar({
           borderRadius: rounded === "full" ? 9999 : rounded,
           // Two stops of one hue reads as a portrait crop at small sizes far
           // better than a flat fill does.
-          background: `linear-gradient(140deg, hsl(${hue} 62% 62%), hsl(${(hue + 38) % 360} 58% 46%))`,
+          background:
+            variant === "neutral"
+              ? "var(--ob-surface-2)"
+              : `linear-gradient(140deg, hsl(${hue} 62% 62%), hsl(${(hue + 38) % 360} 58% 46%))`,
+          color: variant === "neutral" ? "var(--ob-fg)" : undefined,
           fontSize: Math.round(size * 0.38),
           letterSpacing: "0.01em",
         }}

@@ -119,7 +119,7 @@ essentially empty (one dot of fill).
 | 22 | 078 | Asana goal detail | goal-tracker | DONE |
 | 23 | 079 | Supabase reports | platform-reports (dark) | DONE |
 | 24 | 080 | Vercel analytics | deploy-analytics | DONE |
-| 25 | 081 | StackAI project analytics | token-usage | DONE |
+| 25 | 081 | StackAI project analytics | token-usage | REMEASURED |
 
 ## 21 Reddit (077)
 White; #ff4500 orange brand; blue #0079d3 links/active tabs; grey-100 page behind white cards.
