@@ -7,27 +7,29 @@ import {
   ArrowDownRightIcon,
   ArrowUpRightIcon,
   AsteriskIcon,
-  BankIcon,
-  BookIcon,
-  ChartUpIcon,
-  ChatIcon,
   ChevronDown,
   ChevronRight,
-  CircleDashedIcon,
-  CreditCardIcon,
   Cross,
   EqualIcon,
   EyeIcon,
-  LayersIcon,
   MoreIcon,
-  NavigationIcon,
-  PanelIcon,
   Plus,
-  RecurringIcon,
-  RefreshIcon,
-  SettingsIcon,
   SlidersIcon,
 } from "../../../ui/icons";
+import {
+  ArrowClockwiseIcon,
+  BankSolid,
+  BookBookmarkIcon,
+  ChartBarSolid,
+  ChatSquareIcon,
+  CircleDashedSolid,
+  CreditCardSolid,
+  GearIcon,
+  NavigationSolid,
+  RecurringSolid,
+  SidebarBold,
+  StackSolid,
+} from "../../../ui/icons-solid";
 import { Surface, financeTokens } from "./tokens";
 import { Card, Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -50,13 +52,15 @@ import type { TemplateProps } from "./props";
  * every affordance here (rail, chevrons, deltas, gear) is Lucide.
  */
 
+// Copilot draws its rail solid, so these are Phosphor at fill weight rather
+// than Lucide outlines; "Categories" is the one bold outline in the set.
 const NAV = [
-  { id: "dashboard", label: "Dashboard", Icon: NavigationIcon, fill: true },
-  { id: "transactions", label: "Transactions", Icon: LayersIcon },
-  { id: "accounts", label: "Accounts", Icon: CreditCardIcon },
-  { id: "investments", label: "Investments", Icon: ChartUpIcon },
-  { id: "categories", label: "Categories", Icon: CircleDashedIcon },
-  { id: "recurrings", label: "Recurrings", Icon: RecurringIcon },
+  { id: "dashboard", label: "Dashboard", Icon: NavigationSolid },
+  { id: "transactions", label: "Transactions", Icon: StackSolid },
+  { id: "accounts", label: "Accounts", Icon: CreditCardSolid },
+  { id: "investments", label: "Investments", Icon: ChartBarSolid },
+  { id: "categories", label: "Categories", Icon: CircleDashedSolid },
+  { id: "recurrings", label: "Recurrings", Icon: RecurringSolid },
 ];
 
 /** The rail's account list, as each capture shows it. */
@@ -244,7 +248,7 @@ function RangeRow({ className }: { className?: string }) {
 function CardHead({ title, link }: { title: string; link: string }) {
   return (
     <div className="flex items-center gap-3">
-      <h2 className="flex-1 text-[0.94rem] font-semibold">{title}</h2>
+      <h2 className="flex-1 text-[0.94rem] font-medium">{title}</h2>
       <button
         type="button"
         className="flex items-center gap-0.5 text-[0.9rem] text-[color:var(--ob-muted)]"
@@ -307,14 +311,14 @@ export function FinanceOverviewTemplate({
               aria-label="Collapse sidebar"
               className="grid size-[30px] place-items-center rounded-[10px] bg-[#f6f6f6] text-[color:var(--ob-fg)]"
             >
-              <PanelIcon size={18} strokeWidth={1.9} />
+              <SidebarBold size={19} />
             </button>
             <button
               type="button"
               aria-label="Refresh"
               className="ml-auto mr-2 text-[color:var(--ob-muted)]"
             >
-              <RefreshIcon size={18} strokeWidth={1.9} />
+              <ArrowClockwiseIcon size={18} />
             </button>
           </div>
 
@@ -333,12 +337,7 @@ export function FinanceOverviewTemplate({
                       : "text-[color:var(--ob-muted)]",
                   )}
                 >
-                  <item.Icon
-                    size={18}
-                    strokeWidth={1.8}
-                    className="shrink-0"
-                    {...(item.fill && active ? { fill: "currentColor" } : null)}
-                  />
+                  <item.Icon size={18} className="shrink-0" />
                   {item.label}
                 </button>
               );
@@ -379,13 +378,13 @@ export function FinanceOverviewTemplate({
 
           <div className="mt-auto grid gap-1.5 px-3 pb-2">
             {view === "accounts" ? (
-              <FooterItem Icon={BookIcon} label="Explore" />
+              <FooterItem Icon={BookBookmarkIcon} label="Explore" />
             ) : (
-              <FooterItem Icon={BookIcon} label="Start here" tone="#d99a26" />
+              <FooterItem Icon={BookBookmarkIcon} label="Start here" tone="#d99a26" />
             )}
-            <FooterItem Icon={ChatIcon} label="Get Help" />
+            <FooterItem Icon={ChatSquareIcon} label="Get Help" />
             <FooterItem
-              Icon={SettingsIcon}
+              Icon={GearIcon}
               label="Settings"
               trailing={
                 <span className="grid size-[18px] place-items-center rounded-full bg-[#2f80ed] text-[0.65rem] font-bold text-white">
@@ -398,7 +397,7 @@ export function FinanceOverviewTemplate({
 
         <Main>
           <header className="flex h-14 shrink-0 items-center px-6">
-            <h1 className="flex-1 text-[0.94rem] font-semibold">
+            <h1 className="flex-1 text-[0.94rem] font-medium">
               {view === "accounts" ? "Accounts" : "Dashboard"}
             </h1>
             {view === "accounts" && (
@@ -427,7 +426,7 @@ function FooterItem({
   tone,
   trailing,
 }: {
-  Icon: typeof BookIcon;
+  Icon: typeof BookBookmarkIcon;
   label: string;
   tone?: string;
   trailing?: ReactNode;
@@ -438,7 +437,7 @@ function FooterItem({
       className="flex h-[30px] items-center gap-2 rounded-[9px] px-2.5 text-left text-[1rem]"
       style={{ color: tone ?? "var(--ob-muted)" }}
     >
-      <Icon size={18} strokeWidth={1.8} className="shrink-0" />
+      <Icon size={18} className="shrink-0" />
       <span className="flex-1">{label}</span>
       {trailing}
     </button>
@@ -456,7 +455,7 @@ function DashboardPage() {
         <Card className="min-w-0 p-6">
           <CardHead title="Monthly spending" link="Transactions" />
           <div className="pt-[44px] text-center">
-            <p className="text-[1.5rem] font-bold leading-none tracking-tight tabular-nums">
+            <p className="text-[1.5rem] font-[550] leading-none tracking-tight tabular-nums">
               $4,465 left
             </p>
             <p className="pt-1.5 text-[0.94rem] text-[color:var(--ob-muted)]">$9,300 budgeted</p>
@@ -515,7 +514,7 @@ function DashboardPage() {
             ].map((stat) => (
               <div key={stat.label} className="w-[188px] max-w-[50%]">
                 <p className="text-[0.94rem] text-[color:var(--ob-muted)]">{stat.label}</p>
-                <p className="pt-1 text-[1.5rem] font-bold leading-none tracking-tight">
+                <p className="pt-1 text-[1.5rem] font-[550] leading-none tracking-tight">
                   {stat.value}
                 </p>
                 <span className="inline-flex pt-2.5">
@@ -562,7 +561,7 @@ function DashboardPage() {
                   {category.emoji}
                 </span>
                 <span className="min-w-0 flex-1 truncate text-[0.94rem]">{category.label}</span>
-                <span className="shrink-0 text-[0.94rem] font-semibold tabular-nums">
+                <span className="shrink-0 text-[0.94rem] font-medium tabular-nums">
                   {category.spent}
                 </span>
                 <span className="relative h-1.5 w-[128px] shrink-0 overflow-hidden rounded-full bg-[#f6f6f6]">
@@ -580,7 +579,7 @@ function DashboardPage() {
                     }}
                   />
                 </span>
-                <span className="w-[66px] shrink-0 text-[0.94rem] font-semibold tabular-nums">
+                <span className="w-[66px] shrink-0 text-[0.94rem] font-medium tabular-nums">
                   {category.limit}
                 </span>
               </li>
@@ -611,7 +610,7 @@ function DashboardPage() {
                   </span>
                   {row.tag}
                 </span>
-                <span className="w-[86px] shrink-0 text-right text-[0.94rem] font-semibold tabular-nums">
+                <span className="w-[86px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
                   {row.amount}
                 </span>
               </li>
@@ -761,7 +760,7 @@ const HOLDINGS = [
 function PanelHeading({ title, meta }: { title: string; meta: string }) {
   return (
     <div className="flex items-center gap-3 pb-[17px]">
-      <h3 className="flex-1 text-[0.94rem] font-semibold">{title}</h3>
+      <h3 className="flex-1 text-[0.94rem] font-medium">{title}</h3>
       <span className="text-[0.7rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
         {meta}
       </span>
@@ -780,11 +779,11 @@ function AccountsPage() {
             aria-label="Net worth settings"
             className="absolute right-6 top-6 text-[color:var(--ob-muted)]"
           >
-            <SettingsIcon size={17} />
+            <GearIcon size={18} />
           </button>
           <div className="text-center">
             <p className="text-[0.94rem] text-[color:var(--ob-muted)]">Net worth</p>
-            <p className="pt-1 text-[1.5rem] font-bold leading-none tracking-tight tabular-nums">
+            <p className="pt-1 text-[1.5rem] font-[550] leading-none tracking-tight tabular-nums">
               $1,323,530
             </p>
             <span className="inline-flex pt-2.5">
@@ -817,7 +816,7 @@ function AccountsPage() {
           <div className="min-w-[540px]">
           {ACCOUNT_ROWS.map((group) => (
             <section key={group.heading} className="pb-5">
-              <h2 className="flex items-center gap-1.5 pb-3 text-[0.94rem] font-semibold">
+              <h2 className="flex items-center gap-1.5 pb-3 text-[0.94rem] font-medium">
                 <ChevronDown size={13} strokeWidth={2.4} className="text-[color:var(--ob-muted)]" />
                 {group.heading}
                 {group.eye && <EyeIcon size={15} className="text-[color:var(--ob-muted)]" />}
@@ -831,11 +830,11 @@ function AccountsPage() {
                   )}
                 >
                   <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[#eef0f4] text-[color:#8b93a1]">
-                    <BankIcon size={18} strokeWidth={1.8} />
+                    <BankSolid size={18} />
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline gap-2">
-                      <span className="truncate text-[0.94rem] font-semibold">{row.name}</span>
+                      <span className="truncate text-[0.94rem] font-medium">{row.name}</span>
                       <span className="shrink-0 text-[0.94rem] text-[color:var(--ob-muted)] tabular-nums">
                         {row.mask}
                       </span>
@@ -845,7 +844,7 @@ function AccountsPage() {
                     </span>
                   </span>
                   <Delta value={row.change} tone={row.tone} />
-                  <span className="w-[140px] shrink-0 text-right text-[0.94rem] font-semibold tabular-nums">
+                  <span className="w-[140px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
                     {row.value}
                   </span>
                 </div>
@@ -853,13 +852,13 @@ function AccountsPage() {
               <div className="mt-1.5 flex items-center gap-3 border-t border-[color:var(--ob-border)] pt-3.5">
                 <span className="flex-1" />
                 <Delta value={group.total.change} tone={group.total.tone} />
-                <span className="w-[140px] shrink-0 text-right text-[0.94rem] font-semibold tabular-nums">
+                <span className="w-[140px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
                   {group.total.value}
                 </span>
               </div>
             </section>
           ))}
-          <h2 className="flex items-center gap-1.5 text-[0.94rem] font-semibold">
+          <h2 className="flex items-center gap-1.5 text-[0.94rem] font-medium">
             <ChevronDown size={13} strokeWidth={2.4} className="text-[color:var(--ob-muted)]" />
             Other
           </h2>
@@ -875,7 +874,7 @@ function AccountDetail() {
   return (
     <aside className="hidden w-[464px] shrink-0 border-l border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] xl:block">
         <div className="flex h-14 items-center gap-3 px-6">
-          <h2 className="flex-1 text-[0.94rem] font-semibold">Other</h2>
+          <h2 className="flex-1 text-[0.94rem] font-medium">Other</h2>
           <button type="button" aria-label="More" className="text-[color:var(--ob-muted)]">
             <MoreIcon size={18} />
           </button>
@@ -888,9 +887,9 @@ function AccountDetail() {
         <div className="border-t border-[color:var(--ob-border)] px-6 pb-5 pt-6">
           <div className="flex items-center gap-2">
             <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#eef0f4] text-[color:#8b93a1]">
-              <BankIcon size={13} strokeWidth={1.8} />
+              <BankSolid size={13} />
             </span>
-            <span className="text-[0.94rem] font-semibold tabular-nums">9786</span>
+            <span className="text-[0.94rem] font-medium tabular-nums">9786</span>
             <span className="text-[0.94rem] text-[color:var(--ob-muted)]">Manual account</span>
             <span className="ml-auto flex items-center gap-1.5">
               <span
@@ -904,8 +903,8 @@ function AccountDetail() {
           </div>
 
           <div className="flex items-baseline gap-3 pt-2">
-            <h3 className="flex-1 text-[1.3rem] font-bold tracking-tight">Main Investment</h3>
-            <p className="text-[1.3rem] font-bold tabular-nums">$1,305,499.92</p>
+            <h3 className="flex-1 text-[1.3rem] font-semibold tracking-tight">Main Investment</h3>
+            <p className="text-[1.3rem] font-semibold tabular-nums">$1,305,499.92</p>
           </div>
 
           {/* The dotted lead-in marks the stretch before this account existed. */}
@@ -943,7 +942,7 @@ function AccountDetail() {
                     style={{ width: `${Math.max(row.pct, 1)}%` }}
                   />
                 </span>
-                <span className="w-[38px] shrink-0 text-right text-[0.94rem] font-semibold tabular-nums">
+                <span className="w-[38px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
                   {row.display}
                 </span>
               </li>
@@ -961,7 +960,7 @@ function AccountDetail() {
                 </span>
                 <span className="min-w-0 flex-1 truncate text-[0.94rem]">{row.name}</span>
                 <Delta value={row.change} tone={row.tone} />
-                <span className="w-24 shrink-0 text-right text-[0.94rem] font-semibold tabular-nums">
+                <span className="w-24 shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
                   {row.price}
                 </span>
               </li>

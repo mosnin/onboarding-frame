@@ -18,11 +18,22 @@ A previous build used 199 distinct glyphs across 988 sites as icons: 🥑 for
 settings. They render in whatever font the OS supplies, so weight, size and
 baseline vary per machine and none of it resembles the reference.
 
-- Icons come from **`lucide-react`**. Nothing else.
+- Icons come from a maintained icon library. Two are installed, and the
+  reference decides which:
+  - **`lucide-react`** — outline icons on a 24px grid. The default.
+  - **`@phosphor-icons/react`** — the same coverage in six weights, including
+    `fill`, `bold` and `duotone`.
+
+  Match the **weight the reference draws**, not just the shape. Many of these
+  products use a filled icon set; rendering those as thin outlines is the
+  single loudest way a recreation reads as "not close", and no amount of
+  correct spacing hides it. Copilot Money's rail is solid, so it is Phosphor
+  at `fill`; a product drawing hairline outlines is Lucide. Check by cropping
+  the reference's icons and enlarging them before choosing.
 - Do not hand-roll an icon set, and do not hand-draw individual SVG paths for
-  an icon. A maintained library already exists and the reference products'
-  icons look like it. This applies to the site chrome in `apps/web` exactly as
-  it applies to the library.
+  an icon. Composing two library icons (a filled circle with a library glyph
+  knocked out of it) is fine; drawing the glyph yourself is not. This applies
+  to the site chrome in `apps/web` exactly as it applies to the library.
 - Drawing inline SVG is only acceptable for data visualisation (charts,
   sparklines) and for the dotted placeholder slots — things no icon set ships.
 - Do not put emoji in body copy as decoration ("Can't wait 🧁",
@@ -65,6 +76,16 @@ the differences enumerated and closed.
 `docs/dashboard-references.md` maps every reference to its template. A row
 does not say DONE until that comparison happened.
 
+### 6a. Weight is measured, not eyeballed
+
+Type that is one weight step too heavy reads as wrong even when the size and
+the face are right. Compare ink: sum `255 - luminance` over the same text box
+in both images. Within about 5% is a match; +15% means drop a step.
+
+A build shipped with every bold one step heavy — 600 where the reference set
+500, 700 where it set 600 — while every measured width matched exactly.
+Widths matching is not the same as the type matching.
+
 ### 6. Templates must not share one typeface
 
 Every template carries its own face in `tokens.tsx`. A previous build pointed
@@ -102,7 +123,8 @@ Check every template at 390px before calling it done.
 - [ ] Control dimensions match (button heights, pill widths, input heights)
 - [ ] Spacing and gaps match
 - [ ] Palette matches, including subtle fills and border colours
-- [ ] Icons are Lucide, at the reference's size and stroke
+- [ ] Icons come from Lucide or Phosphor, at the reference's size, stroke
+      **and weight** — filled where the reference is filled
 - [ ] Imagery is a labelled placeholder at the reference's dimensions
 - [ ] Typeface is this template's own, matched to the reference
 - [ ] Reflows at 390px with nothing clipped

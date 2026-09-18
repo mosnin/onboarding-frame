@@ -35,8 +35,14 @@ export interface RegistryItem {
 /** Package root, resolved from the web app's working directory at build time. */
 const PACKAGE_ROOT = path.join(process.cwd(), "..", "..", "packages", "onboarding-frame");
 
-// ui/icons.tsx re-exports Lucide, so an ejected piece needs it installed.
-const RUNTIME_DEPENDENCIES = ["clsx", "tailwind-merge", "lucide-react"];
+// ui/icons.tsx re-exports Lucide and ui/icons-solid.tsx re-exports Phosphor,
+// so an ejected piece needs both installed.
+const RUNTIME_DEPENDENCIES = [
+  "clsx",
+  "tailwind-merge",
+  "lucide-react",
+  "@phosphor-icons/react",
+];
 
 /**
  * Files every ejected piece needs. Splitting these into their own item means a
@@ -51,6 +57,7 @@ const CORE_FILES = [
   "src/provider/OnboardingProvider.tsx",
   "src/ui/primitives.tsx",
   "src/ui/icons.tsx",
+  "src/ui/icons-solid.tsx",
   "src/ui/fields.tsx",
   "src/ui/placeholder.tsx",
   "src/hooks/usePersistentState.ts",
