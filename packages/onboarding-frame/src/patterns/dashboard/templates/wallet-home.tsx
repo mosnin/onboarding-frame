@@ -5,7 +5,7 @@ import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, walletTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type WalletPage = "trending" | "explore" | "create";
 

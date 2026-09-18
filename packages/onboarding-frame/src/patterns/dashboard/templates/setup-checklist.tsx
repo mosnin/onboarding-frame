@@ -6,7 +6,7 @@ import { Surface, setupChecklistTokens } from "./tokens";
 import { ProgressBar } from "../../../ui/primitives";
 import { BarChart, LineChart } from "../../../ui/charts";
 import { Banner, Btn, Card, Main, SearchField, Shell, Sidebar, Tabs, TopBar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 const NAV = [
   { id: "setup", label: "Setup", glyph: "🚀", active: true },

@@ -5,7 +5,7 @@ import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, communityTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type CommunityPage = "traffic" | "modlog" | "scheduled";
 

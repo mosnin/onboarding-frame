@@ -5,7 +5,7 @@ import { cn } from "../../../lib/cn";
 import { AvatarSlot } from "../../../ui/placeholder";
 import { Surface, creatorTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type CreatorPage = "home" | "users" | "milestones";
 

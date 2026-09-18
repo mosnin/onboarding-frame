@@ -5,7 +5,7 @@ import { cn } from "../../../lib/cn";
 import { Placeholder } from "../../../ui/placeholder";
 import { Surface, financeTokens } from "./tokens";
 import { Card, Main, Segmented, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 const NAV = [
   { id: "dashboard", label: "Dashboard", glyph: "➤", active: true },

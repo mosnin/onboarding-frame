@@ -5,7 +5,7 @@ import { cn } from "../../../lib/cn";
 import { Surface, guidesTokens } from "./tokens";
 import { LineChart } from "../../../ui/charts";
 import { Btn, Card, Chip, Main, SearchField, Shell, Sidebar, Table, TopBar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 const NAV = [
   { id: "started", label: "Get started", glyph: "◯", pill: true },

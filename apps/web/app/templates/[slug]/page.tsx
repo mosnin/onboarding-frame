@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { templateCatalog } from "onboarding-frame";
 import { TemplateViewer } from "@/components/template-viewer";
+import { CopyButton } from "@/components/copy-button";
 
 export function generateStaticParams() {
   return templateCatalog.map((entry) => ({ slug: entry.slug }));
@@ -40,6 +41,21 @@ export default async function TemplatePage({
           {entry.blurb}
         </p>
       </header>
+
+      <div className="mb-6 rounded-xl border border-[color:var(--site-border)] p-4">
+        <p className="text-sm text-[color:var(--site-muted)]">
+          Import it from the package, or copy the source into your repo:
+        </p>
+        <div className="mt-3 flex items-center gap-2">
+          <code
+            className="flex-1 overflow-auto rounded-lg bg-[color:var(--site-surface)] px-3 py-2 text-[0.8rem]"
+            style={{ fontFamily: "var(--font-mono)" }}
+          >
+            npx onboarding-frame add {entry.slug}
+          </code>
+          <CopyButton value={`npx onboarding-frame add ${entry.slug}`} />
+        </div>
+      </div>
 
       <TemplateViewer slug={entry.slug} pages={entry.pages} />
     </main>

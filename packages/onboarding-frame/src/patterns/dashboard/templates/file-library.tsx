@@ -4,7 +4,7 @@ import { Placeholder } from "../../../ui/placeholder";
 import { cn } from "../../../lib/cn";
 import { Surface, fileLibraryTokens } from "./tokens";
 import { Btn, Main, Segmented, Select, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 const PROJECTS = [
   { id: "files", label: "My files", glyph: "✎", active: true },

@@ -6,7 +6,7 @@ import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
 import { Surface, deployTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type DeployPage = "analytics" | "deployments" | "logs";
 

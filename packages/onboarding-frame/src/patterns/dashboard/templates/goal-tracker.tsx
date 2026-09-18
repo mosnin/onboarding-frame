@@ -5,7 +5,7 @@ import { cn } from "../../../lib/cn";
 import { AvatarSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, goalTokens } from "./tokens";
 import { Main, SearchField, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type GoalPage = "goal" | "goals" | "reporting";
 

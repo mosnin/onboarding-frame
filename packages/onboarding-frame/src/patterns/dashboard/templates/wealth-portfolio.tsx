@@ -6,7 +6,7 @@ import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, wealthTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type WealthPage = "overview" | "holdings";
 

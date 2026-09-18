@@ -5,7 +5,7 @@ import { cn } from "../../../lib/cn";
 import { LogoSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, zoneTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type ZonePage = "overview" | "analytics" | "dns";
 

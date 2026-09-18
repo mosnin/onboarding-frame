@@ -1,6 +1,6 @@
 export { Surface } from "./tokens";
 export type { TemplateTokens } from "./tokens";
-export type { TemplateProps } from "./api-console";
+export type { TemplateProps } from "./props";
 
 export { ApiConsoleTemplate } from "./api-console";
 export type { ApiConsolePage, ApiConsoleProps } from "./api-console";

@@ -4,7 +4,7 @@ import { Placeholder } from "../../../ui/placeholder";
 import { cn } from "../../../lib/cn";
 import { Surface, guidedSetupTokens } from "./tokens";
 import { Btn, Card, Chip, Fab, Main, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 const RAIL = ["💡", "⬆", "👤", "🤖", "▤", "📊"];
 const RAIL_BOTTOM = ["✈", "📣", "⌾"];

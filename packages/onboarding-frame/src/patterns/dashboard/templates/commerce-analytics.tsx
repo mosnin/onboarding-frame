@@ -5,7 +5,7 @@ import { BarList, Donut, LineChart, Sparkline } from "../../../ui/charts";
 import { cn } from "../../../lib/cn";
 import { Surface, commerceTokens } from "./tokens";
 import { Btn, Card, Main, Select, Shell, Sidebar, TopBar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 const NAV = [
   { id: "home", label: "Home", glyph: "⌂" },

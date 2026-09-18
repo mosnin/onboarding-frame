@@ -6,7 +6,7 @@ import { cn } from "../../../lib/cn";
 import { AvatarSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, schedulerTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type SchedulerPage = "home" | "publish" | "community";
 

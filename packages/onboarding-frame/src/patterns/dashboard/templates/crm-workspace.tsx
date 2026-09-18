@@ -5,7 +5,7 @@ import { cn } from "../../../lib/cn";
 import { Placeholder } from "../../../ui/placeholder";
 import { Surface, crmTokens } from "./tokens";
 import { Btn, Main, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type CrmPage = "companies" | "board" | "record" | "dashboard";
 

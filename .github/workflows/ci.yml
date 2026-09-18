@@ -30,3 +30,9 @@ jobs:
 
       - name: Build site
         run: pnpm build
+
+      # A template that imports a file the registry does not ship builds fine
+      # here and only breaks for someone running `onboarding-frame add`, so the
+      # eject is verified rather than assumed.
+      - name: Check registry ejects cleanly
+        run: pnpm check:registry

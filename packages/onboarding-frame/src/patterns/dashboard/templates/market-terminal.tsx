@@ -5,7 +5,7 @@ import { cn } from "../../../lib/cn";
 import { LogoSlot } from "../../../ui/placeholder";
 import { Surface, terminalTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type TerminalPage = "insider" | "markets" | "screener";
 

@@ -4,7 +4,7 @@ import { Placeholder } from "../../../ui/placeholder";
 import { cn } from "../../../lib/cn";
 import { Surface, assistantHomeTokens } from "./tokens";
 import { Btn, Main, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 const NAV = [
   { id: "new", label: "New", glyph: "＋", active: true },

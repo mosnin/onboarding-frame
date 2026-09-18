@@ -5,7 +5,7 @@ import { BarChart, Heatmap, LineChart } from "../../../ui/charts";
 import { cn } from "../../../lib/cn";
 import { Surface, supportInsightsTokens } from "./tokens";
 import { Chip, Main, Select, Shell } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 const RAIL = ["✉", "⚯", "✦", "📊", "◎", "⚙"];
 

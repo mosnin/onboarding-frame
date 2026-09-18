@@ -5,7 +5,7 @@ import { cn } from "../../../lib/cn";
 import { LogoSlot, Placeholder } from "../../../ui/placeholder";
 import { Surface, benchmarkTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type BenchmarkPage = "benchmarking" | "overview" | "revenue" | "churn";
 

@@ -4,7 +4,7 @@ import { cn } from "../../../lib/cn";
 import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
 import { Surface, authTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 export type AuthPage = "home" | "users" | "organizations";
 
