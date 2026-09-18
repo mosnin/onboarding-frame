@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { KitBar } from "@/components/kit-bar";
+import { SiteFooter } from "@/components/site-footer";
 
 // Variable weights keep the whole range available without extra requests.
 const inter = Inter({
@@ -35,7 +36,8 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
       <body className="min-h-screen">
         <SiteHeader />
-        {children}
+        <div className="min-h-[70vh]">{children}</div>
+        <SiteFooter />
         <KitBar />
       </body>
     </html>

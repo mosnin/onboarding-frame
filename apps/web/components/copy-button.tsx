@@ -6,10 +6,13 @@ export function CopyButton({
   value,
   label = "Copy",
   className = "",
+  icon,
 }: {
   value: string;
   label?: string;
   className?: string;
+  /** Rendered before the label; the copied state keeps it in place. */
+  icon?: React.ReactNode;
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -27,8 +30,9 @@ export function CopyButton({
     <button
       type="button"
       onClick={copy}
-      className={`rounded-full border border-[color:var(--site-border)] px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-[color:var(--site-surface)] ${className}`}
+      className={`inline-flex items-center gap-2 rounded-lg border border-[color:var(--site-border)] px-3 py-1.5 text-[0.88rem] font-semibold transition-colors hover:bg-[color:var(--site-surface)] ${className}`}
     >
+      {icon}
       {copied ? "Copied" : label}
     </button>
   );
