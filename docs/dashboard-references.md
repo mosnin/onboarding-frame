@@ -334,7 +334,7 @@ Price per share / Investment amount / Transfer amount, each row ending in an out
 | 31 | 087 | Coinbase wallet | wallet-home (dark) | REMEASURED |
 | 32 | 088 | Snowflake cost mgmt | warehouse-cost | REMEASURED |
 | 33 | 089 | Origin portfolio | wealth-portfolio | REMEASURED |
-| 34 | 090 | Stripe benchmarking | billing-benchmarks | DONE |
+| 34 | 090 | Stripe benchmarking | billing-benchmarks | REMEASURED |
 | 35 | 091 | Mailchimp audience dashboard | audience-analytics `dashboard` page | DONE |
 
 ## 31 Coinbase (087) DARK

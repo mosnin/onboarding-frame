@@ -19,6 +19,7 @@ import {
   GearIcon,
   GridFourIcon,
   HouseIcon,
+  InfoIcon,
   PackageIcon,
   QuestionIcon,
   ReceiptIcon,
@@ -72,11 +73,17 @@ const PANELS = [
     median: "0% median",
     top: "8.0%",
     bottom: "-4.0%",
-    // Your line sits mid-band here, which is why the chip is neutral-amber.
-    yours: 0.5,
+    yours: 0.335,
     yoursColor: "#3fa66a",
-    band: [0.74, 0.7, 0.66, 0.63, 0.62, 0.6, 0.58, 0.6, 0.57, 0.59, 0.62, 0.6],
-    medianLine: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
+    band: [
+      0.873, 0.816, 0.703, 0.665, 0.582, 0.582, 0.538, 0.57, 0.589, 0.595,
+      0.614,
+    ],
+    bandFloor: [
+      0.051, 0.082, 0.057, 0.038, 0.019, 0.019, 0.019, 0.019, 0.032, 0.032,
+      0.025,
+    ],
+    medianLine: [],
   },
   {
     id: "ltv",
@@ -89,8 +96,18 @@ const PANELS = [
     bottom: "US$0",
     yours: 0,
     yoursColor: "#e5772d",
-    band: [0.78, 0.82, 0.84, 0.83, 0.85, 0.86, 0.84, 0.86, 0.85, 0.87, 0.86, 0.86],
-    medianLine: [0.5, 0.54, 0.56, 0.55, 0.57, 0.58, 0.56, 0.58, 0.57, 0.59, 0.58, 0.58],
+    band: [
+      0.861, 0.924, 0.962, 0.93, 0.968, 0.968, 0.968, 0.968, 0.943, 0.968,
+      0.968,
+    ],
+    bandFloor: [
+      0.165, 0.171, 0.177, 0.177, 0.177, 0.184, 0.184, 0.19, 0.184, 0.184,
+      0.184,
+    ],
+    medianLine: [
+      0.399, 0.399, 0.411, 0.411, 0.424, 0.424, 0.43, 0.418, 0.424, 0.418,
+      0.418,
+    ],
   },
   {
     id: "net-churn",
@@ -103,8 +120,17 @@ const PANELS = [
     bottom: "0.0%",
     yours: 0,
     yoursColor: "#3fa66a",
-    band: [0.68, 0.64, 0.62, 0.63, 0.61, 0.6, 0.58, 0.6, 0.59, 0.6, 0.61, 0.6],
-    medianLine: [0.34, 0.32, 0.31, 0.32, 0.3, 0.29, 0.28, 0.3, 0.29, 0.3, 0.31, 0.3],
+    band: [
+      0.892, 0.823, 0.791, 0.791, 0.766, 0.753, 0.747, 0.715, 0.722, 0.715,
+      0.734,
+    ],
+    bandFloor: [
+      0.057, 0.038, 0.038, 0.044, 0.044, 0.032, 0.032, 0.032, 0.044, 0.051,
+      0.057,
+    ],
+    medianLine: [
+      0.329, 0.329, 0.323, 0.316, 0.304, 0.304, 0.291, 0.304, 0.297, 0.31, 0.31,
+    ],
   },
   {
     id: "sub-churn",
@@ -117,8 +143,16 @@ const PANELS = [
     bottom: "0.0%",
     yours: 0,
     yoursColor: "#3fa66a",
-    band: [0.72, 0.66, 0.64, 0.65, 0.63, 0.62, 0.6, 0.62, 0.61, 0.62, 0.63, 0.62],
-    medianLine: [0.4, 0.36, 0.34, 0.35, 0.33, 0.32, 0.3, 0.32, 0.31, 0.32, 0.33, 0.32],
+    band: [
+      0.873, 0.823, 0.778, 0.804, 0.759, 0.753, 0.753, 0.734, 0.759, 0.734,
+      0.759,
+    ],
+    bandFloor: [
+      0.158, 0.139, 0.127, 0.133, 0.127, 0.12, 0.114, 0.12, 0.133, 0.133, 0.152,
+    ],
+    medianLine: [
+      0.399, 0.399, 0.38, 0.38, 0.367, 0.361, 0.361, 0.373, 0.373, 0.392, 0.392,
+    ],
   },
 ];
 
@@ -150,27 +184,48 @@ export function BillingBenchmarksTemplate({
 
           <nav className="grid gap-[1px] px-[9px]">
             {NAV.map((item) => (
-              <NavItem key={item.id} label={item.label} glyph={<item.Icon size={15} />} className="py-[3px] text-[0.8rem]" />
+              <NavItem
+                key={item.id}
+                label={item.label}
+                glyph={<item.Icon size={15} />}
+                className="py-[3px] text-[0.8rem]"
+              />
             ))}
           </nav>
 
-          <NavSection label="Shortcuts" className="normal-case tracking-normal" />
+          <NavSection
+            label="Shortcuts"
+            className="normal-case tracking-normal"
+          />
           <nav className="grid gap-[1px] px-[9px]">
             <NavItem label="Billing overview" glyph={<ClockIcon size={15} />} />
           </nav>
 
-          <NavSection label="Products" className="normal-case tracking-normal" />
+          <NavSection
+            label="Products"
+            className="normal-case tracking-normal"
+          />
           <nav className="grid gap-[1px] px-[9px]">
             <NavItem
               label="Payments"
               glyph={<ReceiptIcon size={15} />}
-              trailing={<CaretDownIcon size={10} className="text-[color:var(--ob-muted)]" />}
+              trailing={
+                <CaretDownIcon
+                  size={10}
+                  className="text-[color:var(--ob-muted)]"
+                />
+              }
             />
             <NavItem
               label="Billing"
               glyph={<ReceiptIcon size={15} />}
               className="text-[color:var(--ob-brand)]"
-              trailing={<CaretUpIcon size={10} className="text-[color:var(--ob-muted)]" />}
+              trailing={
+                <CaretUpIcon
+                  size={10}
+                  className="text-[color:var(--ob-muted)]"
+                />
+              }
             />
             {BILLING.map((item) => (
               <NavItem
@@ -187,12 +242,22 @@ export function BillingBenchmarksTemplate({
             <NavItem
               label="Reporting"
               glyph={<ChartBarIcon size={15} />}
-              trailing={<CaretDownIcon size={10} className="text-[color:var(--ob-muted)]" />}
+              trailing={
+                <CaretDownIcon
+                  size={10}
+                  className="text-[color:var(--ob-muted)]"
+                />
+              }
             />
             <NavItem
               label="More"
               glyph={<DotsThreeIcon size={15} />}
-              trailing={<CaretDownIcon size={10} className="text-[color:var(--ob-muted)]" />}
+              trailing={
+                <CaretDownIcon
+                  size={10}
+                  className="text-[color:var(--ob-muted)]"
+                />
+              }
             />
           </nav>
 
@@ -205,144 +270,155 @@ export function BillingBenchmarksTemplate({
           {page === "overview" ? (
             <MerchantOverview />
           ) : (
-          <>
-          <header className="flex h-[48px] shrink-0 items-center gap-[12px] px-[18px]">
-            <div className="flex w-full max-w-[569px] items-center gap-[7px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[12px] py-[7px] text-[0.734rem] text-[color:var(--ob-muted)]">
-              <SearchIcon size={14} /> Search
-            </div>
-            <span className="ml-auto flex items-center gap-[9px]">
-              <span className="text-[0.734rem] font-medium">Test mode</span>
-              {/* Off: the account is looking at live numbers. */}
-              <span className="grid h-[18px] w-[33px] items-center rounded-full bg-[color:var(--ob-surface-3)] px-[3px]">
-                <span className="size-[12px] rounded-full bg-[color:var(--ob-surface)] shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
-              </span>
-              {[GridFourIcon, QuestionIcon, BellIcon, GearIcon].map((Mark, i) => (
-                <span key={i} className="text-[color:var(--ob-fg-soft)]">
-                  <Mark size={15} />
-                </span>
-              ))}
-              <span
-                aria-hidden
-                className="grid size-[24px] place-items-center rounded-full bg-[color:var(--ob-brand)] text-white"
-              >
-                +
-              </span>
-            </span>
-          </header>
-
-          <div className="px-[24px] pb-[24px]">
-            <div className="flex flex-wrap items-center gap-[9px]">
-              <h1 className="flex-1 text-[1.498rem] font-bold tracking-[-0.01em]">
-                Billing overview
-              </h1>
-              <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[12px] py-[6px] text-[0.734rem] font-semibold text-white">
-                + Create
-              </span>
-              <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.734rem] font-medium">
-                <ChatDotsIcon size={14} /> Give feedback
-              </span>
-              <span aria-hidden className="text-[color:var(--ob-muted)]">
-                ···
-              </span>
-            </div>
-
-            <nav className="flex gap-[21px] border-b border-[color:var(--ob-border)] pt-[15px]">
-              {[
-                { id: "revenue", label: "Revenue" },
-                { id: "subscribers", label: "Subscribers" },
-                { id: "trials", label: "Trials" },
-                { id: "churn", label: "Churn" },
-                { id: "collections", label: "Collections" },
-                { id: "benchmarking", label: "Benchmarking", preview: true },
-              ].map((tab) => (
-                <span
-                  key={tab.id}
-                  className={cn(
-                    "-mb-px flex items-center gap-[7px] pb-[9px] text-[0.764rem]",
-                    tab.id === page
-                      ? "border-b-2 border-[color:var(--ob-brand)] font-semibold text-[color:var(--ob-brand)]"
-                      : "text-[color:var(--ob-fg-soft)]",
-                  )}
-                >
-                  {tab.label}
-                  {tab.preview && (
-                    <span className="rounded-[3px] border border-[color:var(--ob-border-strong)] px-[4px] py-[1px] text-[0.614rem] font-normal text-[color:var(--ob-fg-soft)]">
-                      Preview
-                    </span>
-                  )}
-                </span>
-              ))}
-            </nav>
-
-            <p className="pt-[15px] text-[0.787rem] text-[color:var(--ob-fg-soft)]">
-              Compare your key performance metrics against similar companies using the
-              platform to power their subscription business.
-            </p>
-
-            <div className="grid gap-[15px] pt-[12px] sm:grid-cols-3">
-              {FILTERS.map((filter) => (
-                <div key={filter.id}>
-                  <p className="flex items-center gap-[4px] pb-[4px] text-[0.734rem]">
-                    <span className="flex items-center gap-[4px] font-semibold">
-                      {filter.label}
-                      <InfoDot />
-                    </span>
-                    {filter.you && (
-                      <span className="ml-auto text-[color:var(--ob-muted)]">
-                        {filter.you}
+            <>
+              <header className="flex h-[48px] shrink-0 items-center gap-[12px] px-[18px]">
+                <div className="flex w-full max-w-[569px] items-center gap-[7px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[12px] py-[7px] text-[0.734rem] text-[color:var(--ob-muted)]">
+                  <SearchIcon size={14} /> Search
+                </div>
+                <span className="ml-auto flex items-center gap-[9px]">
+                  <span className="text-[0.734rem] font-medium">Test mode</span>
+                  {/* Off: the account is looking at live numbers. */}
+                  <span className="grid h-[18px] w-[33px] items-center rounded-full bg-[color:var(--ob-surface-3)] px-[3px]">
+                    <span className="size-[12px] rounded-full bg-[color:var(--ob-surface)] shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
+                  </span>
+                  {[GridFourIcon, QuestionIcon, BellIcon, GearIcon].map(
+                    (Mark, i) => (
+                      <span key={i} className="text-[color:var(--ob-fg-soft)]">
+                        <Mark size={15} />
                       </span>
-                    )}
-                  </p>
-                  <span className="flex items-center gap-[9px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[7px] text-[0.749rem]">
-                    <span className="flex-1">{filter.value}</span>
-                    <span aria-hidden className="text-[0.524rem] opacity-60">
-                      <ArrowsUpDownIcon size={11} />
-                    </span>
+                    ),
+                  )}
+                  <span
+                    aria-hidden
+                    className="grid size-[24px] place-items-center rounded-full bg-[color:var(--ob-brand)] text-white"
+                  >
+                    +
+                  </span>
+                </span>
+              </header>
+
+              <div className="px-[42px] pb-[24px]">
+                <div className="flex flex-wrap items-center gap-[9px]">
+                  <h1 className="flex-1 text-[1.498rem] font-bold tracking-[-0.01em]">
+                    Billing overview
+                  </h1>
+                  <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[12px] py-[6px] text-[0.734rem] font-semibold text-white">
+                    + Create
+                  </span>
+                  <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.734rem] font-medium">
+                    <ChatDotsIcon size={14} /> Give feedback
+                  </span>
+                  <span aria-hidden className="text-[color:var(--ob-muted)]">
+                    ···
                   </span>
                 </div>
-              ))}
-            </div>
 
-            {/* Hairlines instead of card borders keep four charts readable. */}
-            <div className="mt-[18px] grid border-t border-[color:var(--ob-border)] lg:grid-cols-2">
-              {PANELS.map((panel, index) => (
-                <section
-                  key={panel.id}
-                  className={cn(
-                    "border-b border-[color:var(--ob-border)] py-[18px]",
-                    index % 2 === 0 ? "lg:pr-[24px]" : "lg:border-l lg:pl-[24px]",
-                  )}
-                >
-                  <div className="flex flex-wrap items-center gap-[9px]">
-                    <h2 className="flex items-center gap-[6px] text-[0.936rem] font-bold">
-                      {panel.title}
-                      <InfoDot />
-                    </h2>
+                <nav className="flex gap-[21px] border-b border-[color:var(--ob-border)] pt-[15px]">
+                  {[
+                    { id: "revenue", label: "Revenue" },
+                    { id: "subscribers", label: "Subscribers" },
+                    { id: "trials", label: "Trials" },
+                    { id: "churn", label: "Churn" },
+                    { id: "collections", label: "Collections" },
+                    {
+                      id: "benchmarking",
+                      label: "Benchmarking",
+                      preview: true,
+                    },
+                  ].map((tab) => (
                     <span
+                      key={tab.id}
                       className={cn(
-                        "rounded-[3px] px-[6px] py-[3px] text-[0.689rem] font-semibold",
-                        panel.good
-                          ? "bg-[color-mix(in_oklab,#3fa66a_18%,transparent)] text-[#2b7a4b]"
-                          : "bg-[color-mix(in_oklab,#e5a92d_24%,transparent)] text-[#8a6212]",
+                        "-mb-px flex items-center gap-[7px] pb-[9px] text-[0.764rem]",
+                        tab.id === page
+                          ? "border-b-2 border-[color:var(--ob-brand)] font-semibold text-[color:var(--ob-brand)]"
+                          : "text-[color:var(--ob-fg-soft)]",
                       )}
                     >
-                      {panel.percentile}
+                      {tab.label}
+                      {tab.preview && (
+                        <span className="rounded-[3px] border border-[color:var(--ob-border-strong)] px-[4px] py-[1px] text-[0.614rem] font-normal text-[color:var(--ob-fg-soft)]">
+                          Preview
+                        </span>
+                      )}
                     </span>
-                  </div>
+                  ))}
+                </nav>
 
-                  <p className="pt-[6px] text-[1.011rem] font-bold">
-                    {panel.value}{" "}
-                    <span className="text-[0.764rem] font-normal text-[color:var(--ob-muted)]">
-                      {panel.median}
-                    </span>
-                  </p>
+                <p className="pt-[15px] text-[0.787rem] text-[color:var(--ob-fg-soft)]">
+                  Compare your key performance metrics against similar companies
+                  using the platform to power their subscription business.
+                </p>
 
-                  <BandChart panel={panel} />
-                </section>
-              ))}
-            </div>
-          </div>
-          </>
+                <div className="flex flex-wrap gap-[15px] pt-[12px]">
+                  {FILTERS.map((filter) => (
+                    <div key={filter.id} className="w-[241px]">
+                      <p className="flex items-center gap-[4px] pb-[4px] text-[0.734rem]">
+                        <span className="flex items-center gap-[4px] font-semibold">
+                          {filter.label}
+                          <InfoDot />
+                        </span>
+                        {filter.you && (
+                          <span className="ml-auto text-[color:var(--ob-muted)]">
+                            {filter.you}
+                          </span>
+                        )}
+                      </p>
+                      <span className="flex items-center gap-[9px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[7px] text-[0.749rem]">
+                        <span className="flex-1">{filter.value}</span>
+                        <span
+                          aria-hidden
+                          className="text-[0.524rem] opacity-60"
+                        >
+                          <ArrowsUpDownIcon size={11} />
+                        </span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Hairlines instead of card borders keep four charts readable. */}
+                <div className="mt-[18px] grid border-t border-[color:var(--ob-border)] lg:grid-cols-2">
+                  {PANELS.map((panel, index) => (
+                    <section
+                      key={panel.id}
+                      className={cn(
+                        "border-b border-[color:var(--ob-border)] py-[18px]",
+                        index % 2 === 0
+                          ? "lg:pr-[24px]"
+                          : "lg:border-l lg:pl-[24px]",
+                      )}
+                    >
+                      <div className="flex flex-wrap items-center gap-[9px]">
+                        <h2 className="flex items-center gap-[6px] text-[0.936rem] font-bold">
+                          {panel.title}
+                          <InfoDot />
+                        </h2>
+                        <span
+                          className={cn(
+                            "rounded-[3px] px-[6px] py-[3px] text-[0.689rem] font-semibold",
+                            panel.good
+                              ? "bg-[color-mix(in_oklab,#3fa66a_18%,transparent)] text-[#2b7a4b]"
+                              : "bg-[color-mix(in_oklab,#e5a92d_24%,transparent)] text-[#8a6212]",
+                          )}
+                        >
+                          {panel.percentile}
+                        </span>
+                      </div>
+
+                      <p className="pt-[6px] text-[1.011rem] font-bold">
+                        {panel.value}{" "}
+                        <span className="text-[0.764rem] font-normal text-[color:var(--ob-muted)]">
+                          {panel.median}
+                        </span>
+                      </p>
+
+                      <BandChart panel={panel} />
+                    </section>
+                  ))}
+                </div>
+              </div>
+            </>
           )}
         </Main>
       </Shell>
@@ -423,7 +499,8 @@ function MerchantOverview() {
           </span>
         ))}
         <span className="flex items-center gap-[4px] text-[0.749rem] font-medium text-[color:var(--ob-fg-soft)]">
-          More <CaretDownIcon size={10} className="text-[color:var(--ob-muted)]" />
+          More{" "}
+          <CaretDownIcon size={10} className="text-[color:var(--ob-muted)]" />
         </span>
         <span className="ml-auto flex items-center gap-[12px] text-[0.749rem] font-medium">
           <span>Developers</span>
@@ -451,10 +528,16 @@ function MerchantOverview() {
 
         <div className="mt-[15px] flex flex-wrap items-center gap-[9px] border-t border-[color:var(--ob-border)] pt-[15px]">
           <OverviewSelect>Last 7 days</OverviewSelect>
-          <OverviewSelect glyph={<CalendarIcon size={13} />}>Mar 15–Mar 21</OverviewSelect>
-          <span className="text-[0.734rem] text-[color:var(--ob-muted)]">compared to</span>
+          <OverviewSelect glyph={<CalendarIcon size={13} />}>
+            Mar 15–Mar 21
+          </OverviewSelect>
+          <span className="text-[0.734rem] text-[color:var(--ob-muted)]">
+            compared to
+          </span>
           <OverviewSelect>Previous period</OverviewSelect>
-          <OverviewSelect caret={<ArrowsUpDownIcon size={11} />}>Daily</OverviewSelect>
+          <OverviewSelect caret={<ArrowsUpDownIcon size={11} />}>
+            Daily
+          </OverviewSelect>
         </div>
 
         <div className="grid gap-[24px] pt-[21px] lg:grid-cols-3">
@@ -462,7 +545,10 @@ function MerchantOverview() {
             {/* Test mode: this panel genuinely has nothing to show. */}
             <div className="mt-[12px] grid h-[225px] place-items-center rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[18px] text-center">
               <span>
-                <span aria-hidden className="block text-[1.199rem] text-[color:var(--ob-muted)]">
+                <span
+                  aria-hidden
+                  className="block text-[1.199rem] text-[color:var(--ob-muted)]"
+                >
                   <WarningIcon size={13} />
                 </span>
                 <span className="block pt-[9px] text-[0.764rem] text-[color:var(--ob-muted)]">
@@ -474,10 +560,20 @@ function MerchantOverview() {
 
           <Widget title="Gross volume" info chip="+∞">
             <div className="flex gap-[24px] pt-[12px]">
-              <Legend label="Last 7 days" value="$41.54" color="var(--ob-brand)" />
-              <Legend label="Previous period" value="$0.00" color="var(--ob-border-strong)" />
+              <Legend
+                label="Last 7 days"
+                value="$41.54"
+                color="var(--ob-brand)"
+              />
+              <Legend
+                label="Previous period"
+                value="$0.00"
+                color="var(--ob-border-strong)"
+              />
             </div>
-            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">$41.54</p>
+            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">
+              $41.54
+            </p>
             <svg
               viewBox="0 0 600 260"
               className="h-[195px] w-full"
@@ -520,7 +616,10 @@ function MerchantOverview() {
           </Widget>
 
           <section className="relative rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] p-[21px] text-center">
-            <span aria-hidden className="absolute right-[15px] top-[15px] text-[color:var(--ob-muted)]">
+            <span
+              aria-hidden
+              className="absolute right-[15px] top-[15px] text-[color:var(--ob-muted)]"
+            >
               <CrossIcon size={12} />
             </span>
             <h2 className="text-[0.974rem] font-bold leading-snug">
@@ -529,7 +628,8 @@ function MerchantOverview() {
               to key business insights
             </h2>
             <p className="pt-[9px] text-[0.764rem] text-[color:var(--ob-fg-soft)]">
-              Missing anything? You can always add it again by editing your overview.
+              Missing anything? You can always add it again by editing your
+              overview.
             </p>
             <p className="pt-[12px] text-[0.787rem] font-semibold text-[color:var(--ob-brand)]">
               Add to your overview ⊕
@@ -543,16 +643,30 @@ function MerchantOverview() {
 
           <Widget title="Net volume from sales" info chip="+∞">
             <div className="flex gap-[24px] pt-[12px]">
-              <Legend label="Last 7 days" value="$29.62" color="var(--ob-brand)" />
-              <Legend label="Previous period" value="$0.00" color="var(--ob-border-strong)" />
+              <Legend
+                label="Last 7 days"
+                value="$29.62"
+                color="var(--ob-brand)"
+              />
+              <Legend
+                label="Previous period"
+                value="$0.00"
+                color="var(--ob-border-strong)"
+              />
             </div>
-            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">$29.62</p>
+            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">
+              $29.62
+            </p>
           </Widget>
 
           <Widget title="Failed payments" info>
-            <p className="pt-[12px] text-[1.011rem] font-bold tabular-nums">$4.00</p>
+            <p className="pt-[12px] text-[1.011rem] font-bold tabular-nums">
+              $4.00
+            </p>
             <p className="flex items-center gap-[9px] pt-[6px] text-[0.734rem] text-[color:var(--ob-muted)]">
-              <span className="flex-1">Mar 21, 3:35 AM · jane2@example.test</span>
+              <span className="flex-1">
+                Mar 21, 3:35 AM · jane2@example.test
+              </span>
               <span className="rounded bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-[6px] py-[1px] font-medium text-[#b3363a]">
                 Failed
               </span>
@@ -561,16 +675,24 @@ function MerchantOverview() {
               <span className="flex-1 font-medium text-[color:var(--ob-brand)]">
                 1 of 1 result
               </span>
-              <span className="text-[color:var(--ob-muted)]">Updated at 4:57 AM <ClockIcon size={12} /></span>
+              <span className="text-[color:var(--ob-muted)]">
+                Updated at 4:57 AM <ClockIcon size={12} />
+              </span>
             </p>
           </Widget>
 
           <Widget title="New customers" info chip="+∞">
             <div className="flex gap-[24px] pt-[12px]">
               <Legend label="Last 7 days" value="3" color="var(--ob-brand)" />
-              <Legend label="Previous period" value="0" color="var(--ob-border-strong)" />
+              <Legend
+                label="Previous period"
+                value="0"
+                color="var(--ob-border-strong)"
+              />
             </div>
-            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">3</p>
+            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">
+              3
+            </p>
           </Widget>
         </div>
       </div>
@@ -620,10 +742,16 @@ function Legend({
   return (
     <span>
       <span className="flex items-center gap-[7px] text-[0.749rem] text-[color:var(--ob-fg-soft)]">
-        <span aria-hidden className="h-[1px] w-[15px] rounded-full" style={{ background: color }} />
+        <span
+          aria-hidden
+          className="h-[1px] w-[15px] rounded-full"
+          style={{ background: color }}
+        />
         {label}
       </span>
-      <span className="block pt-[3px] text-[1.011rem] font-bold tabular-nums">{value}</span>
+      <span className="block pt-[3px] text-[1.011rem] font-bold tabular-nums">
+        {value}
+      </span>
     </span>
   );
 }
@@ -663,10 +791,10 @@ function BandChart({ panel }: { panel: (typeof PANELS)[number] }) {
   const bandTop = panel.band
     .map((v, i) => `${i === 0 ? "M" : "L"}${i * step},${y(v)}`)
     .join(" ");
-  const bandBottom = panel.band
+  const bandBottom = panel.bandFloor
     .slice()
     .reverse()
-    .map((v, i) => `L${width - i * step},${y(Math.max(v - 0.55, 0))}`)
+    .map((v, i) => `L${width - i * step},${y(v)}`)
     .join(" ");
   const medianPath = panel.medianLine
     .map((v, i) => `${i === 0 ? "M" : "L"}${i * step},${y(v)}`)
@@ -674,22 +802,26 @@ function BandChart({ panel }: { panel: (typeof PANELS)[number] }) {
 
   return (
     <>
-      <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">{panel.top}</p>
+      <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">
+        {panel.top}
+      </p>
       <svg
         viewBox={`0 0 ${width} ${height}`}
-        className="h-[157px] w-full"
+        className="h-[157px] w-[calc(100%-48px)] translate-x-[48px]"
         preserveAspectRatio="none"
         role="img"
         aria-label={`${panel.title}: your value against the peer range`}
       >
         <path d={`${bandTop} ${bandBottom} Z`} fill="var(--ob-surface-2)" />
-        <path
-          d={medianPath}
-          fill="none"
-          stroke="#7b88a8"
-          strokeWidth={1.5}
-          vectorEffect="non-scaling-stroke"
-        />
+        {panel.medianLine.length > 0 && (
+          <path
+            d={medianPath}
+            fill="none"
+            stroke="#7b88a8"
+            strokeWidth={1.5}
+            vectorEffect="non-scaling-stroke"
+          />
+        )}
         <line
           x1={0}
           x2={width}
@@ -700,7 +832,9 @@ function BandChart({ panel }: { panel: (typeof PANELS)[number] }) {
           vectorEffect="non-scaling-stroke"
         />
       </svg>
-      <p className="text-[0.712rem] text-[color:var(--ob-muted)]">{panel.bottom}</p>
+      <p className="text-[0.712rem] text-[color:var(--ob-muted)]">
+        {panel.bottom}
+      </p>
       <p className="flex pt-[3px] text-[0.712rem] text-[color:var(--ob-muted)]">
         <span className="flex-1">January 2024</span>
         <span>December 2024</span>
@@ -711,11 +845,6 @@ function BandChart({ panel }: { panel: (typeof PANELS)[number] }) {
 
 function InfoDot(): ReactNode {
   return (
-    <span
-      aria-hidden
-      className="grid size-[11px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.449rem] font-normal text-[color:var(--ob-muted)]"
-    >
-      i
-    </span>
+    <InfoIcon size={13} className="shrink-0 text-[color:var(--ob-muted)]" />
   );
 }
