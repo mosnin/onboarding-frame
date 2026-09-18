@@ -3,19 +3,25 @@
 import type { ReactNode } from "react";
 import { Donut } from "../../../ui/charts";
 import {
+  ArrowClockwiseIcon,
+  ArrowUpIcon,
+  ArrowUpRightIcon,
   ArticleIcon,
   BarcodeIcon,
   CalendarIcon,
-  CardIcon,
   CaretLeftIcon,
   CaretRightIcon,
+  CardIcon,
+  CaretUpDownIcon,
   CodeIcon,
+  CopyIcon,
   EnvelopeIcon,
   GearIcon,
   GridFourIcon,
   LifebuoyIcon,
   PencilIcon,
   PercentIcon,
+  QrCodeIcon,
   StarIcon,
   StorefrontIcon,
   TicketIcon,
@@ -84,93 +90,105 @@ export function EventAnalyticsTemplate({
   return (
     <Surface tokens={eventTokens} className={className}>
       <Shell>
-        <Sidebar width={278} bg="var(--ob-bg)" className="relative">
-          <div className="flex items-center gap-2.5 px-5 pb-5 pt-6">
-            <Wordmark name={brandName} size={14} mark={18} radius={5} />
+        <Sidebar width={209} bg="var(--ob-bg)" className="relative">
+          <div className="flex items-center gap-[9px] px-[17px] pb-[9px] pt-[16px]">
+            <Wordmark name={brandName} size={13} mark={18} radius={5} />
           </div>
 
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid px-[10px]">
             {NAV.map((item) => (
-              <NavItem key={item.id} label={item.label} glyph={<item.Icon size={15} />} />
+              <NavItem
+                key={item.id}
+                label={item.label}
+                glyph={<item.Icon size={15} />}
+                className="gap-[13px] px-[12px] py-[7px] text-[0.86rem]"
+              />
             ))}
           </nav>
 
           {GROUPS.map((group) => (
             <div key={group.label}>
               <NavSection label={group.label} />
-              <nav className="grid gap-0.5 px-3">
+              <nav className="grid px-[10px]">
                 {group.items.map((item) => (
-                  <NavItem key={item.id} label={item.label} glyph={<item.Icon size={15} />} />
+                  <NavItem
+                key={item.id}
+                label={item.label}
+                glyph={<item.Icon size={15} />}
+                className="gap-[13px] px-[12px] py-[7px] text-[0.86rem]"
+              />
                 ))}
               </nav>
             </div>
           ))}
 
           <NavSection label="Help" />
-          <nav className="grid gap-0.5 px-3 pb-5">
+          <nav className="grid px-[10px] pb-[17px]">
             <NavItem
               label="Resource Center"
-              glyph={<ArticleIcon size={14} />}
+              className="gap-[13px] px-[12px] py-[7px] text-[0.86rem]"
+              glyph={<ArticleIcon size={15} />}
               trailing={
-                <span aria-hidden className="text-[0.75rem] text-[color:var(--ob-muted)]">
-                  ↗
-                </span>
+                <ArrowUpRightIcon size={10} className="text-[color:var(--ob-muted)]" />
               }
             />
           </nav>
 
           {/* The collapse control straddles the sidebar edge in the reference. */}
-          <span className="absolute -right-3 top-1/2 grid size-6 place-items-center rounded-full border border-[color:var(--ob-border-strong)] bg-[color:var(--ob-surface2,var(--ob-surface-2))] text-[0.7rem] text-[color:var(--ob-fg-soft)]">
-            ‹
+          <span className="absolute -right-[10px] top-1/2 grid size-[21px] place-items-center rounded-full border border-[color:var(--ob-border-strong)] bg-[color:var(--ob-surface2,var(--ob-surface-2))] text-[color:var(--ob-fg-soft)]">
+            <CaretLeftIcon size={10} />
           </span>
         </Sidebar>
 
         <Main className="overflow-auto">
-          <header className="flex items-center gap-3 px-6 py-4">
-            <span className="flex items-center gap-2 text-[0.98rem] font-medium">
-              <CaretLeftIcon size={14} /> Back
+          <header className="flex items-center gap-[10px] px-[21px] py-[14px]">
+            <span className="flex items-center gap-[7px] text-[0.858rem] font-medium">
+              <CaretLeftIcon size={13} /> Back
             </span>
-            <CardIcon size={14} />
-            <span className="flex items-center gap-2.5 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] px-3 py-1.5">
-              <Avatar name="Community" size={22} />
+            <span className="ml-auto text-[color:var(--ob-fg-soft)]">
+              <StorefrontIcon size={20} />
+            </span>
+            <span className="h-[27px] w-px bg-[color:var(--ob-border)]" />
+            <span className="flex items-center gap-[9px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] px-[10px] py-[6px]">
+              <Avatar name="Community" size={20} />
               <span className="leading-tight">
-                <span className="block text-[0.66rem] uppercase tracking-wide text-[color:var(--ob-muted)]">
+                <span className="block text-[0.578rem] uppercase tracking-wide text-[color:var(--ob-muted)]">
                   Community
                 </span>
-                <span className="block text-[0.92rem] font-semibold">ASAcme</span>
+                <span className="block text-[0.805rem] font-semibold">ASAcme</span>
               </span>
-              <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
-                ⌃⌄
+              <span className="text-[color:var(--ob-muted)]">
+                <CaretUpDownIcon size={12} />
               </span>
             </span>
           </header>
 
-          <div className="grid gap-5 px-6 pb-8">
-            <section className="flex items-center gap-4 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-5">
-              <span className="block size-[56px] shrink-0">
-                <Thumb seed="acme-gathering" radius={10} alt="Event cover" />
+          <div className="grid gap-[17px] px-[21px] pb-[28px]">
+            <section className="flex items-center gap-[14px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[17px]">
+              <span className="block size-[49px] shrink-0">
+                <Thumb seed="acme-gathering" radius={9} alt="Event cover" />
               </span>
-              <div className="min-w-0 flex-1">
-                <h1 className="flex items-center gap-2.5 text-[1.35rem] font-bold tracking-[-0.01em]">
+              <div className="min-w-[0px] flex-1">
+                <h1 className="flex items-center gap-[9px] text-[1.182rem] font-bold tracking-[-0.01em]">
                   ASAcme gathering
-                  <span className="flex items-center gap-1.5 text-[0.8rem] text-[color:var(--ob-muted)]">
-                    <GlyphBtn>↗</GlyphBtn>
-                    <GlyphBtn>⧉</GlyphBtn>
-                    <GlyphBtn>▦</GlyphBtn>
+                  <span className="flex items-center gap-[6px] text-[0.701rem] text-[color:var(--ob-muted)]">
+                    <GlyphBtn><ArrowUpRightIcon size={12} /></GlyphBtn>
+                    <GlyphBtn><CopyIcon size={12} /></GlyphBtn>
+                    <GlyphBtn><QrCodeIcon size={12} /></GlyphBtn>
                   </span>
                 </h1>
-                <p className="pt-1 text-[0.95rem] text-[color:var(--ob-muted)]">
+                <p className="pt-[3px] text-[0.832rem] text-[color:var(--ob-muted)]">
                   Jul 11th, 12:00 AM - 2:00 AM CDT · Chicago, IL
                 </p>
               </div>
-              <div className="flex shrink-0 items-center gap-2.5">
-                <OutlinePill glyph={<UserIcon size={14} />}>Add attendee</OutlinePill>
-                <OutlinePill glyph={<PencilIcon size={14} />}>Edit</OutlinePill>
+              <div className="flex shrink-0 items-center gap-[9px]">
+                <OutlinePill glyph={<UserIcon size={13} />}>Add attendee</OutlinePill>
+                <OutlinePill glyph={<PencilIcon size={13} />}>Edit</OutlinePill>
                 <OutlinePill>···</OutlinePill>
               </div>
             </section>
 
-            <nav className="flex gap-7 border-b border-[color:var(--ob-border)] px-1">
+            <nav className="flex gap-[24px] border-b border-[color:var(--ob-border)] px-[3px]">
               {[
                 { id: "rsvps", label: "RSVPs" },
                 { id: "analytics", label: "Analytics" },
@@ -179,7 +197,7 @@ export function EventAnalyticsTemplate({
                 <span
                   key={tab.id}
                   className={cn(
-                    "pb-3 text-[0.98rem]",
+                    "pb-[10px] text-[0.858rem]",
                     tab.id === page
                       ? "border-b-2 border-[color:var(--ob-fg)] font-semibold"
                       : "text-[color:var(--ob-muted)]",
@@ -203,13 +221,13 @@ export function EventAnalyticsTemplate({
 function Analytics() {
   return (
     <>
-      <div className="flex items-center gap-3">
-        <div className="inline-flex rounded-full border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-1">
+      <div className="flex items-center gap-[10px]">
+        <div className="inline-flex rounded-full border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[3px]">
           {["All time", "7d", "14d", "30d"].map((range) => (
             <span
               key={range}
               className={cn(
-                "rounded-full px-4 py-1.5 text-[0.9rem]",
+                "rounded-full px-[14px] py-[6px] text-[0.788rem]",
                 range === "All time"
                   ? "bg-[color:var(--ob-surface-3)] font-semibold"
                   : "text-[color:var(--ob-muted)]",
@@ -219,54 +237,54 @@ function Analytics() {
             </span>
           ))}
         </div>
-        <span className="ml-auto grid size-9 place-items-center rounded-full border border-[color:var(--ob-border)] text-[color:var(--ob-fg-soft)]">
-          ↻
+        <span className="ml-auto grid size-[31px] place-items-center rounded-full border border-[color:var(--ob-border)] text-[color:var(--ob-fg-soft)]">
+          <ArrowClockwiseIcon size={13} />
         </span>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-3">
+      <div className="grid gap-[17px] sm:grid-cols-3">
         {STATS.map((stat) => (
           <section
             key={stat.id}
-            className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-5"
+            className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[17px]"
           >
-            <p className="flex items-center gap-1.5 text-[0.98rem] text-[color:var(--ob-fg-soft)]">
+            <p className="flex items-center gap-[6px] text-[0.858rem] text-[color:var(--ob-fg-soft)]">
               {stat.label}
               {stat.info && <InfoDot />}
             </p>
-            <p className="pt-1 text-[1.75rem] font-bold tabular-nums">{stat.value}</p>
+            <p className="pt-[3px] text-[1.532rem] font-bold tabular-nums">{stat.value}</p>
           </section>
         ))}
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
-        <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
-          <div className="flex items-center gap-3">
-            <h2 className="flex-1 text-[1.12rem] font-bold">Tickets Sales</h2>
-            <PencilIcon size={14} />
+      <div className="grid gap-[17px] lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
+        <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[21px]">
+          <div className="flex items-center gap-[10px]">
+            <h2 className="flex-1 text-[0.98rem] font-bold">Tickets Sales</h2>
+            <PencilIcon size={13} />
           </div>
 
-          <div className="flex items-center gap-10 pt-6">
+          <div className="flex items-center gap-[35px] pt-[21px]">
             {/* One tier only, so the ring is a full circle rather than a split. */}
             <Donut
-              size={198}
-              thickness={9}
+              size={173}
+              thickness={8}
               segments={[{ id: "free", value: 6, color: "#b96bff" }]}
               center={
                 <span className="grid place-items-center">
-                  <span className="text-[1.8rem] font-bold leading-none tabular-nums">6</span>
-                  <span className="pt-1 text-[0.88rem] text-[color:var(--ob-muted)]">
+                  <span className="text-[1.575rem] font-bold leading-none tabular-nums">6</span>
+                  <span className="pt-[3px] text-[0.77rem] text-[color:var(--ob-muted)]">
                     Tickets sold
                   </span>
                 </span>
               }
             />
             <div className="flex-1">
-              <div className="flex items-center gap-3">
-                <span aria-hidden className="size-3 rounded-[3px] bg-[#b96bff]" />
-                <span className="flex-1 text-[0.98rem]">Free</span>
+              <div className="flex items-center gap-[10px]">
+                <span aria-hidden className="size-[10px] rounded-[2px] bg-[#b96bff]" />
+                <span className="flex-1 text-[0.858rem]">Free</span>
                 <span className="tabular-nums">6</span>
-                <span className="rounded-full bg-[color:var(--ob-surface-3)] px-2 py-0.5 text-[0.78rem] font-semibold">
+                <span className="rounded-full bg-[color:var(--ob-surface-3)] px-[7px] py-[2px] text-[0.683rem] font-semibold">
                   100%
                 </span>
               </div>
@@ -274,40 +292,40 @@ function Analytics() {
           </div>
         </section>
 
-        <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
-          <div className="flex items-center gap-3">
-            <h2 className="flex-1 text-[1.12rem] font-bold">Retention Rate</h2>
-            <CaretRightIcon size={14} />
+        <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[21px]">
+          <div className="flex items-center gap-[10px]">
+            <h2 className="flex-1 text-[0.98rem] font-bold">Retention Rate</h2>
+            <CaretRightIcon size={13} />
           </div>
 
-          <div className="grid justify-items-center pt-5">
+          <div className="grid justify-items-center pt-[17px]">
             <span className="relative">
               <Donut
-                size={122}
-                thickness={7}
+                size={107}
+                thickness={6}
                 segments={[{ id: "first", value: 5, color: "#5ddb9a" }]}
               />
               {/* The count rides the ring itself in the reference. */}
-              <span className="absolute -left-2 top-1/2 grid size-6 -translate-y-1/2 place-items-center rounded-full bg-[color:var(--ob-fg)] text-[0.72rem] font-bold text-[color:var(--ob-bg)]">
+              <span className="absolute -left-[7px] top-1/2 grid size-[21px] -translate-y-1/2 place-items-center rounded-full bg-[color:var(--ob-fg)] text-[0.63rem] font-bold text-[color:var(--ob-bg)]">
                 5
               </span>
             </span>
           </div>
 
-          <ul className="grid gap-2.5 pt-5">
+          <ul className="grid gap-[9px] pt-[17px]">
             {[
               { label: "First Timer", value: "5", pct: "100%", color: "#5ddb9a" },
               { label: "Returning", value: "0", pct: "0%", color: "#ff5f8a" },
             ].map((row) => (
-              <li key={row.label} className="flex items-center gap-3">
+              <li key={row.label} className="flex items-center gap-[10px]">
                 <span
                   aria-hidden
-                  className="size-3 rounded-[3px]"
+                  className="size-[10px] rounded-[2px]"
                   style={{ background: row.color }}
                 />
-                <span className="flex-1 text-[0.98rem]">{row.label}</span>
+                <span className="flex-1 text-[0.858rem]">{row.label}</span>
                 <span className="tabular-nums">{row.value}</span>
-                <span className="rounded-full bg-[color:var(--ob-surface-3)] px-2 py-0.5 text-[0.78rem] font-semibold">
+                <span className="rounded-full bg-[color:var(--ob-surface-3)] px-[7px] py-[2px] text-[0.683rem] font-semibold">
                   {row.pct}
                 </span>
               </li>
@@ -316,7 +334,7 @@ function Analytics() {
         </section>
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="grid gap-[17px] lg:grid-cols-2">
         <MeterCard
           title="Event Capacity"
           note="10 spots"
@@ -337,15 +355,17 @@ function Analytics() {
         />
       </div>
 
-      <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
-        <div className="flex items-center gap-3">
-          <h2 className="flex-1 text-[1.12rem] font-bold">RSVPs</h2>
-          <CaretRightIcon size={14} />
+      <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[21px]">
+        <div className="flex items-center gap-[10px]">
+          <h2 className="flex-1 text-[0.98rem] font-bold">RSVPs</h2>
+          <CaretRightIcon size={13} />
         </div>
-        <p className="flex items-center gap-2.5 pt-3">
-          <span className="text-[1.6rem] font-bold tabular-nums">6</span>
-          <span className="rounded-full bg-[color-mix(in_oklab,#5ddb9a_18%,transparent)] px-2 py-0.5 text-[0.78rem] font-semibold text-[color:var(--ob-success)]">
-            ↑100%
+        <p className="flex items-center gap-[9px] pt-[10px]">
+          <span className="text-[1.401rem] font-bold tabular-nums">6</span>
+          <span className="rounded-full bg-[color-mix(in_oklab,#5ddb9a_18%,transparent)] px-[7px] py-[2px] text-[0.683rem] font-semibold text-[color:var(--ob-success)]">
+            <span className="flex items-center gap-[2px]">
+              <ArrowUpIcon size={9} weight="bold" /> 100%
+            </span>
           </span>
         </p>
       </section>
@@ -365,27 +385,27 @@ function MeterCard({
   fill: number;
 }) {
   return (
-    <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
-      <div className="flex items-center gap-3">
-        <h2 className="flex-1 text-[1.12rem] font-bold">{title}</h2>
-        <span className="text-[0.92rem] text-[color:var(--ob-fg-soft)]">{note}</span>
+    <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[21px]">
+      <div className="flex items-center gap-[10px]">
+        <h2 className="flex-1 text-[0.98rem] font-bold">{title}</h2>
+        <span className="text-[0.805rem] text-[color:var(--ob-fg-soft)]">{note}</span>
       </div>
 
-      <ul className="grid gap-2.5 pt-4">
+      <ul className="grid gap-[9px] pt-[14px]">
         {rows.map((row) => (
-          <li key={row.label} className="flex items-center gap-3">
+          <li key={row.label} className="flex items-center gap-[10px]">
             <span
               aria-hidden
-              className="size-2 rounded-[2px]"
+              className="size-[7px] rounded-[2px]"
               style={{ background: row.color }}
             />
-            <span className="flex-1 text-[0.98rem]">{row.label}</span>
+            <span className="flex-1 text-[0.858rem]">{row.label}</span>
             <span className="tabular-nums">{row.value}</span>
           </li>
         ))}
       </ul>
 
-      <span className="mt-5 block h-1.5 overflow-hidden rounded-full bg-[color:var(--ob-surface-3)]">
+      <span className="mt-[17px] block h-[6px] overflow-hidden rounded-full bg-[color:var(--ob-surface-3)]">
         {/* A zero fill still shows a dot, so "none yet" is visibly not "no data". */}
         <span
           className="block h-full rounded-full bg-[color:var(--ob-success)]"
@@ -398,7 +418,7 @@ function MeterCard({
 
 function GlyphBtn({ children }: { children: ReactNode }) {
   return (
-    <span className="grid size-6 place-items-center rounded-[6px] border border-[color:var(--ob-border)] text-[0.72rem]">
+    <span className="grid size-[23px] place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[color:var(--ob-fg-soft)]">
       {children}
     </span>
   );
@@ -406,7 +426,7 @@ function GlyphBtn({ children }: { children: ReactNode }) {
 
 function OutlinePill({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.9rem] font-medium">
+    <span className="inline-flex items-center gap-[6px] rounded-full border border-[color:var(--ob-border-strong)] px-[13px] py-[7px] text-[0.788rem] font-medium">
       {glyph && (
         <span aria-hidden className="text-[color:var(--ob-muted)]">
           {glyph}
@@ -421,7 +441,7 @@ function InfoDot() {
   return (
     <span
       aria-hidden
-      className="grid size-[15px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.6rem] text-[color:var(--ob-muted)]"
+      className="grid size-[13px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.526rem] text-[color:var(--ob-muted)]"
     >
       i
     </span>
@@ -440,7 +460,7 @@ function Rsvps() {
 
   return (
     <section className="overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
-      <div className="grid grid-cols-[minmax(0,1fr)_110px_110px_130px] px-5 py-3 text-[0.85rem] text-[color:var(--ob-muted)]">
+      <div className="grid grid-cols-[minmax(0,1fr)_110px_110px_130px] px-[17px] py-[10px] text-[0.745rem] text-[color:var(--ob-muted)]">
         <span>Attendee</span>
         <span>Ticket</span>
         <span>RSVP&rsquo;d</span>
@@ -449,10 +469,10 @@ function Rsvps() {
       {people.map((person) => (
         <div
           key={person.id}
-          className="grid grid-cols-[minmax(0,1fr)_110px_110px_130px] items-center border-t border-[color:var(--ob-border)] px-5 py-3.5 text-[0.95rem]"
+          className="grid grid-cols-[minmax(0,1fr)_110px_110px_130px] items-center border-t border-[color:var(--ob-border)] px-[17px] py-[13px] text-[0.832rem]"
         >
-          <span className="flex items-center gap-2.5">
-            <Avatar name={person.name} size={28} />
+          <span className="flex items-center gap-[9px]">
+            <Avatar name={person.name} size={24} />
             {person.name}
           </span>
           <span className="text-[color:var(--ob-fg-soft)]">{person.tier}</span>
@@ -474,7 +494,7 @@ function Tracking() {
 
   return (
     <section className="overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
-      <div className="grid grid-cols-[minmax(0,1fr)_110px_110px_130px] px-5 py-3 text-[0.85rem] text-[color:var(--ob-muted)]">
+      <div className="grid grid-cols-[minmax(0,1fr)_110px_110px_130px] px-[17px] py-[10px] text-[0.745rem] text-[color:var(--ob-muted)]">
         <span>Source</span>
         <span className="text-right">Clicks</span>
         <span className="text-right">RSVPs</span>
@@ -483,7 +503,7 @@ function Tracking() {
       {links.map((link) => (
         <div
           key={link.id}
-          className="grid grid-cols-[minmax(0,1fr)_110px_110px_130px] items-center border-t border-[color:var(--ob-border)] px-5 py-3.5 text-[0.95rem]"
+          className="grid grid-cols-[minmax(0,1fr)_110px_110px_130px] items-center border-t border-[color:var(--ob-border)] px-[17px] py-[13px] text-[0.832rem]"
         >
           <span className="font-medium">{link.label}</span>
           <span className="text-right tabular-nums">{link.clicks}</span>

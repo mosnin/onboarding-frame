@@ -68,7 +68,7 @@ card (avatar+badge, @user0, body).
 "Templates" -> 4 cards each with an emoji/icon, bold 2-line title, 3-line truncated body.
 
 | 17 | 073 | Fey | market-terminal (dark) | DONE |
-| 18 | 074 | Sweatpals | event-analytics (dark) | DONE |
+| 18 | 074 | Sweatpals | event-analytics (dark) | REMEASURED |
 | 19 | 075 | Klaviyo, Overview dashboard | guides-assistant `dashboards` page | DONE |
 | 20 | 076 | HoneyBook, Finance | setup-checklist `finance` page | DONE |
 

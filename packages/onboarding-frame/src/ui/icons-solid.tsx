@@ -9,6 +9,7 @@ import {
   ArrowRight,
   ArrowSquareOut,
   ArrowUp,
+  ArrowUpRight,
   ArrowsClockwise,
   ArrowsDownUp,
   ArrowsLeftRight,
@@ -52,6 +53,7 @@ import {
   Cloud,
   Code,
   Coin,
+  Copy,
   Copyright,
   Cpu,
   CreditCard,
@@ -108,6 +110,7 @@ import {
   PlugsConnected,
   Plus,
   Pulse,
+  QrCode,
   Question,
   Receipt,
   Robot,
@@ -388,6 +391,9 @@ export const ChatBarsIcon = solid(ChatCenteredText, "regular");
 export const ChatCircleDotsIcon = solid(ChatCircleDots, "regular");
 export const CrossCircleIcon = solid(XCircle, "regular");
 export const FlowerIcon = solid(Flower, "regular");
+export const ArrowUpRightIcon = solid(ArrowUpRight, "regular");
+export const CopyIcon = solid(Copy, "regular");
+export const QrCodeIcon = solid(QrCode, "regular");
 export const GitBranchIcon = solid(GitBranch, "regular");
 export const NotePencilIcon = solid(NotePencil, "regular");
 export const PlugsIcon = solid(Plugs, "regular");
