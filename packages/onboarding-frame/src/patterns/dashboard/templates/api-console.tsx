@@ -1,0 +1,324 @@
+"use client";
+
+import { Placeholder } from "../../../ui/placeholder";
+import { cn } from "../../../lib/cn";
+import { Surface, apiConsoleTokens } from "./tokens";
+import {
+  Banner,
+  Btn,
+  Card,
+  Chip,
+  Main,
+  SearchField,
+  Shell,
+  TopBar,
+} from "./chrome";
+
+export interface TemplateProps {
+  brandName?: string;
+  userName?: string;
+  className?: string;
+}
+
+const TABS = [
+  { id: "home", label: "Home", glyph: "⌂" },
+  { id: "explore", label: "Explore", glyph: "▦" },
+  { id: "assets", label: "Assets", glyph: "⧉" },
+  { id: "generate", label: "Generate", glyph: "✎", caret: true },
+  { id: "serverless", label: "Serverless", glyph: "🚀" },
+  { id: "compute", label: "Compute", glyph: "▣", caret: true, badge: "Beta" },
+  { id: "settings", label: "Settings", glyph: "⚙", caret: true },
+];
+
+const SETUP = [
+  { id: "account", label: "Create an account", done: true },
+  { id: "payment", label: "Add a payment method", action: "Set up billing", primary: true },
+  { id: "credits", label: "Add credits", action: "Add credits" },
+  { id: "media", label: "Generate your first media", action: "Try the sandbox", glyph: "▣" },
+];
+
+const API_LINKS = [
+  { id: "key", label: "Get an API key", glyph: "🔑", tone: "#efe7ff" },
+  { id: "docs", label: "Go to documentation", glyph: "📄", tone: "var(--ob-surface-2)" },
+  { id: "quickstart", label: "Quickstart: call your first model", glyph: "📄", tone: "var(--ob-surface-2)" },
+  { id: "sdk", label: "Use the SDK (JS, Python, cURL)", glyph: "📄", tone: "var(--ob-surface-2)" },
+];
+
+const MODELS = [
+  { id: "m1", org: "northwind", name: "motion-2.0/image-to-video", desc: "Our most advanced image-to-video model. Animate still images into cinemat…" },
+  { id: "m2", org: "", name: "prism-2/turbo", desc: "Generate high-fidelity images from text in seconds with Prism 2 Turbo, the speed-opti…" },
+  { id: "m3", org: "lumaworks", name: "swift-horse/v1.1/image-to-video", desc: "Swift Horse 1.1 is the top-ranked video model. This image-to-video endpoint ani…" },
+];
+
+/**
+ * API console home.
+ *
+ * A developer-platform dashboard where onboarding lives as a dismissible
+ * "getting started" band above the real usage metrics: setup checklist, API
+ * quickstart links and a model catalogue, with credit and error strips below.
+ */
+export function ApiConsoleTemplate({
+  brandName = "Northwind",
+  className,
+}: TemplateProps) {
+  return (
+    <Surface tokens={apiConsoleTokens}>
+    <Shell className={cn("flex-col", className)}>
+      <Banner tone="dark">
+        <span className="font-semibold">✦ {brandName} Assets is now live!</span>
+      </Banner>
+
+      <TopBar>
+        <Placeholder width={30} height={30} radius={7} glyph="▦" />
+        <span className="text-[color:var(--ob-muted)]">/</span>
+        <span className="font-semibold">Home</span>
+        <SearchField
+          placeholder="Search anything"
+          shortcut="⌘K"
+          rounded="md"
+          className="ml-auto hidden w-[340px] md:flex"
+        />
+        <div className="flex items-center gap-2 rounded-[8px] border border-[color:var(--ob-border)] px-3 py-2 text-[0.86rem]">
+          <span aria-hidden className="opacity-50">▦</span>
+          <span className="text-[color:var(--ob-muted)]">Credits:</span>
+          <span className="font-semibold">$0.00</span>
+        </div>
+        <Btn tone="neutral" size="sm">
+          Docs <span className="opacity-50">⌄</span>
+        </Btn>
+        <button type="button" aria-label="Notifications" className="px-1 opacity-60">
+          ⌾
+        </button>
+        <Placeholder width={30} height={30} radius={7} glyph="◍" />
+      </TopBar>
+
+      {/* Second-level product navigation */}
+      <nav className="flex items-center gap-5 overflow-x-auto border-b border-[color:var(--ob-border)] px-4 sm:px-6">
+        {TABS.map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            aria-current={tab.id === "home" ? "page" : undefined}
+            className={cn(
+              "relative flex items-center gap-1.5 whitespace-nowrap border-b-2 py-3 text-[0.9rem] transition-colors",
+              tab.id === "home"
+                ? "border-[color:var(--ob-fg)] font-semibold"
+                : "border-transparent text-[color:var(--ob-fg-soft)] hover:text-[color:var(--ob-fg)]",
+            )}
+          >
+            <span aria-hidden className="opacity-70">{tab.glyph}</span>
+            {tab.label}
+            {tab.caret && <span aria-hidden className="opacity-40">⌄</span>}
+            {tab.badge && (
+              <span className="absolute -top-0.5 right-0 translate-x-full rounded-full bg-[#efe7ff] px-1.5 text-[0.6rem] font-bold text-[#6b46e5]">
+                {tab.badge}
+              </span>
+            )}
+          </button>
+        ))}
+      </nav>
+
+      <Main>
+        <div className="border-b border-[color:var(--ob-border)] px-6 py-7 sm:px-10">
+          <div className="flex flex-wrap items-end gap-4">
+            <div className="flex-1">
+              <h1 className="text-[2rem] font-extrabold tracking-tight">Dashboard</h1>
+              <p className="mt-1 text-[color:var(--ob-muted)]">
+                Start exploring {brandName}&apos;s capabilities{" "}
+                <span className="px-1">·</span>
+                <button type="button" className="hover:text-[color:var(--ob-fg)]">
+                  Hide getting started guide
+                </button>
+              </p>
+            </div>
+            <div className="flex items-center gap-2 text-[0.9rem]">
+              <span className="text-[color:var(--ob-muted)]">I&apos;m here</span>
+              <span className="font-mono opacity-60">&lt;/&gt;</span>
+              <span className="font-semibold">To build with code</span>
+              <span aria-hidden className="opacity-40">⌄</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-10 px-6 py-8 sm:px-10">
+          <section className="grid gap-5">
+            <div className="flex flex-wrap items-end gap-4">
+              <div className="flex-1">
+                <h2 className="text-xl font-extrabold tracking-tight">Getting started</h2>
+                <p className="mt-0.5 text-[0.92rem] text-[color:var(--ob-muted)]">
+                  Start exploring {brandName}&apos;s capabilities
+                </p>
+              </div>
+              <Btn tone="neutral" size="sm">Don&apos;t show this</Btn>
+            </div>
+
+            <div className="grid divide-y divide-[color:var(--ob-border)] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+              {/* Setup checklist */}
+              <div className="flex flex-col gap-5 p-6">
+                <div>
+                  <h3 className="font-bold">Welcome to {brandName}!</h3>
+                  <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
+                    Let&apos;s get your account ready to generate content or call the API.
+                  </p>
+                </div>
+                <ul className="mt-auto grid gap-3">
+                  {SETUP.map((item) => (
+                    <li key={item.id} className="flex items-center gap-3">
+                      <span
+                        aria-hidden
+                        className={cn(
+                          "grid size-6 shrink-0 place-items-center rounded-full text-[0.7rem]",
+                          item.done
+                            ? "bg-[color-mix(in_oklab,var(--ob-success)_18%,transparent)] text-[color:var(--ob-success)]"
+                            : "bg-[color:var(--ob-surface-3)]",
+                        )}
+                      >
+                        {item.done ? "✓" : ""}
+                      </span>
+                      <span
+                        className={cn(
+                          "flex-1 text-[0.95rem]",
+                          item.done && "text-[color:var(--ob-muted)] line-through",
+                        )}
+                      >
+                        {item.label}
+                      </span>
+                      {item.action && (
+                        <Btn tone={item.primary ? "dark" : "neutral"} size="sm">
+                          {item.glyph && <span aria-hidden>{item.glyph}</span>}
+                          {item.action}
+                        </Btn>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* API quickstart */}
+              <div className="flex flex-col gap-5 p-6">
+                <div>
+                  <h3 className="font-bold">Getting started with the API</h3>
+                  <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
+                    Start building with {brandName} in minutes.
+                  </p>
+                </div>
+                <ul className="mt-auto grid gap-4">
+                  {API_LINKS.map((link) => (
+                    <li key={link.id} className="flex items-center gap-3">
+                      <span
+                        aria-hidden
+                        className="grid size-8 shrink-0 place-items-center rounded-[8px]"
+                        style={{ background: link.tone }}
+                      >
+                        {link.glyph}
+                      </span>
+                      <span className="text-[0.98rem]">{link.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Model catalogue */}
+              <div className="flex flex-col gap-4 p-6">
+                <div>
+                  <h3 className="font-bold">Explore the latest models</h3>
+                  <p className="mt-1 text-[0.92rem] text-[color:var(--ob-muted)]">
+                    Top tools for image, video and audio generation.
+                  </p>
+                </div>
+                <div className="flex items-center gap-3 rounded-[8px] border border-[color:var(--ob-border)] p-2.5">
+                  <span aria-hidden className="text-[#d99b22]">⚠</span>
+                  <span className="flex-1 text-[0.86rem]">
+                    Add a payment method to use {brandName}
+                  </span>
+                  <Btn tone="dark" size="sm">Learn more</Btn>
+                </div>
+                <ul className="grid gap-3">
+                  {MODELS.map((model) => (
+                    <li key={model.id} className="flex gap-3">
+                      <Placeholder width={26} height={26} radius={6} glyph="▶" />
+                      <div className="min-w-0">
+                        <p className="truncate text-[0.9rem]">
+                          {model.org && (
+                            <span className="text-[color:var(--ob-muted)]">{model.org}/</span>
+                          )}
+                          <span className="font-bold">{model.name}</span>
+                        </p>
+                        <p className="truncate text-[0.8rem] text-[color:var(--ob-muted)]">
+                          {model.desc}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex items-center gap-3">
+                  <span aria-hidden className="opacity-60">▦</span>
+                  <span className="text-[0.98rem] font-semibold">Explore all models</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Usage strip */}
+          <div className="grid divide-y divide-[color:var(--ob-border)] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+            <div className="flex flex-wrap gap-10 p-5">
+              <div>
+                <p className="text-[0.86rem] text-[color:var(--ob-muted)]">Credits balance</p>
+                <p className="mt-1 text-2xl font-extrabold">$0.00</p>
+              </div>
+              <div>
+                <p className="text-[0.86rem] text-[color:var(--ob-muted)]">
+                  Cost estimate in the last 7 days
+                </p>
+                <p className="mt-1 text-2xl font-extrabold">$0.00</p>
+              </div>
+              <Btn tone="neutral" size="sm" className="mt-auto">▤ Go to billing</Btn>
+            </div>
+
+            {[
+              { id: "requests", label: "Requests in the last 7 days", color: "#7c4dff" },
+              { id: "errors", label: "Errors in the last 7 days", color: "#e8365d" },
+            ].map((strip) => (
+              <div key={strip.id} className="flex items-center gap-5 p-5">
+                <div className="shrink-0">
+                  <p className="text-[0.86rem] text-[color:var(--ob-muted)]">{strip.label}</p>
+                  <p className="mt-1 text-2xl font-extrabold">0</p>
+                  <Btn tone="neutral" size="sm" className="mt-3">
+                    {strip.id === "requests" ? "Check usage" : "See analytics"}
+                  </Btn>
+                </div>
+                {/* Zero-state series: a flat dashed baseline rather than a fake trend. */}
+                <div className="flex h-24 flex-1 items-end rounded-[8px] bg-[color:var(--ob-surface-2)] p-3">
+                  <div
+                    className="h-0.5 w-full"
+                    style={{
+                      backgroundImage: `repeating-linear-gradient(90deg, ${strip.color} 0 10px, transparent 10px 16px)`,
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <section className="grid gap-4">
+            <h2 className="text-xl font-extrabold tracking-tight">Recently active models</h2>
+            <Card className="grid min-h-[180px] place-items-center">
+              <div className="grid justify-items-center gap-3 text-center">
+                <span
+                  aria-hidden
+                  className="grid size-10 place-items-center rounded-[8px] border border-[color:var(--ob-border)]"
+                >
+                  ∿
+                </span>
+                <p className="text-[0.9rem] text-[color:var(--ob-muted)]">
+                  Models you call will appear here.
+                </p>
+              </div>
+            </Card>
+          </section>
+        </div>
+      </Main>
+    </Shell>
+    </Surface>
+  );
+}
