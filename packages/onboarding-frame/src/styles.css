@@ -1,0 +1,100 @@
+/**
+ * onboarding-frame design tokens.
+ * Every token is overridable at runtime by <OnboardingProvider theme={...} />,
+ * which writes these same custom properties as inline styles on its wrapper.
+ */
+
+[data-ob-root] {
+  /* A well-drawn variable sans first, then the best available system faces. */
+  --ob-font-sans: "Inter Variable", "InterVariable", Inter, "SF Pro Text",
+    -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ob-font-display: var(--ob-font-sans);
+  --ob-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  --ob-radius: 0.75rem;
+  --ob-radius-sm: 0.5rem;
+  --ob-radius-lg: 1.25rem;
+  --ob-radius-pill: 999px;
+
+  --ob-density: 1;
+  --ob-ring: 0 0 0 2px color-mix(in oklab, var(--ob-brand) 45%, transparent);
+  --ob-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.18);
+  --ob-shadow-lg: 0 24px 60px -24px rgb(0 0 0 / 0.45);
+  --ob-duration: 240ms;
+  --ob-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- Light surface ---- */
+[data-ob-root][data-ob-scheme="light"] {
+  --ob-bg: #ffffff;
+  --ob-surface: #ffffff;
+  --ob-surface-2: #f6f7f8;
+  --ob-surface-3: #eceef0;
+  --ob-border: #e3e5e8;
+  --ob-border-strong: #cdd1d6;
+  --ob-fg: #14161a;
+  --ob-fg-soft: #4a5057;
+  --ob-muted: #767d86;
+  --ob-brand: #2f6bff;
+  --ob-brand-fg: #ffffff;
+  --ob-brand-soft: color-mix(in oklab, var(--ob-brand) 10%, transparent);
+  --ob-cta-bg: #14161a;
+  --ob-cta-fg: #ffffff;
+  --ob-success: #16a34a;
+  --ob-danger: #dc2626;
+}
+
+/* ---- Dark surface ---- */
+[data-ob-root][data-ob-scheme="dark"] {
+  --ob-bg: #141414;
+  --ob-surface: #1c1c1c;
+  --ob-surface-2: #242424;
+  --ob-surface-3: #2e2e2e;
+  --ob-border: #2f2f2f;
+  --ob-border-strong: #454545;
+  --ob-fg: #f5f5f5;
+  --ob-fg-soft: #c9c9c9;
+  --ob-muted: #8d8d8d;
+  --ob-brand: #1fd760;
+  --ob-brand-fg: #08120c;
+  --ob-brand-soft: color-mix(in oklab, var(--ob-brand) 16%, transparent);
+  --ob-cta-bg: #e6e6e6;
+  --ob-cta-fg: #141414;
+  --ob-success: #2ee06a;
+  --ob-danger: #ff6b6b;
+}
+
+/* Spotlight cut-out used by the tour overlay. */
+[data-ob-spotlight] {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+}
+
+@keyframes ob-beacon {
+  0% { transform: scale(0.85); opacity: 0.85; }
+  70% { transform: scale(2.1); opacity: 0; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+@keyframes ob-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes ob-pop {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes ob-confetti-fall {
+  to { transform: translateY(120px) rotate(320deg); opacity: 0; }
+}
+
+.ob-animate-in { animation: ob-fade-up var(--ob-duration) var(--ob-ease) both; }
+.ob-animate-pop { animation: ob-pop var(--ob-duration) var(--ob-ease) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ob-animate-in,
+  .ob-animate-pop { animation: none !important; }
+  [data-ob-root] { --ob-duration: 1ms; }
+}

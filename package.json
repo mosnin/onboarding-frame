@@ -1,0 +1,16 @@
+{
+  "name": "onboarding-frame-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.33.0",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "start": "pnpm --filter web start",
+    "lint": "pnpm --filter web lint",
+    "typecheck": "pnpm -r typecheck",
+    "build:pkg": "pnpm --filter onboarding-frame build",
+    "release": "pnpm --filter onboarding-frame publish --access public"
+  }
+}

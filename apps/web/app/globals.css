@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* Detect utility classes used inside the library source. */
+@source "../../../packages/onboarding-frame/src";
+
+@import "onboarding-frame/styles.css";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --site-bg: #ffffff;
+  --site-fg: #0d0f12;
+  --site-muted: #6b727c;
+  --site-border: #e4e6ea;
+  --site-surface: #f7f8f9;
+  --site-accent: #2f6bff;
+  color-scheme: light;
+}
+
+:root[data-site-theme="dark"] {
+  --site-bg: #0c0d10;
+  --site-fg: #f2f3f5;
+  --site-muted: #9aa1ab;
+  --site-border: #23262c;
+  --site-surface: #15171b;
+  --site-accent: #7aa2ff;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-site-theme="light"]) {
+    --site-bg: #0c0d10;
+    --site-fg: #f2f3f5;
+    --site-muted: #9aa1ab;
+    --site-border: #23262c;
+    --site-surface: #15171b;
+    --site-accent: #7aa2ff;
+    color-scheme: dark;
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--site-bg);
+  color: var(--site-fg);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* The library reads --ob-font-sans; point it at the loaded webfont. */
+[data-ob-root] {
+  --ob-font-sans: var(--font-sans);
+  --ob-font-mono: var(--font-mono);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--site-accent) 24%, transparent);
+}
