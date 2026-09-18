@@ -141,6 +141,24 @@ pnpm build        # production build of the site
 pnpm build:pkg    # bundle the library for publishing
 ```
 
+## Deploying
+
+The site is deployed on Vercel with **Root Directory set to `apps/web`**, so
+every path in the build config is relative to that directory rather than to the
+repository root. `pnpm install` still resolves the whole workspace from there —
+pnpm walks up to `pnpm-workspace.yaml` — so the app builds against the local
+copy of the library rather than a published one.
+
+`vercel.json` is duplicated at the repository root and in `apps/web`. Vercel
+reads the copy that sits in the configured Root Directory, and which one that
+is depends on that setting, so both are kept identical and correct for a build
+whose working directory is `apps/web`. Changing the Root Directory means
+revisiting both.
+
+The CLI's default registry points at the deployed site. Set
+`ONBOARDING_FRAME_REGISTRY` (or pass `--registry`) to eject from a fork or from
+a local `next start`.
+
 ## A note on the payment screens
 
 The paywall templates include checkout layouts. Their inputs are inert and
