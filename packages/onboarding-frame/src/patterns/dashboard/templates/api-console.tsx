@@ -108,7 +108,7 @@ export function ApiConsoleTemplate({
   return (
     <Surface tokens={apiConsoleTokens}>
     <Shell className={cn("flex-col", className)}>
-      <Banner tone="dark">
+      <Banner tone="dark" className="bg-[#152657]">
         <span className="flex items-center gap-[5px] font-semibold">
           <Sparkle width={11} height={11} /> {brandName} Assets is now live!
           <Sparkle width={11} height={11} />

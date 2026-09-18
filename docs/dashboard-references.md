@@ -554,7 +554,7 @@ the wordmark and "© 2022 Acme Inc." + Manage cookies | Legal | Privacy.
 
 | 41 | 097 | Stripe, Your overview | billing-benchmarks `overview` page | DONE |
 | 42 | 098 | Deel HR analytics | people-analytics | REMEASURED |
-| 43 | 099 | Customer.io campaigns | campaign-list | DONE |
+| 43 | 099 | Customer.io campaigns | campaign-list | REMEASURED |
 | 44 | 100 | Mixpanel home | product-analytics | REMEASURED |
 | 45 | 101 | Whop creator | creator-revenue | REMEASURED |
 | 46 | 102 | Mercury transactions | banking-ledger | REMEASURED |

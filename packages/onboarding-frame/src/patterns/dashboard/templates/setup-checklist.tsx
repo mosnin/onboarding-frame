@@ -112,7 +112,7 @@ export function SetupChecklistTemplate({
   return (
     <Surface tokens={setupChecklistTokens}>
     <Shell className={cn("flex-col", className)} bg="var(--ob-surface-2)">
-      <Banner tone="dark">
+      <Banner tone="dark" className="bg-[#212528]">
         <span>
           Spring savings are here! Don&apos;t miss 25% off {brandName}!{" "}
           <button type="button" className="font-semibold underline underline-offset-2">

@@ -33,6 +33,7 @@ import {
   TerminalIcon,
   UserIcon,
 } from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, campaignTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
@@ -153,20 +154,45 @@ const CAMPAIGNS = [
  * list into a comparison — four trends across five campaigns without leaving
  * the table.
  */
-export function CampaignListTemplate({ className, page = "campaigns" }: CampaignListProps) {
+export function CampaignListTemplate({
+  brandName = "Acme",
+  className,
+  page = "campaigns",
+}: CampaignListProps) {
   return (
     <Surface tokens={campaignTokens} className={className}>
       <Shell className="flex-col">
         <span className="h-[5px] shrink-0 bg-[#f6821f]" />
+          <header className="flex h-[55px] shrink-0 items-center gap-[13px] bg-[#16232a] px-[19px] text-white">
+            <span className="flex items-center gap-[8px] text-[0.824rem]">
+              acme.com production
+              <span aria-hidden className="text-[0.549rem] opacity-60">
+                <ArrowsUpDownIcon size={12} />
+              </span>
+            </span>
+            <span className="ml-auto flex items-center gap-[16px] text-[0.8rem]">
+              <span className="flex items-center gap-[6px]">
+                <span aria-hidden>?</span> Need help?
+              </span>
+              <span className="relative" aria-hidden>
+                <BellIcon size={15} />
+                <span className="absolute -right-[2px] -top-[2px] size-[6px] rounded-full bg-[#3ecf8e]" />
+              </span>
+              <ChatDotsIcon size={15} />
+              <GearIcon size={15} />
+              <UserIcon size={15} />
+            </span>
+          </header>
 
         <div className="flex min-h-[0px] flex-1">
           <Sidebar width={53} bg="var(--ob-surface)" className="items-center">
-            <span
-              aria-hidden
-              className="mt-[13px] grid size-[31px] place-items-center rounded-[var(--ob-radius)] bg-[color-mix(in_oklab,#3ecf8e_20%,transparent)] text-[0.863rem]"
-            >
-              ⌘
-            </span>
+            <Avatar
+              name={brandName}
+              size={31}
+              rounded={8}
+              letters={1}
+              className="mt-[13px]"
+            />
             <span
               aria-hidden
               className="mt-[9px] grid size-[31px] place-items-center text-[0.863rem] text-[color:var(--ob-muted)]"
@@ -232,30 +258,10 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
           </Sidebar>
 
           <Main className="overflow-auto">
-            <header className="flex h-[55px] shrink-0 items-center gap-[13px] bg-[#16232a] px-[19px] text-white">
-              <span className="flex items-center gap-[8px] text-[0.824rem]">
-                acme.com production
-                <span aria-hidden className="text-[0.549rem] opacity-60">
-                  <ArrowsUpDownIcon size={12} />
-                </span>
-              </span>
-              <span className="ml-auto flex items-center gap-[16px] text-[0.8rem]">
-                <span className="flex items-center gap-[6px]">
-                  <span aria-hidden>?</span> Need help?
-                </span>
-                <span className="relative" aria-hidden>
-                  <BellIcon size={15} />
-                  <span className="absolute -right-[2px] -top-[2px] size-[6px] rounded-full bg-[#3ecf8e]" />
-                </span>
-                <ChatDotsIcon size={15} />
-                <GearIcon size={15} />
-                <UserIcon size={15} />
-              </span>
-            </header>
 
             <div className="px-[25px] py-[19px]">
               <div className="flex items-center gap-[13px]">
-                <h1 className="flex-1 text-[1.569rem] font-bold tracking-[-0.01em]">
+                <h1 className="flex-1 text-[1.16rem] font-bold tracking-[-0.01em]">
                   Campaigns
                 </h1>
                 <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-cta-bg)] px-[16px] py-[9px] text-[0.824rem] font-semibold text-white">
@@ -263,9 +269,12 @@ export function CampaignListTemplate({ className, page = "campaigns" }: Campaign
                 </span>
               </div>
 
-              <div className="grid gap-[16px] pt-[16px] sm:grid-cols-2 xl:grid-cols-5">
+              <div className="grid gap-[16px] pt-[16px] sm:grid-cols-2 xl:flex xl:flex-wrap">
                 {FILTERS.map((filter) => (
-                  <div key={filter.id}>
+                  <div
+                    key={filter.id}
+                    className={filter.search ? "xl:w-[362px]" : "xl:w-[196px]"}
+                  >
                     <p className="pb-[5px] text-[0.667rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
                       {filter.label}
                     </p>

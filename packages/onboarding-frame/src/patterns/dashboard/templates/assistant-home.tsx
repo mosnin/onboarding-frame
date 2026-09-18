@@ -32,7 +32,7 @@ const NAV: { id: string; label: string; icon: IconName; active?: boolean }[] = [
   { id: "computer", label: "Computer", icon: "monitor" },
   { id: "spaces", label: "Spaces", icon: "folder" },
   { id: "artifacts", label: "Artifacts", icon: "image" },
-  { id: "customize", label: "Customise", icon: "target" },
+  { id: "customize", label: "Customize", icon: "target" },
   { id: "history", label: "History", icon: "history" },
 ];
 
@@ -131,7 +131,7 @@ export function AssistantHomeTemplate({
           >
             Free plan · <span className="font-semibold">Upgrade</span>
           </button>
-          <nav className="mx-auto hidden items-center gap-7 text-[0.98rem] md:flex">
+          <nav className="mx-auto hidden items-center gap-[19px] text-[0.89rem] md:flex">
             {TOPICS.map((topic) => (
               <button
                 key={topic}
