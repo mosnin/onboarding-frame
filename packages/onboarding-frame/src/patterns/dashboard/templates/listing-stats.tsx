@@ -42,7 +42,7 @@ const NAV = [
   { id: "listings", label: "Listings", Icon: TagIcon },
   { id: "messages", label: "Messages", Icon: ChatDotsIcon },
   { id: "orders", label: "Orders", Icon: ReceiptIcon },
-  { id: "visibility", label: "Shop search visibility", Icon: TargetIcon },
+  { id: "visibility", label: "Search visibility", Icon: TargetIcon },
 ];
 
 const STATS_CHILDREN = [
@@ -63,7 +63,19 @@ const MARKETING_CHILDREN = [
  * a weekly series is interpolated — and each metric gets its own colour so the
  * three cells do not read as one chart cut into pieces.
  */
-const CURVE = [0, 0, 0, 0.1, 0.6, 1, 0.55, 0.08, 0];
+/**
+ * Sampled off the reference at 25 points across the plot.
+ *
+ * Seven days of a listing that got five visits: flat at zero until the sixth
+ * day, then one narrow bell. It occupies the last third of the plot and is
+ * about 100px wide in a 350px frame — not the full-width triangle we drew,
+ * which read as steady traffic all week when the point of the screen is that
+ * there wasn't any.
+ */
+const CURVE = [
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.141, 0.449, 0.897, 1, 0.923,
+  0.577, 0.192, 0, 0,
+];
 
 const SUGGESTIONS = [
   "Add more photos so buyers can see every detail. Highlight its shape, size, and texture with different angles and close ups.",
@@ -79,7 +91,11 @@ const SUGGESTIONS = [
  * -year figures read "--% YoY" because the listing has no prior year, which is
  * the honest state for a new listing and not a loading placeholder.
  */
-export function ListingStatsTemplate({ className, page = "traffic" }: ListingStatsProps) {
+export function ListingStatsTemplate({
+  brandName = "Acme",
+  className,
+  page = "traffic",
+}: ListingStatsProps) {
   return (
     <Surface tokens={listingTokens} className={className}>
       <Shell>
@@ -94,7 +110,7 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={<item.Icon size={14} />}
+                glyph={<item.Icon size={18} weight="fill" />}
                 className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
               />
             ))}
@@ -105,9 +121,7 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
               label="Stats"
               glyph={<BrowsersIcon size={14} />}
               active
-              trailing={
-                <CaretUpIcon size={14} />
-              }
+              trailing={<CaretUpIcon size={14} />}
               className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
             />
           </div>
@@ -137,9 +151,7 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
             <NavItem
               label="Marketing"
               glyph={<MegaphoneIcon size={14} />}
-              trailing={
-                <CaretUpIcon size={14} />
-              }
+              trailing={<CaretUpIcon size={14} />}
               className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
             />
             {MARKETING_CHILDREN.map((item) => (
@@ -151,20 +163,26 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
               />
             ))}
             {[
-              { id: "finances", label: "Finances", Icon: BankSolid, caret: true },
+              {
+                id: "finances",
+                label: "Finances",
+                Icon: BankSolid,
+                caret: true,
+              },
               { id: "apps", label: "Apps", Icon: GridFourIcon },
               { id: "help", label: "Help", Icon: QuestionIcon, caret: true },
-              { id: "settings", label: "Settings", Icon: GearIcon, caret: true },
+              {
+                id: "settings",
+                label: "Settings",
+                Icon: GearIcon,
+                caret: true,
+              },
             ].map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={<item.Icon size={14} />}
-                trailing={
-                  item.caret ? (
-                    <CaretDownIcon size={14} />
-                  ) : undefined
-                }
+                glyph={<item.Icon size={18} weight="fill" />}
+                trailing={item.caret ? <CaretDownIcon size={14} /> : undefined}
                 className="rounded-[var(--ob-radius-sm)] text-[0.79rem]"
               />
             ))}
@@ -174,9 +192,16 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
             Sales channels
           </p>
           <div className="flex items-center gap-[9px] px-[18px]">
-            <BrandMark brand="HomemadeGoodsByAlex" size={20} label="HomemadeGoodsByAlex" />
-            <span className="min-w-[0px] flex-1 text-[0.752rem] leading-snug">
-              HomemadeGoodsByAlex
+            <BrandMark
+              brand="HomemadeGoodsByAlex"
+              size={20}
+              label="HomemadeGoodsByAlex"
+            />
+            <span className="min-w-[0px] flex-1 leading-snug">
+              <span className="block text-[0.752rem]">{brandName}</span>
+              <span className="block text-[0.752rem] text-[color:var(--ob-fg-soft)]">
+                HomemadeGoodsByAlex
+              </span>
             </span>
             <PencilIcon size={14} />
           </div>
@@ -192,12 +217,14 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
           <p className="flex items-center gap-[6px] text-[0.752rem]">
             <span className="underline">Stats</span>
             <CaretRightIcon size={14} />
-            <span className="text-[color:var(--ob-fg-soft)]">Listing stats</span>
+            <span className="text-[color:var(--ob-fg-soft)]">
+              Listing stats
+            </span>
           </p>
 
           <h1 className="pt-[9px] text-[1.43rem] font-bold">Listing stats</h1>
 
-          <span className="mt-[15px] inline-flex items-center gap-[6px] rounded-full border border-[color:var(--ob-fg)] px-[15px] py-[9px] text-[0.79rem]">
+          <span className="mt-[15px] inline-flex w-fit self-start items-center gap-[6px] rounded-full border border-[color:var(--ob-fg)] px-[15px] py-[9px] text-[0.79rem]">
             <span className="font-bold">Date Range</span>
             Last 7 Days: Mar 01 - Mar 07
             <CaretDownIcon size={10} weight="fill" />
@@ -211,7 +238,8 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
               <div className="min-w-[0px] flex-1">
                 <div className="flex items-start gap-[15px]">
                   <h2 className="flex-1 text-[1.129rem] font-bold leading-snug">
-                    Natural Thyme, Red Pepper, Pul Biber Spice Blend | Cooking Seasoning
+                    Natural Thyme, Red Pepper, Pul Biber Spice Blend | Cooking
+                    Seasoning
                   </h2>
                   <span className="shrink-0 rounded-full border border-[color:var(--ob-fg)] px-[15px] py-[8px] text-[0.752rem] font-medium">
                     View item
@@ -220,26 +248,40 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
 
                 <div className="grid gap-[6px] pt-[18px] sm:grid-cols-2">
                   <p className="text-[0.79rem]">
-                    <span className="text-[color:var(--ob-fg-soft)]">Price:</span> $7.99 -
-                    $10.99
+                    <span className="text-[color:var(--ob-fg-soft)]">
+                      Price:
+                    </span>{" "}
+                    $7.99 - $10.99
                   </p>
                   <p className="text-[0.79rem]">
-                    <span className="text-[color:var(--ob-fg-soft)]">Status:</span> Inactive
+                    <span className="text-[color:var(--ob-fg-soft)]">
+                      Status:
+                    </span>{" "}
+                    Inactive
                   </p>
                   <p className="text-[0.79rem]">
-                    <span className="text-[color:var(--ob-fg-soft)]">Current stock:</span>{" "}
+                    <span className="text-[color:var(--ob-fg-soft)]">
+                      Current stock:
+                    </span>{" "}
                     100
                   </p>
                 </div>
 
                 <div className="mt-[18px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[15px]">
                   <div className="flex items-start gap-[12px]">
-                    <h3 className="flex-1 font-bold">Improvement Suggestions</h3>
-                    <span className="shrink-0 text-[0.752rem] underline">Edit listing</span>
+                    <h3 className="flex-1 font-bold">
+                      Improvement Suggestions
+                    </h3>
+                    <span className="shrink-0 text-[0.752rem] underline">
+                      Edit listing
+                    </span>
                   </div>
                   <ul className="list-disc pl-[15px] pt-[9px]">
                     {SUGGESTIONS.map((suggestion) => (
-                      <li key={suggestion} className="pt-[3px] text-[0.767rem] leading-relaxed">
+                      <li
+                        key={suggestion}
+                        className="pt-[3px] text-[0.767rem] leading-relaxed"
+                      >
                         {suggestion}
                       </li>
                     ))}
@@ -277,8 +319,8 @@ export function ListingStatsTemplate({ className, page = "traffic" }: ListingSta
             <div>
               <h2 className="text-[1.016rem] font-bold">Explore your data</h2>
               <p className="max-w-[40ch] pt-[6px] text-[0.767rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
-                How many visits result in an order? Look for trends and relationships
-                between your numbers.
+                How many visits result in an order? Look for trends and
+                relationships between your numbers.
               </p>
             </div>
 
@@ -314,10 +356,24 @@ function MetricCell({
   const width = 400;
   const height = 120;
   const step = width / (CURVE.length - 1);
-  const area =
-    CURVE.map((v, i) => `${i === 0 ? "M" : "L"}${i * step},${height - v * height}`).join(
-      " ",
-    ) + ` L${width},${height} L0,${height} Z`;
+  // Straight segments between samples drew the bell as a faceted triangle.
+  // A Catmull-Rom spline through the same points, emitted as cubics, gives
+  // the smooth shoulder the reference has without inventing any data.
+  const pt = (i: number) => {
+    const c = CURVE[Math.min(CURVE.length - 1, Math.max(0, i))]!;
+    return [i * step, height - c * height] as const;
+  };
+  const curve = CURVE.map((_, i) => {
+    if (i === 0) return `M${pt(0)[0]},${pt(0)[1]}`;
+    const [x0, y0] = pt(i - 2);
+    const [x1, y1] = pt(i - 1);
+    const [x2, y2] = pt(i);
+    const [x3, y3] = pt(i + 1);
+    const c1 = [x1 + (x2 - x0) / 6, y1 + (y2 - y0) / 6];
+    const c2 = [x2 - (x3 - x1) / 6, y2 - (y3 - y1) / 6];
+    return `C${c1[0]},${c1[1]} ${c2[0]},${c2[1]} ${x2},${y2}`;
+  }).join(" ");
+  const area = `${curve} L${width},${height} L0,${height} Z`;
 
   return (
     <div className="border-l border-[color:var(--ob-border)] px-[18px] py-[15px] first:border-l-0">
@@ -333,7 +389,9 @@ function MetricCell({
         </span>
       </div>
 
-      <p className="pt-[6px] text-[1.655rem] font-bold leading-none tabular-nums">{value}</p>
+      <p className="pt-[6px] text-[1.655rem] font-bold leading-none tabular-nums">
+        {value}
+      </p>
 
       <div className="pt-[15px]">
         <p className="text-[0.692rem] text-[color:var(--ob-muted)]">{axis}</p>
@@ -355,7 +413,11 @@ function MetricCell({
       </div>
 
       <p className="flex items-center gap-[8px] pt-[12px] text-[0.752rem]">
-        <span aria-hidden className="size-[9px] rounded-full" style={{ background: color }} />
+        <span
+          aria-hidden
+          className="size-[9px] rounded-full"
+          style={{ background: color }}
+        />
         <span className="flex-1">Marketplace</span>
         <span>{legend}</span>
       </p>
@@ -373,7 +435,7 @@ function Picker({
   color: string;
 }): ReactNode {
   return (
-    <span className="inline-flex min-w-[128px] items-center gap-[18px] rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-fg)] px-[15px] py-[9px]">
+    <span className="inline-flex min-w-[128px] items-center gap-[18px] rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-fg)] px-[15px] pb-[18px] pt-[9px]">
       <span>
         <span
           className="block text-[0.617rem] font-bold uppercase tracking-wide"
@@ -381,7 +443,7 @@ function Picker({
         >
           {label}
         </span>
-        <span className="block pt-[2px] text-[1.204rem] font-bold leading-none tabular-nums">
+        <span className="block pt-[9px] text-[1.655rem] font-bold leading-none tabular-nums">
           {value}
         </span>
       </span>

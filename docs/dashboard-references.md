@@ -232,7 +232,7 @@ Two cards: "Input token trend" and "Output token trend" — slate BARS, y 0/150/
 
 | 26 | 082 | Vanta | compliance-controls | REMEASURED |
 | 27 | 083 | Vercel, hover tooltip + crosshair | deploy-analytics | DONE (hover readout) |
-| 28 | 084 | Etsy Shop Manager | listing-stats | DONE |
+| 28 | 084 | Etsy Shop Manager | listing-stats | REMEASURED |
 | 29 | 085 | Mailchimp audience | audience-analytics | REMEASURED |
 | 30 | 086 | Cake Equity | cap-table | REMEASURED |
 
