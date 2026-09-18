@@ -14,6 +14,9 @@
     "typecheck": "pnpm -r typecheck",
     "build:pkg": "pnpm --filter onboarding-frame build",
     "release": "pnpm --filter onboarding-frame publish --access public",
-    "check:registry": "node scripts/check-registry.mjs"
+    "check:registry": "node scripts/check-registry.mjs",
+    "capture:templates": "node scripts/capture-templates.mjs",
+    "audit:fidelity": "python3 scripts/audit_fidelity.py",
+    "audit:scale": "python3 scripts/measure_scale.py"
   }
 }

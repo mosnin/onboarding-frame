@@ -10,14 +10,28 @@ import type {
 import { cn } from "../../lib/cn";
 import { formatMoney } from "../../lib/utils";
 import { Button, CheckBox, Pill, Radio } from "../../ui/primitives";
-import { Check, ChevronDown, Cross, Lock } from "../../ui/icons";
+import {
+  Check,
+  ChevronDown,
+  Cross,
+  Icon,
+  ImageIcon,
+  Lock,
+  VideoIcon,
+  type IconName,
+} from "../../ui/icons";
 
 /** Monthly-equivalent price for a tier under the selected billing period. */
 export function priceFor(plan: PlanTier, period: BillingPeriod): number {
-  return period === "annual" ? (plan.priceAnnual ?? plan.priceMonthly) : plan.priceMonthly;
+  return period === "annual"
+    ? (plan.priceAnnual ?? plan.priceMonthly)
+    : plan.priceMonthly;
 }
 
-export function anchorFor(plan: PlanTier, period: BillingPeriod): number | undefined {
+export function anchorFor(
+  plan: PlanTier,
+  period: BillingPeriod,
+): number | undefined {
   return period === "annual" ? plan.anchorAnnual : plan.anchorMonthly;
 }
 
@@ -47,7 +61,9 @@ export function PeriodToggle({
         >
           {value}
           {value === "annual" && savingLabel && (
-            <span className="ml-1.5 text-[color:var(--ob-brand)]">{savingLabel}</span>
+            <span className="ml-1.5 text-[color:var(--ob-brand)]">
+              {savingLabel}
+            </span>
           )}
         </button>
       ))}
@@ -111,11 +127,15 @@ export function TermCard({
             {formatMoney(anchor, currency)}
           </span>
         )}
-        <span className="text-xl font-extrabold">{formatMoney(price, currency)}</span>
+        <span className="text-xl font-extrabold">
+          {formatMoney(price, currency)}
+        </span>
         <span className="text-[color:var(--ob-muted)]">/month</span>
       </span>
       {plan.note && (
-        <span className="text-sm text-[color:var(--ob-muted)]">{plan.note}</span>
+        <span className="text-sm text-[color:var(--ob-muted)]">
+          {plan.note}
+        </span>
       )}
     </button>
   );
@@ -199,7 +219,10 @@ export function ComparisonMatrix({ config }: { config: PlansConfig }) {
         </thead>
         <tbody>
           {config.featureRows?.map((row) => (
-            <tr key={row.label} className="border-t border-[color:var(--ob-border)]">
+            <tr
+              key={row.label}
+              className="border-t border-[color:var(--ob-border)]"
+            >
               <td className="py-4 pr-4">
                 <span className="flex items-center gap-2">
                   {row.label}
@@ -237,56 +260,98 @@ export function ComparisonMatrix({ config }: { config: PlansConfig }) {
  * Quota matrix
  * ------------------------------------------------------------------ */
 
+/**
+ * Quota matrix.
+ *
+ * Measured off the reference rather than approximated: the value pills are a
+ * fixed 122x38 with the count centred, the best plan's column is an olive wash
+ * carrying lime text (not a saturated lime fill, which at this size reads as a
+ * button and pulls the eye off the numbers), and the rows are separated by
+ * hairlines inside no outer card at all. Each row names a model, which is why
+ * the first column header reads as it does.
+ */
 export function QuotaMatrix({ config }: { config: PlansConfig }) {
   const columns = config.plans;
   const best = columns.find((p) => p.highlighted)?.id ?? columns[0]?.id;
 
   return (
-    <div className="mx-auto w-full max-w-3xl rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)]">
+    <div className="mx-auto w-full max-w-[830px]">
       <div
-        className="grid items-center gap-4 border-b border-[color:var(--ob-border)] p-4 text-sm text-[color:var(--ob-muted)]"
-        style={{ gridTemplateColumns: `1.6fr repeat(${columns.length}, 1fr)` }}
+        className="grid items-center gap-x-3 border-b border-[color:var(--ob-border)] pb-3.5"
+        style={{
+          gridTemplateColumns: `minmax(0,1fr) repeat(${columns.length}, 122px)`,
+        }}
       >
-        <span>Capability</span>
+        <span className="text-[0.94rem] text-[color:var(--ob-muted)]">
+          {config.quotaRowsLabel ?? "Model / Generations Amount"}
+        </span>
         {columns.map((plan) => (
-          <span key={plan.id} className="text-center font-bold text-[color:var(--ob-fg)]">
+          <span
+            key={plan.id}
+            className="text-center text-[0.98rem] font-semibold text-[color:var(--ob-fg)]"
+          >
             {plan.name}
           </span>
         ))}
       </div>
+
       {config.quotaRows?.map((row) => (
         <div
           key={row.label}
-          className="grid items-center gap-4 border-b border-[color:var(--ob-border)] p-4 last:border-b-0"
-          style={{ gridTemplateColumns: `1.6fr repeat(${columns.length}, 1fr)` }}
+          /*
+            Start-aligned, not centred: a badge makes its cell taller, and
+            centring unequal cells drops the badge-less column half a line
+            below the others. The pills sit on one line, badges hang under.
+          */
+          className="grid items-start gap-x-3 border-b border-[color:var(--ob-border)] py-6 last:border-b-0"
+          style={{
+            gridTemplateColumns: `minmax(0,1fr) repeat(${columns.length}, 122px)`,
+          }}
         >
-          <div>
-            <p className="flex items-center gap-2 font-semibold">
-              {row.glyph} {row.label}
+          <div className="min-w-0 pr-6 pt-1">
+            <p className="flex items-center gap-2 text-[1.12rem] font-medium">
+              {row.icon && (
+                <Icon
+                  name={row.icon as IconName}
+                  width={17}
+                  height={17}
+                  className="shrink-0 opacity-90"
+                />
+              )}
+              <span className="truncate">{row.label}</span>
             </p>
             {row.hint && (
-              <p className="mt-0.5 text-[0.82rem] text-[color:var(--ob-muted)]">
+              <p className="mt-1 text-[0.86rem] text-[color:var(--ob-muted)]">
                 {row.hint}
               </p>
             )}
           </div>
+
           {columns.map((plan) => {
             const isBest = plan.id === best;
+            const value = row.values[plan.id];
+            const badge = row.badges?.[plan.id];
+            const Mark = row.kind === "image" ? ImageIcon : VideoIcon;
             return (
               <div key={plan.id} className="grid justify-items-center gap-1.5">
                 <span
                   className={cn(
-                    "w-full rounded-[10px] py-2 text-center text-sm font-bold tabular-nums",
+                    "flex h-[38px] w-[122px] items-center justify-center gap-1.5 rounded-[8px] text-[0.92rem] font-semibold tabular-nums",
                     isBest
-                      ? "bg-[color:var(--ob-brand)] text-[color:var(--ob-brand-fg)]"
+                      ? "bg-[color-mix(in_oklab,var(--ob-brand)_22%,#111)] text-[color:var(--ob-brand)]"
                       : "bg-[color:var(--ob-surface-2)] text-[color:var(--ob-fg-soft)]",
                   )}
                 >
-                  {row.values[plan.id] ?? "—"}
+                  <Mark
+                    width={12}
+                    height={12}
+                    className="shrink-0 opacity-75"
+                  />
+                  {value ?? "—"}
                 </span>
-                {row.badges?.[plan.id] && (
-                  <span className="rounded-[6px] bg-[color:var(--ob-brand)] px-1.5 py-0.5 text-[0.62rem] font-extrabold text-[color:var(--ob-brand-fg)]">
-                    {row.badges[plan.id]}
+                {badge && (
+                  <span className="rounded-[5px] bg-[color:var(--ob-brand)] px-1.5 py-[3px] text-[0.64rem] font-bold leading-none text-[color:var(--ob-brand-fg)]">
+                    {badge}
                   </span>
                 )}
               </div>
@@ -355,14 +420,23 @@ export function CheckoutPanel({
               className="flex items-center gap-1 text-sm font-semibold text-[color:var(--ob-brand)]"
             >
               View details
-              <ChevronDown className={cn("size-4 transition-transform", showDetails && "rotate-180")} />
+              <ChevronDown
+                className={cn(
+                  "size-4 transition-transform",
+                  showDetails && "rotate-180",
+                )}
+              />
             </button>
             {showDetails && (
               <ul className="ob-animate-in mt-3 grid gap-2">
                 {checkout.lineItems.map((item) => (
                   <li key={item.label} className="flex justify-between text-sm">
-                    <span className="text-[color:var(--ob-muted)]">{item.label}</span>
-                    <span className="tabular-nums">{formatMoney(item.amount, currency)}</span>
+                    <span className="text-[color:var(--ob-muted)]">
+                      {item.label}
+                    </span>
+                    <span className="tabular-nums">
+                      {formatMoney(item.amount, currency)}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -443,7 +517,9 @@ export function CheckoutPanel({
               type="button"
               role="checkbox"
               aria-checked={Boolean(consents[i])}
-              onClick={() => setConsents((prev) => ({ ...prev, [i]: !prev[i] }))}
+              onClick={() =>
+                setConsents((prev) => ({ ...prev, [i]: !prev[i] }))
+              }
               className="flex items-start gap-3 text-left"
             >
               <span className="pt-0.5">
@@ -499,7 +575,11 @@ export function Countdown({ seconds }: { seconds: number }) {
   const ss = String(left % 60).padStart(2, "0");
 
   return (
-    <div className="flex items-start justify-center gap-3" role="timer" aria-live="off">
+    <div
+      className="flex items-start justify-center gap-3"
+      role="timer"
+      aria-live="off"
+    >
       {[
         { value: mm, label: "minutes" },
         { value: ss, label: "seconds" },
@@ -507,7 +587,9 @@ export function Countdown({ seconds }: { seconds: number }) {
         <div key={part.label} className="flex items-start gap-3">
           {i === 1 && <span className="text-3xl font-extrabold">:</span>}
           <div className="grid justify-items-center">
-            <span className="text-3xl font-extrabold tabular-nums">{part.value}</span>
+            <span className="text-3xl font-extrabold tabular-nums">
+              {part.value}
+            </span>
             <span className="text-[0.72rem] text-[color:var(--ob-muted)]">
               {part.label}
             </span>

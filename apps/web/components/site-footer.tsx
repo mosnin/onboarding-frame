@@ -21,8 +21,8 @@ export function SiteFooter() {
             </span>
           </div>
           <p className="mt-4 max-w-[38ch] text-pretty leading-relaxed text-[color:var(--site-muted)]">
-            Onboarding flows, dashboards and pricing pages you assemble into a kit,
-            then hand to your coding agent. Import them, or own the source.
+            Onboarding flows, dashboards and pricing pages you assemble into a
+            kit, then hand to your coding agent. Import them, or own the source.
           </p>
         </div>
 
@@ -47,8 +47,8 @@ export function SiteFooter() {
 
       <div className="mx-auto max-w-[1700px] px-4 pb-10 sm:px-6">
         <p className="text-[0.92rem] text-[color:var(--site-muted)]">
-          MIT licensed. Every image, logo and avatar in these templates is a labelled
-          placeholder — nothing here impersonates a real product.
+          MIT licensed. Every image, logo and avatar in these templates is a
+          labelled placeholder — nothing here impersonates a real product.
         </p>
       </div>
     </footer>

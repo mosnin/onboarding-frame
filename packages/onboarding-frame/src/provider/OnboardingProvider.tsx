@@ -54,7 +54,8 @@ export function themeToCssVars(theme: OnboardingTheme): CSSProperties {
   if (theme.radius) vars["--ob-radius"] = theme.radius;
   if (theme.density !== undefined) vars["--ob-density"] = String(theme.density);
   if (theme.fontFamily) vars["--ob-font-sans"] = theme.fontFamily;
-  if (theme.displayFontFamily) vars["--ob-font-display"] = theme.displayFontFamily;
+  if (theme.displayFontFamily)
+    vars["--ob-font-display"] = theme.displayFontFamily;
   return vars as CSSProperties;
 }
 
@@ -66,7 +67,11 @@ export function canvasStyle(theme: OnboardingTheme): CSSProperties {
   const stops = canvas.stops?.length
     ? canvas.stops
     : ["#2b2350", "#3a2d1c", "#141414"];
-  const [a, b, c] = [stops[0]!, stops[1] ?? stops[0]!, stops[2] ?? "var(--ob-bg)"];
+  const [a, b, c] = [
+    stops[0]!,
+    stops[1] ?? stops[0]!,
+    stops[2] ?? "var(--ob-bg)",
+  ];
 
   if (canvas.kind === "spotlight-glow") {
     return {

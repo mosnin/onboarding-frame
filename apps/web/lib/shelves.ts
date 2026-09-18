@@ -45,7 +45,7 @@ export const shelves: Shelf[] = [
     tagline: "The first run — what someone does before they see the product.",
     description:
       "Multi-step flows with branching, validation and progress. Each one is a distinct layout with its own personality, not a skin over the same screen.",
-    glyph: "🧭",
+    glyph: "target",
     items: [
       {
         id: "fullscreen-quiz",
@@ -101,7 +101,7 @@ export const shelves: Shelf[] = [
     tagline: "The product itself — where people spend their time.",
     description:
       "Full-page recreations of real product surfaces. Each carries its own palette, radius and type scale, and every image or logo is a labelled placeholder so you know exactly what to supply.",
-    glyph: "📊",
+    glyph: "barChart",
     // Sourced from the library so the shelf and the templates cannot drift.
     items: templateCatalog.map((template) => ({
       id: template.slug,
@@ -122,7 +122,7 @@ export const shelves: Shelf[] = [
     tagline: "The moment you ask for money.",
     description:
       "From a restrained tier grid to a three-screen promotional sequence. Payment fields are inert and labelled as a demo — swap in your processor's hosted fields.",
-    glyph: "💳",
+    glyph: "creditCard",
     items: [
       {
         id: "quiet-tiers",
@@ -193,13 +193,14 @@ export const shelves: Shelf[] = [
     tagline: "Pieces that sit inside whatever you already have.",
     description:
       "Drop-in activation surfaces. They attach to any dashboard — or to none — and hold their own state.",
-    glyph: "🧩",
+    glyph: "puzzle",
     multiple: true,
     items: [
       {
         id: "checklist-card",
         name: "Checklist · dashboard card",
-        blurb: "Getting-started list with progress, dependencies and a completion burst.",
+        blurb:
+          "Getting-started list with progress, dependencies and a completion burst.",
         kind: "checklist",
         variant: "dashboard-card",
         tags: ["Inline"],
@@ -223,7 +224,8 @@ export const shelves: Shelf[] = [
       {
         id: "tour-spotlight",
         name: "Tour · spotlight",
-        blurb: "Dims the page and cuts out the target, with keyboard navigation.",
+        blurb:
+          "Dims the page and cuts out the target, with keyboard navigation.",
         kind: "tour",
         variant: "spotlight",
         tags: ["Anchored"],
@@ -268,6 +270,9 @@ export function getShelf(id: string): Shelf | undefined {
   return shelves.find((shelf) => shelf.id === id);
 }
 
-export function getShelfItem(shelfId: string, itemId: string): ShelfItem | undefined {
+export function getShelfItem(
+  shelfId: string,
+  itemId: string,
+): ShelfItem | undefined {
   return getShelf(shelfId)?.items.find((item) => item.id === itemId);
 }

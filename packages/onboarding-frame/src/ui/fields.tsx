@@ -4,6 +4,8 @@ import { useMemo } from "react";
 import type { ChoiceOption, FieldValue, WizardField } from "../types";
 import { cn } from "../lib/cn";
 import { CheckBox, IconTile, Radio, Toggle } from "./primitives";
+import { Glyph } from "./glyph";
+import { Avatar } from "./avatar";
 import { Check, ChevronRight, Plus, Shuffle } from "./icons";
 
 export interface FieldProps {
@@ -39,7 +41,8 @@ function toggleSelection(
   const next = new Set(selected);
   if (next.has(id)) next.delete(id);
   else {
-    if (field.maxSelections && next.size >= field.maxSelections) return [...next];
+    if (field.maxSelections && next.size >= field.maxSelections)
+      return [...next];
     next.add(id);
   }
   return [...next];
@@ -97,7 +100,10 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
     /* ---------------- Cards with a title and description ---------------- */
     case "choice-cards":
       return (
-        <div className={cn("grid gap-3", gridCols(field, options))} role="group">
+        <div
+          className={cn("grid gap-3", gridCols(field, options))}
+          role="group"
+        >
           {options.map((option) => {
             const on = selected.has(option.id);
             return (
@@ -121,7 +127,7 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
                   </pre>
                 ) : option.glyph ? (
                   <span className="mb-2 text-2xl" aria-hidden>
-                    {option.glyph}
+                    <Glyph value={option.glyph} size={20} />
                   </span>
                 ) : null}
                 <span className="text-[1.05rem] font-bold">{option.label}</span>
@@ -139,7 +145,10 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
     /* -------------------- Tall poster tiles -------------------- */
     case "poster-cards":
       return (
-        <div className={cn("grid gap-2", gridCols(field, options))} role="group">
+        <div
+          className={cn("grid gap-2", gridCols(field, options))}
+          role="group"
+        >
           {options.map((option) => {
             const on = selected.has(option.id);
             return (
@@ -205,7 +214,11 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
                 )}
               >
                 {option.glyph && !pillStyle && (
-                  <IconTile glyph={option.glyph} tone={option.glyphTone} size="sm" />
+                  <IconTile
+                    glyph={option.glyph}
+                    tone={option.glyphTone}
+                    size="sm"
+                  />
                 )}
                 <span className="flex-1">
                   <span className="block text-[0.95rem] font-semibold">
@@ -219,7 +232,11 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
                 </span>
                 {!pillStyle &&
                   field.checkPosition !== "none" &&
-                  (multiple ? <CheckBox checked={on} /> : <Radio checked={on} />)}
+                  (multiple ? (
+                    <CheckBox checked={on} />
+                  ) : (
+                    <Radio checked={on} />
+                  ))}
               </button>
             );
           })}
@@ -232,7 +249,10 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
       return (
         <div
           role="group"
-          className={cn("grid gap-3", gridCols({ ...field, columns: field.columns ?? 6 }, options))}
+          className={cn(
+            "grid gap-3",
+            gridCols({ ...field, columns: field.columns ?? 6 }, options),
+          )}
         >
           {options.map((option) => {
             const on = selected.has(option.id);
@@ -251,7 +271,11 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
                 {field.checkPosition !== "none" && (
                   <CornerCheck on={on} multiple={multiple} />
                 )}
-                <IconTile glyph={option.glyph} tone={option.glyphTone} size="lg" />
+                <IconTile
+                  glyph={option.glyph}
+                  tone={option.glyphTone}
+                  size="lg"
+                />
                 <span className="text-center text-sm font-semibold">
                   {option.label}
                 </span>
@@ -265,9 +289,14 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
     case "chips":
     case "multi-select":
       return (
-        <div className="flex flex-wrap items-center justify-center gap-2" role="group">
+        <div
+          className="flex flex-wrap items-center justify-center gap-2"
+          role="group"
+        >
           {field.prefix && (
-            <span className="mr-1 text-[color:var(--ob-muted)]">{field.prefix}</span>
+            <span className="mr-1 text-[color:var(--ob-muted)]">
+              {field.prefix}
+            </span>
           )}
           {options.map((option) => {
             const on = selected.has(option.id);
@@ -296,7 +325,10 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
     case "avatar-picker": {
       const current = typeof value === "string" ? value : null;
       return (
-        <div className="flex flex-wrap items-center justify-center gap-3" role="group">
+        <div
+          className="flex flex-wrap items-center justify-center gap-3"
+          role="group"
+        >
           {field.allowUpload !== false && (
             <button
               type="button"
@@ -322,9 +354,15 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
                     ? "[box-shadow:0_0_0_2px_var(--ob-fg)]"
                     : "hover:[box-shadow:0_0_0_2px_var(--ob-border-strong)]",
                 )}
-                style={{ background: option.glyphTone ?? "var(--ob-surface-2)" }}
+                style={{
+                  background: option.glyphTone ?? "var(--ob-surface-2)",
+                }}
               >
-                {option.glyph}
+                {option.avatarSeed ? (
+                  <Avatar name={option.avatarSeed} size={68} />
+                ) : (
+                  <Glyph value={option.glyph} size={26} />
+                )}
               </button>
             );
           })}
@@ -363,7 +401,7 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
                   cardIdle,
                 )}
               >
-                {option.glyph && <span className="text-lg">{option.glyph}</span>}
+                {option.glyph && <Glyph value={option.glyph} size={18} />}
                 <span className="flex-1 font-semibold">{option.label}</span>
                 {on ? (
                   <span className="grid size-6 place-items-center rounded-full bg-[color:var(--ob-success)] text-white">
@@ -423,7 +461,9 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
                     key={i}
                     className="flex items-center gap-3 rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface-2)] px-3 py-2.5"
                   >
-                    <span className="flex-1 text-sm font-semibold">{row.label}</span>
+                    <span className="flex-1 text-sm font-semibold">
+                      {row.label}
+                    </span>
                     {row.chip && (
                       <span
                         className="rounded-full px-2.5 py-1 text-[0.7rem] font-bold uppercase"
@@ -435,7 +475,9 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
                       </span>
                     )}
                     {row.value && (
-                      <span className="text-sm font-bold tabular-nums">{row.value}</span>
+                      <span className="text-sm font-bold tabular-nums">
+                        {row.value}
+                      </span>
                     )}
                   </div>
                 ))}
@@ -454,7 +496,12 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
     /* -------------------- Wordmark / logo tiles -------------------- */
     case "logo-grid":
       return (
-        <div className={cn("grid gap-3", gridCols({ ...field, columns: field.columns ?? 4 }, options))}>
+        <div
+          className={cn(
+            "grid gap-3",
+            gridCols({ ...field, columns: field.columns ?? 4 }, options),
+          )}
+        >
           {options.map((option) => {
             const on = selected.has(option.id);
             return (
@@ -533,7 +580,9 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
       return (
         <div className="grid gap-3">
           <div className="flex items-baseline justify-between">
-            <span className="text-sm text-[color:var(--ob-muted)]">{field.label}</span>
+            <span className="text-sm text-[color:var(--ob-muted)]">
+              {field.label}
+            </span>
             <span className="text-xl font-bold tabular-nums">{current}</span>
           </div>
           <input
@@ -564,7 +613,9 @@ export function Field({ field, value, onChange, tone = "light" }: FieldProps) {
               onChange={(e) => {
                 const next = [...emails];
                 next[i] = e.target.value;
-                onChange(next.filter((v, idx) => v !== "" || idx < next.length - 1));
+                onChange(
+                  next.filter((v, idx) => v !== "" || idx < next.length - 1),
+                );
               }}
               className="w-full rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-4 py-3 outline-none focus:border-[color:var(--ob-brand)] focus:[box-shadow:var(--ob-ring)]"
             />

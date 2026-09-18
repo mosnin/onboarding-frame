@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Glyph } from "onboarding-frame";
 import { templateCatalog } from "onboarding-frame";
 import { shelves } from "@/lib/shelves";
 import { TemplatePreview } from "@/components/template-preview";
@@ -46,9 +47,9 @@ export default function HomePage() {
           Pick your pricing.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-pretty text-[1.15rem] leading-relaxed text-[color:var(--site-muted)]">
-          A catalogue of production-grade SaaS UI you assemble yourself. Browse the
-          shelves, put a kit together, tune it if you want to, then export a single
-          prompt your coding agent can build from.
+          A catalogue of production-grade SaaS UI you assemble yourself. Browse
+          the shelves, put a kit together, tune it if you want to, then export a
+          single prompt your coding agent can build from.
         </p>
         <div className="mt-9 flex flex-wrap justify-center gap-3">
           <Link
@@ -83,7 +84,10 @@ export default function HomePage() {
               instead, which keeps the whole card clickable.
             */}
             <div className="relative p-3">
-              <TemplatePreview slug={entry.slug} page={entry.pages[0]?.id ?? "home"} />
+              <TemplatePreview
+                slug={entry.slug}
+                page={entry.pages[0]?.id ?? "home"}
+              />
             </div>
             <div className="relative flex items-start gap-3 px-5 pb-5">
               <span className="flex-1">
@@ -113,7 +117,7 @@ export default function HomePage() {
             className="group flex flex-col rounded-2xl border border-[color:var(--site-border)] p-6 transition-colors hover:bg-[color:var(--site-surface)]"
           >
             <span aria-hidden className="text-[1.75rem]">
-              {shelf.glyph}
+              <Glyph value={shelf.glyph} size={20} />
             </span>
             <h2 className="mt-4 text-[1.25rem] font-bold tracking-tight">
               {shelf.name}
@@ -130,7 +134,9 @@ export default function HomePage() {
       </section>
 
       <section className="mt-24">
-        <h2 className="text-[1.9rem] font-bold tracking-[-0.02em]">How it works</h2>
+        <h2 className="text-[1.9rem] font-bold tracking-[-0.02em]">
+          How it works
+        </h2>
         <div className="mt-8 grid gap-10 sm:grid-cols-3">
           {STEPS.map((step) => (
             <div key={step.n}>
@@ -152,8 +158,8 @@ export default function HomePage() {
             Install it as a package
           </h2>
           <p className="mt-2 max-w-xl text-pretty leading-relaxed text-[color:var(--site-muted)]">
-            Everything here is one npm package. If you&apos;d rather write the code
-            yourself, the configs drop straight in.
+            Everything here is one npm package. If you&apos;d rather write the
+            code yourself, the configs drop straight in.
           </p>
           <code
             className="mt-5 inline-block rounded-xl bg-[color:var(--site-surface)] px-4 py-3 text-[0.95rem]"
@@ -168,8 +174,9 @@ export default function HomePage() {
             Or own the source
           </h2>
           <p className="mt-2 max-w-xl text-pretty leading-relaxed text-[color:var(--site-muted)]">
-            Copy any piece into your repo. The registry serves the package&apos;s own
-            files, so an ejected component cannot drift from the published one.
+            Copy any piece into your repo. The registry serves the
+            package&apos;s own files, so an ejected component cannot drift from
+            the published one.
           </p>
           <code
             className="mt-5 inline-block rounded-xl bg-[color:var(--site-surface)] px-4 py-3 text-[0.95rem]"

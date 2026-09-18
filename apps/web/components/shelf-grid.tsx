@@ -1,5 +1,6 @@
 "use client";
 
+import { Icon } from "onboarding-frame";
 import Link from "next/link";
 import { useKit } from "@/lib/kit";
 import type { Shelf } from "@/lib/shelves";
@@ -54,7 +55,13 @@ export function ShelfGrid({ shelf }: { shelf: Shelf }) {
                       : "border border-[color:var(--site-border)] hover:bg-[color:var(--site-surface)]"
                   }`}
                 >
-                  {picked ? "✓ In your kit" : "Add to kit"}
+                  {picked ? (
+                    <span className="inline-flex items-center gap-1.5">
+                      <Icon name="check" size={14} /> In your kit
+                    </span>
+                  ) : (
+                    "Add to kit"
+                  )}
                 </button>
                 <Link
                   href={

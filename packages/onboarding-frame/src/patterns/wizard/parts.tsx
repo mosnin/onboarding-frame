@@ -7,8 +7,17 @@ import type {
   WizardConfig,
   WizardSidePanel,
 } from "../../types";
+import { Avatar } from "../../ui/avatar";
+import { Glyph } from "../../ui/glyph";
+import { Icon } from "../../ui/icons";
 import { cn } from "../../lib/cn";
-import { Breadcrumbs, Button, Dots, ProgressBar, Stars } from "../../ui/primitives";
+import {
+  Breadcrumbs,
+  Button,
+  Dots,
+  ProgressBar,
+  Stars,
+} from "../../ui/primitives";
 import { ChevronLeft, ChevronRight, Check, Spinner } from "../../ui/icons";
 
 /* ------------------------------------------------------------------ *
@@ -49,7 +58,11 @@ export function Orb({
     >
       <svg className="absolute inset-0 size-full rounded-full opacity-[0.45] mix-blend-overlay">
         <filter id="ob-grain">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.9"
+            numOctaves="3"
+          />
         </filter>
         <circle cx="50%" cy="50%" r="50%" filter="url(#ob-grain)" />
       </svg>
@@ -58,26 +71,52 @@ export function Orb({
 }
 
 /** Drifting glyph tiles behind a welcome screen. Positions are deterministic. */
+/**
+ * Ambient logo tiles behind a welcome screen.
+ *
+ * The reference scatters app tiles across the canvas at varying depth — some
+ * crisp, most blurred back — so the headline reads against a busy but quiet
+ * field. Two things matter and were previously missing: the tiles are *logos*,
+ * so each is a slot rather than an invented mark, and the scatter leaves the
+ * middle alone. A tile landing under the headline is the one placement that
+ * makes the screen look accidental.
+ */
 export function AmbientTiles({ tiles }: { tiles: string[] }) {
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      {tiles.map((glyph, i) => {
-        // Golden-ratio scatter keeps tiles spread without clustering.
-        const x = ((i * 61.8) % 92) + 4;
-        const y = ((i * 37.5) % 78) + 8;
-        const depth = 0.35 + ((i * 7) % 6) / 10;
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      {tiles.map((label, i) => {
+        // Golden-angle scatter: spread without the banding a modulus gives.
+        const a = i * 137.508;
+        const r = 0.34 + ((i * 0.13) % 0.62);
+        const x = 50 + Math.cos((a * Math.PI) / 180) * r * 52;
+        const y = 50 + Math.sin((a * Math.PI) / 180) * r * 46;
+
+        // Keep the middle clear for the headline and its call to action.
+        const clear = Math.abs(x - 50) < 21 && Math.abs(y - 50) < 19;
+        if (clear) return null;
+
+        // Depth: a couple sit forward, the rest recede and blur.
+        const depth = ((i * 3) % 7) / 6;
+        const near = depth > 0.82;
         return (
           <span
-            key={`${glyph}-${i}`}
-            className="absolute grid size-12 place-items-center rounded-[14px] bg-[color:var(--ob-surface)] text-xl [box-shadow:var(--ob-shadow)]"
+            key={`${label}-${i}`}
+            title={label}
+            className="absolute grid place-items-center rounded-[13px] bg-[color:var(--ob-surface)] [box-shadow:var(--ob-shadow)]"
             style={{
               left: `${x}%`,
               top: `${y}%`,
-              opacity: depth,
-              transform: `scale(${0.7 + depth * 0.5})`,
+              width: 54,
+              height: 54,
+              opacity: near ? 0.96 : 0.2 + depth * 0.55,
+              filter: near ? undefined : `blur(${(1 - depth) * 3.4}px)`,
+              transform: `translate(-50%, -50%) scale(${0.82 + depth * 0.3})`,
             }}
           >
-            {glyph}
+            <Glyph value={label} size={26} />
           </span>
         );
       })}
@@ -190,23 +229,19 @@ export function WizardHeader({
         )}
       </div>
 
-      <div className="flex size-9 shrink-0 items-center justify-end">{right}</div>
+      <div className="flex size-9 shrink-0 items-center justify-end">
+        {right}
+      </div>
     </header>
   );
 }
 
 /** Brand lockup used by the warm-survey header. */
-export function BrandMark({
-  glyph,
-  name,
-}: {
-  glyph?: string;
-  name?: string;
-}) {
+export function BrandMark({ glyph, name }: { glyph?: string; name?: string }) {
   if (!glyph && !name) return null;
   return (
     <span className="flex items-center gap-2 text-[1.05rem] font-extrabold">
-      {glyph && <span aria-hidden>{glyph}</span>}
+      {glyph && <Glyph value={glyph} size={18} />}
       {name}
     </span>
   );
@@ -267,7 +302,9 @@ export function SidePanel({
                         </span>
                       )}
                     </span>
-                    <span className="font-semibold tabular-nums">{row.value}</span>
+                    <span className="font-semibold tabular-nums">
+                      {row.value}
+                    </span>
                   </div>
                   <div className="h-1.5 overflow-hidden rounded-full bg-[color:var(--ob-surface-3)]">
                     <div
@@ -290,10 +327,11 @@ export function SidePanel({
             <div className="absolute size-[300px] rounded-full border border-[color:var(--ob-border)]" />
             <div className="absolute size-[210px] rounded-full border border-[color:var(--ob-border)]" />
             <div className="relative z-10 grid size-24 place-items-center rounded-full bg-[color:var(--ob-surface)] text-3xl [box-shadow:var(--ob-shadow)]">
-              {panel.glyph ?? "✳"}
+              <Glyph value={panel.glyph ?? "sparkle"} size={34} />
             </div>
             {nodes.map((node, i) => {
-              const angle = (i / Math.max(nodes.length, 1)) * Math.PI * 2 - Math.PI / 2;
+              const angle =
+                (i / Math.max(nodes.length, 1)) * Math.PI * 2 - Math.PI / 2;
               return (
                 <span
                   key={node.label}
@@ -334,7 +372,7 @@ export function SidePanel({
             className="absolute inset-x-0 top-1/2 h-px bg-[color:var(--ob-border)]"
           />
           <div className="relative grid size-32 place-items-center rounded-full bg-[color:var(--ob-surface)] text-4xl [box-shadow:var(--ob-shadow-lg)]">
-            {panel.glyph ?? "🛡"}
+            <Glyph value={panel.glyph ?? "shield"} size={44} />
           </div>
         </div>
       );
@@ -376,8 +414,7 @@ export function SidePanel({
                   key={award}
                   className="text-center text-[0.72rem] font-semibold leading-tight"
                 >
-                  🏅
-                  <br />
+                  <Icon name="trophy" size={20} className="mx-auto" />
                   {award}
                 </span>
               ))}
@@ -416,19 +453,23 @@ export function SidePanel({
               background:
                 panel.media?.startsWith("http") || panel.media?.startsWith("/")
                   ? `center/cover no-repeat url(${panel.media})`
-                  : (panel.media ??
-                    "linear-gradient(160deg,#2b3a44,#16202a)"),
+                  : (panel.media ?? "linear-gradient(160deg,#2b3a44,#16202a)"),
             }}
           >
             {(panel.caption || panel.metaChips) && (
               <div className="m-4 w-full rounded-[var(--ob-radius)] bg-black/45 p-4 text-white backdrop-blur-md">
                 {panel.caption && (
-                  <p className="text-[0.88rem] leading-relaxed">{panel.caption}</p>
+                  <p className="text-[0.88rem] leading-relaxed">
+                    {panel.caption}
+                  </p>
                 )}
                 {panel.metaChips && (
                   <div className="mt-3 flex flex-wrap items-center gap-4 text-[0.78rem] opacity-80">
                     {panel.metaChips.map((chip) => (
-                      <span key={chip.label} className="flex items-center gap-1.5">
+                      <span
+                        key={chip.label}
+                        className="flex items-center gap-1.5"
+                      >
                         {chip.glyph} {chip.label}
                       </span>
                     ))}
@@ -483,9 +524,13 @@ export function ReviewGrid({ cards }: { cards: ReviewCard[] }) {
               </span>
             )}
           </div>
-          <p className="mt-3 text-4xl font-extrabold tracking-tight">{card.value}</p>
+          <p className="mt-3 text-4xl font-extrabold tracking-tight">
+            {card.value}
+          </p>
           {card.unit && (
-            <p className="mt-1 text-sm text-[color:var(--ob-muted)]">{card.unit}</p>
+            <p className="mt-1 text-sm text-[color:var(--ob-muted)]">
+              {card.unit}
+            </p>
           )}
           <div className="mt-auto pt-6">
             {card.emptyNote && (
@@ -534,11 +579,13 @@ export function ConfirmCard({
         className="grid size-20 shrink-0 place-items-center rounded-full text-3xl"
         style={{ background: avatarTone ?? "var(--ob-surface-2)" }}
       >
-        {avatar}
+        {avatar ? <Avatar name={avatar} size={80} /> : null}
       </span>
       <div className="flex-1 pt-1">
         <div className="flex items-start gap-3">
-          <h3 className="flex-1 text-2xl font-extrabold tracking-tight">{title}</h3>
+          <h3 className="flex-1 text-2xl font-extrabold tracking-tight">
+            {title}
+          </h3>
           {editLabel && (
             <Button tone="outline" size="sm" onClick={onEdit}>
               {editLabel}
@@ -562,7 +609,9 @@ export function Interstitial({
 }) {
   return (
     <div className="grid place-items-center gap-4 text-center">
-      <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h2>
+      <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+        {title}
+      </h2>
       {description && (
         <p className="text-[color:var(--ob-muted)]">{description}</p>
       )}

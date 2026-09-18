@@ -1,9 +1,38 @@
 "use client";
 
+import type { ComponentType } from "react";
+
 import type { ReactNode } from "react";
 import { LineChart } from "../../../ui/charts";
+import {
+  BellIcon,
+  BrowsersIcon,
+  CalendarIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  CaretUpDownIcon,
+  ChartLineIcon,
+  ChartPieIcon,
+  CloudIcon,
+  CubeIcon,
+  ExternalSquareIcon,
+  FlagIcon,
+  FlowArrowIcon,
+  GearIcon,
+  GlobeIcon,
+  HardDrivesIcon,
+  LifebuoyIcon,
+  ListChecksIcon,
+  PathIcon,
+  SearchIcon,
+  ShieldIcon,
+  SparkleIcon,
+  StorefrontIcon,
+  TriangleIcon,
+} from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
 import { Surface, deployTokens } from "./tokens";
 import { Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -15,31 +44,36 @@ export interface DeployAnalyticsProps extends TemplateProps {
 }
 
 const NAV_TOP = [
-  { id: "overview", label: "Overview", glyph: "◬" },
-  { id: "deployments", label: "Deployments", glyph: "⬢" },
-  { id: "logs", label: "Logs", glyph: "≣" },
-  { id: "analytics", label: "Analytics", glyph: "📈" },
-  { id: "speed", label: "Speed Insights", glyph: "◔" },
-  { id: "observability", label: "Observability", glyph: "◉", chevron: true },
-  { id: "firewall", label: "Firewall", glyph: "⛉", chevron: true },
-  { id: "cdn", label: "CDN", glyph: "🌐", chevron: true },
+  { id: "overview", label: "Overview", Icon: TriangleIcon },
+  { id: "deployments", label: "Deployments", Icon: CubeIcon },
+  { id: "logs", label: "Logs", Icon: ListChecksIcon },
+  { id: "analytics", label: "Analytics", Icon: ChartLineIcon },
+  { id: "speed", label: "Speed Insights", Icon: ChartPieIcon },
+  {
+    id: "observability",
+    label: "Observability",
+    Icon: BrowsersIcon,
+    chevron: true,
+  },
+  { id: "firewall", label: "Firewall", Icon: ShieldIcon, chevron: true },
+  { id: "cdn", label: "CDN", Icon: GlobeIcon, chevron: true },
 ];
 
 const NAV_MID = [
-  { id: "domains", label: "Domains", glyph: "▭" },
-  { id: "integrations", label: "Integrations", glyph: "🏪" },
-  { id: "storage", label: "Storage", glyph: "⛁" },
-  { id: "flags", label: "Flags", glyph: "◎", chevron: true },
-  { id: "agent", label: "Agent", glyph: "⁂", chevron: true },
-  { id: "gateway", label: "AI Gateway", glyph: "⑄", chevron: true },
-  { id: "sandboxes", label: "Sandboxes", glyph: "▨" },
-  { id: "workflows", label: "Workflows", glyph: "⚯" },
+  { id: "domains", label: "Domains", Icon: GlobeIcon },
+  { id: "integrations", label: "Integrations", Icon: StorefrontIcon },
+  { id: "storage", label: "Storage", Icon: HardDrivesIcon },
+  { id: "flags", label: "Flags", Icon: FlagIcon, chevron: true },
+  { id: "agent", label: "Agent", Icon: SparkleIcon, chevron: true },
+  { id: "gateway", label: "AI Gateway", Icon: PathIcon, chevron: true },
+  { id: "sandboxes", label: "Sandboxes", Icon: CloudIcon },
+  { id: "workflows", label: "Workflows", Icon: FlowArrowIcon },
 ];
 
 const NAV_BOTTOM = [
-  { id: "usage", label: "Usage", glyph: "◔" },
-  { id: "support", label: "Support", glyph: "⛑" },
-  { id: "settings", label: "Settings", glyph: "⚙", chevron: true },
+  { id: "usage", label: "Usage", Icon: ChartPieIcon },
+  { id: "support", label: "Support", Icon: LifebuoyIcon },
+  { id: "settings", label: "Settings", Icon: GearIcon, chevron: true },
 ];
 
 const REFERRERS = [
@@ -64,88 +98,88 @@ export function DeployAnalyticsTemplate({
   return (
     <Surface tokens={deployTokens} className={className}>
       <Shell>
-        <Sidebar width={340} bg="var(--ob-surface)">
-          <div className="flex items-center gap-2.5 px-4 pb-3 pt-4">
-            <AvatarSlot size={26} />
-            <span className="min-w-0 flex-1 truncate text-[0.95rem] font-medium">
+        <Sidebar width={284} bg="var(--ob-surface)">
+          <div className="flex items-center gap-[8px] px-[13px] pb-[10px] pt-[13px]">
+            <Avatar name="acme-team" size={22} />
+            <span className="min-w-[0px] flex-1 truncate text-[0.793rem] font-medium">
               acme-team
             </span>
-            <span className="rounded-full bg-[color-mix(in_oklab,#0062ff_12%,transparent)] px-2 py-0.5 text-[0.76rem] font-semibold text-[color:var(--ob-brand)]">
+            <span className="rounded-full bg-[color-mix(in_oklab,#0062ff_12%,transparent)] px-[7px] py-[2px] text-[0.634rem] font-semibold text-[color:var(--ob-brand)]">
               Pro Trial
             </span>
-            <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
-              ⌃⌄
+            <span className="text-[color:var(--ob-muted)]">
+              <CaretUpDownIcon size={12} />
             </span>
           </div>
 
-          <div className="px-4 pb-3">
-            <div className="flex items-center gap-2 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-3 py-2 text-[0.92rem] text-[color:var(--ob-muted)]">
-              <span aria-hidden>⌕</span>
+          <div className="px-[13px] pb-[10px]">
+            <div className="flex items-center gap-[7px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-[10px] py-[7px] text-[0.768rem] text-[color:var(--ob-muted)]">
+              <SearchIcon size={14} />
               <span className="flex-1">Find…</span>
-              <kbd className="rounded border border-[color:var(--ob-border)] px-1.5 py-0.5 text-[0.68rem] font-semibold">
+              <kbd className="rounded border border-[color:var(--ob-border)] px-[5px] py-[2px] text-[0.568rem] font-semibold">
                 F
               </kbd>
             </div>
           </div>
 
           <NavList items={NAV_TOP} active={page} />
-          <div className="mx-4 my-3 border-t border-[color:var(--ob-border)]" />
+          <div className="mx-[13px] my-[10px] border-t border-[color:var(--ob-border)]" />
           <NavList items={NAV_MID} active={page} />
-          <div className="mx-4 my-3 border-t border-[color:var(--ob-border)]" />
+          <div className="mx-[13px] my-[10px] border-t border-[color:var(--ob-border)]" />
           <NavList items={NAV_BOTTOM} active={page} />
 
-          <div className="mt-auto flex items-center gap-2.5 px-4 py-4">
-            <AvatarSlot size={28} />
-            <span className="flex-1 text-[0.95rem] font-medium">Sam Lee</span>
+          <div className="mt-auto flex items-center gap-[8px] px-[13px] py-[13px]">
+            <Avatar name="Sam Lee" size={23} />
+            <span className="flex-1 text-[0.793rem] font-medium">Sam Lee</span>
             <span aria-hidden className="text-[color:var(--ob-muted)]">
               ···
             </span>
             <span className="relative" aria-hidden>
-              ⌾
-              <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-[color:var(--ob-brand)]" />
+              <BellIcon size={15} />
+              <span className="absolute -right-[2px] -top-[2px] size-[7px] rounded-full bg-[color:var(--ob-brand)]" />
             </span>
           </div>
         </Sidebar>
 
         <Main className="overflow-auto">
-          <header className="flex h-14 shrink-0 items-center gap-3 border-b border-[color:var(--ob-border)] px-6">
-            <span className="flex items-center gap-2 text-[0.95rem] font-medium">
-              <LogoSlot size={20} label="" radius={4} />
+          <header className="flex h-[47px] shrink-0 items-center gap-[10px] border-b border-[color:var(--ob-border)] px-[20px]">
+            <span className="flex items-center gap-[7px] text-[0.793rem] font-medium">
+              <BrandMark brand="Analytics" size={17} label="Analytics" />
               newlandingpage
-              <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
-                ⌃⌄
+              <span className="text-[color:var(--ob-muted)]">
+                <CaretUpDownIcon size={12} />
               </span>
             </span>
-            <span className="mx-auto text-[0.95rem] font-medium">Analytics</span>
+            <span className="mx-auto text-[0.793rem] font-medium">
+              Analytics
+            </span>
             <span aria-hidden className="text-[color:var(--ob-muted)]">
               ···
             </span>
           </header>
 
-          <div className="flex flex-wrap items-center gap-3 px-6 py-4">
-            <span className="flex items-center gap-2 text-[0.95rem]">
-              <span aria-hidden className="text-[color:var(--ob-muted)]">
-                🌐
-              </span>
+          <div className="flex flex-wrap items-center gap-[10px] px-[20px] py-[13px]">
+            <span className="flex items-center gap-[7px] text-[0.793rem]">
+              <GlobeIcon size={14} />
               newlandingpage-gold.example.app
-              <span aria-hidden className="text-[0.8rem] text-[color:var(--ob-muted)]">
-                ↗
+              <span className="text-[color:var(--ob-muted)]">
+                <ExternalSquareIcon size={12} />
               </span>
             </span>
-            <span className="flex items-center gap-2 pl-3 text-[0.95rem] text-[color:var(--ob-muted)]">
+            <span className="flex items-center gap-[7px] pl-[10px] text-[0.793rem] text-[color:var(--ob-muted)]">
               <span
                 aria-hidden
-                className="size-2 rounded-full border border-[color:var(--ob-border-strong)]"
+                className="size-[7px] rounded-full border border-[color:var(--ob-border-strong)]"
               />
               0 online
             </span>
-            <span className="ml-auto flex items-center gap-3">
+            <span className="ml-auto flex items-center gap-[10px]">
               <Select>Production</Select>
-              <Select glyph="🗓">Last 7 Days</Select>
+              <Select glyph={<CalendarIcon size={14} />}>Last 7 Days</Select>
             </span>
           </div>
 
-          <div className="px-6 pb-8">
+          <div className="px-[20px] pb-[27px]">
             <section className="overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)]">
               <div className="grid grid-cols-2 lg:grid-cols-4">
                 <Stat label="Visitors" value="13" selected />
@@ -154,7 +188,7 @@ export function DeployAnalyticsTemplate({
                   label="Bounce Rate"
                   value="69%"
                   badge={
-                    <span className="rounded bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-1.5 py-0.5 text-[0.78rem] font-semibold text-[color:var(--ob-danger)]">
+                    <span className="rounded bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-[5px] py-[2px] text-[0.651rem] font-semibold text-[color:var(--ob-danger)]">
                       +69%
                     </span>
                   }
@@ -162,29 +196,34 @@ export function DeployAnalyticsTemplate({
                 <span className="border-l border-[color:var(--ob-border)]" />
               </div>
 
-              <div className="relative px-5 pb-5 pt-2">
+              <div className="relative px-[17px] pb-[17px] pt-[7px]">
                 {/*
                   The reference is captured mid-hover, and that state carries
                   information the resting chart does not: which day the peak
                   belongs to, and that it was yesterday. Both are kept.
                 */}
-                <span className="pointer-events-none absolute inset-y-2 left-[calc(5%+80.5%*6/7)] z-10 hidden border-l border-[color:var(--ob-fg)] lg:block">
-                  <span className="absolute -left-[5px] top-[6%] size-2.5 rounded-full border-2 border-[color:var(--ob-surface)] bg-[color:var(--ob-brand)]" />
-                  <span className="absolute left-3 top-[8%] grid gap-1 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-3.5 py-2.5 shadow-[0_4px_14px_rgba(0,0,0,0.1)]">
-                    <span className="flex items-center gap-2.5 whitespace-nowrap text-[0.92rem]">
-                      <span aria-hidden className="size-2 rounded-full bg-[color:var(--ob-brand)]" />
+                <span className="pointer-events-none absolute inset-y-[7px] left-[calc(5%+80.5%*6/7)] z-10 hidden border-l border-[color:var(--ob-fg)] lg:block">
+                  <span className="absolute -left-[4px] top-[6%] size-[8px] rounded-full border-2 border-[color:var(--ob-surface)] bg-[color:var(--ob-brand)]" />
+                  <span className="absolute left-[10px] top-[8%] grid gap-[3px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[12px] py-[8px] shadow-[0_4px_14px_rgba(0,0,0,0.1)]">
+                    <span className="flex items-center gap-[8px] whitespace-nowrap text-[0.768rem]">
+                      <span
+                        aria-hidden
+                        className="size-[7px] rounded-full bg-[color:var(--ob-brand)]"
+                      />
                       Visitors
-                      <span className="pl-1 font-semibold tabular-nums">13</span>
+                      <span className="pl-[3px] font-semibold tabular-nums">
+                        13
+                      </span>
                     </span>
-                    <span className="whitespace-nowrap pl-[18px] text-[0.92rem] text-[color:var(--ob-fg-soft)]">
+                    <span className="whitespace-nowrap pl-[15px] text-[0.768rem] text-[color:var(--ob-fg-soft)]">
                       Apr 22
                     </span>
                   </span>
                 </span>
                 <LineChart
-                  height={420}
+                  height={351}
                   gridLines={2}
-                  yLabels={["0", "5", "10"]}
+                  yLabels={["10", "5", "0"]}
                   xLabels={[
                     "Apr 16",
                     "Apr 17",
@@ -209,7 +248,7 @@ export function DeployAnalyticsTemplate({
               </div>
             </section>
 
-            <div className="grid gap-5 pt-5 lg:grid-cols-2">
+            <div className="grid gap-[17px] pt-[17px] lg:grid-cols-2">
               <PanelCard
                 tabs={["Pages", "Routes", "Hostnames"]}
                 metric="Visitors"
@@ -233,30 +272,35 @@ function NavList({
   items,
   active,
 }: {
-  items: { id: string; label: string; glyph: string; chevron?: boolean }[];
+  items: {
+    id: string;
+    label: string;
+    Icon: ComponentType<{ size?: number }>;
+    chevron?: boolean;
+  }[];
   active: string;
 }) {
   return (
-    <nav className="grid gap-0.5 px-3">
+    <nav className="grid gap-[2px] px-[10px]">
       {items.map((item) => (
         <button
           key={item.id}
           type="button"
           aria-current={item.id === active ? "page" : undefined}
           className={cn(
-            "flex items-center gap-3 rounded-[var(--ob-radius-sm)] px-3 py-2 text-left text-[0.98rem]",
+            "flex items-center gap-[10px] rounded-[var(--ob-radius-sm)] px-[10px] py-[7px] text-left text-[0.818rem]",
             item.id === active
               ? "bg-[color:var(--ob-surface-3)] font-medium"
               : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
           )}
         >
-          <span aria-hidden className="w-4 shrink-0 text-center opacity-70">
-            {item.glyph}
+          <span className="shrink-0 text-[color:var(--ob-muted)]">
+            <item.Icon size={14} />
           </span>
           <span className="flex-1">{item.label}</span>
           {item.chevron && (
-            <span aria-hidden className="text-[0.8rem] opacity-40">
-              ›
+            <span className="text-[color:var(--ob-muted)]">
+              <CaretRightIcon size={10} />
             </span>
           )}
         </button>
@@ -279,24 +323,34 @@ function Stat({
   return (
     <div
       className={cn(
-        "border-l border-[color:var(--ob-border)] px-5 py-4 first:border-l-0",
+        "border-l border-[color:var(--ob-border)] px-[17px] py-[13px] first:border-l-0",
         // Selection is a rule under the cell, keeping the strip continuous.
         selected && "border-b-2 border-b-[color:var(--ob-fg)]",
       )}
     >
-      <p className="text-[0.98rem] font-medium text-[color:var(--ob-fg-soft)]">{label}</p>
-      <p className="flex items-center gap-2.5 pt-1">
-        <span className="text-[2rem] font-semibold tabular-nums leading-none">{value}</span>
+      <p className="text-[0.818rem] font-medium text-[color:var(--ob-fg-soft)]">
+        {label}
+      </p>
+      <p className="flex items-center gap-[8px] pt-[3px]">
+        <span className="text-[1.669rem] font-semibold tabular-nums leading-none">
+          {value}
+        </span>
         {badge}
       </p>
     </div>
   );
 }
 
-function Select({ children, glyph }: { children: ReactNode; glyph?: string }) {
+function Select({
+  children,
+  glyph,
+}: {
+  children: ReactNode;
+  glyph?: ReactNode;
+}) {
   return (
-    <span className="inline-flex items-center gap-10 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem]">
-      <span className="flex items-center gap-2">
+    <span className="inline-flex items-center gap-[33px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-[12px] py-[7px] text-[0.768rem]">
+      <span className="flex items-center gap-[7px]">
         {glyph && (
           <span aria-hidden className="text-[color:var(--ob-muted)]">
             {glyph}
@@ -304,9 +358,7 @@ function Select({ children, glyph }: { children: ReactNode; glyph?: string }) {
         )}
         {children}
       </span>
-      <span aria-hidden className="text-[0.7rem] opacity-60">
-        ⌄
-      </span>
+      <CaretDownIcon size={14} />
     </span>
   );
 }
@@ -327,41 +379,41 @@ function PanelCard({
   icons?: boolean;
 }) {
   return (
-    <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-4">
-      <div className="flex items-center gap-5 border-b border-[color:var(--ob-border)] px-1 pb-3">
+    <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[13px]">
+      <div className="flex items-center gap-[17px] border-b border-[color:var(--ob-border)] px-[3px] pb-[10px]">
         {tabs.map((tab, index) => (
           <span
             key={tab}
             className={cn(
-              "pb-2 text-[0.98rem]",
+              "pb-[7px] text-[0.818rem]",
               index === 0
-                ? "-mb-3 border-b-2 border-[color:var(--ob-fg)] font-medium"
+                ? "-mb-[10px] border-b-2 border-[color:var(--ob-fg)] font-medium"
                 : "text-[color:var(--ob-muted)]",
             )}
           >
             {tab}
           </span>
         ))}
-        <span className="ml-auto text-[0.78rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
+        <span className="ml-auto text-[0.651rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
           {metric}
         </span>
       </div>
 
-      <ul className="pt-3">
+      <ul className="pt-[10px]">
         {rows.map((row) => (
-          <li key={row.id} className="flex items-center gap-3 py-1">
-            <span className="relative min-w-0 flex-1 overflow-hidden rounded-[var(--ob-radius-sm)]">
+          <li key={row.id} className="flex items-center gap-[10px] py-[3px]">
+            <span className="relative min-w-[0px] flex-1 overflow-hidden rounded-[var(--ob-radius-sm)]">
               <span
                 aria-hidden
-                className="absolute inset-y-0 left-0 bg-[color:var(--ob-surface-2)]"
+                className="absolute inset-y-[0px] left-[0px] bg-[color:var(--ob-surface-2)]"
                 style={{ width: `${row.fill}%` }}
               />
-              <span className="relative flex items-center gap-2 px-3 py-2 text-[0.95rem]">
-                {icons && <LogoSlot size={18} label="" radius={4} />}
+              <span className="relative flex items-center gap-[7px] px-[10px] py-[7px] text-[0.793rem]">
+                {icons && <BrandMark brand={row.label} size={15} />}
                 {row.label}
               </span>
             </span>
-            <span className="w-10 shrink-0 text-right text-[0.95rem] tabular-nums">
+            <span className="w-[33px] shrink-0 text-right text-[0.793rem] tabular-nums">
               {row.visitors}
             </span>
           </li>

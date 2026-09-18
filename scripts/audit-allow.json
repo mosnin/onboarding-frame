@@ -1,0 +1,27 @@
+{
+  "_comment": "Characters a reference genuinely prints, per template. The audit subtracts these so the worklist shows only real defects. Adding an entry is a claim that the reference image shows that character in that place — check before adding.",
+  "guided-setup": {
+    "chars": "✨🎉",
+    "why": "Canny's own headings carry a party popper and a sparkle."
+  },
+  "social-scheduler": {
+    "chars": "👋🧯🌀🏔💬🧁",
+    "why": "Buffer renders a wave in the greeting tile, emoji as the four template-card marks, and a cupcake inside the quoted comment."
+  },
+  "finance-overview": {
+    "chars": "❤️🏠💰📖📱🛍",
+    "why": "Copilot Money lets people pick an emoji per spending category, and the reference prints those in the category list, the recurring rows and the category chips."
+  },
+  "creator-revenue": {
+    "chars": "🤑💪👋",
+    "why": "Whop's own promotion banner prints a money-mouth face after \"social media\" and a flexed arm after \"flex your stats\", and the to-do row carries a waving hand beside \"Welcome 12 new users\"."
+  },
+  "product-analytics": {
+    "chars": "🌱",
+    "why": "Mixpanel's sidebar prints a seedling before \"Starter Board\" — it is the board's own emoji, shown in the Pinned list and again in the Recents and boards rows."
+  },
+  "wizards": {
+    "chars": "👋🌱",
+    "why": "Buffer's own onboarding prints a waving hand in the welcome line (ref 007) and a seedling in \"Thanks for choosing Buffer\" (ref 016). Reproducing those is the rule; they are the reference's text, not our icons."
+  }
+}

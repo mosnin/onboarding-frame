@@ -1,8 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { Placeholder } from "../../../ui/placeholder";
+import { ChatIcon, ChevronDown, Cross, SearchIcon } from "../../../ui/icons";
 
 /**
  * Shared application chrome.
@@ -27,7 +28,7 @@ export function Shell({
   return (
     <div
       className={cn(
-        "flex min-h-[860px] w-full overflow-hidden text-[color:var(--ob-fg)]",
+        "flex min-h-[560px] w-full overflow-hidden text-[color:var(--ob-fg)] sm:min-h-[860px]",
         className,
       )}
       style={{ background: bg }}
@@ -69,7 +70,12 @@ export function Main({
   className?: string;
 }) {
   return (
-    <main className={cn("flex min-w-0 flex-1 flex-col overflow-x-hidden", className)}>
+    <main
+      className={cn(
+        "flex min-w-0 flex-1 flex-col overflow-x-hidden",
+        className,
+      )}
+    >
       {children}
     </main>
   );
@@ -77,9 +83,21 @@ export function Main({
 
 /* ------------------------------ Nav ------------------------------ */
 
-export function NavSection({ label }: { label: string }) {
+export function NavSection({
+  label,
+  className,
+}: {
+  label: string;
+  /** Lets a template drop the small caps, which not every product uses. */
+  className?: string;
+}) {
   return (
-    <p className="px-3 pb-1.5 pt-5 text-[0.7rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
+    <p
+      className={cn(
+        "px-3 pb-1.5 pt-5 text-[0.7rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]",
+        className,
+      )}
+    >
       {label}
     </p>
   );
@@ -119,7 +137,9 @@ export function NavItem({
         className,
       )}
     >
-      {glyph && <span className="w-4 shrink-0 text-center opacity-80">{glyph}</span>}
+      {glyph && (
+        <span className="w-4 shrink-0 text-center opacity-80">{glyph}</span>
+      )}
       <span className="flex-1 truncate">{label}</span>
       {badge !== undefined && (
         <span className="shrink-0 text-[0.75rem] tabular-nums text-[color:var(--ob-muted)]">
@@ -147,7 +167,10 @@ export function TopBar({
   return (
     <header
       className={cn(
-        "flex h-14 shrink-0 items-center gap-3 px-4 sm:px-6",
+        // A top bar is a single row of controls, and at phone width it stops
+        // fitting. Scrolling keeps every control reachable; the enclosing
+        // Shell clips, so without this the right-hand ones simply vanish.
+        "flex h-14 shrink-0 items-center gap-3 overflow-x-auto px-4 sm:px-6",
         border && "border-b border-[color:var(--ob-border)]",
         className,
       )}
@@ -177,7 +200,7 @@ export function SearchField({
         className,
       )}
     >
-      <span aria-hidden className="opacity-70">⌕</span>
+      <SearchIcon className="shrink-0 opacity-70" />
       <span className="flex-1 truncate">{placeholder}</span>
       {shortcut && (
         <kbd className="rounded border border-[color:var(--ob-border)] px-1.5 py-0.5 text-[0.68rem] font-semibold">
@@ -202,7 +225,11 @@ export function Card({
   return (
     <section
       className={cn(
-        "rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]",
+        // min-w-0: a card is nearly always a grid or flex item, where the
+        // default min-width:auto lets one non-shrinking child inside set the
+        // card's width. That is how a 390px column ended up holding a 619px
+        // card, with the overflow clipped rather than reflowed.
+        "min-w-0 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]",
         padded && "p-5",
         className,
       )}
@@ -229,14 +256,22 @@ export function CardTitle({
   );
 }
 
-export type ChipTone = "neutral" | "brand" | "success" | "warn" | "danger" | "info";
+export type ChipTone =
+  | "neutral"
+  | "brand"
+  | "success"
+  | "warn"
+  | "danger"
+  | "info";
 
 const CHIP_TONES: Record<ChipTone, string> = {
   neutral: "bg-[color:var(--ob-surface-2)] text-[color:var(--ob-fg-soft)]",
   brand: "bg-[color:var(--ob-brand-soft)] text-[color:var(--ob-brand)]",
-  success: "bg-[color-mix(in_oklab,var(--ob-success)_16%,transparent)] text-[color:var(--ob-success)]",
+  success:
+    "bg-[color-mix(in_oklab,var(--ob-success)_16%,transparent)] text-[color:var(--ob-success)]",
   warn: "bg-[color-mix(in_oklab,#f5a623_18%,transparent)] text-[#b97309]",
-  danger: "bg-[color-mix(in_oklab,var(--ob-danger)_14%,transparent)] text-[color:var(--ob-danger)]",
+  danger:
+    "bg-[color-mix(in_oklab,var(--ob-danger)_14%,transparent)] text-[color:var(--ob-danger)]",
   info: "bg-[color-mix(in_oklab,#4f7cf7_16%,transparent)] text-[#3f6ae0]",
 };
 
@@ -278,12 +313,17 @@ export function Btn({
       type="button"
       className={cn(
         "inline-flex shrink-0 items-center justify-center gap-1.5 rounded-[8px] font-semibold transition-opacity hover:opacity-90",
-        size === "sm" ? "px-2.5 py-1.5 text-[0.8rem]" : "px-3.5 py-2 text-[0.86rem]",
-        tone === "primary" && "bg-[color:var(--ob-brand)] text-[color:var(--ob-brand-fg)]",
-        tone === "dark" && "bg-[color:var(--ob-cta-bg)] text-[color:var(--ob-cta-fg)]",
+        size === "sm"
+          ? "px-2.5 py-1.5 text-[0.8rem]"
+          : "px-3.5 py-2 text-[0.86rem]",
+        tone === "primary" &&
+          "bg-[color:var(--ob-brand)] text-[color:var(--ob-brand-fg)]",
+        tone === "dark" &&
+          "bg-[color:var(--ob-cta-bg)] text-[color:var(--ob-cta-fg)]",
         tone === "neutral" &&
           "border border-[color:var(--ob-border-strong)] bg-[color:var(--ob-surface)]",
-        tone === "ghost" && "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
+        tone === "ghost" &&
+          "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
         className,
       )}
     >
@@ -298,7 +338,12 @@ export function Tabs({
   active,
   className,
 }: {
-  items: { id: string; label: ReactNode; badge?: ReactNode; disabled?: boolean }[];
+  items: {
+    id: string;
+    label: ReactNode;
+    badge?: ReactNode;
+    disabled?: boolean;
+  }[];
   active: string;
   className?: string;
 }) {
@@ -335,10 +380,13 @@ export function Segmented({
   items,
   active,
   className,
+  activeClassName,
 }: {
   items: { id: string; label: ReactNode }[];
   active: string;
   className?: string;
+  /** Some products tint the selected pill rather than leaving it white. */
+  activeClassName?: string;
 }) {
   return (
     <div
@@ -355,7 +403,8 @@ export function Segmented({
           className={cn(
             "rounded-full px-3 py-1.5 text-[0.82rem] font-semibold transition-colors",
             item.id === active
-              ? "bg-[color:var(--ob-surface)] [box-shadow:var(--ob-shadow)]"
+              ? (activeClassName ??
+                  "bg-[color:var(--ob-surface)] [box-shadow:var(--ob-shadow)]")
               : "text-[color:var(--ob-muted)]",
           )}
         >
@@ -385,7 +434,7 @@ export function Select({
     >
       {glyph}
       <span>{label}</span>
-      <span aria-hidden className="opacity-50">⌄</span>
+      <ChevronDown width={14} height={14} className="opacity-50" />
     </button>
   );
 }
@@ -423,7 +472,10 @@ export function Table({
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className="border-b border-[color:var(--ob-border)] last:border-b-0">
+            <tr
+              key={i}
+              className="border-b border-[color:var(--ob-border)] last:border-b-0"
+            >
               {row.map((cell, j) => (
                 <td
                   key={j}
@@ -460,7 +512,8 @@ export function Banner({
         "flex items-center gap-3 px-5 py-2.5 text-[0.88rem]",
         tone === "dark" && "bg-[#141c34] text-white",
         tone === "accent" && "bg-[color:var(--ob-brand-soft)]",
-        tone === "neutral" && "border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface-2)]",
+        tone === "neutral" &&
+          "border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface-2)]",
         className,
       )}
     >
@@ -472,14 +525,14 @@ export function Banner({
         aria-label={onCloseLabel}
         className="shrink-0 opacity-60 hover:opacity-100"
       >
-        ✕
+        <Cross width={14} height={14} />
       </button>
     </div>
   );
 }
 
 /** Round floating action bubble, bottom-right. */
-export function Fab({ glyph = "💬", tone }: { glyph?: ReactNode; tone?: string }) {
+export function Fab({ glyph, tone }: { glyph?: ReactNode; tone?: string }) {
   return (
     <button
       type="button"
@@ -487,7 +540,7 @@ export function Fab({ glyph = "💬", tone }: { glyph?: ReactNode; tone?: string
       className="absolute bottom-6 right-6 grid size-12 place-items-center rounded-full text-xl text-white [box-shadow:var(--ob-shadow-lg)]"
       style={{ background: tone ?? "var(--ob-brand)" }}
     >
-      {glyph}
+      {glyph ?? <ChatIcon width={22} height={22} />}
     </button>
   );
 }
@@ -506,7 +559,9 @@ export function PageTitle({
   return (
     <div className={cn("flex flex-wrap items-start gap-4", className)}>
       <div className="flex-1">
-        <h1 className="text-[1.75rem] font-extrabold tracking-tight">{children}</h1>
+        <h1 className="text-[1.75rem] font-extrabold tracking-tight">
+          {children}
+        </h1>
         {sub && <p className="mt-1 text-[color:var(--ob-muted)]">{sub}</p>}
       </div>
       {action}
@@ -514,7 +569,15 @@ export function PageTitle({
   );
 }
 
-/** Brand lockup with the logo left as a placeholder slot. */
+/**
+ * Brand lockup: the product's mark beside its name.
+ *
+ * This drew the mark as a dotted grey box, which is what made every header
+ * using it read as a failed image load rather than as a recreation. The mark
+ * belongs to whoever ejects the template, so `Wordmark` stands a tile with the
+ * name's initial in its place — the shape and weight the reference measures,
+ * without claiming to be anyone's asset.
+ */
 export function BrandLockup({
   name,
   size = 26,
@@ -525,10 +588,13 @@ export function BrandLockup({
   className?: string;
 }) {
   return (
-    <div className={cn("flex items-center gap-2", className)}>
-      <Placeholder width={size} height={size} radius={6} glyph="▦" />
-      <span className="text-[0.98rem] font-extrabold tracking-tight">{name}</span>
-    </div>
+    <Wordmark
+      name={name}
+      mark={size}
+      size={Math.round(size * 0.6)}
+      radius={6}
+      className={className}
+    />
   );
 }
 
@@ -550,7 +616,9 @@ export function Metric({
       <p className="mt-1 text-[1.65rem] font-extrabold tracking-tight tabular-nums">
         {value}
       </p>
-      {sub && <p className="text-[0.8rem] text-[color:var(--ob-muted)]">{sub}</p>}
+      {sub && (
+        <p className="text-[0.8rem] text-[color:var(--ob-muted)]">{sub}</p>
+      )}
     </div>
   );
 }

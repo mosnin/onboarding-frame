@@ -1,6 +1,7 @@
 "use client";
 
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { Glyph } from "./glyph";
 import { cn } from "../lib/cn";
 import { percent } from "../lib/utils";
 import { Check, ChevronRight, Moon, Star, Sun } from "./icons";
@@ -157,7 +158,8 @@ export function Breadcrumbs({
   return (
     <nav className={cn("flex items-center gap-1 text-sm", className)}>
       {items.map((item, i) => {
-        const state = i < activeIndex ? "done" : i === activeIndex ? "active" : "todo";
+        const state =
+          i < activeIndex ? "done" : i === activeIndex ? "active" : "todo";
         return (
           <span key={item.id} className="flex items-center gap-1">
             {i > 0 && (
@@ -171,7 +173,8 @@ export function Breadcrumbs({
               className={cn(
                 "rounded px-1.5 py-0.5 font-semibold transition-colors",
                 state === "active" && "text-[color:var(--ob-fg)]",
-                state === "done" && "text-[color:var(--ob-fg-soft)] hover:underline",
+                state === "done" &&
+                  "text-[color:var(--ob-fg-soft)] hover:underline",
                 state === "todo" && "text-[color:var(--ob-muted)] opacity-60",
               )}
             >
@@ -280,7 +283,12 @@ export function IconTile({
   size?: "sm" | "md" | "lg";
   className?: string;
 }) {
-  const dims = { sm: "size-8 text-base", md: "size-10 text-xl", lg: "size-14 text-2xl" };
+  const dims = {
+    sm: "size-8 text-base",
+    md: "size-10 text-xl",
+    lg: "size-14 text-2xl",
+  };
+  const marks = { sm: 16, md: 20, lg: 26 };
   return (
     <span
       aria-hidden
@@ -291,7 +299,7 @@ export function IconTile({
       )}
       style={{ background: tone ?? "var(--ob-surface-2)" }}
     >
-      {glyph}
+      <Glyph value={glyph} size={marks[size]} />
     </span>
   );
 }
@@ -322,7 +330,10 @@ export function Pill({
 
 export function Stars({ count = 5 }: { count?: number }) {
   return (
-    <span className="flex gap-0.5 text-[#f5a623]" aria-label={`${count} out of 5 stars`}>
+    <span
+      className="flex gap-0.5 text-[#f5a623]"
+      aria-label={`${count} out of 5 stars`}
+    >
       {Array.from({ length: count }, (_, i) => (
         <Star key={i} />
       ))}
@@ -371,7 +382,10 @@ export function SchemeToggle({
 export function Confetti({ pieces = 28 }: { pieces?: number }) {
   const colors = ["#f5a623", "#2f6bff", "#1fd760", "#f76db4", "#9b6bff"];
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
       {Array.from({ length: pieces }, (_, i) => (
         <span
           key={i}

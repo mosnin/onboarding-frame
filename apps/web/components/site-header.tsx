@@ -27,7 +27,11 @@ const MENUS: { id: string; label: string; links: MenuLink[] }[] = [
     id: "resources",
     label: "Resources",
     links: [
-      { label: "All templates", href: "/templates", blurb: "Every dashboard surface" },
+      {
+        label: "All templates",
+        href: "/templates",
+        blurb: "Every dashboard surface",
+      },
       { label: "Docs", href: "/docs", blurb: "Install and theme" },
       { label: "Registry", href: "/registry", blurb: "Source for the CLI" },
     ],
@@ -62,7 +66,10 @@ export function SiteHeader() {
   useEffect(() => {
     if (dark === null) return;
     document.documentElement.dataset.siteTheme = dark ? "dark" : "light";
-    window.localStorage.setItem("onboarding-frame:theme", dark ? "dark" : "light");
+    window.localStorage.setItem(
+      "onboarding-frame:theme",
+      dark ? "dark" : "light",
+    );
   }, [dark]);
 
   // Close an open menu on outside click or route change.
@@ -95,7 +102,10 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <nav ref={navRef} className="relative mx-auto hidden items-center gap-1 lg:flex">
+          <nav
+            ref={navRef}
+            className="relative mx-auto hidden items-center gap-1 lg:flex"
+          >
             {MENUS.map((entry) => (
               <div key={entry.id} className="relative">
                 <button
@@ -174,7 +184,10 @@ export function SiteHeader() {
               {dark === null ? null : dark ? <MoonIcon /> : <SunIcon />}
             </button>
 
-            <span aria-hidden className="hidden h-6 w-px bg-[color:var(--site-border)] sm:block" />
+            <span
+              aria-hidden
+              className="hidden h-6 w-px bg-[color:var(--site-border)] sm:block"
+            />
 
             <Link
               href="/kit"
@@ -187,7 +200,10 @@ export function SiteHeader() {
         </div>
       </header>
 
-      <CommandPalette open={palette.open} onClose={() => palette.setOpen(false)} />
+      <CommandPalette
+        open={palette.open}
+        onClose={() => palette.setOpen(false)}
+      />
     </>
   );
 }

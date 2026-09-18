@@ -2,6 +2,7 @@
 
 import { useEffect, type ReactNode } from "react";
 import type { FieldValue, WizardConfig, WizardStep } from "../../types";
+import { Glyph } from "../../ui/glyph";
 import { cn } from "../../lib/cn";
 import { useWizard, type WizardState } from "../../hooks/useWizard";
 import { useKeyboard } from "../../hooks/useKeyboard";
@@ -48,23 +49,27 @@ function interpolate(
   values: Record<string, FieldValue>,
   config: WizardConfig,
 ): string {
-  return template.replace(/\{([\w-]+)(:option)?\}/g, (_match, id: string, asOption) => {
-    const value = values[id];
-    if (value === undefined || value === null) return "";
-    if (!asOption) return Array.isArray(value) ? value.join(", ") : String(value);
+  return template.replace(
+    /\{([\w-]+)(:option)?\}/g,
+    (_match, id: string, asOption) => {
+      const value = values[id];
+      if (value === undefined || value === null) return "";
+      if (!asOption)
+        return Array.isArray(value) ? value.join(", ") : String(value);
 
-    const ids = Array.isArray(value) ? value.map(String) : [String(value)];
-    const labels: string[] = [];
-    for (const step of config.steps) {
-      for (const field of step.fields ?? []) {
-        for (const option of field.options ?? []) {
-          if (ids.includes(option.id)) labels.push(option.label);
+      const ids = Array.isArray(value) ? value.map(String) : [String(value)];
+      const labels: string[] = [];
+      for (const step of config.steps) {
+        for (const field of step.fields ?? []) {
+          for (const option of field.options ?? []) {
+            if (ids.includes(option.id)) labels.push(option.label);
+          }
         }
       }
-    }
-    if (labels.length <= 1) return labels[0] ?? "";
-    return `${labels.slice(0, -1).join(", ")} and ${labels[labels.length - 1]}`;
-  });
+      if (labels.length <= 1) return labels[0] ?? "";
+      return `${labels.slice(0, -1).join(", ")} and ${labels[labels.length - 1]}`;
+    },
+  );
 }
 
 function ctaLabelFor(step: WizardStep, config: WizardState, fallback?: string) {
@@ -108,7 +113,12 @@ function StepBody({
       : undefined;
     return (
       <div className="grid gap-8">
-        <h2 className={cn("text-center text-3xl font-semibold tracking-tight sm:text-[2.6rem]", titleClass)}>
+        <h2
+          className={cn(
+            "text-center text-3xl font-semibold tracking-tight sm:text-[2.6rem]",
+            titleClass,
+          )}
+        >
           {step.title}
         </h2>
         <ConfirmCard
@@ -118,7 +128,7 @@ function StepBody({
               ? interpolate(step.summaryTemplate, state.values, config)
               : ""
           }
-          avatar={avatarOption?.glyph}
+          avatar={avatarOption?.avatarSeed ?? avatarOption?.glyph}
           avatarTone={avatarOption?.glyphTone}
           editLabel={step.editLabel ?? "Edit"}
           onEdit={() => state.goTo(0)}
@@ -128,7 +138,12 @@ function StepBody({
   }
 
   const heading = (
-    <div className={cn("grid gap-3", align === "center" ? "text-center" : "text-left")}>
+    <div
+      className={cn(
+        "grid gap-3",
+        align === "center" ? "text-center" : "text-left",
+      )}
+    >
       <h2
         className={cn(
           "text-balance text-3xl font-bold tracking-tight sm:text-[2.1rem]",
@@ -251,7 +266,9 @@ function StepFooter({
         block={shape === "block" || align === "stretch"}
         disabled={!state.canAdvance}
         onClick={state.next}
-        className={shape === "pill" && align === "center" ? "min-w-[260px]" : undefined}
+        className={
+          shape === "pill" && align === "center" ? "min-w-[260px]" : undefined
+        }
       >
         {label}
         {shape !== "block" && <ArrowRight className="size-4" />}
@@ -368,7 +385,12 @@ export function Wizard({
   className,
   inline,
 }: WizardProps) {
-  const state = useWizard(config, { onComplete, onDismiss, persistKey, initialValues });
+  const state = useWizard(config, {
+    onComplete,
+    onDismiss,
+    persistKey,
+    initialValues,
+  });
   const { theme, scheme, setScheme, emit } = useOnboarding();
   const { step } = state;
 
@@ -467,7 +489,10 @@ export function Wizard({
                   onClick={() => onAction?.(config.topBarAction!.id, state)}
                   className="grid size-9 place-items-center rounded-full text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]"
                 >
-                  {config.topBarAction.glyph ?? "🔊"}
+                  <Glyph
+                    value={config.topBarAction.glyph ?? "megaphone"}
+                    size={18}
+                  />
                 </button>
               ) : (
                 schemeToggle
@@ -511,7 +536,11 @@ export function Wizard({
               <BrandMark glyph={config.logoGlyph} name={config.brandName} />
             </div>
             {!isWelcome && (
-              <Dots count={state.total} active={state.index} onSelect={state.goTo} />
+              <Dots
+                count={state.total}
+                active={state.index}
+                onSelect={state.goTo}
+              />
             )}
             {schemeToggle ?? <span />}
           </header>
@@ -539,7 +568,11 @@ export function Wizard({
     case "split-rail": {
       const panel = step.sidePanel;
       return (
-        <Shell inline={inline} className={className} style={{ background: "var(--ob-bg)" }}>
+        <Shell
+          inline={inline}
+          className={className}
+          style={{ background: "var(--ob-bg)" }}
+        >
           <div className="flex items-center gap-6 border-b border-[color:var(--ob-border)] px-6 py-4 sm:px-8">
             <BrandMark glyph={config.logoGlyph} name={config.brandName} />
             <div className="flex flex-1 justify-center">
@@ -559,7 +592,7 @@ export function Wizard({
                   onClick={() => onAction?.(action.id, state)}
                   className="flex items-center gap-1.5 text-sm text-[color:var(--ob-fg-soft)] hover:text-[color:var(--ob-fg)]"
                 >
-                  {action.glyph} {action.label}
+                  <Glyph value={action.glyph} size={16} /> {action.label}
                 </button>
               ))}
               {schemeToggle}
@@ -568,7 +601,9 @@ export function Wizard({
           <div className="h-0.5 bg-[color:var(--ob-surface-2)]">
             <div
               className="h-full bg-[color:var(--ob-brand)] transition-[width] duration-500"
-              style={{ width: `${((state.index + 1) / Math.max(state.total, 1)) * 100}%` }}
+              style={{
+                width: `${((state.index + 1) / Math.max(state.total, 1)) * 100}%`,
+              }}
             />
           </div>
 
@@ -621,7 +656,11 @@ export function Wizard({
     /* ---------------------- Conversational ---------------------- */
     case "conversational":
       return (
-        <Shell inline={inline} className={className} style={{ background: "var(--ob-surface-2)" }}>
+        <Shell
+          inline={inline}
+          className={className}
+          style={{ background: "var(--ob-surface-2)" }}
+        >
           <header className="flex items-start justify-between px-6 pt-6">
             {state.index > 0 && config.showBack !== false ? (
               <button
@@ -648,7 +687,11 @@ export function Wizard({
 
           <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-start gap-10 px-6 pt-16">
             {config.avatar && (
-              <Orb stops={config.avatar.stops} size={136} className="ob-animate-pop" />
+              <Orb
+                stops={config.avatar.stops}
+                size={136}
+                className="ob-animate-pop"
+              />
             )}
             <div className="w-full">
               <StepBody

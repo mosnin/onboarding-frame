@@ -109,7 +109,10 @@ export function CommandPalette({
 
       <div className="relative w-full max-w-[640px] overflow-hidden rounded-2xl border border-[color:var(--site-border)] bg-[color:var(--site-bg)] shadow-[var(--site-shadow-lift)]">
         <div className="flex items-center gap-3 border-b border-[color:var(--site-border)] px-4">
-          <SearchIcon className="shrink-0 text-[color:var(--site-muted)]" size={18} />
+          <SearchIcon
+            className="shrink-0 text-[color:var(--site-muted)]"
+            size={18}
+          />
           <input
             ref={inputRef}
             value={query}
@@ -122,7 +125,10 @@ export function CommandPalette({
           </kbd>
         </div>
 
-        <div ref={listRef} className="site-scroll max-h-[52vh] overflow-y-auto p-2">
+        <div
+          ref={listRef}
+          className="site-scroll max-h-[52vh] overflow-y-auto p-2"
+        >
           {results.length === 0 ? (
             <p className="px-3 py-10 text-center text-[0.95rem] text-[color:var(--site-muted)]">
               Nothing matches &ldquo;{query}&rdquo;.

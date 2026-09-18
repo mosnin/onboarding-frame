@@ -36,7 +36,9 @@ function scale(points: number[], min: number, max: number, height: number) {
 function linePath(ys: number[], stepX: number, smooth: boolean) {
   if (ys.length === 0) return "";
   if (!smooth) {
-    return ys.map((y, i) => `${i === 0 ? "M" : "L"}${i * stepX},${y}`).join(" ");
+    return ys
+      .map((y, i) => `${i === 0 ? "M" : "L"}${i * stepX},${y}`)
+      .join(" ");
   }
   // Catmull-Rom style smoothing, expressed as cubic segments.
   let d = `M0,${ys[0]}`;
@@ -56,6 +58,8 @@ export interface LineChartProps {
   xLabels?: string[];
   /** Labels along the y axis, top value first. */
   yLabels?: string[];
+  /** Which side the value scale sits on. Some products set it right. */
+  yLabelSide?: "left" | "right";
   min?: number;
   max?: number;
   smooth?: boolean;
@@ -70,6 +74,7 @@ export function LineChart({
   height = 180,
   xLabels,
   yLabels,
+  yLabelSide = "left",
   min,
   max,
   smooth = false,
@@ -87,10 +92,18 @@ export function LineChart({
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex gap-3">
+      <div
+        className={cn(
+          "flex gap-3",
+          yLabelSide === "right" && "flex-row-reverse",
+        )}
+      >
         {yLabels && (
           <div
-            className="flex shrink-0 flex-col justify-between text-right text-[0.7rem] tabular-nums text-[color:var(--ob-muted)]"
+            className={cn(
+              "flex shrink-0 flex-col justify-between text-[0.7rem] tabular-nums text-[color:var(--ob-muted)]",
+              yLabelSide === "right" ? "text-left" : "text-right",
+            )}
             style={{ height }}
           >
             {yLabels.map((label) => (
@@ -139,8 +152,18 @@ export function LineChart({
                 {s.area && (
                   <>
                     <defs>
-                      <linearGradient id={`${uid}-${s.id}`} x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor={color} stopOpacity={0.28} />
+                      <linearGradient
+                        id={`${uid}-${s.id}`}
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="1"
+                      >
+                        <stop
+                          offset="0%"
+                          stopColor={color}
+                          stopOpacity={0.28}
+                        />
                         <stop offset="100%" stopColor={color} stopOpacity={0} />
                       </linearGradient>
                     </defs>
@@ -207,6 +230,8 @@ export interface BarChartProps {
   max?: number;
   /** Draws a dashed reference line with a chip, e.g. an average. */
   average?: { value: number; label?: string };
+  /** Which side the value scale sits on. Some products set it right. */
+  yLabelSide?: "left" | "right";
   className?: string;
 }
 
@@ -214,6 +239,7 @@ export function BarChart({
   values,
   xLabels,
   yLabels,
+  yLabelSide = "left",
   height = 180,
   color = "var(--ob-brand)",
   max,
@@ -224,10 +250,18 @@ export function BarChart({
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex gap-3">
+      <div
+        className={cn(
+          "flex gap-3",
+          yLabelSide === "right" && "flex-row-reverse",
+        )}
+      >
         {yLabels && (
           <div
-            className="flex shrink-0 flex-col justify-between text-right text-[0.7rem] tabular-nums text-[color:var(--ob-muted)]"
+            className={cn(
+              "flex shrink-0 flex-col justify-between text-[0.7rem] tabular-nums text-[color:var(--ob-muted)]",
+              yLabelSide === "right" ? "text-left" : "text-right",
+            )}
             style={{ height }}
           >
             {yLabels.map((label) => (
@@ -296,7 +330,10 @@ export function Donut({
   let offset = 0;
 
   return (
-    <div className={cn("relative grid place-items-center", className)} style={{ width: size, height: size }}>
+    <div
+      className={cn("relative grid place-items-center", className)}
+      style={{ width: size, height: size }}
+    >
       <svg width={size} height={size} className="-rotate-90" role="img">
         <circle
           cx={size / 2}
@@ -328,7 +365,9 @@ export function Donut({
         })}
       </svg>
       {center && (
-        <div className="absolute inset-0 grid place-items-center text-center">{center}</div>
+        <div className="absolute inset-0 grid place-items-center text-center">
+          {center}
+        </div>
       )}
     </div>
   );
@@ -353,9 +392,19 @@ export function Ring({
   const filled = (Math.min(Math.max(value, 0), 100) / 100) * circumference;
 
   return (
-    <div className="relative grid place-items-center" style={{ width: size, height: size }}>
+    <div
+      className="relative grid place-items-center"
+      style={{ width: size, height: size }}
+    >
       <svg width={size} height={size} className="-rotate-90" aria-hidden>
-        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="var(--ob-surface-3)" strokeWidth={thickness} />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="var(--ob-surface-3)"
+          strokeWidth={thickness}
+        />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -456,7 +505,13 @@ export function BarList({
   items,
   className,
 }: {
-  items: { id: string; label: string; value: number; display?: string; color?: string }[];
+  items: {
+    id: string;
+    label: string;
+    value: number;
+    display?: string;
+    color?: string;
+  }[];
   className?: string;
 }) {
   const max = Math.max(...items.map((i) => i.value), 1);
@@ -464,7 +519,9 @@ export function BarList({
     <div className={cn("grid gap-3", className)}>
       {items.map((item) => (
         <div key={item.id} className="grid gap-1.5">
-          <p className="truncate text-[0.82rem] text-[color:var(--ob-fg-soft)]">{item.label}</p>
+          <p className="truncate text-[0.82rem] text-[color:var(--ob-fg-soft)]">
+            {item.label}
+          </p>
           <div className="flex items-center gap-3">
             <div className="h-2.5 flex-1 overflow-hidden rounded-[3px] bg-[color:var(--ob-surface-3)]">
               <div

@@ -91,7 +91,9 @@ export function searchNav(query: string, limit = 24): NavEntry[] {
       ? 0
       : label.includes(needle)
         ? 1
-        : `${entry.group} ${entry.keywords ?? ""}`.toLowerCase().includes(needle)
+        : `${entry.group} ${entry.keywords ?? ""}`
+              .toLowerCase()
+              .includes(needle)
           ? 2
           : -1;
     if (score >= 0) scored.push({ entry, score });

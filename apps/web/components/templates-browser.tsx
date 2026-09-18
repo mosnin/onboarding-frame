@@ -67,8 +67,8 @@ export function TemplatesBrowser() {
               Templates
             </h1>
             <p className="mt-1.5 max-w-2xl text-[1.08rem] text-[color:var(--site-muted)]">
-              Full-page product surfaces, each with its own palette and type scale.
-              Every image is a labelled placeholder.
+              Full-page product surfaces, each with its own palette and type
+              scale. Every image is a labelled placeholder.
             </p>
           </div>
           <BrowseToolbar
@@ -107,7 +107,9 @@ export function TemplatesBrowser() {
                 blurb={entry.blurb}
                 layout={view}
                 badge={
-                  entry.pages.length > 1 ? `${entry.pages.length} pages` : undefined
+                  entry.pages.length > 1
+                    ? `${entry.pages.length} pages`
+                    : undefined
                 }
                 preview={
                   <TemplatePreview

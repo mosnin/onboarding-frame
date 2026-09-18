@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { BillingPeriod, PlanTier, PlansConfig } from "../../types";
+import { Glyph } from "../../ui/glyph";
+import { Icon } from "../../ui/icons";
 import { cn } from "../../lib/cn";
 import { formatMoney } from "../../lib/utils";
 import { canvasStyle, useOnboarding } from "../../provider/OnboardingProvider";
@@ -63,7 +65,9 @@ export function Plans({
 }: PlansProps) {
   const { theme, emit } = useOnboarding();
   const currency = config.currency ?? "USD";
-  const [period, setPeriod] = useState<BillingPeriod>(config.defaultPeriod ?? "monthly");
+  const [period, setPeriod] = useState<BillingPeriod>(
+    config.defaultPeriod ?? "monthly",
+  );
   const [selectedId, setSelectedId] = useState(
     config.plans.find((p) => p.highlighted)?.id ?? config.plans[0]?.id ?? "",
   );
@@ -95,12 +99,22 @@ export function Plans({
   useKeyboard(true, { Escape: () => onDismiss?.() });
 
   const header = (
-    <div className="grid justify-items-center gap-4 text-center">
-      <h2 className="text-balance text-[2rem] font-extrabold tracking-tight sm:text-[2.6rem]">
+    <div className="grid justify-items-center gap-3.5 text-center">
+      {/*
+        The reference breaks its heading over two lines and colours only the
+        first, which is what gives it its shape. Setting both lines the same
+        colour on one line is the version that reads as a generic modal.
+      */}
+      <h2 className="text-balance text-[2rem] font-bold leading-[1.08] tracking-[-0.02em] sm:text-[2.85rem]">
+        {config.titleAccent && (
+          <span className="block text-[color:var(--ob-brand)]">
+            {config.titleAccent}
+          </span>
+        )}
         {config.title}
       </h2>
       {config.subtitle && (
-        <p className="max-w-xl text-pretty text-[1.05rem] text-[color:var(--ob-muted)]">
+        <p className="max-w-xl text-pretty text-[1rem] text-[color:var(--ob-muted)]">
           {config.subtitle}
         </p>
       )}
@@ -149,7 +163,12 @@ export function Plans({
             <div className="ob-animate-in grid w-full justify-items-center gap-10">
               {header}
               <ComparisonMatrix config={config} />
-              <Button tone="cta" size="lg" onClick={advance} className="min-w-[280px]">
+              <Button
+                tone="cta"
+                size="lg"
+                onClick={advance}
+                className="min-w-[280px]"
+              >
                 {selected?.ctaLabel ?? "Subscribe now"}
               </Button>
             </div>
@@ -175,7 +194,12 @@ export function Plans({
                   {config.footnote}
                 </p>
               )}
-              <Button tone="cta" size="lg" onClick={advance} className="min-w-[280px]">
+              <Button
+                tone="cta"
+                size="lg"
+                onClick={advance}
+                className="min-w-[280px]"
+              >
                 {selected?.ctaLabel ?? "Subscribe now"}
               </Button>
             </div>
@@ -194,7 +218,7 @@ export function Plans({
                         aria-hidden
                         className="grid size-9 shrink-0 place-items-center rounded-[10px] bg-[color:var(--ob-surface-2)] text-lg"
                       >
-                        {benefit.glyph ?? "✦"}
+                        <Glyph value={benefit.glyph ?? "sparkle"} size={17} />
                       </span>
                       <span className="text-[1.05rem]">{benefit.label}</span>
                     </li>
@@ -203,7 +227,9 @@ export function Plans({
               </div>
               <CheckoutPanel
                 checkout={config.checkout}
-                total={priceFor(selected, period) * (period === "annual" ? 12 : 1)}
+                total={
+                  priceFor(selected, period) * (period === "annual" ? 12 : 1)
+                }
                 currency={currency}
                 onSubmit={checkout}
               />
@@ -279,7 +305,12 @@ export function Plans({
         <div className="grid w-full justify-items-center gap-10">
           {header}
           <ComparisonMatrix config={config} />
-          <Button tone="cta" size="lg" onClick={checkout} className="min-w-[280px]">
+          <Button
+            tone="cta"
+            size="lg"
+            onClick={checkout}
+            className="min-w-[280px]"
+          >
             {selected?.ctaLabel ?? "Subscribe now"}
           </Button>
         </div>,
@@ -292,7 +323,13 @@ export function Plans({
         <div className="grid w-full justify-items-center gap-10">
           {header}
           <QuotaMatrix config={config} />
-          <Button tone="cta" size="lg" shape="rounded" onClick={checkout} className="min-w-[200px]">
+          <Button
+            tone="cta"
+            size="lg"
+            shape="rounded"
+            onClick={checkout}
+            className="min-w-[128px]"
+          >
             {selected?.ctaLabel ?? "Continue"}
           </Button>
         </div>,
@@ -311,7 +348,9 @@ export function Plans({
               <span className="text-[color:var(--ob-muted)]">
                 {range.label ?? "Team members"}
               </span>
-              <span className="text-2xl font-extrabold tabular-nums">{seats}</span>
+              <span className="text-2xl font-extrabold tabular-nums">
+                {seats}
+              </span>
             </div>
             <input
               type="range"
@@ -350,12 +389,20 @@ export function Plans({
             <p className="mt-6 text-center text-sm text-[color:var(--ob-muted)]">
               {formatMoney(perSeat, currency)} per seat ·{" "}
               <strong className="text-[color:var(--ob-fg)]">
-                {formatMoney(perSeat * (selected?.perSeat ? seats : 1), currency)}
+                {formatMoney(
+                  perSeat * (selected?.perSeat ? seats : 1),
+                  currency,
+                )}
               </strong>{" "}
               billed {period}
             </p>
           </div>
-          <Button tone="cta" size="lg" onClick={checkout} className="min-w-[280px]">
+          <Button
+            tone="cta"
+            size="lg"
+            onClick={checkout}
+            className="min-w-[280px]"
+          >
             {selected?.ctaLabel ?? "Continue"}
           </Button>
         </div>,
@@ -372,7 +419,9 @@ export function Plans({
                 {config.title}
               </h2>
               {config.subtitle && (
-                <p className="mt-2 text-[color:var(--ob-muted)]">{config.subtitle}</p>
+                <p className="mt-2 text-[color:var(--ob-muted)]">
+                  {config.subtitle}
+                </p>
               )}
             </div>
 
@@ -422,7 +471,13 @@ export function Plans({
               </div>
             )}
 
-            <Button tone="brand" size="lg" shape="rounded" block onClick={checkout}>
+            <Button
+              tone="brand"
+              size="lg"
+              shape="rounded"
+              block
+              onClick={checkout}
+            >
               {config.checkout?.submitLabel ?? "Start free trial"}
             </Button>
 
@@ -452,8 +507,11 @@ export function Plans({
             {config.socialProof?.awards && (
               <div className="flex flex-wrap justify-center gap-6 opacity-60">
                 {config.socialProof.awards.map((award) => (
-                  <span key={award} className="text-center text-[0.72rem] font-semibold leading-tight">
-                    🏅
+                  <span
+                    key={award}
+                    className="text-center text-[0.72rem] font-semibold leading-tight"
+                  >
+                    <Icon name="trophy" size={20} className="mx-auto" />
                     <br />
                     {award}
                   </span>
@@ -527,7 +585,9 @@ export function Plans({
                 boxShadow: `0 0 48px -8px ${offer.accent ?? "var(--ob-brand)"}`,
               }}
             >
-              {offer.glyph ?? <Gift className="size-9 text-[color:var(--ob-brand-fg)]" />}
+              {offer.glyph ?? (
+                <Gift className="size-9 text-[color:var(--ob-brand-fg)]" />
+              )}
             </span>
 
             <OfferHeadline text={offer.headline} accent={offer.accent} />
@@ -540,7 +600,10 @@ export function Plans({
 
             {offer.promoCode && (
               <div className="flex w-full items-center justify-center gap-2 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-4 py-3">
-                <Check className="size-4 text-[color:var(--ob-brand)]" strokeWidth={3} />
+                <Check
+                  className="size-4 text-[color:var(--ob-brand)]"
+                  strokeWidth={3}
+                />
                 <code className="font-[family-name:var(--ob-font-mono)] font-bold">
                   {offer.promoCode}
                 </code>
@@ -578,7 +641,12 @@ export function Plans({
         </div>
       );
 
-      if (inline) return <div className={cn("grid place-items-center py-10", className)}>{card}</div>;
+      if (inline)
+        return (
+          <div className={cn("grid place-items-center py-10", className)}>
+            {card}
+          </div>
+        );
       return (
         <div className="fixed inset-0 z-[70] grid place-items-center p-4">
           <button

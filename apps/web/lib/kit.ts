@@ -70,7 +70,10 @@ export function useKit() {
               : [...current.addons, itemId],
           }
         : // Picking the same item again clears the slot, so one control toggles.
-          { ...current, [shelf]: current[shelf] === itemId ? undefined : itemId };
+          {
+            ...current,
+            [shelf]: current[shelf] === itemId ? undefined : itemId,
+          };
     write(next);
     setKit(next);
   }, []);

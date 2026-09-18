@@ -1,8 +1,21 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  ArrowRightIcon,
+  CaretDownIcon,
+  CaretLineLeftIcon,
+  GearIcon,
+  GridFourIcon,
+  HardDrivesIcon,
+  HouseIcon,
+  MonitorPlayIcon,
+  QuestionIcon,
+  SearchIcon,
+  StarIcon,
+} from "../../../ui/icons-solid";
+import { Avatar, Thumb } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, productTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -48,123 +61,146 @@ const GROWTH = [
  * thumbnail here is a labelled placeholder.
  */
 export function ProductAnalyticsTemplate({
+  brandName = "Acme",
   className,
   page = "home",
 }: ProductAnalyticsProps) {
   return (
     <Surface tokens={productTokens} className={className}>
       <Shell>
-        <Sidebar width={330} bg="var(--ob-surface)">
-          <div className="flex items-center gap-3 px-5 pb-4 pt-4">
-            <WordmarkSlot width={30} height={30} label="" />
+        <Sidebar width={251} bg="var(--ob-surface)">
+          <div className="flex items-center gap-[9px] px-[15px] pb-[12px] pt-[12px]">
+            <Avatar name={brandName} size={23} rounded={6} />
             <span className="flex-1 leading-tight">
-              <span className="block text-[1.1rem] font-semibold">Acme Analytics</span>
-              <span className="block text-[0.95rem] text-[color:var(--ob-muted)]">
+              <span className="block text-[0.836rem] font-semibold">
+                Acme Analytics
+              </span>
+              <span className="block text-[0.722rem] text-[color:var(--ob-muted)]">
                 All Project Data
               </span>
             </span>
-            <span aria-hidden className="text-[0.7rem] opacity-50">
-              ⌄
-            </span>
+            <CaretDownIcon size={14} />
           </div>
 
-          <div className="px-4 pb-3">
-            <span className="flex items-center justify-center gap-2 rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] py-3 text-[1.1rem] font-semibold text-white">
+          <div className="px-[12px] pb-[9px]">
+            <span className="flex items-center justify-center gap-[6px] rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] py-[9px] text-[0.836rem] font-semibold text-white">
               <span aria-hidden>+</span> Create New
-              <span aria-hidden className="ml-auto pr-1 text-[0.7rem] opacity-70">
-                ⌄
-              </span>
+              <CaretDownIcon size={14} />
             </span>
           </div>
 
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid gap-[2px] px-[9px]">
             <NavItem
               label="Search"
-              glyph="⌕"
+              glyph={<SearchIcon size={14} />}
               badge="⌘ + K"
-              className="text-[1.08rem]"
+              className="text-[0.821rem]"
             />
             <NavItem
               label="Home"
-              glyph="⌂"
+              glyph={<HouseIcon size={14} />}
               active={page === "home"}
-              className="text-[1.08rem]"
+              className="text-[0.821rem]"
             />
             <NavItem
               label="Data"
-              glyph="⛁"
-              trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
-                  ⌄
-                </span>
-              }
-              className="text-[1.08rem]"
+              glyph={<HardDrivesIcon size={14} />}
+              trailing={<CaretDownIcon size={14} />}
+              className="text-[0.821rem]"
             />
             {["Events", "Users", "Lexicon"].map((label) => (
-              <NavItem key={label} label={label} indent className="text-[1.05rem]" />
+              <NavItem
+                key={label}
+                label={label}
+                indent
+                className="text-[0.798rem]"
+              />
             ))}
-            <NavItem label="Session Replay" glyph="▶" className="text-[1.08rem]" />
+            <NavItem
+              label="Session Replay"
+              glyph={<MonitorPlayIcon size={15} />}
+              className="text-[0.821rem]"
+            />
           </nav>
 
-          <p className="px-5 pb-2 pt-6 text-[0.92rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
-            ⌄ Pinned
+          <p className="px-[15px] pb-[6px] pt-[18px] text-[0.699rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
+            <CaretDownIcon
+              size={9}
+              weight="bold"
+              className="inline align-[0px]"
+            />{" "}
+            Pinned
           </p>
-          <nav className="grid gap-0.5 px-3">
-            <NavItem label="🌱 Starter Board" className="text-[1.08rem]" />
+          <nav className="grid gap-[2px] px-[9px]">
+            <NavItem label="🌱 Starter Board" className="text-[0.821rem]" />
           </nav>
 
-          <p className="px-5 pb-2 pt-5 text-[0.92rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
-            ⌄ Your boards
+          <p className="px-[15px] pb-[6px] pt-[15px] text-[0.699rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
+            <CaretDownIcon
+              size={9}
+              weight="bold"
+              className="inline align-[0px]"
+            />{" "}
+            Your boards
           </p>
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid gap-[2px] px-[9px]">
             {["Core User Metrics", "Main Dashboard"].map((label) => (
-              <NavItem key={label} label={label} className="text-[1.08rem]" />
+              <NavItem key={label} label={label} className="text-[0.821rem]" />
             ))}
           </nav>
 
-          <div className="mt-auto p-4">
-            <span className="flex items-center justify-center gap-2.5 rounded-[var(--ob-radius)] bg-[color:var(--ob-cta-bg)] py-3 text-[1.08rem] font-semibold text-[color:var(--ob-cta-fg)]">
-              <span aria-hidden>◆</span> Upgrade Plan
+          <div className="mt-auto p-[12px]">
+            <span className="flex items-center justify-center gap-[8px] rounded-[var(--ob-radius)] bg-[color:var(--ob-cta-bg)] py-[9px] text-[0.821rem] font-semibold text-[color:var(--ob-cta-fg)]">
+              <StarIcon size={14} /> Upgrade Plan
             </span>
-            <div className="flex items-center gap-5 px-2 pt-4 text-[color:var(--ob-fg-soft)]">
-              <span aria-hidden>▦</span>
-              <span className="relative" aria-hidden>
-                ?
-                <span className="absolute -right-1 -top-1 size-2 rounded-full bg-[#e0562d]" />
+            <div className="flex items-center gap-[15px] px-[6px] pt-[12px] text-[color:var(--ob-fg-soft)]">
+              <GridFourIcon size={14} />
+              <span className="relative">
+                <QuestionIcon size={14} />
+                <span className="absolute -right-[3px] -top-[3px] size-[6px] rounded-full bg-[#e0562d]" />
               </span>
-              <span aria-hidden>⚙</span>
-              <span aria-hidden className="ml-auto">
-                ⇤
-              </span>
+              <GearIcon size={14} />
+              <CaretLineLeftIcon size={14} className="ml-auto" />
             </div>
           </div>
         </Sidebar>
 
-        <Main className="overflow-auto px-9 py-8">
-          <h1 className="text-[2.1rem] font-bold tracking-[-0.02em]">Good Morning</h1>
+        <Main className="overflow-auto px-[27px] py-[24px]">
+          <h1 className="text-[1.596rem] font-bold tracking-[-0.02em]">
+            Good Morning
+          </h1>
 
-          <h2 className="pb-3 pt-7 text-[1.15rem] font-semibold">Your Recents</h2>
-          <div className="grid gap-4 sm:grid-cols-3 xl:grid-cols-6">
+          <h2 className="pb-[9px] pt-[21px] text-[0.874rem] font-semibold">
+            Your Recents
+          </h2>
+          <div className="grid gap-[12px] sm:grid-cols-3 xl:grid-cols-6">
             {RECENTS.map((title) => (
               <article
                 key={title}
                 className="overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)]"
               >
                 {/* Schematic, not a screenshot: no invented numbers. */}
-                <Placeholder height={96} radius={0} label="Board preview" />
-                <p className="truncate px-4 py-3 text-[1.02rem]">{title}</p>
+                <span className="block h-[73px]">
+                  <Thumb seed={title} radius={0} alt="Board preview" />
+                </span>
+                <p className="truncate px-[12px] py-[9px] text-[0.775rem]">
+                  {title}
+                </p>
               </article>
             ))}
-            <article className="grid place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-4 py-6 text-center">
-              <span aria-hidden className="text-[1.2rem]">
-                →
-              </span>
-              <span className="pt-2 text-[1.02rem]">See All</span>
+            <article className="grid place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[12px] py-[18px] text-center">
+              <ArrowRightIcon
+                size={15}
+                className="text-[color:var(--ob-fg-soft)]"
+              />
+              <span className="pt-[6px] text-[0.775rem]">See All</span>
             </article>
           </div>
 
-          <h2 className="pb-3 pt-8 text-[1.15rem] font-semibold">Your Product</h2>
-          <section className="grid gap-8 rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-7 lg:grid-cols-3">
+          <h2 className="pb-[9px] pt-[24px] text-[0.874rem] font-semibold">
+            Your Product
+          </h2>
+          <section className="grid gap-[24px] rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[21px] lg:grid-cols-3">
             <Metric
               value="3"
               label="Active Users – Today"
@@ -173,7 +209,12 @@ export function ProductAnalyticsTemplate({
             >
               <Spiky points={DAILY} />
             </Metric>
-            <Metric value="334" label="Weekly Active Users" from="Dec 22" to="Jan 21">
+            <Metric
+              value="334"
+              label="Weekly Active Users"
+              from="Dec 22"
+              to="Jan 21"
+            >
               <Spiky points={WEEKLY} dotted />
             </Metric>
             <Metric
@@ -187,18 +228,18 @@ export function ProductAnalyticsTemplate({
             </Metric>
           </section>
 
-          <div className="grid gap-5 pt-8 lg:grid-cols-2">
+          <div className="grid gap-[15px] pt-[24px] lg:grid-cols-2">
             <div>
-              <h2 className="pb-3 text-[1.15rem] font-semibold">Top Boards</h2>
-              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-5">
-                <ul className="grid gap-4">
+              <h2 className="pb-[9px] text-[0.874rem] font-semibold">
+                Top Boards
+              </h2>
+              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[15px]">
+                <ul className="grid gap-[12px]">
                   {BOARDS.map((board) => (
-                    <li key={board} className="flex items-center gap-3.5">
-                      <span aria-hidden className="text-[1.1rem]">
-                        ▦
-                      </span>
-                      <span className="flex-1 text-[1.08rem]">{board}</span>
-                      <AvatarSlot size={30} />
+                    <li key={board} className="flex items-center gap-[11px]">
+                      <GridFourIcon size={14} />
+                      <span className="flex-1 text-[0.821rem]">{board}</span>
+                      <Avatar name="Suggested Creators" size={23} />
                     </li>
                   ))}
                 </ul>
@@ -206,21 +247,27 @@ export function ProductAnalyticsTemplate({
             </div>
 
             <div>
-              <h2 className="pb-3 text-[1.15rem] font-semibold">Suggested Creators</h2>
-              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-5">
-                <div className="flex items-center gap-3.5">
-                  <AvatarSlot size={44} />
+              <h2 className="pb-[9px] text-[0.874rem] font-semibold">
+                Suggested Creators
+              </h2>
+              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[15px]">
+                <div className="flex items-center gap-[11px]">
+                  <Avatar name="Sam Lee" size={33} />
                   <span className="leading-tight">
-                    <span className="block text-[1.08rem] font-semibold">Sam Lee</span>
-                    <span className="block text-[1rem] text-[color:var(--ob-muted)]">
+                    <span className="block text-[0.821rem] font-semibold">
+                      Sam Lee
+                    </span>
+                    <span className="block text-[0.76rem] text-[color:var(--ob-muted)]">
                       2 boards · 5 reports
                     </span>
                   </span>
                 </div>
 
-                <div className="mt-6 grid justify-items-center rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-6 py-7 text-center">
-                  <p className="text-[1.08rem] font-semibold">Invite more teammates</p>
-                  <p className="pt-2 text-[1.02rem] text-[color:var(--ob-fg-soft)]">
+                <div className="mt-[18px] grid justify-items-center rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[18px] py-[21px] text-center">
+                  <p className="text-[0.821rem] font-semibold">
+                    Invite more teammates
+                  </p>
+                  <p className="pt-[6px] text-[0.775rem] text-[color:var(--ob-fg-soft)]">
                     Analytics works better together.
                   </p>
                 </div>
@@ -250,16 +297,21 @@ function Metric({
 }) {
   return (
     <div>
-      <p className="text-[2.2rem] font-bold leading-none tabular-nums">{value}</p>
-      <p className="pt-2 text-[1.08rem]">{label}</p>
-      <div className="flex gap-3 pt-6">
-        <div className="min-w-0 flex-1">{children}</div>
+      <p className="text-[1.672rem] font-bold leading-none tabular-nums">
+        {value}
+      </p>
+      <p className="pt-[6px] text-[0.821rem]">{label}</p>
+      <div className="flex gap-[9px] pt-[18px]">
+        <div className="min-w-[0px] flex-1">{children}</div>
         {axis && (
-          <div className="grid shrink-0 text-right text-[0.9rem] tabular-nums text-[color:var(--ob-muted)]">
+          <div className="grid shrink-0 text-right text-[0.684rem] tabular-nums text-[color:var(--ob-muted)]">
             {axis.map((tick, index) => (
               <span
                 key={tick}
-                className={cn("leading-none", index > 0 && "mt-[calc((120px/2)-0.8em)]")}
+                className={cn(
+                  "leading-none",
+                  index > 0 && "mt-[calc((120px/2)-0.8em)]",
+                )}
               >
                 {tick}
               </span>
@@ -267,7 +319,7 @@ function Metric({
           </div>
         )}
       </div>
-      <p className="flex pt-2 text-[0.95rem] text-[color:var(--ob-muted)]">
+      <p className="flex pt-[6px] text-[0.722rem] text-[color:var(--ob-muted)]">
         <span className="flex-1">{from}</span>
         <span>{to}</span>
       </p>
@@ -288,7 +340,7 @@ function Spiky({ points, dotted }: { points: number[]; dotted?: boolean }) {
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
-      className="h-[120px] w-full"
+      className="h-[91px] w-full"
       preserveAspectRatio="none"
       role="img"
       aria-label="Active users"
@@ -325,7 +377,7 @@ function GrowthLines() {
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
-      className="h-[120px] w-full"
+      className="h-[91px] w-full"
       preserveAspectRatio="none"
       role="img"
       aria-label="User growth and engagement by cohort"
@@ -337,7 +389,9 @@ function GrowthLines() {
           <g key={series.id}>
             <path
               d={series.points
-                .map((value, i) => `${i === 0 ? "M" : "L"}${i * step},${y(value)}`)
+                .map(
+                  (value, i) => `${i === 0 ? "M" : "L"}${i * step},${y(value)}`,
+                )
                 .join(" ")}
               fill="none"
               stroke={series.color}

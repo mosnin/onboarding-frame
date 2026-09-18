@@ -5,6 +5,9 @@
 
 @import "onboarding-frame/styles.css";
 
+/* Self-hosted template typefaces; see fonts.css. */
+@import "./fonts.css";
+
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono-face), ui-monospace, SFMono-Regular, monospace;

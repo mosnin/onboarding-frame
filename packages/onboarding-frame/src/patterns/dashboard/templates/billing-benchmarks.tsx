@@ -2,7 +2,32 @@
 
 import type { ReactNode } from "react";
 import { cn } from "../../../lib/cn";
-import { LogoSlot, Placeholder } from "../../../ui/placeholder";
+import { Avatar, Thumb } from "../../../ui/avatar";
+import {
+  ArrowsLeftRightIcon,
+  ArrowsUpDownIcon,
+  BellIcon,
+  BooksIcon,
+  CalendarIcon,
+  CaretDownIcon,
+  CaretUpIcon,
+  ChartBarIcon,
+  ChatDotsIcon,
+  ClockIcon,
+  CrossIcon,
+  DotsThreeIcon,
+  GearIcon,
+  GridFourIcon,
+  HouseIcon,
+  InfoIcon,
+  PackageIcon,
+  QuestionIcon,
+  ReceiptIcon,
+  SearchIcon,
+  TerminalIcon,
+  UserIcon,
+  WarningIcon,
+} from "../../../ui/icons-solid";
 import { Surface, benchmarkTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -14,11 +39,11 @@ export interface BillingBenchmarksProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "balances", label: "Balances", glyph: "▤" },
-  { id: "transactions", label: "Transactions", glyph: "⇄" },
-  { id: "customers", label: "Customers", glyph: "👤" },
-  { id: "catalogue", label: "Product catalogue", glyph: "📦" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "balances", label: "Balances", Icon: BooksIcon },
+  { id: "transactions", label: "Transactions", Icon: ArrowsLeftRightIcon },
+  { id: "customers", label: "Customers", Icon: UserIcon },
+  { id: "catalogue", label: "Product catalogue", Icon: PackageIcon },
 ];
 
 const BILLING = [
@@ -48,11 +73,17 @@ const PANELS = [
     median: "0% median",
     top: "8.0%",
     bottom: "-4.0%",
-    // Your line sits mid-band here, which is why the chip is neutral-amber.
-    yours: 0.5,
+    yours: 0.335,
     yoursColor: "#3fa66a",
-    band: [0.74, 0.7, 0.66, 0.63, 0.62, 0.6, 0.58, 0.6, 0.57, 0.59, 0.62, 0.6],
-    medianLine: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
+    band: [
+      0.873, 0.816, 0.703, 0.665, 0.582, 0.582, 0.538, 0.57, 0.589, 0.595,
+      0.614,
+    ],
+    bandFloor: [
+      0.051, 0.082, 0.057, 0.038, 0.019, 0.019, 0.019, 0.019, 0.032, 0.032,
+      0.025,
+    ],
+    medianLine: [],
   },
   {
     id: "ltv",
@@ -65,8 +96,18 @@ const PANELS = [
     bottom: "US$0",
     yours: 0,
     yoursColor: "#e5772d",
-    band: [0.78, 0.82, 0.84, 0.83, 0.85, 0.86, 0.84, 0.86, 0.85, 0.87, 0.86, 0.86],
-    medianLine: [0.5, 0.54, 0.56, 0.55, 0.57, 0.58, 0.56, 0.58, 0.57, 0.59, 0.58, 0.58],
+    band: [
+      0.861, 0.924, 0.962, 0.93, 0.968, 0.968, 0.968, 0.968, 0.943, 0.968,
+      0.968,
+    ],
+    bandFloor: [
+      0.165, 0.171, 0.177, 0.177, 0.177, 0.184, 0.184, 0.19, 0.184, 0.184,
+      0.184,
+    ],
+    medianLine: [
+      0.399, 0.399, 0.411, 0.411, 0.424, 0.424, 0.43, 0.418, 0.424, 0.418,
+      0.418,
+    ],
   },
   {
     id: "net-churn",
@@ -79,8 +120,17 @@ const PANELS = [
     bottom: "0.0%",
     yours: 0,
     yoursColor: "#3fa66a",
-    band: [0.68, 0.64, 0.62, 0.63, 0.61, 0.6, 0.58, 0.6, 0.59, 0.6, 0.61, 0.6],
-    medianLine: [0.34, 0.32, 0.31, 0.32, 0.3, 0.29, 0.28, 0.3, 0.29, 0.3, 0.31, 0.3],
+    band: [
+      0.892, 0.823, 0.791, 0.791, 0.766, 0.753, 0.747, 0.715, 0.722, 0.715,
+      0.734,
+    ],
+    bandFloor: [
+      0.057, 0.038, 0.038, 0.044, 0.044, 0.032, 0.032, 0.032, 0.044, 0.051,
+      0.057,
+    ],
+    medianLine: [
+      0.329, 0.329, 0.323, 0.316, 0.304, 0.304, 0.291, 0.304, 0.297, 0.31, 0.31,
+    ],
   },
   {
     id: "sub-churn",
@@ -93,8 +143,16 @@ const PANELS = [
     bottom: "0.0%",
     yours: 0,
     yoursColor: "#3fa66a",
-    band: [0.72, 0.66, 0.64, 0.65, 0.63, 0.62, 0.6, 0.62, 0.61, 0.62, 0.63, 0.62],
-    medianLine: [0.4, 0.36, 0.34, 0.35, 0.33, 0.32, 0.3, 0.32, 0.31, 0.32, 0.33, 0.32],
+    band: [
+      0.873, 0.823, 0.778, 0.804, 0.759, 0.753, 0.753, 0.734, 0.759, 0.734,
+      0.759,
+    ],
+    bandFloor: [
+      0.158, 0.139, 0.127, 0.133, 0.127, 0.12, 0.114, 0.12, 0.133, 0.133, 0.152,
+    ],
+    medianLine: [
+      0.399, 0.399, 0.38, 0.38, 0.367, 0.361, 0.361, 0.373, 0.373, 0.392, 0.392,
+    ],
   },
 ];
 
@@ -118,42 +176,55 @@ export function BillingBenchmarksTemplate({
   return (
     <Surface tokens={benchmarkTokens} className={className}>
       <Shell>
-        <Sidebar width={320} bg="var(--ob-surface)">
-          <div className="flex items-center gap-2.5 px-5 pb-4 pt-4">
-            <LogoSlot size={30} label="" radius={7} />
-            <span className="text-[1.1rem] font-bold">Content-acme</span>
+        <Sidebar width={240} bg="var(--ob-surface)">
+          <div className="flex items-center gap-[7px] px-[15px] pb-[12px] pt-[12px]">
+            <Avatar name="Content-mobbin" size={22} rounded={5} />
+            <span className="text-[0.824rem] font-bold">Content-mobbin</span>
           </div>
 
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid gap-[1px] px-[9px]">
             {NAV.map((item) => (
-              <NavItem key={item.id} label={item.label} glyph={item.glyph} />
+              <NavItem
+                key={item.id}
+                label={item.label}
+                glyph={<item.Icon size={15} />}
+                className="py-[3px] text-[0.8rem]"
+              />
             ))}
           </nav>
 
-          <NavSection label="Shortcuts" />
-          <nav className="grid gap-0.5 px-3">
-            <NavItem label="Billing overview" glyph="🕐" />
+          <NavSection
+            label="Shortcuts"
+            className="normal-case tracking-normal"
+          />
+          <nav className="grid gap-[1px] px-[9px]">
+            <NavItem label="Billing overview" glyph={<ClockIcon size={15} />} />
           </nav>
 
-          <NavSection label="Products" />
-          <nav className="grid gap-0.5 px-3">
+          <NavSection
+            label="Products"
+            className="normal-case tracking-normal"
+          />
+          <nav className="grid gap-[1px] px-[9px]">
             <NavItem
               label="Payments"
-              glyph="▭"
+              glyph={<ReceiptIcon size={15} />}
               trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
-                  ⌄
-                </span>
+                <CaretDownIcon
+                  size={10}
+                  className="text-[color:var(--ob-muted)]"
+                />
               }
             />
             <NavItem
               label="Billing"
-              glyph="▥"
+              glyph={<ReceiptIcon size={15} />}
               className="text-[color:var(--ob-brand)]"
               trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
-                  ⌃
-                </span>
+                <CaretUpIcon
+                  size={10}
+                  className="text-[color:var(--ob-muted)]"
+                />
               }
             />
             {BILLING.map((item) => (
@@ -170,26 +241,28 @@ export function BillingBenchmarksTemplate({
             ))}
             <NavItem
               label="Reporting"
-              glyph="▦"
+              glyph={<ChartBarIcon size={15} />}
               trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
-                  ⌄
-                </span>
+                <CaretDownIcon
+                  size={10}
+                  className="text-[color:var(--ob-muted)]"
+                />
               }
             />
             <NavItem
               label="More"
-              glyph="···"
+              glyph={<DotsThreeIcon size={15} />}
               trailing={
-                <span aria-hidden className="text-[0.7rem] opacity-50">
-                  ⌄
-                </span>
+                <CaretDownIcon
+                  size={10}
+                  className="text-[color:var(--ob-muted)]"
+                />
               }
             />
           </nav>
 
-          <nav className="mt-auto grid gap-0.5 px-3 pb-5">
-            <NavItem label="Developers" glyph="❯_" />
+          <nav className="mt-auto grid gap-[1px] px-[9px] pb-[15px]">
+            <NavItem label="Developers" glyph={<TerminalIcon size={15} />} />
           </nav>
         </Sidebar>
 
@@ -197,144 +270,155 @@ export function BillingBenchmarksTemplate({
           {page === "overview" ? (
             <MerchantOverview />
           ) : (
-          <>
-          <header className="flex h-16 shrink-0 items-center gap-4 px-6">
-            <div className="flex w-full max-w-[760px] items-center gap-2.5 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-4 py-2.5 text-[0.98rem] text-[color:var(--ob-muted)]">
-              <span aria-hidden>⌕</span> Search
-            </div>
-            <span className="ml-auto flex items-center gap-3">
-              <span className="text-[0.98rem] font-medium">Test mode</span>
-              {/* Off: the account is looking at live numbers. */}
-              <span className="grid h-6 w-11 items-center rounded-full bg-[color:var(--ob-surface-3)] px-1">
-                <span className="size-4 rounded-full bg-[color:var(--ob-surface)] shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
-              </span>
-              {["▦", "?", "⌾", "⚙"].map((glyph) => (
-                <span key={glyph} aria-hidden className="text-[color:var(--ob-fg-soft)]">
-                  {glyph}
-                </span>
-              ))}
-              <span
-                aria-hidden
-                className="grid size-8 place-items-center rounded-full bg-[color:var(--ob-brand)] text-white"
-              >
-                +
-              </span>
-            </span>
-          </header>
-
-          <div className="px-8 pb-8">
-            <div className="flex flex-wrap items-center gap-3">
-              <h1 className="flex-1 text-[2rem] font-bold tracking-[-0.01em]">
-                Billing overview
-              </h1>
-              <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-4 py-2 text-[0.98rem] font-semibold text-white">
-                + Create
-              </span>
-              <span className="flex items-center gap-2 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-2 text-[0.98rem] font-medium">
-                <span aria-hidden>💬</span> Give feedback
-              </span>
-              <span aria-hidden className="text-[color:var(--ob-muted)]">
-                ···
-              </span>
-            </div>
-
-            <nav className="flex gap-7 border-b border-[color:var(--ob-border)] pt-5">
-              {[
-                { id: "revenue", label: "Revenue" },
-                { id: "subscribers", label: "Subscribers" },
-                { id: "trials", label: "Trials" },
-                { id: "churn", label: "Churn" },
-                { id: "collections", label: "Collections" },
-                { id: "benchmarking", label: "Benchmarking", preview: true },
-              ].map((tab) => (
-                <span
-                  key={tab.id}
-                  className={cn(
-                    "-mb-px flex items-center gap-2.5 pb-3 text-[1.02rem]",
-                    tab.id === page
-                      ? "border-b-2 border-[color:var(--ob-brand)] font-semibold text-[color:var(--ob-brand)]"
-                      : "text-[color:var(--ob-fg-soft)]",
-                  )}
-                >
-                  {tab.label}
-                  {tab.preview && (
-                    <span className="rounded-[4px] border border-[color:var(--ob-border-strong)] px-1.5 py-0.5 text-[0.82rem] font-normal text-[color:var(--ob-fg-soft)]">
-                      Preview
-                    </span>
-                  )}
-                </span>
-              ))}
-            </nav>
-
-            <p className="pt-5 text-[1.05rem] text-[color:var(--ob-fg-soft)]">
-              Compare your key performance metrics against similar companies using the
-              platform to power their subscription business.
-            </p>
-
-            <div className="grid gap-5 pt-4 sm:grid-cols-3">
-              {FILTERS.map((filter) => (
-                <div key={filter.id}>
-                  <p className="flex items-center gap-1.5 pb-1.5 text-[0.98rem]">
-                    <span className="flex items-center gap-1.5 font-semibold">
-                      {filter.label}
-                      <InfoDot />
-                    </span>
-                    {filter.you && (
-                      <span className="ml-auto text-[color:var(--ob-muted)]">
-                        {filter.you}
+            <>
+              <header className="flex h-[48px] shrink-0 items-center gap-[12px] px-[18px]">
+                <div className="flex w-full max-w-[569px] items-center gap-[7px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[12px] py-[7px] text-[0.734rem] text-[color:var(--ob-muted)]">
+                  <SearchIcon size={14} /> Search
+                </div>
+                <span className="ml-auto flex items-center gap-[9px]">
+                  <span className="text-[0.734rem] font-medium">Test mode</span>
+                  {/* Off: the account is looking at live numbers. */}
+                  <span className="grid h-[18px] w-[33px] items-center rounded-full bg-[color:var(--ob-surface-3)] px-[3px]">
+                    <span className="size-[12px] rounded-full bg-[color:var(--ob-surface)] shadow-[0_1px_2px_rgba(0,0,0,0.2)]" />
+                  </span>
+                  {[GridFourIcon, QuestionIcon, BellIcon, GearIcon].map(
+                    (Mark, i) => (
+                      <span key={i} className="text-[color:var(--ob-fg-soft)]">
+                        <Mark size={15} />
                       </span>
-                    )}
-                  </p>
-                  <span className="flex items-center gap-3 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-2.5 text-[1rem]">
-                    <span className="flex-1">{filter.value}</span>
-                    <span aria-hidden className="text-[0.7rem] opacity-60">
-                      ⌃⌄
-                    </span>
+                    ),
+                  )}
+                  <span
+                    aria-hidden
+                    className="grid size-[24px] place-items-center rounded-full bg-[color:var(--ob-brand)] text-white"
+                  >
+                    +
+                  </span>
+                </span>
+              </header>
+
+              <div className="px-[42px] pb-[24px]">
+                <div className="flex flex-wrap items-center gap-[9px]">
+                  <h1 className="flex-1 text-[1.498rem] font-bold tracking-[-0.01em]">
+                    Billing overview
+                  </h1>
+                  <span className="rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[12px] py-[6px] text-[0.734rem] font-semibold text-white">
+                    + Create
+                  </span>
+                  <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.734rem] font-medium">
+                    <ChatDotsIcon size={14} /> Give feedback
+                  </span>
+                  <span aria-hidden className="text-[color:var(--ob-muted)]">
+                    ···
                   </span>
                 </div>
-              ))}
-            </div>
 
-            {/* Hairlines instead of card borders keep four charts readable. */}
-            <div className="mt-6 grid border-t border-[color:var(--ob-border)] lg:grid-cols-2">
-              {PANELS.map((panel, index) => (
-                <section
-                  key={panel.id}
-                  className={cn(
-                    "border-b border-[color:var(--ob-border)] py-6",
-                    index % 2 === 0 ? "lg:pr-8" : "lg:border-l lg:pl-8",
-                  )}
-                >
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h2 className="flex items-center gap-2 text-[1.25rem] font-bold">
-                      {panel.title}
-                      <InfoDot />
-                    </h2>
+                <nav className="flex gap-[21px] border-b border-[color:var(--ob-border)] pt-[15px]">
+                  {[
+                    { id: "revenue", label: "Revenue" },
+                    { id: "subscribers", label: "Subscribers" },
+                    { id: "trials", label: "Trials" },
+                    { id: "churn", label: "Churn" },
+                    { id: "collections", label: "Collections" },
+                    {
+                      id: "benchmarking",
+                      label: "Benchmarking",
+                      preview: true,
+                    },
+                  ].map((tab) => (
                     <span
+                      key={tab.id}
                       className={cn(
-                        "rounded-[4px] px-2 py-1 text-[0.92rem] font-semibold",
-                        panel.good
-                          ? "bg-[color-mix(in_oklab,#3fa66a_18%,transparent)] text-[#2b7a4b]"
-                          : "bg-[color-mix(in_oklab,#e5a92d_24%,transparent)] text-[#8a6212]",
+                        "-mb-px flex items-center gap-[7px] pb-[9px] text-[0.764rem]",
+                        tab.id === page
+                          ? "border-b-2 border-[color:var(--ob-brand)] font-semibold text-[color:var(--ob-brand)]"
+                          : "text-[color:var(--ob-fg-soft)]",
                       )}
                     >
-                      {panel.percentile}
+                      {tab.label}
+                      {tab.preview && (
+                        <span className="rounded-[3px] border border-[color:var(--ob-border-strong)] px-[4px] py-[1px] text-[0.614rem] font-normal text-[color:var(--ob-fg-soft)]">
+                          Preview
+                        </span>
+                      )}
                     </span>
-                  </div>
+                  ))}
+                </nav>
 
-                  <p className="pt-2 text-[1.35rem] font-bold">
-                    {panel.value}{" "}
-                    <span className="text-[1.02rem] font-normal text-[color:var(--ob-muted)]">
-                      {panel.median}
-                    </span>
-                  </p>
+                <p className="pt-[15px] text-[0.787rem] text-[color:var(--ob-fg-soft)]">
+                  Compare your key performance metrics against similar companies
+                  using the platform to power their subscription business.
+                </p>
 
-                  <BandChart panel={panel} />
-                </section>
-              ))}
-            </div>
-          </div>
-          </>
+                <div className="flex flex-wrap gap-[15px] pt-[12px]">
+                  {FILTERS.map((filter) => (
+                    <div key={filter.id} className="w-[241px]">
+                      <p className="flex items-center gap-[4px] pb-[4px] text-[0.734rem]">
+                        <span className="flex items-center gap-[4px] font-semibold">
+                          {filter.label}
+                          <InfoDot />
+                        </span>
+                        {filter.you && (
+                          <span className="ml-auto text-[color:var(--ob-muted)]">
+                            {filter.you}
+                          </span>
+                        )}
+                      </p>
+                      <span className="flex items-center gap-[9px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[7px] text-[0.749rem]">
+                        <span className="flex-1">{filter.value}</span>
+                        <span
+                          aria-hidden
+                          className="text-[0.524rem] opacity-60"
+                        >
+                          <ArrowsUpDownIcon size={11} />
+                        </span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Hairlines instead of card borders keep four charts readable. */}
+                <div className="mt-[18px] grid border-t border-[color:var(--ob-border)] lg:grid-cols-2">
+                  {PANELS.map((panel, index) => (
+                    <section
+                      key={panel.id}
+                      className={cn(
+                        "border-b border-[color:var(--ob-border)] py-[18px]",
+                        index % 2 === 0
+                          ? "lg:pr-[24px]"
+                          : "lg:border-l lg:pl-[24px]",
+                      )}
+                    >
+                      <div className="flex flex-wrap items-center gap-[9px]">
+                        <h2 className="flex items-center gap-[6px] text-[0.936rem] font-bold">
+                          {panel.title}
+                          <InfoDot />
+                        </h2>
+                        <span
+                          className={cn(
+                            "rounded-[3px] px-[6px] py-[3px] text-[0.689rem] font-semibold",
+                            panel.good
+                              ? "bg-[color-mix(in_oklab,#3fa66a_18%,transparent)] text-[#2b7a4b]"
+                              : "bg-[color-mix(in_oklab,#e5a92d_24%,transparent)] text-[#8a6212]",
+                          )}
+                        >
+                          {panel.percentile}
+                        </span>
+                      </div>
+
+                      <p className="pt-[6px] text-[1.011rem] font-bold">
+                        {panel.value}{" "}
+                        <span className="text-[0.764rem] font-normal text-[color:var(--ob-muted)]">
+                          {panel.median}
+                        </span>
+                      </p>
+
+                      <BandChart panel={panel} />
+                    </section>
+                  ))}
+                </div>
+              </div>
+            </>
           )}
         </Main>
       </Shell>
@@ -369,95 +453,105 @@ const NAV_TABS = [
 function MerchantOverview() {
   return (
     <div className="relative">
-      <div className="flex h-14 shrink-0 items-center gap-4 border-b border-[color:var(--ob-border)] px-6">
-        <span className="flex items-center gap-2.5 text-[1rem] font-medium">
-          <span aria-hidden>▤</span> Jane
-          <span aria-hidden className="text-[0.7rem] opacity-60">
-            ⌄
+      <div className="flex h-[42px] shrink-0 items-center gap-[12px] border-b border-[color:var(--ob-border)] px-[18px]">
+        <span className="flex items-center gap-[7px] text-[0.749rem] font-medium">
+          <BooksIcon size={14} /> Jane
+          <span aria-hidden className="text-[0.524rem] opacity-60">
+            <CaretDownIcon size={10} />
           </span>
         </span>
-        <span className="flex items-center gap-2 rounded-full bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-3.5 py-1.5 text-[0.95rem] font-medium text-[#b3363a]">
-          Action required <span aria-hidden>⚠</span>
+        <span className="flex items-center gap-[6px] rounded-full bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-[10px] py-[4px] text-[0.712rem] font-medium text-[#b3363a]">
+          Action required <WarningIcon size={13} />
         </span>
-        <span className="mx-auto flex w-full max-w-[560px] items-center gap-2.5 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-4 py-2 text-[0.98rem] text-[color:var(--ob-muted)]">
-          <span aria-hidden>⌕</span> Search…
+        <span className="mx-auto flex w-full max-w-[419px] items-center gap-[7px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[12px] py-[6px] text-[0.734rem] text-[color:var(--ob-muted)]">
+          <SearchIcon size={14} /> Search…
         </span>
-        <span className="flex items-center gap-4 text-[0.98rem]">
-          <span className="flex items-center gap-5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-1.5 font-medium">
+        <span className="flex items-center gap-[12px] text-[0.734rem]">
+          <span className="flex items-center gap-[15px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[4px] font-medium">
             Create
-            <span aria-hidden className="text-[0.7rem] opacity-60">
-              ⌄
+            <span aria-hidden className="text-[0.524rem] opacity-60">
+              <CaretDownIcon size={10} />
             </span>
           </span>
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-[4px]">
             <span aria-hidden>?</span> Help
           </span>
-          {["⌾", "⚙", "👤"].map((glyph) => (
-            <span key={glyph} aria-hidden className="text-[color:var(--ob-fg-soft)]">
-              {glyph}
+          {[BellIcon, GearIcon, UserIcon].map((Mark, i) => (
+            <span key={i} className="text-[color:var(--ob-fg-soft)]">
+              <Mark size={15} />
             </span>
           ))}
         </span>
       </div>
 
-      <div className="flex h-14 shrink-0 items-center gap-6 border-b-2 border-[#f6821f] px-6">
+      <div className="flex h-[42px] shrink-0 items-center gap-[18px] border-b-2 border-[#f6821f] px-[18px]">
         {NAV_TABS.map((tab, index) => (
           <span
             key={tab}
             className={cn(
-              "text-[1rem]",
+              "text-[0.749rem]",
               index === 0
-                ? "rounded-full bg-[color:var(--ob-brand)] px-4 py-1.5 font-semibold text-white"
+                ? "rounded-full bg-[color:var(--ob-brand)] px-[12px] py-[4px] font-semibold text-white"
                 : "font-medium text-[color:var(--ob-fg-soft)]",
             )}
           >
             {tab}
           </span>
         ))}
-        <span className="flex items-center gap-1.5 text-[1rem] font-medium text-[color:var(--ob-fg-soft)]">
-          More <span aria-hidden className="text-[0.7rem] opacity-60">⌄</span>
+        <span className="flex items-center gap-[4px] text-[0.749rem] font-medium text-[color:var(--ob-fg-soft)]">
+          More{" "}
+          <CaretDownIcon size={10} className="text-[color:var(--ob-muted)]" />
         </span>
-        <span className="ml-auto flex items-center gap-4 text-[1rem] font-medium">
+        <span className="ml-auto flex items-center gap-[12px] text-[0.749rem] font-medium">
           <span>Developers</span>
           <span className="text-[#c2410c]">Test mode</span>
           {/* On: the orange knob sits right. */}
-          <span className="grid h-6 w-11 justify-items-end rounded-full bg-[#f6821f] p-1">
-            <span className="size-4 rounded-full bg-white" />
+          <span className="grid h-[18px] w-[33px] justify-items-end rounded-full bg-[#f6821f] p-[3px]">
+            <span className="size-[12px] rounded-full bg-white" />
           </span>
         </span>
       </div>
 
-      <span className="absolute left-1/2 top-[7rem] -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[#f6821f] px-3 py-1 text-[0.82rem] font-bold uppercase tracking-wide text-white">
+      <span className="absolute left-1/2 top-[5.243rem] -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[#f6821f] px-[9px] py-[3px] text-[0.614rem] font-bold uppercase tracking-wide text-white">
         Test data
       </span>
 
-      <div className="px-8 py-7">
-        <div className="flex items-center gap-4">
-          <h1 className="flex-1 text-[2rem] font-bold tracking-[-0.01em]">
+      <div className="px-[24px] py-[21px]">
+        <div className="flex items-center gap-[12px]">
+          <h1 className="flex-1 text-[1.498rem] font-bold tracking-[-0.01em]">
             Your overview
           </h1>
-          <span className="flex items-center gap-2 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-2 text-[0.98rem] font-medium">
-            <span aria-hidden>⚙</span> Edit overview
+          <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.734rem] font-medium">
+            <GearIcon size={14} /> Edit overview
           </span>
         </div>
 
-        <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-[color:var(--ob-border)] pt-5">
+        <div className="mt-[15px] flex flex-wrap items-center gap-[9px] border-t border-[color:var(--ob-border)] pt-[15px]">
           <OverviewSelect>Last 7 days</OverviewSelect>
-          <OverviewSelect glyph="🗓">Mar 15–Mar 21</OverviewSelect>
-          <span className="text-[0.98rem] text-[color:var(--ob-muted)]">compared to</span>
+          <OverviewSelect glyph={<CalendarIcon size={13} />}>
+            Mar 15–Mar 21
+          </OverviewSelect>
+          <span className="text-[0.734rem] text-[color:var(--ob-muted)]">
+            compared to
+          </span>
           <OverviewSelect>Previous period</OverviewSelect>
-          <OverviewSelect caret="⇅">Daily</OverviewSelect>
+          <OverviewSelect caret={<ArrowsUpDownIcon size={11} />}>
+            Daily
+          </OverviewSelect>
         </div>
 
-        <div className="grid gap-8 pt-7 lg:grid-cols-3">
+        <div className="grid gap-[24px] pt-[21px] lg:grid-cols-3">
           <Widget title="Payments" info>
             {/* Test mode: this panel genuinely has nothing to show. */}
-            <div className="mt-4 grid h-[300px] place-items-center rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-6 text-center">
+            <div className="mt-[12px] grid h-[225px] place-items-center rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[18px] text-center">
               <span>
-                <span aria-hidden className="block text-[1.6rem] text-[color:var(--ob-muted)]">
-                  ⚠
+                <span
+                  aria-hidden
+                  className="block text-[1.199rem] text-[color:var(--ob-muted)]"
+                >
+                  <WarningIcon size={13} />
                 </span>
-                <span className="block pt-3 text-[1.02rem] text-[color:var(--ob-muted)]">
+                <span className="block pt-[9px] text-[0.764rem] text-[color:var(--ob-muted)]">
                   This content is only available for live data.
                 </span>
               </span>
@@ -465,14 +559,24 @@ function MerchantOverview() {
           </Widget>
 
           <Widget title="Gross volume" info chip="+∞">
-            <div className="flex gap-8 pt-4">
-              <Legend label="Last 7 days" value="$41.54" color="var(--ob-brand)" />
-              <Legend label="Previous period" value="$0.00" color="var(--ob-border-strong)" />
+            <div className="flex gap-[24px] pt-[12px]">
+              <Legend
+                label="Last 7 days"
+                value="$41.54"
+                color="var(--ob-brand)"
+              />
+              <Legend
+                label="Previous period"
+                value="$0.00"
+                color="var(--ob-border-strong)"
+              />
             </div>
-            <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">$41.54</p>
+            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">
+              $41.54
+            </p>
             <svg
               viewBox="0 0 600 260"
-              className="h-[260px] w-full"
+              className="h-[195px] w-full"
               preserveAspectRatio="none"
               role="img"
               aria-label="Gross volume over the last seven days"
@@ -494,73 +598,101 @@ function MerchantOverview() {
                 vectorEffect="non-scaling-stroke"
               />
             </svg>
-            <p className="flex text-[0.95rem] text-[color:var(--ob-muted)]">
+            <p className="flex text-[0.712rem] text-[color:var(--ob-muted)]">
               <span className="flex-1">$0.00</span>
             </p>
-            <p className="flex pt-1 text-[0.95rem] text-[color:var(--ob-muted)]">
+            <p className="flex pt-[3px] text-[0.712rem] text-[color:var(--ob-muted)]">
               <span className="flex-1">Mar 15</span>
               <span>Today</span>
             </p>
-            <p className="flex items-center gap-3 pt-4 text-[0.98rem]">
+            <p className="flex items-center gap-[9px] pt-[12px] text-[0.734rem]">
               <span className="flex-1 font-medium text-[color:var(--ob-brand)]">
                 View all payments
               </span>
               <span className="text-[color:var(--ob-muted)]">
-                Updated at 4:57 AM 🕐
+                Updated at 4:57 AM <ClockIcon size={12} />
               </span>
             </p>
           </Widget>
 
-          <section className="relative rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] p-7 text-center">
-            <span aria-hidden className="absolute right-5 top-5 text-[color:var(--ob-muted)]">
-              ✕
+          <section className="relative rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] p-[21px] text-center">
+            <span
+              aria-hidden
+              className="absolute right-[15px] top-[15px] text-[color:var(--ob-muted)]"
+            >
+              <CrossIcon size={12} />
             </span>
-            <h2 className="text-[1.3rem] font-bold leading-snug">
+            <h2 className="text-[0.974rem] font-bold leading-snug">
               Get quick access
               <br />
               to key business insights
             </h2>
-            <p className="pt-3 text-[1.02rem] text-[color:var(--ob-fg-soft)]">
-              Missing anything? You can always add it again by editing your overview.
+            <p className="pt-[9px] text-[0.764rem] text-[color:var(--ob-fg-soft)]">
+              Missing anything? You can always add it again by editing your
+              overview.
             </p>
-            <p className="pt-4 text-[1.05rem] font-semibold text-[color:var(--ob-brand)]">
+            <p className="pt-[12px] text-[0.787rem] font-semibold text-[color:var(--ob-brand)]">
               Add to your overview ⊕
             </p>
-            <div className="pt-6">
-              <Placeholder height={210} radius={10} label="Widget preview" />
+            <div className="pt-[18px]">
+              <span className="block h-[157px]">
+                <Thumb seed="billing-widget" radius={7} alt="Widget preview" />
+              </span>
             </div>
           </section>
 
           <Widget title="Net volume from sales" info chip="+∞">
-            <div className="flex gap-8 pt-4">
-              <Legend label="Last 7 days" value="$29.62" color="var(--ob-brand)" />
-              <Legend label="Previous period" value="$0.00" color="var(--ob-border-strong)" />
+            <div className="flex gap-[24px] pt-[12px]">
+              <Legend
+                label="Last 7 days"
+                value="$29.62"
+                color="var(--ob-brand)"
+              />
+              <Legend
+                label="Previous period"
+                value="$0.00"
+                color="var(--ob-border-strong)"
+              />
             </div>
-            <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">$29.62</p>
+            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">
+              $29.62
+            </p>
           </Widget>
 
           <Widget title="Failed payments" info>
-            <p className="pt-4 text-[1.35rem] font-bold tabular-nums">$4.00</p>
-            <p className="flex items-center gap-3 pt-2 text-[0.98rem] text-[color:var(--ob-muted)]">
-              <span className="flex-1">Mar 21, 3:35 AM · jane2@example.test</span>
-              <span className="rounded bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-2 py-0.5 font-medium text-[#b3363a]">
+            <p className="pt-[12px] text-[1.011rem] font-bold tabular-nums">
+              $4.00
+            </p>
+            <p className="flex items-center gap-[9px] pt-[6px] text-[0.734rem] text-[color:var(--ob-muted)]">
+              <span className="flex-1">
+                Mar 21, 3:35 AM · jane2@example.test
+              </span>
+              <span className="rounded bg-[color-mix(in_oklab,#e5484d_12%,transparent)] px-[6px] py-[1px] font-medium text-[#b3363a]">
                 Failed
               </span>
             </p>
-            <p className="flex items-center gap-3 pt-4 text-[0.98rem]">
+            <p className="flex items-center gap-[9px] pt-[12px] text-[0.734rem]">
               <span className="flex-1 font-medium text-[color:var(--ob-brand)]">
                 1 of 1 result
               </span>
-              <span className="text-[color:var(--ob-muted)]">Updated at 4:57 AM 🕐</span>
+              <span className="text-[color:var(--ob-muted)]">
+                Updated at 4:57 AM <ClockIcon size={12} />
+              </span>
             </p>
           </Widget>
 
           <Widget title="New customers" info chip="+∞">
-            <div className="flex gap-8 pt-4">
+            <div className="flex gap-[24px] pt-[12px]">
               <Legend label="Last 7 days" value="3" color="var(--ob-brand)" />
-              <Legend label="Previous period" value="0" color="var(--ob-border-strong)" />
+              <Legend
+                label="Previous period"
+                value="0"
+                color="var(--ob-border-strong)"
+              />
             </div>
-            <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">3</p>
+            <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">
+              3
+            </p>
           </Widget>
         </div>
       </div>
@@ -581,16 +713,16 @@ function Widget({
 }) {
   return (
     <section>
-      <h2 className="flex flex-wrap items-center gap-2.5 text-[1.3rem] font-bold">
+      <h2 className="flex flex-wrap items-center gap-[7px] text-[0.974rem] font-bold">
         {title}
         {info && <InfoDot />}
         {chip && (
-          <span className="rounded bg-[color-mix(in_oklab,#3fa66a_18%,transparent)] px-2 py-0.5 text-[0.92rem] font-semibold text-[#2b7a4b]">
+          <span className="rounded bg-[color-mix(in_oklab,#3fa66a_18%,transparent)] px-[6px] py-[1px] text-[0.689rem] font-semibold text-[#2b7a4b]">
             {chip}
           </span>
         )}
       </h2>
-      <p className="border-b border-[color:var(--ob-border)] pb-3 pt-1 text-[1.02rem] text-[color:var(--ob-muted)]">
+      <p className="border-b border-[color:var(--ob-border)] pb-[9px] pt-[3px] text-[0.764rem] text-[color:var(--ob-muted)]">
         Last 7 days
       </p>
       {children}
@@ -609,11 +741,17 @@ function Legend({
 }) {
   return (
     <span>
-      <span className="flex items-center gap-2.5 text-[1rem] text-[color:var(--ob-fg-soft)]">
-        <span aria-hidden className="h-0.5 w-5 rounded-full" style={{ background: color }} />
+      <span className="flex items-center gap-[7px] text-[0.749rem] text-[color:var(--ob-fg-soft)]">
+        <span
+          aria-hidden
+          className="h-[1px] w-[15px] rounded-full"
+          style={{ background: color }}
+        />
         {label}
       </span>
-      <span className="block pt-1 text-[1.35rem] font-bold tabular-nums">{value}</span>
+      <span className="block pt-[3px] text-[1.011rem] font-bold tabular-nums">
+        {value}
+      </span>
     </span>
   );
 }
@@ -621,15 +759,15 @@ function Legend({
 function OverviewSelect({
   children,
   glyph,
-  caret = "⌄",
+  caret = <CaretDownIcon size={10} />,
 }: {
   children: ReactNode;
-  glyph?: string;
-  caret?: string;
+  glyph?: ReactNode;
+  caret?: ReactNode;
 }) {
   return (
-    <span className="inline-flex items-center gap-4 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.98rem] font-medium">
-      <span className="flex items-center gap-2">
+    <span className="inline-flex items-center gap-[12px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[10px] py-[6px] text-[0.734rem] font-medium">
+      <span className="flex items-center gap-[6px]">
         {glyph && (
           <span aria-hidden className="text-[color:var(--ob-muted)]">
             {glyph}
@@ -637,7 +775,7 @@ function OverviewSelect({
         )}
         {children}
       </span>
-      <span aria-hidden className="text-[0.7rem] opacity-60">
+      <span aria-hidden className="text-[0.524rem] opacity-60">
         {caret}
       </span>
     </span>
@@ -653,10 +791,10 @@ function BandChart({ panel }: { panel: (typeof PANELS)[number] }) {
   const bandTop = panel.band
     .map((v, i) => `${i === 0 ? "M" : "L"}${i * step},${y(v)}`)
     .join(" ");
-  const bandBottom = panel.band
+  const bandBottom = panel.bandFloor
     .slice()
     .reverse()
-    .map((v, i) => `L${width - i * step},${y(Math.max(v - 0.55, 0))}`)
+    .map((v, i) => `L${width - i * step},${y(v)}`)
     .join(" ");
   const medianPath = panel.medianLine
     .map((v, i) => `${i === 0 ? "M" : "L"}${i * step},${y(v)}`)
@@ -664,22 +802,26 @@ function BandChart({ panel }: { panel: (typeof PANELS)[number] }) {
 
   return (
     <>
-      <p className="pt-4 text-[0.95rem] text-[color:var(--ob-muted)]">{panel.top}</p>
+      <p className="pt-[12px] text-[0.712rem] text-[color:var(--ob-muted)]">
+        {panel.top}
+      </p>
       <svg
         viewBox={`0 0 ${width} ${height}`}
-        className="h-[210px] w-full"
+        className="h-[157px] w-[calc(100%-48px)] translate-x-[48px]"
         preserveAspectRatio="none"
         role="img"
         aria-label={`${panel.title}: your value against the peer range`}
       >
         <path d={`${bandTop} ${bandBottom} Z`} fill="var(--ob-surface-2)" />
-        <path
-          d={medianPath}
-          fill="none"
-          stroke="#7b88a8"
-          strokeWidth={1.5}
-          vectorEffect="non-scaling-stroke"
-        />
+        {panel.medianLine.length > 0 && (
+          <path
+            d={medianPath}
+            fill="none"
+            stroke="#7b88a8"
+            strokeWidth={1.5}
+            vectorEffect="non-scaling-stroke"
+          />
+        )}
         <line
           x1={0}
           x2={width}
@@ -690,8 +832,10 @@ function BandChart({ panel }: { panel: (typeof PANELS)[number] }) {
           vectorEffect="non-scaling-stroke"
         />
       </svg>
-      <p className="text-[0.95rem] text-[color:var(--ob-muted)]">{panel.bottom}</p>
-      <p className="flex pt-1 text-[0.95rem] text-[color:var(--ob-muted)]">
+      <p className="text-[0.712rem] text-[color:var(--ob-muted)]">
+        {panel.bottom}
+      </p>
+      <p className="flex pt-[3px] text-[0.712rem] text-[color:var(--ob-muted)]">
         <span className="flex-1">January 2024</span>
         <span>December 2024</span>
       </p>
@@ -701,11 +845,6 @@ function BandChart({ panel }: { panel: (typeof PANELS)[number] }) {
 
 function InfoDot(): ReactNode {
   return (
-    <span
-      aria-hidden
-      className="grid size-[15px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.6rem] font-normal text-[color:var(--ob-muted)]"
-    >
-      i
-    </span>
+    <InfoIcon size={13} className="shrink-0 text-[color:var(--ob-muted)]" />
   );
 }

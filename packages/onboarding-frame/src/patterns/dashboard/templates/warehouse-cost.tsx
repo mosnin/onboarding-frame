@@ -1,8 +1,26 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  BrowsersIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  CaretUpIcon,
+  CheckCircleIcon,
+  PlusIcon,
+  CircleFillIcon,
+  CloudIcon,
+  DatabaseIcon,
+  HardDrivesIcon,
+  HouseIcon,
+  PulseIcon,
+  SearchIcon,
+  SparkleIcon,
+  TerminalIcon,
+} from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, warehouseTokens } from "./tokens";
 import { Main, NavItem, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -14,13 +32,13 @@ export interface WarehouseCostProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "search", label: "Search", glyph: "⌕" },
-  { id: "projects", label: "Projects", glyph: "❯_" },
-  { id: "data", label: "Data", glyph: "⛁" },
-  { id: "products", label: "Data Products", glyph: "☁" },
-  { id: "ai", label: "AI & ML", glyph: "✦" },
-  { id: "monitoring", label: "Monitoring", glyph: "◍" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "search", label: "Search", Icon: SearchIcon },
+  { id: "projects", label: "Projects", Icon: TerminalIcon },
+  { id: "data", label: "Data", Icon: HardDrivesIcon },
+  { id: "products", label: "Data Products", Icon: CloudIcon },
+  { id: "ai", label: "AI & ML", Icon: SparkleIcon },
+  { id: "monitoring", label: "Monitoring", Icon: PulseIcon },
 ];
 
 const ADMIN = [
@@ -115,6 +133,7 @@ const QUERIES = [
  * pairing matters more than tidying it into an empty state.
  */
 export function WarehouseCostTemplate({
+  brandName = "Acme",
   className,
   page = "account",
 }: WarehouseCostProps) {
@@ -123,29 +142,37 @@ export function WarehouseCostTemplate({
   return (
     <Surface tokens={warehouseTokens} className={className}>
       <Shell>
-        <Sidebar width={320} bg="var(--ob-surface)">
-          <div className="px-5 pb-4 pt-5">
-            <WordmarkSlot width={150} height={26} label="" />
+        <Sidebar width={242} bg="var(--ob-surface)">
+          <div className="px-[15px] pb-[12px] pt-[15px]">
+            <Wordmark name={brandName} size={15} mark={20} radius={5} />
           </div>
 
-          <nav className="grid gap-0.5 px-3">
-            <NavItem label="Create" glyph="+" className="text-[1.02rem]" />
+          <nav className="grid gap-[2px] px-[9px]">
+            <NavItem
+              label="Create"
+              glyph={<PlusIcon size={16} weight="bold" />}
+              className="text-[0.771rem] font-semibold"
+            />
           </nav>
-          <div className="mx-5 my-3 border-t border-[color:var(--ob-border)]" />
+          <div className="mx-[15px] my-[9px] border-t border-[color:var(--ob-border)]" />
 
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid gap-[2px] px-[9px]">
             {NAV.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
-                className="text-[1.02rem]"
+                glyph={<item.Icon size={14} />}
+                className="text-[0.771rem]"
               />
             ))}
-            <NavItem label="Admin" glyph="◉" className="text-[1.02rem]" />
+            <NavItem
+              label="Admin"
+              glyph={<BrowsersIcon size={14} />}
+              className="text-[0.771rem]"
+            />
           </nav>
 
-          <nav className="grid gap-0.5 px-3">
+          <nav className="grid gap-[2px] px-[9px]">
             {ADMIN.map((item) => (
               <NavItem
                 key={item.id}
@@ -153,7 +180,7 @@ export function WarehouseCostTemplate({
                 indent
                 active={item.id === "cost" && page === "account"}
                 className={cn(
-                  "text-[1.02rem]",
+                  "text-[0.771rem]",
                   item.id === "cost" &&
                     page === "account" &&
                     "bg-[color-mix(in_oklab,#1a73e8_10%,transparent)] text-[color:var(--ob-brand)]",
@@ -162,10 +189,10 @@ export function WarehouseCostTemplate({
             ))}
           </nav>
 
-          <div className="mt-auto p-4">
-            <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface-2)] p-4">
-              <p className="flex items-center gap-2">
-                <span className="flex-1 text-[1.02rem]">
+          <div className="mt-auto p-[12px]">
+            <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface-2)] p-[12px]">
+              <p className="flex items-center gap-[6px]">
+                <span className="flex-1 text-[0.771rem]">
                   <span className="font-bold">$301</span> credits left
                 </span>
                 <InfoDot />
@@ -173,47 +200,50 @@ export function WarehouseCostTemplate({
                   ···
                 </span>
               </p>
-              <span className="mt-3 block h-1.5 overflow-hidden rounded-full bg-[color:var(--ob-surface-3)]">
+              <span className="mt-[9px] block h-[5px] overflow-hidden rounded-full bg-[color:var(--ob-surface-3)]">
                 <span
                   className="block h-full rounded-full bg-[color:var(--ob-brand)]"
                   style={{ width: "65%" }}
                 />
               </span>
-              <p className="pt-2.5 text-[0.95rem] text-[color:var(--ob-fg-soft)]">
+              <p className="pt-[8px] text-[0.718rem] text-[color:var(--ob-fg-soft)]">
                 Trial ends in 23 days
               </p>
-              <span className="mt-3 block rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] py-2.5 text-center text-[1rem] font-semibold text-white">
+              <span className="mt-[9px] block rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] py-[8px] text-center text-[0.756rem] font-semibold text-white">
                 Upgrade
               </span>
             </div>
 
-            <div className="flex items-center gap-3 pt-4">
-              <AvatarSlot size={34} />
+            <div className="flex items-center gap-[9px] pt-[12px]">
+              <Avatar name="Alex Smith" size={26} />
               <span className="flex-1 leading-tight">
-                <span className="block text-[1rem] font-semibold">Alex Smith</span>
-                <span className="block text-[0.9rem] text-[color:var(--ob-muted)]">
+                <span className="block text-[0.756rem] font-semibold">
+                  Alex Smith
+                </span>
+                <span className="block text-[0.68rem] text-[color:var(--ob-muted)]">
                   ACCOUNTADMIN
                 </span>
               </span>
-              <span aria-hidden className="text-[0.7rem] opacity-50">
-                ⌃
-              </span>
+              <CaretUpIcon size={14} />
             </div>
           </div>
         </Sidebar>
 
-        <Main className="overflow-auto px-9 py-7">
-          <div className="flex items-center gap-4">
-            <h1 className="flex-1 text-[1.85rem] font-semibold">Cost Management</h1>
-            <span className="flex items-center gap-2.5 rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-4 py-2 text-[1rem] font-medium">
-              <span aria-hidden className="text-[color:var(--ob-success)]">
-                ●
-              </span>
+        <Main className="overflow-auto px-[40px] py-[21px]">
+          <div className="flex items-center gap-[12px]">
+            <h1 className="flex-1 text-[1.399rem] font-semibold">
+              Cost Management
+            </h1>
+            <span className="flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.756rem] font-medium">
+              <CircleFillIcon
+                size={7}
+                className="text-[color:var(--ob-success)]"
+              />
               COMPUTE_WH
             </span>
           </div>
 
-          <nav className="flex gap-7 border-b border-[color:var(--ob-border)] pt-5">
+          <nav className="flex gap-[21px] border-b border-[color:var(--ob-border)] pt-[15px]">
             {[
               { id: "organization", label: "Organization Overview" },
               { id: "account", label: "Account Overview" },
@@ -224,7 +254,7 @@ export function WarehouseCostTemplate({
               <span
                 key={tab.id}
                 className={cn(
-                  "-mb-px pb-3 text-[1.02rem]",
+                  "-mb-px pb-[9px] text-[0.771rem]",
                   tab.id === page
                     ? "border-b-2 border-[color:var(--ob-brand)] font-semibold text-[color:var(--ob-brand)]"
                     : "text-[color:var(--ob-fg-soft)]",
@@ -235,28 +265,26 @@ export function WarehouseCostTemplate({
             ))}
           </nav>
 
-          <p className="flex flex-wrap items-center gap-2 pt-7 text-[1.45rem]">
+          <p className="flex flex-wrap items-center gap-[6px] pt-[21px] text-[1.096rem]">
             Account spend for
-            <span className="flex items-center gap-1 font-bold">
+            <span className="flex items-center gap-[3px] font-bold">
               AR48742
               <InfoDot />
             </span>
             from
-            <span className="flex items-center gap-2 pl-2 font-bold">
+            <span className="flex items-center gap-[6px] pl-[6px] font-bold">
               Apr 9 - Apr 16
-              <span aria-hidden className="text-[0.75rem] font-normal opacity-60">
-                ⌄
-              </span>
+              <CaretDownIcon size={14} />
             </span>
           </p>
 
-          <div className="grid gap-6 border-b border-[color:var(--ob-border)] pb-7 pt-6 sm:grid-cols-3 xl:grid-cols-5">
+          <div className="grid gap-[18px] border-b border-[color:var(--ob-border)] pb-[21px] pt-[18px] sm:grid-cols-3 xl:grid-cols-5">
             {FIGURES.map((figure) => (
               <div key={figure.id}>
-                <p className="text-[2rem] font-bold leading-none tabular-nums">
+                <p className="text-[1.757rem] font-bold leading-none tabular-nums">
                   {figure.value}
                 </p>
-                <p className="flex items-center gap-1.5 pt-2 text-[1.02rem] text-[color:var(--ob-fg-soft)]">
+                <p className="flex items-center gap-[5px] pt-[6px] text-[0.771rem] text-[color:var(--ob-fg-soft)]">
                   {figure.label}
                   {figure.info && <InfoDot />}
                 </p>
@@ -264,27 +292,31 @@ export function WarehouseCostTemplate({
             ))}
           </div>
 
-          <div className="grid gap-5 pt-6 lg:grid-cols-2">
-            <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-6">
-              <div className="flex items-center gap-3 pb-5">
-                <h2 className="flex-1 text-[1.2rem] font-semibold">
+          <div className="grid gap-[15px] pt-[18px] lg:grid-cols-2">
+            <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[18px]">
+              <div className="flex items-center gap-[9px] pb-[15px]">
+                <h2 className="flex-1 text-[0.907rem] font-semibold">
                   Top warehouses by cost
                 </h2>
-                <span className="flex items-center gap-1.5 text-[1rem] font-medium">
-                  View All <span aria-hidden>›</span>
+                <span className="flex items-center gap-[5px] text-[0.756rem] font-medium">
+                  View All <CaretRightIcon size={14} />
                 </span>
               </div>
 
-              <ul className="grid gap-3.5">
+              <ul className="grid gap-[11px]">
                 {WAREHOUSES.map((warehouse) => (
-                  <li key={warehouse.id} className="flex items-center gap-4">
-                    <span aria-hidden className="text-[color:var(--ob-muted)]">
-                      ⛃
-                    </span>
-                    <span className="w-[220px] shrink-0 truncate text-[1rem]">
+                  <li
+                    key={warehouse.id}
+                    className="flex items-center gap-[12px]"
+                  >
+                    <DatabaseIcon
+                      size={14}
+                      className="text-[color:var(--ob-muted)]"
+                    />
+                    <span className="flex-1 truncate text-[0.756rem]">
                       {warehouse.name}
                     </span>
-                    <span className="h-2 flex-1 rounded-full bg-[color:var(--ob-surface-3)]">
+                    <span className="h-[13px] w-[193px] shrink-0 rounded-full bg-[color:var(--ob-surface-3)]">
                       {/* A true zero draws nothing, not a minimum-width stub. */}
                       {warehouse.value > 0 && (
                         <span
@@ -293,7 +325,7 @@ export function WarehouseCostTemplate({
                         />
                       )}
                     </span>
-                    <span className="w-16 shrink-0 text-right text-[1rem] tabular-nums">
+                    <span className="w-[48px] shrink-0 text-right text-[0.756rem] tabular-nums">
                       {warehouse.value.toFixed(2)}
                     </span>
                   </li>
@@ -301,44 +333,39 @@ export function WarehouseCostTemplate({
               </ul>
             </section>
 
-            <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-6">
-              <h2 className="flex items-center gap-2 border-b border-[color:var(--ob-border)] pb-4 text-[1.2rem] font-semibold">
+            <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[18px]">
+              <h2 className="flex items-center gap-[6px] border-b border-[color:var(--ob-border)] pb-[12px] text-[0.907rem] font-semibold">
                 Cost insights <InfoDot />
               </h2>
-              <p className="pt-4 text-[1.02rem] text-[color:var(--ob-fg-soft)]">
-                We checked for the following insight types but did not find savings
-                opportunities:
+              <p className="pt-[12px] text-[0.771rem] text-[color:var(--ob-fg-soft)]">
+                We checked for the following insight types but did not find
+                savings opportunities:
               </p>
-              <ul className="grid gap-3.5 pt-4">
+              <ul className="grid gap-[7px] pt-[12px]">
                 {INSIGHTS.map((insight) => (
-                  <li key={insight} className="flex items-center gap-3">
-                    <span
-                      aria-hidden
-                      className="grid size-5 shrink-0 place-items-center rounded-full bg-[color:var(--ob-success)] text-[0.65rem] text-white"
-                    >
-                      ✓
-                    </span>
-                    <span className="text-[1.05rem] font-semibold">{insight}</span>
+                  <li key={insight} className="flex items-center gap-[9px]">
+                    <CheckCircleIcon size={17} className="text-[#0d9c70]" />
+                    <span className="text-[0.9rem]">{insight}</span>
                   </li>
                 ))}
               </ul>
             </section>
           </div>
 
-          <section className="mt-5 rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-6">
-            <div className="flex items-center gap-3 pb-4">
-              <h2 className="flex-1 text-[1.2rem] font-semibold">
+          <section className="mt-[15px] rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[18px]">
+            <div className="flex items-center gap-[9px] pb-[12px]">
+              <h2 className="flex-1 text-[0.907rem] font-semibold">
                 Most expensive queries
               </h2>
-              <span className="flex items-center gap-1.5 text-[1rem] font-medium">
-                View All <span aria-hidden>›</span>
+              <span className="flex items-center gap-[5px] text-[0.756rem] font-medium">
+                View All <CaretRightIcon size={14} />
               </span>
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[1000px] border-collapse text-[0.98rem]">
+              <table className="w-full min-w-[756px] border-collapse text-[0.741rem]">
                 <thead>
-                  <tr className="text-[0.85rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
+                  <tr className="text-[0.643rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
                     {[
                       "Query",
                       "Parameterized qu…",
@@ -351,7 +378,7 @@ export function WarehouseCostTemplate({
                     ].map((head) => (
                       <th
                         key={head}
-                        className="border-b border-[color:var(--ob-border)] px-3 py-3 text-left font-semibold"
+                        className="border-b border-[color:var(--ob-border)] px-[9px] py-[9px] text-left font-semibold"
                       >
                         {head}
                       </th>
@@ -360,15 +387,28 @@ export function WarehouseCostTemplate({
                 </thead>
                 <tbody>
                   {QUERIES.map((row) => (
-                    <tr key={row.id} className="border-b border-[color:var(--ob-border)]">
-                      <td className="px-3 py-4 font-mono text-[0.92rem]">{row.query}</td>
-                      <td className="px-3 py-4 font-mono text-[0.92rem]">{row.hash}</td>
-                      <td className="px-3 py-4 tabular-nums">{row.total}</td>
-                      <td className="px-3 py-4 tabular-nums">{row.count}</td>
-                      <td className="px-3 py-4 tabular-nums">{row.average}</td>
-                      <td className="px-3 py-4">{row.warehouse}</td>
-                      <td className="px-3 py-4">{row.user}</td>
-                      <td className="px-3 py-4">{row.role}</td>
+                    <tr
+                      key={row.id}
+                      className="border-b border-[color:var(--ob-border)]"
+                    >
+                      <td className="px-[9px] py-[12px] font-mono text-[0.696rem]">
+                        {row.query}
+                      </td>
+                      <td className="px-[9px] py-[12px] font-mono text-[0.696rem]">
+                        {row.hash}
+                      </td>
+                      <td className="px-[9px] py-[12px] tabular-nums">
+                        {row.total}
+                      </td>
+                      <td className="px-[9px] py-[12px] tabular-nums">
+                        {row.count}
+                      </td>
+                      <td className="px-[9px] py-[12px] tabular-nums">
+                        {row.average}
+                      </td>
+                      <td className="px-[9px] py-[12px]">{row.warehouse}</td>
+                      <td className="px-[9px] py-[12px]">{row.user}</td>
+                      <td className="px-[9px] py-[12px]">{row.role}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -385,7 +425,7 @@ function InfoDot(): ReactNode {
   return (
     <span
       aria-hidden
-      className="grid size-[15px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.6rem] font-normal normal-case text-[color:var(--ob-muted)]"
+      className="grid size-[11px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.454rem] font-normal normal-case text-[color:var(--ob-muted)]"
     >
       i
     </span>

@@ -2,7 +2,11 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import type { OnboardingEvent, OnboardingTheme, PatternKind } from "onboarding-frame";
+import type {
+  OnboardingEvent,
+  OnboardingTheme,
+  PatternKind,
+} from "onboarding-frame";
 import { FlowRenderer } from "./flow-renderer";
 import { CodeBlock } from "./code-block";
 import { CopyButton } from "./copy-button";
@@ -24,7 +28,9 @@ export function PatternExplorer({
 }) {
   const [variant, setVariant] = useState(pattern.variants[0]!.id);
   const [resetKey, setResetKey] = useState(0);
-  const [tab, setTab] = useState<"preview" | "config" | "usage" | "events">("preview");
+  const [tab, setTab] = useState<"preview" | "config" | "usage" | "events">(
+    "preview",
+  );
   const [events, setEvents] = useState<OnboardingEvent[]>([]);
 
   const preset = presets[variant];
@@ -88,7 +94,9 @@ export function PatternExplorer({
           >
             {item}
             {item === "events" && events.length > 0 && (
-              <span className="ml-1.5 tabular-nums opacity-60">{events.length}</span>
+              <span className="ml-1.5 tabular-nums opacity-60">
+                {events.length}
+              </span>
             )}
           </button>
         ))}
@@ -118,7 +126,9 @@ export function PatternExplorer({
             config={preset?.config}
             theme={preset?.theme}
             resetKey={resetKey}
-            onEvent={(event) => setEvents((prev) => [...prev, event].slice(-60))}
+            onEvent={(event) =>
+              setEvents((prev) => [...prev, event].slice(-60))
+            }
           />
         </div>
       )}
@@ -133,17 +143,25 @@ export function PatternExplorer({
 
       {tab === "usage" && (
         <div className="grid gap-4">
-          <CodeBlock code={snippet} title={`${componentNameFor(pattern.kind as PatternKind)} usage`} />
+          <CodeBlock
+            code={snippet}
+            title={`${componentNameFor(pattern.kind as PatternKind)} usage`}
+          />
           <div className="rounded-xl border border-[color:var(--site-border)] p-4">
             <p className="text-sm text-[color:var(--site-muted)]">
               Prefer to own the source? Copy this pattern into your repo — the
               variant picks which preset to start from:
             </p>
             <div className="mt-3 flex items-center gap-2">
-              <code className="flex-1 overflow-auto rounded-lg bg-[color:var(--site-surface)] px-3 py-2 text-[0.8rem]" style={{ fontFamily: "var(--font-mono)" }}>
+              <code
+                className="flex-1 overflow-auto rounded-lg bg-[color:var(--site-surface)] px-3 py-2 text-[0.8rem]"
+                style={{ fontFamily: "var(--font-mono)" }}
+              >
                 npx onboarding-frame add {pattern.slug}/{variant}
               </code>
-              <CopyButton value={`npx onboarding-frame add ${pattern.slug}/${variant}`} />
+              <CopyButton
+                value={`npx onboarding-frame add ${pattern.slug}/${variant}`}
+              />
             </div>
           </div>
         </div>
@@ -153,12 +171,16 @@ export function PatternExplorer({
         <div className="rounded-xl border border-[color:var(--site-border)]">
           {events.length === 0 ? (
             <p className="p-8 text-center text-sm text-[color:var(--site-muted)]">
-              Interact with the preview — every analytics event the flow emits appears here.
+              Interact with the preview — every analytics event the flow emits
+              appears here.
             </p>
           ) : (
             <ul className="divide-y divide-[color:var(--site-border)]">
               {events.map((event, i) => (
-                <li key={i} className="flex flex-wrap items-center gap-3 px-4 py-2.5 text-sm">
+                <li
+                  key={i}
+                  className="flex flex-wrap items-center gap-3 px-4 py-2.5 text-sm"
+                >
                   <code
                     className="rounded bg-[color:var(--site-surface)] px-2 py-0.5 text-[0.78rem] font-semibold"
                     style={{ fontFamily: "var(--font-mono)" }}
@@ -166,7 +188,9 @@ export function PatternExplorer({
                     {event.name}
                   </code>
                   {event.targetId && (
-                    <span className="text-[color:var(--site-muted)]">{event.targetId}</span>
+                    <span className="text-[color:var(--site-muted)]">
+                      {event.targetId}
+                    </span>
                   )}
                   {event.data ? (
                     <span className="truncate text-[0.78rem] text-[color:var(--site-muted)]">

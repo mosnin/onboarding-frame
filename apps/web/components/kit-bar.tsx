@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useKit } from "@/lib/kit";
 import { shelves } from "@/lib/shelves";
+import { Glyph } from "onboarding-frame";
 
 /**
  * Persistent kit summary.
@@ -21,7 +22,9 @@ export function KitBar() {
     .filter((shelf) => shelf.id !== "addons")
     .map((shelf) => {
       const id = kit[shelf.id as "onboarding" | "dashboard" | "pricing"];
-      const item = id ? shelf.items.find((entry) => entry.id === id) : undefined;
+      const item = id
+        ? shelf.items.find((entry) => entry.id === id)
+        : undefined;
       return { shelf, item };
     });
 
@@ -31,7 +34,7 @@ export function KitBar() {
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
           {slots.map(({ shelf, item }) => (
             <span key={shelf.id} className="flex items-center gap-1.5 text-sm">
-              <span aria-hidden className="opacity-70">{shelf.glyph}</span>
+              <Glyph value={shelf.glyph} size={15} className="opacity-70" />
               <span
                 className={
                   item
@@ -45,7 +48,7 @@ export function KitBar() {
           ))}
           {kit.addons.length > 0 && (
             <span className="flex items-center gap-1.5 text-sm">
-              <span aria-hidden className="opacity-70">🧩</span>
+              <Glyph value="puzzle" size={15} className="opacity-70" />
               <span className="font-semibold">
                 {kit.addons.length} add-on{kit.addons.length === 1 ? "" : "s"}
               </span>

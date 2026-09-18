@@ -23,7 +23,10 @@ export async function GET(
   const item = await getRegistryItem(name.replace(/\.json$/, ""));
 
   if (!item) {
-    return Response.json({ error: `Unknown registry item: ${name}` }, { status: 404 });
+    return Response.json(
+      { error: `Unknown registry item: ${name}` },
+      { status: 404 },
+    );
   }
 
   return Response.json(item);

@@ -33,9 +33,24 @@ export interface RegistryItem {
 }
 
 /** Package root, resolved from the web app's working directory at build time. */
-const PACKAGE_ROOT = path.join(process.cwd(), "..", "..", "packages", "onboarding-frame");
+const PACKAGE_ROOT = path.join(
+  process.cwd(),
+  "..",
+  "..",
+  "packages",
+  "onboarding-frame",
+);
 
-const RUNTIME_DEPENDENCIES = ["clsx", "tailwind-merge"];
+// ui/icons.tsx re-exports Lucide, ui/icons-solid.tsx re-exports Phosphor and
+// ui/brand.tsx reads Simple Icons' path data, so an ejected piece needs all
+// three installed.
+const RUNTIME_DEPENDENCIES = [
+  "clsx",
+  "tailwind-merge",
+  "lucide-react",
+  "@phosphor-icons/react",
+  "simple-icons",
+];
 
 /**
  * Files every ejected piece needs. Splitting these into their own item means a
@@ -50,6 +65,11 @@ const CORE_FILES = [
   "src/provider/OnboardingProvider.tsx",
   "src/ui/primitives.tsx",
   "src/ui/icons.tsx",
+  "src/ui/icons-solid.tsx",
+  "src/ui/brand.tsx",
+  "src/ui/avatar.tsx",
+  "src/ui/wordmark.tsx",
+  "src/ui/glyph.tsx",
   "src/ui/fields.tsx",
   "src/ui/placeholder.tsx",
   "src/hooks/usePersistentState.ts",
@@ -58,7 +78,11 @@ const CORE_FILES = [
 
 /** Per-pattern source, on top of core. */
 const PATTERN_FILES: Record<string, string[]> = {
-  wizard: ["src/patterns/wizard/Wizard.tsx", "src/patterns/wizard/parts.tsx", "src/hooks/useWizard.ts"],
+  wizard: [
+    "src/patterns/wizard/Wizard.tsx",
+    "src/patterns/wizard/parts.tsx",
+    "src/hooks/useWizard.ts",
+  ],
   checklist: ["src/patterns/checklist/Checklist.tsx"],
   tour: ["src/patterns/tour/Tour.tsx"],
   "empty-state": ["src/patterns/empty-state/EmptyState.tsx"],
@@ -103,7 +127,9 @@ export async function registryItemNames(): Promise<string[]> {
   ];
 }
 
-export async function getRegistryItem(name: string): Promise<RegistryItem | null> {
+export async function getRegistryItem(
+  name: string,
+): Promise<RegistryItem | null> {
   if (name === "core") {
     return {
       name: "core",

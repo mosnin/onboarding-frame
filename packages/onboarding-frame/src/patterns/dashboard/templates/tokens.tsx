@@ -77,7 +77,8 @@ function vars(tokens: TemplateTokens): CSSProperties {
   }
   // Derived from brand so a template only has to name one accent.
   if (tokens.brand) {
-    out["--ob-brand-soft"] = `color-mix(in oklab, ${tokens.brand} 12%, transparent)`;
+    out["--ob-brand-soft"] =
+      `color-mix(in oklab, ${tokens.brand} 12%, transparent)`;
   }
   return out as CSSProperties;
 }
@@ -110,8 +111,46 @@ export function Surface({
  * Token sets, one per template
  * ------------------------------------------------------------------ */
 
-const GEOMETRIC =
-  '"Inter Variable", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif';
+/*
+ * Typefaces.
+ *
+ * Each reference product ships its own face, and rendering all of them in one
+ * typeface is the single loudest tell that a set of recreations came off one
+ * template. These are freely licensed faces chosen to match the character of
+ * each reference — its width, its terminals, how tight it sets — not the
+ * licensed originals, which cannot be redistributed.
+ *
+ * They are named literally rather than through a CSS variable so an ejected
+ * component keeps its typography: add the matching Google Fonts link and the
+ * stack resolves. Without it each one falls back to the system sans, so
+ * nothing breaks, it just loses the distinction.
+ */
+const stack = (face: string) =>
+  `"${face}", ui-sans-serif, system-ui, -apple-system, sans-serif`;
+
+/** Neutral workhorse grotesk — the default where a reference sets in one. */
+const INTER = stack("Inter");
+/** Tighter, more condensed grotesk: dense dashboards and finance surfaces. */
+const INTER_TIGHT = stack("Inter Tight");
+/** Geometric humanist with round bowls — friendly consumer products. */
+const FIGTREE = stack("Figtree");
+/** Wide, low-contrast grotesk with squared terminals. */
+const ARCHIVO = stack("Archivo");
+/** Quirky technical grotesk — developer and crypto tooling. */
+const SPACE_GROTESK = stack("Space Grotesk");
+/** Soft geometric sans, generous counters — marketing-led products. */
+const PLUS_JAKARTA = stack("Plus Jakarta Sans");
+/** Clean neo-grotesk, slightly narrow — data and analytics consoles. */
+const DM_SANS = stack("DM Sans");
+/** Rounded terminals, open apertures — community and social products. */
+const MANROPE = stack("Manrope");
+/** Corporate humanist with tall x-height — enterprise and compliance. */
+const IBM_PLEX = stack("IBM Plex Sans");
+/** Editorial grotesk with distinctive g — publishing and creator tools. */
+const SCHIBSTED = stack("Schibsted Grotesk");
+
+/** Kept for token sets that have not been matched to a face yet. */
+const GEOMETRIC = INTER;
 
 /** Crisp developer console: white, hairline borders, tight radii. */
 export const apiConsoleTokens: TemplateTokens = {
@@ -352,26 +391,29 @@ export const supportInsightsTokens: TemplateTokens = {
 
 /** Personal finance: airy white, green gains, generous radii, soft shadows. */
 export const financeTokens: TemplateTokens = {
-  bg: "#fbfcfc",
+  // Sampled off the reference: the page is a barely-tinted white, the ink a
+  // deep navy rather than black, and every border a single hairline of #eef1f0.
+  bg: "#f8faf9",
   surface: "#ffffff",
-  surface2: "#f5f7f7",
-  surface3: "#eaefee",
-  border: "#eaeeed",
-  borderStrong: "#cdd6d4",
-  fg: "#11221c",
-  fgSoft: "#3d4b45",
-  muted: "#74837c",
-  brand: "#16c164",
-  brandFg: "#05230f",
-  ctaBg: "#11221c",
+  surface2: "#f6f6f6",
+  surface3: "#f0f1f2",
+  border: "#eef1f0",
+  borderStrong: "#dfe3e2",
+  fg: "#14293d",
+  fgSoft: "#3b4d60",
+  muted: "#7c8493",
+  brand: "#10bf50",
+  brandFg: "#ffffff",
+  ctaBg: "#14293d",
   ctaFg: "#ffffff",
-  success: "#16c164",
+  success: "#187b3c",
   danger: "#ef4444",
   radius: "1rem",
   radiusSm: "0.625rem",
   radiusLg: "1.25rem",
-  font: GEOMETRIC,
-  shadow: "0 1px 2px rgb(16 40 32 / 0.04), 0 10px 30px -18px rgb(16 40 32 / 0.25)",
+  font: FIGTREE,
+  // The cards read flat against the page; only a hairline separates them.
+  shadow: "none",
 };
 
 /** CRM workspace: dense, hairline borders, small type, minimal colour. */
@@ -425,23 +467,27 @@ export const modelingTokens: TemplateTokens = {
  * all, and generous 16px radii — the opposite of the CRM's hairlines.
  */
 export const schedulerTokens: TemplateTokens = {
-  bg: "#ffffff",
+  // Sampled off the reference: the page is a warm off-white the rail sits
+  // directly on, and the content is a white panel inset within it. The
+  // mint button is #b0ed9d exactly, not a generic green.
+  bg: "#f7f6f2",
   surface: "#ffffff",
-  surface2: "#f6f6f6",
-  surface3: "#ededed",
-  border: "#e8e8e8",
-  borderStrong: "#dcdcdc",
-  fg: "#191919",
-  fgSoft: "#3d3d3d",
-  muted: "#8a8a8a",
+  surface2: "#f7f6f2",
+  surface3: "#eceae4",
+  border: "#eae8e2",
+  borderStrong: "#d9d6cd",
+  fg: "#131313",
+  fgSoft: "#3f3f3d",
+  muted: "#77756e",
   brand: "#2c4bff",
   brandFg: "#ffffff",
-  ctaBg: "#b9e6a2",
-  ctaFg: "#14370a",
+  ctaBg: "#b0ed9d",
+  ctaFg: "#12300a",
   success: "#2f9e44",
-  radius: "1rem",
-  radiusSm: "0.625rem",
-  radiusLg: "1.25rem",
+  radius: "0.75rem",
+  radiusSm: "0.5rem",
+  radiusLg: "1rem",
+  font: INTER_TIGHT,
 };
 
 /**

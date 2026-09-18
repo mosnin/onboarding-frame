@@ -1,7 +1,31 @@
 "use client";
 
+import {
+  ArrowsDownUpIcon,
+  ArrowsUpDownIcon,
+  ArticleIcon,
+  BrowsersIcon,
+  BuildingsIcon,
+  CardIcon,
+  CaretRightIcon,
+  CheckIcon,
+  ClipboardIcon,
+  CloudIcon,
+  FlowArrowIcon,
+  GearIcon,
+  GlobeIcon,
+  HouseIcon,
+  LinkChainIcon,
+  LockIcon,
+  PathIcon,
+  PencilIcon,
+  ShieldIcon,
+  SparkleIcon,
+  UserIcon,
+} from "../../../ui/icons-solid";
+import { Avatar } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
 import { Surface, authTokens } from "./tokens";
 import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
@@ -13,37 +37,46 @@ export interface AuthConsoleProps extends TemplateProps {
 }
 
 const TOP = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "users", label: "Users", glyph: "👤" },
-  { id: "organizations", label: "Organizations", glyph: "🏢" },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "users", label: "Users", Icon: UserIcon },
+  { id: "organizations", label: "Organizations", Icon: BuildingsIcon },
 ];
 
 const CONFIGURE = [
-  { id: "auth", label: "User & Authentication", glyph: "☝", chevron: true },
-  { id: "orgsettings", label: "Organizations Settings", glyph: "📋" },
-  { id: "sessions", label: "Sessions", glyph: "▤" },
-  { id: "portal", label: "Account Portal", glyph: "◉" },
-  { id: "customization", label: "Customization", glyph: "✎", chevron: true },
-  { id: "integrations", label: "Integrations", glyph: "⑄" },
-  { id: "jwt", label: "JWT Templates", glyph: "✳" },
-  { id: "webhooks", label: "Webhooks", glyph: "⚯" },
+  { id: "auth", label: "User & Authentication", Icon: UserIcon, chevron: true },
+  { id: "orgsettings", label: "Organizations Settings", Icon: ClipboardIcon },
+  { id: "sessions", label: "Sessions", Icon: ArticleIcon },
+  { id: "portal", label: "Account Portal", Icon: BrowsersIcon },
+  {
+    id: "customization",
+    label: "Customization",
+    Icon: PencilIcon,
+    chevron: true,
+  },
+  { id: "integrations", label: "Integrations", Icon: PathIcon },
+  { id: "jwt", label: "JWT Templates", Icon: SparkleIcon },
+  { id: "webhooks", label: "Webhooks", Icon: FlowArrowIcon },
 ];
 
 const DEVELOPERS = [
-  { id: "keys", label: "API Keys", glyph: "🔑" },
-  { id: "paths", label: "Paths", glyph: "🔗" },
-  { id: "domains", label: "Domains", glyph: "🌐" },
+  { id: "keys", label: "API Keys", Icon: LockIcon },
+  { id: "paths", label: "Paths", Icon: LinkChainIcon },
+  { id: "domains", label: "Domains", Icon: GlobeIcon },
 ];
 
 const APPLICATION = [
-  { id: "billing", label: "Plan & Billing", glyph: "▭" },
-  { id: "settings", label: "Settings", glyph: "⚙" },
+  { id: "billing", label: "Plan & Billing", Icon: CardIcon },
+  { id: "settings", label: "Settings", Icon: GearIcon },
 ];
 
 const LEARN = [
-  { id: "deploy", glyph: "✓", label: "Deploy your app to production" },
-  { id: "auth", glyph: "⛉", label: "Learn about authentication" },
-  { id: "custom", glyph: "▨", label: "Learn about Component Customization" },
+  { id: "deploy", Icon: CheckIcon, label: "Deploy your app to production" },
+  { id: "auth", Icon: ShieldIcon, label: "Learn about authentication" },
+  {
+    id: "custom",
+    Icon: CloudIcon,
+    label: "Learn about Component Customization",
+  },
 ];
 
 const STATS = [
@@ -58,7 +91,9 @@ const SIGNUPS = [
   { id: "s2", email: "jsmith2@example.com", when: "Wed Apr 24, 15:54" },
 ];
 
-const SIGNINS = [{ id: "i1", email: "jsmith2@example.com", when: "Thu Apr 25, 11:25" }];
+const SIGNINS = [
+  { id: "i1", email: "jsmith2@example.com", when: "Thu Apr 25, 11:25" },
+];
 
 /**
  * Authentication console.
@@ -69,37 +104,38 @@ const SIGNINS = [{ id: "i1", email: "jsmith2@example.com", when: "Thu Apr 25, 11
  * it. The counts are two users and one sign-in, which is what "your
  * application now has users" actually means on day one.
  */
-export function AuthConsoleTemplate({ className, page = "home" }: AuthConsoleProps) {
+export function AuthConsoleTemplate({
+  className,
+  page = "home",
+}: AuthConsoleProps) {
   return (
     <Surface tokens={authTokens} className={className}>
       <Shell>
-        <Sidebar width={418} bg="var(--ob-bg)" className="border-r-0 p-3">
+        <Sidebar width={325} bg="var(--ob-bg)" className="border-r-0 p-[9px]">
           <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
-            <div className="flex items-center gap-3 px-3.5 py-3">
-              <AvatarSlot size={32} />
-              <span className="flex-1 text-[1.08rem] font-medium">Personal account</span>
-              <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
-                ⇅
+            <div className="flex items-center gap-[9px] px-[11px] py-[9px]">
+              <Avatar name="Personal account" size={25} />
+              <span className="flex-1 text-[0.839rem] font-medium">
+                Personal account
               </span>
+              <ArrowsUpDownIcon size={11} />
             </div>
-            <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] px-3.5 py-3">
-              <LogoSlot size={30} label="" radius={15} />
-              <span className="flex-1 text-[1.08rem] font-medium">MyApp</span>
-              <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
-                ⇅
-              </span>
+            <div className="flex items-center gap-[9px] border-t border-[color:var(--ob-border)] px-[11px] py-[9px]">
+              <BrandMark brand="MyApp" size={23} label="MyApp" />
+              <span className="flex-1 text-[0.839rem] font-medium">MyApp</span>
+              <ArrowsUpDownIcon size={11} />
             </div>
           </div>
 
-          <nav className="grid gap-0.5 pt-2">
+          <nav className="grid gap-[2px] pt-[6px]">
             {TOP.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={11} />}
                 active={item.id === page}
                 className={cn(
-                  "text-[1.08rem]",
+                  "text-[0.839rem]",
                   item.id === page &&
                     "border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] text-[color:var(--ob-brand)]",
                 )}
@@ -108,116 +144,106 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
           </nav>
 
           <NavSection label="Configure" />
-          <nav className="grid gap-0.5">
+          <nav className="grid gap-[2px]">
             {CONFIGURE.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<item.Icon size={11} />}
                 trailing={
-                  item.chevron ? (
-                    <span aria-hidden className="text-[0.8rem] opacity-40">
-                      ›
-                    </span>
-                  ) : undefined
+                  item.chevron ? <CaretRightIcon size={11} /> : undefined
                 }
-                className="text-[1.08rem]"
+                className="text-[0.839rem]"
               />
             ))}
           </nav>
 
           <NavSection label="Developers" />
-          <nav className="grid gap-0.5">
+          <nav className="grid gap-[2px]">
             {DEVELOPERS.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
-                className="text-[1.08rem]"
+                glyph={<item.Icon size={11} />}
+                className="text-[0.839rem]"
               />
             ))}
           </nav>
 
           <NavSection label="Application" />
-          <nav className="grid gap-0.5">
+          <nav className="grid gap-[2px]">
             {APPLICATION.map((item) => (
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
-                className="text-[1.08rem]"
+                glyph={<item.Icon size={11} />}
+                className="text-[0.839rem]"
               />
             ))}
           </nav>
 
-          <div className="mt-auto flex items-center gap-3 px-3 py-4">
-            <AvatarSlot size={32} />
-            <span className="text-[1.08rem] font-medium">Jane Doe</span>
+          <div className="mt-auto flex items-center gap-[9px] px-[9px] py-[12px]">
+            <Avatar name="Jane Doe" size={25} />
+            <span className="text-[0.839rem] font-medium">Jane Doe</span>
           </div>
         </Sidebar>
 
         <Main className="relative overflow-auto bg-[color:var(--ob-surface)]">
           {/* The environment tab hangs from the top edge of the content pane. */}
-          <span className="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[color:var(--ob-danger)] px-3.5 py-1.5 text-[0.88rem] font-semibold text-white">
-            Development ⇅
+          <span className="absolute left-1/2 top-[0px] -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[color:var(--ob-danger)] px-[11px] py-[5px] text-[0.683rem] font-semibold text-white">
+            Development{" "}
+            <ArrowsDownUpIcon size={9} className="inline align-[-1px]" />
           </span>
 
-          <div className="px-12 pb-10 pt-14">
-            <p className="flex items-center gap-3 text-[1.05rem]">
+          <div className="px-[37px] pb-[31px] pt-[43px]">
+            <p className="flex items-center gap-[9px] text-[0.815rem]">
               <span className="text-[color:var(--ob-fg-soft)]">Home</span>
-              <span aria-hidden className="text-[color:var(--ob-muted)]">
-                ›
-              </span>
+              <CaretRightIcon size={11} />
               <span className="font-medium">MyApp</span>
             </p>
 
-            <h1 className="pt-5 text-[2.05rem] font-bold tracking-[-0.01em]">
+            <h1 className="pt-[16px] text-[1.592rem] font-bold tracking-[-0.01em]">
               Congratulations, your application now has users!
             </h1>
-            <p className="max-w-[72ch] pt-3 text-[1.12rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
-              The platform handles all the authentication and user management pieces for
-              you. Next, you can learn how to access this data and use it in your
-              application, customize the look and feel of your components, and get your
-              app ready for production.
+            <p className="max-w-[72ch] pt-[9px] text-[0.87rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+              The platform handles all the authentication and user management
+              pieces for you. Next, you can learn how to access this data and
+              use it in your application, customize the look and feel of your
+              components, and get your app ready for production.
             </p>
 
-            <div className="grid gap-5 pt-8 lg:grid-cols-3">
+            <div className="grid gap-[16px] pt-[25px] lg:grid-cols-3">
               {LEARN.map((card) => (
                 <section
                   key={card.id}
-                  className="grid justify-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-6 py-8"
+                  className="grid justify-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[19px] py-[25px]"
                 >
-                  <span
-                    aria-hidden
-                    className="text-[1.5rem] text-[color:var(--ob-muted)]"
-                  >
-                    {card.glyph}
-                  </span>
-                  <p className="pt-4 text-center text-[1.08rem] font-semibold">
+                  <card.Icon size={11} />
+                  <p className="pt-[12px] text-center text-[0.839rem] font-semibold">
                     {card.label}
                   </p>
                 </section>
               ))}
             </div>
 
-            <div className="grid gap-5 pt-5 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-[16px] pt-[16px] sm:grid-cols-2 xl:grid-cols-4">
               {STATS.map((stat) => (
                 <section
                   key={stat.id}
-                  className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-6 py-6"
+                  className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[19px] py-[19px]"
                 >
-                  <h2 className="text-[1.2rem] font-bold">{stat.title}</h2>
-                  <p className="pt-1 text-[1.05rem] text-[color:var(--ob-muted)]">
+                  <h2 className="text-[0.932rem] font-bold">{stat.title}</h2>
+                  <p className="pt-[3px] text-[0.815rem] text-[color:var(--ob-muted)]">
                     {stat.sub}
                   </p>
-                  <p className="pt-6 text-[1.7rem] font-medium tabular-nums leading-none">
+                  <p className="pt-[19px] text-[1.32rem] font-medium tabular-nums leading-none">
                     {stat.value}
                   </p>
                 </section>
               ))}
             </div>
 
-            <div className="grid gap-5 pt-5 lg:grid-cols-2">
+            <div className="grid gap-[16px] pt-[16px] lg:grid-cols-2">
               <RecentCard title="Recent sign-ups" rows={SIGNUPS} />
               <RecentCard title="Recent sign-ins" rows={SIGNINS} />
             </div>
@@ -236,14 +262,16 @@ function RecentCard({
   rows: { id: string; email: string; when: string }[];
 }) {
   return (
-    <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-7 py-6">
-      <h2 className="pb-5 text-[1.2rem] font-bold">{title}</h2>
-      <ul className="grid gap-4">
+    <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[22px] py-[19px]">
+      <h2 className="pb-[16px] text-[0.932rem] font-bold">{title}</h2>
+      <ul className="grid gap-[12px]">
         {rows.map((row) => (
-          <li key={row.id} className="flex items-center gap-3.5">
-            <AvatarSlot size={34} />
-            <span className="min-w-0 flex-1 truncate text-[1.08rem]">{row.email}</span>
-            <span className="shrink-0 text-[1.05rem] text-[color:var(--ob-muted)]">
+          <li key={row.id} className="flex items-center gap-[11px]">
+            <Avatar name={row.email} size={26} />
+            <span className="min-w-[0px] flex-1 truncate text-[0.839rem]">
+              {row.email}
+            </span>
+            <span className="shrink-0 text-[0.815rem] text-[color:var(--ob-muted)]">
               {row.when}
             </span>
           </li>

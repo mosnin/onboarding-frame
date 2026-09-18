@@ -2,24 +2,40 @@
 refs/ holds the images. Dashboard N = file 057+(N-1) for N=1..47; 48 = 104-108.
 Several references are EXTRA PAGES of the same product (e.g. 15+16 Copilot Money).
 
+**State column.**
+
+- `DONE` — built from this reference in the first pass. Not verified.
+- `RETYPE` — rebuilt and diffed against its reference, but before we found
+  that the headless captures were rendering in a fallback face rather than
+  the template's own (the typefaces were loaded from fonts.googleapis.com and
+  that request never completed in the capture browser). Layout, palette and
+  icons on these rows were measured against the reference and are good; the
+  type sizes were matched to a face that was not the one that ships, so every
+  one of them needs its type pass redone now that the faces are self-hosted.
+- `REMEASURED` — finished: pixel-measured against its own reference with the
+  real typefaces rendering, captured at 1512px, diffed side by side until the
+  list was empty, and checked at 390px.
+
+Only `REMEASURED` rows are done.
+
 | # | file | product | template | state |
 |---|------|---------|----------|-------|
-| 1 | 057 | fal | api-console | DONE |
-| 2 | 058 | Perplexity | assistant-home | DONE |
-| 3 | 059 | Canny | guided-setup | DONE |
-| 4 | 060 | Descript | creative-studio | DONE |
-| 5 | 061 | MagicPath | file-library | DONE |
-| 6 | 062 | HoneyBook | setup-checklist | DONE |
-| 7 | 063 | Curater | discovery-feed | DONE |
-| 8 | 064 | Klaviyo (assistant open) | guides-assistant | DONE |
-| 9 | 065 | Klaviyo (assistant closed) | guides-assistant | DONE (same page) |
-| 10 | 066 | Bloom | brand-studio | DONE |
-| 11 | 067 | Causal | modeling-home | DONE |
-| 12 | 068 | Plain | support-insights | DONE |
-| 13 | 069 | Shopify | commerce-analytics | DONE |
-| 14 | 070 | Buffer | social-scheduler | DONE |
-| 15 | 071 | Copilot Money, Dashboard | finance-overview | DONE |
-| 16 | 072 | Copilot Money, Accounts | finance-overview `accounts` page | DONE |
+| 1 | 057 | fal | api-console | RETYPE |
+| 2 | 058 | Perplexity | assistant-home | RETYPE |
+| 3 | 059 | Canny | guided-setup | RETYPE |
+| 4 | 060 | Descript | creative-studio | RETYPE |
+| 5 | 061 | MagicPath | file-library | RETYPE |
+| 6 | 062 | HoneyBook | setup-checklist | RETYPE |
+| 7 | 063 | Curater | discovery-feed | RETYPE |
+| 8 | 064 | Klaviyo (assistant open) | guides-assistant | RETYPE |
+| 9 | 065 | Klaviyo (assistant closed) | guides-assistant | RETYPE |
+| 10 | 066 | Bloom | brand-studio | RETYPE |
+| 11 | 067 | Causal | modeling-home | RETYPE |
+| 12 | 068 | Plain | support-insights | RETYPE |
+| 13 | 069 | Shopify | commerce-analytics | RETYPE |
+| 14 | 070 | Buffer | social-scheduler | RETYPE |
+| 15 | 071 | Copilot Money, Dashboard | finance-overview | REMEASURED |
+| 16 | 072 | Copilot Money, Accounts | finance-overview `accounts` page | REMEASURED |
 
 ## 11 Causal (067)
 White, blue accent (#3b5bdb-ish), Inter. Left rail: wordmark + avatar, Search (cmd K) + `+`,
@@ -51,8 +67,8 @@ Two columns: "Up Next · 2 posts scheduled" -> post cards (avatar+platform badge
 card (avatar+badge, @user0, body).
 "Templates" -> 4 cards each with an emoji/icon, bold 2-line title, 3-line truncated body.
 
-| 17 | 073 | Fey | market-terminal (dark) | DONE |
-| 18 | 074 | Sweatpals | event-analytics (dark) | DONE |
+| 17 | 073 | Fey | market-terminal (dark) | REMEASURED |
+| 18 | 074 | Sweatpals | event-analytics (dark) | REMEASURED |
 | 19 | 075 | Klaviyo, Overview dashboard | guides-assistant `dashboards` page | DONE |
 | 20 | 076 | HoneyBook, Finance | setup-checklist `finance` page | DONE |
 
@@ -99,11 +115,11 @@ progress bar (60%).
 essentially empty (one dot of fill).
 "RSVPs" card: 6 + green "↑100%" chip.
 
-| 21 | 077 | Reddit mod tools | community-traffic | DONE |
-| 22 | 078 | Asana goal detail | goal-tracker | DONE |
-| 23 | 079 | Supabase reports | platform-reports (dark) | DONE |
-| 24 | 080 | Vercel analytics | deploy-analytics | DONE |
-| 25 | 081 | StackAI project analytics | token-usage | DONE |
+| 21 | 077 | Reddit mod tools | community-traffic | REMEASURED |
+| 22 | 078 | Asana goal detail | goal-tracker | REMEASURED |
+| 23 | 079 | Supabase reports | platform-reports (dark) | REMEASURED |
+| 24 | 080 | Vercel analytics | deploy-analytics | REMEASURED |
+| 25 | 081 | StackAI project analytics | token-usage | REMEASURED |
 
 ## 21 Reddit (077)
 White; #ff4500 orange brand; blue #0079d3 links/active tabs; grey-100 page behind white cards.
@@ -214,11 +230,11 @@ back to 0 at Apr 21.
 Two cards: "Input token trend" and "Output token trend" — slate BARS, y 0/150/300/470 and
 0/60/120/180/240, x Apr 15..Apr 21, bars only on Apr 15,16,17,20 (Apr 18/19/21 empty).
 
-| 26 | 082 | Vanta | compliance-controls | DONE |
+| 26 | 082 | Vanta | compliance-controls | REMEASURED |
 | 27 | 083 | Vercel, hover tooltip + crosshair | deploy-analytics | DONE (hover readout) |
-| 28 | 084 | Etsy Shop Manager | listing-stats | DONE |
-| 29 | 085 | Mailchimp audience | audience-analytics | DONE |
-| 30 | 086 | Cake Equity | cap-table | DONE |
+| 28 | 084 | Etsy Shop Manager | listing-stats | REMEASURED |
+| 29 | 085 | Mailchimp audience | audience-analytics | REMEASURED |
+| 30 | 086 | Cake Equity | cap-table | REMEASURED |
 
 ## 26 Vanta (082)
 White, purple #6b46e5 brand, grey-50 chips, small radii (6-8px). Top bar white w/ wordmark
@@ -315,10 +331,10 @@ Price per share / Investment amount / Transfer amount, each row ending in an out
 "More ⌄" button. Rows: 27 Oct 2023 Shares issued COM 8 8 $0.00 $0.00 -;
 31 Oct 2023 Share split COM 1.00:1 8 - - -; 31 Oct 2023 Buy back COM -4 4 $1.00 $4.00 -.
 
-| 31 | 087 | Coinbase wallet | wallet-home (dark) | DONE |
-| 32 | 088 | Snowflake cost mgmt | warehouse-cost | DONE |
-| 33 | 089 | Origin portfolio | wealth-portfolio | DONE |
-| 34 | 090 | Stripe benchmarking | billing-benchmarks | DONE |
+| 31 | 087 | Coinbase wallet | wallet-home (dark) | REMEASURED |
+| 32 | 088 | Snowflake cost mgmt | warehouse-cost | REMEASURED |
+| 33 | 089 | Origin portfolio | wealth-portfolio | REMEASURED |
+| 34 | 090 | Stripe benchmarking | billing-benchmarks | REMEASURED |
 | 35 | 091 | Mailchimp audience dashboard | audience-analytics `dashboard` page | DONE |
 
 ## 31 Coinbase (087) DARK
@@ -419,11 +435,11 @@ YOUR value as a flat coloured line (green when good, orange when bad) pinned at 
 bottom/edge; y labels top-left and bottom-left (8.0% / -4.0%); x "January 2024" left and
 "December 2024" right in grey.
 
-| 36 | 092 | Contra analytics | freelance-analytics | DONE |
-| 37 | 093 | Clerk dashboard | auth-console | DONE |
-| 38 | 094 | Better Stack uptime | uptime-monitor (dark) | DONE |
-| 39 | 095 | Cloudflare zone overview | zone-overview | DONE |
-| 40 | 096 | Zapier My Apps | automation-apps | DONE |
+| 36 | 092 | Contra analytics | freelance-analytics | REMEASURED |
+| 37 | 093 | Clerk dashboard | auth-console | REMEASURED |
+| 38 | 094 | Better Stack uptime | uptime-monitor (dark) | REMEASURED |
+| 39 | 095 | Cloudflare zone overview | zone-overview | REMEASURED |
+| 40 | 096 | Zapier My Apps | automation-apps | REMEASURED |
 
 ## 36 Contra (092)
 White, grey-500 section headings, thin hairline cards, blue #4a6cf7 data, purple accents.
@@ -537,12 +553,12 @@ of links (Pricing, Help, Developer Platform, Press, Jobs, ... , Transfer); below
 the wordmark and "© 2022 Acme Inc." + Manage cookies | Legal | Privacy.
 
 | 41 | 097 | Stripe, Your overview | billing-benchmarks `overview` page | DONE |
-| 42 | 098 | Deel HR analytics | people-analytics | DONE |
-| 43 | 099 | Customer.io campaigns | campaign-list | DONE |
-| 44 | 100 | Mixpanel home | product-analytics | DONE |
-| 45 | 101 | Whop creator | creator-revenue | DONE |
-| 46 | 102 | Mercury transactions | banking-ledger | DONE |
-| 47 | 103 | Posh events | event-console (dark) | DONE |
+| 42 | 098 | Deel HR analytics | people-analytics | REMEASURED |
+| 43 | 099 | Customer.io campaigns | campaign-list | REMEASURED |
+| 44 | 100 | Mixpanel home | product-analytics | REMEASURED |
+| 45 | 101 | Whop creator | creator-revenue | REMEASURED |
+| 46 | 102 | Mercury transactions | banking-ledger | REMEASURED |
+| 47 | 103 | Posh events | event-console (dark) | REMEASURED |
 | 48 | 104-108 | Twenty CRM | crm-workspace | DONE |
 
 ## 41 Stripe overview (097)

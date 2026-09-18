@@ -85,8 +85,15 @@ export interface ChoiceOption {
   label: string;
   /** Secondary line under the label. */
   description?: string;
-  /** Emoji or short glyph rendered above the label. */
+  /** Icon name from `ui/icons`, or `brand:<slug>` for a platform mark. */
   glyph?: string;
+  /**
+   * Seed for a generated portrait, for options whose reference shows a face
+   * rather than a mark — SchoolAI's "Choose your look" (refs 051/052/055).
+   * `Avatar` derives a stable field from it, so it does not change between
+   * screenshots and ships nobody's likeness (CLAUDE.md, rule 3).
+   */
+  avatarSeed?: string;
   /** Monospace snippet rendered as the card's media, as in a "pick your level" step. */
   code?: string;
   /** CSS gradient applied when the card is selected (poster cards). */
@@ -420,7 +427,7 @@ export interface TourStep {
   placement?: TourPlacement;
   /** Hero media for `modal-sequence`: a CSS gradient, image URL, or emoji. */
   media?: string;
-  mediaKind?: "gradient" | "image" | "emoji";
+  mediaKind?: "gradient" | "image" | "thumb";
   ctaLabel?: string;
   /** `feature-walkthrough`: pastel colour block behind the media panel. */
   panelTone?: string;
@@ -452,7 +459,10 @@ export interface TourConfig {
  * Empty state
  * ------------------------------------------------------------------ */
 
-export type EmptyStateVariant = "illustration" | "ghost-preview" | "sample-data";
+export type EmptyStateVariant =
+  | "illustration"
+  | "ghost-preview"
+  | "sample-data";
 
 export interface EmptyStateConfig {
   id: string;
@@ -576,8 +586,15 @@ export interface PlansConfig {
   };
   /** Small links under the primary CTA. */
   footerLinks?: { id: string; label: string; href?: string }[];
-  /** `quota-matrix`: one row per capability, with a value per plan id. */
+  /** `quota-matrix`: one row per model, with a value per plan id. */
   quotaRows?: QuotaRow[];
+  /**
+   * `quota-matrix`: leading words of the title, coloured with the brand.
+   * The reference splits its heading across two lines, the first accented.
+   */
+  titleAccent?: string;
+  /** `quota-matrix`: label above the row-name column. */
+  quotaRowsLabel?: string;
   /** `offer-modal`: the limited-time offer. */
   offer?: OfferConfig;
 }
@@ -586,7 +603,10 @@ export interface QuotaRow {
   label: string;
   /** Sub-line under the label, e.g. "2K resolution". */
   hint?: string;
-  glyph?: string;
+  /** Mark beside the row label. Named icon, not a glyph. */
+  icon?: string;
+  /** Which mark goes inside the value pills on this row. */
+  kind?: "image" | "video";
   /** Plan id -> displayed value, e.g. { ultra: "1,500", plus: "600" }. */
   values: Record<string, string>;
   /** Plan id -> small promo badge, e.g. { ultra: "7-day unlim" }. */

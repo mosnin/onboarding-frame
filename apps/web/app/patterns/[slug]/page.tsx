@@ -62,7 +62,9 @@ export default async function PatternPage({
 
         <div className="min-w-0">
           <header className="mb-8">
-            <h1 className="text-[2rem] font-extrabold tracking-tight">{pattern.name}</h1>
+            <h1 className="text-[2rem] font-extrabold tracking-tight">
+              {pattern.name}
+            </h1>
             <p className="mt-2 max-w-3xl text-pretty leading-relaxed text-[color:var(--site-muted)]">
               {pattern.description}
             </p>
@@ -70,7 +72,9 @@ export default async function PatternPage({
 
           <PatternExplorer
             pattern={pattern}
-            presets={resolved as Record<string, { config: unknown; theme?: never }>}
+            presets={
+              resolved as Record<string, { config: unknown; theme?: never }>
+            }
           />
         </div>
       </div>

@@ -58,7 +58,10 @@ export function EmptyState({
         </Button>
       )}
       {config.secondaryCta && (
-        <Button tone="ghost" onClick={() => onAction?.(config.secondaryCta!.id)}>
+        <Button
+          tone="ghost"
+          onClick={() => onAction?.(config.secondaryCta!.id)}
+        >
           {config.secondaryCta.label}
         </Button>
       )}
@@ -98,14 +101,20 @@ export function EmptyState({
           className,
         )}
       >
-        <div aria-hidden className="grid gap-3 opacity-40 [mask-image:linear-gradient(black,transparent)]">
+        <div
+          aria-hidden
+          className="grid gap-3 opacity-40 [mask-image:linear-gradient(black,transparent)]"
+        >
           {Array.from({ length: config.ghostRows ?? 5 }, (_, i) => (
             <div
               key={i}
               className="flex items-center gap-3 rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-4"
             >
               <span className="size-9 shrink-0 rounded-full bg-[color:var(--ob-surface-3)]" />
-              <span className="h-3 flex-1 rounded-full bg-[color:var(--ob-surface-3)]" style={{ maxWidth: `${70 - i * 8}%` }} />
+              <span
+                className="h-3 flex-1 rounded-full bg-[color:var(--ob-surface-3)]"
+                style={{ maxWidth: `${70 - i * 8}%` }}
+              />
               <span className="h-3 w-14 rounded-full bg-[color:var(--ob-surface-3)]" />
             </div>
           ))}

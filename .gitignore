@@ -10,3 +10,7 @@ build/
 .DS_Store
 .vercel
 coverage/
+
+# Reference and capture images used by scripts/measure_scale.py. The
+# references are screenshots of other companies' products; they stay local.
+.audit/

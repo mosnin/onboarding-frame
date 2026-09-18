@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import type { TourConfig, TourPlacement, TourStep } from "../../types";
+import { Thumb } from "../../ui/avatar";
 import { cn } from "../../lib/cn";
 import { useOnboarding } from "../../provider/OnboardingProvider";
 import { useKeyboard } from "../../hooks/useKeyboard";
@@ -29,7 +30,10 @@ interface Rect {
 const PAD = 8;
 
 /** Track a target element's viewport rect across scroll and resize. */
-function useTargetRect(selector: string | undefined, active: boolean): Rect | null {
+function useTargetRect(
+  selector: string | undefined,
+  active: boolean,
+): Rect | null {
   const [rect, setRect] = useState<Rect | null>(null);
 
   useLayoutEffect(() => {
@@ -77,7 +81,8 @@ function bubblePosition(rect: Rect | null, placement: TourPlacement = "auto") {
   }
   const side =
     placement === "auto"
-      ? rect.top > (typeof window !== "undefined" ? window.innerHeight : 800) / 2
+      ? rect.top >
+        (typeof window !== "undefined" ? window.innerHeight : 800) / 2
         ? "top"
         : "bottom"
       : placement;
@@ -173,7 +178,8 @@ function Bubble({
             </Button>
           )}
           <Button tone="brand" size="sm" onClick={onNext}>
-            {step.ctaLabel ?? (last ? (config.finishLabel ?? "Finish") : "Next")}
+            {step.ctaLabel ??
+              (last ? (config.finishLabel ?? "Finish") : "Next")}
           </Button>
         </div>
       </div>
@@ -203,7 +209,10 @@ export function Tour({
 
   const step = config.steps[index] ?? config.steps[0]!;
   const total = config.steps.length;
-  const rect = useTargetRect(step?.target, visible && config.variant !== "modal-sequence");
+  const rect = useTargetRect(
+    step?.target,
+    visible && config.variant !== "modal-sequence",
+  );
 
   useEffect(() => {
     if (visible) emit("flow_started", config.id);
@@ -312,7 +321,9 @@ export function Tour({
                   : undefined
             }
           >
-            {step.mediaKind === "emoji" ? step.media : null}
+            {step.mediaKind === "thumb" && step.media ? (
+              <Thumb seed={step.media} className="size-full" radius={0} />
+            ) : null}
           </div>
         </div>
       </div>
@@ -334,10 +345,14 @@ export function Tour({
                   : "var(--ob-surface-2)",
           }}
         >
-          {step.mediaKind === "emoji" ? step.media : null}
+          {step.mediaKind === "thumb" && step.media ? (
+            <Thumb seed={step.media} className="size-full" radius={0} />
+          ) : null}
         </div>
         <div className="grid gap-2 p-6 text-center">
-          <h3 className="text-xl font-extrabold tracking-tight">{step.title}</h3>
+          <h3 className="text-xl font-extrabold tracking-tight">
+            {step.title}
+          </h3>
           {step.body && (
             <p className="text-pretty leading-relaxed text-[color:var(--ob-muted)]">
               {step.body}
@@ -357,16 +372,25 @@ export function Tour({
             )
           )}
           {config.showDots !== false && (
-            <Dots count={total} active={index} onSelect={setIndex} className="mx-auto" />
+            <Dots
+              count={total}
+              active={index}
+              onSelect={setIndex}
+              className="mx-auto"
+            />
           )}
           <Button tone="brand" size="sm" onClick={next}>
-            {step.ctaLabel ?? (index === total - 1 ? (config.finishLabel ?? "Done") : "Next")}
+            {step.ctaLabel ??
+              (index === total - 1 ? (config.finishLabel ?? "Done") : "Next")}
           </Button>
         </div>
       </div>
     );
 
-    if (inline) return <div className={cn("grid place-items-center", className)}>{body}</div>;
+    if (inline)
+      return (
+        <div className={cn("grid place-items-center", className)}>{body}</div>
+      );
     return (
       <div className="fixed inset-0 z-[70] grid place-items-center p-4">
         {config.backdrop !== false && (
