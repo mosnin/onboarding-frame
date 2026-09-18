@@ -32,6 +32,11 @@ import {
   WarehouseCostTemplate,
   WealthPortfolioTemplate,
   BillingBenchmarksTemplate,
+  FreelanceAnalyticsTemplate,
+  AuthConsoleTemplate,
+  UptimeMonitorTemplate,
+  ZoneOverviewTemplate,
+  AutomationAppsTemplate,
   type ApiConsolePage,
   type CrmPage,
   type FinancePage,
@@ -54,6 +59,11 @@ import {
   type WarehousePage,
   type WealthPage,
   type BenchmarkPage,
+  type FreelancePage,
+  type AuthPage,
+  type UptimePage,
+  type ZonePage,
+  type AutomationPage,
 } from "onboarding-frame";
 
 /** Renders a template by slug, shared by the viewer and the shelf preview. */
@@ -81,6 +91,16 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
       return <SupportInsightsTemplate />;
     case "finance-overview":
       return <FinanceOverviewTemplate page={page as FinancePage} />;
+    case "freelance-analytics":
+      return <FreelanceAnalyticsTemplate page={page as FreelancePage} />;
+    case "auth-console":
+      return <AuthConsoleTemplate page={page as AuthPage} />;
+    case "uptime-monitor":
+      return <UptimeMonitorTemplate page={page as UptimePage} />;
+    case "zone-overview":
+      return <ZoneOverviewTemplate page={page as ZonePage} />;
+    case "automation-apps":
+      return <AutomationAppsTemplate page={page as AutomationPage} />;
     case "wallet-home":
       return <WalletHomeTemplate page={page as WalletPage} />;
     case "warehouse-cost":

@@ -418,3 +418,120 @@ then a chart: a grey BAND (the peer range) with a thin slate median line inside 
 YOUR value as a flat coloured line (green when good, orange when bad) pinned at the
 bottom/edge; y labels top-left and bottom-left (8.0% / -4.0%); x "January 2024" left and
 "December 2024" right in grey.
+
+| 36 | 092 | Contra analytics | freelance-analytics | DONE |
+| 37 | 093 | Clerk dashboard | auth-console | DONE |
+| 38 | 094 | Better Stack uptime | uptime-monitor (dark) | DONE |
+| 39 | 095 | Cloudflare zone overview | zone-overview | DONE |
+| 40 | 096 | Zapier My Apps | automation-apps | DONE |
+
+## 36 Contra (092)
+White, grey-500 section headings, thin hairline cards, blue #4a6cf7 data, purple accents.
+Far-left icon RAIL 84px: logo diamond top, avatar, then glyph groups separated by short
+rules; the active glyph sits in a lavender rounded square; bottom a round chat bubble.
+Top bar: "Analytics" 1.6rem bold; right an outlined rounded-full pill with a GRADIENT
+border "✦ Contra Pro", outlined "⤳ Share profile", then 💬 and 🔔.
+Body: an outlined rounded-full select "Last 30 days ⌄".
+Grey heading "Income".
+Big card (left, tall): "Total Payouts" + a superscript "$" before a huge "0";
+right two outlined rounded-full buttons "+ Start project" and "$ Send invoice".
+The chart is a FLAT line at the vertical middle with a blue gradient fill BELOW it that
+fades out — i.e. a zero series drawn at mid-height, not at the floor.
+Right column two cards:
+ - "Active projects ⓘ" + right "✦ PRO" (amber diamond + grey small-caps); big "2";
+   a tiny chart flat at the bottom with a rise at the very end.
+ - "Invoices" + "✦ PRO": an illustration placeholder of an invoice w/ a green "PAID" chip,
+   centred 2-line grey copy "Manage all of your Client payments in one place.", then a
+   full-width grey-50 button "Send invoice".
+Grey heading "Views". Card row: "Impressions" + big "1" and a flat line with one narrow
+spike at the right; right card "Recently viewed you in search" + "✦ PRO" (empty).
+Bottom-right a purple GRADIENT toast pill: "🎉 New features unlocked!" + ✕.
+
+## 37 Clerk (093)
+White, indigo #6c47ff brand, rounded-lg cards, hairline borders, 0.95rem type.
+An ORANGE tab is pinned to the TOP EDGE of the main area, centred: "Development ⇅".
+Sidebar 418px: a bordered rounded card at top w/ avatar + "Personal account" + ⇅; under it
+a second row w/ app icon + "MyApp" + ⇅; then nav: Home(ACTIVE: white card w/ border +
+indigo icon + indigo text), Users, Organizations; small-caps grey "Configure":
+User & Authentication ›, Organizations Settings, Sessions, Account Portal, Customization ›,
+Integrations, JWT Templates, Webhooks; "Developers": API Keys, Paths, Domains;
+"Application": Plan & Billing, Settings. Footer: avatar + "Jane Doe".
+Main: breadcrumb "Home › MyApp". H1 2rem bold
+"Congratulations, your application now has users!" then a 3-line grey paragraph.
+Row of 3 outlined cards, each centred: a grey glyph, then a bold centred label
+("Deploy your app to production", "Learn about authentication",
+"Learn about Component Customization").
+Row of 4 outlined stat cards: bold title ("Total users"), grey sub ("All time",
+"April 2024"), then a big number (2 / 2 / 2 / 1).
+Two wide cards: "Recent sign-ups" and "Recent sign-ins" — rows of avatar + email + a
+right-aligned grey timestamp ("Wed Apr 24, 15:57").
+Bottom-right a round dark avatar button.
+
+## 38 Better Stack (094)  DARK
+#1c2028 page, cards #232834, borders #2e3440, light-blue/green multi-series charts.
+Sidebar 310px #171a21: wordmark + caret; nav Monitors(ACTIVE)/Heartbeats/Who's on-call?/
+Incidents(badge 2)/Team members/Status pages/Escalation policies/Integrations;
+bottom Billing / Help & Support / "☀ Light mode"; footer a bordered row w/ a round logo
+slot + "Team / JDAcme" + ⇅.
+Top bar: right bell w/ orange dot + avatar + "Jane Smith ⌄".
+Main: "‹ Monitors" grey back link.
+Header: a large GREEN DOT in a soft green circle (56px) + "acmecorp.example.app" 2rem bold;
+under it green "Up" + grey "· Checked every 3 minutes".
+Action row (grey glyph + label, no buttons): ⚠ Send test alert · ⓘ Incidents ·
+⏸ Pause this monitor · ⚙ Configure.
+3 stat cards: grey label + big value — "Currently up for / 49 mins 40 seconds",
+"Last checked at / 14 seconds ago", "Incidents / 0".
+Card "Response times across regions in the last day" + right a segmented pill
+Day(active)/Week/Month.
+Chart: rotated y-axis title "milliseconds", y 0/1k/2k/3k/4k/5k, x 03:05pm..03:50pm,
+FOUR series that all start high (2.7k-4k) at the left and collapse to near-zero within the
+first two ticks, then wander with small bumps. Legend below: Europe (teal), North America
+(indigo), Asia (amber), Australia (green).
+
+## 39 Cloudflare (095)
+White, orange #f6821f logo, BLUE #0051c3 links, grey-100 chart fills, dense 0.95rem.
+Top bar: logo, right a rounded search "Go to… ⌘K", a blue "Add ▾" button, "Support ▾",
+"Profile ▾".
+Sidebar 345px: "← Alex Smith"; rule; nav rows w/ outline icons and carets:
+Overview(ACTIVE blue text + blue left bar + light blue fill), AI Audit + amber "Beta" chip,
+Analytics & Logs ▾, DNS ▾, Email ▾, SSL/TLS ▾, Security ▾, Access, Speed ▾, Caching ▾,
+Workers Routes, Rules ▾, Network, Traffic ▾, Custom Pages, Apps, Scrape Shield, Zaraz ▾;
+footer "« Collapse sidebar".
+Zone bar: a window glyph + "content-acme.org" + ⇅, then a green pill "✓ Active",
+an outlined pill "☆ Star", an outlined pill "Free plan".
+A light-blue dismissible banner: "Why did you choose a Free plan? **Share your feedback** ↗"
++ ✕.
+Main left: small grey "Overview", H1 2.2rem "content-acme.org", 2-line grey blurb, then an
+outlined rounded-full blue button "▤ Review fundamentals".
+Range tabs: "24 Hours"(active, blue underline) / 7 Days / 30 Days; right small-caps grey
+"15 FEBRUARY — 16 FEBRUARY".
+Then FIVE stacked metric rows separated by hairlines, each: left a label + big bold value
+(Unique Visitors 112 / Total Requests 1.55k / Percent Cached 0% / Total Data Served 4 MB /
+Data Cached 0 B); right a wide area chart with VERTICAL gridlines, a blue line with a DOT
+ON EVERY POINT and a light blue fill. Rows 3 and 5 are FLAT AT ZERO with dots all along.
+Right rail 480px:
+ - "DNS" h2, "DNS Setup: Full ⓘ", rule, blue underlined "DNS Records".
+ - "Quick Actions" h2: two rows each w/ bold label, 2-line grey copy, a blue underlined
+   "About …" link w/ ↗, and a TOGGLE (off, showing an ✕) on the right; then blue links
+   "Run speed test", "Configure caching".
+ - "Domain Registration": "Registrar: Unknown", blue "Transfer to Cloudflare".
+ - "Active Subscriptions": blue "Billing" + right grey "Next bill: March 14, 2025".
+
+## 40 Zapier (096)
+White, orange #ff4f00 primary, navy #2d2e2e ink, indigo #4d44d9 secondary button,
+rounded-lg, generous whitespace, LOTS of empty space (only two rows of content).
+Top bar: ✕ left, wordmark, right a search glyph and a dark avatar circle.
+Sidebar 415px w/ hairline right border: a full-width ORANGE rounded "+ Create Zap";
+nav rows w/ outline icons: Dashboard, Zaps, Transfers, My Apps(ACTIVE: peach fill +
+bold), Zap History, Explore, Get Help; rule;
+a plan block: "▭ Free Plan" bold, then "Tasks  0 / 1,000" with a thin grey progress bar
+(empty), "Zaps  Unlimited", grey "Monthly usage resets in 29 days", blue underlined
+"Manage Plan", then a full-width OUTLINED indigo "Upgrade plan".
+Main: H1 "Apps" 2.2rem bold; right a bordered rounded search "Search apps" and an INDIGO
+"+ Add connection" button.
+Two bordered rounded-lg rows, each: a square logo slot, bold app name, then two right-
+aligned stat columns (big bold number over grey label) "1 Connection" and "1 Zap",
+then a chevron ›.
+Footer (inside the content area): "Follow us" + 5 round social glyph circles; right a row
+of links (Pricing, Help, Developer Platform, Press, Jobs, ... , Transfer); below,
+the wordmark and "© 2022 Acme Inc." + Manage cookies | Legal | Privacy.

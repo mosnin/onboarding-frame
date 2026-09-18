@@ -52,6 +52,16 @@ export { WealthPortfolioTemplate } from "./wealth-portfolio";
 export type { WealthPage, WealthPortfolioProps } from "./wealth-portfolio";
 export { BillingBenchmarksTemplate } from "./billing-benchmarks";
 export type { BenchmarkPage, BillingBenchmarksProps } from "./billing-benchmarks";
+export { FreelanceAnalyticsTemplate } from "./freelance-analytics";
+export type { FreelancePage, FreelanceAnalyticsProps } from "./freelance-analytics";
+export { AuthConsoleTemplate } from "./auth-console";
+export type { AuthPage, AuthConsoleProps } from "./auth-console";
+export { UptimeMonitorTemplate } from "./uptime-monitor";
+export type { UptimePage, UptimeMonitorProps } from "./uptime-monitor";
+export { ZoneOverviewTemplate } from "./zone-overview";
+export type { ZonePage, ZoneOverviewProps } from "./zone-overview";
+export { AutomationAppsTemplate } from "./automation-apps";
+export type { AutomationPage, AutomationAppsProps } from "./automation-apps";
 export { CrmWorkspaceTemplate } from "./crm-workspace";
 export type { CrmPage, CrmWorkspaceProps } from "./crm-workspace";
 
@@ -295,6 +305,41 @@ export const templateCatalog: TemplateMeta[] = [
     blurb:
       "Peer-range bands rather than series, where a customer with no revenue lands 1st percentile on value and 99th on churn.",
     pages: [{ id: "benchmarking", label: "Benchmarking" }],
+  },
+  {
+    slug: "freelance-analytics",
+    name: "Freelance analytics",
+    blurb:
+      "Freelancer earnings where a zero series is drawn at mid-height rather than on the floor, so \u201cnothing yet\u201d does not read as a measured zero.",
+    pages: [{ id: "analytics", label: "Analytics" }],
+  },
+  {
+    slug: "auth-console",
+    name: "Auth console",
+    blurb:
+      "Authentication dashboard whose environment badge hangs off the top edge, on the honest day-one counts of two users and one sign-in.",
+    pages: [{ id: "home", label: "Home" }],
+  },
+  {
+    slug: "uptime-monitor",
+    name: "Uptime monitor",
+    blurb:
+      "Blue-grey dark monitor where status is a haloed dot and the region chart keeps its cold-start cliff instead of smoothing it away.",
+    pages: [{ id: "monitor", label: "Monitor" }],
+  },
+  {
+    slug: "zone-overview",
+    name: "Zone overview",
+    blurb:
+      "Edge-network overview keeping orange as the mark and blue as every link, with flat-zero series that still carry per-point dots.",
+    pages: [{ id: "overview", label: "Overview" }],
+  },
+  {
+    slug: "automation-apps",
+    name: "Automation apps",
+    blurb:
+      "Connected-apps page with an honestly empty usage bar and a footer left in the flow, because two rows do not fill a screen.",
+    pages: [{ id: "apps", label: "My Apps" }],
   },
   {
     slug: "crm-workspace",

@@ -1,0 +1,254 @@
+"use client";
+
+import { cn } from "../../../lib/cn";
+import { AvatarSlot, LogoSlot } from "../../../ui/placeholder";
+import { Surface, authTokens } from "./tokens";
+import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
+import type { TemplateProps } from "./api-console";
+
+export type AuthPage = "home" | "users" | "organizations";
+
+export interface AuthConsoleProps extends TemplateProps {
+  page?: AuthPage;
+}
+
+const TOP = [
+  { id: "home", label: "Home", glyph: "⌂" },
+  { id: "users", label: "Users", glyph: "👤" },
+  { id: "organizations", label: "Organizations", glyph: "🏢" },
+];
+
+const CONFIGURE = [
+  { id: "auth", label: "User & Authentication", glyph: "☝", chevron: true },
+  { id: "orgsettings", label: "Organizations Settings", glyph: "📋" },
+  { id: "sessions", label: "Sessions", glyph: "▤" },
+  { id: "portal", label: "Account Portal", glyph: "◉" },
+  { id: "customization", label: "Customization", glyph: "✎", chevron: true },
+  { id: "integrations", label: "Integrations", glyph: "⑄" },
+  { id: "jwt", label: "JWT Templates", glyph: "✳" },
+  { id: "webhooks", label: "Webhooks", glyph: "⚯" },
+];
+
+const DEVELOPERS = [
+  { id: "keys", label: "API Keys", glyph: "🔑" },
+  { id: "paths", label: "Paths", glyph: "🔗" },
+  { id: "domains", label: "Domains", glyph: "🌐" },
+];
+
+const APPLICATION = [
+  { id: "billing", label: "Plan & Billing", glyph: "▭" },
+  { id: "settings", label: "Settings", glyph: "⚙" },
+];
+
+const LEARN = [
+  { id: "deploy", glyph: "✓", label: "Deploy your app to production" },
+  { id: "auth", glyph: "⛉", label: "Learn about authentication" },
+  { id: "custom", glyph: "▨", label: "Learn about Component Customization" },
+];
+
+const STATS = [
+  { id: "total", title: "Total users", sub: "All time", value: "2" },
+  { id: "active", title: "Active users", sub: "April 2024", value: "2" },
+  { id: "signups", title: "Sign-ups", sub: "April 2024", value: "2" },
+  { id: "signins", title: "Sign-ins", sub: "April 2024", value: "1" },
+];
+
+const SIGNUPS = [
+  { id: "s1", email: "jonsmith@example.com", when: "Wed Apr 24, 15:57" },
+  { id: "s2", email: "jsmith2@example.com", when: "Wed Apr 24, 15:54" },
+];
+
+const SIGNINS = [{ id: "i1", email: "jsmith2@example.com", when: "Thu Apr 25, 11:25" }];
+
+/**
+ * Authentication console.
+ *
+ * The environment badge hangs off the top edge of the content area rather than
+ * sitting in a bar — a small thing, but it is how the product keeps
+ * "you are looking at development data" visible without spending a full row on
+ * it. The counts are two users and one sign-in, which is what "your
+ * application now has users" actually means on day one.
+ */
+export function AuthConsoleTemplate({ className, page = "home" }: AuthConsoleProps) {
+  return (
+    <Surface tokens={authTokens} className={className}>
+      <Shell>
+        <Sidebar width={418} bg="var(--ob-bg)" className="border-r-0 p-3">
+          <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
+            <div className="flex items-center gap-3 px-3.5 py-3">
+              <AvatarSlot size={32} />
+              <span className="flex-1 text-[1.08rem] font-medium">Personal account</span>
+              <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
+                ⇅
+              </span>
+            </div>
+            <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] px-3.5 py-3">
+              <LogoSlot size={30} label="" radius={15} />
+              <span className="flex-1 text-[1.08rem] font-medium">MyApp</span>
+              <span aria-hidden className="text-[0.7rem] text-[color:var(--ob-muted)]">
+                ⇅
+              </span>
+            </div>
+          </div>
+
+          <nav className="grid gap-0.5 pt-2">
+            {TOP.map((item) => (
+              <NavItem
+                key={item.id}
+                label={item.label}
+                glyph={item.glyph}
+                active={item.id === page}
+                className={cn(
+                  "text-[1.08rem]",
+                  item.id === page &&
+                    "border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] text-[color:var(--ob-brand)]",
+                )}
+              />
+            ))}
+          </nav>
+
+          <NavSection label="Configure" />
+          <nav className="grid gap-0.5">
+            {CONFIGURE.map((item) => (
+              <NavItem
+                key={item.id}
+                label={item.label}
+                glyph={item.glyph}
+                trailing={
+                  item.chevron ? (
+                    <span aria-hidden className="text-[0.8rem] opacity-40">
+                      ›
+                    </span>
+                  ) : undefined
+                }
+                className="text-[1.08rem]"
+              />
+            ))}
+          </nav>
+
+          <NavSection label="Developers" />
+          <nav className="grid gap-0.5">
+            {DEVELOPERS.map((item) => (
+              <NavItem
+                key={item.id}
+                label={item.label}
+                glyph={item.glyph}
+                className="text-[1.08rem]"
+              />
+            ))}
+          </nav>
+
+          <NavSection label="Application" />
+          <nav className="grid gap-0.5">
+            {APPLICATION.map((item) => (
+              <NavItem
+                key={item.id}
+                label={item.label}
+                glyph={item.glyph}
+                className="text-[1.08rem]"
+              />
+            ))}
+          </nav>
+
+          <div className="mt-auto flex items-center gap-3 px-3 py-4">
+            <AvatarSlot size={32} />
+            <span className="text-[1.08rem] font-medium">Jane Doe</span>
+          </div>
+        </Sidebar>
+
+        <Main className="relative overflow-auto bg-[color:var(--ob-surface)]">
+          {/* The environment tab hangs from the top edge of the content pane. */}
+          <span className="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[color:var(--ob-danger)] px-3.5 py-1.5 text-[0.88rem] font-semibold text-white">
+            Development ⇅
+          </span>
+
+          <div className="px-12 pb-10 pt-14">
+            <p className="flex items-center gap-3 text-[1.05rem]">
+              <span className="text-[color:var(--ob-fg-soft)]">Home</span>
+              <span aria-hidden className="text-[color:var(--ob-muted)]">
+                ›
+              </span>
+              <span className="font-medium">MyApp</span>
+            </p>
+
+            <h1 className="pt-5 text-[2.05rem] font-bold tracking-[-0.01em]">
+              Congratulations, your application now has users!
+            </h1>
+            <p className="max-w-[72ch] pt-3 text-[1.12rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+              The platform handles all the authentication and user management pieces for
+              you. Next, you can learn how to access this data and use it in your
+              application, customize the look and feel of your components, and get your
+              app ready for production.
+            </p>
+
+            <div className="grid gap-5 pt-8 lg:grid-cols-3">
+              {LEARN.map((card) => (
+                <section
+                  key={card.id}
+                  className="grid justify-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-6 py-8"
+                >
+                  <span
+                    aria-hidden
+                    className="text-[1.5rem] text-[color:var(--ob-muted)]"
+                  >
+                    {card.glyph}
+                  </span>
+                  <p className="pt-4 text-center text-[1.08rem] font-semibold">
+                    {card.label}
+                  </p>
+                </section>
+              ))}
+            </div>
+
+            <div className="grid gap-5 pt-5 sm:grid-cols-2 xl:grid-cols-4">
+              {STATS.map((stat) => (
+                <section
+                  key={stat.id}
+                  className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-6 py-6"
+                >
+                  <h2 className="text-[1.2rem] font-bold">{stat.title}</h2>
+                  <p className="pt-1 text-[1.05rem] text-[color:var(--ob-muted)]">
+                    {stat.sub}
+                  </p>
+                  <p className="pt-6 text-[1.7rem] font-medium tabular-nums leading-none">
+                    {stat.value}
+                  </p>
+                </section>
+              ))}
+            </div>
+
+            <div className="grid gap-5 pt-5 lg:grid-cols-2">
+              <RecentCard title="Recent sign-ups" rows={SIGNUPS} />
+              <RecentCard title="Recent sign-ins" rows={SIGNINS} />
+            </div>
+          </div>
+        </Main>
+      </Shell>
+    </Surface>
+  );
+}
+
+function RecentCard({
+  title,
+  rows,
+}: {
+  title: string;
+  rows: { id: string; email: string; when: string }[];
+}) {
+  return (
+    <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-7 py-6">
+      <h2 className="pb-5 text-[1.2rem] font-bold">{title}</h2>
+      <ul className="grid gap-4">
+        {rows.map((row) => (
+          <li key={row.id} className="flex items-center gap-3.5">
+            <AvatarSlot size={34} />
+            <span className="min-w-0 flex-1 truncate text-[1.08rem]">{row.email}</span>
+            <span className="shrink-0 text-[1.05rem] text-[color:var(--ob-muted)]">
+              {row.when}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

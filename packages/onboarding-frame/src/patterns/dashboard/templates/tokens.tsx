@@ -792,3 +792,109 @@ export const benchmarkTokens: TemplateTokens = {
   radiusSm: "0.375rem",
   radiusLg: "0.625rem",
 };
+
+/** Contra: hairline cards on white, blue data, gradient accents for upsells. */
+export const freelanceTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f6f7f9",
+  surface3: "#ecedf1",
+  border: "#e8e9ee",
+  borderStrong: "#d4d6dd",
+  fg: "#16171c",
+  fgSoft: "#3d3f49",
+  muted: "#7b7e8a",
+  brand: "#4a6cf7",
+  brandFg: "#ffffff",
+  ctaBg: "#16171c",
+  ctaFg: "#ffffff",
+  radius: "0.875rem",
+  radiusSm: "0.625rem",
+  radiusLg: "1rem",
+};
+
+/** Clerk: indigo on white, cards as the nav's active state rather than fills. */
+export const authTokens: TemplateTokens = {
+  bg: "#fafafa",
+  surface: "#ffffff",
+  surface2: "#f4f4f5",
+  surface3: "#e9e9ec",
+  border: "#e5e5e8",
+  borderStrong: "#d1d1d6",
+  fg: "#131316",
+  fgSoft: "#3c3c43",
+  muted: "#7d7d86",
+  brand: "#6c47ff",
+  brandFg: "#ffffff",
+  ctaBg: "#131316",
+  ctaFg: "#ffffff",
+  danger: "#f36b16",
+  radius: "0.625rem",
+  radiusSm: "0.5rem",
+  radiusLg: "0.75rem",
+};
+
+/** Better Stack: blue-grey dark, not neutral black — a distinct dark family. */
+export const uptimeTokens: TemplateTokens = {
+  scheme: "dark",
+  bg: "#1c2028",
+  surface: "#232834",
+  surface2: "#2a303c",
+  surface3: "#333a48",
+  border: "#2e3440",
+  borderStrong: "#3d4553",
+  fg: "#eef1f6",
+  fgSoft: "#c3c9d4",
+  muted: "#8e97a6",
+  brand: "#5b8def",
+  brandFg: "#ffffff",
+  ctaBg: "#333a48",
+  ctaFg: "#eef1f6",
+  success: "#41d18c",
+  danger: "#f2726f",
+  radius: "0.625rem",
+  radiusSm: "0.5rem",
+  radiusLg: "0.75rem",
+};
+
+/** Cloudflare: orange mark, blue links — the two never share a job. */
+export const zoneTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f5f7fa",
+  surface3: "#e9edf3",
+  border: "#e3e8ef",
+  borderStrong: "#cbd3de",
+  fg: "#1d1f21",
+  fgSoft: "#3c4045",
+  muted: "#72787f",
+  brand: "#0051c3",
+  brandFg: "#ffffff",
+  ctaBg: "#0051c3",
+  ctaFg: "#ffffff",
+  success: "#1d8102",
+  danger: "#f6821f",
+  radius: "0.375rem",
+  radiusSm: "0.25rem",
+  radiusLg: "0.5rem",
+};
+
+/** Zapier: orange primary with an indigo secondary, on a lot of white space. */
+export const automationTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f7f7f5",
+  surface3: "#eeeeeb",
+  border: "#e6e6e2",
+  borderStrong: "#d2d2cc",
+  fg: "#2d2e2e",
+  fgSoft: "#4a4b4b",
+  muted: "#7a7b7b",
+  brand: "#4d44d9",
+  brandFg: "#ffffff",
+  ctaBg: "#ff4f00",
+  ctaFg: "#ffffff",
+  radius: "0.625rem",
+  radiusSm: "0.5rem",
+  radiusLg: "0.75rem",
+};
