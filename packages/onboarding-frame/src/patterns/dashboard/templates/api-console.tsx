@@ -16,6 +16,25 @@ import {
 } from "./chrome";
 
 import type { TemplateProps } from "./props";
+import {
+  AlertIcon,
+  BellIcon,
+  ChevronDown,
+  CpuIcon,
+  FileIcon,
+  GridIcon,
+  HomeIcon,
+  Icon,
+  KeyIcon,
+  LayersIcon,
+  RocketIcon,
+  SettingsIcon,
+  Sparkle,
+  TerminalIcon,
+  VideoIcon,
+  WandIcon,
+  type IconName,
+} from "../../../ui/icons";
 
 /** Pages this template implements, matching its own navigation. */
 export type ApiConsolePage =
@@ -29,28 +48,40 @@ export interface ApiConsoleProps extends TemplateProps {
   page?: ApiConsolePage;
 }
 
-const TABS = [
-  { id: "home", label: "Home", glyph: "⌂" },
-  { id: "explore", label: "Explore", glyph: "▦" },
-  { id: "assets", label: "Assets", glyph: "⧉" },
-  { id: "generate", label: "Generate", glyph: "✎", caret: true },
-  { id: "serverless", label: "Serverless", glyph: "🚀" },
-  { id: "compute", label: "Compute", glyph: "▣", caret: true, badge: "Beta" },
-  { id: "settings", label: "Settings", glyph: "⚙", caret: true },
+const TABS: {
+  id: string;
+  label: string;
+  icon: IconName;
+  caret?: boolean;
+  badge?: string;
+}[] = [
+  { id: "home", label: "Home", icon: "home" },
+  { id: "explore", label: "Explore", icon: "grid" },
+  { id: "assets", label: "Assets", icon: "layers" },
+  { id: "generate", label: "Generate", icon: "wand", caret: true },
+  { id: "serverless", label: "Serverless", icon: "rocket" },
+  { id: "compute", label: "Compute", icon: "cpu", caret: true, badge: "Beta" },
+  { id: "settings", label: "Settings", icon: "settings", caret: true },
 ];
 
 const SETUP = [
   { id: "account", label: "Create an account", done: true },
   { id: "payment", label: "Add a payment method", action: "Set up billing", primary: true },
   { id: "credits", label: "Add credits", action: "Add credits" },
-  { id: "media", label: "Generate your first media", action: "Try the sandbox", glyph: "▣" },
+  { id: "media", label: "Generate your first media", action: "Try the sandbox", icon: "terminal" },
 ];
 
-const API_LINKS = [
-  { id: "key", label: "Get an API key", glyph: "🔑", tone: "#efe7ff" },
-  { id: "docs", label: "Go to documentation", glyph: "📄", tone: "var(--ob-surface-2)" },
-  { id: "quickstart", label: "Quickstart: call your first model", glyph: "📄", tone: "var(--ob-surface-2)" },
-  { id: "sdk", label: "Use the SDK (JS, Python, cURL)", glyph: "📄", tone: "var(--ob-surface-2)" },
+const API_LINKS: {
+  id: string;
+  label: string;
+  Glyph: typeof KeyIcon;
+  tone: string;
+  ink: string;
+}[] = [
+  { id: "key", label: "Get an API key", Glyph: KeyIcon, tone: "#efe7ff", ink: "#7c4dcc" },
+  { id: "docs", label: "Go to documentation", Glyph: FileIcon, tone: "#eef2fb", ink: "#5b7cc2" },
+  { id: "quickstart", label: "Quickstart: call your first model", Glyph: FileIcon, tone: "#eef2fb", ink: "#5b7cc2" },
+  { id: "sdk", label: "Use the SDK (JS, Python, cURL)", Glyph: FileIcon, tone: "#eef2fb", ink: "#5b7cc2" },
 ];
 
 const MODELS = [
@@ -75,7 +106,9 @@ export function ApiConsoleTemplate({
     <Surface tokens={apiConsoleTokens}>
     <Shell className={cn("flex-col", className)}>
       <Banner tone="dark">
-        <span className="font-semibold">✦ {brandName} Assets is now live!</span>
+        <span className="flex items-center gap-1.5 font-semibold">
+          <Sparkle width={13} height={13} /> {brandName} Assets is now live!
+        </span>
       </Banner>
 
       <TopBar>
@@ -88,16 +121,26 @@ export function ApiConsoleTemplate({
           rounded="md"
           className="ml-auto hidden w-[340px] md:flex"
         />
-        <div className="flex items-center gap-2 rounded-[8px] border border-[color:var(--ob-border)] px-3 py-2 text-[0.86rem]">
-          <span aria-hidden className="opacity-50">▦</span>
+        <div className="hidden items-center gap-2 rounded-[8px] border border-[color:var(--ob-border)] px-3 py-2 text-[0.86rem] sm:flex">
+          <GridIcon width={14} height={14} className="opacity-45" />
           <span className="text-[color:var(--ob-muted)]">Credits:</span>
           <span className="font-semibold">$0.00</span>
         </div>
-        <Btn tone="neutral" size="sm">
-          Docs <span className="opacity-50">⌄</span>
-        </Btn>
-        <button type="button" aria-label="Notifications" className="px-1 opacity-60">
-          ⌾
+        {/*
+          The reference splits this: "Docs" opens the docs, the caret beside it
+          opens a menu, with a hairline between the two halves.
+        */}
+        <div className="hidden items-center rounded-[8px] border border-[color:var(--ob-border-strong)] sm:flex">
+          <button type="button" className="px-3 py-1.5 text-[0.86rem] font-semibold">
+            Docs
+          </button>
+          <span className="h-5 w-px bg-[color:var(--ob-border)]" />
+          <button type="button" aria-label="Docs menu" className="px-2 py-1.5">
+            <ChevronDown width={14} height={14} className="opacity-50" />
+          </button>
+        </div>
+        <button type="button" aria-label="Notifications" className="px-1 opacity-55">
+          <BellIcon width={18} height={18} />
         </button>
         <Placeholder width={30} height={30} radius={7} glyph="◍" />
       </TopBar>
@@ -116,9 +159,9 @@ export function ApiConsoleTemplate({
                 : "border-transparent text-[color:var(--ob-fg-soft)] hover:text-[color:var(--ob-fg)]",
             )}
           >
-            <span aria-hidden className="opacity-70">{tab.glyph}</span>
+            <Icon name={tab.icon} width={15} height={15} className="opacity-70" />
             {tab.label}
-            {tab.caret && <span aria-hidden className="opacity-40">⌄</span>}
+            {tab.caret && <ChevronDown width={13} height={13} className="opacity-40" />}
             {tab.badge && (
               <span className="absolute -top-0.5 right-0 translate-x-full rounded-full bg-[#efe7ff] px-1.5 text-[0.6rem] font-bold text-[#6b46e5]">
                 {tab.badge}
@@ -149,7 +192,7 @@ export function ApiConsoleTemplate({
               <span className="text-[color:var(--ob-muted)]">I&apos;m here</span>
               <span className="font-mono opacity-60">&lt;/&gt;</span>
               <span className="font-semibold">To build with code</span>
-              <span aria-hidden className="opacity-40">⌄</span>
+              <ChevronDown width={14} height={14} className="opacity-40" />
             </div>
           </div>
         </div>
@@ -199,7 +242,9 @@ export function ApiConsoleTemplate({
                       </span>
                       {item.action && (
                         <Btn tone={item.primary ? "dark" : "neutral"} size="sm">
-                          {item.glyph && <span aria-hidden>{item.glyph}</span>}
+                          {item.icon && (
+                            <Icon name={item.icon as IconName} width={13} height={13} />
+                          )}
                           {item.action}
                         </Btn>
                       )}
@@ -222,9 +267,9 @@ export function ApiConsoleTemplate({
                       <span
                         aria-hidden
                         className="grid size-8 shrink-0 place-items-center rounded-[8px]"
-                        style={{ background: link.tone }}
+                        style={{ background: link.tone, color: link.ink }}
                       >
-                        {link.glyph}
+                        <link.Glyph width={16} height={16} />
                       </span>
                       <span className="text-[0.98rem]">{link.label}</span>
                     </li>
@@ -241,7 +286,7 @@ export function ApiConsoleTemplate({
                   </p>
                 </div>
                 <div className="flex items-center gap-3 rounded-[8px] border border-[color:var(--ob-border)] p-2.5">
-                  <span aria-hidden className="text-[#d99b22]">⚠</span>
+                  <AlertIcon width={15} height={15} className="shrink-0 text-[#d99b22]" />
                   <span className="flex-1 text-[0.86rem]">
                     Add a payment method to use {brandName}
                   </span>
@@ -250,7 +295,13 @@ export function ApiConsoleTemplate({
                 <ul className="grid gap-3">
                   {MODELS.map((model) => (
                     <li key={model.id} className="flex gap-3">
-                      <Placeholder width={26} height={26} radius={6} glyph="▶" />
+                      <span
+                        aria-hidden
+                        className="grid size-[26px] shrink-0 place-items-center rounded-[6px]"
+                        style={{ background: "#e4edfd", color: "#3f72d4" }}
+                      >
+                        <VideoIcon width={14} height={14} />
+                      </span>
                       <div className="min-w-0">
                         <p className="truncate text-[0.9rem]">
                           {model.org && (

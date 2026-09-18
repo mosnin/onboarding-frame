@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { cn } from "../../../lib/cn";
 import { Placeholder } from "../../../ui/placeholder";
+import { ChatIcon, ChevronDown, Cross, SearchIcon } from "../../../ui/icons";
 
 /**
  * Shared application chrome.
@@ -27,7 +28,7 @@ export function Shell({
   return (
     <div
       className={cn(
-        "flex min-h-[860px] w-full overflow-hidden text-[color:var(--ob-fg)]",
+        "flex min-h-[560px] w-full overflow-hidden text-[color:var(--ob-fg)] sm:min-h-[860px]",
         className,
       )}
       style={{ background: bg }}
@@ -177,7 +178,7 @@ export function SearchField({
         className,
       )}
     >
-      <span aria-hidden className="opacity-70">⌕</span>
+      <SearchIcon className="shrink-0 opacity-70" />
       <span className="flex-1 truncate">{placeholder}</span>
       {shortcut && (
         <kbd className="rounded border border-[color:var(--ob-border)] px-1.5 py-0.5 text-[0.68rem] font-semibold">
@@ -385,7 +386,7 @@ export function Select({
     >
       {glyph}
       <span>{label}</span>
-      <span aria-hidden className="opacity-50">⌄</span>
+      <ChevronDown width={14} height={14} className="opacity-50" />
     </button>
   );
 }
@@ -472,14 +473,14 @@ export function Banner({
         aria-label={onCloseLabel}
         className="shrink-0 opacity-60 hover:opacity-100"
       >
-        ✕
+        <Cross width={14} height={14} />
       </button>
     </div>
   );
 }
 
 /** Round floating action bubble, bottom-right. */
-export function Fab({ glyph = "💬", tone }: { glyph?: ReactNode; tone?: string }) {
+export function Fab({ glyph, tone }: { glyph?: ReactNode; tone?: string }) {
   return (
     <button
       type="button"
@@ -487,7 +488,7 @@ export function Fab({ glyph = "💬", tone }: { glyph?: ReactNode; tone?: string
       className="absolute bottom-6 right-6 grid size-12 place-items-center rounded-full text-xl text-white [box-shadow:var(--ob-shadow-lg)]"
       style={{ background: tone ?? "var(--ob-brand)" }}
     >
-      {glyph}
+      {glyph ?? <ChatIcon width={22} height={22} />}
     </button>
   );
 }

@@ -201,8 +201,9 @@ export const trialTimeline: PlansConfig = {
 export const quotaMatrix: PlansConfig = {
   id: "fathom-quota",
   variant: "quota-matrix",
-  title: "Maximise your output",
-  subtitle: "Compare plans by total generations available each month.",
+  title: "Your Generations",
+  titleAccent: "Maximise",
+  subtitle: "Compare plans by total image and video outputs available each month",
   currency: "USD",
   plans: [
     { id: "ultra", name: "Ultra", priceMonthly: 9900, highlighted: true, features: [], ctaLabel: "Continue" },
@@ -211,28 +212,43 @@ export const quotaMatrix: PlansConfig = {
   ],
   quotaRows: [
     {
-      label: "Still images, 2K",
+      label: "Aurora Pro 2K",
       hint: "2K resolution",
-      glyph: "🖼",
+      icon: "sparkle",
+      kind: "image",
       values: { ultra: "1,500", plus: "600", starter: "100" },
-      badges: { ultra: "7-day unlimited" },
+      badges: { ultra: "7-day unlim" },
     },
     {
-      label: "Short video, 1080p",
-      hint: "With audio, 4s",
-      glyph: "🎬",
+      label: "Cascade 1.5 Pro",
+      hint: "With audio, 1080p, 4s",
+      icon: "barChart",
+      kind: "video",
       values: { ultra: "250", plus: "100", starter: "16" },
-      badges: { ultra: "7-day unlimited", plus: "7-day unlimited" },
+      badges: { ultra: "7-day unlim", plus: "7-day unlim" },
     },
     {
-      label: "Standard video",
+      label: "Driftline 3.0",
       hint: "With audio, 720p, 5s",
-      glyph: "🎞",
+      icon: "circle",
+      kind: "video",
       values: { ultra: "333", plus: "133", starter: "22" },
-      badges: { ultra: "+100 free" },
+      badges: { ultra: "+ 100 Free Gens" },
     },
-    { label: "Motion control", hint: "1080p", glyph: "🕹", values: { ultra: "428", plus: "171", starter: "28" } },
-    { label: "Premium video", hint: "720p", glyph: "✨", values: { ultra: "51", plus: "20", starter: "3" } },
+    {
+      label: "Driftline Motion Control",
+      hint: "1080p",
+      icon: "circle",
+      kind: "video",
+      values: { ultra: "428", plus: "171", starter: "28" },
+    },
+    {
+      label: "Lumen Veo 3",
+      hint: "720p",
+      icon: "sparkle",
+      kind: "video",
+      values: { ultra: "51", plus: "20", starter: "3" },
+    },
   ],
 };
 
@@ -303,7 +319,18 @@ export const plansPresets = {
   "spotlight-sequence": { config: spotlightSequence, theme: spotlightTheme },
   "quiet-tiers": { config: quietTiers, theme: quietTiersTheme },
   "trial-timeline": { config: trialTimeline, theme: quietTiersTheme },
-  "quota-matrix": { config: quotaMatrix, theme: { scheme: "dark", brand: "#ccff00", brandForeground: "#101400" } as OnboardingTheme },
+  "quota-matrix": {
+    config: quotaMatrix,
+    // The reference's Continue is pure white on the dark panel, not the
+    // off-white the default dark CTA resolves to.
+    theme: {
+      scheme: "dark",
+      brand: "#c9f24e",
+      brandForeground: "#101400",
+      ctaBackground: "#ffffff",
+      ctaForeground: "#101011",
+    } as OnboardingTheme,
+  },
   "offer-modal": { config: offerModal, theme: { scheme: "dark", brand: "#ccff00", brandForeground: "#101400" } as OnboardingTheme },
   "comparison-table": { config: comparisonTable, theme: spotlightTheme },
   "usage-slider": { config: usageSlider, theme: quietTiersTheme },

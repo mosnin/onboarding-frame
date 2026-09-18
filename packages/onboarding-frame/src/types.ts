@@ -576,8 +576,15 @@ export interface PlansConfig {
   };
   /** Small links under the primary CTA. */
   footerLinks?: { id: string; label: string; href?: string }[];
-  /** `quota-matrix`: one row per capability, with a value per plan id. */
+  /** `quota-matrix`: one row per model, with a value per plan id. */
   quotaRows?: QuotaRow[];
+  /**
+   * `quota-matrix`: leading words of the title, coloured with the brand.
+   * The reference splits its heading across two lines, the first accented.
+   */
+  titleAccent?: string;
+  /** `quota-matrix`: label above the row-name column. */
+  quotaRowsLabel?: string;
   /** `offer-modal`: the limited-time offer. */
   offer?: OfferConfig;
 }
@@ -586,7 +593,10 @@ export interface QuotaRow {
   label: string;
   /** Sub-line under the label, e.g. "2K resolution". */
   hint?: string;
-  glyph?: string;
+  /** Mark beside the row label. Named icon, not a glyph. */
+  icon?: string;
+  /** Which mark goes inside the value pills on this row. */
+  kind?: "image" | "video";
   /** Plan id -> displayed value, e.g. { ultra: "1,500", plus: "600" }. */
   values: Record<string, string>;
   /** Plan id -> small promo badge, e.g. { ultra: "7-day unlim" }. */

@@ -110,8 +110,46 @@ export function Surface({
  * Token sets, one per template
  * ------------------------------------------------------------------ */
 
-const GEOMETRIC =
-  '"Inter Variable", Inter, ui-sans-serif, system-ui, -apple-system, sans-serif';
+/*
+ * Typefaces.
+ *
+ * Each reference product ships its own face, and rendering all of them in one
+ * typeface is the single loudest tell that a set of recreations came off one
+ * template. These are freely licensed faces chosen to match the character of
+ * each reference — its width, its terminals, how tight it sets — not the
+ * licensed originals, which cannot be redistributed.
+ *
+ * They are named literally rather than through a CSS variable so an ejected
+ * component keeps its typography: add the matching Google Fonts link and the
+ * stack resolves. Without it each one falls back to the system sans, so
+ * nothing breaks, it just loses the distinction.
+ */
+const stack = (face: string) =>
+  `"${face}", ui-sans-serif, system-ui, -apple-system, sans-serif`;
+
+/** Neutral workhorse grotesk — the default where a reference sets in one. */
+const INTER = stack("Inter");
+/** Tighter, more condensed grotesk: dense dashboards and finance surfaces. */
+const INTER_TIGHT = stack("Inter Tight");
+/** Geometric humanist with round bowls — friendly consumer products. */
+const FIGTREE = stack("Figtree");
+/** Wide, low-contrast grotesk with squared terminals. */
+const ARCHIVO = stack("Archivo");
+/** Quirky technical grotesk — developer and crypto tooling. */
+const SPACE_GROTESK = stack("Space Grotesk");
+/** Soft geometric sans, generous counters — marketing-led products. */
+const PLUS_JAKARTA = stack("Plus Jakarta Sans");
+/** Clean neo-grotesk, slightly narrow — data and analytics consoles. */
+const DM_SANS = stack("DM Sans");
+/** Rounded terminals, open apertures — community and social products. */
+const MANROPE = stack("Manrope");
+/** Corporate humanist with tall x-height — enterprise and compliance. */
+const IBM_PLEX = stack("IBM Plex Sans");
+/** Editorial grotesk with distinctive g — publishing and creator tools. */
+const SCHIBSTED = stack("Schibsted Grotesk");
+
+/** Kept for token sets that have not been matched to a face yet. */
+const GEOMETRIC = INTER;
 
 /** Crisp developer console: white, hairline borders, tight radii. */
 export const apiConsoleTokens: TemplateTokens = {

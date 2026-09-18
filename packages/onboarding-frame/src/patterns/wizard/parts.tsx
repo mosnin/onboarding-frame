@@ -58,26 +58,52 @@ export function Orb({
 }
 
 /** Drifting glyph tiles behind a welcome screen. Positions are deterministic. */
+/**
+ * Ambient logo tiles behind a welcome screen.
+ *
+ * The reference scatters app tiles across the canvas at varying depth — some
+ * crisp, most blurred back — so the headline reads against a busy but quiet
+ * field. Two things matter and were previously missing: the tiles are *logos*,
+ * so each is a slot rather than an invented mark, and the scatter leaves the
+ * middle alone. A tile landing under the headline is the one placement that
+ * makes the screen look accidental.
+ */
 export function AmbientTiles({ tiles }: { tiles: string[] }) {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      {tiles.map((glyph, i) => {
-        // Golden-ratio scatter keeps tiles spread without clustering.
-        const x = ((i * 61.8) % 92) + 4;
-        const y = ((i * 37.5) % 78) + 8;
-        const depth = 0.35 + ((i * 7) % 6) / 10;
+      {tiles.map((label, i) => {
+        // Golden-angle scatter: spread without the banding a modulus gives.
+        const a = i * 137.508;
+        const r = 0.34 + ((i * 0.13) % 0.62);
+        const x = 50 + Math.cos((a * Math.PI) / 180) * r * 52;
+        const y = 50 + Math.sin((a * Math.PI) / 180) * r * 46;
+
+        // Keep the middle clear for the headline and its call to action.
+        const clear = Math.abs(x - 50) < 21 && Math.abs(y - 50) < 19;
+        if (clear) return null;
+
+        // Depth: a couple sit forward, the rest recede and blur.
+        const depth = ((i * 3) % 7) / 6;
+        const near = depth > 0.82;
         return (
           <span
-            key={`${glyph}-${i}`}
-            className="absolute grid size-12 place-items-center rounded-[14px] bg-[color:var(--ob-surface)] text-xl [box-shadow:var(--ob-shadow)]"
+            key={`${label}-${i}`}
+            title={label}
+            className="absolute grid place-items-center rounded-[13px] bg-[color:var(--ob-surface)] [box-shadow:var(--ob-shadow)]"
             style={{
               left: `${x}%`,
               top: `${y}%`,
-              opacity: depth,
-              transform: `scale(${0.7 + depth * 0.5})`,
+              width: 54,
+              height: 54,
+              opacity: near ? 0.96 : 0.2 + depth * 0.55,
+              filter: near ? undefined : `blur(${(1 - depth) * 3.4}px)`,
+              transform: `translate(-50%, -50%) scale(${0.82 + depth * 0.3})`,
             }}
           >
-            {glyph}
+            <span
+              className="rounded-[7px] border border-dashed border-[color:var(--ob-border-strong)]"
+              style={{ width: 24, height: 24 }}
+            />
           </span>
         );
       })}

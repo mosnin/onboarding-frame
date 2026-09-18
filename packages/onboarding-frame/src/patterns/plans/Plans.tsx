@@ -95,12 +95,20 @@ export function Plans({
   useKeyboard(true, { Escape: () => onDismiss?.() });
 
   const header = (
-    <div className="grid justify-items-center gap-4 text-center">
-      <h2 className="text-balance text-[2rem] font-extrabold tracking-tight sm:text-[2.6rem]">
+    <div className="grid justify-items-center gap-3.5 text-center">
+      {/*
+        The reference breaks its heading over two lines and colours only the
+        first, which is what gives it its shape. Setting both lines the same
+        colour on one line is the version that reads as a generic modal.
+      */}
+      <h2 className="text-balance text-[2rem] font-bold leading-[1.08] tracking-[-0.02em] sm:text-[2.85rem]">
+        {config.titleAccent && (
+          <span className="block text-[color:var(--ob-brand)]">{config.titleAccent}</span>
+        )}
         {config.title}
       </h2>
       {config.subtitle && (
-        <p className="max-w-xl text-pretty text-[1.05rem] text-[color:var(--ob-muted)]">
+        <p className="max-w-xl text-pretty text-[1rem] text-[color:var(--ob-muted)]">
           {config.subtitle}
         </p>
       )}
@@ -292,7 +300,7 @@ export function Plans({
         <div className="grid w-full justify-items-center gap-10">
           {header}
           <QuotaMatrix config={config} />
-          <Button tone="cta" size="lg" shape="rounded" onClick={checkout} className="min-w-[200px]">
+          <Button tone="cta" size="lg" shape="rounded" onClick={checkout} className="min-w-[128px]">
             {selected?.ctaLabel ?? "Continue"}
           </Button>
         </div>,
