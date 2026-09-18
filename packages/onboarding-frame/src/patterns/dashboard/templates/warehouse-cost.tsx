@@ -6,7 +6,8 @@ import {
   CaretDownIcon,
   CaretRightIcon,
   CaretUpIcon,
-  CheckIcon,
+  CheckCircleIcon,
+  PlusIcon,
   CircleFillIcon,
   CloudIcon,
   DatabaseIcon,
@@ -147,7 +148,11 @@ export function WarehouseCostTemplate({
           </div>
 
           <nav className="grid gap-[2px] px-[9px]">
-            <NavItem label="Create" glyph="+" className="text-[0.771rem]" />
+            <NavItem
+              label="Create"
+              glyph={<PlusIcon size={16} weight="bold" />}
+              className="text-[0.771rem] font-semibold"
+            />
           </nav>
           <div className="mx-[15px] my-[9px] border-t border-[color:var(--ob-border)]" />
 
@@ -160,7 +165,11 @@ export function WarehouseCostTemplate({
                 className="text-[0.771rem]"
               />
             ))}
-            <NavItem label="Admin" glyph={<BrowsersIcon size={14} />} className="text-[0.771rem]" />
+            <NavItem
+              label="Admin"
+              glyph={<BrowsersIcon size={14} />}
+              className="text-[0.771rem]"
+            />
           </nav>
 
           <nav className="grid gap-[2px] px-[9px]">
@@ -208,7 +217,9 @@ export function WarehouseCostTemplate({
             <div className="flex items-center gap-[9px] pt-[12px]">
               <Avatar name="Alex Smith" size={26} />
               <span className="flex-1 leading-tight">
-                <span className="block text-[0.756rem] font-semibold">Alex Smith</span>
+                <span className="block text-[0.756rem] font-semibold">
+                  Alex Smith
+                </span>
                 <span className="block text-[0.68rem] text-[color:var(--ob-muted)]">
                   ACCOUNTADMIN
                 </span>
@@ -218,11 +229,16 @@ export function WarehouseCostTemplate({
           </div>
         </Sidebar>
 
-        <Main className="overflow-auto px-[27px] py-[21px]">
+        <Main className="overflow-auto px-[40px] py-[21px]">
           <div className="flex items-center gap-[12px]">
-            <h1 className="flex-1 text-[1.399rem] font-semibold">Cost Management</h1>
+            <h1 className="flex-1 text-[1.399rem] font-semibold">
+              Cost Management
+            </h1>
             <span className="flex items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[6px] text-[0.756rem] font-medium">
-              <CircleFillIcon size={7} className="text-[color:var(--ob-success)]" />
+              <CircleFillIcon
+                size={7}
+                className="text-[color:var(--ob-success)]"
+              />
               COMPUTE_WH
             </span>
           </div>
@@ -265,7 +281,7 @@ export function WarehouseCostTemplate({
           <div className="grid gap-[18px] border-b border-[color:var(--ob-border)] pb-[21px] pt-[18px] sm:grid-cols-3 xl:grid-cols-5">
             {FIGURES.map((figure) => (
               <div key={figure.id}>
-                <p className="text-[1.512rem] font-bold leading-none tabular-nums">
+                <p className="text-[1.757rem] font-bold leading-none tabular-nums">
                   {figure.value}
                 </p>
                 <p className="flex items-center gap-[5px] pt-[6px] text-[0.771rem] text-[color:var(--ob-fg-soft)]">
@@ -289,12 +305,18 @@ export function WarehouseCostTemplate({
 
               <ul className="grid gap-[11px]">
                 {WAREHOUSES.map((warehouse) => (
-                  <li key={warehouse.id} className="flex items-center gap-[12px]">
-                    <DatabaseIcon size={14} className="text-[color:var(--ob-muted)]" />
-                    <span className="w-[166px] shrink-0 truncate text-[0.756rem]">
+                  <li
+                    key={warehouse.id}
+                    className="flex items-center gap-[12px]"
+                  >
+                    <DatabaseIcon
+                      size={14}
+                      className="text-[color:var(--ob-muted)]"
+                    />
+                    <span className="flex-1 truncate text-[0.756rem]">
                       {warehouse.name}
                     </span>
-                    <span className="h-[6px] flex-1 rounded-full bg-[color:var(--ob-surface-3)]">
+                    <span className="h-[13px] w-[193px] shrink-0 rounded-full bg-[color:var(--ob-surface-3)]">
                       {/* A true zero draws nothing, not a minimum-width stub. */}
                       {warehouse.value > 0 && (
                         <span
@@ -316,14 +338,14 @@ export function WarehouseCostTemplate({
                 Cost insights <InfoDot />
               </h2>
               <p className="pt-[12px] text-[0.771rem] text-[color:var(--ob-fg-soft)]">
-                We checked for the following insight types but did not find savings
-                opportunities:
+                We checked for the following insight types but did not find
+                savings opportunities:
               </p>
-              <ul className="grid gap-[11px] pt-[12px]">
+              <ul className="grid gap-[7px] pt-[12px]">
                 {INSIGHTS.map((insight) => (
                   <li key={insight} className="flex items-center gap-[9px]">
-                    <CheckIcon size={14} />
-                    <span className="text-[0.794rem] font-semibold">{insight}</span>
+                    <CheckCircleIcon size={17} className="text-[#0d9c70]" />
+                    <span className="text-[0.9rem]">{insight}</span>
                   </li>
                 ))}
               </ul>
@@ -365,12 +387,25 @@ export function WarehouseCostTemplate({
                 </thead>
                 <tbody>
                   {QUERIES.map((row) => (
-                    <tr key={row.id} className="border-b border-[color:var(--ob-border)]">
-                      <td className="px-[9px] py-[12px] font-mono text-[0.696rem]">{row.query}</td>
-                      <td className="px-[9px] py-[12px] font-mono text-[0.696rem]">{row.hash}</td>
-                      <td className="px-[9px] py-[12px] tabular-nums">{row.total}</td>
-                      <td className="px-[9px] py-[12px] tabular-nums">{row.count}</td>
-                      <td className="px-[9px] py-[12px] tabular-nums">{row.average}</td>
+                    <tr
+                      key={row.id}
+                      className="border-b border-[color:var(--ob-border)]"
+                    >
+                      <td className="px-[9px] py-[12px] font-mono text-[0.696rem]">
+                        {row.query}
+                      </td>
+                      <td className="px-[9px] py-[12px] font-mono text-[0.696rem]">
+                        {row.hash}
+                      </td>
+                      <td className="px-[9px] py-[12px] tabular-nums">
+                        {row.total}
+                      </td>
+                      <td className="px-[9px] py-[12px] tabular-nums">
+                        {row.count}
+                      </td>
+                      <td className="px-[9px] py-[12px] tabular-nums">
+                        {row.average}
+                      </td>
                       <td className="px-[9px] py-[12px]">{row.warehouse}</td>
                       <td className="px-[9px] py-[12px]">{row.user}</td>
                       <td className="px-[9px] py-[12px]">{row.role}</td>

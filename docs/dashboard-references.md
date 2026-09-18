@@ -332,7 +332,7 @@ Price per share / Investment amount / Transfer amount, each row ending in an out
 31 Oct 2023 Share split COM 1.00:1 8 - - -; 31 Oct 2023 Buy back COM -4 4 $1.00 $4.00 -.
 
 | 31 | 087 | Coinbase wallet | wallet-home (dark) | REMEASURED |
-| 32 | 088 | Snowflake cost mgmt | warehouse-cost | DONE |
+| 32 | 088 | Snowflake cost mgmt | warehouse-cost | REMEASURED |
 | 33 | 089 | Origin portfolio | wealth-portfolio | REMEASURED |
 | 34 | 090 | Stripe benchmarking | billing-benchmarks | DONE |
 | 35 | 091 | Mailchimp audience dashboard | audience-analytics `dashboard` page | DONE |
