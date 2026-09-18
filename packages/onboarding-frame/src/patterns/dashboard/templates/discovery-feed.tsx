@@ -5,23 +5,40 @@ import { cn } from "../../../lib/cn";
 import { Surface, discoveryFeedTokens } from "./tokens";
 import { Main, Shell } from "./chrome";
 import type { TemplateProps } from "./props";
+import {
+  ChevronDown,
+  Icon,
+  SearchIcon,
+  SettingsIcon,
+  type IconName,
+} from "../../../ui/icons";
 
-const RAIL = ["⌂", "▦", "◭", "⌾", "👤", "＋"];
+const RAIL: IconName[] = ["home", "grid", "layers", "bell", "user", "plus"];
 
-const TABS = ["Collections", "Recents", "For you", "More"];
+/*
+ * The reference's counters are not bare numbers — each pairs a mark with its
+ * count: saves to a board, shares, and pins. Without the marks the pills read
+ * as unexplained digits.
+ */
+type Badge = { icon: IconName; n: string };
+const save = (n: string): Badge => ({ icon: "box", n });
+const share = (n: string): Badge => ({ icon: "share", n });
+const pin = (n: string): Badge => ({ icon: "pin", n });
+
+const TABS = ["Collections", "Recents", "For You", "More"];
 
 /** Deterministic column heights keep the masonry rhythm without real images. */
 const ITEMS = [
-  { id: "1", col: 0, h: 330, cat: "Art & design", title: "Paintings by a contemporary portraitist, first seen on an album cover.", author: "M. Gogh", badges: ["4"] },
-  { id: "2", col: 1, h: 250, cat: "Art & design", title: "I've been following this painter for five years, and each new piece still surprises me.", author: "Glauber", badges: ["5"] },
-  { id: "3", col: 2, h: 300, cat: "Art & design", title: "Light, materiality and the photographic image: fragments of stone with subtle tensions.", author: "M. Gogh", badges: ["1", "5"] },
-  { id: "4", col: 3, h: 230, cat: "Art & design", title: "The artwork on this record is by a Dutch illustrator. Note: the vinyl release differs.", author: "M. Gogh", badges: ["1", "4"] },
-  { id: "5", col: 4, h: 210, cat: "Music & sounds", title: "Instrumental music full of textures and references to the rhythms of nature.", author: "M. Gogh", badges: ["1"] },
-  { id: "6", col: 0, h: 260, cat: "Art & design", title: "Beautiful, calm and ethereal series of paintings — I've never seen ink used this way.", author: "Glauber", badges: ["1", "5"] },
-  { id: "7", col: 1, h: 320, cat: "Industrial design", title: "Love the boldness of this custom sound system, inspired by and designed for a gallery.", author: "Glauber", badges: ["5"] },
+  { id: "1", col: 0, h: 330, cat: "Art & design", title: "Paintings by a contemporary portraitist, first seen on an album cover.", author: "M. Gogh", badges: [save("4")] },
+  { id: "2", col: 1, h: 250, cat: "Art & design", title: "I've been following this painter for five years, and each new piece still surprises me.", author: "Glauber", badges: [save("5")] },
+  { id: "3", col: 2, h: 300, cat: "Art & design", title: "Light, materiality and the photographic image: fragments of stone with subtle tensions.", author: "M. Gogh", badges: [share("1"), save("5")] },
+  { id: "4", col: 3, h: 230, cat: "Art & design", title: "The artwork on this record is by a Dutch illustrator. Note: the vinyl release differs.", author: "M. Gogh", badges: [share("1"), save("4")] },
+  { id: "5", col: 4, h: 210, cat: "Music & sounds", title: "Instrumental music full of textures and references to the rhythms of nature.", author: "M. Gogh", badges: [share("1")] },
+  { id: "6", col: 0, h: 260, cat: "Art & design", title: "Beautiful, calm and ethereal series of paintings — I've never seen ink used this way.", author: "Glauber", badges: [pin("1"), save("5")] },
+  { id: "7", col: 1, h: 320, cat: "Industrial design", title: "Love the boldness of this custom sound system, inspired by and designed for a gallery.", author: "Glauber", badges: [save("5")] },
   { id: "8", col: 2, h: 220, cat: "Music & sounds", title: "An album I spent many hours with while creating. I recently returned to it.", author: "A. Dubrovin", badges: [] },
-  { id: "9", col: 3, h: 290, cat: "Art & design", title: "Welcome to the platform! It's exciting to finally have a place where we can share.", author: "Glauber", badges: ["15", "3", "3"] },
-  { id: "10", col: 4, h: 240, cat: "Art & design", title: "An artist whose work I return to again and again for inspiration. Brightness and rhythm.", author: "A. Dubrovin", badges: ["1", "5"] },
+  { id: "9", col: 3, h: 290, cat: "Art & design", title: "Welcome to the platform! It's exciting to finally have a place where we can share.", author: "Glauber", badges: [pin("15"), share("3"), save("3")] },
+  { id: "10", col: 4, h: 240, cat: "Art & design", title: "An artist whose work I return to again and again for inspiration. Brightness and rhythm.", author: "A. Dubrovin", badges: [pin("1"), save("5")] },
 ];
 
 /**
@@ -37,18 +54,18 @@ export function DiscoveryFeedTemplate({ className }: TemplateProps) {
     <Surface tokens={discoveryFeedTokens}>
       <Shell className={cn(className)}>
         <aside className="hidden w-[72px] shrink-0 flex-col items-center gap-7 border-r border-[color:var(--ob-border)] py-5 sm:flex">
-          <Placeholder width={30} height={30} radius={15} glyph="◍" />
+          <Placeholder shape="circle" width={30} height={30} />
           <nav className="mt-auto grid gap-6 text-[color:var(--ob-fg-soft)]">
-            {RAIL.map((glyph, i) => (
+            {RAIL.map((name, i) => (
               <button
-                key={i}
+                key={name}
                 type="button"
                 className={cn(
-                  "relative grid size-9 place-items-center rounded-full text-lg transition-colors",
+                  "relative grid size-9 place-items-center rounded-[10px] transition-colors",
                   i === 1 ? "bg-[color:var(--ob-surface-2)]" : "opacity-60 hover:opacity-100",
                 )}
               >
-                {glyph}
+                <Icon name={name} width={21} height={21} />
                 {i === 3 && (
                   <span className="absolute -right-0.5 -top-0.5 grid size-4 place-items-center rounded-full bg-[#e0332c] text-[0.6rem] font-bold text-white">
                     2
@@ -58,7 +75,7 @@ export function DiscoveryFeedTemplate({ className }: TemplateProps) {
             ))}
           </nav>
           <button type="button" aria-label="Settings" className="mb-1 mt-auto opacity-60">
-            ⚙
+            <SettingsIcon width={21} height={21} />
           </button>
         </aside>
 
@@ -70,17 +87,21 @@ export function DiscoveryFeedTemplate({ className }: TemplateProps) {
                 type="button"
                 aria-current={i === 2 ? "page" : undefined}
                 className={cn(
-                  "text-[0.98rem]",
+                  // Flex, so the caret sits beside the label rather than
+                  // wrapping under it as an inline block.
+                  "flex items-center text-[0.98rem]",
                   i === 2
                     ? "font-bold text-[color:var(--ob-fg)]"
                     : "text-[color:var(--ob-muted)] hover:text-[color:var(--ob-fg)]",
                 )}
               >
                 {tab}
-                {i === 3 && <span aria-hidden className="ml-1 opacity-50">⌄</span>}
+                {i === 3 && <ChevronDown width={14} height={14} className="ml-1 opacity-50" />}
               </button>
             ))}
-            <button type="button" aria-label="Search" className="ml-auto opacity-60">⌕</button>
+            <button type="button" aria-label="Search" className="ml-auto opacity-60">
+              <SearchIcon width={19} height={19} />
+            </button>
           </header>
 
           <div className="grid grid-cols-2 gap-4 px-7 pb-10 md:grid-cols-3 xl:grid-cols-5">
@@ -100,9 +121,10 @@ export function DiscoveryFeedTemplate({ className }: TemplateProps) {
                           {item.badges.map((badge, j) => (
                             <span
                               key={j}
-                              className="rounded-full bg-white/90 px-2 py-1 text-[0.72rem] font-bold text-[#111]"
+                              className="flex items-center gap-1 rounded-full bg-white/92 px-2 py-1 text-[0.72rem] font-bold text-[#111] [box-shadow:var(--ob-shadow)]"
                             >
-                              {badge}
+                              <Icon name={badge.icon} width={12} height={12} />
+                              {badge.n}
                             </span>
                           ))}
                         </div>
