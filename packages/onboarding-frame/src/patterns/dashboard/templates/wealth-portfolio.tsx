@@ -93,7 +93,7 @@ export function WealthPortfolioTemplate({
                 label={item.label}
                 glyph={<item.Icon size={11} />}
                 active={item.id === "portfolio"}
-                className="rounded-[var(--ob-radius-sm)] px-[12px] py-[9px] text-[0.845rem]"
+                className="rounded-[var(--ob-radius-sm)] px-[12px] py-[7px] text-[0.845rem]"
               />
             ))}
           </nav>

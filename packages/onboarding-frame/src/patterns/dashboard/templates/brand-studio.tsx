@@ -99,7 +99,7 @@ export function BrandStudioTemplate({
         </TopBar>
 
         <div className="flex min-h-[0px] flex-1">
-        <Sidebar width={251} bg="var(--ob-surface)">
+        <Sidebar width={225} bg="var(--ob-surface)">
           <nav className="grid gap-[2px] px-[13px] pt-[18px]">
             {NAV.map((item) => (
               <button
@@ -107,7 +107,7 @@ export function BrandStudioTemplate({
                 type="button"
                 aria-current={item.active ? "page" : undefined}
                 className={cn(
-                  "flex items-center gap-[13px] rounded-[9px] px-[13px] py-[11px] text-left text-[1.058rem]",
+                  "flex items-center gap-[11px] rounded-[8px] px-[12px] py-[8px] text-left text-[0.9rem]",
                   item.active
                     ? "bg-[color:var(--ob-surface-2)] font-semibold"
                     : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",

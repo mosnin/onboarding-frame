@@ -59,90 +59,90 @@ export function FileLibraryTemplate({
     <Shell className={cn(className)} bg="var(--ob-surface-2)">
       {/* Measured off the reference: 255px. */}
       <Sidebar width={255} bg="var(--ob-surface-2)" className="border-r-0">
-        <div className="flex items-center gap-2 p-5">
-          <Avatar name={brandName} size={24} rounded={6} />
+        <div className="flex items-center gap-[7px] p-[18px]">
+          <Avatar name={brandName} size={21} rounded={6} />
           <button type="button" aria-label="Notifications" className="ml-auto opacity-50">
-            <BellIcon width={18} height={18} />
+            <BellIcon width={16} height={16} />
           </button>
         </div>
 
-        <div className="mx-4 flex items-center gap-3 rounded-[10px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-2.5">
-          <span className="grid size-8 place-items-center rounded-full bg-[#1b6b4a] text-[0.82rem] font-bold text-white">
+        <div className="mx-[14px] flex items-center gap-[11px] rounded-[9px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[9px]">
+          <span className="grid size-[28px] place-items-center rounded-full bg-[#1b6b4a] text-[0.726rem] font-bold text-white">
             {userName.slice(0, 1)}
           </span>
           <span className="flex-1 truncate font-semibold">{userName}</span>
-          <ChevronDown width={15} height={15} className="opacity-40" />
+          <ChevronDown width={13} height={13} className="opacity-40" />
         </div>
 
-        <p className="px-5 pb-1 pt-6 text-[0.82rem] text-[color:var(--ob-muted)]">Projects</p>
-        <nav className="grid gap-0.5 px-3">
+        <p className="px-[18px] pb-[4px] pt-[21px] text-[0.726rem] text-[color:var(--ob-muted)]">Projects</p>
+        <nav className="grid gap-[2px] px-[11px]">
           {PROJECTS.map((item) => (
             <button
               key={item.id}
               type="button"
               aria-current={item.active ? "page" : undefined}
               className={cn(
-                "flex items-center gap-3 rounded-[10px] px-3 py-2.5 text-left text-[0.95rem] transition-colors",
+                "flex items-center gap-[11px] rounded-[9px] px-[11px] py-[9px] text-left text-[0.841rem] transition-colors",
                 item.active
                   ? "bg-[color:var(--ob-surface)] font-semibold [box-shadow:var(--ob-shadow)]"
                   : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-3)]",
               )}
             >
-              <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-70" />
+              <Icon name={item.icon} width={15} height={15} className="shrink-0 opacity-70" />
               <span className="flex-1">{item.label}</span>
               {item.badge && (
-                <span className="text-[0.82rem] text-[color:var(--ob-muted)]">{item.badge}</span>
+                <span className="text-[0.726rem] text-[color:var(--ob-muted)]">{item.badge}</span>
               )}
             </button>
           ))}
         </nav>
 
-        <p className="px-5 pb-1 pt-6 text-[0.82rem] text-[color:var(--ob-muted)]">Resources</p>
-        <nav className="grid gap-0.5 px-3">
+        <p className="px-[18px] pb-[4px] pt-[21px] text-[0.726rem] text-[color:var(--ob-muted)]">Resources</p>
+        <nav className="grid gap-[2px] px-[11px]">
           {RESOURCES.map((item) => (
             <button
               key={item.id}
               type="button"
-              className="flex items-center gap-3 rounded-[10px] px-3 py-2.5 text-left text-[0.95rem] text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-3)]"
+              className="flex items-center gap-[11px] rounded-[9px] px-[11px] py-[9px] text-left text-[0.841rem] text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-3)]"
             >
-              <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-70" />
+              <Icon name={item.icon} width={15} height={15} className="shrink-0 opacity-70" />
               {item.label}
             </button>
           ))}
         </nav>
 
-        <div className="mx-3 mt-6 flex items-center gap-2 rounded-[10px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-3 py-3">
-          <div className="min-w-0 flex-1">
+        <div className="mx-[11px] mt-[21px] flex items-center gap-[7px] rounded-[9px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[11px] py-[11px]">
+          <div className="min-w-[0px] flex-1">
             <p className="font-semibold">Create a team</p>
-            <p className="whitespace-nowrap text-[0.82rem] text-[color:var(--ob-muted)]">
+            <p className="whitespace-nowrap text-[0.726rem] text-[color:var(--ob-muted)]">
               Start a shared workspace
             </p>
           </div>
-          <UserPlusIcon width={18} height={18} className="shrink-0 opacity-60" />
+          <UserPlusIcon width={16} height={16} className="shrink-0 opacity-60" />
         </div>
 
-        <div className="mt-auto p-4">
+        <div className="mt-auto p-[14px]">
           <button
             type="button"
-            className="flex w-full items-center gap-2 rounded-[10px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-3.5 py-2.5 text-[0.92rem] font-medium"
+            className="flex w-full items-center gap-[7px] rounded-[9px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[12px] py-[9px] text-[0.814rem] font-medium"
           >
-            <DownloadIcon width={16} height={16} />
+            <DownloadIcon width={14} height={14} />
             <span className="flex-1 text-left">Download desktop app</span>
           </button>
-          <div className="flex items-center gap-4 px-2 pt-4 text-[color:var(--ob-muted)]">
-            <button type="button" aria-label="Theme"><Sun width={17} height={17} /></button>
+          <div className="flex items-center gap-[14px] px-[7px] pt-[14px] text-[color:var(--ob-muted)]">
+            <button type="button" aria-label="Theme"><Sun width={15} height={15} /></button>
             <button type="button" aria-label="Help" className="ml-auto">
-              <Icon name="info" width={17} height={17} />
+              <Icon name="info" width={15} height={15} />
             </button>
-            <button type="button" aria-label="More"><MoreIcon width={17} height={17} /></button>
+            <button type="button" aria-label="More"><MoreIcon width={15} height={15} /></button>
           </div>
         </div>
       </Sidebar>
 
-      <Main className="p-4">
-        <div className="flex flex-1 flex-col rounded-[14px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6 sm:p-8">
-          <div className="flex flex-wrap items-center gap-4">
-            <h1 className="text-[1.9rem] font-extrabold tracking-tight">My files</h1>
+      <Main className="p-[14px]">
+        <div className="flex flex-1 flex-col rounded-[12px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[21px] sm:p-[28px]">
+          <div className="flex flex-wrap items-center gap-[14px]">
+            <h1 className="text-[1.3rem] font-extrabold tracking-tight">My files</h1>
             <Segmented
               items={[
                 { id: "all", label: "All" },
@@ -152,43 +152,43 @@ export function FileLibraryTemplate({
               active="all"
               activeClassName="bg-[#dcefe2] text-[#1b6b4a]"
             />
-            <div className="ml-auto flex items-center gap-2.5">
+            <div className="ml-auto flex items-center gap-[9px]">
               <button
                 type="button"
                 aria-label="Search"
-                className="grid size-9 place-items-center rounded-full border border-[color:var(--ob-border)] opacity-70"
+                className="grid size-[32px] place-items-center rounded-full border border-[color:var(--ob-border)] opacity-70"
               >
-                <SearchIcon width={16} height={16} />
+                <SearchIcon width={14} height={14} />
               </button>
               <Select label="Last modified" />
-              <div className="flex items-center rounded-[8px] border border-[color:var(--ob-border)]">
-                <button type="button" aria-label="Grid view" className="px-2.5 py-1.5">
-                  <GridIcon width={16} height={16} />
+              <div className="flex items-center rounded-[7px] border border-[color:var(--ob-border)]">
+                <button type="button" aria-label="Grid view" className="px-[9px] py-[5px]">
+                  <GridIcon width={14} height={14} />
                 </button>
-                <button type="button" aria-label="List view" className="px-2.5 py-1.5 opacity-50">
-                  <ListIcon width={16} height={16} />
+                <button type="button" aria-label="List view" className="px-[9px] py-[5px] opacity-50">
+                  <ListIcon width={14} height={14} />
                 </button>
               </div>
               <Btn tone="primary" size="sm" className="bg-[#1b6b4a] text-white">
                 New file
-                <span className="flex items-center gap-1">
-                  <kbd className="rounded bg-white/20 px-1 text-[0.7rem]">⌘</kbd>
-                  <kbd className="rounded bg-white/20 px-1 text-[0.7rem]">N</kbd>
+                <span className="flex items-center gap-[4px]">
+                  <kbd className="rounded bg-white/20 px-[4px] text-[0.619rem]">⌘</kbd>
+                  <kbd className="rounded bg-white/20 px-[4px] text-[0.619rem]">N</kbd>
                 </span>
               </Btn>
             </div>
           </div>
 
-          <div className="mt-8 grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-[28px] grid gap-x-[18px] gap-y-[28px] sm:grid-cols-2 lg:grid-cols-4">
             {/* Create tile leads the grid so an empty workspace still has a next step. */}
             <div>
               <button
                 type="button"
-                className="grid aspect-[4/3] w-full place-items-center rounded-[10px] border-2 border-dashed border-[color:var(--ob-border-strong)] text-[color:var(--ob-muted)] transition-colors hover:border-[#1b6b4a] hover:text-[#1b6b4a]"
+                className="grid aspect-[4/3] w-full place-items-center rounded-[9px] border-2 border-dashed border-[color:var(--ob-border-strong)] text-[color:var(--ob-muted)] transition-colors hover:border-[#1b6b4a] hover:text-[#1b6b4a]"
               >
-                <Plus width={24} height={24} />
+                <Plus width={21} height={21} />
               </button>
-              <p className="mt-3 font-semibold text-[#1b6b4a]">Create a new design</p>
+              <p className="mt-[11px] font-semibold text-[#1b6b4a]">Create a new design</p>
             </div>
 
             {FILES.map((file) => (
@@ -197,27 +197,27 @@ export function FileLibraryTemplate({
                   <span className="block aspect-[4/3] w-full">
                     <Thumb
                       seed={file.id}
-                      radius={10}
+                      radius={9}
                       alt={file.kind === "library" ? "Library preview" : "File thumbnail"}
                     />
                   </span>
                   {file.kind === "library" && (
-                    <span className="absolute right-2.5 top-2.5 text-[color:var(--ob-muted)]">
-                      <EyeIcon width={16} height={16} />
+                    <span className="absolute right-[9px] top-[9px] text-[color:var(--ob-muted)]">
+                      <EyeIcon width={14} height={14} />
                     </span>
                   )}
                 </div>
-                <div className="mt-3 flex items-start gap-2.5">
-                  <span className="grid size-[22px] shrink-0 place-items-center rounded-[5px] bg-[#1d2b24] text-white">
+                <div className="mt-[11px] flex items-start gap-[9px]">
+                  <span className="grid size-[19px] shrink-0 place-items-center rounded-[4px] bg-[#1d2b24] text-white">
                     <Icon
                       name={file.kind === "library" ? "monitor" : "file"}
-                      width={12}
-                      height={12}
+                      width={11}
+                      height={11}
                     />
                   </span>
-                  <div className="min-w-0">
+                  <div className="min-w-[0px]">
                     <p className="truncate font-semibold">{file.title}</p>
-                    <p className="truncate text-[0.85rem] text-[color:var(--ob-muted)]">
+                    <p className="truncate text-[0.752rem] text-[color:var(--ob-muted)]">
                       {file.sub}
                     </p>
                   </div>
