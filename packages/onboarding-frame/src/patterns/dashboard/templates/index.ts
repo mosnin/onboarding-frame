@@ -10,6 +10,8 @@ export { AssistantHomeTemplate } from "./assistant-home";
 export { FileLibraryTemplate } from "./file-library";
 export { CreativeStudioTemplate } from "./creative-studio";
 export { DiscoveryFeedTemplate } from "./discovery-feed";
+export { GuidesAssistantTemplate } from "./guides-assistant";
+export { BrandStudioTemplate } from "./brand-studio";
 
 export interface TemplateMeta {
   slug: string;
@@ -73,6 +75,20 @@ export const templateCatalog: TemplateMeta[] = [
     blurb:
       "Oversized prompt hero on a textured band, with capability chips that teach what the tool can do.",
     pages: [{ id: "home", label: "Home" }],
+  },
+  {
+    slug: "guides-assistant",
+    name: "Guides with assistant",
+    blurb:
+      "Personalised setup guide down the middle with a docked assistant that suggests the next action.",
+    pages: [{ id: "started", label: "Get started" }],
+  },
+  {
+    slug: "brand-studio",
+    name: "Brand studio",
+    blurb:
+      "Editorial serif headings on a near-white canvas, with an ad-library showcase and a brand asset row.",
+    pages: [{ id: "overview", label: "Overview" }],
   },
   {
     slug: "discovery-feed",

@@ -283,3 +283,25 @@ export const guidesTokens: TemplateTokens = {
   radiusLg: "0.85rem",
   font: GEOMETRIC,
 };
+
+/** Serif-display brand tool: near-white canvas, violet accent, editorial headings. */
+export const brandStudioTokens: TemplateTokens = {
+  bg: "#fcfcfd",
+  surface: "#ffffff",
+  surface2: "#f4f4f7",
+  surface3: "#e8e8ee",
+  border: "#e7e7ed",
+  borderStrong: "#cdcdd8",
+  fg: "#15131c",
+  fgSoft: "#403d4c",
+  muted: "#74707f",
+  brand: "#7c3aed",
+  brandFg: "#ffffff",
+  ctaBg: "#15131c",
+  ctaFg: "#ffffff",
+  radius: "0.75rem",
+  radiusSm: "0.5rem",
+  radiusLg: "1rem",
+  font: GEOMETRIC,
+  fontDisplay: 'ui-serif, Georgia, "Times New Roman", serif',
+};

@@ -8,6 +8,8 @@ import {
   DiscoveryFeedTemplate,
   FileLibraryTemplate,
   GuidedSetupTemplate,
+  GuidesAssistantTemplate,
+  BrandStudioTemplate,
   SetupChecklistTemplate,
   type ApiConsolePage,
 } from "onboarding-frame";
@@ -27,6 +29,10 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
       return <FileLibraryTemplate />;
     case "creative-studio":
       return <CreativeStudioTemplate />;
+    case "guides-assistant":
+      return <GuidesAssistantTemplate />;
+    case "brand-studio":
+      return <BrandStudioTemplate />;
     case "discovery-feed":
       return <DiscoveryFeedTemplate />;
     default:
