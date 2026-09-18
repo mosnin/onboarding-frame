@@ -18,8 +18,11 @@ export interface PatternEntry {
 }
 
 /**
- * The catalogue that drives the docs navigation, the pattern pages and the
- * playground's variant list. Keyed to the preset ids in the package.
+ * Component reference for the config-driven patterns.
+ *
+ * Dashboards are deliberately absent: they are full-page templates, catalogued
+ * on their own shelf. Keeping one home per concept avoids two competing ideas
+ * of what "a dashboard" is.
  */
 export const catalog: PatternEntry[] = [
   {
@@ -98,21 +101,6 @@ export const catalog: PatternEntry[] = [
       { id: "offer-modal", name: "Offer modal", blurb: "Time-boxed discount with an applied promo code and a live countdown." },
       { id: "comparison-table", name: "Comparison table", blurb: "Feature matrix with one emphasised column." },
       { id: "usage-slider", name: "Usage slider", blurb: "Seat slider that recalculates the price as you drag." },
-    ],
-  },
-  {
-    slug: "dashboard",
-    kind: "dashboard",
-    name: "Activation dashboard",
-    tagline: "Where every flow lands — and where activation is actually won.",
-    description:
-      "The product home that onboarding delivers into: quick actions, an embedded checklist, KPI tiles, an empty-to-populated workspace, and quota meters that bridge into an upgrade.",
-    glyph: "📊",
-    variants: [
-      { id: "activation-home", name: "Activation home", blurb: "Greeting, quick actions and an embedded getting-started checklist." },
-      { id: "metrics-overview", name: "Metrics overview", blurb: "KPI tiles with sparklines and a recent-activity feed." },
-      { id: "workspace-hub", name: "Workspace hub", blurb: "Sidebar workspace that swaps empty state for real data." },
-      { id: "usage-billing", name: "Usage and billing", blurb: "Quota meters with an upgrade nudge once limits approach." },
     ],
   },
 ];

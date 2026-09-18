@@ -15,11 +15,7 @@ import {
   TopBar,
 } from "./chrome";
 
-export interface TemplateProps {
-  brandName?: string;
-  userName?: string;
-  className?: string;
-}
+import type { TemplateProps } from "./props";
 
 /** Pages this template implements, matching its own navigation. */
 export type ApiConsolePage =

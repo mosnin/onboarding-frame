@@ -68,6 +68,28 @@ Templates are multi-page where the reference product is: `<ApiConsoleTemplate
 page="usage" />` renders a usage breakdown composed for that product, not a
 generic filler page.
 
+## Owning the source
+
+Everything here works as an ordinary import. It is also ejectable: the docs site
+publishes a registry generated from this package's own files, and the CLI copies
+them into your project.
+
+```bash
+npx onboarding-frame list                     # every item
+npx onboarding-frame add crm-workspace        # a dashboard template
+npx onboarding-frame add wizard/neon-quiz     # a pattern, starting from a preset
+```
+
+Files land in `components/onboarding` by default (`--dir` to change it), shared
+dependencies are copied once however many items you add, and existing files are
+left alone unless you pass `--overwrite`. `--dry-run` prints the plan.
+
+The registry serves the package's real source rather than a second copy of it,
+so an ejected component cannot drift from the published one. CI checks that every
+item ejects into a tree with no dangling imports — a template importing a file
+the registry does not ship would build fine in this repo and break only for
+someone running `add`, so that case is verified rather than assumed.
+
 ## Theming
 
 `OnboardingProvider` writes CSS custom properties, so everything is

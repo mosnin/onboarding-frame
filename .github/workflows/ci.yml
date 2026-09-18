@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Version comes from `packageManager` in package.json. Passing it here
+      # as well makes the action fail on an ambiguous version.
       - uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - uses: actions/setup-node@v4
         with:
@@ -30,3 +30,9 @@ jobs:
 
       - name: Build site
         run: pnpm build
+
+      # A template that imports a file the registry does not ship builds fine
+      # here and only breaks for someone running `onboarding-frame add`, so the
+      # eject is verified rather than assumed.
+      - name: Check registry ejects cleanly
+        run: pnpm check:registry

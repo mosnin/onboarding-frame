@@ -136,7 +136,8 @@ export function PatternExplorer({
           <CodeBlock code={snippet} title={`${componentNameFor(pattern.kind as PatternKind)} usage`} />
           <div className="rounded-xl border border-[color:var(--site-border)] p-4">
             <p className="text-sm text-[color:var(--site-muted)]">
-              Prefer to own the source? Pull this variant into your repo:
+              Prefer to own the source? Copy this pattern into your repo — the
+              variant picks which preset to start from:
             </p>
             <div className="mt-3 flex items-center gap-2">
               <code className="flex-1 overflow-auto rounded-lg bg-[color:var(--site-surface)] px-3 py-2 text-[0.8rem]" style={{ fontFamily: "var(--font-mono)" }}>

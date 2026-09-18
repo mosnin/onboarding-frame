@@ -4,7 +4,7 @@ import { Placeholder } from "../../../ui/placeholder";
 import { cn } from "../../../lib/cn";
 import { Surface, discoveryFeedTokens } from "./tokens";
 import { Main, Shell } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import type { TemplateProps } from "./props";
 
 const RAIL = ["⌂", "▦", "◭", "⌾", "👤", "＋"];
 

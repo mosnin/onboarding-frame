@@ -20,6 +20,12 @@ export interface Series {
   dashedFrom?: number;
   /** Fill the area under the line. */
   area?: boolean;
+  /**
+   * Mark the final point with a dot. Set per series so a chart can highlight
+   * where the real data ends without also dotting a reference or forecast
+   * line drawn beside it.
+   */
+  endDot?: boolean;
 }
 
 function scale(points: number[], min: number, max: number, height: number) {
@@ -54,7 +60,7 @@ export interface LineChartProps {
   max?: number;
   smooth?: boolean;
   gridLines?: number;
-  /** Draw a dot at the end of each line. */
+  /** Draw a dot at the end of every line; a series can opt in individually. */
   endDot?: boolean;
   className?: string;
 }
@@ -99,21 +105,27 @@ export function LineChart({
           style={{ height }}
           role="img"
         >
-          {Array.from({ length: gridLines + 1 }, (_, i) => {
-            const y = (height / gridLines) * i;
-            return (
-              <line
-                key={i}
-                x1={0}
-                x2={width}
-                y1={y}
-                y2={y}
-                stroke="var(--ob-border)"
-                strokeWidth={1}
-                vectorEffect="non-scaling-stroke"
-              />
-            );
-          })}
+          {/*
+            gridLines={0} means "none". Dividing by it would make the single
+            remaining line's y NaN, which renders as an invalid SVG attribute
+            rather than as nothing, so the empty case is handled explicitly.
+          */}
+          {gridLines > 0 &&
+            Array.from({ length: gridLines + 1 }, (_, i) => {
+              const y = (height / gridLines) * i;
+              return (
+                <line
+                  key={i}
+                  x1={0}
+                  x2={width}
+                  y1={y}
+                  y2={y}
+                  stroke="var(--ob-border)"
+                  strokeWidth={1}
+                  vectorEffect="non-scaling-stroke"
+                />
+              );
+            })}
 
           {series.map((s) => {
             const ys = scale(s.points, lo, hi, height);
@@ -158,7 +170,7 @@ export function LineChart({
                     vectorEffect="non-scaling-stroke"
                   />
                 )}
-                {endDot && ys.length > 0 && (
+                {(s.endDot ?? endDot) && ys.length > 0 && (
                   <circle
                     cx={(ys.length - 1) * stepX}
                     cy={ys[ys.length - 1]}

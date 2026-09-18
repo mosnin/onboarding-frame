@@ -2,11 +2,29 @@
   "name": "onboarding-frame",
   "version": "0.1.0",
   "description": "A UI library of production-grade SaaS onboarding flows: setup wizards, checklists, product tours, feature-spotlight modal sequences, empty states, and paywall sequences. Config-driven, themeable, headless-friendly.",
-  "keywords": ["onboarding", "react", "ui", "saas", "product-tour", "checklist", "wizard", "paywall", "pricing", "tailwind"],
+  "keywords": [
+    "onboarding",
+    "react",
+    "ui",
+    "saas",
+    "product-tour",
+    "checklist",
+    "wizard",
+    "paywall",
+    "pricing",
+    "tailwind"
+  ],
   "license": "MIT",
   "type": "module",
-  "sideEffects": ["*.css"],
-  "files": ["dist", "src", "README.md"],
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "bin",
+    "dist",
+    "src",
+    "README.md"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -25,7 +43,7 @@
         "import": "./dist/index.js",
         "require": "./dist/index.cjs"
       },
-      "./styles.css": "./dist/styles.css",
+      "./styles.css": "./src/styles.css",
       "./package.json": "./package.json"
     }
   },
@@ -49,5 +67,8 @@
     "react-dom": "^19.3.0",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
+  },
+  "bin": {
+    "onboarding-frame": "./bin/onboarding-frame.mjs"
   }
 }

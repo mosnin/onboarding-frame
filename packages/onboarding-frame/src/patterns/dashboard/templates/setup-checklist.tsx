@@ -4,8 +4,9 @@ import { Placeholder } from "../../../ui/placeholder";
 import { cn } from "../../../lib/cn";
 import { Surface, setupChecklistTokens } from "./tokens";
 import { ProgressBar } from "../../../ui/primitives";
-import { Banner, Btn, Card, Main, SearchField, Shell, Sidebar, TopBar } from "./chrome";
-import type { TemplateProps } from "./api-console";
+import { BarChart, LineChart } from "../../../ui/charts";
+import { Banner, Btn, Card, Main, SearchField, Shell, Sidebar, Tabs, TopBar } from "./chrome";
+import type { TemplateProps } from "./props";
 
 const NAV = [
   { id: "setup", label: "Setup", glyph: "🚀", active: true },
@@ -47,11 +48,21 @@ const RESOURCES = [
  * progress card, a step-by-step task list as the main column, and a support
  * rail of brand, integration and education cards.
  */
+export type ChecklistPage = "setup" | "finance";
+
+export interface SetupChecklistProps extends TemplateProps {
+  page?: ChecklistPage;
+}
+
 export function SetupChecklistTemplate({
   brandName = "Fernwood",
   userName = "Alex",
   className,
-}: TemplateProps) {
+  page = "setup",
+}: SetupChecklistProps) {
+  // Six of seven steps are done by the time someone lives in Finance, so the
+  // rail's persistent progress reflects that rather than staying at zero.
+  const done = page === "finance" ? 6 : 0;
   return (
     <Surface tokens={setupChecklistTokens}>
     <Shell className={cn("flex-col", className)} bg="var(--ob-surface-2)">
@@ -78,9 +89,12 @@ export function SetupChecklistTemplate({
               <span aria-hidden className="opacity-60">›</span>
             </div>
             <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/15">
-              <div className="h-full w-0 rounded-full bg-[#4ade80]" />
+              <div
+                className="h-full rounded-full bg-[#4ade80]"
+                style={{ width: `${(done / 7) * 100}%` }}
+              />
             </div>
-            <p className="mt-2 text-[0.82rem] text-white/60">0/7 completed</p>
+            <p className="mt-2 text-[0.82rem] text-white/60">{done}/7 completed</p>
           </div>
 
           <nav className="mt-4 grid gap-0.5 px-2">
@@ -88,10 +102,14 @@ export function SetupChecklistTemplate({
               <button
                 key={item.id}
                 type="button"
-                aria-current={item.active ? "page" : undefined}
+                aria-current={
+                  (item.active ? page === "setup" : item.id === page) ? "page" : undefined
+                }
                 className={cn(
                   "flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem] transition-colors",
-                  item.active ? "bg-white/10 font-semibold" : "text-white/75 hover:bg-white/5",
+                  (item.active ? page === "setup" : item.id === page)
+                    ? "bg-white/10 font-semibold"
+                    : "text-white/75 hover:bg-white/5",
                 )}
               >
                 <span aria-hidden className="w-4 text-center opacity-80">{item.glyph}</span>
@@ -137,6 +155,9 @@ export function SetupChecklistTemplate({
             </div>
           </TopBar>
 
+          {page === "finance" ? (
+            <FinancePage />
+          ) : (
           <div className="grid gap-6 px-6 py-6 sm:px-10 lg:grid-cols-[1fr_360px]">
             <div className="grid content-start gap-6">
               <h1 className="text-[2rem] font-extrabold tracking-tight">
@@ -244,9 +265,255 @@ export function SetupChecklistTemplate({
               </Card>
             </div>
           </div>
+          )}
         </Main>
       </div>
     </Shell>
     </Surface>
+  );
+}
+
+const FINANCE_MONTHS = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
+/**
+ * Finance overview.
+ *
+ * Cashflow mixes two encodings on one plot: payment and expense bars for the
+ * months that had activity, and net income as a line that crosses below zero
+ * in July. The months with no activity are left empty rather than zero-filled,
+ * and the linked-account cards stay in their unconnected state — a real new
+ * account has no bank feed, and the card's job is to say so.
+ */
+function FinancePage() {
+  const payments = [0, 0, 0, 0, 5200, 14000, 0, 0, 0, 0, 0, 0];
+  const expenses = [0, 0, 0, 0, 0, 0, 7000, 0, 0, 0, 0, 0];
+
+  return (
+    <div className="px-6 py-6 sm:px-10">
+      <h1 className="text-[2.2rem] font-extrabold tracking-tight">Finance</h1>
+
+      <div className="pt-4">
+        <Tabs
+          items={[
+            { id: "overview", label: "Overview" },
+            { id: "payments", label: "Payments" },
+            { id: "expenses", label: "Expenses" },
+            { id: "books", label: "QuickBooks" },
+            { id: "tax", label: "Tax Hub" },
+          ]}
+          active="overview"
+        />
+      </div>
+
+      <div className="grid gap-6 pt-6 lg:grid-cols-[1fr_360px]">
+        <div className="grid content-start gap-6">
+          <Card className="p-0">
+            <div className="flex flex-wrap items-center gap-3 border-b border-[color:var(--ob-border)] p-5">
+              <div className="flex-1">
+                <h2 className="flex items-center gap-1.5 text-lg font-extrabold">
+                  Cashflow <InfoDot />
+                </h2>
+                <p className="pt-1 text-[0.9rem] text-[color:var(--ob-muted)]">
+                  Jan 1&ndash;Dec 31, 2026
+                </p>
+              </div>
+              <span className="flex items-center gap-2 text-[0.92rem]">
+                <span className="grid h-5 w-9 place-items-center rounded-full bg-[color:var(--ob-fg)] text-[0.6rem] text-white">
+                  <span className="ml-2">✓</span>
+                </span>
+                Show net income
+              </span>
+              <span className="inline-flex items-center gap-10 rounded-[8px] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem]">
+                This year <span aria-hidden className="text-[0.7rem] opacity-60">⌄</span>
+              </span>
+            </div>
+
+            <div className="grid gap-6 p-5 sm:grid-cols-3">
+              <Figure dash label="Net income" value="$12,140" cents="74" />
+              <Figure dot="#2f9e44" label="Paid payments (4)" value="$19,140" cents="74" />
+              <Figure dot="#7f93f5" label="Expenses (1)" value="$7,000" cents="00" />
+            </div>
+
+            <div className="relative px-5 pb-2">
+              <BarChart
+                height={260}
+                values={payments}
+                color="#2f9e44"
+                max={15000}
+                xLabels={FINANCE_MONTHS}
+                yLabels={["-$10K", "-$5K", "$0", "$5K", "$10K", "$15K"]}
+              />
+              {/* Expenses ride the same plot as a second, differently coloured bar. */}
+              <div className="pointer-events-none absolute inset-x-5 bottom-2 top-0">
+                <BarChart
+                  height={260}
+                  values={expenses}
+                  color="#7f93f5"
+                  max={15000}
+                  className="opacity-100 [&_text]:hidden"
+                />
+              </div>
+              <div className="pointer-events-none absolute inset-x-5 bottom-2 top-0">
+                <LineChart
+                  height={260}
+                  gridLines={0}
+                  min={-10000}
+                  max={15000}
+                  series={[
+                    {
+                      id: "net",
+                      points: [0, 0, 0, 0, 5200, 14000, -7000, 0, 0, 0, 0, 0],
+                      color: "#3d3d3d",
+                    },
+                  ]}
+                  className="[&_text]:hidden"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] px-5 py-3">
+              <p className="flex-1 text-[0.9rem] text-[color:var(--ob-muted)]">
+                Last updated 46 minutes ago
+              </p>
+              <span className="flex items-center gap-1 text-[0.92rem] font-semibold">
+                View expenses <span aria-hidden>›</span>
+              </span>
+            </div>
+          </Card>
+
+          <Card className="p-0">
+            <div className="flex flex-wrap items-center gap-3 border-b border-[color:var(--ob-border)] p-5">
+              <div className="flex-1">
+                <h2 className="flex items-center gap-1.5 text-lg font-extrabold">
+                  {brandLabel()} payments <InfoDot />
+                </h2>
+                <p className="pt-1 text-[0.9rem] text-[color:var(--ob-muted)]">
+                  Jan 1&ndash;Dec 31, 2026
+                </p>
+              </div>
+              <span className="inline-flex items-center gap-10 rounded-[8px] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem]">
+                This year <span aria-hidden className="text-[0.7rem] opacity-60">⌄</span>
+              </span>
+            </div>
+
+            <div className="grid gap-6 p-5 sm:grid-cols-4">
+              <Figure dot="#2f9e44" label="Paid (4)" value="$19,140" cents="74" />
+              <Figure dot="#e8c33d" label="Processing (0)" value="$0" />
+              <Figure dot="#e0332c" label="Overdue (1)" value="$11,915" cents="00" />
+              <Figure dot="#bfbfbf" label="Upcoming (1)" value="$5,518" cents="50" />
+            </div>
+          </Card>
+        </div>
+
+        <div className="grid content-start gap-6">
+          <Card>
+            <div className="flex items-start gap-3">
+              <h2 className="flex-1 text-lg font-extrabold">Financial tracker</h2>
+              <span className="flex items-center gap-1 text-[0.9rem] font-semibold text-[#2563eb]">
+                + Link account
+              </span>
+            </div>
+            <p className="pt-2 text-[0.92rem] text-[color:var(--ob-muted)]">
+              All your business accounts in one convenient place.
+            </p>
+
+            {[
+              {
+                id: "balance",
+                glyph: "🏦",
+                label: "Accounts balance",
+                blurb: "Connect your bank accounts to view your accounts balance.",
+              },
+              {
+                id: "cards",
+                glyph: "💳",
+                label: "Credit card spending",
+                blurb: "Connect your cards to view your credit card spending.",
+              },
+            ].map((slot, index) => (
+              <div
+                key={slot.id}
+                className={cn(
+                  "pt-5",
+                  index > 0 && "mt-5 border-t border-[color:var(--ob-border)]",
+                )}
+              >
+                <h3 className="flex items-center gap-2 font-semibold">
+                  <span aria-hidden>{slot.glyph}</span>
+                  {slot.label}
+                  <InfoDot />
+                </h3>
+                {/* Nothing is linked, so the figure really is zero. */}
+                <p className="pt-2 text-[1.9rem] font-extrabold tabular-nums">$0</p>
+                <div className="grid justify-items-center gap-3 pt-3">
+                  <Placeholder width={110} height={70} radius={10} label="" />
+                  <p className="max-w-[24ch] text-center text-[0.92rem] text-[color:var(--ob-muted)]">
+                    {slot.blurb}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function brandLabel() {
+  return "Workspace";
+}
+
+function Figure({
+  label,
+  value,
+  cents,
+  dot,
+  dash,
+}: {
+  label: string;
+  value: string;
+  cents?: string;
+  dot?: string;
+  dash?: boolean;
+}) {
+  return (
+    <div>
+      <p className="flex items-center gap-2 text-[0.95rem]">
+        {dash ? (
+          <span aria-hidden className="h-[2px] w-4 shrink-0 bg-[color:var(--ob-fg)]" />
+        ) : (
+          <span
+            aria-hidden
+            className="size-2.5 shrink-0 rounded-full"
+            style={{ background: dot }}
+          />
+        )}
+        <span className="flex items-center gap-1.5">
+          {label}
+          <InfoDot />
+        </span>
+      </p>
+      <p className="pt-1.5 text-[1.45rem] font-extrabold tabular-nums">
+        {value}
+        {cents && (
+          <span className="text-[0.95rem] font-extrabold">.{cents}</span>
+        )}
+      </p>
+    </div>
+  );
+}
+
+function InfoDot() {
+  return (
+    <span
+      aria-hidden
+      className="grid size-[15px] shrink-0 place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.6rem] text-[color:var(--ob-muted)]"
+    >
+      i
+    </span>
   );
 }
