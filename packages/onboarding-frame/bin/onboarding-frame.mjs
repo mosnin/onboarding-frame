@@ -13,7 +13,11 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
-const DEFAULT_REGISTRY = "https://onboarding-frame.vercel.app/registry";
+// The deployed catalogue. Override with --registry (or ONBOARDING_FRAME_REGISTRY)
+// when pointing at a fork or a local `next start`.
+const DEFAULT_REGISTRY =
+  process.env.ONBOARDING_FRAME_REGISTRY ??
+  "https://onboarding-frame-mosnins-projects.vercel.app/registry";
 const DEFAULT_DIR = "components/onboarding";
 
 const HELP = `
@@ -33,7 +37,8 @@ Items
 Options
   --dir <path>       Where to write files. Default: ${DEFAULT_DIR}
   --cwd <path>       Project root. Default: the current directory
-  --registry <url>   Registry base URL. Default: the public one
+  --registry <url>   Registry base URL. Default: the public one, or
+                     $ONBOARDING_FRAME_REGISTRY when that is set
   --overwrite        Replace files that already exist
   --dry-run          Print what would be written, write nothing
   --help, -h         Show this message
