@@ -10,6 +10,7 @@ import {
   GlobeIcon,
   GridFourIcon,
   LightningIcon,
+  PlusIcon,
   QuestionIcon,
   SearchIcon,
 } from "../../../ui/icons-solid";
@@ -38,8 +39,8 @@ const NAV = [
 ];
 
 const APPS = [
-  { id: "sheets", name: "Sheets", connections: "1", workflows: "1" },
-  { id: "forms", name: "Forms", connections: "1", workflows: "1" },
+  { id: "sheets", name: "Google Sheets", connections: "1", workflows: "1" },
+  { id: "typeform", name: "Typeform", connections: "1", workflows: "1" },
 ];
 
 const FOOTER_LINKS = [
@@ -70,18 +71,18 @@ export function AutomationAppsTemplate({
   return (
     <Surface tokens={automationTokens} className={className}>
       <Shell className="flex-col">
-        <header className="flex h-[70px] shrink-0 items-center gap-[15px] px-[24px]">
-          <CrossIcon size={15} className="text-[color:var(--ob-fg-soft)]" />
-          <Wordmark name={brandName} size={15} mark={20} radius={5} />
-          <SearchIcon size={14} />
-          <Avatar name={userName} size={30} />
+        <header className="flex h-[72px] shrink-0 items-center gap-[15px] border-b border-[color:var(--ob-border)] px-[30px]">
+          <CrossIcon size={17} className="text-[color:var(--ob-fg-soft)]" />
+          <Wordmark name={brandName} size={21} mark={26} radius={6} />
+          <SearchIcon size={19} className="ml-auto" />
+          <Avatar name={userName} size={38} />
         </header>
 
         <div className="flex min-h-[0px] flex-1">
           <Sidebar width={315} bg="var(--ob-surface)">
             <div className="px-[18px] pb-[18px]">
-              <span className="flex items-center justify-center gap-[6px] rounded-[var(--ob-radius)] bg-[color:var(--ob-cta-bg)] py-[12px] text-[0.91rem] font-semibold text-[color:var(--ob-cta-fg)]">
-                <span aria-hidden>+</span> Create workflow
+              <span className="flex items-center justify-center gap-[6px] rounded-[var(--ob-radius)] bg-[color:var(--ob-cta-bg)] py-[15px] text-[1.03rem] font-semibold text-[color:var(--ob-cta-fg)]">
+                <PlusIcon size={15} weight="bold" /> Create workflow
               </span>
             </div>
 
@@ -90,10 +91,10 @@ export function AutomationAppsTemplate({
                 <NavItem
                   key={item.id}
                   label={item.label}
-                  glyph={<item.Icon size={14} />}
+                  glyph={<item.Icon size={26} />}
                   active={item.id === page}
                   className={cn(
-                    "px-[12px] py-[9px] text-[0.873rem]",
+                    "gap-[15px] px-[12px] py-[17px] text-[1.03rem]",
                     item.id === page &&
                       "bg-[color-mix(in_oklab,#ff4f00_10%,transparent)] font-bold",
                   )}
@@ -120,7 +121,9 @@ export function AutomationAppsTemplate({
 
               <p className="flex items-center gap-[9px] pt-[15px] text-[0.819rem]">
                 <span className="flex-1 font-bold">Workflows</span>
-                <span className="text-[color:var(--ob-fg-soft)]">Unlimited</span>
+                <span className="text-[color:var(--ob-fg-soft)]">
+                  Unlimited
+                </span>
               </p>
 
               <p className="pt-[15px] text-[0.797rem] text-[color:var(--ob-fg-soft)]">
@@ -137,24 +140,26 @@ export function AutomationAppsTemplate({
           </Sidebar>
 
           <Main className="overflow-auto px-[30px] py-[24px]">
-            <div className="flex flex-wrap items-center gap-[15px]">
-              <h1 className="flex-1 text-[1.669rem] font-bold">Apps</h1>
+            <div className="ml-auto flex w-full max-w-[788px] flex-wrap items-center gap-[15px]">
+              <h1 className="flex-1 text-[2.05rem] font-bold">Apps</h1>
               <span className="flex w-[212px] items-center gap-[8px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[9px] text-[0.797rem] text-[color:var(--ob-muted)]">
                 <SearchIcon size={14} /> Search apps
               </span>
               <span className="flex items-center gap-[6px] rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[18px] py-[9px] text-[0.819rem] font-semibold text-white">
-                <span aria-hidden>+</span> Add connection
+                <PlusIcon size={15} weight="bold" /> Add connection
               </span>
             </div>
 
-            <div className="grid gap-[12px] pt-[18px]">
+            <div className="ml-auto grid w-full max-w-[788px] gap-[12px] pt-[18px]">
               {APPS.map((app) => (
                 <article
                   key={app.id}
                   className="flex items-center gap-[15px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[18px] py-[15px]"
                 >
                   <BrandMark brand={app.name} size={39} />
-                  <h2 className="flex-1 text-[1.062rem] font-bold">{app.name}</h2>
+                  <h2 className="flex-1 text-[1.062rem] font-bold">
+                    {app.name}
+                  </h2>
                   <Stat value={app.connections} label="Connection" />
                   <Stat value={app.workflows} label="Workflow" />
                   <CaretRightIcon size={14} />
@@ -167,14 +172,21 @@ export function AutomationAppsTemplate({
               <div>
                 <p className="flex items-center gap-[9px] text-[0.835rem] font-bold">
                   Follow us
-                  {["facebook", "linkedin", "instagram", "x", "youtube"].map((slug) => (
-                    <span
-                      key={slug}
-                      className="grid size-[27px] place-items-center rounded-full bg-[color:var(--ob-surface-3)]"
-                    >
-                      <BrandMark brand={slug} size={13} colored={false} />
-                    </span>
-                  ))}
+                  {["facebook", "linkedin", "rss", "x", "youtube"].map(
+                    (slug) => (
+                      <span
+                        key={slug}
+                        className="grid size-[27px] place-items-center rounded-full bg-[#a8a6a2] text-white"
+                      >
+                        <BrandMark
+                          brand={slug}
+                          size={14}
+                          colored={false}
+                          plain
+                        />
+                      </span>
+                    ),
+                  )}
                 </p>
                 <div className="pt-[30px]">
                   <Wordmark name={brandName} size={13} mark={18} radius={5} />
@@ -190,11 +202,17 @@ export function AutomationAppsTemplate({
                 <p className="flex flex-wrap items-center justify-end gap-[9px] pt-[30px] text-[0.774rem] font-bold">
                   <span>© 2026 Acme Inc.</span>
                   <span>Manage cookies</span>
-                  <span aria-hidden className="text-[color:var(--ob-border-strong)]">
+                  <span
+                    aria-hidden
+                    className="text-[color:var(--ob-border-strong)]"
+                  >
                     |
                   </span>
                   <span>Legal</span>
-                  <span aria-hidden className="text-[color:var(--ob-border-strong)]">
+                  <span
+                    aria-hidden
+                    className="text-[color:var(--ob-border-strong)]"
+                  >
                     |
                   </span>
                   <span>Privacy</span>
@@ -211,8 +229,12 @@ export function AutomationAppsTemplate({
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <span className="w-[99px] shrink-0 text-center">
-      <span className="block text-[1.024rem] font-bold tabular-nums">{value}</span>
-      <span className="block text-[0.774rem] text-[color:var(--ob-fg-soft)]">{label}</span>
+      <span className="block text-[1.024rem] font-bold tabular-nums">
+        {value}
+      </span>
+      <span className="block text-[0.774rem] text-[color:var(--ob-fg-soft)]">
+        {label}
+      </span>
     </span>
   );
 }

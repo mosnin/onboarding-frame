@@ -27,17 +27,18 @@ const ICONS = simple as unknown as Record<string, SimpleIcon>;
 
 /** `"bluesky"` -> `siBluesky`, which is how simple-icons names its exports. */
 function lookup(slug: string): SimpleIcon | undefined {
-  const key =
-    "si" +
-    slug
-      .split(/[^a-z0-9]+/i)
-      .filter(Boolean)
-      .map((part) => part[0]!.toUpperCase() + part.slice(1).toLowerCase())
-      .join("");
-  return ICONS[key];
+  // Simple Icons exports one capital and the rest lower — `siGooglesheets`,
+  // not `siGoogleSheets`. Capitalising each word missed every multi-word
+  // brand in the catalogue, which then fell through to the dashed grey tile
+  // that rule 3 exists to get rid of.
+  const flat = slug.replace(/[^a-z0-9]+/gi, "").toLowerCase();
+  if (!flat) return undefined;
+  return ICONS["si" + flat[0]!.toUpperCase() + flat.slice(1)];
 }
 
 export interface BrandMarkProps {
+  /** Drop the dashed frame on the fallback, for use inside a coloured disc. */
+  plain?: boolean;
   /** Simple Icons slug, e.g. "facebook", "bluesky", "instagram". */
   brand: string;
   size?: number;
@@ -53,6 +54,7 @@ export function BrandMark({
   size = 20,
   colored = true,
   label,
+  plain = false,
   className,
 }: BrandMarkProps) {
   const icon = lookup(brand);
@@ -66,9 +68,16 @@ export function BrandMark({
         aria-label={label ?? brand}
         role="img"
         className={cn(
-          "inline-grid shrink-0 place-items-center rounded-[4px] border border-dashed",
-          "border-[color:var(--ob-border-strong)] bg-[color:var(--ob-surface-2)]",
-          "font-semibold uppercase leading-none text-[color:var(--ob-muted)]",
+          "inline-grid shrink-0 place-items-center rounded-[4px]",
+          // Inside a coloured disc the dashed tile reads as a broken image;
+          // `plain` drops the frame and lets the disc carry the shape.
+          plain
+            ? "font-semibold uppercase leading-none"
+            : [
+                "border border-dashed border-[color:var(--ob-border-strong)]",
+                "bg-[color:var(--ob-surface-2)]",
+                "font-semibold uppercase leading-none text-[color:var(--ob-muted)]",
+              ],
           className,
         )}
         style={{ width: size, height: size, fontSize: Math.round(size * 0.42) }}

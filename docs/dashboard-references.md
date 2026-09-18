@@ -439,7 +439,7 @@ bottom/edge; y labels top-left and bottom-left (8.0% / -4.0%); x "January 2024" 
 | 37 | 093 | Clerk dashboard | auth-console | REMEASURED |
 | 38 | 094 | Better Stack uptime | uptime-monitor (dark) | REMEASURED |
 | 39 | 095 | Cloudflare zone overview | zone-overview | REMEASURED |
-| 40 | 096 | Zapier My Apps | automation-apps | DONE |
+| 40 | 096 | Zapier My Apps | automation-apps | REMEASURED |
 
 ## 36 Contra (092)
 White, grey-500 section headings, thin hairline cards, blue #4a6cf7 data, purple accents.
