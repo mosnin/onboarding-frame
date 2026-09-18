@@ -122,13 +122,13 @@ export function CommerceAnalyticsTemplate({
                   type="button"
                   aria-current={item.active ? "page" : undefined}
                   className={cn(
-                    "flex items-center gap-3 rounded-[8px] px-3 py-2 text-left text-[0.9rem]",
+                    "flex items-center gap-[11px] rounded-[7px] px-[11px] py-[3px] text-left text-[0.83rem]",
                     item.active
                       ? "bg-[color:var(--ob-surface)] font-semibold [box-shadow:var(--ob-shadow)]"
                       : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-3)]",
                   )}
                 >
-                  <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-70" />
+                  <Icon name={item.icon} width={16} height={16} className="shrink-0 opacity-70" />
                   <span className="flex-1">{item.label}</span>
                   {item.badge && (
                     <span className="rounded bg-[color:var(--ob-surface-3)] px-1.5 text-[0.72rem] font-semibold">
@@ -158,7 +158,7 @@ export function CommerceAnalyticsTemplate({
                   type="button"
                   className="flex items-center gap-3 rounded-[8px] px-3 py-2 text-left text-[0.9rem] text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-3)]"
                 >
-                  <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-70" />
+                  <Icon name={item.icon} width={16} height={16} className="shrink-0 opacity-70" />
                   {item.label}
                 </button>
               ))}
