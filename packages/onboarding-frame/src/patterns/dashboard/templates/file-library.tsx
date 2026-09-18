@@ -56,7 +56,7 @@ export function FileLibraryTemplate({
 }: TemplateProps) {
   return (
     <Surface tokens={fileLibraryTokens}>
-    <Shell className={cn(className)} bg="var(--ob-surface-2)">
+    <Shell className={cn(className)} bg="#fcfbfe">
       {/* Measured off the reference: 255px. */}
       <Sidebar width={255} bg="var(--ob-surface-2)" className="border-r-0">
         <div className="flex items-center gap-[7px] p-[18px]">

@@ -84,7 +84,7 @@ export function GuidesAssistantTemplate({
                   key={item.id}
                   type="button"
                   className={cn(
-                    "flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.92rem]",
+                    "flex items-center gap-[11px] rounded-[8px] px-[11px] py-[7px] text-left text-[0.78rem]",
                     item.pill
                       ? "bg-[color:var(--ob-surface-3)] font-semibold"
                       : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
@@ -176,7 +176,7 @@ export function GuidesAssistantTemplate({
                 <h1 className="text-[2rem] font-extrabold tracking-tight">
                   Let&apos;s get started, {userName}!
                 </h1>
-                <p className="max-w-lg text-pretty text-[color:var(--ob-muted)]">
+                <p className="max-w-[600px] text-pretty text-[color:var(--ob-muted)]">
                   Based on what we know about your business, we&apos;ve created a
                   personalised setup guide to help you start seeing value.
                 </p>

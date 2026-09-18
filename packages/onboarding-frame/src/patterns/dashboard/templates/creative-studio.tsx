@@ -99,7 +99,7 @@ export function CreativeStudioTemplate({
                 type="button"
                 aria-current={item.active ? "page" : undefined}
                 className={cn(
-                  "flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem]",
+                  "flex items-center gap-[11px] rounded-[8px] px-[11px] py-[7px] text-left text-[0.76rem]",
                   item.active
                     ? "bg-[color:var(--ob-surface-2)] font-semibold"
                     : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
@@ -166,8 +166,8 @@ export function CreativeStudioTemplate({
           <div className="px-6 pb-12 sm:px-8">
             <div className="flex items-center gap-3 rounded-[8px] bg-[#f6e6ec] px-5 py-3 text-[0.9rem]">
               <span className="flex-1 text-center">
-                You&apos;re on a <strong>Free plan</strong>. Upgrade for more media minutes,
-                credits and watermark-free exports.
+                You&apos;re on a <strong>Free plan</strong>. Upgrade for more media
+                minutes, AI credits, watermark-free exports, and more.
               </span>
               <Btn tone="neutral" size="sm" className="border-[#d9a8bb] text-[color:var(--ob-brand)]">
                 Upgrade

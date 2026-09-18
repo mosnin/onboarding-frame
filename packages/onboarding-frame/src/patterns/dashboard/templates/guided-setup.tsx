@@ -97,7 +97,7 @@ export function GuidedSetupTemplate({
                 Welcome to {brandName} 🎉
               </h1>
               <p className="mt-2 text-[1.05rem] text-[color:var(--ob-muted)]">
-                We&apos;ve customised this getting started dashboard for you
+                We&apos;ve customized this getting started dashboard for you
               </p>
             </div>
 
