@@ -68,9 +68,8 @@ export default function HomePage() {
 
       <section className="mt-20 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {featured.map((entry) => (
-          <Link
+          <article
             key={entry.slug}
-            href={`/templates/${entry.slug}`}
             className="group relative overflow-hidden rounded-2xl border border-[color:var(--site-border)] transition-shadow hover:shadow-[var(--site-shadow-lift)]"
           >
             <span
@@ -78,13 +77,23 @@ export default function HomePage() {
               className="pointer-events-none absolute inset-x-0 bottom-0 h-40 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               style={{ background: "var(--site-glow)" }}
             />
+            {/*
+              The preview is a live template carrying its own buttons, so it
+              cannot sit inside the anchor. The heading is a stretched link
+              instead, which keeps the whole card clickable.
+            */}
             <div className="relative p-3">
               <TemplatePreview slug={entry.slug} page={entry.pages[0]?.id ?? "home"} />
             </div>
             <div className="relative flex items-start gap-3 px-5 pb-5">
               <span className="flex-1">
                 <span className="block text-[1.12rem] font-bold tracking-tight">
-                  {entry.name}
+                  <Link
+                    href={`/templates/${entry.slug}`}
+                    className="after:absolute after:inset-0"
+                  >
+                    {entry.name}
+                  </Link>
                 </span>
                 <span className="mt-1.5 line-clamp-2 block text-[0.95rem] leading-relaxed text-[color:var(--site-muted)]">
                   {entry.blurb}
@@ -92,7 +101,7 @@ export default function HomePage() {
               </span>
               <ArrowUpRight className="mt-1 shrink-0 text-[color:var(--site-muted)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </div>
-          </Link>
+          </article>
         ))}
       </section>
 

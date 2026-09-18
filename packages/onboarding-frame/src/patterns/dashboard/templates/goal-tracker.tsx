@@ -242,18 +242,18 @@ export function GoalTrackerTemplate({ className, page = "goal" }: GoalTrackerPro
               <p className="pb-2 pt-6 text-[0.98rem] text-[color:var(--ob-fg-soft)]">
                 Goal owner
               </p>
-              <p className="flex items-center gap-2.5 text-[1.05rem]">
+              <div className="flex items-center gap-2.5 text-[1.05rem]">
                 <AvatarSlot size={28} />
                 Sam Lee
-              </p>
+              </div>
 
               <p className="pb-2 pt-6 text-[0.98rem] text-[color:var(--ob-fg-soft)]">
                 Accountable team
               </p>
-              <p className="flex items-center gap-2.5 text-[1.05rem]">
+              <div className="flex items-center gap-2.5 text-[1.05rem]">
                 <Placeholder width={26} height={26} radius={6} label="" />
                 My workspace
-              </p>
+              </div>
 
               <div className="my-7 border-t border-[color:var(--ob-border)]" />
 

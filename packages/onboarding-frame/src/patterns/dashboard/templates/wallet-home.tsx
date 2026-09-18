@@ -142,12 +142,12 @@ export function WalletHomeTemplate({ className, page = "trending" }: WalletHomeP
                   </span>
                 </span>
 
-                <p className="flex items-center gap-3 pt-7">
+                <div className="flex items-center gap-3 pt-7">
                   <Placeholder width={44} height={44} radius={8} label="" />
                   <span className="text-[1rem] font-bold uppercase tracking-wide">
                     Creator
                   </span>
-                </p>
+                </div>
 
                 <h1 className="pt-5 text-[3.1rem] font-bold leading-[1.05] tracking-[-0.03em]">
                   Alzenaverse

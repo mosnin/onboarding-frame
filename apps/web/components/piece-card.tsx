@@ -7,10 +7,12 @@ import { ArrowUpRight } from "./icons";
 /**
  * A catalogue card.
  *
- * The whole card is a link, with the primary action sitting inside it as a
- * button. The warm wash along the bottom edge is a pseudo-element on the card
- * rather than a background on the preview, so it reads as light falling on the
- * card instead of as part of the artwork.
+ * The preview is a live template, which contains its own buttons and links —
+ * so it must not sit inside the card's anchor, or the markup is an <a> holding
+ * interactive content and React refuses to hydrate it. Instead the title is a
+ * stretched link: an anchor whose ::after covers the whole card. The card stays
+ * one click target, the preview stays inert, and the primary action sits above
+ * the overlay on its own layer.
  */
 export function PieceCard({
   href,
@@ -33,25 +35,24 @@ export function PieceCard({
 }) {
   if (layout === "list") {
     return (
-      <Link
-        href={href}
-        className="group flex items-center gap-5 rounded-xl border border-[color:var(--site-border)] p-3 transition-colors hover:bg-[color:var(--site-surface)]"
-      >
+      <article className="group relative flex items-center gap-5 rounded-xl border border-[color:var(--site-border)] p-3 transition-colors hover:bg-[color:var(--site-surface)]">
         <div className="h-[86px] w-[150px] shrink-0 overflow-hidden rounded-lg">
           {preview}
         </div>
         <div className="min-w-0 flex-1">
-          <p className="flex items-center gap-2 font-semibold">
-            {title}
+          <h3 className="flex items-center gap-2 font-semibold">
+            <Link href={href} className="after:absolute after:inset-0">
+              {title}
+            </Link>
             {badge && <Badge>{badge}</Badge>}
-          </p>
+          </h3>
           <p className="mt-1 line-clamp-2 text-[0.92rem] leading-relaxed text-[color:var(--site-muted)]">
             {blurb}
           </p>
           {meta && <div className="mt-2">{meta}</div>}
         </div>
         <ArrowUpRight className="shrink-0 text-[color:var(--site-muted)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-      </Link>
+      </article>
     );
   }
 
@@ -63,27 +64,32 @@ export function PieceCard({
         style={{ background: "var(--site-glow)" }}
       />
 
-      <Link href={href} className="relative block p-3">
+      <div className="relative p-3">
         {badge && (
-          <span className="absolute left-5 top-5 z-10">
+          <span className="absolute left-5 top-5 z-20">
             <Badge>{badge}</Badge>
           </span>
         )}
         <div className="overflow-hidden rounded-xl">{preview}</div>
-      </Link>
+      </div>
 
       <div className="relative flex flex-1 flex-col px-5 pb-5 pt-1">
-        <Link href={href} className="flex items-start gap-3">
-          <h3 className="flex-1 text-[1.12rem] font-bold tracking-tight">{title}</h3>
+        <div className="flex items-start gap-3">
+          <h3 className="flex-1 text-[1.12rem] font-bold tracking-tight">
+            <Link href={href} className="after:absolute after:inset-0">
+              {title}
+            </Link>
+          </h3>
           <ArrowUpRight className="mt-1 shrink-0 text-[color:var(--site-muted)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-        </Link>
+        </div>
 
         <p className="mt-2 line-clamp-2 text-[0.95rem] leading-relaxed text-[color:var(--site-muted)]">
           {blurb}
         </p>
 
         {meta && <div className="mt-3">{meta}</div>}
-        {action && <div className="mt-4">{action}</div>}
+        {/* Above the stretched link, so the button is clickable on its own. */}
+        {action && <div className="relative z-10 mt-4">{action}</div>}
       </div>
     </article>
   );

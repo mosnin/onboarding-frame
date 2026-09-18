@@ -105,21 +105,27 @@ export function LineChart({
           style={{ height }}
           role="img"
         >
-          {Array.from({ length: gridLines + 1 }, (_, i) => {
-            const y = (height / gridLines) * i;
-            return (
-              <line
-                key={i}
-                x1={0}
-                x2={width}
-                y1={y}
-                y2={y}
-                stroke="var(--ob-border)"
-                strokeWidth={1}
-                vectorEffect="non-scaling-stroke"
-              />
-            );
-          })}
+          {/*
+            gridLines={0} means "none". Dividing by it would make the single
+            remaining line's y NaN, which renders as an invalid SVG attribute
+            rather than as nothing, so the empty case is handled explicitly.
+          */}
+          {gridLines > 0 &&
+            Array.from({ length: gridLines + 1 }, (_, i) => {
+              const y = (height / gridLines) * i;
+              return (
+                <line
+                  key={i}
+                  x1={0}
+                  x2={width}
+                  y1={y}
+                  y2={y}
+                  stroke="var(--ob-border)"
+                  strokeWidth={1}
+                  vectorEffect="non-scaling-stroke"
+                />
+              );
+            })}
 
           {series.map((s) => {
             const ys = scale(s.points, lo, hi, height);
