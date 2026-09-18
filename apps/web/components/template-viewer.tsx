@@ -19,6 +19,11 @@ import {
   SocialSchedulerTemplate,
   MarketTerminalTemplate,
   EventAnalyticsTemplate,
+  CommunityTrafficTemplate,
+  GoalTrackerTemplate,
+  PlatformReportsTemplate,
+  DeployAnalyticsTemplate,
+  TokenUsageTemplate,
   type ApiConsolePage,
   type CrmPage,
   type FinancePage,
@@ -28,6 +33,11 @@ import {
   type EventPage,
   type GuidesPage,
   type ChecklistPage,
+  type CommunityPage,
+  type GoalPage,
+  type ReportsPage,
+  type DeployPage,
+  type UsagePage,
 } from "onboarding-frame";
 
 /** Renders a template by slug, shared by the viewer and the shelf preview. */
@@ -55,6 +65,16 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
       return <SupportInsightsTemplate />;
     case "finance-overview":
       return <FinanceOverviewTemplate page={page as FinancePage} />;
+    case "community-traffic":
+      return <CommunityTrafficTemplate page={page as CommunityPage} />;
+    case "goal-tracker":
+      return <GoalTrackerTemplate page={page as GoalPage} />;
+    case "platform-reports":
+      return <PlatformReportsTemplate page={page as ReportsPage} />;
+    case "deploy-analytics":
+      return <DeployAnalyticsTemplate page={page as DeployPage} />;
+    case "token-usage":
+      return <TokenUsageTemplate page={page as UsagePage} />;
     case "market-terminal":
       return <MarketTerminalTemplate page={page as TerminalPage} />;
     case "event-analytics":

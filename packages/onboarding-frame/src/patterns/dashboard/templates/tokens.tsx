@@ -497,3 +497,118 @@ export const eventTokens: TemplateTokens = {
   radiusSm: "0.625rem",
   radiusLg: "1.25rem",
 };
+
+/**
+ * Reddit mod tools: orange brand but blue links and active tabs, on a grey
+ * page behind white cards. The split accent is the giveaway — most products
+ * use one colour for both.
+ */
+export const communityTokens: TemplateTokens = {
+  bg: "#f6f7f8",
+  surface: "#ffffff",
+  surface2: "#f2f3f5",
+  surface3: "#e4e6eb",
+  border: "#e2e4e8",
+  borderStrong: "#c9ccd1",
+  fg: "#1c1c1c",
+  fgSoft: "#3a3a3c",
+  muted: "#7c7f83",
+  brand: "#0079d3",
+  brandFg: "#ffffff",
+  ctaBg: "#ff4500",
+  ctaFg: "#ffffff",
+  radius: "0.25rem",
+  radiusSm: "0.25rem",
+  radiusLg: "0.5rem",
+};
+
+/** Asana: dark rail against a white document body, indigo primary. */
+export const goalTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f6f6f7",
+  surface3: "#ebebed",
+  border: "#e5e5e7",
+  borderStrong: "#cfcfd3",
+  fg: "#1e1f21",
+  fgSoft: "#44464a",
+  muted: "#8b8d92",
+  brand: "#4573d2",
+  brandFg: "#ffffff",
+  ctaBg: "#e8384f",
+  ctaFg: "#ffffff",
+  success: "#5da283",
+  radius: "0.5rem",
+  radiusSm: "0.375rem",
+  radiusLg: "0.75rem",
+};
+
+/**
+ * Supabase: charcoal rather than black, green accent, and monospace for every
+ * path and method — the type change is doing as much work as the palette.
+ */
+export const platformTokens: TemplateTokens = {
+  scheme: "dark",
+  bg: "#1c1c1c",
+  surface: "#1f1f1f",
+  surface2: "#262626",
+  surface3: "#2f2f2f",
+  border: "#2b2b2b",
+  borderStrong: "#3d3d3d",
+  fg: "#ededed",
+  fgSoft: "#c2c2c2",
+  muted: "#8f8f8f",
+  brand: "#3ecf8e",
+  brandFg: "#0b1f16",
+  ctaBg: "#3ecf8e",
+  ctaFg: "#0b1f16",
+  success: "#3ecf8e",
+  danger: "#f0883e",
+  radius: "0.5rem",
+  radiusSm: "0.25rem",
+  radiusLg: "0.625rem",
+};
+
+/** Vercel: black brand, blue data, near-square corners and tight hairlines. */
+export const deployTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f7f7f8",
+  surface3: "#ededee",
+  border: "#e6e6e7",
+  borderStrong: "#d2d2d4",
+  fg: "#0a0a0a",
+  fgSoft: "#3c3c3c",
+  muted: "#888889",
+  brand: "#0062ff",
+  brandFg: "#ffffff",
+  ctaBg: "#0a0a0a",
+  ctaFg: "#ffffff",
+  danger: "#e5484d",
+  radius: "0.5rem",
+  radiusSm: "0.375rem",
+  radiusLg: "0.625rem",
+};
+
+/**
+ * StackAI: slate as the data colour rather than a brand hue, which keeps a
+ * page full of charts looking like tooling instead of marketing.
+ */
+export const usageTokens: TemplateTokens = {
+  bg: "#ffffff",
+  surface: "#ffffff",
+  surface2: "#f7f8fa",
+  surface3: "#eceef1",
+  border: "#e7e9ed",
+  borderStrong: "#d3d7de",
+  fg: "#15181d",
+  fgSoft: "#3d4450",
+  muted: "#7c848f",
+  brand: "#5b6472",
+  brandFg: "#ffffff",
+  ctaBg: "#15181d",
+  ctaFg: "#ffffff",
+  radius: "0.75rem",
+  radiusSm: "0.5rem",
+  radiusLg: "1rem",
+};

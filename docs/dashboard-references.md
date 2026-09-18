@@ -14,12 +14,12 @@ Several references are EXTRA PAGES of the same product (e.g. 15+16 Copilot Money
 | 8 | 064 | Klaviyo (assistant open) | guides-assistant | DONE |
 | 9 | 065 | Klaviyo (assistant closed) | guides-assistant | DONE (same page) |
 | 10 | 066 | Bloom | brand-studio | DONE |
-| 11 | 067 | Causal | causal-modeling | TODO |
+| 11 | 067 | Causal | modeling-home | DONE |
 | 12 | 068 | Plain | support-insights | DONE |
 | 13 | 069 | Shopify | commerce-analytics | DONE |
-| 14 | 070 | Buffer | social-scheduler | TODO |
+| 14 | 070 | Buffer | social-scheduler | DONE |
 | 15 | 071 | Copilot Money, Dashboard | finance-overview | DONE |
-| 16 | 072 | Copilot Money, Accounts + detail panel | finance-overview | TODO add `accounts` page |
+| 16 | 072 | Copilot Money, Accounts | finance-overview `accounts` page | DONE |
 
 ## 11 Causal (067)
 White, blue accent (#3b5bdb-ish), Inter. Left rail: wordmark + avatar, Search (cmd K) + `+`,
@@ -51,10 +51,10 @@ Two columns: "Up Next · 2 posts scheduled" -> post cards (avatar+platform badge
 card (avatar+badge, @user0, body).
 "Templates" -> 4 cards each with an emoji/icon, bold 2-line title, 3-line truncated body.
 
-| 17 | 073 | Fey | market-terminal (dark) | TODO |
-| 18 | 074 | Sweatpals | event-analytics (dark) | TODO |
-| 19 | 075 | Klaviyo, Overview dashboard | guides-assistant | TODO add `dashboards` page |
-| 20 | 076 | HoneyBook, Finance | setup-checklist | TODO add `finance` page |
+| 17 | 073 | Fey | market-terminal (dark) | DONE |
+| 18 | 074 | Sweatpals | event-analytics (dark) | DONE |
+| 19 | 075 | Klaviyo, Overview dashboard | guides-assistant `dashboards` page | DONE |
+| 20 | 076 | HoneyBook, Finance | setup-checklist `finance` page | DONE |
 
 ## 17 Fey (073)  DARK
 Near-black #0a0a0b page, cards #121214 w/ faint border, white text, grey-500 labels.
@@ -98,3 +98,118 @@ progress bar (60%).
 "Check-in" card, right "6 tickets": Checked-in 0 / "No shows yet" 6 + a bar that is
 essentially empty (one dot of fill).
 "RSVPs" card: 6 + green "↑100%" chip.
+
+| 21 | 077 | Reddit mod tools | community-traffic | DONE |
+| 22 | 078 | Asana goal detail | goal-tracker | DONE |
+| 23 | 079 | Supabase reports | platform-reports (dark) | DONE |
+| 24 | 080 | Vercel analytics | deploy-analytics | DONE |
+| 25 | 081 | StackAI project analytics | token-usage | DONE |
+
+## 21 Reddit (077)
+White; #ff4500 orange brand; blue #0079d3 links/active tabs; grey-100 page behind white cards.
+Top bar white: hamburger, wordmark, subreddit chip + caret, big rounded search with an
+inner blue pill "r/…  ⊗" + "Search Reddit", right glyph row, "Advertise" pill, avatar +
+"John_Smith_123456 / ⚙ 1 karma" + caret.
+Breadcrumb strip: "R/JOHN_MOBBIN / TRAFFIC STATS" small caps, orange first part.
+Sidebar (white, 390px): small-caps grey group headers with icons: CONTENT (Scheduled posts),
+OTHER (Awards, Wiki pages, Community settings + orange NEW badge + chevron, Community
+appearance + chevron), MODMAIL (Modmail ↗), COMMUNITY ACTIVITY (Traffic stats ACTIVE w/
+left orange-ish bar + grey fill, Mod log), MOD HELP CENTER (Mod help center ↗, Mod education
+site ↗, Moderator code of conduct ↗, r/ModSupport ↗, r/ModHelp ↗, Contact Reddit ↗).
+Main: "Traffic Stats" bold + grey "updating every hour".
+Tabs Pageviews(blue, underlined) / Uniques / Members.
+3 bordered stat cards: big number 21 / 21 / 0 + small-caps grey "TOTAL - LAST 24 HOURS" etc.
+Big line chart w/ real axes: y 0..25 ticks 5s, rotated y-axis label "Pageviews", x Jan 8..Jan 14,
+FULL grid box w/ vertical gridlines, one blue triangle spike at Jan 13 (21) and a flat
+orange line at 0. Legend right, colour squares: New Reddit #0079d3, Old Reddit #f2b544,
+Mobile Web #ff4500, Reddit Apps #39a0a0.
+Below chart: ← arrow, "Hour | Day(blue pill) | Month", → arrow (right arrow faded).
+Second card: tabs Day/Day of week/Month then a table w/ grey header row small-caps
+DAY (w/ sort caret) / PAGEVIEWS / UNIQUES / MEMBERS JOINED; rows 1/14/23 0 0 0, 1/13/23 21 2 0,
+1/12/23 0 0 0.
+
+## 22 Asana (078)
+DARK sidebar (#2e2e30) + white main. Sidebar: hamburger, red-orange "+ Create" pill,
+Home/My tasks/Inbox(dot), divider, "Insights" + `+` (Reporting, Portfolios, Goals),
+"Projects" + `+` (Design Project w/ teal dot, My first portfolio + chevron),
+"Team" (My workspace + chevron), bottom "✉ Invite teammates" outlined button and
+grey "Help with Asana". Top bar dark w/ centred rounded search.
+Main white: header row: rounded-lg purple square placeholder (goal icon), breadcrumb
+"My workspace goals ›" then bold "Attract 2 new clients" + caret + thumbs-up + star;
+right: avatar + blue "🔒 Share" button.
+Body centred col ~820px + right rail 360px.
+H1 "Attract 2 new clients" 2.4rem.
+"What's the status?" then 3 outlined pill buttons w/ coloured dots: On track (green),
+At risk (amber), Off track (red), then "···".
+Two bordered cards side by side, centred text: "Goal completion / 0% / 4 months left in
+Q4 FY24" and "Latest status / ○ No status (grey, large) / blue link Set status".
+Card "Progress ⚡ ⚠ No sub-goals connected" + right "⇶ Progress settings":
+chart w/ "Today" label at the left edge above a vertical rule, y 0/25/50/75/100%,
+x Sep..Jan 2025, a GREY filled triangle wedge rising to 100% (the target ramp) and a
+single dot at 0% on Sep. Under it: a small mountain-flag illustration placeholder and
+"Use sub-goals to automatically update this goal's progress." + blue button
+"+ Connect sub-goal".
+Right rail "About this goal": Goal owner (avatar + Sam Lee), Accountable team
+(icon + My workspace), rule, Time period Q4 FY24, grey link "Set a custom due date",
+rule, Parent goals + "+ Connect a parent goal", underlined "Send feedback".
+
+## 23 Supabase (079)  DARK
+#1c1c1c page, cards #1f1f1f w/ #2b2b2b border, green #3ecf8e accent, mono for paths.
+Far-left icon rail (#171717, 78px) w/ logo + 10 glyphs, active one has a lighter fill.
+Second column (#1c1c1c, 355px): "Reports" bold header, then "Custom reports" row, rule,
+then list: API (+ orange "NEW"), Database, Query Performance (+ orange "NEW"). Active row
+has a slightly lighter fill.
+Top bar: "jdoe.mobbin@gmail.com's Org / New Website" (grey / white), right outlined pills
+"? Help", "💬 Feedback", bell.
+Main: H1 "API" + right outlined "↻ Refresh".
+Filter row: segmented "🕐 Last 24 hours" (active, lighter) + "🗓 Custom", then a select
+"All Requests ⌄", then dashed-ish outlined "+ Add filter".
+Card "Total Requests" w/ an ↗ open-in-new box top-right: big "328", then a mostly EMPTY
+bar chart with only two green bars at the far right; under it a row of timestamps
+"Aug 9, 2023, 04:00pm" (left) and "Aug 11, 2023, 10:00am" (right).
+Then an inner table: header "Request | Count"; rows: chevron, grey METHOD chip (GET/POST),
+green "200" chip, mono path, right-aligned count. (/rest/v1/ 104, /auth/v1/health 68,
+/storage/v1/object/list/Storage 25).
+Card "Response Errors ?" same shape: big "7", two small green bars at right, then rows
+w/ POST chip + ORANGE "400" chip + long mono paths truncated, count 1.
+
+## 24 Vercel (080)
+White; black brand; blue #0062ff chart. Sidebar 340px: avatar + "samleemobbi…" + blue
+"Pro Trial" chip + up/down switcher; search "Find…" with an "F" kbd; nav Overview/
+Deployments/Logs/Analytics(ACTIVE grey fill)/Speed Insights/Observability›/Firewall›/CDN›,
+rule, Domains/Integrations/Storage/Flags›/Agent›/AI Gateway›/Sandboxes/Workflows, rule,
+Usage/Support/Settings›; footer avatar "Sam Lee" + "···" + bell w/ blue dot.
+Top bar: project switcher (triangle logo + "newlandingpage" + switcher), centred "Analytics",
+right "···".
+Sub-bar: 🌐 "newlandingpage-gold.vercel.app ↗", then a hollow dot + "0 online";
+right selects "Production ⌄" and "🗓 Last 7 Days ⌄".
+Stat strip: one bordered row split into cells by vertical rules — Visitors 13 (cell has a
+BLACK bottom border marking selection), Page Views 24, Bounce Rate 69% + red "+69%" chip,
+then an empty 4th cell.
+Big area chart: y 0/5/10, x Apr 16..Apr 23, flat at 0 until Apr 21 then a sharp peak at
+Apr 22 with the DESCENDING leg DASHED (incomplete day), light blue fill.
+Two cards below: left tabs "Pages | Routes | Hostnames" + right small-caps "VISITORS",
+then one grey row "/" ... 13. Right tabs "Referrers | UTM Parameters" + "VISITORS", rows
+google.com 2, vercel.com 2, com.slack 1 (each with a favicon slot; the last row's fill is
+shorter — the fill width encodes the value).
+
+## 25 StackAI (081)
+White, near-black slate #5b6472 bars, grey-50 card fills, generous radii.
+Far-left icon rail (68px, white, hairline right border): "A" square, search, then ~8 glyphs,
+active one has a grey fill; bottom: rocket (dark fill), bell, ?, activity, "A".
+Top bar: "Project Analytics" bold; right selects "Last 7 days ⌃⌄" and
+"🗓 Apr 15, 2026 - Apr 21, 2026".
+Segmented control in a grey-50 rounded container: "▦ Overview" | "🤖 Models" (ACTIVE = white
+pill w/ shadow).
+Left card (grey-50 fill? no — white w/ border, 520px): "Top models" bold + 2-line grey
+blurb; then model rows as bordered cards: bold name, right small-caps "TOTAL TOKENS" +
+bold number; under the name a grey "OpenAI" chip. Selected row (gpt-4o-mini) has a
+grey-50 fill.
+Right column: card w/ "🤖 gpt-4o-mini" bold + right grey chip "OpenAI", grey sub
+"Inspect the selected model across the current date range.", then 3 grey-50 inner cards:
+small-caps grey TOTAL TOKENS / INPUT TOKENS / OUTPUT TOKENS + big numbers 1,764 / 1,255 / 509.
+Card "Total token trend": smooth slate area line, y 0/200/400/700, x Apr 15..Apr 21 —
+starts high (~690), decays to 0 by Apr 18, flat, then a big smooth hump peaking Apr 20 and
+back to 0 at Apr 21.
+Two cards: "Input token trend" and "Output token trend" — slate BARS, y 0/150/300/470 and
+0/60/120/180/240, x Apr 15..Apr 21, bars only on Apr 15,16,17,20 (Apr 18/19/21 empty).

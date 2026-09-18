@@ -26,6 +26,16 @@ export { MarketTerminalTemplate } from "./market-terminal";
 export type { TerminalPage, MarketTerminalProps } from "./market-terminal";
 export { EventAnalyticsTemplate } from "./event-analytics";
 export type { EventPage, EventAnalyticsProps } from "./event-analytics";
+export { CommunityTrafficTemplate } from "./community-traffic";
+export type { CommunityPage, CommunityTrafficProps } from "./community-traffic";
+export { GoalTrackerTemplate } from "./goal-tracker";
+export type { GoalPage, GoalTrackerProps } from "./goal-tracker";
+export { PlatformReportsTemplate } from "./platform-reports";
+export type { ReportsPage, PlatformReportsProps } from "./platform-reports";
+export { DeployAnalyticsTemplate } from "./deploy-analytics";
+export type { DeployPage, DeployAnalyticsProps } from "./deploy-analytics";
+export { TokenUsageTemplate } from "./token-usage";
+export type { UsagePage, TokenUsageProps } from "./token-usage";
 export { CrmWorkspaceTemplate } from "./crm-workspace";
 export type { CrmPage, CrmWorkspaceProps } from "./crm-workspace";
 
@@ -175,6 +185,41 @@ export const templateCatalog: TemplateMeta[] = [
       { id: "rsvps", label: "RSVPs" },
       { id: "tracking", label: "Tracking links" },
     ],
+  },
+  {
+    slug: "community-traffic",
+    name: "Community traffic",
+    blurb:
+      "Older admin surface with a fully ruled plot box and a rotated axis title, and an orange brand that never touches the blue links.",
+    pages: [{ id: "traffic", label: "Traffic stats" }],
+  },
+  {
+    slug: "goal-tracker",
+    name: "Goal tracker",
+    blurb:
+      "Goal detail where the filled wedge is the target ramp and the single dot is the only real reading, so an untouched goal reads as untouched.",
+    pages: [{ id: "goal", label: "Goal" }],
+  },
+  {
+    slug: "platform-reports",
+    name: "Platform reports",
+    blurb:
+      "Charcoal backend report with two sidebars, monospace paths and method chips, and charts honest about a nearly empty window.",
+    pages: [{ id: "api", label: "API" }],
+  },
+  {
+    slug: "deploy-analytics",
+    name: "Deploy analytics",
+    blurb:
+      "Hairline deployment analytics where the selected metric is marked by a rule under its cell and today\u2019s incomplete leg is dashed.",
+    pages: [{ id: "analytics", label: "Analytics" }],
+  },
+  {
+    slug: "token-usage",
+    name: "Token usage",
+    blurb:
+      "Slate-only instrumentation for model spend, where days with no calls stay plotted as zero rather than being compressed away.",
+    pages: [{ id: "models", label: "Models" }],
   },
   {
     slug: "crm-workspace",
