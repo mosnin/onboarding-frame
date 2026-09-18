@@ -10,6 +10,8 @@ import {
   GuidedSetupTemplate,
   GuidesAssistantTemplate,
   BrandStudioTemplate,
+  CommerceAnalyticsTemplate,
+  SupportInsightsTemplate,
   SetupChecklistTemplate,
   type ApiConsolePage,
 } from "onboarding-frame";
@@ -33,6 +35,10 @@ export function TemplateBody({ slug, page }: { slug: string; page: string }) {
       return <GuidesAssistantTemplate />;
     case "brand-studio":
       return <BrandStudioTemplate />;
+    case "commerce-analytics":
+      return <CommerceAnalyticsTemplate />;
+    case "support-insights":
+      return <SupportInsightsTemplate />;
     case "discovery-feed":
       return <DiscoveryFeedTemplate />;
     default:

@@ -305,3 +305,47 @@ export const brandStudioTokens: TemplateTokens = {
   font: GEOMETRIC,
   fontDisplay: 'ui-serif, Georgia, "Times New Roman", serif',
 };
+
+/** Commerce admin: near-black top bar over a light body, cyan data series. */
+export const commerceTokens: TemplateTokens = {
+  bg: "#f1f1f1",
+  surface: "#ffffff",
+  surface2: "#f6f6f7",
+  surface3: "#ebebeb",
+  border: "#e1e1e1",
+  borderStrong: "#c9c9c9",
+  fg: "#1a1a1a",
+  fgSoft: "#4a4a4a",
+  muted: "#6b6b6b",
+  brand: "#00a0d2",
+  brandFg: "#ffffff",
+  ctaBg: "#1a1a1a",
+  ctaFg: "#ffffff",
+  success: "#007f5f",
+  danger: "#c4320a",
+  radius: "0.6rem",
+  radiusSm: "0.4rem",
+  radiusLg: "0.75rem",
+  font: GEOMETRIC,
+};
+
+/** Support analytics: white cards on a faint tint, indigo series, airy. */
+export const supportInsightsTokens: TemplateTokens = {
+  bg: "#f7f7fa",
+  surface: "#ffffff",
+  surface2: "#f5f5f9",
+  surface3: "#ececf3",
+  border: "#eaeaf1",
+  borderStrong: "#d0d0de",
+  fg: "#16161d",
+  fgSoft: "#414150",
+  muted: "#73738a",
+  brand: "#5b5bd6",
+  brandFg: "#ffffff",
+  ctaBg: "#16161d",
+  ctaFg: "#ffffff",
+  radius: "0.5rem",
+  radiusSm: "0.375rem",
+  radiusLg: "0.75rem",
+  font: GEOMETRIC,
+};

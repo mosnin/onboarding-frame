@@ -12,6 +12,8 @@ export { CreativeStudioTemplate } from "./creative-studio";
 export { DiscoveryFeedTemplate } from "./discovery-feed";
 export { GuidesAssistantTemplate } from "./guides-assistant";
 export { BrandStudioTemplate } from "./brand-studio";
+export { CommerceAnalyticsTemplate } from "./commerce-analytics";
+export { SupportInsightsTemplate } from "./support-insights";
 
 export interface TemplateMeta {
   slug: string;
@@ -89,6 +91,20 @@ export const templateCatalog: TemplateMeta[] = [
     blurb:
       "Editorial serif headings on a near-white canvas, with an ad-library showcase and a brand asset row.",
     pages: [{ id: "overview", label: "Overview" }],
+  },
+  {
+    slug: "commerce-analytics",
+    name: "Commerce analytics",
+    blurb:
+      "Near-black command bar over a light reporting body, with spiky real-world sales data rather than a smooth invented trend.",
+    pages: [{ id: "analytics", label: "Analytics" }],
+  },
+  {
+    slug: "support-insights",
+    name: "Support insights",
+    blurb:
+      "Reporting view where each metric owns its chart, and empty periods say so instead of drawing a flat line that reads as zero.",
+    pages: [{ id: "reporting", label: "Reporting" }],
   },
   {
     slug: "discovery-feed",
