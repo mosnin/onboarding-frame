@@ -170,11 +170,7 @@ export function CreatorRevenueTemplate({
                 }
                 glyph={<item.Icon size={15} />}
                 active={item.id === page}
-                trailing={
-                  item.caret ? (
-                    <CaretDownIcon size={14} />
-                  ) : undefined
-                }
+                trailing={item.caret ? <CaretDownIcon size={14} /> : undefined}
                 className="px-[12px] py-[9px] text-[0.875rem]"
               />
             ))}
@@ -228,8 +224,8 @@ export function CreatorRevenueTemplate({
             {/* Blocking notice first, promotion second. */}
             <div className="flex flex-wrap items-center gap-[12px] rounded-[var(--ob-radius)] bg-[color-mix(in_oklab,#e8c33d_25%,white)] px-[18px] py-[12px]">
               <p className="min-w-[0px] flex-1 text-[0.822rem]">
-                In order to view some of the data for this company, you must enable two
-                factor authentication on your account.
+                In order to view some of the data for this company, you must
+                enable two factor authentication on your account.
               </p>
               <span className="flex items-center gap-[5px] text-[0.799rem] font-medium">
                 Set up two factor authentication <CaretRightIcon size={14} />
@@ -238,9 +234,9 @@ export function CreatorRevenueTemplate({
 
             <div className="rounded-[var(--ob-radius)] bg-[color-mix(in_oklab,#5b5bd6_9%,white)] px-[18px] py-[12px]">
               <p className="text-[0.822rem] leading-relaxed">
-                You can now share your stats on social media 🤑. Creators who add the
-                marketplace and category ranking widgets to their dash and share on
-                socials are 10% more likely to get users. Click on{" "}
+                You can now share your stats on social media 🤑. Creators who
+                add the marketplace and category ranking widgets to their dash
+                and share on socials are 10% more likely to get users. Click on{" "}
                 <ExternalSquareIcon
                   size={13}
                   className="inline align-[-2px] text-[color:var(--ob-brand)]"
@@ -250,7 +246,9 @@ export function CreatorRevenueTemplate({
             </div>
 
             <div className="flex flex-wrap items-center gap-[12px] pt-[9px]">
-              <h1 className="flex-1 text-[1.522rem] font-bold tracking-[-0.01em]">Today</h1>
+              <h1 className="flex-1 text-[1.522rem] font-bold tracking-[-0.01em]">
+                Today
+              </h1>
               <span className="flex items-center gap-[8px] rounded-full bg-[color:var(--ob-brand)] px-[15px] py-[8px] text-[0.799rem] font-semibold text-white">
                 <TrophyIcon size={14} /> Need help? Join Acme University
               </span>
@@ -293,9 +291,13 @@ export function CreatorRevenueTemplate({
             </div>
 
             <div className="flex flex-wrap items-center gap-[9px] pt-[15px]">
-              <h2 className="text-[1.522rem] font-bold tracking-[-0.01em]">Stats</h2>
+              <h2 className="text-[1.522rem] font-bold tracking-[-0.01em]">
+                Stats
+              </h2>
               <Select>Last 7 days</Select>
-              <Select glyph={<CalendarIcon size={14} />}>Jul 24 - 30, 2024</Select>
+              <Select glyph={<CalendarIcon size={14} />}>
+                Jul 24 - 30, 2024
+              </Select>
               <span className="text-[0.799rem] text-[color:var(--ob-muted)]">
                 compared to
               </span>
@@ -360,7 +362,13 @@ export function CreatorRevenueTemplate({
   );
 }
 
-function Select({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
+function Select({
+  children,
+  glyph,
+}: {
+  children: ReactNode;
+  glyph?: ReactNode;
+}) {
   return (
     <span className="inline-flex items-center gap-[12px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[8px] text-[0.799rem]">
       <span className="flex items-center gap-[6px]">
@@ -399,7 +407,9 @@ function HourlyChart() {
 
   return (
     <div className="pt-[12px]">
-      <p className="pb-[3px] text-[0.761rem] text-[color:var(--ob-muted)]">$1</p>
+      <p className="pb-[3px] text-[0.761rem] text-[color:var(--ob-muted)]">
+        $1
+      </p>
       <svg
         viewBox={`0 0 ${width} ${height}`}
         className="h-[228px] w-full"

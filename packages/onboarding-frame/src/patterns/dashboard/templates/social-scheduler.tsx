@@ -35,14 +35,32 @@ const NAV = [
   { id: "create", label: "Create", Icon: LightbulbIcon },
   { id: "publish", label: "Publish", Icon: CalendarIcon, badge: "3" },
   // The reference tints only this one; the Publish count is plain grey.
-  { id: "community", label: "Community", Icon: ChatsIcon, badge: "1", badgeTone: true },
+  {
+    id: "community",
+    label: "Community",
+    Icon: ChatsIcon,
+    badge: "1",
+    badgeTone: true,
+  },
   { id: "start", label: "Start Page", Icon: IdCardIcon, external: true },
   { id: "analytics", label: "Analytics", Icon: ChartBarIcon, external: true },
 ];
 
 const CHANNELS = [
-  { id: "c1", handle: "hello.asmith", count: "0", live: false, brand: "threads" },
-  { id: "c2", handle: "hello.asmith", count: "3", live: true, brand: "instagram" },
+  {
+    id: "c1",
+    handle: "hello.asmith",
+    count: "0",
+    live: false,
+    brand: "threads",
+  },
+  {
+    id: "c2",
+    handle: "hello.asmith",
+    count: "3",
+    live: true,
+    brand: "instagram",
+  },
   { id: "c3", handle: "as cupcake", count: "0", live: false, brand: "threads" },
 ];
 
@@ -89,8 +107,18 @@ const PULSE = [
 ];
 
 const QUEUE = [
-  { id: "q1", when: "Jun 26, 9:43 AM", channel: "hello.asmith", brand: "instagram" },
-  { id: "q2", when: "Jun 30, 9:45 AM", channel: "hello.asmith", brand: "instagram" },
+  {
+    id: "q1",
+    when: "Jun 26, 9:43 AM",
+    channel: "hello.asmith",
+    brand: "instagram",
+  },
+  {
+    id: "q2",
+    when: "Jun 30, 9:45 AM",
+    channel: "hello.asmith",
+    brand: "instagram",
+  },
 ];
 
 const TEMPLATES = [
@@ -145,7 +173,9 @@ export function SocialSchedulerTemplate({
         <Sidebar width={240} bg="transparent" className="border-r-0">
           <div className="flex h-[46px] shrink-0 items-center gap-1.5 px-[17px]">
             <StackMark size={19} className="text-[color:var(--ob-fg)]" />
-            <span className="text-[1.05rem] font-bold tracking-[-0.02em]">Buffer</span>
+            <span className="text-[1.05rem] font-bold tracking-[-0.02em]">
+              Buffer
+            </span>
             <span className="ml-auto flex items-center gap-1 text-[0.8rem] text-[color:var(--ob-muted)]">
               <LeafIcon size={17} />
               <span className="grid size-[15px] place-items-center rounded-full bg-[#e6ddfa] text-[0.62rem] font-semibold text-[#5b3ecc]">
@@ -190,7 +220,10 @@ export function SocialSchedulerTemplate({
                     </span>
                   ))}
                 {item.external && (
-                  <ExternalSquareIcon size={14} className="text-[color:var(--ob-muted)]" />
+                  <ExternalSquareIcon
+                    size={14}
+                    className="text-[color:var(--ob-muted)]"
+                  />
                 )}
               </button>
             ))}
@@ -247,7 +280,9 @@ export function SocialSchedulerTemplate({
           <div className="mt-auto flex items-center gap-2.5 px-[17px] py-4">
             <Avatar name="AS Mobbin" size={28} rounded={8} />
             <span className="min-w-0 flex-1">
-              <span className="block truncate text-[0.86rem] font-semibold">AS Mobbin</span>
+              <span className="block truncate text-[0.86rem] font-semibold">
+                AS Mobbin
+              </span>
               <span className="block text-[0.78rem] text-[color:var(--ob-muted)]">
                 Team Plan
               </span>
@@ -332,7 +367,11 @@ function Home() {
               </p>
               <p className="flex items-center gap-1 text-[0.86rem] text-[color:var(--ob-fg-soft)]">
                 {"trend" in score && score.trend && (
-                  <TrendUpIcon width={14} height={14} className="text-[color:var(--ob-success)]" />
+                  <TrendUpIcon
+                    width={14}
+                    height={14}
+                    className="text-[color:var(--ob-success)]"
+                  />
                 )}
                 {score.sub}
               </p>
@@ -357,7 +396,9 @@ function Home() {
               <span className="flex-1">{item.label}</span>
               <InfoDot />
             </p>
-            <p className="pt-1.5 text-[1.3rem] font-semibold tabular-nums">{item.value}</p>
+            <p className="pt-1.5 text-[1.3rem] font-semibold tabular-nums">
+              {item.value}
+            </p>
           </div>
         ))}
       </div>
@@ -383,9 +424,15 @@ function Home() {
                   </span>
                 </div>
                 <div className="flex items-end gap-4 pt-3">
-                  <p className="flex-1 text-[0.92rem]">Post on {post.channel}</p>
+                  <p className="flex-1 text-[0.92rem]">
+                    Post on {post.channel}
+                  </p>
                   <span className="block size-[62px] shrink-0">
-                    <Thumb seed={post.id} radius={8} alt="Scheduled post image" />
+                    <Thumb
+                      seed={post.id}
+                      radius={8}
+                      alt="Scheduled post image"
+                    />
                   </span>
                 </div>
               </article>
@@ -396,7 +443,9 @@ function Home() {
         <div>
           <h2 className="pb-[15px] text-[0.88rem] font-semibold">
             Comments{" "}
-            <span className="font-normal text-[color:var(--ob-muted)]">· 1 unanswered</span>
+            <span className="font-normal text-[color:var(--ob-muted)]">
+              · 1 unanswered
+            </span>
           </h2>
           <article className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-4">
             <div className="flex items-center gap-2.5">
@@ -404,14 +453,16 @@ function Home() {
               <span className="text-[0.92rem] font-medium">@user0</span>
             </div>
             <p className="pt-3 text-[0.98rem]">
-              Whatever it is, I already know it&rsquo;a going to taste incredible.
-              Can&rsquo;t wait 🧁
+              Whatever it is, I already know it&rsquo;a going to taste
+              incredible. Can&rsquo;t wait 🧁
             </p>
           </article>
         </div>
       </div>
 
-      <h2 className="pb-[15px] pt-[38px] text-[0.88rem] font-semibold">Templates</h2>
+      <h2 className="pb-[15px] pt-[38px] text-[0.88rem] font-semibold">
+        Templates
+      </h2>
       <div className="grid gap-[25px] sm:grid-cols-2 xl:grid-cols-4">
         {TEMPLATES.map((template) => (
           <article
@@ -480,7 +531,9 @@ function Publish() {
   return (
     <div className="mx-auto w-full max-w-[1330px]">
       <header className="flex items-center gap-3 pb-6">
-        <h1 className="flex-1 text-[1.8rem] font-bold tracking-[-0.02em]">Publish</h1>
+        <h1 className="flex-1 text-[1.8rem] font-bold tracking-[-0.02em]">
+          Publish
+        </h1>
         <span className="rounded-full bg-[color:var(--ob-surface-2)] px-3.5 py-1.5 text-[0.88rem] font-medium">
           Week
         </span>
@@ -497,20 +550,30 @@ function Publish() {
           >
             <h2 className="pb-3 text-[0.85rem] font-semibold">{entry.day}</h2>
             {entry.posts.length === 0 ? (
-              <p className="text-[0.82rem] text-[color:var(--ob-muted)]">Nothing queued</p>
+              <p className="text-[0.82rem] text-[color:var(--ob-muted)]">
+                Nothing queued
+              </p>
             ) : (
               entry.posts.map((post) => (
                 <article
                   key={post.time}
                   className="rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface)] p-2.5"
                 >
-                  <p className="text-[0.78rem] text-[color:var(--ob-muted)]">{post.time}</p>
+                  <p className="text-[0.78rem] text-[color:var(--ob-muted)]">
+                    {post.time}
+                  </p>
                   <div className="flex items-center gap-2 pt-1.5">
                     <Avatar name={post.channel} size={20} rounded={6} />
-                    <span className="truncate text-[0.82rem]">{post.channel}</span>
+                    <span className="truncate text-[0.82rem]">
+                      {post.channel}
+                    </span>
                   </div>
                   <span className="mt-2 block h-[54px]">
-                    <Thumb seed={post.time} radius={6} alt="Queued post image" />
+                    <Thumb
+                      seed={post.time}
+                      radius={6}
+                      alt="Queued post image"
+                    />
                   </span>
                 </article>
               ))
@@ -523,7 +586,12 @@ function Publish() {
 }
 
 function Community() {
-  const threads: { id: string; author: string; body: string; state: ReactNode }[] = [
+  const threads: {
+    id: string;
+    author: string;
+    body: string;
+    state: ReactNode;
+  }[] = [
     {
       id: "th1",
       author: "@user0",
@@ -548,7 +616,9 @@ function Community() {
 
   return (
     <div className="mx-auto w-full max-w-[900px]">
-      <h1 className="pb-1 text-[1.8rem] font-bold tracking-[-0.02em]">Community</h1>
+      <h1 className="pb-1 text-[1.8rem] font-bold tracking-[-0.02em]">
+        Community
+      </h1>
       <p className="pb-6 text-[0.98rem] text-[color:var(--ob-fg-soft)]">
         1 of 2 conversations still needs a reply.
       </p>

@@ -62,7 +62,11 @@ const ORGANIZATION = [
  * one that shows none.
  */
 const HEADCOUNT = [
-  { id: "age", label: "Age", lines: ["Not available · 66.67%", "<29 · 33.33%"] },
+  {
+    id: "age",
+    label: "Age",
+    lines: ["Not available · 66.67%", "<29 · 33.33%"],
+  },
   { id: "gender", label: "Gender", lines: ["Not specified · 100%"] },
   { id: "ethnicity", label: "Ethnicity", lines: ["Not specified · 100%"] },
 ];
@@ -103,7 +107,9 @@ export function PeopleAnalyticsTemplate({
               <span className="block text-[0.824rem] text-[color:var(--ob-muted)]">
                 JD Mob
               </span>
-              <span className="block text-[0.971rem] font-semibold">Jane&rsquo;s Group</span>
+              <span className="block text-[0.971rem] font-semibold">
+                Jane&rsquo;s Group
+              </span>
             </span>
             <span aria-hidden className="text-[color:var(--ob-muted)]">
               ⋮
@@ -196,7 +202,10 @@ export function PeopleAnalyticsTemplate({
                   className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[21px] py-[24px]"
                 >
                   {/* A slider-shaped axis: the dot marks the current month. */}
-                  <span className="relative block h-[3px] rounded-full" style={{ background: track.color }}>
+                  <span
+                    className="relative block h-[3px] rounded-full"
+                    style={{ background: track.color }}
+                  >
                     <span
                       className="absolute right-[0px] top-1/2 size-[10px] -translate-y-1/2 rounded-full"
                       style={{ background: track.color }}
@@ -251,12 +260,16 @@ export function PeopleAnalyticsTemplate({
                       key={row.id}
                       className="flex items-start gap-[14px] rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-3)] px-[17px] py-[14px]"
                     >
-                      <span className="flex-1 text-[0.971rem]">{row.label}</span>
+                      <span className="flex-1 text-[0.971rem]">
+                        {row.label}
+                      </span>
                       <span className="text-right">
                         {row.lines.map((line) => (
                           <span key={line} className="block text-[0.971rem]">
                             {line.split(" · ")[0]} ·{" "}
-                            <span className="font-bold">{line.split(" · ")[1]}</span>
+                            <span className="font-bold">
+                              {line.split(" · ")[1]}
+                            </span>
                           </span>
                         ))}
                       </span>
@@ -280,13 +293,17 @@ export function PeopleAnalyticsTemplate({
                   <h3 className="flex items-center gap-[7px] text-[0.971rem] font-semibold">
                     Headcount by ethnicity <InfoDot />
                   </h3>
-                  <p className="pt-[10px] text-[1.735rem] font-bold leading-none tabular-nums">3</p>
+                  <p className="pt-[10px] text-[1.735rem] font-bold leading-none tabular-nums">
+                    3
+                  </p>
                   <div className="grid justify-items-center pt-[17px]">
                     {/* All three in one bucket: a single, nearly closed ring. */}
                     <Donut
                       size={165}
                       thickness={36}
-                      segments={[{ id: "unspecified", value: 3, color: "#5a5a5a" }]}
+                      segments={[
+                        { id: "unspecified", value: 3, color: "#5a5a5a" },
+                      ]}
                     />
                   </div>
                 </section>

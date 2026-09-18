@@ -77,7 +77,8 @@ function vars(tokens: TemplateTokens): CSSProperties {
   }
   // Derived from brand so a template only has to name one accent.
   if (tokens.brand) {
-    out["--ob-brand-soft"] = `color-mix(in oklab, ${tokens.brand} 12%, transparent)`;
+    out["--ob-brand-soft"] =
+      `color-mix(in oklab, ${tokens.brand} 12%, transparent)`;
   }
   return out as CSSProperties;
 }

@@ -19,5 +19,9 @@
   "product-analytics": {
     "chars": "🌱",
     "why": "Mixpanel's sidebar prints a seedling before \"Starter Board\" — it is the board's own emoji, shown in the Pinned list and again in the Recents and boards rows."
+  },
+  "wizards": {
+    "chars": "👋🌱",
+    "why": "Buffer's own onboarding prints a waving hand in the welcome line (ref 007) and a seedling in \"Thanks for choosing Buffer\" (ref 016). Reproducing those is the rule; they are the reference's text, not our icons."
   }
 }

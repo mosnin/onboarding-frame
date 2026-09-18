@@ -85,8 +85,15 @@ export interface ChoiceOption {
   label: string;
   /** Secondary line under the label. */
   description?: string;
-  /** Emoji or short glyph rendered above the label. */
+  /** Icon name from `ui/icons`, or `brand:<slug>` for a platform mark. */
   glyph?: string;
+  /**
+   * Seed for a generated portrait, for options whose reference shows a face
+   * rather than a mark — SchoolAI's "Choose your look" (refs 051/052/055).
+   * `Avatar` derives a stable field from it, so it does not change between
+   * screenshots and ships nobody's likeness (CLAUDE.md, rule 3).
+   */
+  avatarSeed?: string;
   /** Monospace snippet rendered as the card's media, as in a "pick your level" step. */
   code?: string;
   /** CSS gradient applied when the card is selected (poster cards). */
@@ -420,7 +427,7 @@ export interface TourStep {
   placement?: TourPlacement;
   /** Hero media for `modal-sequence`: a CSS gradient, image URL, or emoji. */
   media?: string;
-  mediaKind?: "gradient" | "image" | "emoji";
+  mediaKind?: "gradient" | "image" | "thumb";
   ctaLabel?: string;
   /** `feature-walkthrough`: pastel colour block behind the media panel. */
   panelTone?: string;
@@ -452,7 +459,10 @@ export interface TourConfig {
  * Empty state
  * ------------------------------------------------------------------ */
 
-export type EmptyStateVariant = "illustration" | "ghost-preview" | "sample-data";
+export type EmptyStateVariant =
+  | "illustration"
+  | "ghost-preview"
+  | "sample-data";
 
 export interface EmptyStateConfig {
   id: string;

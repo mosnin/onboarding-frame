@@ -2,7 +2,11 @@
 
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { presets, type OnboardingTheme, type PatternKind } from "onboarding-frame";
+import {
+  presets,
+  type OnboardingTheme,
+  type PatternKind,
+} from "onboarding-frame";
 import { FlowRenderer } from "./flow-renderer";
 import { CodeBlock } from "./code-block";
 import { CopyButton } from "./copy-button";
@@ -19,12 +23,30 @@ const BRANDS = [
 ];
 
 const FONTS = [
-  { id: "Inter", stack: '"Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif' },
-  { id: "Geist", stack: '"Geist", "Inter Variable", ui-sans-serif, system-ui, sans-serif' },
-  { id: "Jakarta", stack: '"Plus Jakarta Sans", "Inter Variable", ui-sans-serif, sans-serif' },
-  { id: "Manrope", stack: '"Manrope", "Inter Variable", ui-sans-serif, sans-serif' },
-  { id: "DM Sans", stack: '"DM Sans", "Inter Variable", ui-sans-serif, sans-serif' },
-  { id: "Grotesk", stack: '"Space Grotesk", "Inter Variable", ui-sans-serif, sans-serif' },
+  {
+    id: "Inter",
+    stack: '"Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif',
+  },
+  {
+    id: "Geist",
+    stack: '"Geist", "Inter Variable", ui-sans-serif, system-ui, sans-serif',
+  },
+  {
+    id: "Jakarta",
+    stack: '"Plus Jakarta Sans", "Inter Variable", ui-sans-serif, sans-serif',
+  },
+  {
+    id: "Manrope",
+    stack: '"Manrope", "Inter Variable", ui-sans-serif, sans-serif',
+  },
+  {
+    id: "DM Sans",
+    stack: '"DM Sans", "Inter Variable", ui-sans-serif, sans-serif',
+  },
+  {
+    id: "Grotesk",
+    stack: '"Space Grotesk", "Inter Variable", ui-sans-serif, sans-serif',
+  },
 ];
 
 const RADII = [
@@ -80,12 +102,21 @@ export function Playground() {
   const [title, setTitle] = useState("");
 
   const preset = useMemo(() => {
-    const group = presets[pattern.kind as PatternKind] as Record<string, unknown>;
+    const group = presets[pattern.kind as PatternKind] as Record<
+      string,
+      unknown
+    >;
     const entry = group?.[variant];
     if (entry && typeof entry === "object" && "config" in entry) {
-      return entry as { config: Record<string, unknown>; theme?: OnboardingTheme };
+      return entry as {
+        config: Record<string, unknown>;
+        theme?: OnboardingTheme;
+      };
     }
-    return { config: (entry ?? {}) as Record<string, unknown>, theme: undefined };
+    return {
+      config: (entry ?? {}) as Record<string, unknown>,
+      theme: undefined,
+    };
   }, [pattern.kind, variant]);
 
   const theme: OnboardingTheme = useMemo(() => {
@@ -123,7 +154,10 @@ export function Playground() {
     [pattern.kind, theme, config],
   );
 
-  const blueprintJson = useMemo(() => JSON.stringify(blueprint, null, 2), [blueprint]);
+  const blueprintJson = useMemo(
+    () => JSON.stringify(blueprint, null, 2),
+    [blueprint],
+  );
   const prompt = useMemo(
     () => agentPrompt(pattern.kind as PatternKind, variant, config, theme),
     [pattern.kind, variant, config, theme],
@@ -144,10 +178,12 @@ export function Playground() {
   return (
     <main className="mx-auto max-w-[1700px] px-4 py-8 sm:px-6">
       <header className="mb-6">
-        <h1 className="text-[2rem] font-extrabold tracking-tight">Playground</h1>
+        <h1 className="text-[2rem] font-extrabold tracking-tight">
+          Playground
+        </h1>
         <p className="mt-2 max-w-3xl text-[color:var(--site-muted)]">
-          Tune a flow, then copy the config — or a ready-to-paste prompt that hands
-          the whole thing to a coding agent.
+          Tune a flow, then copy the config — or a ready-to-paste prompt that
+          hands the whole thing to a coding agent.
         </p>
       </header>
 
@@ -344,7 +380,10 @@ export function Playground() {
                 >
                   npm i onboarding-frame
                 </code>
-                <CopyButton value="npm i onboarding-frame" label="Copy install" />
+                <CopyButton
+                  value="npm i onboarding-frame"
+                  label="Copy install"
+                />
               </div>
             </div>
 

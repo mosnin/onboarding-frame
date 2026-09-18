@@ -55,13 +55,56 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
-  { id: "companies", label: "Companies", Icon: BuildingsIcon, tile: "#cfe1ff", ink: "#3b6fe0" },
-  { id: "people", label: "People", Icon: UserIcon, tile: "#d0deff", ink: "#3b6fe0" },
-  { id: "opportunities", label: "Opportunities", Icon: TargetIcon, tile: "#ffd9db", ink: "#e03e46" },
-  { id: "tasks", label: "Tasks", Icon: CheckSquareIcon, tile: "#b1f6e9", ink: "#12987c" },
-  { id: "notes", label: "Notes", Icon: NotepadIcon, tile: "#9deadb", ink: "#12987c" },
-  { id: "dashboards", label: "Dashboards", Icon: SquaresFourIcon, tile: "#ececec", ink: "#6b6b6b" },
-  { id: "workflows", label: "Workflows", Icon: GearIcon, tile: "#f5c993", ink: "#b3700d", caret: true },
+  {
+    id: "companies",
+    label: "Companies",
+    Icon: BuildingsIcon,
+    tile: "#cfe1ff",
+    ink: "#3b6fe0",
+  },
+  {
+    id: "people",
+    label: "People",
+    Icon: UserIcon,
+    tile: "#d0deff",
+    ink: "#3b6fe0",
+  },
+  {
+    id: "opportunities",
+    label: "Opportunities",
+    Icon: TargetIcon,
+    tile: "#ffd9db",
+    ink: "#e03e46",
+  },
+  {
+    id: "tasks",
+    label: "Tasks",
+    Icon: CheckSquareIcon,
+    tile: "#b1f6e9",
+    ink: "#12987c",
+  },
+  {
+    id: "notes",
+    label: "Notes",
+    Icon: NotepadIcon,
+    tile: "#9deadb",
+    ink: "#12987c",
+  },
+  {
+    id: "dashboards",
+    label: "Dashboards",
+    Icon: SquaresFourIcon,
+    tile: "#ececec",
+    ink: "#6b6b6b",
+  },
+  {
+    id: "workflows",
+    label: "Workflows",
+    Icon: GearIcon,
+    tile: "#f5c993",
+    ink: "#b3700d",
+    caret: true,
+  },
 ];
 
 const WORKFLOW_CHILDREN = ["Workflows", "Workflow Runs", "Workflow Versions"];
@@ -80,24 +123,240 @@ const OTHER = [
  * recognisable companies, and the row marks are most of what you see.
  */
 const RECORDS = [
-  { id: "r1", name: "Mobbin", brand: "", domain: "mobbin.com", by: "Alex Smith", owner: "Alex Smith", age: "7 days ago", staff: "45", linkedin: "mobbin", stage: "Contacted", city: "75 Ayer Rajah Crescent, Sing…" },
-  { id: "r2", name: "Airbnb", brand: "airbnb", domain: "airbnb.com", by: "System", owner: "Alex Smith", age: "7 days ago", staff: "5,000", linkedin: "airbnb", stage: "New", city: "888 Brannan St, San Franci…" },
-  { id: "r3", name: "Anthropic", brand: "anthropic", domain: "anthropic.com", by: "System", owner: "", age: "7 days ago", staff: "1,100", linkedin: "", stage: "In discussion", city: "548 Market Street, San Fra…" },
-  { id: "r4", name: "Stripe", brand: "stripe", domain: "stripe.com", by: "System", owner: "", age: "7 days ago", staff: "8,000", linkedin: "", stage: "Proposal sent", city: "Eutaw Street, Dublin, Ireland" },
-  { id: "r5", name: "Figma", brand: "figma", domain: "figma.com", by: "System", owner: "", age: "7 days ago", staff: "800", linkedin: "", stage: "Negotiation", city: "760 Market St, Floor 10, Sa…" },
-  { id: "r6", name: "Notion", brand: "notion", domain: "notion.com", by: "System", owner: "", age: "7 days ago", staff: "400", linkedin: "", stage: "Active client", city: "2300 Harrison St, San Fran…" },
-  { id: "r7", name: "Clerk.com", brand: "clerk", domain: "clerk.dev", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "Contacted", city: "San Francisco" },
-  { id: "r8", name: "Whop", brand: "", domain: "whop.com", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "In discussion", city: "" },
-  { id: "r9", name: "Vercel", brand: "vercel", domain: "vercel.com", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "New", city: "San Francisco" },
-  { id: "r10", name: "GitBook", brand: "gitbook", domain: "gitbook.com", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "Proposal sent", city: "Lyon" },
-  { id: "r11", name: "Warby Parker", brand: "", domain: "warbyparker.c…", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "New", city: "New York" },
-  { id: "r12", name: "Shipt", brand: "", domain: "shipt.com", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "Contacted", city: "Birmingham" },
-  { id: "r13", name: "Alchemy Pay", brand: "alchemy", domain: "alchemypay.o…", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "New", city: "Singapore" },
-  { id: "r14", name: "Superhuman", brand: "", domain: "superhuman.c…", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "Contacted", city: "San Francisco" },
-  { id: "r15", name: "Transcend", brand: "", domain: "transcend.io", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "New", city: "San Francisco" },
-  { id: "r16", name: "Dovetail", brand: "dovetail", domain: "dovetail.com", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "In discussion", city: "Sydney" },
-  { id: "r17", name: "Outseta", brand: "", domain: "outseta.com", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "New", city: "San Diego" },
-  { id: "r18", name: "Uber for Business", brand: "uber", domain: "uber.com", by: "Alex Smith", owner: "", age: "2 days ago", staff: "", linkedin: "", stage: "Contacted", city: "San Francisco" },
+  {
+    id: "r1",
+    name: "Mobbin",
+    brand: "",
+    domain: "mobbin.com",
+    by: "Alex Smith",
+    owner: "Alex Smith",
+    age: "7 days ago",
+    staff: "45",
+    linkedin: "mobbin",
+    stage: "Contacted",
+    city: "75 Ayer Rajah Crescent, Sing…",
+  },
+  {
+    id: "r2",
+    name: "Airbnb",
+    brand: "airbnb",
+    domain: "airbnb.com",
+    by: "System",
+    owner: "Alex Smith",
+    age: "7 days ago",
+    staff: "5,000",
+    linkedin: "airbnb",
+    stage: "New",
+    city: "888 Brannan St, San Franci…",
+  },
+  {
+    id: "r3",
+    name: "Anthropic",
+    brand: "anthropic",
+    domain: "anthropic.com",
+    by: "System",
+    owner: "",
+    age: "7 days ago",
+    staff: "1,100",
+    linkedin: "",
+    stage: "In discussion",
+    city: "548 Market Street, San Fra…",
+  },
+  {
+    id: "r4",
+    name: "Stripe",
+    brand: "stripe",
+    domain: "stripe.com",
+    by: "System",
+    owner: "",
+    age: "7 days ago",
+    staff: "8,000",
+    linkedin: "",
+    stage: "Proposal sent",
+    city: "Eutaw Street, Dublin, Ireland",
+  },
+  {
+    id: "r5",
+    name: "Figma",
+    brand: "figma",
+    domain: "figma.com",
+    by: "System",
+    owner: "",
+    age: "7 days ago",
+    staff: "800",
+    linkedin: "",
+    stage: "Negotiation",
+    city: "760 Market St, Floor 10, Sa…",
+  },
+  {
+    id: "r6",
+    name: "Notion",
+    brand: "notion",
+    domain: "notion.com",
+    by: "System",
+    owner: "",
+    age: "7 days ago",
+    staff: "400",
+    linkedin: "",
+    stage: "Active client",
+    city: "2300 Harrison St, San Fran…",
+  },
+  {
+    id: "r7",
+    name: "Clerk.com",
+    brand: "clerk",
+    domain: "clerk.dev",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "Contacted",
+    city: "San Francisco",
+  },
+  {
+    id: "r8",
+    name: "Whop",
+    brand: "",
+    domain: "whop.com",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "In discussion",
+    city: "",
+  },
+  {
+    id: "r9",
+    name: "Vercel",
+    brand: "vercel",
+    domain: "vercel.com",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "New",
+    city: "San Francisco",
+  },
+  {
+    id: "r10",
+    name: "GitBook",
+    brand: "gitbook",
+    domain: "gitbook.com",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "Proposal sent",
+    city: "Lyon",
+  },
+  {
+    id: "r11",
+    name: "Warby Parker",
+    brand: "",
+    domain: "warbyparker.c…",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "New",
+    city: "New York",
+  },
+  {
+    id: "r12",
+    name: "Shipt",
+    brand: "",
+    domain: "shipt.com",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "Contacted",
+    city: "Birmingham",
+  },
+  {
+    id: "r13",
+    name: "Alchemy Pay",
+    brand: "alchemy",
+    domain: "alchemypay.o…",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "New",
+    city: "Singapore",
+  },
+  {
+    id: "r14",
+    name: "Superhuman",
+    brand: "",
+    domain: "superhuman.c…",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "Contacted",
+    city: "San Francisco",
+  },
+  {
+    id: "r15",
+    name: "Transcend",
+    brand: "",
+    domain: "transcend.io",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "New",
+    city: "San Francisco",
+  },
+  {
+    id: "r16",
+    name: "Dovetail",
+    brand: "dovetail",
+    domain: "dovetail.com",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "In discussion",
+    city: "Sydney",
+  },
+  {
+    id: "r17",
+    name: "Outseta",
+    brand: "",
+    domain: "outseta.com",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "New",
+    city: "San Diego",
+  },
+  {
+    id: "r18",
+    name: "Uber for Business",
+    brand: "uber",
+    domain: "uber.com",
+    by: "Alex Smith",
+    owner: "",
+    age: "2 days ago",
+    staff: "",
+    linkedin: "",
+    stage: "Contacted",
+    city: "San Francisco",
+  },
 ];
 
 /** The capture's own total; the table shows the first page of it. */
@@ -160,7 +419,11 @@ export function CrmWorkspaceTemplate({
   // workspace"; the rail shows the initials tile beside it.
   const workspace = `AS ${userName.split(" ").slice(-1)[0]}`;
   const active =
-    page === "board" || page === "record" ? "companies" : page === "dashboard" ? "dashboards" : "companies";
+    page === "board" || page === "record"
+      ? "companies"
+      : page === "dashboard"
+        ? "dashboards"
+        : "companies";
 
   return (
     <Surface tokens={crmTokens}>
@@ -168,12 +431,22 @@ export function CrmWorkspaceTemplate({
         <Sidebar width={221} bg="var(--ob-bg)" className="border-r-0">
           <div className="flex items-center gap-2 px-2.5 py-2.5">
             <Avatar name={workspace} size={20} rounded={5} />
-            <span className="flex-1 truncate text-[0.82rem] font-semibold">{workspace}</span>
+            <span className="flex-1 truncate text-[0.82rem] font-semibold">
+              {workspace}
+            </span>
             <CaretDownIcon size={12} className="text-[color:var(--ob-muted)]" />
-            <button type="button" aria-label="Search" className="text-[color:var(--ob-fg-soft)]">
+            <button
+              type="button"
+              aria-label="Search"
+              className="text-[color:var(--ob-fg-soft)]"
+            >
               <SearchIcon size={15} />
             </button>
-            <button type="button" aria-label="Panels" className="text-[color:var(--ob-fg-soft)]">
+            <button
+              type="button"
+              aria-label="Panels"
+              className="text-[color:var(--ob-fg-soft)]"
+            >
               <SidebarBold size={15} />
             </button>
           </div>
@@ -196,7 +469,9 @@ export function CrmWorkspaceTemplate({
             </button>
           </div>
 
-          <p className="px-3 pb-1 pt-3 text-[0.72rem] text-[color:var(--ob-muted)]">Workspace</p>
+          <p className="px-3 pb-1 pt-3 text-[0.72rem] text-[color:var(--ob-muted)]">
+            Workspace
+          </p>
           <nav className="grid gap-[1px] px-2">
             {NAV.map((item) => (
               <div key={item.id}>
@@ -218,7 +493,12 @@ export function CrmWorkspaceTemplate({
                     <item.Icon size={12} />
                   </span>
                   <span className="flex-1 truncate">{item.label}</span>
-                  {item.caret && <CaretDownIcon size={11} className="text-[color:var(--ob-muted)]" />}
+                  {item.caret && (
+                    <CaretDownIcon
+                      size={11}
+                      className="text-[color:var(--ob-muted)]"
+                    />
+                  )}
                 </button>
 
                 {/* Workflows is expanded in the capture, with a tree spine. */}
@@ -241,7 +521,9 @@ export function CrmWorkspaceTemplate({
             ))}
           </nav>
 
-          <p className="px-3 pb-1 pt-4 text-[0.72rem] text-[color:var(--ob-muted)]">Other</p>
+          <p className="px-3 pb-1 pt-4 text-[0.72rem] text-[color:var(--ob-muted)]">
+            Other
+          </p>
           <nav className="grid gap-[1px] px-2">
             {OTHER.map((item) => (
               <button
@@ -249,7 +531,10 @@ export function CrmWorkspaceTemplate({
                 type="button"
                 className="flex h-[27px] items-center gap-2 rounded-[6px] px-1.5 text-left text-[0.82rem] text-[color:var(--ob-fg-soft)]"
               >
-                <span aria-hidden className="grid size-[18px] shrink-0 place-items-center text-[color:var(--ob-muted)]">
+                <span
+                  aria-hidden
+                  className="grid size-[18px] shrink-0 place-items-center text-[color:var(--ob-muted)]"
+                >
                   <item.Icon size={13} />
                 </span>
                 {item.label}
@@ -278,9 +563,13 @@ export function CrmWorkspaceTemplate({
               </span>
               <div className="ml-auto flex items-center gap-2">
                 {page === "record" ? (
-                  <Btn tone="neutral" size="sm">Send email</Btn>
+                  <Btn tone="neutral" size="sm">
+                    Send email
+                  </Btn>
                 ) : (
-                  <Btn tone="neutral" size="sm">+ New Company</Btn>
+                  <Btn tone="neutral" size="sm">
+                    + New Company
+                  </Btn>
                 )}
                 <button
                   type="button"
@@ -311,7 +600,9 @@ function TableView() {
       <div className="flex items-center gap-2 border-b border-[color:var(--ob-border)] px-2 py-[3px]">
         <SquaresFourIcon size={14} className="text-[color:var(--ob-muted)]" />
         <span className="text-[0.82rem] font-semibold">All Companies</span>
-        <span className="text-[0.82rem] text-[color:var(--ob-muted)]">· {RECORD_TOTAL}</span>
+        <span className="text-[0.82rem] text-[color:var(--ob-muted)]">
+          · {RECORD_TOTAL}
+        </span>
         <CaretDownIcon size={11} className="text-[color:var(--ob-muted)]" />
         <div className="ml-auto flex items-center gap-4 text-[0.85rem] text-[color:var(--ob-fg-soft)]">
           <button type="button">Filter</button>
@@ -325,7 +616,10 @@ function TableView() {
           <thead className="sticky top-0 bg-[color:var(--ob-surface)]">
             <tr>
               <th className="w-9 border-b border-r border-[color:var(--ob-border)] px-2 py-[3px]">
-                <span aria-hidden className="block size-3.5 rounded-[3px] border border-[color:var(--ob-border-strong)]" />
+                <span
+                  aria-hidden
+                  className="block size-3.5 rounded-[3px] border border-[color:var(--ob-border-strong)]"
+                />
               </th>
               {COLUMNS.map((column) => (
                 <th
@@ -333,7 +627,10 @@ function TableView() {
                   className="whitespace-nowrap border-b border-r border-[color:var(--ob-border)] px-2 py-[3px] text-left font-medium text-[color:var(--ob-fg-soft)]"
                 >
                   <span className="flex items-center gap-1.5">
-                    <column.Icon size={12} className="text-[color:var(--ob-muted)]" />
+                    <column.Icon
+                      size={12}
+                      className="text-[color:var(--ob-muted)]"
+                    />
                     {column.label}
                   </span>
                 </th>
@@ -342,13 +639,23 @@ function TableView() {
           </thead>
           <tbody>
             {RECORDS.map((record) => (
-              <tr key={record.id} className="hover:bg-[color:var(--ob-surface-2)]">
+              <tr
+                key={record.id}
+                className="hover:bg-[color:var(--ob-surface-2)]"
+              >
                 <td className="border-b border-r border-[color:var(--ob-border)] px-2 py-[3px]">
-                  <span aria-hidden className="block size-3.5 rounded-[3px] border border-[color:var(--ob-border-strong)]" />
+                  <span
+                    aria-hidden
+                    className="block size-3.5 rounded-[3px] border border-[color:var(--ob-border-strong)]"
+                  />
                 </td>
                 <td className="whitespace-nowrap border-b border-r border-[color:var(--ob-border)] px-2 py-[3px]">
                   <span className="flex items-center gap-2">
-                    <BrandMark brand={record.brand || record.name} label={record.name} size={15} />
+                    <BrandMark
+                      brand={record.brand || record.name}
+                      label={record.name}
+                      size={15}
+                    />
                     <span className="font-medium">{record.name}</span>
                   </span>
                 </td>
@@ -390,20 +697,27 @@ function TableView() {
 
       {/* Aggregate footer — a table of records always owes you its totals. */}
       <div className="flex items-center gap-6 border-t border-[color:var(--ob-border)] px-2 py-[3px] text-[0.82rem]">
-        <button type="button" className="flex items-center gap-1 text-[color:var(--ob-muted)]">
+        <button
+          type="button"
+          className="flex items-center gap-1 text-[color:var(--ob-muted)]"
+        >
           Calculate <CaretDownIcon size={11} />
         </button>
         <span className="text-[color:var(--ob-muted)]">
-          Count all <strong className="text-[color:var(--ob-fg)]">{RECORD_TOTAL}</strong>
+          Count all{" "}
+          <strong className="text-[color:var(--ob-fg)]">{RECORD_TOTAL}</strong>
         </span>
         <span className="ml-auto text-[color:var(--ob-muted)]">
-          Max of Empl. <strong className="text-[color:var(--ob-fg)]">8,000</strong>
+          Max of Empl.{" "}
+          <strong className="text-[color:var(--ob-fg)]">8,000</strong>
         </span>
         <span className="text-[color:var(--ob-muted)]">
-          Empty of Linkedin <strong className="text-[color:var(--ob-fg)]">99%</strong>
+          Empty of Linkedin{" "}
+          <strong className="text-[color:var(--ob-fg)]">99%</strong>
         </span>
         <span className="text-[color:var(--ob-muted)]">
-          Not empty of Addr… <strong className="text-[color:var(--ob-fg)]">138</strong>
+          Not empty of Addr…{" "}
+          <strong className="text-[color:var(--ob-fg)]">138</strong>
         </span>
       </div>
     </>
@@ -438,31 +752,58 @@ function BoardView() {
                   className="rounded-[6px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-3"
                 >
                   <p className="flex items-center gap-2 font-semibold">
-                    <BrandMark brand={record.brand || record.name} label={record.name} size={15} />
+                    <BrandMark
+                      brand={record.brand || record.name}
+                      label={record.name}
+                      size={15}
+                    />
                     {record.name}
                   </p>
                   <dl className="mt-2.5 grid gap-1.5 text-[0.8rem]">
                     <div className="flex items-center gap-2">
-                      <LinkIcon size={13} className="text-[color:var(--ob-muted)]" />
+                      <LinkIcon
+                        size={13}
+                        className="text-[color:var(--ob-muted)]"
+                      />
                       <Chipish>{record.domain}</Chipish>
                     </div>
                     <div className="flex items-center gap-2">
-                      <UserIcon size={13} className="text-[color:var(--ob-muted)]" />
+                      <UserIcon
+                        size={13}
+                        className="text-[color:var(--ob-muted)]"
+                      />
                       <span>{record.by}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CalendarIcon size={13} className="text-[color:var(--ob-muted)]" />
+                      <CalendarIcon
+                        size={13}
+                        className="text-[color:var(--ob-muted)]"
+                      />
                       <span>{record.age}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <UsersThreeIcon size={13} className="text-[color:var(--ob-muted)]" />
-                      <span className={record.staff ? "" : "text-[color:var(--ob-muted)]"}>
+                      <UsersThreeIcon
+                        size={13}
+                        className="text-[color:var(--ob-muted)]"
+                      />
+                      <span
+                        className={
+                          record.staff ? "" : "text-[color:var(--ob-muted)]"
+                        }
+                      >
                         {record.staff || "Employees"}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <MapPinIcon size={13} className="text-[color:var(--ob-muted)]" />
-                      <span className={record.city ? "" : "text-[color:var(--ob-muted)]"}>
+                      <MapPinIcon
+                        size={13}
+                        className="text-[color:var(--ob-muted)]"
+                      />
+                      <span
+                        className={
+                          record.city ? "" : "text-[color:var(--ob-muted)]"
+                        }
+                      >
                         {record.city || "Address"}
                       </span>
                     </div>
@@ -495,15 +836,36 @@ interface Task {
 
 const TASKS: Record<"todo" | "progress" | "done", Task[]> = {
   todo: [
-    { title: "Analyse performance metrics", body: "Define success KPIs and evaluation benchmarks", due: "May 21, 2026" },
-    { title: "Define training scope", body: "Clarify datasets, outputs and objectives", due: "Today" },
-    { title: "Schedule partnership call", body: "Coordinate an initial 60-minute session", due: "May 19, 2026", overdue: true },
+    {
+      title: "Analyse performance metrics",
+      body: "Define success KPIs and evaluation benchmarks",
+      due: "May 21, 2026",
+    },
+    {
+      title: "Define training scope",
+      body: "Clarify datasets, outputs and objectives",
+      due: "Today",
+    },
+    {
+      title: "Schedule partnership call",
+      body: "Coordinate an initial 60-minute session",
+      due: "May 19, 2026",
+      overdue: true,
+    },
   ],
   progress: [
-    { title: "Send enterprise proposal", body: "Prepare and send a detailed collaboration proposal", due: "May 14, 2026" },
+    {
+      title: "Send enterprise proposal",
+      body: "Prepare and send a detailed collaboration proposal",
+      due: "May 14, 2026",
+    },
   ],
   done: [
-    { title: "Prepare custom pricing", body: "Create a tailored enterprise package", due: "Today" },
+    {
+      title: "Prepare custom pricing",
+      body: "Create a tailored enterprise package",
+      due: "Today",
+    },
   ],
 };
 
@@ -519,8 +881,12 @@ function RecordView() {
             size={56}
             className="rounded-[12px]"
           />
-          <h2 className="text-[1.3rem] font-extrabold tracking-tight">{record.name}</h2>
-          <p className="text-[0.85rem] text-[color:var(--ob-muted)]">Added 8 days ago</p>
+          <h2 className="text-[1.3rem] font-extrabold tracking-tight">
+            {record.name}
+          </h2>
+          <p className="text-[0.85rem] text-[color:var(--ob-muted)]">
+            Added 8 days ago
+          </p>
         </div>
 
         <h3 className="border-t border-[color:var(--ob-border)] pb-2 pt-4 font-semibold">
@@ -531,8 +897,16 @@ function RecordView() {
           {
             heading: "General",
             rows: [
-              { label: "Domain name", Icon: LinkIcon, value: <Chipish>{record.domain}</Chipish> },
-              { label: "Account owner", Icon: UserIcon, value: record.owner || "—" },
+              {
+                label: "Domain name",
+                Icon: LinkIcon,
+                value: <Chipish>{record.domain}</Chipish>,
+              },
+              {
+                label: "Account owner",
+                Icon: UserIcon,
+                value: record.owner || "—",
+              },
             ],
           },
           {
@@ -540,14 +914,26 @@ function RecordView() {
             rows: [
               { label: "ARR", Icon: CurrencyIcon, value: "$3.5m" },
               { label: "Employees", Icon: UsersThreeIcon, value: record.staff },
-              { label: "ICP", Icon: CrosshairIcon, value: <span className="inline-flex items-center gap-1"><CheckIcon size={11} /> True</span> },
+              {
+                label: "ICP",
+                Icon: CrosshairIcon,
+                value: (
+                  <span className="inline-flex items-center gap-1">
+                    <CheckIcon size={11} /> True
+                  </span>
+                ),
+              },
             ],
           },
           {
             heading: "Contact",
             rows: [
               { label: "Address", Icon: MapPinIcon, value: record.city },
-              { label: "Stage", Icon: CrosshairIcon, value: <StageChip stage={record.stage} /> },
+              {
+                label: "Stage",
+                Icon: CrosshairIcon,
+                value: <StageChip stage={record.stage} />,
+              },
             ],
           },
         ].map((group) => (
@@ -560,9 +946,14 @@ function RecordView() {
               <CaretUpIcon size={11} />
             </button>
             {group.rows.map((row) => (
-              <div key={row.label} className="flex items-center gap-2 py-1.5 text-[0.85rem]">
+              <div
+                key={row.label}
+                className="flex items-center gap-2 py-1.5 text-[0.85rem]"
+              >
                 <row.Icon size={13} className="text-[color:var(--ob-muted)]" />
-                <span className="w-32 shrink-0 text-[color:var(--ob-muted)]">{row.label}</span>
+                <span className="w-32 shrink-0 text-[color:var(--ob-muted)]">
+                  {row.label}
+                </span>
                 <span>{row.value}</span>
               </div>
             ))}
@@ -572,10 +963,16 @@ function RecordView() {
         <div className="border-t border-[color:var(--ob-border)] pt-4">
           <div className="flex items-center gap-2 pb-2">
             <h3 className="flex-1 font-semibold">People</h3>
-            <button type="button" aria-label="Open" className="text-[color:var(--ob-muted)]">
+            <button
+              type="button"
+              aria-label="Open"
+              className="text-[color:var(--ob-muted)]"
+            >
               <ExternalSquareIcon size={14} />
             </button>
-            <button type="button" aria-label="Add" className="opacity-50">＋</button>
+            <button type="button" aria-label="Add" className="opacity-50">
+              ＋
+            </button>
           </div>
           {["Dana Okoye", "Priya Raman"].map((person) => (
             <span
@@ -591,20 +988,22 @@ function RecordView() {
 
       <div className="flex-1 overflow-auto">
         <div className="flex items-center gap-6 border-b border-[color:var(--ob-border)] px-5">
-          {["Timeline", "Tasks", "Notes", "Files", "Emails", "Calendar"].map((tab, i) => (
-            <button
-              key={tab}
-              type="button"
-              className={cn(
-                "-mb-px border-b-2 py-3 text-[0.88rem] font-medium",
-                i === 1
-                  ? "border-[color:var(--ob-fg)] font-semibold"
-                  : "border-transparent text-[color:var(--ob-muted)]",
-              )}
-            >
-              {tab}
-            </button>
-          ))}
+          {["Timeline", "Tasks", "Notes", "Files", "Emails", "Calendar"].map(
+            (tab, i) => (
+              <button
+                key={tab}
+                type="button"
+                className={cn(
+                  "-mb-px border-b-2 py-3 text-[0.88rem] font-medium",
+                  i === 1
+                    ? "border-[color:var(--ob-fg)] font-semibold"
+                    : "border-transparent text-[color:var(--ob-muted)]",
+                )}
+              >
+                {tab}
+              </button>
+            ),
+          )}
         </div>
 
         <div className="p-5">
@@ -622,7 +1021,9 @@ function RecordView() {
                   {group.items.length}
                 </span>
                 {group.key === "TODO" && (
-                  <Btn tone="neutral" size="sm" className="ml-auto">＋ Add task</Btn>
+                  <Btn tone="neutral" size="sm" className="ml-auto">
+                    ＋ Add task
+                  </Btn>
                 )}
               </div>
               <div className="grid gap-1.5">
@@ -645,7 +1046,8 @@ function RecordView() {
                     <span
                       className={cn(
                         "font-semibold",
-                        group.key === "DONE" && "text-[color:var(--ob-muted)] line-through",
+                        group.key === "DONE" &&
+                          "text-[color:var(--ob-muted)] line-through",
                       )}
                     >
                       {task.title}
@@ -695,8 +1097,12 @@ function DashboardView() {
             ]}
             center={
               <span className="grid">
-                <span className="text-[1.5rem] font-extrabold tracking-tight">365.5k</span>
-                <span className="text-[0.8rem] text-[color:var(--ob-muted)]">Total</span>
+                <span className="text-[1.5rem] font-extrabold tracking-tight">
+                  365.5k
+                </span>
+                <span className="text-[0.8rem] text-[color:var(--ob-muted)]">
+                  Total
+                </span>
               </span>
             }
           />
@@ -710,7 +1116,10 @@ function DashboardView() {
             { label: "Figma", color: "#d97528" },
           ].map((entry) => (
             <span key={entry.label} className="flex items-center gap-1.5">
-              <span className="size-2.5 rounded-[3px]" style={{ background: entry.color }} />
+              <span
+                className="size-2.5 rounded-[3px]"
+                style={{ background: entry.color }}
+              />
               {entry.label}
             </span>
           ))}
@@ -737,7 +1146,11 @@ function DashboardView() {
               <tr key={record.id}>
                 <td className="border-b border-[color:var(--ob-border)] px-2 py-[3px]">
                   <span className="flex items-center gap-2">
-                    <BrandMark brand={record.brand || record.name} label={record.name} size={15} />
+                    <BrandMark
+                      brand={record.brand || record.name}
+                      label={record.name}
+                      size={15}
+                    />
                     {record.name}
                   </span>
                 </td>
@@ -774,7 +1187,9 @@ function DashboardView() {
           className="mt-4"
           height={170}
           smooth
-          series={[{ id: "tasks", points: [4, 2, 1], color: "#8fa8f5", area: true }]}
+          series={[
+            { id: "tasks", points: [4, 2, 1], color: "#8fa8f5", area: true },
+          ]}
           yLabels={["6", "4", "2", "0"]}
           xLabels={["To do", "In progress", "Done"]}
         />

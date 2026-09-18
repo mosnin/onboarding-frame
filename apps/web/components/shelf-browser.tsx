@@ -163,7 +163,10 @@ export function ShelfBrowser({ shelf }: { shelf: Shelf }) {
 
         <p className="mt-10 text-[0.95rem] text-[color:var(--site-muted)]">
           Picked what you need?{" "}
-          <Link href="/kit" className="font-semibold text-[color:var(--site-fg)] underline">
+          <Link
+            href="/kit"
+            className="font-semibold text-[color:var(--site-fg)] underline"
+          >
             Export your kit
           </Link>{" "}
           as one prompt for your coding agent.

@@ -1,9 +1,7 @@
 "use client";
 
 import { BarList, Donut, LineChart, Sparkline } from "../../../ui/charts";
-import {
-  CaretRightIcon,
-} from "../../../ui/icons-solid";
+import { CaretRightIcon } from "../../../ui/icons-solid";
 import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, commerceTokens } from "./tokens";
@@ -52,10 +50,30 @@ const CHANNELS: { id: string; label: string; icon: IconName }[] = [
 ];
 
 const KPIS = [
-  { id: "gross", label: "Gross sales", value: "$1,009.40", spark: [0.1, 0.1, 0.1, 0.1, 0.9, 0.2, 0.1] },
-  { id: "returning", label: "Returning customer rate", value: "66.66%", spark: [0.1, 0.1, 0.1, 0.2, 0.9, 0.3, 0.1] },
-  { id: "fulfilled", label: "Orders fulfilled", value: "4", spark: [0.1, 0.1, 0.1, 0.1, 0.8, 0.2, 0.1] },
-  { id: "orders", label: "Orders", value: "5", spark: [0.1, 0.1, 0.1, 0.2, 0.9, 0.2, 0.1] },
+  {
+    id: "gross",
+    label: "Gross sales",
+    value: "$1,009.40",
+    spark: [0.1, 0.1, 0.1, 0.1, 0.9, 0.2, 0.1],
+  },
+  {
+    id: "returning",
+    label: "Returning customer rate",
+    value: "66.66%",
+    spark: [0.1, 0.1, 0.1, 0.2, 0.9, 0.3, 0.1],
+  },
+  {
+    id: "fulfilled",
+    label: "Orders fulfilled",
+    value: "4",
+    spark: [0.1, 0.1, 0.1, 0.1, 0.8, 0.2, 0.1],
+  },
+  {
+    id: "orders",
+    label: "Orders",
+    value: "5",
+    spark: [0.1, 0.1, 0.1, 0.2, 0.9, 0.2, 0.1],
+  },
 ];
 
 const BREAKDOWN = [
@@ -97,7 +115,9 @@ export function CommerceAnalyticsTemplate({
           <div className="mx-auto hidden w-full max-w-[720px] items-center gap-2 rounded-[8px] bg-white/10 px-3 py-2 text-[0.88rem] text-white/60 md:flex">
             <SearchIcon width={16} height={16} />
             <span className="flex-1">Search</span>
-            <kbd className="rounded border border-white/25 px-1.5 text-[0.68rem]">⌘K</kbd>
+            <kbd className="rounded border border-white/25 px-1.5 text-[0.68rem]">
+              ⌘K
+            </kbd>
           </div>
           <div className="flex items-center gap-3 text-white/80">
             <button type="button" aria-label="Assistant">
@@ -128,7 +148,12 @@ export function CommerceAnalyticsTemplate({
                       : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-3)]",
                   )}
                 >
-                  <Icon name={item.icon} width={16} height={16} className="shrink-0 opacity-70" />
+                  <Icon
+                    name={item.icon}
+                    width={16}
+                    height={16}
+                    className="shrink-0 opacity-70"
+                  />
                   <span className="flex-1">{item.label}</span>
                   {item.badge && (
                     <span className="rounded bg-[color:var(--ob-surface-3)] px-1.5 text-[0.72rem] font-semibold">
@@ -158,7 +183,12 @@ export function CommerceAnalyticsTemplate({
                   type="button"
                   className="flex items-center gap-3 rounded-[8px] px-3 py-2 text-left text-[0.9rem] text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-3)]"
                 >
-                  <Icon name={item.icon} width={16} height={16} className="shrink-0 opacity-70" />
+                  <Icon
+                    name={item.icon}
+                    width={16}
+                    height={16}
+                    className="shrink-0 opacity-70"
+                  />
                   {item.label}
                 </button>
               ))}
@@ -171,7 +201,8 @@ export function CommerceAnalyticsTemplate({
               type="button"
               className="flex items-center gap-1.5 px-6 pb-1 pt-5 text-left text-[0.85rem] font-semibold text-[color:var(--ob-fg-soft)]"
             >
-              Apps <ChevronRight width={13} height={13} className="opacity-60" />
+              Apps{" "}
+              <ChevronRight width={13} height={13} className="opacity-60" />
             </button>
             <button
               type="button"
@@ -221,14 +252,25 @@ export function CommerceAnalyticsTemplate({
                   <MoreIcon width={16} height={16} />
                 </Btn>
                 <Select label="Try targets" />
-                <Btn tone="dark" size="sm">New exploration</Btn>
+                <Btn tone="dark" size="sm">
+                  New exploration
+                </Btn>
               </div>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              <Select label="Last 30 days" glyph={<CalendarIcon width={15} height={15} />} />
-              <Select label="May 12 – Jun 11, 2026" glyph={<CalendarIcon width={15} height={15} />} />
-              <Select label="USD $" glyph={<SwapIcon width={15} height={15} />} />
+              <Select
+                label="Last 30 days"
+                glyph={<CalendarIcon width={15} height={15} />}
+              />
+              <Select
+                label="May 12 – Jun 11, 2026"
+                glyph={<CalendarIcon width={15} height={15} />}
+              />
+              <Select
+                label="USD $"
+                glyph={<SwapIcon width={15} height={15} />}
+              />
             </div>
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -246,9 +288,14 @@ export function CommerceAnalyticsTemplate({
                   </p>
                   <div className="mt-1.5 flex items-center gap-4">
                     <p className="flex-1 text-[1.3rem] font-extrabold tabular-nums">
-                      {kpi.value} <span className="text-[color:var(--ob-muted)]">—</span>
+                      {kpi.value}{" "}
+                      <span className="text-[color:var(--ob-muted)]">—</span>
                     </p>
-                    <Sparkline points={kpi.spark} color="var(--ob-brand)" className="w-24" />
+                    <Sparkline
+                      points={kpi.spark}
+                      color="var(--ob-brand)"
+                      className="w-24"
+                    />
                   </div>
                 </Card>
               ))}
@@ -260,14 +307,19 @@ export function CommerceAnalyticsTemplate({
                   Total sales over time
                 </p>
                 <p className="mt-1.5 text-[1.6rem] font-extrabold tabular-nums">
-                  $827.20 <span className="text-[color:var(--ob-muted)]">—</span>
+                  $827.20{" "}
+                  <span className="text-[color:var(--ob-muted)]">—</span>
                 </p>
                 <LineChart
                   className="mt-4"
                   height={210}
                   smooth
                   series={[
-                    { id: "now", points: SPIKE.map((v) => v * 800), color: "var(--ob-brand)" },
+                    {
+                      id: "now",
+                      points: SPIKE.map((v) => v * 800),
+                      color: "var(--ob-brand)",
+                    },
                     {
                       id: "prev",
                       points: SPIKE.map(() => 2),
@@ -305,7 +357,9 @@ export function CommerceAnalyticsTemplate({
                       <span className="flex-1 text-[0.9rem] text-[color:var(--ob-brand)]">
                         {row.label}
                       </span>
-                      <span className="font-semibold tabular-nums">{row.value}</span>
+                      <span className="font-semibold tabular-nums">
+                        {row.value}
+                      </span>
                       <span className="text-[color:var(--ob-muted)]">—</span>
                     </li>
                   ))}
@@ -322,9 +376,13 @@ export function CommerceAnalyticsTemplate({
                   <Donut
                     size={150}
                     thickness={26}
-                    segments={[{ id: "draft", value: 827, color: "var(--ob-brand)" }]}
+                    segments={[
+                      { id: "draft", value: 827, color: "var(--ob-brand)" },
+                    ]}
                     center={
-                      <span className="text-[1.3rem] font-extrabold tabular-nums">$827</span>
+                      <span className="text-[1.3rem] font-extrabold tabular-nums">
+                        $827
+                      </span>
                     }
                   />
                   <div className="text-[0.88rem]">
@@ -342,14 +400,19 @@ export function CommerceAnalyticsTemplate({
                   Average order value over time
                 </p>
                 <p className="mt-1.5 text-[1.4rem] font-extrabold tabular-nums">
-                  $201.84 <span className="text-[color:var(--ob-muted)]">—</span>
+                  $201.84{" "}
+                  <span className="text-[color:var(--ob-muted)]">—</span>
                 </p>
                 <LineChart
                   className="mt-3"
                   height={130}
                   smooth
                   series={[
-                    { id: "aov", points: SPIKE.map((v) => v * 300), color: "var(--ob-brand)" },
+                    {
+                      id: "aov",
+                      points: SPIKE.map((v) => v * 300),
+                      color: "var(--ob-brand)",
+                    },
                   ]}
                   yLabels={["$400", "$200", "$0"]}
                   xLabels={["Jun 12", "Jun 26", "Jul 10"]}
@@ -363,10 +426,30 @@ export function CommerceAnalyticsTemplate({
                 <BarList
                   className="mt-4"
                   items={[
-                    { id: "p1", label: "Berry preserve gift jar", value: 700, display: "$700" },
-                    { id: "p2", label: "Dried thyme leaves — Mediterranean herb", value: 99, display: "$99" },
-                    { id: "p3", label: "Crushed red pepper flakes", value: 20, display: "$20" },
-                    { id: "p4", label: "Ground chilli powder", value: 8, display: "$8" },
+                    {
+                      id: "p1",
+                      label: "Berry preserve gift jar",
+                      value: 700,
+                      display: "$700",
+                    },
+                    {
+                      id: "p2",
+                      label: "Dried thyme leaves — Mediterranean herb",
+                      value: 99,
+                      display: "$99",
+                    },
+                    {
+                      id: "p3",
+                      label: "Crushed red pepper flakes",
+                      value: 20,
+                      display: "$20",
+                    },
+                    {
+                      id: "p4",
+                      label: "Ground chilli powder",
+                      value: 8,
+                      display: "$8",
+                    },
                   ]}
                 />
               </Card>

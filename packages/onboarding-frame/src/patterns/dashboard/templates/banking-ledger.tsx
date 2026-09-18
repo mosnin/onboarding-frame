@@ -66,16 +66,107 @@ const WORKFLOWS = [
  * ledger that hides its failures is not a ledger.
  */
 const ROWS = [
-  { id: "t1", date: "Nov 2", name: "Workspace", amount: "-$6", cents: "41", out: true, account: "Checking ••2502", method: "Card ••9932", card: true },
-  { id: "t2", date: "Oct 30", name: "Wise US Inc", amount: "$10", cents: "60", account: "Checking ••2502", method: "Request" },
-  { id: "t3", date: "Oct 29", name: "Workspace", amount: "-$2", cents: "55", out: true, account: "Checking ••2502", method: "Card ••9932", card: true, attachment: true },
-  { id: "t4", date: "Oct 28", name: "Acme", amount: "-$1", cents: "00", out: true, account: "Savings ••5679", method: "Wire Payment" },
-  { id: "t5", date: "Oct 28", name: "Acme", amount: "-$10", cents: "60", out: true, account: "Checking ••2502", method: "ACH Payment" },
-  { id: "t6", date: "Oct 28", name: "From Checking ••2502", amount: "$10", cents: "00", account: "Savings ••5679", method: "Transfer In" },
-  { id: "t7", date: "Oct 28", name: "To Savings ••5679", amount: "-$10", cents: "00", out: true, account: "Checking ••2502", method: "Transfer Out" },
-  { id: "t8", date: "Oct 28", name: "From Checking ••2502", amount: "$10", cents: "00", account: "Savings ••5679", method: "Transfer In" },
-  { id: "t9", date: "Oct 28", name: "To Savings ••5679", amount: "-$10", cents: "00", out: true, account: "Checking ••2502", method: "Transfer Out" },
-  { id: "t10", date: "Oct 28", name: "TEMPORARY HOLD", amount: "$0", cents: "00", account: "Checking ••2502", method: "Card ••9932", card: true, failed: true },
+  {
+    id: "t1",
+    date: "Nov 2",
+    name: "Workspace",
+    amount: "-$6",
+    cents: "41",
+    out: true,
+    account: "Checking ••2502",
+    method: "Card ••9932",
+    card: true,
+  },
+  {
+    id: "t2",
+    date: "Oct 30",
+    name: "Wise US Inc",
+    amount: "$10",
+    cents: "60",
+    account: "Checking ••2502",
+    method: "Request",
+  },
+  {
+    id: "t3",
+    date: "Oct 29",
+    name: "Workspace",
+    amount: "-$2",
+    cents: "55",
+    out: true,
+    account: "Checking ••2502",
+    method: "Card ••9932",
+    card: true,
+    attachment: true,
+  },
+  {
+    id: "t4",
+    date: "Oct 28",
+    name: "Acme",
+    amount: "-$1",
+    cents: "00",
+    out: true,
+    account: "Savings ••5679",
+    method: "Wire Payment",
+  },
+  {
+    id: "t5",
+    date: "Oct 28",
+    name: "Acme",
+    amount: "-$10",
+    cents: "60",
+    out: true,
+    account: "Checking ••2502",
+    method: "ACH Payment",
+  },
+  {
+    id: "t6",
+    date: "Oct 28",
+    name: "From Checking ••2502",
+    amount: "$10",
+    cents: "00",
+    account: "Savings ••5679",
+    method: "Transfer In",
+  },
+  {
+    id: "t7",
+    date: "Oct 28",
+    name: "To Savings ••5679",
+    amount: "-$10",
+    cents: "00",
+    out: true,
+    account: "Checking ••2502",
+    method: "Transfer Out",
+  },
+  {
+    id: "t8",
+    date: "Oct 28",
+    name: "From Checking ••2502",
+    amount: "$10",
+    cents: "00",
+    account: "Savings ••5679",
+    method: "Transfer In",
+  },
+  {
+    id: "t9",
+    date: "Oct 28",
+    name: "To Savings ••5679",
+    amount: "-$10",
+    cents: "00",
+    out: true,
+    account: "Checking ••2502",
+    method: "Transfer Out",
+  },
+  {
+    id: "t10",
+    date: "Oct 28",
+    name: "TEMPORARY HOLD",
+    amount: "$0",
+    cents: "00",
+    account: "Checking ••2502",
+    method: "Card ••9932",
+    card: true,
+    failed: true,
+  },
 ];
 
 /**
@@ -204,7 +295,12 @@ export function BankingLedgerTemplate({
 
             <div className="flex flex-wrap items-center gap-[9px] pt-[15px]">
               {[
-                { id: "views", label: "Data Views", Icon: BookmarkIcon, caret: true },
+                {
+                  id: "views",
+                  label: "Data Views",
+                  Icon: BookmarkIcon,
+                  caret: true,
+                },
                 { id: "filters", label: "Filters", Icon: FunnelIcon },
                 { id: "date", label: "Date", caret: true },
                 { id: "keywords", label: "Keywords", caret: true },
@@ -248,8 +344,16 @@ export function BankingLedgerTemplate({
                 </p>
 
                 <ul className="grid gap-[9px] pt-[21px]">
-                  <Flow label="Money in" value="$0.00" color="var(--ob-success)" />
-                  <Flow label="Money out" value="−$6.41" color="var(--ob-brand)" />
+                  <Flow
+                    label="Money in"
+                    value="$0.00"
+                    color="var(--ob-success)"
+                  />
+                  <Flow
+                    label="Money out"
+                    value="−$6.41"
+                    color="var(--ob-brand)"
+                  />
                 </ul>
               </div>
 
@@ -257,7 +361,9 @@ export function BankingLedgerTemplate({
                 <div className="flex gap-[9px]">
                   <div className="grid shrink-0 text-right text-[0.757rem] tabular-nums text-[color:var(--ob-muted)]">
                     <span className="leading-none">$7</span>
-                    <span className="mt-[calc((200px/2)-0.8em)] leading-none">$3</span>
+                    <span className="mt-[calc((200px/2)-0.8em)] leading-none">
+                      $3
+                    </span>
                   </div>
                   <div className="min-w-[0px] flex-1">
                     <MonthChart />
@@ -291,7 +397,9 @@ export function BankingLedgerTemplate({
                 <div className="flex items-end gap-[12px] pt-[18px]">
                   <div className="grid shrink-0 text-right text-[0.757rem] tabular-nums text-[color:var(--ob-muted)]">
                     <span className="leading-none">$7</span>
-                    <span className="mt-[calc((140px/2)-0.8em)] leading-none">$3</span>
+                    <span className="mt-[calc((140px/2)-0.8em)] leading-none">
+                      $3
+                    </span>
                   </div>
                   <span className="flex h-[129px] flex-1 items-end gap-[12px]">
                     <span className="h-[62%] flex-1 bg-[color:var(--ob-surface-2)]" />
@@ -337,7 +445,10 @@ export function BankingLedgerTemplate({
                 </thead>
                 <tbody>
                   {ROWS.map((row) => (
-                    <tr key={row.id} className="border-t border-[color:var(--ob-border)]">
+                    <tr
+                      key={row.id}
+                      className="border-t border-[color:var(--ob-border)]"
+                    >
                       <td className="px-[12px] py-[12px]">
                         <span
                           aria-hidden
@@ -414,7 +525,9 @@ export function BankingLedgerTemplate({
 
               {/* The hover readout carries the split the chart cannot show. */}
               <span className="pointer-events-none absolute right-[13%] top-[12px] hidden w-[197px] rounded-[var(--ob-radius)] bg-[#1c1c1f] p-[15px] text-white shadow-[0_8px_24px_rgba(0,0,0,0.25)] xl:block">
-                <span className="block text-[0.818rem] font-semibold">Workspace</span>
+                <span className="block text-[0.818rem] font-semibold">
+                  Workspace
+                </span>
                 <span className="flex items-baseline gap-[9px] pt-[9px] text-[0.795rem]">
                   <span className="flex-1 text-white/70">Net change</span>
                   <span className="tabular-nums">−$6.41</span>
@@ -451,7 +564,11 @@ function Flow({
 }): ReactNode {
   return (
     <li className="flex items-center gap-[9px] text-[0.818rem]">
-      <span aria-hidden className="h-[12px] w-[2px]" style={{ background: color }} />
+      <span
+        aria-hidden
+        className="h-[12px] w-[2px]"
+        style={{ background: color }}
+      />
       <span className="flex-1">{label}</span>
       <span className="tabular-nums">{value}</span>
     </li>
@@ -483,7 +600,10 @@ function MonthChart() {
           <stop offset="100%" stopColor="#e5457f" stopOpacity="0.02" />
         </linearGradient>
       </defs>
-      <path d={`${line} L${width},${height} L0,${height} Z`} fill="url(#ob-bank-fill)" />
+      <path
+        d={`${line} L${width},${height} L0,${height} Z`}
+        fill="url(#ob-bank-fill)"
+      />
       <path
         d={line}
         fill="none"

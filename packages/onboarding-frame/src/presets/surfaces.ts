@@ -65,14 +65,20 @@ export const checklistCard: ChecklistConfig = {
   dismissible: true,
   showCount: true,
   celebrateOnComplete: true,
-  completedTitle: "You're all set 🎉",
+  completedTitle: "You're all set",
   completedBody: "Every setup step is done. Nice work.",
 };
 
 export const checklistPresets = {
   "dashboard-card": checklistCard,
-  "launcher-popover": { ...checklistCard, variant: "launcher-popover" } as ChecklistConfig,
-  "sidebar-panel": { ...checklistCard, variant: "sidebar-panel" } as ChecklistConfig,
+  "launcher-popover": {
+    ...checklistCard,
+    variant: "launcher-popover",
+  } as ChecklistConfig,
+  "sidebar-panel": {
+    ...checklistCard,
+    variant: "sidebar-panel",
+  } as ChecklistConfig,
   "top-banner": { ...checklistCard, variant: "top-banner" } as ChecklistConfig,
 } as const;
 
@@ -87,9 +93,27 @@ export const spotlightTour: TourConfig = {
   skipLabel: "Skip tour",
   finishLabel: "Finish",
   steps: [
-    { id: "compose", title: "Start here", body: "Compose a post for every connected channel at once.", target: "[data-tour='compose']", placement: "bottom" },
-    { id: "calendar", title: "Your week at a glance", body: "Drag posts to reschedule them without reopening the editor.", target: "[data-tour='calendar']", placement: "right" },
-    { id: "analytics", title: "See what worked", body: "Performance updates within minutes of publishing.", target: "[data-tour='analytics']", placement: "right" },
+    {
+      id: "compose",
+      title: "Start here",
+      body: "Compose a post for every connected channel at once.",
+      target: "[data-tour='compose']",
+      placement: "bottom",
+    },
+    {
+      id: "calendar",
+      title: "Your week at a glance",
+      body: "Drag posts to reschedule them without reopening the editor.",
+      target: "[data-tour='calendar']",
+      placement: "right",
+    },
+    {
+      id: "analytics",
+      title: "See what worked",
+      body: "Performance updates within minutes of publishing.",
+      target: "[data-tour='analytics']",
+      placement: "right",
+    },
   ],
 };
 
@@ -102,10 +126,34 @@ export const modalSequenceTour: TourConfig = {
   skipLabel: "Skip",
   finishLabel: "Get started",
   steps: [
-    { id: "ideas", title: "Collect every idea in one place", body: "Capture thoughts as they arrive and turn the good ones into posts.", media: "linear-gradient(150deg,#cfe4ff,#eef5ff)", mediaKind: "gradient" },
-    { id: "templates", title: "Start from a template", body: "Proven post structures you can adapt in a couple of minutes.", media: "linear-gradient(150deg,#ffe8cc,#fff7ec)", mediaKind: "gradient" },
-    { id: "schedule", title: "Publish on your schedule", body: "Queue a week of content and let it go out automatically.", media: "linear-gradient(150deg,#d8f5e3,#f0fdf4)", mediaKind: "gradient" },
-    { id: "replies", title: "Reply without switching tabs", body: "Comments from every channel land in a single inbox.", media: "linear-gradient(150deg,#ede0ff,#f8f4ff)", mediaKind: "gradient" },
+    {
+      id: "ideas",
+      title: "Collect every idea in one place",
+      body: "Capture thoughts as they arrive and turn the good ones into posts.",
+      media: "linear-gradient(150deg,#cfe4ff,#eef5ff)",
+      mediaKind: "gradient",
+    },
+    {
+      id: "templates",
+      title: "Start from a template",
+      body: "Proven post structures you can adapt in a couple of minutes.",
+      media: "linear-gradient(150deg,#ffe8cc,#fff7ec)",
+      mediaKind: "gradient",
+    },
+    {
+      id: "schedule",
+      title: "Publish on your schedule",
+      body: "Queue a week of content and let it go out automatically.",
+      media: "linear-gradient(150deg,#d8f5e3,#f0fdf4)",
+      mediaKind: "gradient",
+    },
+    {
+      id: "replies",
+      title: "Reply without switching tabs",
+      body: "Comments from every channel land in a single inbox.",
+      media: "linear-gradient(150deg,#ede0ff,#f8f4ff)",
+      mediaKind: "gradient",
+    },
   ],
 };
 
@@ -116,14 +164,51 @@ export const featureWalkthrough: TourConfig = {
   finishLabel: "Get started",
   autoAdvanceMs: 0,
   steps: [
-    { id: "organise", title: "Organise your ideas", body: "Collect and organise content ideas in one place with the idea board.", panelTone: "#d8e8fb", accent: "#3b82f6", media: "🗂", mediaKind: "emoji" },
-    { id: "templates", title: "Get started with templates", body: "Jump-start your content with ready-made post templates.", panelTone: "#fbe8cc", accent: "#f0a33c", media: "🚀", mediaKind: "emoji" },
-    { id: "compose", title: "Compose and post", body: "Write once and tailor the result for every channel.", panelTone: "#d9f2e3", accent: "#2eb872", media: "✍️", mediaKind: "emoji" },
-    { id: "reply", title: "Reply to comments", body: "Keep conversations going from a single inbox.", panelTone: "#e8dffb", accent: "#8b5cf6", media: "💬", mediaKind: "emoji" },
+    {
+      id: "organise",
+      title: "Organise your ideas",
+      body: "Collect and organise content ideas in one place with the idea board.",
+      panelTone: "#d8e8fb",
+      accent: "#3b82f6",
+      media: "idea board",
+      mediaKind: "thumb",
+    },
+    {
+      id: "templates",
+      title: "Get started with templates",
+      body: "Jump-start your content with ready-made post templates.",
+      panelTone: "#fbe8cc",
+      accent: "#f0a33c",
+      media: "post templates",
+      mediaKind: "thumb",
+    },
+    {
+      id: "compose",
+      title: "Compose and post",
+      body: "Write once and tailor the result for every channel.",
+      panelTone: "#d9f2e3",
+      accent: "#2eb872",
+      media: "composer",
+      mediaKind: "thumb",
+    },
+    {
+      id: "reply",
+      title: "Reply to comments",
+      body: "Keep conversations going from a single inbox.",
+      panelTone: "#e8dffb",
+      accent: "#8b5cf6",
+      media: "comment inbox",
+      mediaKind: "thumb",
+    },
   ],
 };
 
-export const beaconTour: TourConfig = { ...spotlightTour, id: "driftwood-beacons", variant: "beacon", backdrop: false };
+export const beaconTour: TourConfig = {
+  ...spotlightTour,
+  id: "driftwood-beacons",
+  variant: "beacon",
+  backdrop: false,
+};
 
 export const tourPresets = {
   spotlight: spotlightTour,
@@ -138,7 +223,7 @@ export const emptyStatePresets = {
   illustration: {
     id: "empty-illustration",
     variant: "illustration",
-    glyph: "🗂",
+    glyph: "folder",
     title: "No posts yet",
     body: "Everything you draft or schedule will show up here.",
     primaryCta: { id: "compose", label: "Write your first post" },
@@ -155,7 +240,7 @@ export const emptyStatePresets = {
   "sample-data": {
     id: "empty-sample",
     variant: "sample-data",
-    glyph: "📊",
+    glyph: "barChart",
     title: "Nothing to report yet",
     body: "Publish a few posts and your performance will appear here.",
     hints: [
@@ -177,20 +262,87 @@ export const activationHome: DashboardConfig = {
   subtitle: "Here's where things stand this week.",
   userName: "Alex",
   quickActions: [
-    { id: "compose", label: "Write a post", description: "Draft for every channel at once", glyph: "✍️", glyphTone: "#e4f6e8" },
-    { id: "schedule", label: "Plan your week", description: "Fill the queue in a few minutes", glyph: "🗓", glyphTone: "#e4efff" },
-    { id: "invite", label: "Invite your team", description: "Share drafts and approvals", glyph: "👥", glyphTone: "#fdeaf4" },
+    {
+      id: "compose",
+      label: "Write a post",
+      description: "Draft for every channel at once",
+      glyph: "edit",
+      glyphTone: "#e4f6e8",
+    },
+    {
+      id: "schedule",
+      label: "Plan your week",
+      description: "Fill the queue in a few minutes",
+      glyph: "calendar",
+      glyphTone: "#e4efff",
+    },
+    {
+      id: "invite",
+      label: "Invite your team",
+      description: "Share drafts and approvals",
+      glyph: "users",
+      glyphTone: "#fdeaf4",
+    },
   ],
   stats: [
-    { id: "posts", label: "Posts published", value: "34", delta: "+12%", trend: "up", spark: [0.2, 0.4, 0.3, 0.6, 0.5, 0.8, 0.9] },
-    { id: "engagement", label: "Engagement rate", value: "4.8%", delta: "+0.6pt", trend: "up", spark: [0.3, 0.35, 0.5, 0.45, 0.62, 0.7, 0.74] },
-    { id: "followers", label: "New followers", value: "1,208", delta: "-3%", trend: "down", spark: [0.8, 0.7, 0.72, 0.6, 0.5, 0.48, 0.45] },
+    {
+      id: "posts",
+      label: "Posts published",
+      value: "34",
+      delta: "+12%",
+      trend: "up",
+      spark: [0.2, 0.4, 0.3, 0.6, 0.5, 0.8, 0.9],
+    },
+    {
+      id: "engagement",
+      label: "Engagement rate",
+      value: "4.8%",
+      delta: "+0.6pt",
+      trend: "up",
+      spark: [0.3, 0.35, 0.5, 0.45, 0.62, 0.7, 0.74],
+    },
+    {
+      id: "followers",
+      label: "New followers",
+      value: "1,208",
+      delta: "-3%",
+      trend: "down",
+      spark: [0.8, 0.7, 0.72, 0.6, 0.5, 0.48, 0.45],
+    },
   ],
   activity: [
-    { id: "a1", actor: "Priya", action: "scheduled", target: "Spring launch teaser", at: "2m ago", glyph: "🗓" },
-    { id: "a2", actor: "Marcus", action: "commented on", target: "Q2 content plan", at: "1h ago", glyph: "💬" },
-    { id: "a3", actor: "Alex", action: "published", target: "Behind the scenes", at: "3h ago", glyph: "🚀" },
-    { id: "a4", actor: "Jae", action: "connected", target: "a new channel", at: "Yesterday", glyph: "🔌" },
+    {
+      id: "a1",
+      actor: "Priya",
+      action: "scheduled",
+      target: "Spring launch teaser",
+      at: "2m ago",
+      glyph: "calendar",
+    },
+    {
+      id: "a2",
+      actor: "Marcus",
+      action: "commented on",
+      target: "Q2 content plan",
+      at: "1h ago",
+      glyph: "chat",
+    },
+    {
+      id: "a3",
+      actor: "Alex",
+      action: "published",
+      target: "Behind the scenes",
+      at: "3h ago",
+      glyph: "rocket",
+    },
+    {
+      id: "a4",
+      actor: "Jae",
+      action: "connected",
+      target: "a new channel",
+      at: "Yesterday",
+      glyph: "link",
+    },
   ],
   checklist: checklistCard,
 };
@@ -201,10 +353,38 @@ export const metricsOverview: DashboardConfig = {
   title: "Performance",
   subtitle: "Last 30 days compared with the previous period.",
   stats: [
-    { id: "reach", label: "Reach", value: "184.2k", delta: "+18%", trend: "up", spark: [0.2, 0.3, 0.45, 0.4, 0.62, 0.78, 0.9] },
-    { id: "engagement", label: "Engagements", value: "9,412", delta: "+7%", trend: "up", spark: [0.3, 0.42, 0.38, 0.55, 0.6, 0.66, 0.72] },
-    { id: "clicks", label: "Link clicks", value: "2,318", delta: "+24%", trend: "up", spark: [0.1, 0.2, 0.34, 0.4, 0.55, 0.7, 0.85] },
-    { id: "unfollows", label: "Unfollows", value: "142", delta: "-11%", trend: "down", spark: [0.7, 0.6, 0.55, 0.5, 0.42, 0.38, 0.3] },
+    {
+      id: "reach",
+      label: "Reach",
+      value: "184.2k",
+      delta: "+18%",
+      trend: "up",
+      spark: [0.2, 0.3, 0.45, 0.4, 0.62, 0.78, 0.9],
+    },
+    {
+      id: "engagement",
+      label: "Engagements",
+      value: "9,412",
+      delta: "+7%",
+      trend: "up",
+      spark: [0.3, 0.42, 0.38, 0.55, 0.6, 0.66, 0.72],
+    },
+    {
+      id: "clicks",
+      label: "Link clicks",
+      value: "2,318",
+      delta: "+24%",
+      trend: "up",
+      spark: [0.1, 0.2, 0.34, 0.4, 0.55, 0.7, 0.85],
+    },
+    {
+      id: "unfollows",
+      label: "Unfollows",
+      value: "142",
+      delta: "-11%",
+      trend: "down",
+      spark: [0.7, 0.6, 0.55, 0.5, 0.42, 0.38, 0.3],
+    },
   ],
   activity: activationHome.activity,
 };
@@ -215,11 +395,11 @@ export const workspaceHub: DashboardConfig = {
   title: "Analytics",
   subtitle: "Track how your content performs across every channel.",
   nav: [
-    { id: "home", label: "Home", glyph: "🏠" },
-    { id: "compose", label: "Compose", glyph: "✍️" },
-    { id: "calendar", label: "Calendar", glyph: "🗓", badge: "3" },
-    { id: "inbox", label: "Inbox", glyph: "💬" },
-    { id: "analytics", label: "Analytics", glyph: "📈" },
+    { id: "home", label: "Home", glyph: "home" },
+    { id: "compose", label: "Compose", glyph: "edit" },
+    { id: "calendar", label: "Calendar", glyph: "calendar", badge: "3" },
+    { id: "inbox", label: "Inbox", glyph: "chat" },
+    { id: "analytics", label: "Analytics", glyph: "lineChart" },
   ],
   stats: metricsOverview.stats,
   emptyState: emptyStatePresets["sample-data"],
@@ -232,13 +412,35 @@ export const usageBilling: DashboardConfig = {
   title: "Usage and billing",
   subtitle: "Your plan renews on the 1st of next month.",
   meters: [
-    { id: "posts", label: "Scheduled posts", used: 860, limit: 1000, warnAt: 0.8 },
-    { id: "channels", label: "Connected channels", used: 8, limit: 10, warnAt: 0.8 },
+    {
+      id: "posts",
+      label: "Scheduled posts",
+      used: 860,
+      limit: 1000,
+      warnAt: 0.8,
+    },
+    {
+      id: "channels",
+      label: "Connected channels",
+      used: 8,
+      limit: 10,
+      warnAt: 0.8,
+    },
     { id: "seats", label: "Team seats", used: 3, limit: 10, warnAt: 0.9 },
   ],
   stats: [
-    { id: "spend", label: "Current bill", value: "$48.00", hint: "Billed monthly" },
-    { id: "overage", label: "Projected overage", value: "$0.00", hint: "Based on current pace" },
+    {
+      id: "spend",
+      label: "Current bill",
+      value: "$48.00",
+      hint: "Billed monthly",
+    },
+    {
+      id: "overage",
+      label: "Projected overage",
+      value: "$0.00",
+      hint: "Based on current pace",
+    },
     { id: "renews", label: "Renews in", value: "12 days" },
   ],
   upgradeNudge: {

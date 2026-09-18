@@ -1,15 +1,23 @@
 "use client";
 
+import { Glyph, Icon } from "onboarding-frame";
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { presets, type OnboardingTheme, type PatternKind } from "onboarding-frame";
+import {
+  presets,
+  type OnboardingTheme,
+  type PatternKind,
+} from "onboarding-frame";
 import { useKit } from "@/lib/kit";
 import { shelves, type ShelfItem } from "@/lib/shelves";
 import { kitPrompt, type KitPiece } from "@/lib/snippets";
 import { CodeBlock } from "./code-block";
 import { ItemPreview } from "./item-preview";
 
-function resolveConfig(item: ShelfItem): { config?: unknown; theme?: OnboardingTheme } {
+function resolveConfig(item: ShelfItem): {
+  config?: unknown;
+  theme?: OnboardingTheme;
+} {
   if (item.kind === "dashboard") return {};
   const group = presets[item.kind as PatternKind] as Record<string, unknown>;
   const entry = group?.[item.variant];
@@ -24,7 +32,9 @@ export function KitExport() {
   const [projectName, setProjectName] = useState("");
   const [tab, setTab] = useState<"prompt" | "json">("prompt");
 
-  const pieces = useMemo<(KitPiece & { item: ShelfItem; shelfId: string })[]>(() => {
+  const pieces = useMemo<
+    (KitPiece & { item: ShelfItem; shelfId: string })[]
+  >(() => {
     const out: (KitPiece & { item: ShelfItem; shelfId: string })[] = [];
     for (const shelf of shelves) {
       const ids =
@@ -83,7 +93,9 @@ export function KitExport() {
   if (count === 0) {
     return (
       <main className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-        <h1 className="text-[2.25rem] font-extrabold tracking-tight">Your kit is empty</h1>
+        <h1 className="text-[2.25rem] font-extrabold tracking-tight">
+          Your kit is empty
+        </h1>
         <p className="mt-3 text-pretty leading-relaxed text-[color:var(--site-muted)]">
           Pick an onboarding flow, a dashboard and a pricing page. They&apos;re
           independent — take one of each, or just the one you need.
@@ -95,7 +107,11 @@ export function KitExport() {
               href={`/shelf/${shelf.id}`}
               className="rounded-full border border-[color:var(--site-border)] px-4 py-2 text-sm font-semibold"
             >
-              <span aria-hidden className="mr-1.5">{shelf.glyph}</span>
+              <Glyph
+                value={shelf.glyph}
+                size={14}
+                className="mr-1.5 inline-block align-[-2px]"
+              />
               {shelf.name}
             </Link>
           ))}
@@ -108,11 +124,13 @@ export function KitExport() {
     <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <header className="flex flex-wrap items-end gap-4">
         <div className="flex-1">
-          <h1 className="text-[2.25rem] font-extrabold tracking-tight">Your kit</h1>
+          <h1 className="text-[2.25rem] font-extrabold tracking-tight">
+            Your kit
+          </h1>
           <p className="mt-2 max-w-2xl text-pretty leading-relaxed text-[color:var(--site-muted)]">
             {count} piece{count === 1 ? "" : "s"}. Hand the prompt below to your
-            coding agent — it carries every config inline, so there&apos;s nothing
-            left to guess at.
+            coding agent — it carries every config inline, so there&apos;s
+            nothing left to guess at.
           </p>
         </div>
         <button
@@ -164,7 +182,7 @@ export function KitExport() {
                   aria-label={`Remove ${piece.name}`}
                   className="shrink-0 rounded-full px-2 py-1 text-[color:var(--site-muted)] hover:text-[color:var(--site-fg)]"
                 >
-                  ✕
+                  <Icon name="cross" size={14} />
                 </button>
               </div>
             </article>
@@ -183,7 +201,11 @@ export function KitExport() {
                   href={`/shelf/${shelf.id}`}
                   className="rounded-lg border border-dashed border-[color:var(--site-border)] px-3 py-2.5 text-sm font-semibold text-[color:var(--site-muted)] hover:text-[color:var(--site-fg)]"
                 >
-                  <span aria-hidden className="mr-1.5">{shelf.glyph}</span>
+                  <Glyph
+                    value={shelf.glyph}
+                    size={14}
+                    className="mr-1.5 inline-block align-[-2px]"
+                  />
                   Add {shelf.noun}
                 </Link>
               );

@@ -117,7 +117,10 @@ export function kitPrompt(pieces: KitPiece[], projectName = "my app"): string {
       : COMPONENTS[piece.kind];
 
   const inventory = pieces
-    .map((piece) => `- **${piece.shelf}**: ${piece.name} — \`<${componentFor(piece)} />\``)
+    .map(
+      (piece) =>
+        `- **${piece.shelf}**: ${piece.name} — \`<${componentFor(piece)} />\``,
+    )
     .join("\n");
 
   const sections = pieces

@@ -64,7 +64,10 @@ const NAV = [
 ];
 
 /** The rail's account list, as each capture shows it. */
-const RAIL_ACCOUNTS: Record<FinancePage, { heading: string; rows: RailRow[] }[]> = {
+const RAIL_ACCOUNTS: Record<
+  FinancePage,
+  { heading: string; rows: RailRow[] }[]
+> = {
   dashboard: [
     {
       heading: "Depository",
@@ -143,7 +146,15 @@ const CATEGORIES = [
     pct: 100,
     over: true,
   },
-  { id: "date", emoji: "❤️", label: "Date", spent: "$310", limit: "$900", pct: 34, over: false },
+  {
+    id: "date",
+    emoji: "❤️",
+    label: "Date",
+    spent: "$310",
+    limit: "$900",
+    pct: 34,
+    over: false,
+  },
   {
     id: "education",
     emoji: "📖",
@@ -282,7 +293,11 @@ function Delta({
         : { background: "#f2f3f4", color: "#7c8493" };
   const heading = dir ?? (tone === "flat" ? "flat" : tone);
   const Mark =
-    heading === "up" ? ArrowUpRightIcon : heading === "down" ? ArrowDownRightIcon : EqualIcon;
+    heading === "up"
+      ? ArrowUpRightIcon
+      : heading === "down"
+        ? ArrowDownRightIcon
+        : EqualIcon;
   return (
     <span
       className="inline-flex shrink-0 items-center gap-0.5 rounded-full px-2 py-[3px] text-[0.76rem] font-bold tabular-nums"
@@ -352,7 +367,11 @@ export function FinanceOverviewTemplate({
                     type="button"
                     className="flex w-full items-center gap-1 px-2.5 pb-1 text-left text-[0.88rem] font-semibold text-[color:var(--ob-muted)]"
                   >
-                    <ChevronDown size={13} strokeWidth={2.4} className="shrink-0" />
+                    <ChevronDown
+                      size={13}
+                      strokeWidth={2.4}
+                      className="shrink-0"
+                    />
                     {group.heading}
                   </button>
                   {group.rows.map((row) => (
@@ -365,7 +384,9 @@ export function FinanceOverviewTemplate({
                         className="size-2 shrink-0 rounded-full"
                         style={{ background: row.dot }}
                       />
-                      <span className="min-w-0 flex-1 truncate">{row.label}</span>
+                      <span className="min-w-0 flex-1 truncate">
+                        {row.label}
+                      </span>
                       <span className="shrink-0 text-[0.88rem] tabular-nums text-[color:var(--ob-muted)]">
                         {row.value}
                       </span>
@@ -380,7 +401,11 @@ export function FinanceOverviewTemplate({
             {view === "accounts" ? (
               <FooterItem Icon={BookBookmarkIcon} label="Explore" />
             ) : (
-              <FooterItem Icon={BookBookmarkIcon} label="Start here" tone="#d99a26" />
+              <FooterItem
+                Icon={BookBookmarkIcon}
+                label="Start here"
+                tone="#d99a26"
+              />
             )}
             <FooterItem Icon={ChatSquareIcon} label="Get Help" />
             <FooterItem
@@ -458,7 +483,9 @@ function DashboardPage() {
             <p className="text-[1.5rem] font-[550] leading-none tracking-tight tabular-nums">
               $4,465 left
             </p>
-            <p className="pt-1.5 text-[0.94rem] text-[color:var(--ob-muted)]">$9,300 budgeted</p>
+            <p className="pt-1.5 text-[0.94rem] text-[color:var(--ob-muted)]">
+              $9,300 budgeted
+            </p>
           </div>
 
           <div className="relative pt-7">
@@ -513,7 +540,9 @@ function DashboardPage() {
               { label: "Debts", value: "$100", tone: "down" as const },
             ].map((stat) => (
               <div key={stat.label} className="w-[188px] max-w-[50%]">
-                <p className="text-[0.94rem] text-[color:var(--ob-muted)]">{stat.label}</p>
+                <p className="text-[0.94rem] text-[color:var(--ob-muted)]">
+                  {stat.label}
+                </p>
                 <p className="pt-1 text-[1.5rem] font-[550] leading-none tracking-tight">
                   {stat.value}
                 </p>
@@ -549,73 +578,83 @@ function DashboardPage() {
         <Card className="min-w-0 p-6">
           <CardHead title="Top categories" link="View all" />
           <div className="-mx-6 overflow-x-auto px-6">
-          <ul className="min-w-[480px] pt-[22px]">
-            {CATEGORIES.map((category, i) => (
-              <li key={category.id} className="flex h-8 items-center gap-3">
-                <span
-                  aria-hidden
-                  className="size-1.5 shrink-0 rounded-full"
-                  style={{ background: CATEGORY_DOTS[i] }}
-                />
-                <span aria-hidden className="w-[18px] shrink-0 text-[1rem] leading-none">
-                  {category.emoji}
-                </span>
-                <span className="min-w-0 flex-1 truncate text-[0.94rem]">{category.label}</span>
-                <span className="shrink-0 text-[0.94rem] font-medium tabular-nums">
-                  {category.spent}
-                </span>
-                <span className="relative h-1.5 w-[128px] shrink-0 overflow-hidden rounded-full bg-[#f6f6f6]">
-                  {category.pendingPct !== undefined && (
-                    <span
-                      className="absolute inset-y-0 left-0 rounded-full border border-[#0ccc4f]"
-                      style={{ width: `${category.pendingPct}%` }}
-                    />
-                  )}
+            <ul className="min-w-[480px] pt-[22px]">
+              {CATEGORIES.map((category, i) => (
+                <li key={category.id} className="flex h-8 items-center gap-3">
                   <span
-                    className="absolute inset-y-0 left-0 rounded-full"
-                    style={{
-                      width: `${category.pct}%`,
-                      background: category.over ? "#f4553d" : "#0ccc4f",
-                    }}
+                    aria-hidden
+                    className="size-1.5 shrink-0 rounded-full"
+                    style={{ background: CATEGORY_DOTS[i] }}
                   />
-                </span>
-                <span className="w-[66px] shrink-0 text-[0.94rem] font-medium tabular-nums">
-                  {category.limit}
-                </span>
-              </li>
-            ))}
-          </ul>
+                  <span
+                    aria-hidden
+                    className="w-[18px] shrink-0 text-[1rem] leading-none"
+                  >
+                    {category.emoji}
+                  </span>
+                  <span className="min-w-0 flex-1 truncate text-[0.94rem]">
+                    {category.label}
+                  </span>
+                  <span className="shrink-0 text-[0.94rem] font-medium tabular-nums">
+                    {category.spent}
+                  </span>
+                  <span className="relative h-1.5 w-[128px] shrink-0 overflow-hidden rounded-full bg-[#f6f6f6]">
+                    {category.pendingPct !== undefined && (
+                      <span
+                        className="absolute inset-y-0 left-0 rounded-full border border-[#0ccc4f]"
+                        style={{ width: `${category.pendingPct}%` }}
+                      />
+                    )}
+                    <span
+                      className="absolute inset-y-0 left-0 rounded-full"
+                      style={{
+                        width: `${category.pct}%`,
+                        background: category.over ? "#f4553d" : "#0ccc4f",
+                      }}
+                    />
+                  </span>
+                  <span className="w-[66px] shrink-0 text-[0.94rem] font-medium tabular-nums">
+                    {category.limit}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Card>
 
         <Card className="min-w-0 p-6">
           <CardHead title="Next two weeks" link="Recurrings" />
           <div className="-mx-6 overflow-x-auto px-6">
-          <ul className="min-w-[500px] pt-3">
-            {UPCOMING.map((row, i) => (
-              <li key={i} className="flex h-8 items-center gap-3">
-                <span className="w-[76px] shrink-0 text-[0.94rem] text-[color:var(--ob-muted)]">
-                  {row.when}
-                </span>
-                <span aria-hidden className="w-[18px] shrink-0 text-[1rem] leading-none">
-                  {row.emoji}
-                </span>
-                <span className="min-w-0 flex-1 truncate text-[0.94rem]">{row.label}</span>
-                <span
-                  className="inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-[3px] text-[0.68rem] font-bold uppercase tracking-wide"
-                  style={{ background: row.chipBg, color: row.chipFg }}
-                >
-                  <span aria-hidden className="text-[0.72rem] leading-none">
+            <ul className="min-w-[500px] pt-3">
+              {UPCOMING.map((row, i) => (
+                <li key={i} className="flex h-8 items-center gap-3">
+                  <span className="w-[76px] shrink-0 text-[0.94rem] text-[color:var(--ob-muted)]">
+                    {row.when}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="w-[18px] shrink-0 text-[1rem] leading-none"
+                  >
                     {row.emoji}
                   </span>
-                  {row.tag}
-                </span>
-                <span className="w-[86px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
-                  {row.amount}
-                </span>
-              </li>
-            ))}
-          </ul>
+                  <span className="min-w-0 flex-1 truncate text-[0.94rem]">
+                    {row.label}
+                  </span>
+                  <span
+                    className="inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-[3px] text-[0.68rem] font-bold uppercase tracking-wide"
+                    style={{ background: row.chipBg, color: row.chipFg }}
+                  >
+                    <span aria-hidden className="text-[0.72rem] leading-none">
+                      {row.emoji}
+                    </span>
+                    {row.tag}
+                  </span>
+                  <span className="w-[86px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
+                    {row.amount}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Card>
       </div>
@@ -642,7 +681,11 @@ function ReviewedBurst() {
   });
   return (
     <div className="relative grid h-[92px] w-full max-w-[420px] place-items-center">
-      <svg viewBox="0 0 240 120" className="absolute inset-0 h-full w-full" aria-hidden>
+      <svg
+        viewBox="0 0 240 120"
+        className="absolute inset-0 h-full w-full"
+        aria-hidden
+      >
         <defs>
           <radialGradient id="reviewed-glow">
             <stop offset="0%" stopColor="#5b8def" stopOpacity="0.16" />
@@ -651,7 +694,14 @@ function ReviewedBurst() {
         </defs>
         <ellipse cx={120} cy={60} rx={70} ry={44} fill="url(#reviewed-glow)" />
         {dots.map((d, i) => (
-          <circle key={i} cx={d.x} cy={d.y} r={1.05} fill="#5b8def" opacity={d.o} />
+          <circle
+            key={i}
+            cx={d.x}
+            cy={d.y}
+            r={1.05}
+            fill="#5b8def"
+            opacity={d.o}
+          />
         ))}
       </svg>
       <span className="relative grid size-[46px] place-items-center rounded-full border border-[#dbe6fb] bg-white text-[#3f7eed]">
@@ -726,7 +776,13 @@ const ALLOCATIONS = [
 ];
 
 const HOLDINGS = [
-  { ticker: "BTC", name: "Bitcoin", change: "2.87%", tone: "down" as const, price: "$64,020.45" },
+  {
+    ticker: "BTC",
+    name: "Bitcoin",
+    change: "2.87%",
+    tone: "down" as const,
+    price: "$64,020.45",
+  },
   {
     ticker: "SPY",
     name: "State Street SPDR …",
@@ -782,7 +838,9 @@ function AccountsPage() {
             <GearIcon size={18} />
           </button>
           <div className="text-center">
-            <p className="text-[0.94rem] text-[color:var(--ob-muted)]">Net worth</p>
+            <p className="text-[0.94rem] text-[color:var(--ob-muted)]">
+              Net worth
+            </p>
             <p className="pt-1 text-[1.5rem] font-[550] leading-none tracking-tight tabular-nums">
               $1,323,530
             </p>
@@ -814,54 +872,69 @@ function AccountsPage() {
 
         <div className="-mx-1 overflow-x-auto px-1 pt-7">
           <div className="min-w-[540px]">
-          {ACCOUNT_ROWS.map((group) => (
-            <section key={group.heading} className="pb-5">
-              <h2 className="flex items-center gap-1.5 pb-3 text-[0.94rem] font-medium">
-                <ChevronDown size={13} strokeWidth={2.4} className="text-[color:var(--ob-muted)]" />
-                {group.heading}
-                {group.eye && <EyeIcon size={15} className="text-[color:var(--ob-muted)]" />}
-              </h2>
-              {group.rows.map((row) => (
-                <div
-                  key={row.mask}
-                  className={cn(
-                    "-mx-3 flex items-center gap-2 rounded-[12px] px-3 py-2.5",
-                    row.selected && "bg-[#eaf1fd]",
+            {ACCOUNT_ROWS.map((group) => (
+              <section key={group.heading} className="pb-5">
+                <h2 className="flex items-center gap-1.5 pb-3 text-[0.94rem] font-medium">
+                  <ChevronDown
+                    size={13}
+                    strokeWidth={2.4}
+                    className="text-[color:var(--ob-muted)]"
+                  />
+                  {group.heading}
+                  {group.eye && (
+                    <EyeIcon
+                      size={15}
+                      className="text-[color:var(--ob-muted)]"
+                    />
                   )}
-                >
-                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[#eef0f4] text-[color:#8b93a1]">
-                    <BankSolid size={18} />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="flex items-baseline gap-2">
-                      <span className="truncate text-[0.94rem] font-medium">{row.name}</span>
-                      <span className="shrink-0 text-[0.94rem] text-[color:var(--ob-muted)] tabular-nums">
-                        {row.mask}
+                </h2>
+                {group.rows.map((row) => (
+                  <div
+                    key={row.mask}
+                    className={cn(
+                      "-mx-3 flex items-center gap-2 rounded-[12px] px-3 py-2.5",
+                      row.selected && "bg-[#eaf1fd]",
+                    )}
+                  >
+                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[#eef0f4] text-[color:#8b93a1]">
+                      <BankSolid size={18} />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="flex items-baseline gap-2">
+                        <span className="truncate text-[0.94rem] font-medium">
+                          {row.name}
+                        </span>
+                        <span className="shrink-0 text-[0.94rem] text-[color:var(--ob-muted)] tabular-nums">
+                          {row.mask}
+                        </span>
+                      </span>
+                      <span className="block text-[0.82rem] text-[color:var(--ob-muted)]">
+                        Manual account
                       </span>
                     </span>
-                    <span className="block text-[0.82rem] text-[color:var(--ob-muted)]">
-                      Manual account
+                    <Delta value={row.change} tone={row.tone} />
+                    <span className="w-[140px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
+                      {row.value}
                     </span>
-                  </span>
-                  <Delta value={row.change} tone={row.tone} />
+                  </div>
+                ))}
+                <div className="mt-1.5 flex items-center gap-3 border-t border-[color:var(--ob-border)] pt-3.5">
+                  <span className="flex-1" />
+                  <Delta value={group.total.change} tone={group.total.tone} />
                   <span className="w-[140px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
-                    {row.value}
+                    {group.total.value}
                   </span>
                 </div>
-              ))}
-              <div className="mt-1.5 flex items-center gap-3 border-t border-[color:var(--ob-border)] pt-3.5">
-                <span className="flex-1" />
-                <Delta value={group.total.change} tone={group.total.tone} />
-                <span className="w-[140px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
-                  {group.total.value}
-                </span>
-              </div>
-            </section>
-          ))}
-          <h2 className="flex items-center gap-1.5 text-[0.94rem] font-medium">
-            <ChevronDown size={13} strokeWidth={2.4} className="text-[color:var(--ob-muted)]" />
-            Other
-          </h2>
+              </section>
+            ))}
+            <h2 className="flex items-center gap-1.5 text-[0.94rem] font-medium">
+              <ChevronDown
+                size={13}
+                strokeWidth={2.4}
+                className="text-[color:var(--ob-muted)]"
+              />
+              Other
+            </h2>
           </div>
         </div>
       </div>
@@ -873,100 +946,116 @@ function AccountsPage() {
 function AccountDetail() {
   return (
     <aside className="hidden w-[464px] shrink-0 border-l border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] xl:block">
-        <div className="flex h-14 items-center gap-3 px-6">
-          <h2 className="flex-1 text-[0.94rem] font-medium">Other</h2>
-          <button type="button" aria-label="More" className="text-[color:var(--ob-muted)]">
-            <MoreIcon size={18} />
-          </button>
-          <span aria-hidden className="h-5 w-px bg-[color:var(--ob-border)]" />
-          <button type="button" aria-label="Close" className="text-[color:var(--ob-muted)]">
-            <Cross size={18} />
-          </button>
+      <div className="flex h-14 items-center gap-3 px-6">
+        <h2 className="flex-1 text-[0.94rem] font-medium">Other</h2>
+        <button
+          type="button"
+          aria-label="More"
+          className="text-[color:var(--ob-muted)]"
+        >
+          <MoreIcon size={18} />
+        </button>
+        <span aria-hidden className="h-5 w-px bg-[color:var(--ob-border)]" />
+        <button
+          type="button"
+          aria-label="Close"
+          className="text-[color:var(--ob-muted)]"
+        >
+          <Cross size={18} />
+        </button>
+      </div>
+
+      <div className="border-t border-[color:var(--ob-border)] px-6 pb-5 pt-6">
+        <div className="flex items-center gap-2">
+          <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#eef0f4] text-[color:#8b93a1]">
+            <BankSolid size={13} />
+          </span>
+          <span className="text-[0.94rem] font-medium tabular-nums">9786</span>
+          <span className="text-[0.94rem] text-[color:var(--ob-muted)]">
+            Manual account
+          </span>
+          <span className="ml-auto flex items-center gap-1.5">
+            <span
+              className="inline-flex items-center gap-0.5 rounded-full px-2 py-[3px] text-[0.76rem] font-bold tabular-nums"
+              style={{ background: "#e4f2e4", color: "#187b3c" }}
+            >
+              <Plus size={11} strokeWidth={3} /> $21,942
+            </span>
+            <Delta value="1.71%" tone="up" />
+          </span>
         </div>
 
-        <div className="border-t border-[color:var(--ob-border)] px-6 pb-5 pt-6">
-          <div className="flex items-center gap-2">
-            <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#eef0f4] text-[color:#8b93a1]">
-              <BankSolid size={13} />
-            </span>
-            <span className="text-[0.94rem] font-medium tabular-nums">9786</span>
-            <span className="text-[0.94rem] text-[color:var(--ob-muted)]">Manual account</span>
-            <span className="ml-auto flex items-center gap-1.5">
-              <span
-                className="inline-flex items-center gap-0.5 rounded-full px-2 py-[3px] text-[0.76rem] font-bold tabular-nums"
-                style={{ background: "#e4f2e4", color: "#187b3c" }}
-              >
-                <Plus size={11} strokeWidth={3} /> $21,942
+        <div className="flex items-baseline gap-3 pt-2">
+          <h3 className="flex-1 text-[1.3rem] font-semibold tracking-tight">
+            Main Investment
+          </h3>
+          <p className="text-[1.3rem] font-semibold tabular-nums">
+            $1,305,499.92
+          </p>
+        </div>
+
+        {/* The dotted lead-in marks the stretch before this account existed. */}
+        {/* The end dot sits a little in from the panel's edge, not on it. */}
+        <div className="pr-1.5 pt-2">
+          <LineChart
+            height={100}
+            smooth
+            gridLines={0}
+            series={[
+              {
+                id: "account",
+                points: [4, 4, 4, 4, 4, 12, 46, 70, 78, 78, 74],
+                color: "#0ccc4f",
+                area: true,
+                dashedFrom: 9,
+                endDot: true,
+              },
+            ]}
+          />
+        </div>
+
+        <RangeRow className="pt-[27px]" />
+      </div>
+
+      <div className="border-t border-[color:var(--ob-border)] px-6 py-6">
+        <PanelHeading title="Allocations" meta="By percentage" />
+        <ul>
+          {ALLOCATIONS.map((row) => (
+            <li key={row.label} className="flex h-8 items-center gap-2">
+              <span className="w-[47px] shrink-0 text-[1rem]">{row.label}</span>
+              <span className="relative h-[5px] flex-1 rounded-full bg-[#f0f1f2]">
+                <span
+                  className="absolute inset-y-0 left-0 rounded-full bg-[#3b6fe0]"
+                  style={{ width: `${Math.max(row.pct, 1)}%` }}
+                />
               </span>
-              <Delta value="1.71%" tone="up" />
-            </span>
-          </div>
+              <span className="w-[38px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
+                {row.display}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-          <div className="flex items-baseline gap-3 pt-2">
-            <h3 className="flex-1 text-[1.3rem] font-semibold tracking-tight">Main Investment</h3>
-            <p className="text-[1.3rem] font-semibold tabular-nums">$1,305,499.92</p>
-          </div>
-
-          {/* The dotted lead-in marks the stretch before this account existed. */}
-          {/* The end dot sits a little in from the panel's edge, not on it. */}
-          <div className="pr-1.5 pt-2">
-            <LineChart
-              height={100}
-              smooth
-              gridLines={0}
-              series={[
-                {
-                  id: "account",
-                  points: [4, 4, 4, 4, 4, 12, 46, 70, 78, 78, 74],
-                  color: "#0ccc4f",
-                  area: true,
-                  dashedFrom: 9,
-                  endDot: true,
-                },
-              ]}
-            />
-          </div>
-
-          <RangeRow className="pt-[27px]" />
-        </div>
-
-        <div className="border-t border-[color:var(--ob-border)] px-6 py-6">
-          <PanelHeading title="Allocations" meta="By percentage" />
-          <ul>
-            {ALLOCATIONS.map((row) => (
-              <li key={row.label} className="flex h-8 items-center gap-2">
-                <span className="w-[47px] shrink-0 text-[1rem]">{row.label}</span>
-                <span className="relative h-[5px] flex-1 rounded-full bg-[#f0f1f2]">
-                  <span
-                    className="absolute inset-y-0 left-0 rounded-full bg-[#3b6fe0]"
-                    style={{ width: `${Math.max(row.pct, 1)}%` }}
-                  />
-                </span>
-                <span className="w-[38px] shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
-                  {row.display}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="border-t border-[color:var(--ob-border)] px-6 py-6">
-          <PanelHeading title="Holdings" meta="Last price" />
-          <ul>
-            {HOLDINGS.map((row) => (
-              <li key={row.ticker} className="flex h-11 items-center gap-3">
-                <span className="w-16 shrink-0 text-[0.94rem] text-[color:var(--ob-muted)]">
-                  {row.ticker}
-                </span>
-                <span className="min-w-0 flex-1 truncate text-[0.94rem]">{row.name}</span>
-                <Delta value={row.change} tone={row.tone} />
-                <span className="w-24 shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
-                  {row.price}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="border-t border-[color:var(--ob-border)] px-6 py-6">
+        <PanelHeading title="Holdings" meta="Last price" />
+        <ul>
+          {HOLDINGS.map((row) => (
+            <li key={row.ticker} className="flex h-11 items-center gap-3">
+              <span className="w-16 shrink-0 text-[0.94rem] text-[color:var(--ob-muted)]">
+                {row.ticker}
+              </span>
+              <span className="min-w-0 flex-1 truncate text-[0.94rem]">
+                {row.name}
+              </span>
+              <Delta value={row.change} tone={row.tone} />
+              <span className="w-24 shrink-0 text-right text-[0.94rem] font-medium tabular-nums">
+                {row.price}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </aside>
   );
 }

@@ -1,7 +1,11 @@
 "use client";
 
 import { useMemo } from "react";
-import { presets, type OnboardingTheme, type PatternKind } from "onboarding-frame";
+import {
+  presets,
+  type OnboardingTheme,
+  type PatternKind,
+} from "onboarding-frame";
 import { FlowRenderer } from "./flow-renderer";
 import { TemplateBody } from "./template-viewer";
 
@@ -50,7 +54,11 @@ export function ItemPreview({
         {kind === "dashboard" ? (
           <TemplateBody slug={variant} page="home" />
         ) : (
-          <FlowRenderer kind={kind} config={preset?.config} theme={preset?.theme} />
+          <FlowRenderer
+            kind={kind}
+            config={preset?.config}
+            theme={preset?.theme}
+          />
         )}
       </div>
     </div>

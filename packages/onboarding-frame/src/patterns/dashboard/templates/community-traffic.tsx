@@ -49,7 +49,12 @@ const GROUPS = [
     items: [
       { id: "awards", label: "Awards" },
       { id: "wiki", label: "Wiki pages" },
-      { id: "settings", label: "Community settings", badge: "NEW", chevron: true },
+      {
+        id: "settings",
+        label: "Community settings",
+        badge: "NEW",
+        chevron: true,
+      },
       { id: "appearance", label: "Community appearance", chevron: true },
     ],
   },
@@ -94,7 +99,15 @@ const PLATFORMS = [
  */
 const PAGEVIEWS = [0, 0, 0, 0, 0, 21, 0];
 const OLD_REDDIT = [0, 0, 0, 0, 0, 0, 0];
-const DAYS = ["January 8", "Jan 9", "Jan 10", "Jan 11", "Jan 12", "Jan 13", "Jan 14"];
+const DAYS = [
+  "January 8",
+  "Jan 9",
+  "Jan 10",
+  "Jan 11",
+  "Jan 12",
+  "Jan 13",
+  "Jan 14",
+];
 
 const TABLE = [
   { day: "1/14/23", views: 0, uniques: 0, joined: 0 },
@@ -157,9 +170,15 @@ export function CommunityTrafficTemplate({
           <span className="flex items-center gap-[7px] pl-[4px]">
             <Avatar name="Mod_Account" size={28} />
             <span className="leading-tight">
-              <span className="block text-[0.774rem] font-medium">Mod_Account</span>
+              <span className="block text-[0.774rem] font-medium">
+                Mod_Account
+              </span>
               <span className="block text-[0.693rem] text-[color:var(--ob-muted)]">
-                <FlowerIcon size={12} weight="fill" className="inline align-[-1px] text-[#ff4500]" />{" "}
+                <FlowerIcon
+                  size={12}
+                  weight="fill"
+                  className="inline align-[-1px] text-[#ff4500]"
+                />{" "}
                 1 karma
               </span>
             </span>
@@ -204,7 +223,10 @@ export function CommunityTrafficTemplate({
                           </span>
                         )}
                         {"external" in item && item.external && (
-                          <ExternalSquareIcon size={13} className="opacity-50" />
+                          <ExternalSquareIcon
+                            size={13}
+                            className="opacity-50"
+                          />
                         )}
                         {"chevron" in item && item.chevron && (
                           <CaretRightIcon size={17} />
@@ -266,7 +288,10 @@ export function CommunityTrafficTemplate({
                 <RuledChart />
                 <ul className="grid content-start gap-[11px] pt-[21px]">
                   {PLATFORMS.map((platform) => (
-                    <li key={platform.id} className="flex items-center gap-[11px]">
+                    <li
+                      key={platform.id}
+                      className="flex items-center gap-[11px]"
+                    >
                       <span
                         aria-hidden
                         className="size-[14px] rounded-[3px]"
@@ -318,7 +343,12 @@ export function CommunityTrafficTemplate({
                 <thead>
                   <tr className="bg-[color:var(--ob-surface-2)] text-[0.711rem] font-bold uppercase tracking-wide text-[color:var(--ob-fg-soft)]">
                     <Th>
-                      Day <CaretDownIcon size={11} weight="fill" className="inline align-[0px]" />
+                      Day{" "}
+                      <CaretDownIcon
+                        size={11}
+                        weight="fill"
+                        className="inline align-[0px]"
+                      />
                     </Th>
                     <Th>Pageviews</Th>
                     <Th>Uniques</Th>
@@ -374,7 +404,9 @@ function RuledChart() {
   const step = width / (DAYS.length - 1);
   const y = (value: number) => height - (value / max) * height;
   const path = (points: number[]) =>
-    points.map((value, i) => `${i === 0 ? "M" : "L"}${i * step},${y(value)}`).join(" ");
+    points
+      .map((value, i) => `${i === 0 ? "M" : "L"}${i * step},${y(value)}`)
+      .join(" ");
 
   return (
     <div className="flex min-w-[0px] flex-1 gap-[11px]">
@@ -393,7 +425,10 @@ function RuledChart() {
             {[25, 20, 15, 10, 5, 0].map((tick, index) => (
               <span
                 key={tick}
-                className={cn("leading-none", index > 0 && "mt-[calc((350px/5)-0.8em)]")}
+                className={cn(
+                  "leading-none",
+                  index > 0 && "mt-[calc((350px/5)-0.8em)]",
+                )}
               >
                 {tick}
               </span>

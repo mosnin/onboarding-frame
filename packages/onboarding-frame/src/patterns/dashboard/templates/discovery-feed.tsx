@@ -29,16 +29,106 @@ const TABS = ["Collections", "Recents", "For You", "More"];
 
 /** Deterministic column heights keep the masonry rhythm without real images. */
 const ITEMS = [
-  { id: "1", col: 0, h: 330, cat: "Art & design", title: "Paintings by a contemporary portraitist, first seen on an album cover.", author: "M. Gogh", badges: [save("4")] },
-  { id: "2", col: 1, h: 250, cat: "Art & design", title: "I've been following this painter for five years, and each new piece still surprises me.", author: "Glauber", badges: [save("5")] },
-  { id: "3", col: 2, h: 300, cat: "Art & design", title: "Light, materiality and the photographic image: fragments of stone with subtle tensions.", author: "M. Gogh", badges: [share("1"), save("5")] },
-  { id: "4", col: 3, h: 230, cat: "Art & design", title: "The artwork on this record is by a Dutch illustrator. Note: the vinyl release differs.", author: "M. Gogh", badges: [share("1"), save("4")] },
-  { id: "5", col: 4, h: 210, cat: "Music & sounds", title: "Instrumental music full of textures and references to the rhythms of nature.", author: "M. Gogh", badges: [share("1")] },
-  { id: "6", col: 0, h: 260, cat: "Art & design", title: "Beautiful, calm and ethereal series of paintings — I've never seen ink used this way.", author: "Glauber", badges: [pin("1"), save("5")] },
-  { id: "7", col: 1, h: 320, cat: "Industrial design", title: "Love the boldness of this custom sound system, inspired by and designed for a gallery.", author: "Glauber", badges: [save("5")] },
-  { id: "8", col: 2, h: 220, cat: "Music & sounds", title: "An album I spent many hours with while creating. I recently returned to it.", author: "A. Dubrovin", badges: [] },
-  { id: "9", col: 3, h: 290, cat: "Art & design", title: "Welcome to the platform! It's exciting to finally have a place where we can share.", author: "Glauber", badges: [pin("15"), share("3"), save("3")] },
-  { id: "10", col: 4, h: 240, cat: "Art & design", title: "An artist whose work I return to again and again for inspiration. Brightness and rhythm.", author: "A. Dubrovin", badges: [pin("1"), save("5")] },
+  {
+    id: "1",
+    col: 0,
+    h: 330,
+    cat: "Art & design",
+    title:
+      "Paintings by a contemporary portraitist, first seen on an album cover.",
+    author: "M. Gogh",
+    badges: [save("4")],
+  },
+  {
+    id: "2",
+    col: 1,
+    h: 250,
+    cat: "Art & design",
+    title:
+      "I've been following this painter for five years, and each new piece still surprises me.",
+    author: "Glauber",
+    badges: [save("5")],
+  },
+  {
+    id: "3",
+    col: 2,
+    h: 300,
+    cat: "Art & design",
+    title:
+      "Light, materiality and the photographic image: fragments of stone with subtle tensions.",
+    author: "M. Gogh",
+    badges: [share("1"), save("5")],
+  },
+  {
+    id: "4",
+    col: 3,
+    h: 230,
+    cat: "Art & design",
+    title:
+      "The artwork on this record is by a Dutch illustrator. Note: the vinyl release differs.",
+    author: "M. Gogh",
+    badges: [share("1"), save("4")],
+  },
+  {
+    id: "5",
+    col: 4,
+    h: 210,
+    cat: "Music & sounds",
+    title:
+      "Instrumental music full of textures and references to the rhythms of nature.",
+    author: "M. Gogh",
+    badges: [share("1")],
+  },
+  {
+    id: "6",
+    col: 0,
+    h: 260,
+    cat: "Art & design",
+    title:
+      "Beautiful, calm and ethereal series of paintings — I've never seen ink used this way.",
+    author: "Glauber",
+    badges: [pin("1"), save("5")],
+  },
+  {
+    id: "7",
+    col: 1,
+    h: 320,
+    cat: "Industrial design",
+    title:
+      "Love the boldness of this custom sound system, inspired by and designed for a gallery.",
+    author: "Glauber",
+    badges: [save("5")],
+  },
+  {
+    id: "8",
+    col: 2,
+    h: 220,
+    cat: "Music & sounds",
+    title:
+      "An album I spent many hours with while creating. I recently returned to it.",
+    author: "A. Dubrovin",
+    badges: [],
+  },
+  {
+    id: "9",
+    col: 3,
+    h: 290,
+    cat: "Art & design",
+    title:
+      "Welcome to the platform! It's exciting to finally have a place where we can share.",
+    author: "Glauber",
+    badges: [pin("15"), share("3"), save("3")],
+  },
+  {
+    id: "10",
+    col: 4,
+    h: 240,
+    cat: "Art & design",
+    title:
+      "An artist whose work I return to again and again for inspiration. Brightness and rhythm.",
+    author: "A. Dubrovin",
+    badges: [pin("1"), save("5")],
+  },
 ];
 
 /**
@@ -51,7 +141,9 @@ export function DiscoveryFeedTemplate({
   userName = "Alex Rivera",
   className,
 }: TemplateProps) {
-  const columns = [0, 1, 2, 3, 4].map((col) => ITEMS.filter((item) => item.col === col));
+  const columns = [0, 1, 2, 3, 4].map((col) =>
+    ITEMS.filter((item) => item.col === col),
+  );
 
   return (
     <Surface tokens={discoveryFeedTokens}>
@@ -65,7 +157,9 @@ export function DiscoveryFeedTemplate({
                 type="button"
                 className={cn(
                   "relative grid size-[28px] place-items-center rounded-[8px] transition-colors",
-                  i === 1 ? "bg-[color:var(--ob-surface-2)]" : "opacity-60 hover:opacity-100",
+                  i === 1
+                    ? "bg-[color:var(--ob-surface-2)]"
+                    : "opacity-60 hover:opacity-100",
                 )}
               >
                 <Icon name={name} width={16} height={16} />
@@ -77,7 +171,11 @@ export function DiscoveryFeedTemplate({
               </button>
             ))}
           </nav>
-          <button type="button" aria-label="Settings" className="mb-[3px] mt-auto opacity-60">
+          <button
+            type="button"
+            aria-label="Settings"
+            className="mb-[3px] mt-auto opacity-60"
+          >
             <SettingsIcon width={16} height={16} />
           </button>
         </aside>
@@ -99,10 +197,20 @@ export function DiscoveryFeedTemplate({
                 )}
               >
                 {tab}
-                {i === 3 && <ChevronDown width={11} height={11} className="ml-[3px] opacity-50" />}
+                {i === 3 && (
+                  <ChevronDown
+                    width={11}
+                    height={11}
+                    className="ml-[3px] opacity-50"
+                  />
+                )}
               </button>
             ))}
-            <button type="button" aria-label="Search" className="ml-auto opacity-60">
+            <button
+              type="button"
+              aria-label="Search"
+              className="ml-auto opacity-60"
+            >
               <SearchIcon width={15} height={15} />
             </button>
           </header>
@@ -114,7 +222,11 @@ export function DiscoveryFeedTemplate({
                   <article key={item.id}>
                     <div className="relative">
                       <span className="block" style={{ height: item.h }}>
-                        <Thumb seed={item.author + item.h} alt="Post image" radius={8} />
+                        <Thumb
+                          seed={item.author + item.h}
+                          alt="Post image"
+                          radius={8}
+                        />
                       </span>
                       {item.badges.length > 0 && (
                         <div className="absolute bottom-[9px] left-[9px] flex gap-[5px]">
@@ -133,7 +245,9 @@ export function DiscoveryFeedTemplate({
                     <p className="mt-[9px] text-[0.523rem] font-bold uppercase tracking-wide text-[color:var(--ob-muted)]">
                       {item.cat}
                     </p>
-                    <p className="mt-[5px] text-[0.731rem] leading-snug">{item.title}</p>
+                    <p className="mt-[5px] text-[0.731rem] leading-snug">
+                      {item.title}
+                    </p>
                     <div className="mt-[8px] flex items-center gap-[6px]">
                       <Avatar name={item.author} size={14} />
                       <span className="text-[0.631rem] text-[color:var(--ob-muted)]">

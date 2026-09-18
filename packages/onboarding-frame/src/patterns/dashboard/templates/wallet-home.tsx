@@ -141,7 +141,8 @@ export function WalletHomeTemplate({
                 <span
                   className="inline-flex rounded-full p-px"
                   style={{
-                    background: "linear-gradient(90deg,#1652f0,#22d3ee,#4ade80)",
+                    background:
+                      "linear-gradient(90deg,#1652f0,#22d3ee,#4ade80)",
                   }}
                 >
                   <span className="rounded-full bg-[color:var(--ob-surface)] px-[19px] py-[8px] text-[0.83rem] font-bold uppercase tracking-wide">
@@ -165,13 +166,15 @@ export function WalletHomeTemplate({
                 </h1>
 
                 <p className="max-w-[48ch] pt-[19px] text-[1.057rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
-                  Alzenaverse Halloween is a limited-edition release of magical potions
-                  and portraits by the creator.
+                  Alzenaverse Halloween is a limited-edition release of magical
+                  potions and portraits by the creator.
                 </p>
 
                 <span
                   className="mt-[30px] block rounded-full px-[23px] py-[15px] text-center text-[1.057rem] font-bold text-white"
-                  style={{ background: "linear-gradient(90deg,#1652f0,#35c8e8)" }}
+                  style={{
+                    background: "linear-gradient(90deg,#1652f0,#35c8e8)",
+                  }}
                 >
                   Mint +1000 points
                 </span>
@@ -197,9 +200,21 @@ export function WalletHomeTemplate({
             >
               <div className="flex flex-wrap items-center gap-[19px] rounded-[calc(var(--ob-radius-lg)-1px)] bg-[color:var(--ob-bg)] p-[19px]">
                 <Avatar name="yourname.acme.id" size={51} />
-                <span className="flex-1 text-[1.321rem] font-bold">yourname.acme.id</span>
-                <Badge glyph={<ShieldStarIcon size={15} />} value="100" label="Points" tone="#8b5cf6" />
-                <Badge glyph={<CrownIcon size={15} />} value="# ---" label="My rank" tone="#4ade80" />
+                <span className="flex-1 text-[1.321rem] font-bold">
+                  yourname.acme.id
+                </span>
+                <Badge
+                  glyph={<ShieldStarIcon size={15} />}
+                  value="100"
+                  label="Points"
+                  tone="#8b5cf6"
+                />
+                <Badge
+                  glyph={<CrownIcon size={15} />}
+                  value="# ---"
+                  label="My rank"
+                  tone="#4ade80"
+                />
               </div>
             </div>
 
@@ -260,7 +275,9 @@ function Badge({
         {glyph}
       </span>
       <span className="leading-tight">
-        <span className="block text-[1.085rem] font-bold tabular-nums">{value}</span>
+        <span className="block text-[1.085rem] font-bold tabular-nums">
+          {value}
+        </span>
         <span className="block text-[0.802rem] font-semibold uppercase tracking-wide text-[color:var(--ob-muted)]">
           {label}
         </span>

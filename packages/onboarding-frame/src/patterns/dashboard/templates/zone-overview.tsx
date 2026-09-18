@@ -46,7 +46,12 @@ export interface ZoneOverviewProps extends TemplateProps {
 const NAV = [
   { id: "overview", label: "Overview", Icon: ClipboardIcon },
   { id: "audit", label: "AI Audit", Icon: RobotIcon, badge: "Beta" },
-  { id: "analytics", label: "Analytics & Logs", Icon: ChartPieIcon, caret: true },
+  {
+    id: "analytics",
+    label: "Analytics & Logs",
+    Icon: ChartPieIcon,
+    caret: true,
+  },
   { id: "dns", label: "DNS", Icon: PathIcon, caret: true },
   { id: "email", label: "Email", Icon: EnvelopeIcon, caret: true },
   { id: "ssl", label: "SSL/TLS", Icon: LockIcon, caret: true },
@@ -82,14 +87,24 @@ const METRICS = [
     value: "1.55k",
     points: [0, 0, 1, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   },
-  { id: "cached", label: "Percent Cached", value: "0%", points: new Array(21).fill(0) },
+  {
+    id: "cached",
+    label: "Percent Cached",
+    value: "0%",
+    points: new Array(21).fill(0),
+  },
   {
     id: "data",
     label: "Total Data Served",
     value: "4 MB",
     points: [1, 0, 1, 9, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
   },
-  { id: "datacached", label: "Data Cached", value: "0 B", points: new Array(21).fill(0) },
+  {
+    id: "datacached",
+    label: "Data Cached",
+    value: "0 B",
+    points: new Array(21).fill(0),
+  },
 ];
 
 /**
@@ -137,7 +152,11 @@ export function ZoneOverviewTemplate({
         <div className="flex min-h-[0px] flex-1">
           <Sidebar width={260} bg="var(--ob-surface)">
             <p className="flex items-center gap-[10px] px-[22px] py-[18px] text-[0.958rem] font-medium">
-              <ArrowLeftIcon size={17} className="text-[color:var(--ob-brand)]" /> Alex Smith
+              <ArrowLeftIcon
+                size={17}
+                className="text-[color:var(--ob-brand)]"
+              />{" "}
+              Alex Smith
             </p>
             <div className="mx-[0px] border-t border-[color:var(--ob-border)]" />
 
@@ -165,10 +184,19 @@ export function ZoneOverviewTemplate({
                           item.label
                         )
                       }
-                      glyph={<item.Icon size={17} className="text-[color:var(--ob-brand)]" />}
+                      glyph={
+                        <item.Icon
+                          size={17}
+                          className="text-[color:var(--ob-brand)]"
+                        />
+                      }
                       trailing={
                         item.caret ? (
-                          <CaretDownIcon size={11} weight="fill" className="opacity-55" />
+                          <CaretDownIcon
+                            size={11}
+                            weight="fill"
+                            className="opacity-55"
+                          />
                         ) : undefined
                       }
                       className={cn(
@@ -190,7 +218,9 @@ export function ZoneOverviewTemplate({
           <Main className="overflow-auto">
             <div className="flex flex-wrap items-center gap-[10px] border-b border-[color:var(--ob-border)] px-[20px] py-[18px]">
               <CardIcon size={15} />
-              <span className="text-[1.041rem] font-medium">content-acme.org</span>
+              <span className="text-[1.041rem] font-medium">
+                content-acme.org
+              </span>
               <ArrowsUpDownIcon size={15} />
               <span className="ml-[7px] flex items-center gap-[6px] whitespace-nowrap rounded-full bg-[color-mix(in_oklab,#1d8102_16%,transparent)] px-[10px] py-[3px] text-[0.791rem] font-medium text-[color:var(--ob-success)]">
                 <CheckIcon size={12} weight="bold" /> Active
@@ -206,7 +236,9 @@ export function ZoneOverviewTemplate({
             <div className="flex items-center gap-[10px] border-b border-[color:var(--ob-border)] bg-[color-mix(in_oklab,#0051c3_5%,transparent)] px-[20px] py-[18px]">
               <p className="flex-1 text-[0.899rem]">
                 Why did you choose a Free plan?{" "}
-                <span className="font-medium underline">Share your feedback</span>{" "}
+                <span className="font-medium underline">
+                  Share your feedback
+                </span>{" "}
                 <ExternalSquareIcon size={12} className="inline align-[-1px]" />
               </p>
               <span className="text-[color:var(--ob-muted)]">
@@ -216,11 +248,15 @@ export function ZoneOverviewTemplate({
 
             <div className="grid gap-[33px] px-[27px] py-[23px] xl:grid-cols-[minmax(0,1fr)_440px]">
               <div>
-                <p className="text-[0.875rem] text-[color:var(--ob-fg-soft)]">Overview</p>
-                <h1 className="pt-[7px] text-[1.749rem] font-normal">content-acme.org</h1>
+                <p className="text-[0.875rem] text-[color:var(--ob-fg-soft)]">
+                  Overview
+                </p>
+                <h1 className="pt-[7px] text-[1.749rem] font-normal">
+                  content-acme.org
+                </h1>
                 <p className="max-w-[62ch] pt-[10px] text-[0.899rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
-                  Monitor security and performance for content-acme.org. Configure
-                  products and services from the menu.
+                  Monitor security and performance for content-acme.org.
+                  Configure products and services from the menu.
                 </p>
                 <span className="mt-[17px] inline-flex items-center gap-[9px] rounded-full border border-[color:var(--ob-brand)] px-[17px] py-[9px] text-[0.85rem] font-medium text-[color:var(--ob-brand)]">
                   <ArticleIcon size={15} /> Review fundamentals
@@ -275,7 +311,9 @@ export function ZoneOverviewTemplate({
                 </section>
 
                 <section>
-                  <h2 className="pb-[13px] text-[1.25rem] font-normal">Quick Actions</h2>
+                  <h2 className="pb-[13px] text-[1.25rem] font-normal">
+                    Quick Actions
+                  </h2>
                   {[
                     {
                       id: "attack",
@@ -295,13 +333,18 @@ export function ZoneOverviewTemplate({
                       className="flex items-start gap-[17px] border-b border-[color:var(--ob-border)] py-[13px]"
                     >
                       <div className="flex-1">
-                        <h3 className="text-[0.933rem] font-medium">{row.title}</h3>
+                        <h3 className="text-[0.933rem] font-medium">
+                          {row.title}
+                        </h3>
                         <p className="pt-[6px] text-[0.85rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
                           {row.body}
                         </p>
                         <p className="pt-[7px] text-[0.85rem] font-medium text-[color:var(--ob-brand)] underline">
                           {row.link}{" "}
-                          <ExternalSquareIcon size={12} className="inline align-[-1px]" />
+                          <ExternalSquareIcon
+                            size={12}
+                            className="inline align-[-1px]"
+                          />
                         </p>
                       </div>
                       {/* Off states the word: the knob carries an explicit cross. */}
@@ -322,7 +365,9 @@ export function ZoneOverviewTemplate({
                 </section>
 
                 <section>
-                  <h2 className="pb-[10px] text-[1.25rem] font-normal">Domain Registration</h2>
+                  <h2 className="pb-[10px] text-[1.25rem] font-normal">
+                    Domain Registration
+                  </h2>
                   <p className="text-[0.899rem]">Registrar: Unknown</p>
                   <p className="pt-[10px] text-[0.899rem] font-medium text-[color:var(--ob-brand)] underline">
                     Transfer to us
@@ -330,7 +375,9 @@ export function ZoneOverviewTemplate({
                 </section>
 
                 <section>
-                  <h2 className="pb-[10px] text-[1.25rem] font-normal">Active Subscriptions</h2>
+                  <h2 className="pb-[10px] text-[1.25rem] font-normal">
+                    Active Subscriptions
+                  </h2>
                   <p className="flex items-center gap-[10px] text-[0.899rem]">
                     <span className="flex-1 font-medium text-[color:var(--ob-brand)] underline">
                       Billing

@@ -54,12 +54,10 @@ export function BrowseToolbar({
       </div>
 
       <div className="flex items-center gap-1 rounded-xl border border-[color:var(--site-border)] p-1">
-        {(
-          [
-            { id: "list" as const, label: "List", icon: <ListIcon /> },
-            { id: "grid" as const, label: "Grid", icon: <GridIcon /> },
-          ]
-        ).map((entry) => (
+        {[
+          { id: "list" as const, label: "List", icon: <ListIcon /> },
+          { id: "grid" as const, label: "Grid", icon: <GridIcon /> },
+        ].map((entry) => (
           <button
             key={entry.id}
             type="button"

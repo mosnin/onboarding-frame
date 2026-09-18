@@ -71,13 +71,48 @@ const NAV: {
 ];
 
 const TASKS = [
-  { id: "plan", title: "Choose your plan", mins: "2 mins", body: "Pick a plan that fits your workflow and business goals." },
-  { id: "services", title: "Add your services", mins: "1 min", body: "List your offerings to use in proposals and bookings." },
-  { id: "types", title: "Customise project types", mins: "2 mins", body: "Define the types of work you manage for better organisation." },
-  { id: "pipeline", title: "Customise your pipeline", mins: "3 mins", body: "Tailor your workflow stages to match how you move clients from enquiry to delivery." },
-  { id: "form", title: "Publish a lead form", mins: "2 mins", body: "Start capturing new enquiries directly into your workspace." },
-  { id: "project", title: "Create your first project", mins: "3 mins", body: "Set up a workspace for an upcoming or sample project to see how everything connects." },
-  { id: "contact", title: "Add your first contact", mins: "1 min", body: "Add a client or lead to begin tracking communication and bookings." },
+  {
+    id: "plan",
+    title: "Choose your plan",
+    mins: "2 mins",
+    body: "Pick a plan that fits your workflow and business goals.",
+  },
+  {
+    id: "services",
+    title: "Add your services",
+    mins: "1 min",
+    body: "List your offerings to use in proposals and bookings.",
+  },
+  {
+    id: "types",
+    title: "Customise project types",
+    mins: "2 mins",
+    body: "Define the types of work you manage for better organisation.",
+  },
+  {
+    id: "pipeline",
+    title: "Customise your pipeline",
+    mins: "3 mins",
+    body: "Tailor your workflow stages to match how you move clients from enquiry to delivery.",
+  },
+  {
+    id: "form",
+    title: "Publish a lead form",
+    mins: "2 mins",
+    body: "Start capturing new enquiries directly into your workspace.",
+  },
+  {
+    id: "project",
+    title: "Create your first project",
+    mins: "3 mins",
+    body: "Set up a workspace for an upcoming or sample project to see how everything connects.",
+  },
+  {
+    id: "contact",
+    title: "Add your first contact",
+    mins: "1 min",
+    body: "Add a client or lead to begin tracking communication and bookings.",
+  },
 ];
 
 const RESOURCES: { id: string; label: string; icon: IconName }[] = [
@@ -111,212 +146,301 @@ export function SetupChecklistTemplate({
   const done = page === "finance" ? 6 : 0;
   return (
     <Surface tokens={setupChecklistTokens}>
-    <Shell className={cn("flex-col", className)} bg="var(--ob-surface-2)">
-      <Banner tone="dark" className="bg-[#212528]">
-        <span>
-          Spring savings are here! Don&apos;t miss 25% off {brandName}!{" "}
-          <button type="button" className="font-semibold underline underline-offset-2">
-            View plans
-          </button>
-        </span>
-        <Sparkle width={15} height={15} className="text-[#f5c451]" />
-      </Banner>
+      <Shell className={cn("flex-col", className)} bg="var(--ob-surface-2)">
+        <Banner tone="dark" className="bg-[#212528]">
+          <span>
+            Spring savings are here! Don&apos;t miss 25% off {brandName}!{" "}
+            <button
+              type="button"
+              className="font-semibold underline underline-offset-2"
+            >
+              View plans
+            </button>
+          </span>
+          <Sparkle width={15} height={15} className="text-[#f5c451]" />
+        </Banner>
 
-      <div className="flex flex-1">
-        {/* Measured off the reference: 240px on #121416. */}
-        <Sidebar width={240} bg="#121416" className="border-r-0 text-white">
-          <div className="p-4">
-            <Wordmark name={brandName} size={14} mark={28} radius={6} tone="#ffffff" />
-          </div>
-
-          {/* Persistent setup progress lives above the nav, not inside it. */}
-          <div className="mx-3 rounded-[10px] border border-white/15 p-3.5">
-            <div className="flex items-center gap-2">
-              <span className="flex-1 font-semibold">Set up your account</span>
-              <CaretRightIcon size={14} />
-            </div>
-            <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/15">
-              <div
-                className="h-full rounded-full bg-[#4ade80]"
-                style={{ width: `${(done / 7) * 100}%` }}
+        <div className="flex flex-1">
+          {/* Measured off the reference: 240px on #121416. */}
+          <Sidebar width={240} bg="#121416" className="border-r-0 text-white">
+            <div className="p-4">
+              <Wordmark
+                name={brandName}
+                size={14}
+                mark={28}
+                radius={6}
+                tone="#ffffff"
               />
             </div>
-            <p className="mt-2 text-[0.82rem] text-white/60">{done}/7 completed</p>
-          </div>
 
-          <nav className="mt-4 grid gap-0.5 px-2">
-            {NAV.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-current={
-                  (item.active ? page === "setup" : item.id === page) ? "page" : undefined
-                }
-                className={cn(
-                  "flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem] transition-colors",
-                  (item.active ? page === "setup" : item.id === page)
-                    ? "bg-white/10 font-semibold"
-                    : "text-white/75 hover:bg-white/5",
-                )}
-              >
-                <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-80" />
-                <span className="flex-1">{item.label}</span>
-                {item.caret && <ChevronDown width={14} height={14} className="opacity-40" />}
-              </button>
-            ))}
-          </nav>
-
-          <div className="mt-auto grid gap-1 p-2">
-            {[
-              { id: "settings", label: "Settings", icon: "settings" as IconName },
-              { id: "resources", label: "Resources", icon: "book" as IconName },
-            ].map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                className="flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem] text-white/75 hover:bg-white/5"
-              >
-                <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-80" />
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </Sidebar>
-
-        <Main className="relative">
-          <TopBar border={false} className="gap-4">
-            <SearchField placeholder="Search" className="w-[220px]" />
-            <div className="ml-auto flex items-center gap-4">
-              <button type="button" className="flex items-center gap-1.5 text-[0.9rem] font-semibold text-[#5b4bd6]">
-                <GemIcon width={16} height={16} /> See pricing
-              </button>
-              <button type="button" aria-label="Notifications" className="relative opacity-70">
-                <BellIcon width={20} height={20} />
-                {/* The reference sets this as a small blue rounded square
-                    clearing the bell, not a disc sitting on top of it. */}
-                <span className="absolute -right-2 -top-2 grid h-[17px] min-w-[17px] place-items-center rounded-[5px] bg-[#3b82f6] px-1 text-[0.62rem] font-bold text-white">
-                  3
+            {/* Persistent setup progress lives above the nav, not inside it. */}
+            <div className="mx-3 rounded-[10px] border border-white/15 p-3.5">
+              <div className="flex items-center gap-2">
+                <span className="flex-1 font-semibold">
+                  Set up your account
                 </span>
-              </button>
-              <Btn tone="neutral" size="sm" className="border-[#c7d2fe] bg-[#eef2ff] text-[#4f46e5]">
-                + New
-              </Btn>
+                <CaretRightIcon size={14} />
+              </div>
+              <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/15">
+                <div
+                  className="h-full rounded-full bg-[#4ade80]"
+                  style={{ width: `${(done / 7) * 100}%` }}
+                />
+              </div>
+              <p className="mt-2 text-[0.82rem] text-white/60">
+                {done}/7 completed
+              </p>
             </div>
-          </TopBar>
 
-          {page === "finance" ? (
-            <FinancePage />
-          ) : (
-          <div className="grid gap-6 px-6 py-6 sm:px-10 lg:grid-cols-[1fr_360px]">
-            <div className="grid content-start gap-6">
-              <h1 className="text-[1.5rem] font-extrabold tracking-tight sm:text-[2rem]">
-                Welcome to {brandName}, {userName}!
-              </h1>
+            <nav className="mt-4 grid gap-0.5 px-2">
+              {NAV.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  aria-current={
+                    (item.active ? page === "setup" : item.id === page)
+                      ? "page"
+                      : undefined
+                  }
+                  className={cn(
+                    "flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem] transition-colors",
+                    (item.active ? page === "setup" : item.id === page)
+                      ? "bg-white/10 font-semibold"
+                      : "text-white/75 hover:bg-white/5",
+                  )}
+                >
+                  <Icon
+                    name={item.icon}
+                    width={17}
+                    height={17}
+                    className="shrink-0 opacity-80"
+                  />
+                  <span className="flex-1">{item.label}</span>
+                  {item.caret && (
+                    <ChevronDown
+                      width={14}
+                      height={14}
+                      className="opacity-40"
+                    />
+                  )}
+                </button>
+              ))}
+            </nav>
 
-              <Card className="p-6">
-                <div className="flex flex-wrap items-center gap-4">
-                  <h2 className="flex-1 text-lg font-extrabold">Let&apos;s start step-by-step</h2>
-                  <span className="text-[0.88rem] text-[color:var(--ob-muted)]">
-                    0/7 completed
+            <div className="mt-auto grid gap-1 p-2">
+              {[
+                {
+                  id: "settings",
+                  label: "Settings",
+                  icon: "settings" as IconName,
+                },
+                {
+                  id: "resources",
+                  label: "Resources",
+                  icon: "book" as IconName,
+                },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  className="flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem] text-white/75 hover:bg-white/5"
+                >
+                  <Icon
+                    name={item.icon}
+                    width={17}
+                    height={17}
+                    className="shrink-0 opacity-80"
+                  />
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </Sidebar>
+
+          <Main className="relative">
+            <TopBar border={false} className="gap-4">
+              <SearchField placeholder="Search" className="w-[220px]" />
+              <div className="ml-auto flex items-center gap-4">
+                <button
+                  type="button"
+                  className="flex items-center gap-1.5 text-[0.9rem] font-semibold text-[#5b4bd6]"
+                >
+                  <GemIcon width={16} height={16} /> See pricing
+                </button>
+                <button
+                  type="button"
+                  aria-label="Notifications"
+                  className="relative opacity-70"
+                >
+                  <BellIcon width={20} height={20} />
+                  {/* The reference sets this as a small blue rounded square
+                    clearing the bell, not a disc sitting on top of it. */}
+                  <span className="absolute -right-2 -top-2 grid h-[17px] min-w-[17px] place-items-center rounded-[5px] bg-[#3b82f6] px-1 text-[0.62rem] font-bold text-white">
+                    3
                   </span>
-                  <ProgressBar value={0} total={7} className="w-[320px] max-w-full" />
+                </button>
+                <Btn
+                  tone="neutral"
+                  size="sm"
+                  className="border-[#c7d2fe] bg-[#eef2ff] text-[#4f46e5]"
+                >
+                  + New
+                </Btn>
+              </div>
+            </TopBar>
+
+            {page === "finance" ? (
+              <FinancePage />
+            ) : (
+              <div className="grid gap-6 px-6 py-6 sm:px-10 lg:grid-cols-[1fr_360px]">
+                <div className="grid content-start gap-6">
+                  <h1 className="text-[1.5rem] font-extrabold tracking-tight sm:text-[2rem]">
+                    Welcome to {brandName}, {userName}!
+                  </h1>
+
+                  <Card className="p-6">
+                    <div className="flex flex-wrap items-center gap-4">
+                      <h2 className="flex-1 text-lg font-extrabold">
+                        Let&apos;s start step-by-step
+                      </h2>
+                      <span className="text-[0.88rem] text-[color:var(--ob-muted)]">
+                        0/7 completed
+                      </span>
+                      <ProgressBar
+                        value={0}
+                        total={7}
+                        className="w-[320px] max-w-full"
+                      />
+                    </div>
+
+                    <ul className="mt-5 grid gap-3">
+                      {TASKS.map((task) => (
+                        <li
+                          key={task.id}
+                          /* Measured: the reference's rows run ~125px, which is
+                         what gives the list its unhurried rhythm. */
+                          className="flex items-center gap-4 rounded-[10px] border border-[color:var(--ob-border)] px-5 py-6 transition-colors hover:border-[color:var(--ob-border-strong)]"
+                        >
+                          <span
+                            aria-hidden
+                            className="size-5 shrink-0 rounded-full border-2 border-[color:var(--ob-border-strong)]"
+                          />
+                          <div className="flex-1">
+                            <p className="flex items-center gap-2.5 font-bold">
+                              {task.title}
+                              <span className="rounded bg-[color:var(--ob-surface-2)] px-1.5 py-0.5 text-[0.72rem] font-semibold text-[color:var(--ob-muted)]">
+                                {task.mins}
+                              </span>
+                            </p>
+                            <p className="mt-1.5 text-[0.92rem] text-[color:var(--ob-muted)]">
+                              {task.body}
+                            </p>
+                          </div>
+                          <ChevronRight
+                            width={20}
+                            height={20}
+                            className="shrink-0 opacity-40"
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
                 </div>
 
-                <ul className="mt-5 grid gap-3">
-                  {TASKS.map((task) => (
-                    <li
-                      key={task.id}
-                      /* Measured: the reference's rows run ~125px, which is
-                         what gives the list its unhurried rhythm. */
-                      className="flex items-center gap-4 rounded-[10px] border border-[color:var(--ob-border)] px-5 py-6 transition-colors hover:border-[color:var(--ob-border-strong)]"
-                    >
+                {/* Support rail */}
+                <div className="grid content-start gap-5">
+                  <Card className="p-0">
+                    <div className="flex items-center gap-2 p-5 pb-3">
+                      <h3 className="flex-1 font-extrabold">Brand elements</h3>
+                      <CaretRightIcon size={14} />
+                    </div>
+                    <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] p-5">
+                      <span className="block size-[52px] shrink-0">
+                        <Thumb
+                          seed={`${brandName}-logo`}
+                          radius={8}
+                          alt="Logo"
+                        />
+                      </span>
                       <span
                         aria-hidden
-                        className="size-5 shrink-0 rounded-full border-2 border-[color:var(--ob-border-strong)]"
+                        className="size-11 rounded-full bg-[#1170b8]"
                       />
-                      <div className="flex-1">
-                        <p className="flex items-center gap-2.5 font-bold">
-                          {task.title}
-                          <span className="rounded bg-[color:var(--ob-surface-2)] px-1.5 py-0.5 text-[0.72rem] font-semibold text-[color:var(--ob-muted)]">
-                            {task.mins}
-                          </span>
-                        </p>
-                        <p className="mt-1.5 text-[0.92rem] text-[color:var(--ob-muted)]">
-                          {task.body}
-                        </p>
-                      </div>
-                      <ChevronRight width={20} height={20} className="shrink-0 opacity-40" />
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </div>
+                      <span className="grid size-11 place-items-center rounded-full bg-[color:var(--ob-surface-3)] text-[0.82rem] font-bold text-[color:var(--ob-muted)]">
+                        {userName.slice(0, 2).toUpperCase()}
+                      </span>
+                    </div>
+                  </Card>
 
-            {/* Support rail */}
-            <div className="grid content-start gap-5">
-              <Card className="p-0">
-                <div className="flex items-center gap-2 p-5 pb-3">
-                  <h3 className="flex-1 font-extrabold">Brand elements</h3>
-                  <CaretRightIcon size={14} />
-                </div>
-                <div className="flex items-center gap-3 border-t border-[color:var(--ob-border)] p-5">
-                  <span className="block size-[52px] shrink-0">
-                    <Thumb seed={`${brandName}-logo`} radius={8} alt="Logo" />
-                  </span>
-                  <span aria-hidden className="size-11 rounded-full bg-[#1170b8]" />
-                  <span className="grid size-11 place-items-center rounded-full bg-[color:var(--ob-surface-3)] text-[0.82rem] font-bold text-[color:var(--ob-muted)]">
-                    {userName.slice(0, 2).toUpperCase()}
-                  </span>
-                </div>
-              </Card>
+                  <Card className="p-0">
+                    <div className="flex items-center gap-2 p-5 pb-3">
+                      <h3 className="flex-1 font-extrabold">Integrations</h3>
+                      <CaretRightIcon size={14} />
+                    </div>
+                    <div className="flex flex-wrap gap-2.5 p-5 pt-2">
+                      {TOOL_CHIPS.map((tool) => (
+                        <span
+                          key={tool.label}
+                          className="flex items-center gap-2 rounded-full border border-[color:var(--ob-border)] px-3 py-1.5 text-[0.86rem] font-medium"
+                        >
+                          <tool.Icon size={18} />
+                          {tool.label}
+                        </span>
+                      ))}
+                    </div>
+                  </Card>
 
-              <Card className="p-0">
-                <div className="flex items-center gap-2 p-5 pb-3">
-                  <h3 className="flex-1 font-extrabold">Integrations</h3>
-                  <CaretRightIcon size={14} />
-                </div>
-                <div className="flex flex-wrap gap-2.5 p-5 pt-2">
-                  {TOOL_CHIPS.map((tool) => (
-                    <span
-                      key={tool.label}
-                      className="flex items-center gap-2 rounded-full border border-[color:var(--ob-border)] px-3 py-1.5 text-[0.86rem] font-medium"
-                    >
-                      <tool.Icon size={18} />
-                      {tool.label}
+                  <Card className="p-5">
+                    <h3 className="font-extrabold">
+                      Start using {brandName} with confidence
+                    </h3>
+                    <span className="mt-4 block aspect-[16/9] w-full">
+                      <Thumb
+                        seed="tutorial-video"
+                        radius={10}
+                        alt="Tutorial video thumbnail"
+                      />
                     </span>
-                  ))}
+                    <ul className="mt-5 grid gap-4">
+                      {RESOURCES.map((item) => (
+                        <li
+                          key={item.id}
+                          className="flex items-center gap-3 text-[0.95rem]"
+                        >
+                          <Icon
+                            name={item.icon}
+                            width={17}
+                            height={17}
+                            className="shrink-0 opacity-60"
+                          />
+                          {item.label}
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
                 </div>
-              </Card>
-
-              <Card className="p-5">
-                <h3 className="font-extrabold">
-                  Start using {brandName} with confidence
-                </h3>
-                <span className="mt-4 block aspect-[16/9] w-full">
-                  <Thumb seed="tutorial-video" radius={10} alt="Tutorial video thumbnail" />
-                </span>
-                <ul className="mt-5 grid gap-4">
-                  {RESOURCES.map((item) => (
-                    <li key={item.id} className="flex items-center gap-3 text-[0.95rem]">
-                      <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-60" />
-                      {item.label}
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </div>
-          </div>
-          )}
-        </Main>
-      </div>
-    </Shell>
+              </div>
+            )}
+          </Main>
+        </div>
+      </Shell>
     </Surface>
   );
 }
 
 const FINANCE_MONTHS = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 /**
@@ -369,14 +493,25 @@ function FinancePage() {
                 Show net income
               </span>
               <span className="inline-flex items-center gap-10 rounded-[8px] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem]">
-                This year <ChevronDown width={13} height={13} className="opacity-60" />
+                This year{" "}
+                <ChevronDown width={13} height={13} className="opacity-60" />
               </span>
             </div>
 
             <div className="grid gap-6 p-5 sm:grid-cols-3">
               <Figure dash label="Net income" value="$12,140" cents="74" />
-              <Figure dot="#2f9e44" label="Paid payments (4)" value="$19,140" cents="74" />
-              <Figure dot="#7f93f5" label="Expenses (1)" value="$7,000" cents="00" />
+              <Figure
+                dot="#2f9e44"
+                label="Paid payments (4)"
+                value="$19,140"
+                cents="74"
+              />
+              <Figure
+                dot="#7f93f5"
+                label="Expenses (1)"
+                value="$7,000"
+                cents="00"
+              />
             </div>
 
             <div className="relative px-5 pb-2">
@@ -437,15 +572,31 @@ function FinancePage() {
                 </p>
               </div>
               <span className="inline-flex items-center gap-10 rounded-[8px] border border-[color:var(--ob-border-strong)] px-3.5 py-2 text-[0.92rem]">
-                This year <ChevronDown width={13} height={13} className="opacity-60" />
+                This year{" "}
+                <ChevronDown width={13} height={13} className="opacity-60" />
               </span>
             </div>
 
             <div className="grid gap-6 p-5 sm:grid-cols-4">
-              <Figure dot="#2f9e44" label="Paid (4)" value="$19,140" cents="74" />
+              <Figure
+                dot="#2f9e44"
+                label="Paid (4)"
+                value="$19,140"
+                cents="74"
+              />
               <Figure dot="#e8c33d" label="Processing (0)" value="$0" />
-              <Figure dot="#e0332c" label="Overdue (1)" value="$11,915" cents="00" />
-              <Figure dot="#bfbfbf" label="Upcoming (1)" value="$5,518" cents="50" />
+              <Figure
+                dot="#e0332c"
+                label="Overdue (1)"
+                value="$11,915"
+                cents="00"
+              />
+              <Figure
+                dot="#bfbfbf"
+                label="Upcoming (1)"
+                value="$5,518"
+                cents="50"
+              />
             </div>
           </Card>
         </div>
@@ -453,7 +604,9 @@ function FinancePage() {
         <div className="grid content-start gap-6">
           <Card>
             <div className="flex items-start gap-3">
-              <h2 className="flex-1 text-lg font-extrabold">Financial tracker</h2>
+              <h2 className="flex-1 text-lg font-extrabold">
+                Financial tracker
+              </h2>
               <span className="flex items-center gap-1 text-[0.9rem] font-semibold text-[#2563eb]">
                 + Link account
               </span>
@@ -467,7 +620,8 @@ function FinancePage() {
                 id: "balance",
                 icon: "bank" as IconName,
                 label: "Accounts balance",
-                blurb: "Connect your bank accounts to view your accounts balance.",
+                blurb:
+                  "Connect your bank accounts to view your accounts balance.",
               },
               {
                 id: "cards",
@@ -484,12 +638,19 @@ function FinancePage() {
                 )}
               >
                 <h3 className="flex items-center gap-2 font-semibold">
-                  <Icon name={slot.icon} width={17} height={17} className="opacity-70" />
+                  <Icon
+                    name={slot.icon}
+                    width={17}
+                    height={17}
+                    className="opacity-70"
+                  />
                   {slot.label}
                   <InfoDot />
                 </h3>
                 {/* Nothing is linked, so the figure really is zero. */}
-                <p className="pt-2 text-[1.9rem] font-extrabold tabular-nums">$0</p>
+                <p className="pt-2 text-[1.9rem] font-extrabold tabular-nums">
+                  $0
+                </p>
                 <div className="grid justify-items-center gap-3 pt-3">
                   <Placeholder width={110} height={70} radius={10} label="" />
                   <p className="max-w-[24ch] text-center text-[0.92rem] text-[color:var(--ob-muted)]">
@@ -526,7 +687,10 @@ function Figure({
     <div>
       <p className="flex items-center gap-2 text-[0.95rem]">
         {dash ? (
-          <span aria-hidden className="h-[2px] w-4 shrink-0 bg-[color:var(--ob-fg)]" />
+          <span
+            aria-hidden
+            className="h-[2px] w-4 shrink-0 bg-[color:var(--ob-fg)]"
+          />
         ) : (
           <span
             aria-hidden

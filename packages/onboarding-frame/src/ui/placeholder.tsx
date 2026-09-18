@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { Icon } from "./icons";
 import { cn } from "../lib/cn";
 
 /**
@@ -97,7 +98,11 @@ export function LogoSlot({
       height={size}
       radius={radius}
       label={size >= 44 ? label : undefined}
-      glyph={size < 44 ? "▦" : undefined}
+      glyph={
+        size < 44 ? (
+          <Icon name="image" size={Math.round(size * 0.5)} />
+        ) : undefined
+      }
       className={className}
     />
   );
@@ -116,7 +121,7 @@ export function AvatarSlot({
       shape="circle"
       width={size}
       height={size}
-      glyph="◍"
+      glyph={<Icon name="user" size={Math.round(size * 0.5)} />}
       className={className}
     />
   );

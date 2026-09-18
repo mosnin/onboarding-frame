@@ -34,8 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
-      <head>
-      </head>
+      <head></head>
       <body className="min-h-screen">
         <SiteHeader />
         <div className="min-h-[70vh]">{children}</div>

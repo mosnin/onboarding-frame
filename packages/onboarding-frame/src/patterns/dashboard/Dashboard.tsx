@@ -23,11 +23,24 @@ function Sparkline({ points }: { points: number[] }) {
   if (points.length < 2) return null;
   const step = 100 / (points.length - 1);
   const path = points
-    .map((p, i) => `${i === 0 ? "M" : "L"}${i * step},${28 - clamp(p, 0, 1) * 26}`)
+    .map(
+      (p, i) => `${i === 0 ? "M" : "L"}${i * step},${28 - clamp(p, 0, 1) * 26}`,
+    )
     .join(" ");
   return (
-    <svg viewBox="0 0 100 28" preserveAspectRatio="none" className="h-7 w-full" aria-hidden>
-      <path d={path} fill="none" stroke="var(--ob-brand)" strokeWidth={2} vectorEffect="non-scaling-stroke" />
+    <svg
+      viewBox="0 0 100 28"
+      preserveAspectRatio="none"
+      className="h-7 w-full"
+      aria-hidden
+    >
+      <path
+        d={path}
+        fill="none"
+        stroke="var(--ob-brand)"
+        strokeWidth={2}
+        vectorEffect="non-scaling-stroke"
+      />
     </svg>
   );
 }
@@ -54,7 +67,9 @@ function StatCard({ stat }: { stat: StatTile }) {
       </div>
       {stat.spark && <Sparkline points={stat.spark} />}
       {stat.hint && (
-        <span className="text-[0.78rem] text-[color:var(--ob-muted)]">{stat.hint}</span>
+        <span className="text-[0.78rem] text-[color:var(--ob-muted)]">
+          {stat.hint}
+        </span>
       )}
     </div>
   );
@@ -91,7 +106,12 @@ function Meter({ meter }: { meter: QuotaMeter }) {
  * Keeping it in the library matters because activation UI — the checklist, the
  * empty state, the quota nudge — lives here, not in the flow that preceded it.
  */
-export function Dashboard({ config, onAction, children, className }: DashboardProps) {
+export function Dashboard({
+  config,
+  onAction,
+  children,
+  className,
+}: DashboardProps) {
   const { emit } = useOnboarding();
   const [activeNav, setActiveNav] = useState(config.nav?.[0]?.id ?? "");
   const [seeded, setSeeded] = useState(false);
@@ -162,7 +182,8 @@ export function Dashboard({ config, onAction, children, className }: DashboardPr
               {item.glyph ?? item.actor.slice(0, 1)}
             </span>
             <p className="flex-1 text-[0.92rem]">
-              <strong className="font-semibold">{item.actor}</strong> {item.action}
+              <strong className="font-semibold">{item.actor}</strong>{" "}
+              {item.action}
               {item.target && (
                 <strong className="font-semibold"> {item.target}</strong>
               )}
@@ -222,7 +243,9 @@ export function Dashboard({ config, onAction, children, className }: DashboardPr
           {heading}
           <section className="grid gap-6 rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-6">
             <h2 className="font-bold">This billing period</h2>
-            {config.meters?.map((meter) => <Meter key={meter.id} meter={meter} />)}
+            {config.meters?.map((meter) => (
+              <Meter key={meter.id} meter={meter} />
+            ))}
           </section>
           {upgrade}
           {config.stats && (

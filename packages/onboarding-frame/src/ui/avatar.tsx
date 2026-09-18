@@ -35,7 +35,10 @@ function hash(seed: string): number {
 }
 
 function initials(name: string, letters: 1 | 2 = 2): string {
-  const words = name.replace(/[^\p{L}\p{N} ]/gu, " ").trim().split(/\s+/);
+  const words = name
+    .replace(/[^\p{L}\p{N} ]/gu, " ")
+    .trim()
+    .split(/\s+/);
   if (words.length === 0 || !words[0]) return "?";
   if (letters === 1) return words[0][0]!.toUpperCase();
   if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
@@ -73,7 +76,10 @@ export function Avatar({
   const hue = hash(name) % 360;
   const text = initials(name, letters);
   return (
-    <span className={cn("relative inline-block shrink-0", className)} style={{ width: size, height: size }}>
+    <span
+      className={cn("relative inline-block shrink-0", className)}
+      style={{ width: size, height: size }}
+    >
       <span
         role="img"
         aria-label={name}
@@ -116,7 +122,12 @@ export interface ThumbProps {
  * A photograph's slot, filled with a generated field rather than left empty.
  * Sized entirely by its container, so the caller controls the aspect.
  */
-export function Thumb({ seed, className, radius = 8, alt = "Image" }: ThumbProps) {
+export function Thumb({
+  seed,
+  className,
+  radius = 8,
+  alt = "Image",
+}: ThumbProps) {
   const h = hash(seed);
   const hue = h % 360;
   const alt2 = (hue + 42 + (h % 40)) % 360;

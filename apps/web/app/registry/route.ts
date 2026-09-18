@@ -8,12 +8,14 @@ export async function GET() {
   const items = await Promise.all(names.map((name) => getRegistryItem(name)));
 
   return Response.json({
-    items: items.filter((item) => item !== null).map((item) => ({
-      name: item.name,
-      title: item.title,
-      description: item.description,
-      registryDependencies: item.registryDependencies,
-      files: item.files.length,
-    })),
+    items: items
+      .filter((item) => item !== null)
+      .map((item) => ({
+        name: item.name,
+        title: item.title,
+        description: item.description,
+        registryDependencies: item.registryDependencies,
+        files: item.files.length,
+      })),
   });
 }

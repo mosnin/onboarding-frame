@@ -47,7 +47,7 @@ GLYPH = re.compile(
     "■-◿⌀-⏿️]"
 )
 # Characters a reference may legitimately print as text rather than draw.
-ALLOWED = set("⌘⌥⇧⏎→←")
+ALLOWED = set("⌘⌥⇧⏎↵→←")
 
 
 def strip_chrome(im: Image.Image):

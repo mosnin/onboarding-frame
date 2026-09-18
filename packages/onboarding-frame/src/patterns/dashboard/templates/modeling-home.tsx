@@ -2,15 +2,20 @@
 
 import type { ReactNode } from "react";
 import { LineChart } from "../../../ui/charts";
-import {
-  CaretRightIcon,
-} from "../../../ui/icons-solid";
+import { CaretRightIcon } from "../../../ui/icons-solid";
 import { BrandMark } from "../../../ui/brand";
 import { Avatar, Thumb } from "../../../ui/avatar";
 import { Wordmark } from "../../../ui/wordmark";
 import { cn } from "../../../lib/cn";
 import { Surface, modelingTokens } from "./tokens";
-import { Main, NavItem, NavSection, SearchField, Shell, Sidebar } from "./chrome";
+import {
+  Main,
+  NavItem,
+  NavSection,
+  SearchField,
+  Shell,
+  Sidebar,
+} from "./chrome";
 import type { TemplateProps } from "./props";
 import {
   BookIcon,
@@ -103,7 +108,12 @@ export function ModelingHomeTemplate({
           </div>
 
           <div className="flex items-center gap-[8px] px-[16px] pb-[16px]">
-            <SearchField placeholder="Search" shortcut="⌘K" rounded="md" className="flex-1" />
+            <SearchField
+              placeholder="Search"
+              shortcut="⌘K"
+              rounded="md"
+              className="flex-1"
+            />
             <button
               type="button"
               className="grid h-[34px] w-[34px] shrink-0 place-items-center rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] text-[1.05rem] leading-none"
@@ -136,14 +146,21 @@ export function ModelingHomeTemplate({
               <BookIcon width={16} height={16} /> Documentation
             </span>
             <span className="ml-auto flex items-center gap-[6px] rounded-full border border-[color:var(--ob-border-strong)] px-[10px] py-[4px] text-[0.82rem] font-medium">
-              <ChatIcon width={15} height={15} className="text-[color:var(--ob-brand)]" /> Chat
+              <ChatIcon
+                width={15}
+                height={15}
+                className="text-[color:var(--ob-brand)]"
+              />{" "}
+              Chat
             </span>
           </div>
         </Sidebar>
 
         <Main className="overflow-auto px-[40px] py-[32px] xl:px-[161px]">
           <div className="mx-auto w-full max-w-[1250px]">
-            <p className="text-[0.95rem] text-[color:var(--ob-muted)]">18 August, 2023</p>
+            <p className="text-[0.95rem] text-[color:var(--ob-muted)]">
+              18 August, 2023
+            </p>
             <h1 className="pt-[4px] text-[1.48rem] font-bold tracking-[-0.02em]">
               Welcome to Acme, Jane!
             </h1>
@@ -186,7 +203,11 @@ function Overview() {
 
       <div className="flex items-center gap-[12px] pb-[16px] pt-[40px]">
         <h2 className="flex-1 text-[1.151rem] font-semibold">Templates</h2>
-        <SearchIcon width={17} height={17} className="text-[color:var(--ob-muted)]" />
+        <SearchIcon
+          width={17}
+          height={17}
+          className="text-[color:var(--ob-muted)]"
+        />
       </div>
 
       <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
@@ -219,7 +240,11 @@ function WizardCard({ wizard }: { wizard: (typeof WIZARDS)[number] }) {
     <section className="relative h-[236px] overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
       <div className="flex items-center gap-[12px] px-[24px] pt-[20px]">
         <h3 className="flex-1 text-[1.05rem] font-semibold">{wizard.title}</h3>
-        <ChevronRight width={17} height={17} className="text-[color:var(--ob-muted)]" />
+        <ChevronRight
+          width={17}
+          height={17}
+          className="text-[color:var(--ob-muted)]"
+        />
       </div>
       <p className="max-w-[46ch] px-[24px] pt-[8px] text-[0.92rem] leading-relaxed text-[color:var(--ob-muted)]">
         {wizard.body}
@@ -290,9 +315,24 @@ function MiniTrend({ points }: { points: number[] }) {
 
 function DataSources() {
   const rows = [
-    { name: "Xero", kind: "Accounting", synced: "12 minutes ago", status: "Connected" },
-    { name: "Quickbooks", kind: "Accounting", synced: "1 hour ago", status: "Connected" },
-    { name: "Bamboo HR", kind: "People", synced: "Yesterday", status: "Connected" },
+    {
+      name: "Xero",
+      kind: "Accounting",
+      synced: "12 minutes ago",
+      status: "Connected",
+    },
+    {
+      name: "Quickbooks",
+      kind: "Accounting",
+      synced: "1 hour ago",
+      status: "Connected",
+    },
+    {
+      name: "Bamboo HR",
+      kind: "People",
+      synced: "Yesterday",
+      status: "Connected",
+    },
     { name: "Gusto", kind: "Payroll", synced: "—", status: "Not connected" },
     { name: "Stripe", kind: "Billing", synced: "—", status: "Not connected" },
   ];
@@ -300,8 +340,8 @@ function DataSources() {
   return (
     <>
       <p className="max-w-[60ch] pt-[28px] text-[0.95rem] text-[color:var(--ob-fg-soft)]">
-        Models read from whatever is connected here. A source that has never synced
-        shows no timestamp rather than a zero.
+        Models read from whatever is connected here. A source that has never
+        synced shows no timestamp rather than a zero.
       </p>
 
       <div className="mt-[20px] overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)]">
@@ -321,7 +361,9 @@ function DataSources() {
               {row.name}
             </span>
             <span className="text-[color:var(--ob-fg-soft)]">{row.kind}</span>
-            <span className="tabular-nums text-[color:var(--ob-muted)]">{row.synced}</span>
+            <span className="tabular-nums text-[color:var(--ob-muted)]">
+              {row.synced}
+            </span>
             <span
               className={cn(
                 "font-medium",
@@ -340,13 +382,23 @@ function DataSources() {
 }
 
 function Categories() {
-  const groups: { heading: string; items: { label: string; mapped: ReactNode }[] }[] = [
+  const groups: {
+    heading: string;
+    items: { label: string; mapped: ReactNode }[];
+  }[] = [
     {
       heading: "Revenue",
       items: [
         { label: "Subscription", mapped: "4000 · Recurring revenue" },
         { label: "Services", mapped: "4100 · Professional services" },
-        { label: "Other income", mapped: <em className="not-italic text-[color:var(--ob-muted)]">Unmapped</em> },
+        {
+          label: "Other income",
+          mapped: (
+            <em className="not-italic text-[color:var(--ob-muted)]">
+              Unmapped
+            </em>
+          ),
+        },
       ],
     },
     {
@@ -361,7 +413,14 @@ function Categories() {
       items: [
         { label: "Payroll", mapped: "6000 · Salaries and wages" },
         { label: "Software", mapped: "6200 · Subscriptions" },
-        { label: "Travel", mapped: <em className="not-italic text-[color:var(--ob-muted)]">Unmapped</em> },
+        {
+          label: "Travel",
+          mapped: (
+            <em className="not-italic text-[color:var(--ob-muted)]">
+              Unmapped
+            </em>
+          ),
+        },
       ],
     },
   ];
@@ -369,9 +428,9 @@ function Categories() {
   return (
     <>
       <p className="max-w-[60ch] pt-[28px] text-[0.95rem] text-[color:var(--ob-fg-soft)]">
-        Categories map ledger accounts onto model lines. Anything left unmapped is
-        labelled as such, because a silently dropped account is what makes a forecast
-        wrong.
+        Categories map ledger accounts onto model lines. Anything left unmapped
+        is labelled as such, because a silently dropped account is what makes a
+        forecast wrong.
       </p>
 
       <div className="mt-[20px] grid gap-[16px]">
@@ -392,7 +451,9 @@ function Categories() {
                 )}
               >
                 <span className="font-medium">{item.label}</span>
-                <span className="text-[color:var(--ob-fg-soft)]">{item.mapped}</span>
+                <span className="text-[color:var(--ob-fg-soft)]">
+                  {item.mapped}
+                </span>
               </div>
             ))}
           </section>

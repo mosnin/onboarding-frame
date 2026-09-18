@@ -49,7 +49,12 @@ const NAV_TOP = [
   { id: "logs", label: "Logs", Icon: ListChecksIcon },
   { id: "analytics", label: "Analytics", Icon: ChartLineIcon },
   { id: "speed", label: "Speed Insights", Icon: ChartPieIcon },
-  { id: "observability", label: "Observability", Icon: BrowsersIcon, chevron: true },
+  {
+    id: "observability",
+    label: "Observability",
+    Icon: BrowsersIcon,
+    chevron: true,
+  },
   { id: "firewall", label: "Firewall", Icon: ShieldIcon, chevron: true },
   { id: "cdn", label: "CDN", Icon: GlobeIcon, chevron: true },
 ];
@@ -102,7 +107,9 @@ export function DeployAnalyticsTemplate({
             <span className="rounded-full bg-[color-mix(in_oklab,#0062ff_12%,transparent)] px-[7px] py-[2px] text-[0.634rem] font-semibold text-[color:var(--ob-brand)]">
               Pro Trial
             </span>
-            <span className="text-[color:var(--ob-muted)]"><CaretUpDownIcon size={12} /></span>
+            <span className="text-[color:var(--ob-muted)]">
+              <CaretUpDownIcon size={12} />
+            </span>
           </div>
 
           <div className="px-[13px] pb-[10px]">
@@ -139,9 +146,13 @@ export function DeployAnalyticsTemplate({
             <span className="flex items-center gap-[7px] text-[0.793rem] font-medium">
               <BrandMark brand="Analytics" size={17} label="Analytics" />
               newlandingpage
-              <span className="text-[color:var(--ob-muted)]"><CaretUpDownIcon size={12} /></span>
+              <span className="text-[color:var(--ob-muted)]">
+                <CaretUpDownIcon size={12} />
+              </span>
             </span>
-            <span className="mx-auto text-[0.793rem] font-medium">Analytics</span>
+            <span className="mx-auto text-[0.793rem] font-medium">
+              Analytics
+            </span>
             <span aria-hidden className="text-[color:var(--ob-muted)]">
               ···
             </span>
@@ -151,7 +162,9 @@ export function DeployAnalyticsTemplate({
             <span className="flex items-center gap-[7px] text-[0.793rem]">
               <GlobeIcon size={14} />
               newlandingpage-gold.example.app
-              <span className="text-[color:var(--ob-muted)]"><ExternalSquareIcon size={12} /></span>
+              <span className="text-[color:var(--ob-muted)]">
+                <ExternalSquareIcon size={12} />
+              </span>
             </span>
             <span className="flex items-center gap-[7px] pl-[10px] text-[0.793rem] text-[color:var(--ob-muted)]">
               <span
@@ -193,9 +206,14 @@ export function DeployAnalyticsTemplate({
                   <span className="absolute -left-[4px] top-[6%] size-[8px] rounded-full border-2 border-[color:var(--ob-surface)] bg-[color:var(--ob-brand)]" />
                   <span className="absolute left-[10px] top-[8%] grid gap-[3px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[12px] py-[8px] shadow-[0_4px_14px_rgba(0,0,0,0.1)]">
                     <span className="flex items-center gap-[8px] whitespace-nowrap text-[0.768rem]">
-                      <span aria-hidden className="size-[7px] rounded-full bg-[color:var(--ob-brand)]" />
+                      <span
+                        aria-hidden
+                        className="size-[7px] rounded-full bg-[color:var(--ob-brand)]"
+                      />
                       Visitors
-                      <span className="pl-[3px] font-semibold tabular-nums">13</span>
+                      <span className="pl-[3px] font-semibold tabular-nums">
+                        13
+                      </span>
                     </span>
                     <span className="whitespace-nowrap pl-[15px] text-[0.768rem] text-[color:var(--ob-fg-soft)]">
                       Apr 22
@@ -310,16 +328,26 @@ function Stat({
         selected && "border-b-2 border-b-[color:var(--ob-fg)]",
       )}
     >
-      <p className="text-[0.818rem] font-medium text-[color:var(--ob-fg-soft)]">{label}</p>
+      <p className="text-[0.818rem] font-medium text-[color:var(--ob-fg-soft)]">
+        {label}
+      </p>
       <p className="flex items-center gap-[8px] pt-[3px]">
-        <span className="text-[1.669rem] font-semibold tabular-nums leading-none">{value}</span>
+        <span className="text-[1.669rem] font-semibold tabular-nums leading-none">
+          {value}
+        </span>
         {badge}
       </p>
     </div>
   );
 }
 
-function Select({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
+function Select({
+  children,
+  glyph,
+}: {
+  children: ReactNode;
+  glyph?: ReactNode;
+}) {
   return (
     <span className="inline-flex items-center gap-[33px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-[12px] py-[7px] text-[0.768rem]">
       <span className="flex items-center gap-[7px]">

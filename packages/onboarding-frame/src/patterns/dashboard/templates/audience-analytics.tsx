@@ -50,14 +50,45 @@ const ANALYTICS_CHILDREN = [
 const TAIL = [
   { id: "website", label: "Website", Icon: ArticleIcon, caret: true },
   { id: "content", label: "Content", Icon: CloudIcon, caret: true },
-  { id: "integrations", label: "Integrations", Icon: GridFourIcon, caret: true },
+  {
+    id: "integrations",
+    label: "Integrations",
+    Icon: GridFourIcon,
+    caret: true,
+  },
 ];
 
 const DAYS = [
-  "Jul 07", "Jul 08", "Jul 09", "Jul 10", "Jul 11", "Jul 12", "Jul 13", "Jul 14",
-  "Jul 15", "Jul 16", "Jul 17", "Jul 18", "Jul 19", "Jul 20", "Jul 21", "Jul 22",
-  "Jul 23", "Jul 24", "Jul 25", "Jul 26", "Jul 27", "Jul 28", "Jul 29", "Jul 30",
-  "Jul 31", "Aug 01", "Aug 02", "Aug 03", "Aug 04", "Aug 05",
+  "Jul 07",
+  "Jul 08",
+  "Jul 09",
+  "Jul 10",
+  "Jul 11",
+  "Jul 12",
+  "Jul 13",
+  "Jul 14",
+  "Jul 15",
+  "Jul 16",
+  "Jul 17",
+  "Jul 18",
+  "Jul 19",
+  "Jul 20",
+  "Jul 21",
+  "Jul 22",
+  "Jul 23",
+  "Jul 24",
+  "Jul 25",
+  "Jul 26",
+  "Jul 27",
+  "Jul 28",
+  "Jul 29",
+  "Jul 30",
+  "Jul 31",
+  "Aug 01",
+  "Aug 02",
+  "Aug 03",
+  "Aug 04",
+  "Aug 05",
 ];
 
 /** Two sign-ups all month. Every other day is a real zero, so every day is dotted. */
@@ -93,7 +124,10 @@ export function AudienceAnalyticsTemplate({
           </div>
           <span className="flex items-center gap-[9px]">
             <span className="flex items-center gap-[6px] rounded-full bg-[color-mix(in_oklab,#ffe01b_35%,white)] px-[12px] py-[7px] text-[0.706rem] font-medium">
-              <CircleFillIcon size={7} className="text-[color:var(--ob-success)]" />
+              <CircleFillIcon
+                size={7}
+                className="text-[color:var(--ob-success)]"
+              />
               Live expert help
             </span>
             <Avatar name={userName} size={28} />
@@ -125,9 +159,7 @@ export function AudienceAnalyticsTemplate({
                     )
                   }
                   glyph={<item.Icon size={13} />}
-                  trailing={
-                    <CaretDownIcon size={13} />
-                  }
+                  trailing={<CaretDownIcon size={13} />}
                   className="text-[0.762rem]"
                 />
               ))}
@@ -136,9 +168,7 @@ export function AudienceAnalyticsTemplate({
                 label="Analytics"
                 glyph={<BrowsersIcon size={13} />}
                 active
-                trailing={
-                  <CaretUpIcon size={13} />
-                }
+                trailing={<CaretUpIcon size={13} />}
                 className="text-[0.762rem]"
               />
               {ANALYTICS_CHILDREN.map((item) => (
@@ -156,15 +186,16 @@ export function AudienceAnalyticsTemplate({
                   key={item.id}
                   label={item.label}
                   glyph={<item.Icon size={13} />}
-                  trailing={
-                    <CaretDownIcon size={13} />
-                  }
+                  trailing={<CaretDownIcon size={13} />}
                   className="text-[0.762rem]"
                 />
               ))}
             </nav>
 
-            <SidebarSimpleIcon size={16} className="mt-auto mx-[17px] mb-[17px] text-[color:var(--ob-fg-soft)]" />
+            <SidebarSimpleIcon
+              size={16}
+              className="mt-auto mx-[17px] mb-[17px] text-[color:var(--ob-fg-soft)]"
+            />
           </Sidebar>
 
           <Main className="overflow-auto bg-[color:var(--ob-surface-2)]">
@@ -183,92 +214,97 @@ export function AudienceAnalyticsTemplate({
             {page === "dashboard" ? (
               <AudienceDashboard />
             ) : (
-            <div className="grid gap-[17px] p-[22px]">
-              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[22px] pb-[17px] pt-[14px]">
-                <div className="flex flex-wrap items-center justify-center gap-[20px] pb-[12px]">
-                  {[
-                    { label: "Subscribed", color: "#7a9a3e" },
-                    { label: "Unsubscribed", color: "#c9d97a" },
-                    { label: "Non-subscribed", color: "#9dc5e8" },
-                  ].map((item) => (
-                    <span key={item.label} className="flex items-center gap-[7px]">
+              <div className="grid gap-[17px] p-[22px]">
+                <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[22px] pb-[17px] pt-[14px]">
+                  <div className="flex flex-wrap items-center justify-center gap-[20px] pb-[12px]">
+                    {[
+                      { label: "Subscribed", color: "#7a9a3e" },
+                      { label: "Unsubscribed", color: "#c9d97a" },
+                      { label: "Non-subscribed", color: "#9dc5e8" },
+                    ].map((item) => (
                       <span
-                        aria-hidden
-                        className="h-[6px] w-[14px] rounded-full"
-                        style={{ background: item.color }}
-                      />
-                      <span className="text-[0.706rem] text-[color:var(--ob-fg-soft)]">
-                        {item.label}
-                      </span>
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-center gap-[17px] border-b border-[color:var(--ob-border)] pb-[14px] text-[0.741rem]">
-                  <span className="tabular-nums">0 - 16 of 30</span>
-                  <span className="flex items-center gap-[4px] text-[color:var(--ob-fg-soft)]">
-                    <CaretLeftIcon size={13} /> Previous
-                  </span>
-                  <span className="flex items-center gap-[4px] font-medium text-[color:var(--ob-brand)]">
-                    Next <CaretRightIcon size={13} />
-                  </span>
-                </div>
-
-                <p className="pt-[14px] text-[0.719rem] text-[color:var(--ob-fg-soft)]">
-                  Note: This new way of viewing your subscriber data by channel was
-                  launched April 1, 2024
-                </p>
-              </section>
-
-              <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[22px] py-[20px]">
-                <h2
-                  className="text-[1.412rem] font-bold tracking-[-0.01em]"
-                  style={{ fontFamily: "var(--ob-font-display)" }}
-                >
-                  What&apos;s changed
-                </h2>
-                <p className="pt-[3px] text-[0.741rem] text-[color:var(--ob-fg-soft)]">
-                  Jul 7, 2024 - Aug 5, 2024
-                </p>
-
-                <div className="mt-[17px] flex flex-wrap items-center gap-[12px] border-t border-[color:var(--ob-border)] pt-[17px]">
-                  {/* Dotted underline marks a term with a definition on hover. */}
-                  <h3 className="flex-1 border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[0.882rem] font-medium">
-                    Total net subscriptions growth
-                  </h3>
-                  <span className="inline-flex rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] p-[3px]">
-                    {["Day", "Week", "Month"].map((range, index) => (
-                      <span
-                        key={range}
-                        className={cn(
-                          "px-[17px] py-[6px] text-[0.741rem]",
-                          index === 0
-                            ? "rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface)] font-medium shadow-[0_1px_3px_rgba(0,0,0,0.12)]"
-                            : "border-l border-[color:var(--ob-border)] text-[color:var(--ob-fg-soft)]",
-                        )}
+                        key={item.label}
+                        className="flex items-center gap-[7px]"
                       >
-                        {range}
+                        <span
+                          aria-hidden
+                          className="h-[6px] w-[14px] rounded-full"
+                          style={{ background: item.color }}
+                        />
+                        <span className="text-[0.706rem] text-[color:var(--ob-fg-soft)]">
+                          {item.label}
+                        </span>
                       </span>
                     ))}
-                  </span>
-                </div>
+                  </div>
 
-                <p className="flex items-center gap-[12px] pt-[14px]">
-                  <span className="text-[1.199rem] font-bold tabular-nums">4</span>
-                  <span
-                    aria-hidden
-                    className="grid size-[22px] place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[color:var(--ob-muted)]"
+                  <div className="flex items-center justify-center gap-[17px] border-b border-[color:var(--ob-border)] pb-[14px] text-[0.741rem]">
+                    <span className="tabular-nums">0 - 16 of 30</span>
+                    <span className="flex items-center gap-[4px] text-[color:var(--ob-fg-soft)]">
+                      <CaretLeftIcon size={13} /> Previous
+                    </span>
+                    <span className="flex items-center gap-[4px] font-medium text-[color:var(--ob-brand)]">
+                      Next <CaretRightIcon size={13} />
+                    </span>
+                  </div>
+
+                  <p className="pt-[14px] text-[0.719rem] text-[color:var(--ob-fg-soft)]">
+                    Note: This new way of viewing your subscriber data by
+                    channel was launched April 1, 2024
+                  </p>
+                </section>
+
+                <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-[22px] py-[20px]">
+                  <h2
+                    className="text-[1.412rem] font-bold tracking-[-0.01em]"
+                    style={{ fontFamily: "var(--ob-font-display)" }}
                   >
-                    --
-                  </span>
-                  <span className="text-[0.741rem] text-[color:var(--ob-fg-soft)]">
-                    compared to last year
-                  </span>
-                </p>
+                    What&apos;s changed
+                  </h2>
+                  <p className="pt-[3px] text-[0.741rem] text-[color:var(--ob-fg-soft)]">
+                    Jul 7, 2024 - Aug 5, 2024
+                  </p>
 
-                <GrowthChart />
-              </section>
-            </div>
+                  <div className="mt-[17px] flex flex-wrap items-center gap-[12px] border-t border-[color:var(--ob-border)] pt-[17px]">
+                    {/* Dotted underline marks a term with a definition on hover. */}
+                    <h3 className="flex-1 border-b-2 border-dotted border-[color:var(--ob-brand)] pb-[2px] text-[0.882rem] font-medium">
+                      Total net subscriptions growth
+                    </h3>
+                    <span className="inline-flex rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] p-[3px]">
+                      {["Day", "Week", "Month"].map((range, index) => (
+                        <span
+                          key={range}
+                          className={cn(
+                            "px-[17px] py-[6px] text-[0.741rem]",
+                            index === 0
+                              ? "rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface)] font-medium shadow-[0_1px_3px_rgba(0,0,0,0.12)]"
+                              : "border-l border-[color:var(--ob-border)] text-[color:var(--ob-fg-soft)]",
+                          )}
+                        >
+                          {range}
+                        </span>
+                      ))}
+                    </span>
+                  </div>
+
+                  <p className="flex items-center gap-[12px] pt-[14px]">
+                    <span className="text-[1.199rem] font-bold tabular-nums">
+                      4
+                    </span>
+                    <span
+                      aria-hidden
+                      className="grid size-[22px] place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[color:var(--ob-muted)]"
+                    >
+                      --
+                    </span>
+                    <span className="text-[0.741rem] text-[color:var(--ob-fg-soft)]">
+                      compared to last year
+                    </span>
+                  </p>
+
+                  <GrowthChart />
+                </section>
+              </div>
             )}
           </Main>
 
@@ -303,7 +339,10 @@ function GrowthChart() {
         {[4, 3, 2, 1, 0].map((tick, index) => (
           <span
             key={tick}
-            className={cn("leading-none", index > 0 && "mt-[calc((360px/4)-0.8em)]")}
+            className={cn(
+              "leading-none",
+              index > 0 && "mt-[calc((360px/4)-0.8em)]",
+            )}
           >
             {tick}
           </span>
@@ -364,7 +403,10 @@ function GrowthChart() {
             <span
               key={day}
               className="flex-1 whitespace-nowrap text-[0.564rem] text-[color:var(--ob-fg-soft)]"
-              style={{ transform: "rotate(-45deg)", transformOrigin: "left top" }}
+              style={{
+                transform: "rotate(-45deg)",
+                transformOrigin: "left top",
+              }}
             >
               {day}
             </span>
@@ -372,7 +414,10 @@ function GrowthChart() {
         </div>
 
         <p className="flex items-center justify-end gap-[7px] pt-[34px] text-[0.706rem]">
-          <span aria-hidden className="h-[2px] w-[14px] bg-[color:var(--ob-success)]" />
+          <span
+            aria-hidden
+            className="h-[2px] w-[14px] bg-[color:var(--ob-success)]"
+          />
           <span
             aria-hidden
             className="-ml-[12px] size-[7px] rounded-full bg-[color:var(--ob-success)]"
@@ -385,7 +430,13 @@ function GrowthChart() {
 }
 
 const SOURCES = [
-  { id: "import", pct: "33%", name: "Aug 1st Import", sub: "Copy/Pasted File", color: "#3b1f4e" },
+  {
+    id: "import",
+    pct: "33%",
+    name: "Aug 1st Import",
+    sub: "Copy/Pasted File",
+    color: "#3b1f4e",
+  },
   { id: "popup", pct: "33%", name: "Popup Form", color: "#9dc5e8" },
   { id: "embedded", pct: "34%", name: "Embedded Form", color: "#7a9a3e" },
 ];
@@ -421,14 +472,19 @@ function AudienceDashboard() {
                 {source.pct}
               </span>
               <span className="min-w-[0px] flex-1">
-                <span className="block text-[0.776rem] font-semibold">{source.name}</span>
+                <span className="block text-[0.776rem] font-semibold">
+                  {source.name}
+                </span>
                 {source.sub && (
                   <span className="block text-[0.706rem] text-[color:var(--ob-fg-soft)]">
                     {source.sub}
                   </span>
                 )}
               </span>
-              <CaretRightIcon size={12} className="text-[color:var(--ob-fg-soft)]" />
+              <CaretRightIcon
+                size={12}
+                className="text-[color:var(--ob-fg-soft)]"
+              />
             </div>
           ))}
         </section>

@@ -5,7 +5,9 @@ import { useEffect } from "react";
 /** Bind window-level key handlers for as long as `active` is true. */
 export function useKeyboard(
   active: boolean,
-  handlers: Partial<Record<"Escape" | "ArrowLeft" | "ArrowRight" | "Enter", () => void>>,
+  handlers: Partial<
+    Record<"Escape" | "ArrowLeft" | "ArrowRight" | "Enter", () => void>
+  >,
 ): void {
   useEffect(() => {
     if (!active) return;
@@ -15,7 +17,8 @@ export function useKeyboard(
       // Let text inputs own Enter and the arrow keys.
       const target = event.target as HTMLElement | null;
       const tag = target?.tagName;
-      if ((tag === "INPUT" || tag === "TEXTAREA") && event.key !== "Escape") return;
+      if ((tag === "INPUT" || tag === "TEXTAREA") && event.key !== "Escape")
+        return;
       event.preventDefault();
       handler();
     };

@@ -1,9 +1,7 @@
 "use client";
 
 import { BarChart, Heatmap, LineChart } from "../../../ui/charts";
-import {
-  CaretRightIcon,
-} from "../../../ui/icons-solid";
+import { CaretRightIcon } from "../../../ui/icons-solid";
 import { Avatar } from "../../../ui/avatar";
 import { cn } from "../../../lib/cn";
 import { Surface, supportInsightsTokens } from "./tokens";
@@ -29,7 +27,13 @@ const RAIL: IconName[] = [
 ];
 
 const SECTION_NAV = [
-  { id: "reporting", label: "Reporting", icon: "barChart" as IconName, active: true, chevron: true },
+  {
+    id: "reporting",
+    label: "Reporting",
+    icon: "barChart" as IconName,
+    active: true,
+    chevron: true,
+  },
   { id: "issues", label: "Top issues", icon: "alert" as IconName },
   { id: "themes", label: "Themes", icon: "sparkle" as IconName, badge: "Beta" },
 ];
@@ -51,7 +55,9 @@ function Metric({
   return (
     <div className="grid content-start gap-[9px]">
       <div className="flex items-center gap-[6px]">
-        <span className="text-[0.71rem] text-[color:var(--ob-fg-soft)]">{label}</span>
+        <span className="text-[0.71rem] text-[color:var(--ob-fg-soft)]">
+          {label}
+        </span>
         <span
           aria-hidden
           className="grid size-[13px] place-items-center rounded-full border border-[color:var(--ob-border-strong)] text-[0.464rem] text-[color:var(--ob-muted)]"
@@ -107,10 +113,16 @@ export function SupportInsightsTemplate({
             ))}
           </nav>
           <div className="mt-auto grid gap-[13px] text-[color:var(--ob-fg-soft)]">
-            <button type="button" aria-label="Notifications" className="opacity-60">
+            <button
+              type="button"
+              aria-label="Notifications"
+              className="opacity-60"
+            >
               <BellIcon width={15} height={15} />
             </button>
-            <button type="button" aria-label="Help" className="opacity-60">?</button>
+            <button type="button" aria-label="Help" className="opacity-60">
+              ?
+            </button>
             <Avatar name={userName} size={23} />
           </div>
         </aside>
@@ -120,7 +132,9 @@ export function SupportInsightsTemplate({
           <div className="px-[13px] pb-[9px]">
             <div className="flex items-start gap-[6px]">
               <div className="flex-1">
-                <h2 className="text-lg font-extrabold tracking-tight">Insights</h2>
+                <h2 className="text-lg font-extrabold tracking-tight">
+                  Insights
+                </h2>
                 <p className="text-[0.664rem] text-[color:var(--ob-muted)]">
                   {brandName} support
                 </p>
@@ -143,7 +157,12 @@ export function SupportInsightsTemplate({
                     : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
                 )}
               >
-                <Icon name={item.icon} width={13} height={13} className="shrink-0 opacity-80" />
+                <Icon
+                  name={item.icon}
+                  width={13}
+                  height={13}
+                  className="shrink-0 opacity-80"
+                />
                 <span className="flex-1">{item.label}</span>
                 {item.badge && (
                   <Chip tone="brand">
@@ -159,7 +178,9 @@ export function SupportInsightsTemplate({
         <Main className="p-[9px] pl-[0px]">
           <div className="flex-1 overflow-hidden rounded-[11px] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[25px]">
             <div className="flex flex-wrap items-start gap-[19px]">
-              <h1 className="flex-1 text-[1.467rem] font-extrabold tracking-tight">Reporting</h1>
+              <h1 className="flex-1 text-[1.467rem] font-extrabold tracking-tight">
+                Reporting
+              </h1>
               <div className="flex gap-[19px]">
                 {[
                   { label: "Timeframe", value: "Past week" },
@@ -179,7 +200,8 @@ export function SupportInsightsTemplate({
               type="button"
               className="mt-[25px] flex items-center gap-[5px] text-lg font-bold tracking-tight"
             >
-              Overview <ChevronDown width={13} height={13} className="opacity-50" />
+              Overview{" "}
+              <ChevronDown width={13} height={13} className="opacity-50" />
             </button>
 
             <div className="mt-[15px] grid gap-[31px] lg:grid-cols-3">
@@ -232,10 +254,17 @@ export function SupportInsightsTemplate({
                 </div>
               </Metric>
 
-              <Metric label="Median resolution time" value="N/A" unit="last 7 days">
+              <Metric
+                label="Median resolution time"
+                value="N/A"
+                unit="last 7 days"
+              >
                 {/* The reference draws no frame here — just the mark and the
                     words, so the empty panel stays visibly empty. */}
-                <div className="grid place-items-center" style={{ height: 150 }}>
+                <div
+                  className="grid place-items-center"
+                  style={{ height: 150 }}
+                >
                   <span className="flex items-center gap-[6px] text-[0.68rem] text-[color:var(--ob-muted)]">
                     <GhostIcon width={13} height={13} /> No data
                   </span>
@@ -251,11 +280,16 @@ export function SupportInsightsTemplate({
               type="button"
               className="mt-[37px] flex items-center gap-[5px] text-lg font-bold tracking-tight"
             >
-              Support volume <ChevronDown width={13} height={13} className="opacity-50" />
+              Support volume{" "}
+              <ChevronDown width={13} height={13} className="opacity-50" />
             </button>
 
             <div className="mt-[15px] grid gap-[31px] lg:grid-cols-2">
-              <Metric label="New threads created per day" value="4" unit="total">
+              <Metric
+                label="New threads created per day"
+                value="4"
+                unit="total"
+              >
                 <BarChart
                   values={[0, 0, 0, 4, 0, 0, 0]}
                   max={5}
@@ -281,7 +315,11 @@ export function SupportInsightsTemplate({
                 />
               </Metric>
 
-              <Metric label="Threads moved to done per day" value="4" unit="total">
+              <Metric
+                label="Threads moved to done per day"
+                value="4"
+                unit="total"
+              >
                 <BarChart
                   values={[0, 0, 3, 0, 0, 0, 0]}
                   max={3}
@@ -315,10 +353,26 @@ export function SupportInsightsTemplate({
                 <Heatmap
                   columns={24}
                   rows={[
-                    { label: "Mon", values: Array.from({ length: 24 }, (_, i) => (i === 14 ? 0.9 : 0)) },
-                    { label: "Tue", values: Array.from({ length: 24 }, () => 0) },
-                    { label: "Wed", values: Array.from({ length: 24 }, (_, i) => (i === 9 ? 0.4 : 0)) },
-                    { label: "Thu", values: Array.from({ length: 24 }, () => 0) },
+                    {
+                      label: "Mon",
+                      values: Array.from({ length: 24 }, (_, i) =>
+                        i === 14 ? 0.9 : 0,
+                      ),
+                    },
+                    {
+                      label: "Tue",
+                      values: Array.from({ length: 24 }, () => 0),
+                    },
+                    {
+                      label: "Wed",
+                      values: Array.from({ length: 24 }, (_, i) =>
+                        i === 9 ? 0.4 : 0,
+                      ),
+                    },
+                    {
+                      label: "Thu",
+                      values: Array.from({ length: 24 }, () => 0),
+                    },
                   ]}
                 />
               </Metric>

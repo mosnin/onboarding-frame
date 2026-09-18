@@ -40,11 +40,46 @@ const RAIL = [
 ];
 
 const LARGE = [
-  { id: "hlxb", ticker: "HLXB", who: "Chen Bihua", pct: "-160%", value: "+$24,000,000", side: "P" },
-  { id: "pltr", ticker: "PLTR", who: "Glazer David A.", pct: "-99%", value: "-$8,904,888", side: "S" },
-  { id: "nflx", ticker: "NFLX", who: "SARANDOS THEOD…", pct: "-98%", value: "-$38,707,426", side: "S" },
-  { id: "rytm", ticker: "RYTM", who: "Shulman Joseph", pct: "-96%", value: "-$3,680,197", side: "S" },
-  { id: "csl", ticker: "CSL", who: "Snyder Lori A", pct: "-93%", value: "-$3,019,567", side: "S" },
+  {
+    id: "hlxb",
+    ticker: "HLXB",
+    who: "Chen Bihua",
+    pct: "-160%",
+    value: "+$24,000,000",
+    side: "P",
+  },
+  {
+    id: "pltr",
+    ticker: "PLTR",
+    who: "Glazer David A.",
+    pct: "-99%",
+    value: "-$8,904,888",
+    side: "S",
+  },
+  {
+    id: "nflx",
+    ticker: "NFLX",
+    who: "SARANDOS THEOD…",
+    pct: "-98%",
+    value: "-$38,707,426",
+    side: "S",
+  },
+  {
+    id: "rytm",
+    ticker: "RYTM",
+    who: "Shulman Joseph",
+    pct: "-96%",
+    value: "-$3,680,197",
+    side: "S",
+  },
+  {
+    id: "csl",
+    ticker: "CSL",
+    who: "Snyder Lori A",
+    pct: "-93%",
+    value: "-$3,019,567",
+    side: "S",
+  },
 ];
 
 const PURCHASES = [
@@ -136,7 +171,11 @@ export function MarketTerminalTemplate({
   return (
     <Surface tokens={terminalTokens} className={className}>
       <Shell>
-        <Sidebar width={52} bg="var(--ob-bg)" className="items-center border-r-0">
+        <Sidebar
+          width={52}
+          bg="var(--ob-bg)"
+          className="items-center border-r-0"
+        >
           <div className="pt-[31px]">
             <Avatar name={brandName} size={26} rounded={7} />
           </div>
@@ -163,7 +202,9 @@ export function MarketTerminalTemplate({
         <Main className="overflow-auto px-[105px] py-[42px]">
           <header className="flex items-start gap-[12px]">
             <div className="flex-1">
-              <h1 className="text-[1.543rem] font-bold tracking-[-0.02em]">Analysis</h1>
+              <h1 className="text-[1.543rem] font-bold tracking-[-0.02em]">
+                Analysis
+              </h1>
               <p className="pt-[2px] text-[0.81rem] text-[color:var(--ob-muted)]">
                 Thursday, February 15
               </p>
@@ -222,7 +263,9 @@ export function MarketTerminalTemplate({
                     className="flex items-center gap-[9px] border-b border-[color:var(--ob-border)] py-[8px] last:border-b-0"
                   >
                     <BrandMark brand={row.ticker} size={17} />
-                    <span className="w-[43px] shrink-0 font-semibold">{row.ticker}</span>
+                    <span className="w-[43px] shrink-0 font-semibold">
+                      {row.ticker}
+                    </span>
                     <span className="min-w-[0px] flex-1 truncate text-[0.733rem] text-[color:var(--ob-fg-soft)]">
                       {row.who}
                     </span>
@@ -240,7 +283,9 @@ export function MarketTerminalTemplate({
 
             <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[19px]">
               <div className="flex items-center gap-[15px]">
-                <h2 className="flex-1 text-[0.887rem] font-semibold">Daily filings</h2>
+                <h2 className="flex-1 text-[0.887rem] font-semibold">
+                  Daily filings
+                </h2>
                 <Legend color="#f4f4f5">Purchases</Legend>
                 <Legend color="#f2555a">Sales</Legend>
               </div>
@@ -391,7 +436,11 @@ function Pill({ children, glyph }: { children: string; glyph?: ReactNode }) {
 function Legend({ children, color }: { children: string; color: string }) {
   return (
     <span className="flex items-center gap-[6px] text-[0.71rem] text-[color:var(--ob-fg-soft)]">
-      <span aria-hidden className="size-[6px] rounded-full" style={{ background: color }} />
+      <span
+        aria-hidden
+        className="size-[6px] rounded-full"
+        style={{ background: color }}
+      />
       {children}
     </span>
   );

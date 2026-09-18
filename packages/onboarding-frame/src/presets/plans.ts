@@ -23,13 +23,20 @@ export const spotlightSequence: PlansConfig = {
   id: "lumen-premium",
   variant: "spotlight-sequence",
   title: "Unlock the full Lumen experience",
-  subtitle: "Premium gives you unlimited learning, personalised coaching, and more.",
+  subtitle:
+    "Premium gives you unlimited learning, personalised coaching, and more.",
   promoLabel: "Limited time · 30% off annual plans",
   currency: "USD",
   defaultPeriod: "annual",
   sequence: ["value", "plans", "checkout"],
   plans: [
-    { id: "monthly", name: "Monthly", priceMonthly: 3000, features: [], ctaLabel: "Subscribe now" },
+    {
+      id: "monthly",
+      name: "Monthly",
+      priceMonthly: 3000,
+      features: [],
+      ctaLabel: "Subscribe now",
+    },
     {
       id: "annual",
       name: "Annual",
@@ -56,26 +63,33 @@ export const spotlightSequence: PlansConfig = {
   featureRows: [
     { label: "Daily lesson", included: { free: true, premium: true } },
     { label: "Unlimited learning", included: { free: false, premium: true } },
-    { label: "Personalised coaching", included: { free: false, premium: true }, locked: true },
+    {
+      label: "Personalised coaching",
+      included: { free: false, premium: true },
+      locked: true,
+    },
     { label: "No ads", included: { free: false, premium: true } },
-    { label: "Jump ahead and practise", included: { free: false, premium: true } },
+    {
+      label: "Jump ahead and practise",
+      included: { free: false, premium: true },
+    },
   ],
   footnote:
     "*Billed as one payment. Renews annually, cancel anytime. You can turn off auto-renew from your settings.",
   checkout: {
     benefits: [
-      { label: "Unlimited access to all courses", glyph: "📊" },
-      { label: "Personalised coaching", glyph: "🧭" },
-      { label: "No in-app purchases or ads", glyph: "🚫" },
-      { label: "New content added regularly", glyph: "✨" },
+      { label: "Unlimited access to all courses", glyph: "layers" },
+      { label: "Personalised coaching", glyph: "target" },
+      { label: "No in-app purchases or ads", glyph: "xCircle" },
+      { label: "New content added regularly", glyph: "sparkle" },
     ],
     wallets: [
       { id: "wallet", label: "Pay with wallet", tone: "primary" },
       { id: "express", label: "Express checkout" },
     ],
     methods: [
-      { id: "card", label: "Card", glyph: "💳" },
-      { id: "installments", label: "Pay later", glyph: "🅺" },
+      { id: "card", label: "Card", glyph: "creditCard" },
+      { id: "installments", label: "Pay later", glyph: "brand:klarna" },
     ],
     lineItems: [
       { label: "Annual plan", amount: 24000 },
@@ -86,7 +100,8 @@ export const spotlightSequence: PlansConfig = {
       'By checking this box and clicking "Subscribe now", I understand that my subscription begins immediately and renews automatically until I cancel.',
     ],
     submitLabel: "Subscribe now",
-    trustLabel: "Payments are handled by your processor. This demo stores nothing.",
+    trustLabel:
+      "Payments are handled by your processor. This demo stores nothing.",
   },
 };
 
@@ -177,14 +192,34 @@ export const trialTimeline: PlansConfig = {
     awards: ["Design Awards finalist", "Editor's choice", "App of the day"],
     headline: "21,000 five-star reviews",
     testimonials: [
-      { title: "Simply the best", body: "By far the best budgeting app I have used, and I have tried a lot of them.", stars: 5 },
-      { title: "Pays for itself", body: "Found three subscriptions I had forgotten about in the first week.", stars: 5 },
+      {
+        title: "Simply the best",
+        body: "By far the best budgeting app I have used, and I have tried a lot of them.",
+        stars: 5,
+      },
+      {
+        title: "Pays for itself",
+        body: "Found three subscriptions I had forgotten about in the first week.",
+        stars: 5,
+      },
     ],
   },
   timeline: [
-    { glyph: "▶", title: "Today, your free trial begins.", body: "We analyse your connected accounts, categorise spending and track your net worth." },
-    { glyph: "✉", title: "Get notified 7 days before your trial ends.", body: "You'll receive a reminder before anything is charged." },
-    { glyph: "★", title: "After a month, your trial ends.", body: "Your subscription begins. Cancel any time before then." },
+    {
+      glyph: "play",
+      title: "Today, your free trial begins.",
+      body: "We analyse your connected accounts, categorise spending and track your net worth.",
+    },
+    {
+      glyph: "mail",
+      title: "Get notified 7 days before your trial ends.",
+      body: "You'll receive a reminder before anything is charged.",
+    },
+    {
+      glyph: "star",
+      title: "After a month, your trial ends.",
+      body: "Your subscription begins. Cancel any time before then.",
+    },
   ],
   footnote:
     "Sales tax may apply. After the free trial, this subscription renews at $95/year. Cancel anytime, for any reason.",
@@ -203,10 +238,18 @@ export const quotaMatrix: PlansConfig = {
   variant: "quota-matrix",
   title: "Your Generations",
   titleAccent: "Maximise",
-  subtitle: "Compare plans by total image and video outputs available each month",
+  subtitle:
+    "Compare plans by total image and video outputs available each month",
   currency: "USD",
   plans: [
-    { id: "ultra", name: "Ultra", priceMonthly: 9900, highlighted: true, features: [], ctaLabel: "Continue" },
+    {
+      id: "ultra",
+      name: "Ultra",
+      priceMonthly: 9900,
+      highlighted: true,
+      features: [],
+      ctaLabel: "Continue",
+    },
     { id: "plus", name: "Plus", priceMonthly: 4900, features: [] },
     { id: "starter", name: "Starter", priceMonthly: 1900, features: [] },
   ],
@@ -259,10 +302,18 @@ export const offerModal: PlansConfig = {
   variant: "offer-modal",
   title: "Limited offer",
   currency: "USD",
-  plans: [{ id: "ultra", name: "Ultra", priceMonthly: 4550, anchorMonthly: 9900, features: [] }],
+  plans: [
+    {
+      id: "ultra",
+      name: "Ultra",
+      priceMonthly: 4550,
+      anchorMonthly: 9900,
+      features: [],
+    },
+  ],
   offer: {
     eyebrow: "Congrats, you're in the 5% who receive this offer",
-    glyph: "🎁",
+    glyph: "gift",
     headline:
       "You're in the 5% who received this personal **54% off** with **unlimited stills** and **unlimited video**",
     body: "This offer is active for a limited time only.",
@@ -287,15 +338,29 @@ export const comparisonTable: PlansConfig = {
   currency: "USD",
   plans: [
     { id: "free", name: "Free", priceMonthly: 0, features: [] },
-    { id: "premium", name: "Premium", priceMonthly: 1400, highlighted: true, features: [], ctaLabel: "Subscribe now" },
+    {
+      id: "premium",
+      name: "Premium",
+      priceMonthly: 1400,
+      highlighted: true,
+      features: [],
+      ctaLabel: "Subscribe now",
+    },
   ],
   compareColumns: ["free", "premium"],
   featureRows: [
     { label: "Daily lesson", included: { free: true, premium: true } },
     { label: "Unlimited learning", included: { free: false, premium: true } },
-    { label: "Personalised coaching", included: { free: false, premium: true }, locked: true },
+    {
+      label: "Personalised coaching",
+      included: { free: false, premium: true },
+      locked: true,
+    },
     { label: "No ads", included: { free: false, premium: true } },
-    { label: "Jump ahead and practise", included: { free: false, premium: true } },
+    {
+      label: "Jump ahead and practise",
+      included: { free: false, premium: true },
+    },
   ],
 };
 
@@ -309,9 +374,30 @@ export const usageSlider: PlansConfig = {
   defaultPeriod: "annual",
   seats: { min: 1, max: 50, default: 8, label: "Team members" },
   plans: [
-    { id: "starter", name: "Starter", priceMonthly: 900, priceAnnual: 700, perSeat: true, features: [] },
-    { id: "growth", name: "Growth", priceMonthly: 1800, priceAnnual: 1400, perSeat: true, highlighted: true, features: [] },
-    { id: "scale", name: "Scale", priceMonthly: 4900, priceAnnual: 3900, features: [] },
+    {
+      id: "starter",
+      name: "Starter",
+      priceMonthly: 900,
+      priceAnnual: 700,
+      perSeat: true,
+      features: [],
+    },
+    {
+      id: "growth",
+      name: "Growth",
+      priceMonthly: 1800,
+      priceAnnual: 1400,
+      perSeat: true,
+      highlighted: true,
+      features: [],
+    },
+    {
+      id: "scale",
+      name: "Scale",
+      priceMonthly: 4900,
+      priceAnnual: 3900,
+      features: [],
+    },
   ],
 };
 
@@ -331,7 +417,14 @@ export const plansPresets = {
       ctaForeground: "#101011",
     } as OnboardingTheme,
   },
-  "offer-modal": { config: offerModal, theme: { scheme: "dark", brand: "#ccff00", brandForeground: "#101400" } as OnboardingTheme },
+  "offer-modal": {
+    config: offerModal,
+    theme: {
+      scheme: "dark",
+      brand: "#ccff00",
+      brandForeground: "#101400",
+    } as OnboardingTheme,
+  },
   "comparison-table": { config: comparisonTable, theme: spotlightTheme },
   "usage-slider": { config: usageSlider, theme: quietTiersTheme },
 } as const;

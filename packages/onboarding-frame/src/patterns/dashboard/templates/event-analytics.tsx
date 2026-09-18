@@ -54,8 +54,17 @@ const NAV = [
 ];
 
 const GROUPS = [
-  { label: "Front Desk", items: [{ id: "checkin", label: "Check-in", Icon: StorefrontIcon }, { id: "pos", label: "Point of Sale", Icon: CardIcon }] },
-  { label: "Campaigns", items: [{ id: "email", label: "Email & SMS", Icon: EnvelopeIcon }] },
+  {
+    label: "Front Desk",
+    items: [
+      { id: "checkin", label: "Check-in", Icon: StorefrontIcon },
+      { id: "pos", label: "Point of Sale", Icon: CardIcon },
+    ],
+  },
+  {
+    label: "Campaigns",
+    items: [{ id: "email", label: "Email & SMS", Icon: EnvelopeIcon }],
+  },
   {
     label: "Other",
     items: [
@@ -111,11 +120,11 @@ export function EventAnalyticsTemplate({
               <nav className="grid px-[10px]">
                 {group.items.map((item) => (
                   <NavItem
-                key={item.id}
-                label={item.label}
-                glyph={<item.Icon size={15} />}
-                className="gap-[13px] px-[12px] py-[7px] text-[0.86rem]"
-              />
+                    key={item.id}
+                    label={item.label}
+                    glyph={<item.Icon size={15} />}
+                    className="gap-[13px] px-[12px] py-[7px] text-[0.86rem]"
+                  />
                 ))}
               </nav>
             </div>
@@ -128,7 +137,10 @@ export function EventAnalyticsTemplate({
               className="gap-[13px] px-[12px] py-[7px] text-[0.86rem]"
               glyph={<ArticleIcon size={15} />}
               trailing={
-                <ArrowUpRightIcon size={10} className="text-[color:var(--ob-muted)]" />
+                <ArrowUpRightIcon
+                  size={10}
+                  className="text-[color:var(--ob-muted)]"
+                />
               }
             />
           </nav>
@@ -154,7 +166,9 @@ export function EventAnalyticsTemplate({
                 <span className="block text-[0.578rem] uppercase tracking-wide text-[color:var(--ob-muted)]">
                   Community
                 </span>
-                <span className="block text-[0.805rem] font-semibold">ASAcme</span>
+                <span className="block text-[0.805rem] font-semibold">
+                  ASAcme
+                </span>
               </span>
               <span className="text-[color:var(--ob-muted)]">
                 <CaretUpDownIcon size={12} />
@@ -171,9 +185,15 @@ export function EventAnalyticsTemplate({
                 <h1 className="flex items-center gap-[9px] text-[1.182rem] font-bold tracking-[-0.01em]">
                   ASAcme gathering
                   <span className="flex items-center gap-[6px] text-[0.701rem] text-[color:var(--ob-muted)]">
-                    <GlyphBtn><ArrowUpRightIcon size={12} /></GlyphBtn>
-                    <GlyphBtn><CopyIcon size={12} /></GlyphBtn>
-                    <GlyphBtn><QrCodeIcon size={12} /></GlyphBtn>
+                    <GlyphBtn>
+                      <ArrowUpRightIcon size={12} />
+                    </GlyphBtn>
+                    <GlyphBtn>
+                      <CopyIcon size={12} />
+                    </GlyphBtn>
+                    <GlyphBtn>
+                      <QrCodeIcon size={12} />
+                    </GlyphBtn>
                   </span>
                 </h1>
                 <p className="pt-[3px] text-[0.832rem] text-[color:var(--ob-muted)]">
@@ -181,7 +201,9 @@ export function EventAnalyticsTemplate({
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-[9px]">
-                <OutlinePill glyph={<UserIcon size={13} />}>Add attendee</OutlinePill>
+                <OutlinePill glyph={<UserIcon size={13} />}>
+                  Add attendee
+                </OutlinePill>
                 <OutlinePill glyph={<PencilIcon size={13} />}>Edit</OutlinePill>
                 <OutlinePill>···</OutlinePill>
               </div>
@@ -251,7 +273,9 @@ function Analytics() {
               {stat.label}
               {stat.info && <InfoDot />}
             </p>
-            <p className="pt-[3px] text-[1.532rem] font-bold tabular-nums">{stat.value}</p>
+            <p className="pt-[3px] text-[1.532rem] font-bold tabular-nums">
+              {stat.value}
+            </p>
           </section>
         ))}
       </div>
@@ -271,7 +295,9 @@ function Analytics() {
               segments={[{ id: "free", value: 6, color: "#b96bff" }]}
               center={
                 <span className="grid place-items-center">
-                  <span className="text-[1.575rem] font-bold leading-none tabular-nums">6</span>
+                  <span className="text-[1.575rem] font-bold leading-none tabular-nums">
+                    6
+                  </span>
                   <span className="pt-[3px] text-[0.77rem] text-[color:var(--ob-muted)]">
                     Tickets sold
                   </span>
@@ -280,7 +306,10 @@ function Analytics() {
             />
             <div className="flex-1">
               <div className="flex items-center gap-[10px]">
-                <span aria-hidden className="size-[10px] rounded-[2px] bg-[#b96bff]" />
+                <span
+                  aria-hidden
+                  className="size-[10px] rounded-[2px] bg-[#b96bff]"
+                />
                 <span className="flex-1 text-[0.858rem]">Free</span>
                 <span className="tabular-nums">6</span>
                 <span className="rounded-full bg-[color:var(--ob-surface-3)] px-[7px] py-[2px] text-[0.683rem] font-semibold">
@@ -313,7 +342,12 @@ function Analytics() {
 
           <ul className="grid gap-[9px] pt-[17px]">
             {[
-              { label: "First Timer", value: "5", pct: "100%", color: "#5ddb9a" },
+              {
+                label: "First Timer",
+                value: "5",
+                pct: "100%",
+                color: "#5ddb9a",
+              },
               { label: "Returning", value: "0", pct: "0%", color: "#ff5f8a" },
             ].map((row) => (
               <li key={row.label} className="flex items-center gap-[10px]">
@@ -339,7 +373,11 @@ function Analytics() {
           note="10 spots"
           rows={[
             { label: "Spots Taken", value: "6", color: "#5ddb9a" },
-            { label: "Spots Remaining", value: "4", color: "var(--ob-surface-3)" },
+            {
+              label: "Spots Remaining",
+              value: "4",
+              color: "var(--ob-surface-3)",
+            },
           ]}
           fill={60}
         />
@@ -387,7 +425,9 @@ function MeterCard({
     <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] p-[21px]">
       <div className="flex items-center gap-[10px]">
         <h2 className="flex-1 text-[0.98rem] font-bold">{title}</h2>
-        <span className="text-[0.805rem] text-[color:var(--ob-fg-soft)]">{note}</span>
+        <span className="text-[0.805rem] text-[color:var(--ob-fg-soft)]">
+          {note}
+        </span>
       </div>
 
       <ul className="grid gap-[9px] pt-[14px]">
@@ -423,7 +463,13 @@ function GlyphBtn({ children }: { children: ReactNode }) {
   );
 }
 
-function OutlinePill({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
+function OutlinePill({
+  children,
+  glyph,
+}: {
+  children: ReactNode;
+  glyph?: ReactNode;
+}) {
   return (
     <span className="inline-flex items-center gap-[6px] rounded-full border border-[color:var(--ob-border-strong)] px-[13px] py-[7px] text-[0.788rem] font-medium">
       {glyph && (
@@ -449,12 +495,48 @@ function InfoDot() {
 
 function Rsvps() {
   const people = [
-    { id: "p1", name: "Jordan Alvarez", tier: "Free", when: "Jul 2", checked: false },
-    { id: "p2", name: "Priya Raman", tier: "Free", when: "Jul 3", checked: false },
-    { id: "p3", name: "Sam Okafor", tier: "Free", when: "Jul 5", checked: false },
-    { id: "p4", name: "Mei Tanaka", tier: "Free", when: "Jul 5", checked: false },
-    { id: "p5", name: "Chris Bell", tier: "Free", when: "Jul 7", checked: false },
-    { id: "p6", name: "Dana Whitfield", tier: "Free", when: "Jul 9", checked: false },
+    {
+      id: "p1",
+      name: "Jordan Alvarez",
+      tier: "Free",
+      when: "Jul 2",
+      checked: false,
+    },
+    {
+      id: "p2",
+      name: "Priya Raman",
+      tier: "Free",
+      when: "Jul 3",
+      checked: false,
+    },
+    {
+      id: "p3",
+      name: "Sam Okafor",
+      tier: "Free",
+      when: "Jul 5",
+      checked: false,
+    },
+    {
+      id: "p4",
+      name: "Mei Tanaka",
+      tier: "Free",
+      when: "Jul 5",
+      checked: false,
+    },
+    {
+      id: "p5",
+      name: "Chris Bell",
+      tier: "Free",
+      when: "Jul 7",
+      checked: false,
+    },
+    {
+      id: "p6",
+      name: "Dana Whitfield",
+      tier: "Free",
+      when: "Jul 9",
+      checked: false,
+    },
   ];
 
   return (
@@ -476,7 +558,9 @@ function Rsvps() {
           </span>
           <span className="text-[color:var(--ob-fg-soft)]">{person.tier}</span>
           <span className="text-[color:var(--ob-muted)]">{person.when}</span>
-          <span className="text-right text-[color:var(--ob-muted)]">Not yet</span>
+          <span className="text-right text-[color:var(--ob-muted)]">
+            Not yet
+          </span>
         </div>
       ))}
     </section>

@@ -52,7 +52,9 @@ export function BrowseSidebar({
               <GridIcon />
             </span>
             <span className="flex-1 text-[1.05rem] font-semibold">{title}</span>
-            <span className="text-[0.95rem] text-[color:var(--site-muted)]">{total}</span>
+            <span className="text-[0.95rem] text-[color:var(--site-muted)]">
+              {total}
+            </span>
             <ChevronRight className="text-[color:var(--site-muted)]" />
           </Link>
 
@@ -71,7 +73,11 @@ export function BrowseSidebar({
 
           <Section label="Get started" />
           {GETTING_STARTED.map((entry) => (
-            <Row key={entry.id} href={entry.href} active={pathname === entry.href}>
+            <Row
+              key={entry.id}
+              href={entry.href}
+              active={pathname === entry.href}
+            >
               {entry.label}
             </Row>
           ))}

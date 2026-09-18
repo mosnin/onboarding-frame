@@ -37,11 +37,17 @@ export type { DeployPage, DeployAnalyticsProps } from "./deploy-analytics";
 export { TokenUsageTemplate } from "./token-usage";
 export type { UsagePage, TokenUsageProps } from "./token-usage";
 export { ComplianceControlsTemplate } from "./compliance-controls";
-export type { CompliancePage, ComplianceControlsProps } from "./compliance-controls";
+export type {
+  CompliancePage,
+  ComplianceControlsProps,
+} from "./compliance-controls";
 export { ListingStatsTemplate } from "./listing-stats";
 export type { ListingPage, ListingStatsProps } from "./listing-stats";
 export { AudienceAnalyticsTemplate } from "./audience-analytics";
-export type { AudiencePage, AudienceAnalyticsProps } from "./audience-analytics";
+export type {
+  AudiencePage,
+  AudienceAnalyticsProps,
+} from "./audience-analytics";
 export { CapTableTemplate } from "./cap-table";
 export type { CapTablePage, CapTableProps } from "./cap-table";
 export { WalletHomeTemplate } from "./wallet-home";
@@ -51,9 +57,15 @@ export type { WarehousePage, WarehouseCostProps } from "./warehouse-cost";
 export { WealthPortfolioTemplate } from "./wealth-portfolio";
 export type { WealthPage, WealthPortfolioProps } from "./wealth-portfolio";
 export { BillingBenchmarksTemplate } from "./billing-benchmarks";
-export type { BenchmarkPage, BillingBenchmarksProps } from "./billing-benchmarks";
+export type {
+  BenchmarkPage,
+  BillingBenchmarksProps,
+} from "./billing-benchmarks";
 export { FreelanceAnalyticsTemplate } from "./freelance-analytics";
-export type { FreelancePage, FreelanceAnalyticsProps } from "./freelance-analytics";
+export type {
+  FreelancePage,
+  FreelanceAnalyticsProps,
+} from "./freelance-analytics";
 export { AuthConsoleTemplate } from "./auth-console";
 export type { AuthPage, AuthConsoleProps } from "./auth-console";
 export { UptimeMonitorTemplate } from "./uptime-monitor";

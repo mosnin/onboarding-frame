@@ -36,7 +36,8 @@ export function TemplateViewerShell({ slug }: { slug: string }) {
   const entry = templateCatalog.find((item) => item.slug === slug);
   const index = templateCatalog.findIndex((item) => item.slug === slug);
   const previous = index > 0 ? templateCatalog[index - 1] : undefined;
-  const next = index < templateCatalog.length - 1 ? templateCatalog[index + 1] : undefined;
+  const next =
+    index < templateCatalog.length - 1 ? templateCatalog[index + 1] : undefined;
 
   const [page, setPage] = useState(entry?.pages[0]?.id ?? "home");
   const [device, setDevice] = useState<Device>("desktop");
@@ -149,13 +150,15 @@ export function TemplateViewerShell({ slug }: { slug: string }) {
           <CopyButton value={agentPrompt} label="Copy for AI" />
 
           <div className="flex items-center gap-1 rounded-xl border border-[color:var(--site-border)] p-1">
-            {(
-              [
-                { id: "desktop" as const, icon: <DesktopIcon />, label: "Desktop" },
-                { id: "tablet" as const, icon: <TabletIcon />, label: "Tablet" },
-                { id: "mobile" as const, icon: <MobileIcon />, label: "Mobile" },
-              ]
-            ).map((item) => (
+            {[
+              {
+                id: "desktop" as const,
+                icon: <DesktopIcon />,
+                label: "Desktop",
+              },
+              { id: "tablet" as const, icon: <TabletIcon />, label: "Tablet" },
+              { id: "mobile" as const, icon: <MobileIcon />, label: "Mobile" },
+            ].map((item) => (
               <button
                 key={item.id}
                 type="button"
@@ -189,7 +192,11 @@ export function TemplateViewerShell({ slug }: { slug: string }) {
           className="mx-auto overflow-hidden transition-[max-width] duration-300"
           style={{ maxWidth: width ?? "100%" }}
         >
-          <TemplateBody key={`${page}-${nonce}-${device}`} slug={entry.slug} page={page} />
+          <TemplateBody
+            key={`${page}-${nonce}-${device}`}
+            slug={entry.slug}
+            page={page}
+          />
         </div>
       </div>
 

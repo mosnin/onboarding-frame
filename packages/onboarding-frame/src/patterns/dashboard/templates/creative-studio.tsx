@@ -52,11 +52,27 @@ const PROMPTS: { label: string; icon: IconName }[] = [
   { label: "Generate animated video", icon: "play" },
 ];
 
-const FEATURES: { id: string; title: string; body: string; icon: IconName }[] = [
-  { id: "maker", title: "AI video maker", body: "Watch the studio assemble your video with voiceover and visuals", icon: "video" },
-  { id: "speaker", title: "Create with AI speaker", body: "Let an avatar present your script — no need to record", icon: "userPlus" },
-  { id: "transcribe", title: "Transcribe", body: "Accurate, fast, across twenty-five languages", icon: "chat" },
-];
+const FEATURES: { id: string; title: string; body: string; icon: IconName }[] =
+  [
+    {
+      id: "maker",
+      title: "AI video maker",
+      body: "Watch the studio assemble your video with voiceover and visuals",
+      icon: "video",
+    },
+    {
+      id: "speaker",
+      title: "Create with AI speaker",
+      body: "Let an avatar present your script — no need to record",
+      icon: "userPlus",
+    },
+    {
+      id: "transcribe",
+      title: "Transcribe",
+      body: "Accurate, fast, across twenty-five languages",
+      icon: "chat",
+    },
+  ];
 
 /**
  * Creative studio home.
@@ -77,7 +93,11 @@ export function CreativeStudioTemplate({
         <Sidebar width={241}>
           <div className="flex items-center gap-2 p-4">
             <Avatar name={brandName} size={26} rounded={6} />
-            <button type="button" aria-label="Tasks" className="ml-auto opacity-50">
+            <button
+              type="button"
+              aria-label="Tasks"
+              className="ml-auto opacity-50"
+            >
               <CheckCircleIcon width={18} height={18} />
             </button>
           </div>
@@ -105,7 +125,12 @@ export function CreativeStudioTemplate({
                     : "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
                 )}
               >
-                <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-70" />
+                <Icon
+                  name={item.icon}
+                  width={17}
+                  height={17}
+                  className="shrink-0 opacity-70"
+                />
                 {item.label}
               </button>
             ))}
@@ -130,7 +155,12 @@ export function CreativeStudioTemplate({
                     type="button"
                     className="flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-left text-[0.95rem] text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]"
                   >
-                    <Icon name={item.icon} width={17} height={17} className="shrink-0 opacity-70" />
+                    <Icon
+                      name={item.icon}
+                      width={17}
+                      height={17}
+                      className="shrink-0 opacity-70"
+                    />
                     {item.label}
                   </button>
                 ))}
@@ -141,7 +171,10 @@ export function CreativeStudioTemplate({
 
         <Main>
           <TopBar border={false}>
-            <SearchField placeholder="Search projects" className="mx-auto w-full max-w-[640px]" />
+            <SearchField
+              placeholder="Search projects"
+              className="mx-auto w-full max-w-[640px]"
+            />
             <div className="flex items-center gap-2.5">
               <span className="flex items-center gap-1.5 text-[0.86rem] font-semibold">
                 <CoinsIcon width={15} height={15} className="opacity-70" /> 100
@@ -149,14 +182,22 @@ export function CreativeStudioTemplate({
               <span className="flex items-center gap-1.5 text-[0.86rem] font-semibold">
                 <ClockIcon width={15} height={15} className="opacity-70" /> 60m
               </span>
-              <Btn tone="neutral" size="sm" className="border-[#d9a8bb] text-[color:var(--ob-brand)]">
+              <Btn
+                tone="neutral"
+                size="sm"
+                className="border-[#d9a8bb] text-[color:var(--ob-brand)]"
+              >
                 Upgrade
               </Btn>
               <Btn tone="neutral" size="sm">
                 <Gift width={15} height={15} /> Earn $20
               </Btn>
               <Avatar name={userName} size={30} />
-              <button type="button" aria-label="Help" className="relative opacity-60">
+              <button
+                type="button"
+                aria-label="Help"
+                className="relative opacity-60"
+              >
                 <LifebuoyIcon width={19} height={19} />
                 <span className="absolute -right-0.5 -top-0.5 size-[6px] rounded-full bg-[#e0245e]" />
               </button>
@@ -166,19 +207,26 @@ export function CreativeStudioTemplate({
           <div className="px-6 pb-12 sm:px-8">
             <div className="flex items-center gap-3 rounded-[8px] bg-[#f6e6ec] px-5 py-3 text-[0.9rem]">
               <span className="flex-1 text-center">
-                You&apos;re on a <strong>Free plan</strong>. Upgrade for more media
-                minutes, AI credits, watermark-free exports, and more.
+                You&apos;re on a <strong>Free plan</strong>. Upgrade for more
+                media minutes, AI credits, watermark-free exports, and more.
               </span>
-              <Btn tone="neutral" size="sm" className="border-[#d9a8bb] text-[color:var(--ob-brand)]">
+              <Btn
+                tone="neutral"
+                size="sm"
+                className="border-[#d9a8bb] text-[color:var(--ob-brand)]"
+              >
                 Upgrade
               </Btn>
             </div>
 
             <div className="mt-6 flex justify-end gap-2.5">
               <Btn tone="neutral" size="sm">
-                <RecordIcon width={12} height={12} className="text-[#d1344f]" /> Record
+                <RecordIcon width={12} height={12} className="text-[#d1344f]" />{" "}
+                Record
               </Btn>
-              <Btn tone="dark" size="sm">New project</Btn>
+              <Btn tone="dark" size="sm">
+                New project
+              </Btn>
             </div>
 
             {/* Textured hero band */}
@@ -196,16 +244,28 @@ export function CreativeStudioTemplate({
 
               <div className="mx-auto mt-6 max-w-3xl rounded-[12px] bg-[color:var(--ob-surface)] p-4 [box-shadow:var(--ob-shadow)]">
                 <p className="px-1 pb-6 pt-1 text-[1rem] text-[color:var(--ob-muted)]">
-                  Upload a file or describe what you want to make, and I&apos;ll help you plan it.
+                  Upload a file or describe what you want to make, and I&apos;ll
+                  help you plan it.
                 </p>
                 <div className="flex items-center gap-3">
-                  <button type="button" aria-label="Attach" className="opacity-55">
+                  <button
+                    type="button"
+                    aria-label="Attach"
+                    className="opacity-55"
+                  >
                     <LinkIcon width={17} height={17} />
                   </button>
-                  <button type="button" className="flex items-center gap-1.5 text-[0.88rem] text-[color:var(--ob-muted)]">
+                  <button
+                    type="button"
+                    className="flex items-center gap-1.5 text-[0.88rem] text-[color:var(--ob-muted)]"
+                  >
                     <Sparkle width={15} height={15} /> Auto
                   </button>
-                  <Btn tone="dark" size="sm" className="ml-auto bg-[color:var(--ob-brand)]">
+                  <Btn
+                    tone="dark"
+                    size="sm"
+                    className="ml-auto bg-[color:var(--ob-brand)]"
+                  >
                     Get started
                   </Btn>
                 </div>
@@ -218,11 +278,19 @@ export function CreativeStudioTemplate({
                     type="button"
                     className="flex items-center gap-2 rounded-full border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] px-3.5 py-2 text-[0.88rem] font-medium"
                   >
-                    <Icon name={prompt.icon} width={15} height={15} className="opacity-70" />
+                    <Icon
+                      name={prompt.icon}
+                      width={15}
+                      height={15}
+                      className="opacity-70"
+                    />
                     {prompt.label}
                   </button>
                 ))}
-                <button type="button" className="px-2 py-2 text-[0.88rem] text-[color:var(--ob-muted)]">
+                <button
+                  type="button"
+                  className="px-2 py-2 text-[0.88rem] text-[color:var(--ob-muted)]"
+                >
                   Browse prompt templates…
                 </button>
               </div>
@@ -260,12 +328,16 @@ export function CreativeStudioTemplate({
                   Take a tour of {brandName}
                 </h3>
                 <p className="mt-2 max-w-md leading-relaxed text-[color:var(--ob-fg-soft)]">
-                  Learn your way around the app, including the basics of text-based
-                  editing, so you can start creating.
+                  Learn your way around the app, including the basics of
+                  text-based editing, so you can start creating.
                 </p>
               </div>
               <span className="block h-[190px] w-[420px] max-w-full">
-                <Thumb seed="product-tour" radius={10} alt="Product tour still" />
+                <Thumb
+                  seed="product-tour"
+                  radius={10}
+                  alt="Product tour still"
+                />
               </span>
             </section>
           </div>

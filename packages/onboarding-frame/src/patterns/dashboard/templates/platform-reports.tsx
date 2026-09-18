@@ -74,8 +74,20 @@ const REPORTS = [
 
 const REQUESTS = [
   { id: "r1", method: "GET", status: "200", path: "/rest/v1/", count: 104 },
-  { id: "r2", method: "GET", status: "200", path: "/auth/v1/health", count: 68 },
-  { id: "r3", method: "POST", status: "200", path: "/storage/v1/object/list/Storage", count: 25 },
+  {
+    id: "r2",
+    method: "GET",
+    status: "200",
+    path: "/auth/v1/health",
+    count: 68,
+  },
+  {
+    id: "r3",
+    method: "POST",
+    status: "200",
+    path: "/storage/v1/object/list/Storage",
+    count: 25,
+  },
 ];
 
 const ERRORS = [
@@ -86,7 +98,13 @@ const ERRORS = [
     path: "/storage/v1/object/Storage/Cool%20folder/gradienta-LeG68PrXA6Y-unspla…",
     count: 1,
   },
-  { id: "e2", method: "POST", status: "400", path: "/storage/v1/bucket", count: 1 },
+  {
+    id: "e2",
+    method: "POST",
+    status: "400",
+    path: "/storage/v1/bucket",
+    count: 1,
+  },
   {
     id: "e3",
     method: "POST",
@@ -201,7 +219,9 @@ export function PlatformReportsTemplate({
             <span className="text-[0.833rem] font-medium">New Website</span>
             <span className="ml-auto flex items-center gap-[9px]">
               <OutlineBtn glyph={<QuestionIcon size={12} />}>Help</OutlineBtn>
-              <OutlineBtn glyph={<ChatDotsIcon size={12} />}>Feedback</OutlineBtn>
+              <OutlineBtn glyph={<ChatDotsIcon size={12} />}>
+                Feedback
+              </OutlineBtn>
               <BellIcon size={12} />
             </span>
           </header>
@@ -209,7 +229,9 @@ export function PlatformReportsTemplate({
           <div className="px-[28px] py-[25px]">
             <div className="flex items-center gap-[11px]">
               <h1 className="flex-1 text-[1.754rem] font-semibold">API</h1>
-              <OutlineBtn glyph={<ArrowClockwiseIcon size={12} />}>Refresh</OutlineBtn>
+              <OutlineBtn glyph={<ArrowClockwiseIcon size={12} />}>
+                Refresh
+              </OutlineBtn>
             </div>
 
             <div className="flex flex-wrap items-center gap-[11px] pt-[18px]">
@@ -263,7 +285,13 @@ function ReportCard({
   title: string;
   total: string;
   bars: number[];
-  rows: { id: string; method: string; status: string; path: string; count: number }[];
+  rows: {
+    id: string;
+    method: string;
+    status: string;
+    path: string;
+    count: number;
+  }[];
   statusTone: "ok" | "warn";
   hint?: boolean;
 }) {
@@ -286,7 +314,9 @@ function ReportCard({
         </span>
       </div>
 
-      <p className="pt-[11px] text-[1.404rem] font-medium tabular-nums">{total}</p>
+      <p className="pt-[11px] text-[1.404rem] font-medium tabular-nums">
+        {total}
+      </p>
 
       <div className="flex h-[96px] items-end gap-[3px] pt-[14px]">
         {bars.map((value, index) => (
@@ -338,7 +368,13 @@ function ReportCard({
   );
 }
 
-function OutlineBtn({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
+function OutlineBtn({
+  children,
+  glyph,
+}: {
+  children: ReactNode;
+  glyph?: ReactNode;
+}) {
   return (
     <span className="inline-flex items-center gap-[7px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-[12px] py-[7px] text-[0.807rem] font-medium">
       {glyph && (

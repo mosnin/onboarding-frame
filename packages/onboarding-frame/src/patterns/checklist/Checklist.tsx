@@ -74,7 +74,8 @@ function useChecklist(config: ChecklistConfig, persistKey?: string) {
 
   /** A task is locked until everything it depends on is done. */
   const isLocked = useCallback(
-    (task: ChecklistTask) => (task.dependsOn ?? []).some((id) => !doneSet.has(id)),
+    (task: ChecklistTask) =>
+      (task.dependsOn ?? []).some((id) => !doneSet.has(id)),
     [doneSet],
   );
 
@@ -169,7 +170,12 @@ function TaskRow({
             </p>
           )}
           {(task.ctaLabel || ctaLabel) && (
-            <Button tone="brand" size="sm" onClick={onAction} className="justify-self-start">
+            <Button
+              tone="brand"
+              size="sm"
+              onClick={onAction}
+              className="justify-self-start"
+            >
               {task.ctaLabel ?? ctaLabel}
               <ChevronRight className="size-4" />
             </Button>
@@ -196,10 +202,8 @@ export function Checklist({
   className,
   inline,
 }: ChecklistProps) {
-  const { state, setState, doneSet, toggleDone, expand, isLocked } = useChecklist(
-    config,
-    persistKey,
-  );
+  const { state, setState, doneSet, toggleDone, expand, isLocked } =
+    useChecklist(config, persistKey);
   const { emit } = useOnboarding();
   const [celebrated, setCelebrated] = useState(false);
 
@@ -226,7 +230,9 @@ export function Checklist({
     <div className="grid gap-3">
       <div className="flex items-start gap-3">
         <div className="flex-1">
-          <h3 className="font-bold">{allDone ? (config.completedTitle ?? config.title) : config.title}</h3>
+          <h3 className="font-bold">
+            {allDone ? (config.completedTitle ?? config.title) : config.title}
+          </h3>
           {(allDone ? config.completedBody : config.subtitle) && (
             <p className="mt-0.5 text-[0.86rem] text-[color:var(--ob-muted)]">
               {allDone ? config.completedBody : config.subtitle}
@@ -301,7 +307,14 @@ export function Checklist({
           >
             <span className="relative grid size-7 place-items-center">
               <svg viewBox="0 0 36 36" className="size-7 -rotate-90">
-                <circle cx="18" cy="18" r="15" fill="none" strokeWidth="4" className="stroke-current opacity-25" />
+                <circle
+                  cx="18"
+                  cy="18"
+                  r="15"
+                  fill="none"
+                  strokeWidth="4"
+                  className="stroke-current opacity-25"
+                />
                 <circle
                   cx="18"
                   cy="18"

@@ -46,13 +46,31 @@ const NAV = [
 ];
 
 const ACCOUNTS = [
-  { id: "exchange", name: "Exchange", when: "56 seconds ago", value: "$3.42", change: "+5.99%" },
+  {
+    id: "exchange",
+    name: "Exchange",
+    when: "56 seconds ago",
+    value: "$3.42",
+    change: "+5.99%",
+  },
   { id: "manual", name: "me", when: "23 hours ago", value: "$0.00" },
 ];
 
 const HOLDINGS = [
-  { id: "near", ticker: "NEAR", name: "NEAR Protocol", value: "$1.98", change: "6.5%" },
-  { id: "btc", ticker: "BTC", name: "Bitcoin", value: "$1.44", change: "5.27%" },
+  {
+    id: "near",
+    ticker: "NEAR",
+    name: "NEAR Protocol",
+    value: "$1.98",
+    change: "6.5%",
+  },
+  {
+    id: "btc",
+    ticker: "BTC",
+    name: "Bitcoin",
+    value: "$1.44",
+    change: "5.27%",
+  },
 ];
 
 const RANGES = ["1W", "1M", "3M", "6M", "YTD", "1Y"];
@@ -101,7 +119,9 @@ export function WealthPortfolioTemplate({
 
         <Main className="overflow-auto px-[24px] py-[18px]">
           <header className="flex flex-wrap items-center gap-[9px]">
-            <h1 className="flex-1 text-[1.508rem] font-bold tracking-[-0.01em]">Portfolio</h1>
+            <h1 className="flex-1 text-[1.508rem] font-bold tracking-[-0.01em]">
+              Portfolio
+            </h1>
             <span className="flex items-center gap-[6px] rounded-full bg-[color:var(--ob-cta-bg)] px-[15px] py-[8px] text-[0.754rem] font-semibold text-[color:var(--ob-cta-fg)]">
               <GiftIcon size={12} /> Get $25
             </span>
@@ -155,7 +175,10 @@ export function WealthPortfolioTemplate({
                   <p className="pb-[9px] text-[0.83rem]">Investments</p>
                   <ul className="grid gap-[12px]">
                     {ACCOUNTS.map((account) => (
-                      <li key={account.id} className="flex items-center gap-[11px]">
+                      <li
+                        key={account.id}
+                        className="flex items-center gap-[11px]"
+                      >
                         <BrandMark brand={account.name} size={33} />
                         <span className="min-w-[0px] flex-1">
                           <span className="block text-[0.83rem] font-semibold">
@@ -218,7 +241,8 @@ export function WealthPortfolioTemplate({
                   <h2 className="text-[1.131rem] font-bold leading-snug tracking-[-0.01em]">
                     How did my investments perform over the last 3 months?
                   </h2>
-                  <span className="mt-[15px] flex items-center justify-center gap-[8px] rounded-full border border-[color:var(--ob-border-strong)] py-[11px] text-[0.716rem] font-semibold uppercase tracking-wide"
+                  <span
+                    className="mt-[15px] flex items-center justify-center gap-[8px] rounded-full border border-[color:var(--ob-border-strong)] py-[11px] text-[0.716rem] font-semibold uppercase tracking-wide"
                     style={{ fontFamily: "var(--ob-font-display)" }}
                   >
                     <SparkleIcon size={11} /> Ask sidekick
@@ -248,7 +272,9 @@ export function WealthPortfolioTemplate({
                 <p className="flex items-center gap-[5px] pt-[15px] text-[0.792rem] text-[color:var(--ob-fg-soft)]">
                   Total balance <InfoDot />
                 </p>
-                <p className="pt-[3px] text-[1.659rem] font-bold leading-none tabular-nums">$3</p>
+                <p className="pt-[3px] text-[1.659rem] font-bold leading-none tabular-nums">
+                  $3
+                </p>
                 <p className="pt-[5px] text-[0.754rem] tabular-nums text-[color:var(--ob-success)]">
                   $0 (5.74%)
                 </p>
@@ -285,10 +311,15 @@ export function WealthPortfolioTemplate({
 
                 <div className="grid gap-[15px] sm:grid-cols-2">
                   <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[15px]">
-                    <h3 className="pb-[12px] text-[0.83rem] font-semibold">Total Value</h3>
+                    <h3 className="pb-[12px] text-[0.83rem] font-semibold">
+                      Total Value
+                    </h3>
                     <ul className="grid gap-[12px]">
                       {HOLDINGS.map((holding) => (
-                        <li key={holding.id} className="flex items-center gap-[9px]">
+                        <li
+                          key={holding.id}
+                          className="flex items-center gap-[9px]"
+                        >
                           <BrandMark brand={holding.ticker} size={29} />
                           <span className="min-w-[0px] flex-1">
                             <span className="block text-[0.792rem] font-semibold">
@@ -307,10 +338,15 @@ export function WealthPortfolioTemplate({
                   </div>
 
                   <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[15px]">
-                    <h3 className="pb-[12px] text-[0.83rem] font-semibold">Top Movers</h3>
+                    <h3 className="pb-[12px] text-[0.83rem] font-semibold">
+                      Top Movers
+                    </h3>
                     <ul className="grid gap-[12px]">
                       {HOLDINGS.map((holding) => (
-                        <li key={holding.id} className="flex items-center gap-[9px]">
+                        <li
+                          key={holding.id}
+                          className="flex items-center gap-[9px]"
+                        >
                           <BrandMark brand={holding.ticker} size={29} />
                           <span className="min-w-[0px] flex-1">
                             <span className="block text-[0.792rem] font-semibold">
@@ -407,8 +443,16 @@ function BalanceChart() {
         >
           <defs>
             <linearGradient id="ob-wealth-fill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="var(--ob-success)" stopOpacity="0.28" />
-              <stop offset="100%" stopColor="var(--ob-success)" stopOpacity="0" />
+              <stop
+                offset="0%"
+                stopColor="var(--ob-success)"
+                stopOpacity="0.28"
+              />
+              <stop
+                offset="100%"
+                stopColor="var(--ob-success)"
+                stopOpacity="0"
+              />
             </linearGradient>
           </defs>
           {[0, 1, 2, 3, 4].map((index) => (
@@ -448,7 +492,10 @@ function BalanceChart() {
         {["$3.6", "$2.7", "$1.8", "$0.9", "$0"].map((tick, index) => (
           <span
             key={tick}
-            className={cn("leading-none", index > 0 && "mt-[calc((300px/4)-0.8em)]")}
+            className={cn(
+              "leading-none",
+              index > 0 && "mt-[calc((300px/4)-0.8em)]",
+            )}
           >
             {tick}
           </span>

@@ -42,10 +42,15 @@ const TAILWIND = `@import "tailwindcss";
 export default function DocsPage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-      <h1 className="text-[2.25rem] font-extrabold tracking-tight">Getting started</h1>
+      <h1 className="text-[2.25rem] font-extrabold tracking-tight">
+        Getting started
+      </h1>
       <p className="mt-3 text-pretty leading-relaxed text-[color:var(--site-muted)]">
         Every pattern takes a plain-object config. Author it in the{" "}
-        <Link href="/playground" className="font-semibold text-[color:var(--site-accent)]">
+        <Link
+          href="/playground"
+          className="font-semibold text-[color:var(--site-accent)]"
+        >
           playground
         </Link>
         , copy the JSON, and render it — the component owns the layout and
@@ -54,7 +59,12 @@ export default function DocsPage() {
 
       <section className="mt-10 grid gap-4">
         <h2 className="text-xl font-bold tracking-tight">Install</h2>
-        <CodeBlock code={INSTALL} language="bash" title="Install" maxHeight="14rem" />
+        <CodeBlock
+          code={INSTALL}
+          language="bash"
+          title="Install"
+          maxHeight="14rem"
+        />
       </section>
 
       <section className="mt-10 grid gap-4">
@@ -64,7 +74,12 @@ export default function DocsPage() {
           properties. Point Tailwind at the package so its classes are detected,
           then import the token stylesheet.
         </p>
-        <CodeBlock code={TAILWIND} language="css" title="app.css" maxHeight="14rem" />
+        <CodeBlock
+          code={TAILWIND}
+          language="css"
+          title="app.css"
+          maxHeight="14rem"
+        />
       </section>
 
       <section className="mt-10 grid gap-4">
@@ -87,9 +102,10 @@ export default function DocsPage() {
       <section className="mt-10 grid gap-4">
         <h2 className="text-xl font-bold tracking-tight">Analytics</h2>
         <p className="text-[0.95rem] leading-relaxed text-[color:var(--site-muted)]">
-          Every flow emits events — <code>flow_started</code>, <code>step_viewed</code>,{" "}
-          <code>step_completed</code>, <code>plan_selected</code> and more — through a
-          single <code>onEvent</code> sink. Watch them live on any pattern page under
+          Every flow emits events — <code>flow_started</code>,{" "}
+          <code>step_viewed</code>, <code>step_completed</code>,{" "}
+          <code>plan_selected</code> and more — through a single{" "}
+          <code>onEvent</code> sink. Watch them live on any pattern page under
           the Events tab.
         </p>
       </section>

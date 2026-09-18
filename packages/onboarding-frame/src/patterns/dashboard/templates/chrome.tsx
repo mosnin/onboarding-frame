@@ -70,7 +70,12 @@ export function Main({
   className?: string;
 }) {
   return (
-    <main className={cn("flex min-w-0 flex-1 flex-col overflow-x-hidden", className)}>
+    <main
+      className={cn(
+        "flex min-w-0 flex-1 flex-col overflow-x-hidden",
+        className,
+      )}
+    >
       {children}
     </main>
   );
@@ -132,7 +137,9 @@ export function NavItem({
         className,
       )}
     >
-      {glyph && <span className="w-4 shrink-0 text-center opacity-80">{glyph}</span>}
+      {glyph && (
+        <span className="w-4 shrink-0 text-center opacity-80">{glyph}</span>
+      )}
       <span className="flex-1 truncate">{label}</span>
       {badge !== undefined && (
         <span className="shrink-0 text-[0.75rem] tabular-nums text-[color:var(--ob-muted)]">
@@ -249,14 +256,22 @@ export function CardTitle({
   );
 }
 
-export type ChipTone = "neutral" | "brand" | "success" | "warn" | "danger" | "info";
+export type ChipTone =
+  | "neutral"
+  | "brand"
+  | "success"
+  | "warn"
+  | "danger"
+  | "info";
 
 const CHIP_TONES: Record<ChipTone, string> = {
   neutral: "bg-[color:var(--ob-surface-2)] text-[color:var(--ob-fg-soft)]",
   brand: "bg-[color:var(--ob-brand-soft)] text-[color:var(--ob-brand)]",
-  success: "bg-[color-mix(in_oklab,var(--ob-success)_16%,transparent)] text-[color:var(--ob-success)]",
+  success:
+    "bg-[color-mix(in_oklab,var(--ob-success)_16%,transparent)] text-[color:var(--ob-success)]",
   warn: "bg-[color-mix(in_oklab,#f5a623_18%,transparent)] text-[#b97309]",
-  danger: "bg-[color-mix(in_oklab,var(--ob-danger)_14%,transparent)] text-[color:var(--ob-danger)]",
+  danger:
+    "bg-[color-mix(in_oklab,var(--ob-danger)_14%,transparent)] text-[color:var(--ob-danger)]",
   info: "bg-[color-mix(in_oklab,#4f7cf7_16%,transparent)] text-[#3f6ae0]",
 };
 
@@ -298,12 +313,17 @@ export function Btn({
       type="button"
       className={cn(
         "inline-flex shrink-0 items-center justify-center gap-1.5 rounded-[8px] font-semibold transition-opacity hover:opacity-90",
-        size === "sm" ? "px-2.5 py-1.5 text-[0.8rem]" : "px-3.5 py-2 text-[0.86rem]",
-        tone === "primary" && "bg-[color:var(--ob-brand)] text-[color:var(--ob-brand-fg)]",
-        tone === "dark" && "bg-[color:var(--ob-cta-bg)] text-[color:var(--ob-cta-fg)]",
+        size === "sm"
+          ? "px-2.5 py-1.5 text-[0.8rem]"
+          : "px-3.5 py-2 text-[0.86rem]",
+        tone === "primary" &&
+          "bg-[color:var(--ob-brand)] text-[color:var(--ob-brand-fg)]",
+        tone === "dark" &&
+          "bg-[color:var(--ob-cta-bg)] text-[color:var(--ob-cta-fg)]",
         tone === "neutral" &&
           "border border-[color:var(--ob-border-strong)] bg-[color:var(--ob-surface)]",
-        tone === "ghost" && "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
+        tone === "ghost" &&
+          "text-[color:var(--ob-fg-soft)] hover:bg-[color:var(--ob-surface-2)]",
         className,
       )}
     >
@@ -318,7 +338,12 @@ export function Tabs({
   active,
   className,
 }: {
-  items: { id: string; label: ReactNode; badge?: ReactNode; disabled?: boolean }[];
+  items: {
+    id: string;
+    label: ReactNode;
+    badge?: ReactNode;
+    disabled?: boolean;
+  }[];
   active: string;
   className?: string;
 }) {
@@ -378,7 +403,8 @@ export function Segmented({
           className={cn(
             "rounded-full px-3 py-1.5 text-[0.82rem] font-semibold transition-colors",
             item.id === active
-              ? activeClassName ?? "bg-[color:var(--ob-surface)] [box-shadow:var(--ob-shadow)]"
+              ? (activeClassName ??
+                  "bg-[color:var(--ob-surface)] [box-shadow:var(--ob-shadow)]")
               : "text-[color:var(--ob-muted)]",
           )}
         >
@@ -446,7 +472,10 @@ export function Table({
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className="border-b border-[color:var(--ob-border)] last:border-b-0">
+            <tr
+              key={i}
+              className="border-b border-[color:var(--ob-border)] last:border-b-0"
+            >
               {row.map((cell, j) => (
                 <td
                   key={j}
@@ -483,7 +512,8 @@ export function Banner({
         "flex items-center gap-3 px-5 py-2.5 text-[0.88rem]",
         tone === "dark" && "bg-[#141c34] text-white",
         tone === "accent" && "bg-[color:var(--ob-brand-soft)]",
-        tone === "neutral" && "border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface-2)]",
+        tone === "neutral" &&
+          "border-b border-[color:var(--ob-border)] bg-[color:var(--ob-surface-2)]",
         className,
       )}
     >
@@ -529,7 +559,9 @@ export function PageTitle({
   return (
     <div className={cn("flex flex-wrap items-start gap-4", className)}>
       <div className="flex-1">
-        <h1 className="text-[1.75rem] font-extrabold tracking-tight">{children}</h1>
+        <h1 className="text-[1.75rem] font-extrabold tracking-tight">
+          {children}
+        </h1>
         {sub && <p className="mt-1 text-[color:var(--ob-muted)]">{sub}</p>}
       </div>
       {action}
@@ -584,7 +616,9 @@ export function Metric({
       <p className="mt-1 text-[1.65rem] font-extrabold tracking-tight tabular-nums">
         {value}
       </p>
-      {sub && <p className="text-[0.8rem] text-[color:var(--ob-muted)]">{sub}</p>}
+      {sub && (
+        <p className="text-[0.8rem] text-[color:var(--ob-muted)]">{sub}</p>
+      )}
     </div>
   );
 }

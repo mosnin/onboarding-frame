@@ -47,7 +47,12 @@ const CONFIGURE = [
   { id: "orgsettings", label: "Organizations Settings", Icon: ClipboardIcon },
   { id: "sessions", label: "Sessions", Icon: ArticleIcon },
   { id: "portal", label: "Account Portal", Icon: BrowsersIcon },
-  { id: "customization", label: "Customization", Icon: PencilIcon, chevron: true },
+  {
+    id: "customization",
+    label: "Customization",
+    Icon: PencilIcon,
+    chevron: true,
+  },
   { id: "integrations", label: "Integrations", Icon: PathIcon },
   { id: "jwt", label: "JWT Templates", Icon: SparkleIcon },
   { id: "webhooks", label: "Webhooks", Icon: FlowArrowIcon },
@@ -67,7 +72,11 @@ const APPLICATION = [
 const LEARN = [
   { id: "deploy", Icon: CheckIcon, label: "Deploy your app to production" },
   { id: "auth", Icon: ShieldIcon, label: "Learn about authentication" },
-  { id: "custom", Icon: CloudIcon, label: "Learn about Component Customization" },
+  {
+    id: "custom",
+    Icon: CloudIcon,
+    label: "Learn about Component Customization",
+  },
 ];
 
 const STATS = [
@@ -82,7 +91,9 @@ const SIGNUPS = [
   { id: "s2", email: "jsmith2@example.com", when: "Wed Apr 24, 15:54" },
 ];
 
-const SIGNINS = [{ id: "i1", email: "jsmith2@example.com", when: "Thu Apr 25, 11:25" }];
+const SIGNINS = [
+  { id: "i1", email: "jsmith2@example.com", when: "Thu Apr 25, 11:25" },
+];
 
 /**
  * Authentication console.
@@ -93,7 +104,10 @@ const SIGNINS = [{ id: "i1", email: "jsmith2@example.com", when: "Thu Apr 25, 11
  * it. The counts are two users and one sign-in, which is what "your
  * application now has users" actually means on day one.
  */
-export function AuthConsoleTemplate({ className, page = "home" }: AuthConsoleProps) {
+export function AuthConsoleTemplate({
+  className,
+  page = "home",
+}: AuthConsoleProps) {
   return (
     <Surface tokens={authTokens} className={className}>
       <Shell>
@@ -101,7 +115,9 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
           <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
             <div className="flex items-center gap-[9px] px-[11px] py-[9px]">
               <Avatar name="Personal account" size={25} />
-              <span className="flex-1 text-[0.839rem] font-medium">Personal account</span>
+              <span className="flex-1 text-[0.839rem] font-medium">
+                Personal account
+              </span>
               <ArrowsUpDownIcon size={11} />
             </div>
             <div className="flex items-center gap-[9px] border-t border-[color:var(--ob-border)] px-[11px] py-[9px]">
@@ -135,9 +151,7 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
                 label={item.label}
                 glyph={<item.Icon size={11} />}
                 trailing={
-                  item.chevron ? (
-                    <CaretRightIcon size={11} />
-                  ) : undefined
+                  item.chevron ? <CaretRightIcon size={11} /> : undefined
                 }
                 className="text-[0.839rem]"
               />
@@ -177,7 +191,8 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
         <Main className="relative overflow-auto bg-[color:var(--ob-surface)]">
           {/* The environment tab hangs from the top edge of the content pane. */}
           <span className="absolute left-1/2 top-[0px] -translate-x-1/2 rounded-b-[var(--ob-radius-sm)] bg-[color:var(--ob-danger)] px-[11px] py-[5px] text-[0.683rem] font-semibold text-white">
-            Development <ArrowsDownUpIcon size={9} className="inline align-[-1px]" />
+            Development{" "}
+            <ArrowsDownUpIcon size={9} className="inline align-[-1px]" />
           </span>
 
           <div className="px-[37px] pb-[31px] pt-[43px]">
@@ -191,10 +206,10 @@ export function AuthConsoleTemplate({ className, page = "home" }: AuthConsolePro
               Congratulations, your application now has users!
             </h1>
             <p className="max-w-[72ch] pt-[9px] text-[0.87rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
-              The platform handles all the authentication and user management pieces for
-              you. Next, you can learn how to access this data and use it in your
-              application, customize the look and feel of your components, and get your
-              app ready for production.
+              The platform handles all the authentication and user management
+              pieces for you. Next, you can learn how to access this data and
+              use it in your application, customize the look and feel of your
+              components, and get your app ready for production.
             </p>
 
             <div className="grid gap-[16px] pt-[25px] lg:grid-cols-3">
@@ -253,7 +268,9 @@ function RecentCard({
         {rows.map((row) => (
           <li key={row.id} className="flex items-center gap-[11px]">
             <Avatar name={row.email} size={26} />
-            <span className="min-w-[0px] flex-1 truncate text-[0.839rem]">{row.email}</span>
+            <span className="min-w-[0px] flex-1 truncate text-[0.839rem]">
+              {row.email}
+            </span>
             <span className="shrink-0 text-[0.815rem] text-[color:var(--ob-muted)]">
               {row.when}
             </span>

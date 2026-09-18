@@ -53,7 +53,11 @@ export function FlowRenderer({
           <Wizard
             config={config as WizardConfig}
             inline={inline}
-            onComplete={() => setDone("Flow complete — the collected answers are in the event log.")}
+            onComplete={() =>
+              setDone(
+                "Flow complete — the collected answers are in the event log.",
+              )
+            }
           />
         );
       case "checklist":

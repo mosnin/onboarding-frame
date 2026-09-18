@@ -52,8 +52,16 @@ const TAIL = [
 ];
 
 const TIMES = [
-  "03:05pm", "03:10pm", "03:15pm", "03:20pm", "03:25pm",
-  "03:30pm", "03:35pm", "03:40pm", "03:45pm", "03:50pm",
+  "03:05pm",
+  "03:10pm",
+  "03:15pm",
+  "03:20pm",
+  "03:25pm",
+  "03:30pm",
+  "03:35pm",
+  "03:40pm",
+  "03:45pm",
+  "03:50pm",
 ];
 
 /**
@@ -67,25 +75,37 @@ const REGIONS = [
     id: "europe",
     label: "Europe",
     color: "#41d1c4",
-    points: [3600, 300, 120, 100, 95, 90, 110, 95, 88, 92, 90, 140, 120, 95, 100, 130, 180, 260, 320],
+    points: [
+      3600, 300, 120, 100, 95, 90, 110, 95, 88, 92, 90, 140, 120, 95, 100, 130,
+      180, 260, 320,
+    ],
   },
   {
     id: "north-america",
     label: "North America",
     color: "#7b7bf0",
-    points: [2700, 420, 380, 360, 350, 345, 340, 338, 335, 340, 342, 345, 348, 400, 420, 430, 420, 410, 400],
+    points: [
+      2700, 420, 380, 360, 350, 345, 340, 338, 335, 340, 342, 345, 348, 400,
+      420, 430, 420, 410, 400,
+    ],
   },
   {
     id: "asia",
     label: "Asia",
     color: "#e8a33d",
-    points: [3900, 1400, 700, 600, 1700, 300, 1650, 620, 560, 540, 900, 520, 480, 470, 900, 480, 1050, 520, 800],
+    points: [
+      3900, 1400, 700, 600, 1700, 300, 1650, 620, 560, 540, 900, 520, 480, 470,
+      900, 480, 1050, 520, 800,
+    ],
   },
   {
     id: "australia",
     label: "Australia",
     color: "#5dd88f",
-    points: [4050, 900, 430, 420, 415, 410, 405, 400, 402, 405, 408, 410, 412, 415, 418, 420, 425, 430, 700],
+    points: [
+      4050, 900, 430, 420, 415, 410, 405, 400, 402, 405, 408, 410, 412, 415,
+      418, 420, 425, 430, 700,
+    ],
   },
 ];
 
@@ -141,7 +161,9 @@ export function UptimeMonitorTemplate({
               <span className="block text-[0.749rem] text-[color:var(--ob-muted)]">
                 Team
               </span>
-              <span className="block text-[0.832rem] font-semibold">JDAcme</span>
+              <span className="block text-[0.832rem] font-semibold">
+                JDAcme
+              </span>
             </span>
             <ArrowsUpDownIcon size={11} />
           </div>
@@ -203,8 +225,16 @@ export function UptimeMonitorTemplate({
 
             <div className="grid gap-[17px] pt-[23px] lg:grid-cols-3">
               {[
-                { id: "up", label: "Currently up for", value: "49 mins 40 seconds" },
-                { id: "checked", label: "Last checked at", value: "14 seconds ago" },
+                {
+                  id: "up",
+                  label: "Currently up for",
+                  value: "49 mins 40 seconds",
+                },
+                {
+                  id: "checked",
+                  label: "Last checked at",
+                  value: "14 seconds ago",
+                },
                 { id: "incidents", label: "Incidents", value: "0" },
               ].map((stat) => (
                 <section
@@ -214,7 +244,9 @@ export function UptimeMonitorTemplate({
                   <p className="text-[0.899rem] text-[color:var(--ob-muted)]">
                     {stat.label}
                   </p>
-                  <p className="pt-[7px] text-[1.249rem] font-bold">{stat.value}</p>
+                  <p className="pt-[7px] text-[1.249rem] font-bold">
+                    {stat.value}
+                  </p>
                 </section>
               ))}
             </div>
@@ -286,7 +318,10 @@ function RegionChart() {
         {["5k", "4k", "3k", "2k", "1k", "0"].map((tick, index) => (
           <span
             key={tick}
-            className={cn("leading-none", index > 0 && "mt-[calc((400px/5)-0.8em)]")}
+            className={cn(
+              "leading-none",
+              index > 0 && "mt-[calc((400px/5)-0.8em)]",
+            )}
           >
             {tick}
           </span>
@@ -317,7 +352,9 @@ function RegionChart() {
             <path
               key={region.id}
               d={region.points
-                .map((value, i) => `${i === 0 ? "M" : "L"}${i * step},${y(value)}`)
+                .map(
+                  (value, i) => `${i === 0 ? "M" : "L"}${i * step},${y(value)}`,
+                )
                 .join(" ")}
               fill="none"
               stroke={region.color}

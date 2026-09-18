@@ -195,7 +195,11 @@ type PhosphorProps = ComponentProps<typeof NavigationArrow>;
 export type SolidIconProps = PhosphorProps;
 
 const solid =
-  (C: ComponentType<PhosphorProps>, weight: PhosphorProps["weight"] = "fill", size = 18) =>
+  (
+    C: ComponentType<PhosphorProps>,
+    weight: PhosphorProps["weight"] = "fill",
+    size = 18,
+  ) =>
   (p: SolidIconProps) => <C size={size} weight={weight} aria-hidden {...p} />;
 
 /* Filled — the reference draws these as solid shapes. */

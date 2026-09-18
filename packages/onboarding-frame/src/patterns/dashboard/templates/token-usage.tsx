@@ -59,11 +59,29 @@ const RAIL_FOOT = [
 ];
 
 const MODELS = [
-  { id: "gpt-53", name: "gpt-5.3-chat-latest", provider: "OpenAI", tokens: "2,970" },
-  { id: "gpt-4o-mini", name: "gpt-4o-mini", provider: "OpenAI", tokens: "1,764" },
+  {
+    id: "gpt-53",
+    name: "gpt-5.3-chat-latest",
+    provider: "OpenAI",
+    tokens: "2,970",
+  },
+  {
+    id: "gpt-4o-mini",
+    name: "gpt-4o-mini",
+    provider: "OpenAI",
+    tokens: "1,764",
+  },
 ];
 
-const DAYS = ["Apr 15", "Apr 16", "Apr 17", "Apr 18", "Apr 19", "Apr 20", "Apr 21"];
+const DAYS = [
+  "Apr 15",
+  "Apr 16",
+  "Apr 17",
+  "Apr 18",
+  "Apr 19",
+  "Apr 20",
+  "Apr 21",
+];
 
 /**
  * Three days of the week had no calls at all. Those days are plotted as zero
@@ -93,9 +111,21 @@ export function TokenUsageTemplate({
       <Shell>
         <Sidebar width={47} bg="var(--ob-surface)" className="items-center">
           <div className="pb-[28px] pt-[10px]">
-            <Avatar name={brandName} size={20} rounded={5} variant="neutral" letters={1} />
+            <Avatar
+              name={brandName}
+              size={20}
+              rounded={5}
+              variant="neutral"
+              letters={1}
+            />
           </div>
-          <Avatar name={userName} size={24} rounded={7} variant="neutral" letters={1} />
+          <Avatar
+            name={userName}
+            size={24}
+            rounded={7}
+            variant="neutral"
+            letters={1}
+          />
 
           <nav className="grid justify-items-center">
             {RAIL.map((item) => (
@@ -143,9 +173,13 @@ export function TokenUsageTemplate({
 
         <Main className="overflow-auto">
           <header className="flex h-[55px] shrink-0 items-center gap-[10px] border-b border-[color:var(--ob-border)] px-[21px]">
-            <h1 className="flex-1 text-[0.987rem] font-semibold">Project Analytics</h1>
+            <h1 className="flex-1 text-[0.987rem] font-semibold">
+              Project Analytics
+            </h1>
             <Select>Last 7 days</Select>
-            <Select glyph={<CalendarIcon size={12} />}>Apr 15, 2026 - Apr 21, 2026</Select>
+            <Select glyph={<CalendarIcon size={12} />}>
+              Apr 15, 2026 - Apr 21, 2026
+            </Select>
           </header>
 
           <div className="p-[21px]">
@@ -173,18 +207,21 @@ export function TokenUsageTemplate({
               <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[21px]">
                 <h2 className="text-[0.987rem] font-bold">Top models</h2>
                 <p className="pt-[7px] text-[0.815rem] leading-relaxed text-[color:var(--ob-muted)]">
-                  Explore organization-wide token usage grouped by provider, model,
-                  and connection.
+                  Explore organization-wide token usage grouped by provider,
+                  model, and connection.
                 </p>
 
                 <ul className="grid gap-[10px] pt-[17px]">
                   {MODELS.map((model) => (
                     <li
                       key={model.id}
-                      aria-current={model.id === "gpt-4o-mini" ? "true" : undefined}
+                      aria-current={
+                        model.id === "gpt-4o-mini" ? "true" : undefined
+                      }
                       className={cn(
                         "rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[14px]",
-                        model.id === "gpt-4o-mini" && "bg-[color:var(--ob-surface-2)]",
+                        model.id === "gpt-4o-mini" &&
+                          "bg-[color:var(--ob-surface-2)]",
                       )}
                     >
                       <div className="flex items-start gap-[10px]">
@@ -249,7 +286,14 @@ export function TokenUsageTemplate({
                     gridLines={0}
                     yLabels={["700", "400", "200", "0"]}
                     xLabels={DAYS}
-                    series={[{ id: "total", points: TOTAL, color: "#5b6472", area: true }]}
+                    series={[
+                      {
+                        id: "total",
+                        points: TOTAL,
+                        color: "#5b6472",
+                        area: true,
+                      },
+                    ]}
                   />
                 </section>
 
@@ -302,7 +346,13 @@ function TrendCard({
   );
 }
 
-function Select({ children, glyph }: { children: ReactNode; glyph?: ReactNode }) {
+function Select({
+  children,
+  glyph,
+}: {
+  children: ReactNode;
+  glyph?: ReactNode;
+}) {
   return (
     <span className="inline-flex items-center gap-[21px] rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border-strong)] px-[12px] py-[7px] text-[0.79rem]">
       <span className="flex items-center gap-[7px]">

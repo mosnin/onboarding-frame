@@ -26,7 +26,14 @@ export interface EventConsoleProps extends TemplateProps {
   page?: ConsolePage;
 }
 
-const TABS = ["Overview", "Marketing", "Team", "Finance", "Profile", "Settings"];
+const TABS = [
+  "Overview",
+  "Marketing",
+  "Team",
+  "Finance",
+  "Profile",
+  "Settings",
+];
 
 const ORDERS = [
   {
@@ -68,7 +75,16 @@ const ORDERS = [
   },
 ];
 
-const DAYS = ["Jan 21", "Jan 22", "Jan 23", "Jan 24", "Jan 25", "Jan 26", "Jan 27", "Jan 28"];
+const DAYS = [
+  "Jan 21",
+  "Jan 22",
+  "Jan 23",
+  "Jan 24",
+  "Jan 25",
+  "Jan 26",
+  "Jan 27",
+  "Jan 28",
+];
 
 /** Four tickets, all on one day. Flat then a hump, and nothing either side. */
 const TICKETS = [0, 0, 0, 0, 0, 0.1, 3, 1];
@@ -122,7 +138,9 @@ export function EventConsoleTemplate({
             <div>
               <div className="flex flex-wrap items-center gap-[14px]">
                 <Avatar name={brandName} size={56} />
-                <h1 className="text-[1.529rem] font-bold tracking-[-0.01em]">Acme</h1>
+                <h1 className="text-[1.529rem] font-bold tracking-[-0.01em]">
+                  Acme
+                </h1>
 
                 <span className="flex items-center gap-[7px] pl-[11px] text-[0.75rem]">
                   <TreeIcon size={13} />
@@ -197,7 +215,9 @@ export function EventConsoleTemplate({
                 </span>
               </div>
 
-              <h2 className="pb-[11px] pt-[25px] text-[1.112rem] font-bold">Events</h2>
+              <h2 className="pb-[11px] pt-[25px] text-[1.112rem] font-bold">
+                Events
+              </h2>
               <section className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-[17px]">
                 <div className="flex items-start gap-[11px]">
                   <div className="flex-1">
@@ -219,7 +239,11 @@ export function EventConsoleTemplate({
 
                 <div className="relative mt-[14px] overflow-hidden rounded-[var(--ob-radius)]">
                   <span className="block h-[132px]">
-                    <Thumb seed="cookie-meet-up" radius={0} alt="Event banner" />
+                    <Thumb
+                      seed="cookie-meet-up"
+                      radius={0}
+                      alt="Event banner"
+                    />
                   </span>
                   <span className="absolute inset-x-[17px] bottom-[17px] flex items-end gap-[11px]">
                     <span className="flex-1 text-[0.903rem] font-bold">
@@ -260,7 +284,9 @@ export function EventConsoleTemplate({
                       <UserIcon size={13} />
                     )}
                     <div className="min-w-[0px] flex-1">
-                      <p className="text-[0.799rem] font-semibold">{order.name}</p>
+                      <p className="text-[0.799rem] font-semibold">
+                        {order.name}
+                      </p>
                       <p className="pt-[3px] text-[0.709rem] text-[color:var(--ob-muted)]">
                         {order.when}
                       </p>
@@ -317,7 +343,10 @@ function TicketChart(): ReactNode {
         {[3, 2, 1, 0].map((tick, index) => (
           <span
             key={tick}
-            className={cn("leading-none", index > 0 && "mt-[calc((420px/3)-0.8em)]")}
+            className={cn(
+              "leading-none",
+              index > 0 && "mt-[calc((420px/3)-0.8em)]",
+            )}
           >
             {tick}
           </span>
@@ -351,7 +380,10 @@ function TicketChart(): ReactNode {
               vectorEffect="non-scaling-stroke"
             />
           ))}
-          <path d={`${path} L${width},${height} L0,${height} Z`} fill="url(#ob-posh-fill)" />
+          <path
+            d={`${path} L${width},${height} L0,${height} Z`}
+            fill="url(#ob-posh-fill)"
+          />
           <path
             d={path}
             fill="none"
@@ -363,10 +395,16 @@ function TicketChart(): ReactNode {
 
         <div className="flex pt-[8px]">
           {DAYS.map((day) => (
-            <span key={day} className="flex-1 text-[0.66rem] text-[color:var(--ob-muted)]">
+            <span
+              key={day}
+              className="flex-1 text-[0.66rem] text-[color:var(--ob-muted)]"
+            >
               <span
                 className="inline-block whitespace-nowrap"
-                style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+                style={{
+                  writingMode: "vertical-rl",
+                  transform: "rotate(180deg)",
+                }}
               >
                 {day}
               </span>

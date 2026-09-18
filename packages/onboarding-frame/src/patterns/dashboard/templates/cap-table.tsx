@@ -174,7 +174,9 @@ export function CapTableTemplate({
             <span className="rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface)] px-[11px] py-[4px] font-medium">
               Company
             </span>
-            <span className="px-[11px] py-[4px] text-[color:var(--ob-muted)]">Portal</span>
+            <span className="px-[11px] py-[4px] text-[color:var(--ob-muted)]">
+              Portal
+            </span>
           </span>
           <Avatar name={userName} size={30} />
         </header>
@@ -193,9 +195,7 @@ export function CapTableTemplate({
               <NavItem
                 label="Cap table"
                 glyph={<UsersIcon size={12} />}
-                trailing={
-                  <CaretDownIcon size={12} />
-                }
+                trailing={<CaretDownIcon size={12} />}
                 className="text-[0.923rem]"
               />
             </nav>
@@ -229,9 +229,7 @@ export function CapTableTemplate({
                   label={item.label}
                   glyph={<item.Icon size={12} />}
                   trailing={
-                    item.chevron ? (
-                      <CaretRightIcon size={12} />
-                    ) : undefined
+                    item.chevron ? <CaretRightIcon size={12} /> : undefined
                   }
                   className="text-[0.923rem]"
                 />
@@ -250,7 +248,9 @@ export function CapTableTemplate({
                       key={item}
                       className="flex items-center gap-[11px] rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-surface-2)] px-[12px] py-[9px]"
                     >
-                      <span className="flex-1 text-[0.879rem] font-medium">{item}</span>
+                      <span className="flex-1 text-[0.879rem] font-medium">
+                        {item}
+                      </span>
                       <span
                         aria-hidden
                         className="grid size-[21px] place-items-center rounded-full border border-[color:var(--ob-brand)] text-[0.615rem] text-[color:var(--ob-brand)]"
@@ -325,7 +325,9 @@ export function CapTableTemplate({
             </section>
 
             <div className="flex flex-wrap items-center gap-[11px] pb-[14px] pt-[28px]">
-              <h2 className="flex-1 text-[1.406rem] font-bold">Transaction history</h2>
+              <h2 className="flex-1 text-[1.406rem] font-bold">
+                Transaction history
+              </h2>
               <span className="flex items-center gap-[7px] rounded-[var(--ob-radius)] bg-[color:var(--ob-brand)] px-[18px] py-[11px] text-[0.879rem] font-semibold text-white">
                 <ArrowClockwiseIcon size={12} /> Re-Issue share certificate
               </span>
@@ -373,7 +375,10 @@ export function CapTableTemplate({
                 </thead>
                 <tbody>
                   {TRANSACTIONS.map((row) => (
-                    <tr key={row.id} className="border-t border-[color:var(--ob-border)]">
+                    <tr
+                      key={row.id}
+                      className="border-t border-[color:var(--ob-border)]"
+                    >
                       <td className="px-[18px] py-[18px]">
                         <span
                           aria-hidden
@@ -383,13 +388,21 @@ export function CapTableTemplate({
                       <td className="px-[14px] py-[18px]">{row.date}</td>
                       <td className="px-[14px] py-[18px]">{row.type}</td>
                       <td className="px-[14px] py-[18px]">{row.klass}</td>
-                      <td className="px-[14px] py-[18px] text-right tabular-nums">{row.shares}</td>
-                      <td className="px-[14px] py-[18px] text-right tabular-nums">{row.total}</td>
-                      <td className="px-[14px] py-[18px] text-right tabular-nums">{row.price}</td>
+                      <td className="px-[14px] py-[18px] text-right tabular-nums">
+                        {row.shares}
+                      </td>
+                      <td className="px-[14px] py-[18px] text-right tabular-nums">
+                        {row.total}
+                      </td>
+                      <td className="px-[14px] py-[18px] text-right tabular-nums">
+                        {row.price}
+                      </td>
                       <td className="px-[14px] py-[18px] text-right tabular-nums">
                         {row.investment}
                       </td>
-                      <td className="px-[14px] py-[18px] text-right tabular-nums">{row.transfer}</td>
+                      <td className="px-[14px] py-[18px] text-right tabular-nums">
+                        {row.transfer}
+                      </td>
                       <td className="px-[14px] py-[18px] text-right">
                         <span className="inline-flex items-center gap-[14px] rounded-[var(--ob-radius)] border border-[color:var(--ob-border-strong)] px-[12px] py-[7px] text-[0.835rem] font-medium">
                           More

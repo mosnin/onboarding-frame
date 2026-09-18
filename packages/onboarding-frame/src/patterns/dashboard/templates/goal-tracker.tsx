@@ -55,12 +55,24 @@ const SECTIONS = [
     add: true,
     items: [
       { id: "design", label: "Design Project", dot: "#4ecdc4" },
-      { id: "portfolio", label: "My first portfolio", Icon: ArticleIcon, chevron: true },
+      {
+        id: "portfolio",
+        label: "My first portfolio",
+        Icon: ArticleIcon,
+        chevron: true,
+      },
     ],
   },
   {
     label: "Team",
-    items: [{ id: "workspace", label: "My workspace", Icon: UsersIcon, chevron: true }],
+    items: [
+      {
+        id: "workspace",
+        label: "My workspace",
+        Icon: UsersIcon,
+        chevron: true,
+      },
+    ],
   },
 ];
 
@@ -100,7 +112,12 @@ export function GoalTrackerTemplate({
 
           <nav className="grid gap-[2px] px-[9px]">
             {TOP.map((item) => (
-              <DarkNavItem key={item.id} label={item.label} glyph={<item.Icon size={14} />} dot={item.dot} />
+              <DarkNavItem
+                key={item.id}
+                label={item.label}
+                glyph={<item.Icon size={14} />}
+                dot={item.dot}
+              />
             ))}
           </nav>
 
@@ -119,7 +136,11 @@ export function GoalTrackerTemplate({
                   <DarkNavItem
                     key={item.id}
                     label={item.label}
-                    glyph={"Icon" in item && item.Icon ? <item.Icon size={14} /> : undefined}
+                    glyph={
+                      "Icon" in item && item.Icon ? (
+                        <item.Icon size={14} />
+                      ) : undefined
+                    }
                     swatch={"dot" in item ? (item.dot as string) : undefined}
                     chevron={"chevron" in item ? item.chevron : undefined}
                     active={item.id === page}
@@ -156,7 +177,10 @@ export function GoalTrackerTemplate({
               <p className="flex items-center gap-[8px] text-[0.826rem] font-bold">
                 Attract 2 new clients
                 <CaretDownIcon size={14} />
-                <ThumbsUpIcon size={13} className="text-[color:var(--ob-muted)]" />
+                <ThumbsUpIcon
+                  size={13}
+                  className="text-[color:var(--ob-muted)]"
+                />
                 <StarIcon size={14} />
               </p>
             </div>
@@ -189,7 +213,10 @@ export function GoalTrackerTemplate({
                     {status.label}
                   </span>
                 ))}
-                <span aria-hidden className="pl-[3px] text-[color:var(--ob-muted)]">
+                <span
+                  aria-hidden
+                  className="pl-[3px] text-[color:var(--ob-muted)]"
+                >
                   ···
                 </span>
               </div>
@@ -199,7 +226,9 @@ export function GoalTrackerTemplate({
                   <p className="text-[0.736rem] text-[color:var(--ob-fg-soft)]">
                     Goal completion
                   </p>
-                  <p className="pt-[3px] text-[1.503rem] font-bold tabular-nums leading-none">0%</p>
+                  <p className="pt-[3px] text-[1.503rem] font-bold tabular-nums leading-none">
+                    0%
+                  </p>
                   <p className="pt-[6px] text-[0.691rem] text-[color:var(--ob-muted)]">
                     4 months left in Q4 FY24
                   </p>
@@ -238,10 +267,17 @@ export function GoalTrackerTemplate({
                 <TargetRamp />
 
                 <div className="flex items-center gap-[15px] pt-[12px]">
-                  <Placeholder width={83} height={59} radius={6} label="" glyph={<TreeIcon size={14} />} />
+                  <Placeholder
+                    width={83}
+                    height={59}
+                    radius={6}
+                    label=""
+                    glyph={<TreeIcon size={14} />}
+                  />
                   <div>
                     <p className="text-[0.789rem]">
-                      Use sub-goals to automatically update this goal&apos;s progress.
+                      Use sub-goals to automatically update this goal&apos;s
+                      progress.
                     </p>
                     <span className="mt-[9px] inline-flex rounded-[var(--ob-radius-sm)] bg-[color:var(--ob-brand)] px-[12px] py-[8px] text-[0.714rem] font-semibold text-white">
                       + Connect sub-goal
@@ -336,10 +372,10 @@ function DarkNavItem({
         </span>
       )}
       <span className="flex-1 truncate">{label}</span>
-      {dot && <span aria-hidden className="size-[5px] rounded-full bg-[#e8c33d]" />}
-      {chevron && (
-        <CaretRightIcon size={14} />
+      {dot && (
+        <span aria-hidden className="size-[5px] rounded-full bg-[#e8c33d]" />
       )}
+      {chevron && <CaretRightIcon size={14} />}
     </button>
   );
 }
@@ -359,7 +395,10 @@ function TargetRamp() {
         {["100%", "75%", "50%", "25%", "0%"].map((tick, index) => (
           <span
             key={tick}
-            className={cn("leading-none", index > 0 && "mt-[calc((300px/4)-0.8em)]")}
+            className={cn(
+              "leading-none",
+              index > 0 && "mt-[calc((300px/4)-0.8em)]",
+            )}
           >
             {tick}
           </span>
@@ -367,7 +406,9 @@ function TargetRamp() {
       </div>
 
       <div className="min-w-[0px] flex-1">
-        <p className="pb-[3px] text-[0.676rem] text-[color:var(--ob-fg-soft)]">Today</p>
+        <p className="pb-[3px] text-[0.676rem] text-[color:var(--ob-fg-soft)]">
+          Today
+        </p>
         <svg
           viewBox="0 0 600 300"
           className="h-[225px] w-full"

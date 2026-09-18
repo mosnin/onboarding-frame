@@ -72,7 +72,9 @@ export function ProductAnalyticsTemplate({
           <div className="flex items-center gap-[9px] px-[15px] pb-[12px] pt-[12px]">
             <Avatar name={brandName} size={23} rounded={6} />
             <span className="flex-1 leading-tight">
-              <span className="block text-[0.836rem] font-semibold">Acme Analytics</span>
+              <span className="block text-[0.836rem] font-semibold">
+                Acme Analytics
+              </span>
               <span className="block text-[0.722rem] text-[color:var(--ob-muted)]">
                 All Project Data
               </span>
@@ -103,13 +105,16 @@ export function ProductAnalyticsTemplate({
             <NavItem
               label="Data"
               glyph={<HardDrivesIcon size={14} />}
-              trailing={
-                <CaretDownIcon size={14} />
-              }
+              trailing={<CaretDownIcon size={14} />}
               className="text-[0.821rem]"
             />
             {["Events", "Users", "Lexicon"].map((label) => (
-              <NavItem key={label} label={label} indent className="text-[0.798rem]" />
+              <NavItem
+                key={label}
+                label={label}
+                indent
+                className="text-[0.798rem]"
+              />
             ))}
             <NavItem
               label="Session Replay"
@@ -119,14 +124,24 @@ export function ProductAnalyticsTemplate({
           </nav>
 
           <p className="px-[15px] pb-[6px] pt-[18px] text-[0.699rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
-            <CaretDownIcon size={9} weight="bold" className="inline align-[0px]" /> Pinned
+            <CaretDownIcon
+              size={9}
+              weight="bold"
+              className="inline align-[0px]"
+            />{" "}
+            Pinned
           </p>
           <nav className="grid gap-[2px] px-[9px]">
             <NavItem label="🌱 Starter Board" className="text-[0.821rem]" />
           </nav>
 
           <p className="px-[15px] pb-[6px] pt-[15px] text-[0.699rem] font-medium uppercase tracking-wide text-[color:var(--ob-muted)]">
-            <CaretDownIcon size={9} weight="bold" className="inline align-[0px]" /> Your boards
+            <CaretDownIcon
+              size={9}
+              weight="bold"
+              className="inline align-[0px]"
+            />{" "}
+            Your boards
           </p>
           <nav className="grid gap-[2px] px-[9px]">
             {["Core User Metrics", "Main Dashboard"].map((label) => (
@@ -151,9 +166,13 @@ export function ProductAnalyticsTemplate({
         </Sidebar>
 
         <Main className="overflow-auto px-[27px] py-[24px]">
-          <h1 className="text-[1.596rem] font-bold tracking-[-0.02em]">Good Morning</h1>
+          <h1 className="text-[1.596rem] font-bold tracking-[-0.02em]">
+            Good Morning
+          </h1>
 
-          <h2 className="pb-[9px] pt-[21px] text-[0.874rem] font-semibold">Your Recents</h2>
+          <h2 className="pb-[9px] pt-[21px] text-[0.874rem] font-semibold">
+            Your Recents
+          </h2>
           <div className="grid gap-[12px] sm:grid-cols-3 xl:grid-cols-6">
             {RECENTS.map((title) => (
               <article
@@ -164,16 +183,23 @@ export function ProductAnalyticsTemplate({
                 <span className="block h-[73px]">
                   <Thumb seed={title} radius={0} alt="Board preview" />
                 </span>
-                <p className="truncate px-[12px] py-[9px] text-[0.775rem]">{title}</p>
+                <p className="truncate px-[12px] py-[9px] text-[0.775rem]">
+                  {title}
+                </p>
               </article>
             ))}
             <article className="grid place-items-center rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] px-[12px] py-[18px] text-center">
-              <ArrowRightIcon size={15} className="text-[color:var(--ob-fg-soft)]" />
+              <ArrowRightIcon
+                size={15}
+                className="text-[color:var(--ob-fg-soft)]"
+              />
               <span className="pt-[6px] text-[0.775rem]">See All</span>
             </article>
           </div>
 
-          <h2 className="pb-[9px] pt-[24px] text-[0.874rem] font-semibold">Your Product</h2>
+          <h2 className="pb-[9px] pt-[24px] text-[0.874rem] font-semibold">
+            Your Product
+          </h2>
           <section className="grid gap-[24px] rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[21px] lg:grid-cols-3">
             <Metric
               value="3"
@@ -183,7 +209,12 @@ export function ProductAnalyticsTemplate({
             >
               <Spiky points={DAILY} />
             </Metric>
-            <Metric value="334" label="Weekly Active Users" from="Dec 22" to="Jan 21">
+            <Metric
+              value="334"
+              label="Weekly Active Users"
+              from="Dec 22"
+              to="Jan 21"
+            >
               <Spiky points={WEEKLY} dotted />
             </Metric>
             <Metric
@@ -199,7 +230,9 @@ export function ProductAnalyticsTemplate({
 
           <div className="grid gap-[15px] pt-[24px] lg:grid-cols-2">
             <div>
-              <h2 className="pb-[9px] text-[0.874rem] font-semibold">Top Boards</h2>
+              <h2 className="pb-[9px] text-[0.874rem] font-semibold">
+                Top Boards
+              </h2>
               <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[15px]">
                 <ul className="grid gap-[12px]">
                   {BOARDS.map((board) => (
@@ -214,12 +247,16 @@ export function ProductAnalyticsTemplate({
             </div>
 
             <div>
-              <h2 className="pb-[9px] text-[0.874rem] font-semibold">Suggested Creators</h2>
+              <h2 className="pb-[9px] text-[0.874rem] font-semibold">
+                Suggested Creators
+              </h2>
               <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[15px]">
                 <div className="flex items-center gap-[11px]">
                   <Avatar name="Sam Lee" size={33} />
                   <span className="leading-tight">
-                    <span className="block text-[0.821rem] font-semibold">Sam Lee</span>
+                    <span className="block text-[0.821rem] font-semibold">
+                      Sam Lee
+                    </span>
                     <span className="block text-[0.76rem] text-[color:var(--ob-muted)]">
                       2 boards · 5 reports
                     </span>
@@ -227,7 +264,9 @@ export function ProductAnalyticsTemplate({
                 </div>
 
                 <div className="mt-[18px] grid justify-items-center rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-[18px] py-[21px] text-center">
-                  <p className="text-[0.821rem] font-semibold">Invite more teammates</p>
+                  <p className="text-[0.821rem] font-semibold">
+                    Invite more teammates
+                  </p>
                   <p className="pt-[6px] text-[0.775rem] text-[color:var(--ob-fg-soft)]">
                     Analytics works better together.
                   </p>
@@ -258,7 +297,9 @@ function Metric({
 }) {
   return (
     <div>
-      <p className="text-[1.672rem] font-bold leading-none tabular-nums">{value}</p>
+      <p className="text-[1.672rem] font-bold leading-none tabular-nums">
+        {value}
+      </p>
       <p className="pt-[6px] text-[0.821rem]">{label}</p>
       <div className="flex gap-[9px] pt-[18px]">
         <div className="min-w-[0px] flex-1">{children}</div>
@@ -267,7 +308,10 @@ function Metric({
             {axis.map((tick, index) => (
               <span
                 key={tick}
-                className={cn("leading-none", index > 0 && "mt-[calc((120px/2)-0.8em)]")}
+                className={cn(
+                  "leading-none",
+                  index > 0 && "mt-[calc((120px/2)-0.8em)]",
+                )}
               >
                 {tick}
               </span>
@@ -345,7 +389,9 @@ function GrowthLines() {
           <g key={series.id}>
             <path
               d={series.points
-                .map((value, i) => `${i === 0 ? "M" : "L"}${i * step},${y(value)}`)
+                .map(
+                  (value, i) => `${i === 0 ? "M" : "L"}${i * step},${y(value)}`,
+                )
                 .join(" ")}
               fill="none"
               stroke={series.color}

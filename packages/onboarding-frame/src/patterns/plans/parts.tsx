@@ -23,10 +23,15 @@ import {
 
 /** Monthly-equivalent price for a tier under the selected billing period. */
 export function priceFor(plan: PlanTier, period: BillingPeriod): number {
-  return period === "annual" ? (plan.priceAnnual ?? plan.priceMonthly) : plan.priceMonthly;
+  return period === "annual"
+    ? (plan.priceAnnual ?? plan.priceMonthly)
+    : plan.priceMonthly;
 }
 
-export function anchorFor(plan: PlanTier, period: BillingPeriod): number | undefined {
+export function anchorFor(
+  plan: PlanTier,
+  period: BillingPeriod,
+): number | undefined {
   return period === "annual" ? plan.anchorAnnual : plan.anchorMonthly;
 }
 
@@ -56,7 +61,9 @@ export function PeriodToggle({
         >
           {value}
           {value === "annual" && savingLabel && (
-            <span className="ml-1.5 text-[color:var(--ob-brand)]">{savingLabel}</span>
+            <span className="ml-1.5 text-[color:var(--ob-brand)]">
+              {savingLabel}
+            </span>
           )}
         </button>
       ))}
@@ -120,11 +127,15 @@ export function TermCard({
             {formatMoney(anchor, currency)}
           </span>
         )}
-        <span className="text-xl font-extrabold">{formatMoney(price, currency)}</span>
+        <span className="text-xl font-extrabold">
+          {formatMoney(price, currency)}
+        </span>
         <span className="text-[color:var(--ob-muted)]">/month</span>
       </span>
       {plan.note && (
-        <span className="text-sm text-[color:var(--ob-muted)]">{plan.note}</span>
+        <span className="text-sm text-[color:var(--ob-muted)]">
+          {plan.note}
+        </span>
       )}
     </button>
   );
@@ -208,7 +219,10 @@ export function ComparisonMatrix({ config }: { config: PlansConfig }) {
         </thead>
         <tbody>
           {config.featureRows?.map((row) => (
-            <tr key={row.label} className="border-t border-[color:var(--ob-border)]">
+            <tr
+              key={row.label}
+              className="border-t border-[color:var(--ob-border)]"
+            >
               <td className="py-4 pr-4">
                 <span className="flex items-center gap-2">
                   {row.label}
@@ -264,7 +278,9 @@ export function QuotaMatrix({ config }: { config: PlansConfig }) {
     <div className="mx-auto w-full max-w-[830px]">
       <div
         className="grid items-center gap-x-3 border-b border-[color:var(--ob-border)] pb-3.5"
-        style={{ gridTemplateColumns: `minmax(0,1fr) repeat(${columns.length}, 122px)` }}
+        style={{
+          gridTemplateColumns: `minmax(0,1fr) repeat(${columns.length}, 122px)`,
+        }}
       >
         <span className="text-[0.94rem] text-[color:var(--ob-muted)]">
           {config.quotaRowsLabel ?? "Model / Generations Amount"}
@@ -288,7 +304,9 @@ export function QuotaMatrix({ config }: { config: PlansConfig }) {
             below the others. The pills sit on one line, badges hang under.
           */
           className="grid items-start gap-x-3 border-b border-[color:var(--ob-border)] py-6 last:border-b-0"
-          style={{ gridTemplateColumns: `minmax(0,1fr) repeat(${columns.length}, 122px)` }}
+          style={{
+            gridTemplateColumns: `minmax(0,1fr) repeat(${columns.length}, 122px)`,
+          }}
         >
           <div className="min-w-0 pr-6 pt-1">
             <p className="flex items-center gap-2 text-[1.12rem] font-medium">
@@ -303,7 +321,9 @@ export function QuotaMatrix({ config }: { config: PlansConfig }) {
               <span className="truncate">{row.label}</span>
             </p>
             {row.hint && (
-              <p className="mt-1 text-[0.86rem] text-[color:var(--ob-muted)]">{row.hint}</p>
+              <p className="mt-1 text-[0.86rem] text-[color:var(--ob-muted)]">
+                {row.hint}
+              </p>
             )}
           </div>
 
@@ -322,7 +342,11 @@ export function QuotaMatrix({ config }: { config: PlansConfig }) {
                       : "bg-[color:var(--ob-surface-2)] text-[color:var(--ob-fg-soft)]",
                   )}
                 >
-                  <Mark width={12} height={12} className="shrink-0 opacity-75" />
+                  <Mark
+                    width={12}
+                    height={12}
+                    className="shrink-0 opacity-75"
+                  />
                   {value ?? "—"}
                 </span>
                 {badge && (
@@ -396,14 +420,23 @@ export function CheckoutPanel({
               className="flex items-center gap-1 text-sm font-semibold text-[color:var(--ob-brand)]"
             >
               View details
-              <ChevronDown className={cn("size-4 transition-transform", showDetails && "rotate-180")} />
+              <ChevronDown
+                className={cn(
+                  "size-4 transition-transform",
+                  showDetails && "rotate-180",
+                )}
+              />
             </button>
             {showDetails && (
               <ul className="ob-animate-in mt-3 grid gap-2">
                 {checkout.lineItems.map((item) => (
                   <li key={item.label} className="flex justify-between text-sm">
-                    <span className="text-[color:var(--ob-muted)]">{item.label}</span>
-                    <span className="tabular-nums">{formatMoney(item.amount, currency)}</span>
+                    <span className="text-[color:var(--ob-muted)]">
+                      {item.label}
+                    </span>
+                    <span className="tabular-nums">
+                      {formatMoney(item.amount, currency)}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -484,7 +517,9 @@ export function CheckoutPanel({
               type="button"
               role="checkbox"
               aria-checked={Boolean(consents[i])}
-              onClick={() => setConsents((prev) => ({ ...prev, [i]: !prev[i] }))}
+              onClick={() =>
+                setConsents((prev) => ({ ...prev, [i]: !prev[i] }))
+              }
               className="flex items-start gap-3 text-left"
             >
               <span className="pt-0.5">
@@ -540,7 +575,11 @@ export function Countdown({ seconds }: { seconds: number }) {
   const ss = String(left % 60).padStart(2, "0");
 
   return (
-    <div className="flex items-start justify-center gap-3" role="timer" aria-live="off">
+    <div
+      className="flex items-start justify-center gap-3"
+      role="timer"
+      aria-live="off"
+    >
       {[
         { value: mm, label: "minutes" },
         { value: ss, label: "seconds" },
@@ -548,7 +587,9 @@ export function Countdown({ seconds }: { seconds: number }) {
         <div key={part.label} className="flex items-start gap-3">
           {i === 1 && <span className="text-3xl font-extrabold">:</span>}
           <div className="grid justify-items-center">
-            <span className="text-3xl font-extrabold tabular-nums">{part.value}</span>
+            <span className="text-3xl font-extrabold tabular-nums">
+              {part.value}
+            </span>
             <span className="text-[0.72rem] text-[color:var(--ob-muted)]">
               {part.label}
             </span>

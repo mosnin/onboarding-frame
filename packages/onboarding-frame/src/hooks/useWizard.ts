@@ -1,7 +1,12 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import type { FieldValue, WizardConfig, WizardField, WizardStep } from "../types";
+import type {
+  FieldValue,
+  WizardConfig,
+  WizardField,
+  WizardStep,
+} from "../types";
 import { useOnboarding } from "../provider/OnboardingProvider";
 import { usePersistentState } from "./usePersistentState";
 
@@ -42,7 +47,10 @@ function defaultsFor(steps: WizardStep[]): Record<string, FieldValue> {
   return out;
 }
 
-function isAnswered(field: WizardField, value: FieldValue | undefined): boolean {
+function isAnswered(
+  field: WizardField,
+  value: FieldValue | undefined,
+): boolean {
   if (value === undefined || value === null) return false;
   if (Array.isArray(value)) return value.length > 0;
   if (typeof value === "string") return value.trim().length > 0;
@@ -140,7 +148,8 @@ export function useWizard(
   }, [emit, config.id, step.id, clampedIndex, steps.length, finish]);
 
   const goTo = useCallback(
-    (target: number) => setIndex(Math.max(0, Math.min(target, steps.length - 1))),
+    (target: number) =>
+      setIndex(Math.max(0, Math.min(target, steps.length - 1))),
     [steps.length],
   );
 

@@ -63,7 +63,12 @@ const DATA_NAV = [
 ];
 
 const FILTERS = [
-  { id: "name", label: "Filter by", control: "Filter by name or description…", search: true },
+  {
+    id: "name",
+    label: "Filter by",
+    control: "Filter by name or description…",
+    search: true,
+  },
   { id: "trigger", label: "Triggered by", control: "All" },
   { id: "status", label: "Status", control: "Campaign state" },
   { id: "topic", label: "Topic", control: "Filter by topic" },
@@ -163,26 +168,26 @@ export function CampaignListTemplate({
     <Surface tokens={campaignTokens} className={className}>
       <Shell className="flex-col">
         <span className="h-[5px] shrink-0 bg-[#f6821f]" />
-          <header className="flex h-[55px] shrink-0 items-center gap-[13px] bg-[#16232a] px-[19px] text-white">
-            <span className="flex items-center gap-[8px] text-[0.824rem]">
-              acme.com production
-              <span aria-hidden className="text-[0.549rem] opacity-60">
-                <ArrowsUpDownIcon size={12} />
-              </span>
+        <header className="flex h-[55px] shrink-0 items-center gap-[13px] bg-[#16232a] px-[19px] text-white">
+          <span className="flex items-center gap-[8px] text-[0.824rem]">
+            acme.com production
+            <span aria-hidden className="text-[0.549rem] opacity-60">
+              <ArrowsUpDownIcon size={12} />
             </span>
-            <span className="ml-auto flex items-center gap-[16px] text-[0.8rem]">
-              <span className="flex items-center gap-[6px]">
-                <span aria-hidden>?</span> Need help?
-              </span>
-              <span className="relative" aria-hidden>
-                <BellIcon size={15} />
-                <span className="absolute -right-[2px] -top-[2px] size-[6px] rounded-full bg-[#3ecf8e]" />
-              </span>
-              <ChatDotsIcon size={15} />
-              <GearIcon size={15} />
-              <UserIcon size={15} />
+          </span>
+          <span className="ml-auto flex items-center gap-[16px] text-[0.8rem]">
+            <span className="flex items-center gap-[6px]">
+              <span aria-hidden>?</span> Need help?
             </span>
-          </header>
+            <span className="relative" aria-hidden>
+              <BellIcon size={15} />
+              <span className="absolute -right-[2px] -top-[2px] size-[6px] rounded-full bg-[#3ecf8e]" />
+            </span>
+            <ChatDotsIcon size={15} />
+            <GearIcon size={15} />
+            <UserIcon size={15} />
+          </span>
+        </header>
 
         <div className="flex min-h-[0px] flex-1">
           <Sidebar width={53} bg="var(--ob-surface)" className="items-center">
@@ -258,7 +263,6 @@ export function CampaignListTemplate({
           </Sidebar>
 
           <Main className="overflow-auto">
-
             <div className="px-[25px] py-[19px]">
               <div className="flex items-center gap-[13px]">
                 <h1 className="flex-1 text-[1.16rem] font-bold tracking-[-0.01em]">
@@ -282,7 +286,10 @@ export function CampaignListTemplate({
                       {filter.search && <SearchIcon size={13} />}
                       <span className="flex-1 truncate">{filter.control}</span>
                       {!filter.search && (
-                        <span aria-hidden className="text-[0.549rem] opacity-60">
+                        <span
+                          aria-hidden
+                          className="text-[0.549rem] opacity-60"
+                        >
                           <CaretDownIcon size={10} />
                         </span>
                       )}
@@ -337,10 +344,16 @@ export function CampaignListTemplate({
                   <TableIcon size={14} />
                 </span>
                 <span className="ml-auto text-[0.784rem]">
-                  1 – 20 <span className="text-[color:var(--ob-muted)]">of 24</span>
+                  1 – 20{" "}
+                  <span className="text-[color:var(--ob-muted)]">of 24</span>
                 </span>
                 <span className="flex items-center gap-[5px]">
-                  {[CaretFirstIcon, CaretLeftIcon, CaretRightIcon, CaretLastIcon].map((Mark, i) => (
+                  {[
+                    CaretFirstIcon,
+                    CaretLeftIcon,
+                    CaretRightIcon,
+                    CaretLastIcon,
+                  ].map((Mark, i) => (
                     <span
                       key={i}
                       aria-hidden
@@ -354,13 +367,23 @@ export function CampaignListTemplate({
 
               <div className="overflow-x-auto rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)]">
                 <div className="grid min-w-[863px] grid-cols-[minmax(0,1.5fr)_150px_repeat(4,minmax(0,0.75fr))_70px] border-b border-[color:var(--ob-border)] px-[16px] py-[9px] text-[0.69rem] font-semibold uppercase tracking-wide">
-                  <span className="inline-flex items-center gap-1">Name <CaretDownIcon size={10} /></span>
+                  <span className="inline-flex items-center gap-1">
+                    Name <CaretDownIcon size={10} />
+                  </span>
                   <span />
                   <span className="text-right text-[color:var(--ob-brand)]">
                     Delivered <CaretDownIcon size={10} />
                   </span>
-                  <span className="text-right text-[color:var(--ob-muted)]" ><span className="inline-flex items-center justify-end gap-1">Opened <CaretDownIcon size={10} /></span></span>
-                  <span className="text-right text-[color:var(--ob-muted)]" ><span className="inline-flex items-center justify-end gap-1">Clicked <CaretDownIcon size={10} /></span></span>
+                  <span className="text-right text-[color:var(--ob-muted)]">
+                    <span className="inline-flex items-center justify-end gap-1">
+                      Opened <CaretDownIcon size={10} />
+                    </span>
+                  </span>
+                  <span className="text-right text-[color:var(--ob-muted)]">
+                    <span className="inline-flex items-center justify-end gap-1">
+                      Clicked <CaretDownIcon size={10} />
+                    </span>
+                  </span>
                   <span className="text-right text-[color:var(--ob-muted)]">
                     Converted <CaretDownIcon size={10} />
                   </span>
@@ -374,7 +397,10 @@ export function CampaignListTemplate({
                   >
                     <div>
                       <p className="flex items-center gap-[9px]">
-                        <span aria-hidden className="text-[color:var(--ob-muted)]">
+                        <span
+                          aria-hidden
+                          className="text-[color:var(--ob-muted)]"
+                        >
                           <BellIcon size={15} />
                         </span>
                         <span className="text-[0.878rem] font-semibold text-[color:var(--ob-brand)]">

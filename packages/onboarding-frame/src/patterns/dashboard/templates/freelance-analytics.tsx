@@ -106,7 +106,9 @@ export function FreelanceAnalyticsTemplate({
             {/* Gradient outline marks the upgrade path without a fill. */}
             <span
               className="inline-flex rounded-full p-px"
-              style={{ background: "linear-gradient(90deg,#f5a623,#e0562d,#7c5cff)" }}
+              style={{
+                background: "linear-gradient(90deg,#f5a623,#e0562d,#7c5cff)",
+              }}
             >
               <span className="flex items-center gap-[7px] rounded-full bg-[color:var(--ob-surface)] px-[18px] py-[9px] text-[0.906rem] font-medium">
                 <SparkleIcon size={13} />
@@ -135,7 +137,9 @@ export function FreelanceAnalyticsTemplate({
               <section className="overflow-hidden rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)]">
                 <div className="flex flex-wrap items-start gap-[14px] p-[22px]">
                   <div className="flex-1">
-                    <h3 className="text-[1.042rem] font-semibold">Total Payouts</h3>
+                    <h3 className="text-[1.042rem] font-semibold">
+                      Total Payouts
+                    </h3>
                     <p className="pt-[7px] text-[2.355rem] font-normal leading-none">
                       <span className="align-super text-[0.996rem]">$</span>0
                     </p>
@@ -177,7 +181,9 @@ export function FreelanceAnalyticsTemplate({
 
                 <section className="rounded-[var(--ob-radius-lg)] border border-[color:var(--ob-border)] p-[22px]">
                   <div className="flex items-start gap-[11px]">
-                    <h3 className="flex-1 text-[1.042rem] font-semibold">Invoices</h3>
+                    <h3 className="flex-1 text-[1.042rem] font-semibold">
+                      Invoices
+                    </h3>
                     <ProBadge />
                   </div>
                   <div className="grid justify-items-center pt-[18px]">
