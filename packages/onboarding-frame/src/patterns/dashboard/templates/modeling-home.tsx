@@ -7,6 +7,15 @@ import { AvatarSlot, LogoSlot, Placeholder, WordmarkSlot } from "../../../ui/pla
 import { Surface, modelingTokens } from "./tokens";
 import { Main, NavItem, NavSection, SearchField, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
+import {
+  BookIcon,
+  BoxIcon,
+  ChatIcon,
+  ChevronRight,
+  Icon,
+  SearchIcon,
+  type IconName,
+} from "../../../ui/icons";
 
 export type ModelingPage = "overview" | "data" | "categories";
 
@@ -15,9 +24,9 @@ export interface ModelingHomeProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "overview", label: "Overview", glyph: "▭" },
-  { id: "data", label: "Data", glyph: "⛁" },
-  { id: "categories", label: "Categories", glyph: "❏" },
+  { id: "overview", label: "Overview", icon: "monitor" as IconName },
+  { id: "data", label: "Data", icon: "database" as IconName },
+  { id: "categories", label: "Categories", icon: "copy" as IconName },
 ];
 
 const TEMPLATES = [
@@ -77,7 +86,8 @@ export function ModelingHomeTemplate({
   return (
     <Surface tokens={modelingTokens} className={className}>
       <Shell>
-        <Sidebar width={335} bg="var(--ob-surface)">
+        {/* Measured off the reference: 253px. */}
+        <Sidebar width={253} bg="var(--ob-surface)">
           <div className="flex items-center gap-2 px-4 pb-3 pt-4">
             <LogoSlot size={22} label="" radius={11} />
             <WordmarkSlot width={78} height={13} label="" />
@@ -101,7 +111,7 @@ export function ModelingHomeTemplate({
               <NavItem
                 key={item.id}
                 label={item.label}
-                glyph={item.glyph}
+                glyph={<Icon name={item.icon} width={16} height={16} />}
                 active={item.id === page}
               />
             ))}
@@ -109,15 +119,18 @@ export function ModelingHomeTemplate({
 
           <NavSection label="Models" />
           <nav className="grid gap-0.5 px-2.5">
-            <NavItem label="Getting started (Cloned)" glyph="⬢" />
+            <NavItem
+              label="Getting started (Cloned)"
+              glyph={<BoxIcon width={16} height={16} />}
+            />
           </nav>
 
           <div className="mt-auto flex items-center gap-3 px-4 py-4 text-[0.85rem]">
             <span className="flex items-center gap-2 text-[color:var(--ob-fg-soft)]">
-              <span aria-hidden>▤</span> Documentation
+              <BookIcon width={16} height={16} /> Documentation
             </span>
             <span className="ml-auto flex items-center gap-1.5 rounded-full border border-[color:var(--ob-border-strong)] px-2.5 py-1 text-[0.82rem] font-medium">
-              <span aria-hidden className="text-[color:var(--ob-brand)]">✦</span> Chat
+              <ChatIcon width={15} height={15} className="text-[color:var(--ob-brand)]" /> Chat
             </span>
           </div>
         </Sidebar>
@@ -169,7 +182,7 @@ function Overview() {
 
       <div className="flex items-center gap-3 pb-4 pt-10">
         <h2 className="flex-1 text-[1.15rem] font-semibold">Templates</h2>
-        <span aria-hidden className="text-[color:var(--ob-muted)]">⌕</span>
+        <SearchIcon width={17} height={17} className="text-[color:var(--ob-muted)]" />
       </div>
 
       <div className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
@@ -197,17 +210,17 @@ function Overview() {
 
 function WizardCard({ wizard }: { wizard: (typeof WIZARDS)[number] }) {
   return (
-    <section className="relative h-[310px] overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
+    <section className="relative h-[236px] overflow-hidden rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)]">
       <div className="flex items-center gap-3 px-6 pt-5">
         <h3 className="flex-1 text-[1.05rem] font-semibold">{wizard.title}</h3>
-        <span aria-hidden className="text-[color:var(--ob-muted)]">›</span>
+        <ChevronRight width={17} height={17} className="text-[color:var(--ob-muted)]" />
       </div>
       <p className="max-w-[46ch] px-6 pt-2 text-[0.92rem] leading-relaxed text-[color:var(--ob-muted)]">
         {wizard.body}
       </p>
 
       {/* The peek is clipped by the card, not fitted to it. */}
-      <div className="absolute inset-x-6 top-[148px] grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-start">
+      <div className="absolute inset-x-6 top-[112px] grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-start">
         <div className="mt-8 rounded-[var(--ob-radius-sm)] border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] shadow-[0_6px_18px_rgba(16,24,40,0.07)]">
           {wizard.sources.map((source, index) => (
             <div
