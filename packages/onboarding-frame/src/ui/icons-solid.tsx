@@ -3,15 +3,23 @@
 import type { ComponentProps, ComponentType } from "react";
 import {
   ArrowClockwise,
+  ArrowSquareOut,
   ArrowsClockwise,
   Bank,
   BookBookmark,
+  CalendarBlank,
   ChartBar,
   Chat,
+  Chats,
   CircleDashed,
   CreditCard,
   Gear,
+  House,
+  IdentificationCard,
+  Leaf,
+  Lightbulb,
   NavigationArrow,
+  Question,
   Sidebar,
   Stack,
 } from "@phosphor-icons/react";
@@ -99,3 +107,19 @@ export function RecurringSolid({
     </span>
   );
 }
+
+/*
+ * Buffer's rail is drawn at a hairline, unlike Copilot's — same library, the
+ * weight the reference shows. "Start Page" is an ID card, not a bookmark, and
+ * "Community" is the two-bubble Chats rather than a single one.
+ */
+export const HouseIcon = solid(House, "regular");
+export const LightbulbIcon = solid(Lightbulb, "regular");
+export const CalendarIcon = solid(CalendarBlank, "regular");
+export const ChatsIcon = solid(Chats, "regular");
+export const IdCardIcon = solid(IdentificationCard, "regular");
+export const ChartBarIcon = solid(ChartBar, "regular");
+export const ExternalSquareIcon = solid(ArrowSquareOut, "regular", 14);
+export const LeafIcon = solid(Leaf, "regular");
+export const QuestionIcon = solid(Question, "regular");
+export const StackMark = solid(Stack, "fill", 20);

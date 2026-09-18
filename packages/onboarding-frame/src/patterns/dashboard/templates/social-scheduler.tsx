@@ -3,20 +3,25 @@
 import type { ReactNode } from "react";
 import { Ring } from "../../../ui/charts";
 import { cn } from "../../../lib/cn";
-import { AvatarSlot, Placeholder, WordmarkSlot } from "../../../ui/placeholder";
 import { Surface, schedulerTokens } from "./tokens";
-import { Main, NavItem, NavSection, Shell, Sidebar } from "./chrome";
+import { Main, Shell, Sidebar } from "./chrome";
 import type { TemplateProps } from "./props";
+import { Avatar, Thumb } from "../../../ui/avatar";
+import { BrandMark } from "../../../ui/brand";
+import { Plus, TrendUpIcon } from "../../../ui/icons";
 import {
-  ChatIcon,
-  ExternalIcon,
-  Icon,
+  CalendarIcon,
+  ChartBarIcon,
+  ChatsIcon,
+  ExternalSquareIcon,
+  HouseIcon,
+  IdCardIcon,
   LeafIcon,
-  Plus,
-  SidebarIcon,
-  TrendUpIcon,
-  type IconName,
-} from "../../../ui/icons";
+  LightbulbIcon,
+  QuestionIcon,
+  SidebarBold,
+  StackMark,
+} from "../../../ui/icons-solid";
 
 export type SchedulerPage = "home" | "publish" | "community";
 
@@ -25,21 +30,27 @@ export interface SocialSchedulerProps extends TemplateProps {
 }
 
 const NAV = [
-  { id: "home", label: "Home", icon: "home" as IconName },
-  { id: "create", label: "Create", icon: "lightbulb" as IconName },
-  { id: "publish", label: "Publish", icon: "calendar" as IconName, badge: "3" },
-  { id: "community", label: "Community", icon: "chat" as IconName, badge: "1" },
-  { id: "start", label: "Start Page", icon: "bookmark" as IconName, external: true },
-  { id: "analytics", label: "Analytics", icon: "barChart" as IconName, external: true },
+  { id: "home", label: "Home", Icon: HouseIcon },
+  { id: "create", label: "Create", Icon: LightbulbIcon },
+  { id: "publish", label: "Publish", Icon: CalendarIcon, badge: "3" },
+  // The reference tints only this one; the Publish count is plain grey.
+  { id: "community", label: "Community", Icon: ChatsIcon, badge: "1", badgeTone: true },
+  { id: "start", label: "Start Page", Icon: IdCardIcon, external: true },
+  { id: "analytics", label: "Analytics", Icon: ChartBarIcon, external: true },
 ];
 
 const CHANNELS = [
-  { id: "c1", handle: "hello.asmith", count: "0", live: false },
-  { id: "c2", handle: "hello.asmith", count: "3", live: true },
-  { id: "c3", handle: "as cupcake", count: "0", live: false },
+  { id: "c1", handle: "hello.asmith", count: "0", live: false, brand: "threads" },
+  { id: "c2", handle: "hello.asmith", count: "3", live: true, brand: "instagram" },
+  { id: "c3", handle: "as cupcake", count: "0", live: false, brand: "threads" },
 ];
 
-const CONNECT = ["LinkedIn", "Bluesky", "Facebook"];
+/** Simple Icons carries all of these but LinkedIn, which falls back to a tile. */
+const CONNECT = [
+  { label: "LinkedIn", brand: "linkedin" },
+  { label: "Bluesky", brand: "bluesky" },
+  { label: "Facebook", brand: "facebook" },
+];
 
 /** Rings, not bars: each score is a share of its own target, not of a total. */
 const SCORES = [
@@ -77,8 +88,8 @@ const PULSE = [
 ];
 
 const QUEUE = [
-  { id: "q1", when: "Jun 26, 9:43 AM", channel: "hello.asmith" },
-  { id: "q2", when: "Jun 30, 9:45 AM", channel: "hello.asmith" },
+  { id: "q1", when: "Jun 26, 9:43 AM", channel: "hello.asmith", brand: "instagram" },
+  { id: "q2", when: "Jun 30, 9:45 AM", channel: "hello.asmith", brand: "instagram" },
 ];
 
 const TEMPLATES = [
@@ -123,153 +134,202 @@ export function SocialSchedulerTemplate({
 }: SocialSchedulerProps) {
   return (
     <Surface tokens={schedulerTokens} className={className}>
+      {/*
+        The reference is not a white app with a white rail: the page is a warm
+        #f7f6f2 the rail sits directly on, and the content is a white panel
+        inset within it — 9px from the top, 12 from the right. Measured at a
+        1512 render: rail 240, panel 242..1500.
+      */}
       <Shell>
-        <Sidebar width={240} bg="var(--ob-surface)" className="border-r-0">
-          <div className="flex items-center gap-2 px-5 pb-4 pt-5">
-            <WordmarkSlot width={92} height={16} label="" />
+        <Sidebar width={240} bg="transparent" className="border-r-0">
+          <div className="flex h-[46px] shrink-0 items-center gap-1.5 px-[17px]">
+            <StackMark size={19} className="text-[color:var(--ob-fg)]" />
+            <span className="text-[1.05rem] font-bold tracking-[-0.02em]">Buffer</span>
             <span className="ml-auto flex items-center gap-1 text-[0.8rem] text-[color:var(--ob-muted)]">
-              <LeafIcon width={16} height={16} />1
+              <LeafIcon size={17} />
+              <span className="grid size-[15px] place-items-center rounded-full bg-[#e6ddfa] text-[0.62rem] font-semibold text-[#5b3ecc]">
+                1
+              </span>
             </span>
           </div>
 
-          <div className="px-4 pb-4">
+          <div className="px-[17px] pb-[13px] pt-[19px]">
             <button
               type="button"
-              className="flex w-full items-center justify-center gap-1.5 rounded-full bg-[color:var(--ob-cta-bg)] py-3 text-[0.95rem] font-semibold text-[color:var(--ob-cta-fg)]"
+              className="flex h-[39px] w-full items-center justify-center gap-1.5 rounded-full bg-[color:var(--ob-cta-bg)] text-[0.95rem] font-semibold text-[color:var(--ob-cta-fg)]"
             >
-              + New
+              <Plus size={16} strokeWidth={2.4} /> New
             </button>
           </div>
 
-          <nav className="grid gap-0.5 px-3">
+          {/* Pills are 32 tall on a 36 pitch, inset 17 from each rail edge. */}
+          <nav className="grid gap-1 px-[17px]">
             {NAV.map((item) => (
-              <NavItem
+              <button
                 key={item.id}
-                label={item.label}
-                glyph={<Icon name={item.icon} width={17} height={17} />}
-                active={item.id === page}
-                badge={item.badge}
-                trailing={
-                  item.external ? (
-                    <span aria-hidden className="text-[0.75rem] text-[color:var(--ob-muted)]">
-                      <ExternalIcon width={12} height={12} />
+                type="button"
+                aria-current={item.id === page ? "page" : undefined}
+                className={cn(
+                  "flex h-8 items-center gap-2.5 rounded-lg px-2.5 text-left text-[0.9rem]",
+                  item.id === page
+                    ? "bg-[#ecebe5] text-[color:var(--ob-fg)]"
+                    : "text-[color:var(--ob-fg-soft)]",
+                )}
+              >
+                <item.Icon size={17} className="shrink-0" />
+                <span className="flex-1 truncate">{item.label}</span>
+                {item.badge &&
+                  (item.badgeTone ? (
+                    <span className="grid h-[18px] min-w-[18px] place-items-center rounded-full bg-[#cdeec0] px-1 text-[0.72rem] font-semibold text-[#2c5c1c]">
+                      {item.badge}
                     </span>
-                  ) : undefined
-                }
-                className="rounded-full"
-              />
+                  ) : (
+                    <span className="text-[0.8rem] tabular-nums text-[color:var(--ob-muted)]">
+                      {item.badge}
+                    </span>
+                  ))}
+                {item.external && (
+                  <ExternalSquareIcon size={14} className="text-[color:var(--ob-muted)]" />
+                )}
+              </button>
             ))}
           </nav>
 
-          <NavSection label="Channels" />
-          <nav className="grid gap-0.5 px-3">
+          <RailHeading>Channels</RailHeading>
+          <nav className="grid gap-1 px-[17px]">
             {CHANNELS.map((channel) => (
-              <NavItem
+              <button
                 key={channel.id}
-                label={channel.handle}
-                badge={channel.count}
-                glyph={
-                  <span className="relative inline-flex">
-                    {channel.live && (
-                      <span className="absolute -left-2 top-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--ob-success)]" />
-                    )}
-                    <AvatarSlot size={22} />
-                    {/* Platform mark, which is the channel's own logo. */}
-                    <Placeholder
-                      width={11}
-                      height={11}
-                      radius={4}
-                      className="absolute -bottom-0.5 -right-0.5"
-                    />
-                  </span>
-                }
-                className="rounded-full"
-              />
+                type="button"
+                className="flex h-9 items-center gap-2.5 rounded-lg px-2.5 text-left text-[0.9rem] text-[color:var(--ob-fg-soft)]"
+              >
+                <span className="relative flex shrink-0 items-center">
+                  {channel.live && (
+                    <span className="absolute -left-[7px] size-[5px] rounded-full bg-[#2f9e44]" />
+                  )}
+                  <Avatar
+                    name={channel.handle}
+                    size={26}
+                    rounded={7}
+                    badge={<BrandMark brand={channel.brand} size={11} />}
+                  />
+                </span>
+                <span className="flex-1 truncate">{channel.handle}</span>
+                <span className="text-[0.8rem] tabular-nums text-[color:var(--ob-muted)]">
+                  {channel.count}
+                </span>
+              </button>
             ))}
           </nav>
 
-          <NavSection label="Connect channels" />
-          <nav className="grid gap-0.5 px-3">
-            {CONNECT.map((name) => (
-              <NavItem
-                key={name}
-                label={name}
-                glyph={<AvatarSlot size={22} />}
-                className="rounded-full"
-              />
+          <RailHeading>Connect channels</RailHeading>
+          <nav className="grid gap-1 px-[17px]">
+            {CONNECT.map((item) => (
+              <button
+                key={item.label}
+                type="button"
+                className="flex h-8 items-center gap-2.5 rounded-lg px-2.5 text-left text-[0.9rem] text-[color:var(--ob-fg-soft)]"
+              >
+                <BrandMark brand={item.brand} label={item.label} size={19} />
+                <span className="flex-1 truncate">{item.label}</span>
+              </button>
             ))}
-            <NavItem
-              label="More channels"
-              glyph={<Plus width={17} height={17} />}
-              className="rounded-full"
-            />
+            <button
+              type="button"
+              className="flex h-8 items-center gap-2.5 rounded-lg px-2.5 text-left text-[0.9rem] text-[color:var(--ob-fg-soft)]"
+            >
+              <Plus size={17} strokeWidth={1.8} className="shrink-0" />
+              <span className="flex-1">More channels</span>
+            </button>
           </nav>
 
-          <div className="mt-auto flex items-center gap-2.5 px-5 py-5">
-            <AvatarSlot size={30} />
-            <span className="flex-1">
-              <span className="block text-[0.88rem] font-semibold">AS Acme</span>
+          <div className="mt-auto flex items-center gap-2.5 px-[17px] py-4">
+            <Avatar name="AS Mobbin" size={28} rounded={8} />
+            <span className="min-w-0 flex-1">
+              <span className="block truncate text-[0.86rem] font-semibold">AS Mobbin</span>
               <span className="block text-[0.78rem] text-[color:var(--ob-muted)]">
                 Team Plan
               </span>
             </span>
-            <SidebarIcon width={17} height={17} className="text-[color:var(--ob-muted)]" />
+            <SidebarBold size={17} className="text-[color:var(--ob-muted)]" />
           </div>
         </Sidebar>
 
-        <Main className="overflow-auto p-7">
+        <Main className="my-[9px] mr-3 overflow-auto rounded-2xl border border-[color:var(--ob-border)] bg-[color:var(--ob-surface)] relative px-8 pb-8 pt-[21px]">
           {page === "home" && <Home />}
           {page === "publish" && <Publish />}
           {page === "community" && <Community />}
+
+          <button
+            type="button"
+            aria-label="Help"
+            className="absolute bottom-4 right-4 grid size-[22px] place-items-center rounded-full border border-[#9dbcf5] text-[#3b74e0]"
+          >
+            <QuestionIcon size={14} />
+          </button>
         </Main>
       </Shell>
     </Surface>
   );
 }
 
+/** Rail group label — sentence case and small, as the reference sets it. */
+function RailHeading({ children }: { children: ReactNode }) {
+  return (
+    <p className="px-[27px] pb-1.5 pt-[18px] text-[0.8rem] text-[color:var(--ob-muted)]">
+      {children}
+    </p>
+  );
+}
+
 function Home() {
   return (
-    <div className="mx-auto w-full max-w-[1330px]">
-      <header className="flex items-start gap-4">
-        <Placeholder width={58} height={58} radius={14} label="" glyph="👋" />
+    <div className="w-full">
+      <header className="flex items-start gap-3.5">
+        <span
+          aria-hidden
+          className="grid size-11 shrink-0 place-items-center rounded-xl bg-[color:var(--ob-surface-2)] text-[1.35rem] leading-none"
+        >
+          👋
+        </span>
         <div className="flex-1">
-          <h1 className="text-[1.8rem] font-bold tracking-[-0.02em]">
+          <h1 className="text-[1.5rem] font-semibold leading-tight tracking-[-0.02em]">
             Good Afternoon, Sam!
           </h1>
-          <p className="pt-0.5 text-[0.98rem] font-medium text-[color:var(--ob-fg-soft)]">
+          <p className="pt-0.5 text-[0.88rem] text-[color:var(--ob-fg-soft)]">
             Wed, Jun 24 2026
           </p>
         </div>
-        <span className="flex items-center gap-2 pt-2">
-          <span className="grid h-8 w-8 place-items-center rounded-full text-[color:var(--ob-muted)]">
-            <ChatIcon width={19} height={19} />
+        <span className="flex items-center gap-2">
+          <span className="grid size-7 place-items-center rounded-full text-[color:var(--ob-muted)]">
+            <ChatsIcon size={18} />
           </span>
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-[color:var(--ob-surface-2)] text-[color:var(--ob-success)]">
-            <Icon name="activity" width={19} height={19} />
+          <span className="grid size-7 place-items-center rounded-full bg-[#dff3d6] text-[color:var(--ob-success)]">
+            <LeafIcon size={16} />
           </span>
         </span>
       </header>
 
-      <section className="mt-5 grid gap-6 rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] p-6 sm:grid-cols-3">
+      <section className="mt-[30px] grid gap-6 rounded-xl bg-[color:var(--ob-surface-2)] px-[13px] py-[10px] sm:grid-cols-3">
         {SCORES.map((score) => (
           <div key={score.id} className="flex items-center gap-4">
             <Ring
               value={score.value}
-              size={58}
-              thickness={5}
+              size={52}
+              thickness={4}
               color={score.color}
               label={
-                <span className="text-[1.05rem] font-bold tabular-nums">
+                <span className="text-[0.95rem] font-semibold tabular-nums">
                   {score.display}
                 </span>
               }
             />
             <div>
-              <p className="flex items-center gap-1.5 font-semibold">
+              <p className="flex items-center gap-1.5 text-[0.9rem] font-semibold">
                 {score.label}
                 <InfoDot />
               </p>
-              <p className="flex items-center gap-1 text-[0.92rem] text-[color:var(--ob-fg-soft)]">
+              <p className="flex items-center gap-1 text-[0.86rem] text-[color:var(--ob-fg-soft)]">
                 {"trend" in score && score.trend && (
                   <TrendUpIcon width={14} height={14} className="text-[color:var(--ob-success)]" />
                 )}
@@ -280,30 +340,30 @@ function Home() {
         ))}
       </section>
 
-      <h2 className="pb-3 pt-8 font-semibold">
+      <h2 className="pb-[10px] pt-[30px] text-[0.88rem] font-semibold">
         Weekly Pulse{" "}
         <span className="font-normal text-[color:var(--ob-muted)]">
           · Jun 21 to Jun 24 · Compared to previous week
         </span>
       </h2>
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-[25px] sm:grid-cols-3">
         {PULSE.map((item) => (
           <div
             key={item.id}
-            className="rounded-[var(--ob-radius)] bg-[color:var(--ob-surface-2)] px-5 py-4"
+            className="rounded-xl border border-[color:var(--ob-border)] px-4 pb-3 pt-2.5"
           >
-            <p className="flex items-center gap-1.5 text-[0.92rem] text-[color:var(--ob-fg-soft)]">
+            <p className="flex items-center gap-1.5 text-[0.82rem] text-[color:var(--ob-muted)]">
               <span className="flex-1">{item.label}</span>
               <InfoDot />
             </p>
-            <p className="pt-1 text-[1.6rem] font-bold tabular-nums">{item.value}</p>
+            <p className="pt-1.5 text-[1.3rem] font-semibold tabular-nums">{item.value}</p>
           </div>
         ))}
       </div>
 
-      <div className="grid gap-7 pt-8 lg:grid-cols-2">
+      <div className="grid gap-[25px] pt-[45px] lg:grid-cols-2">
         <div>
-          <h2 className="pb-3 font-semibold">
+          <h2 className="pb-[15px] text-[0.88rem] font-semibold">
             Up Next{" "}
             <span className="font-normal text-[color:var(--ob-muted)]">
               · 2 posts scheduled
@@ -316,14 +376,16 @@ function Home() {
                 className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-4"
               >
                 <div className="flex items-center gap-2.5">
-                  <ChannelBadge />
-                  <span className="text-[0.92rem] text-[color:var(--ob-muted)]">
+                  <ChannelBadge name={post.channel} brand={post.brand} />
+                  <span className="text-[0.88rem] text-[color:var(--ob-muted)]">
                     {post.when}
                   </span>
                 </div>
                 <div className="flex items-end gap-4 pt-3">
-                  <p className="flex-1 text-[0.98rem]">Post on {post.channel}</p>
-                  <Placeholder width={66} height={66} radius={8} label="" />
+                  <p className="flex-1 text-[0.92rem]">Post on {post.channel}</p>
+                  <span className="block size-[62px] shrink-0">
+                    <Thumb seed={post.id} radius={8} alt="Scheduled post image" />
+                  </span>
                 </div>
               </article>
             ))}
@@ -331,7 +393,7 @@ function Home() {
         </div>
 
         <div>
-          <h2 className="pb-3 font-semibold">
+          <h2 className="pb-[15px] text-[0.88rem] font-semibold">
             Comments{" "}
             <span className="font-normal text-[color:var(--ob-muted)]">· 1 unanswered</span>
           </h2>
@@ -348,20 +410,20 @@ function Home() {
         </div>
       </div>
 
-      <h2 className="pb-3 pt-8 font-semibold">Templates</h2>
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <h2 className="pb-[15px] pt-[38px] text-[0.88rem] font-semibold">Templates</h2>
+      <div className="grid gap-[25px] sm:grid-cols-2 xl:grid-cols-4">
         {TEMPLATES.map((template) => (
           <article
             key={template.id}
-            className="rounded-[var(--ob-radius)] border border-[color:var(--ob-border)] p-5"
+            className="rounded-xl border border-[color:var(--ob-border)] px-4 pb-4 pt-3.5"
           >
-            <p aria-hidden className="text-[1.15rem]">
+            <p aria-hidden className="text-[1.05rem]">
               {template.glyph}
             </p>
-            <h3 className="pt-3 text-[1.05rem] font-semibold leading-snug">
+            <h3 className="pt-2.5 text-[0.92rem] font-semibold leading-snug">
               {template.title}
             </h3>
-            <p className="pt-2 text-[0.92rem] leading-relaxed text-[color:var(--ob-fg-soft)]">
+            <p className="pt-2 text-[0.82rem] leading-relaxed text-[color:var(--ob-muted)]">
               {template.body}
             </p>
           </article>
@@ -382,12 +444,20 @@ function InfoDot() {
   );
 }
 
-function ChannelBadge() {
+function ChannelBadge({
+  name = "hello.asmith",
+  brand = "instagram",
+}: {
+  name?: string;
+  brand?: string;
+}) {
   return (
-    <span className="relative inline-flex shrink-0">
-      <AvatarSlot size={30} />
-      <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-[4px] border-2 border-[color:var(--ob-surface)] bg-[color:var(--ob-surface-3)]" />
-    </span>
+    <Avatar
+      name={name}
+      size={28}
+      rounded={8}
+      badge={<BrandMark brand={brand} size={11} />}
+    />
   );
 }
 
@@ -435,10 +505,12 @@ function Publish() {
                 >
                   <p className="text-[0.78rem] text-[color:var(--ob-muted)]">{post.time}</p>
                   <div className="flex items-center gap-2 pt-1.5">
-                    <AvatarSlot size={20} />
+                    <Avatar name={post.channel} size={20} rounded={6} />
                     <span className="truncate text-[0.82rem]">{post.channel}</span>
                   </div>
-                  <Placeholder height={54} radius={6} label="" className="mt-2" />
+                  <span className="mt-2 block h-[54px]">
+                    <Thumb seed={post.time} radius={6} alt="Queued post image" />
+                  </span>
                 </article>
               ))
             )}

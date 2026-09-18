@@ -48,16 +48,31 @@ copy that isn't in the screenshot. If the reference shows an awkward state —
 a row reading "Not specified · 100%", a chart flat at zero — reproduce it.
 Inventing plausible content removes exactly what the screen is for.
 
-### 3. Placeholders are for imagery, not icons
+### 3. Fill the slot; an empty grey box is not a placeholder
 
-- **Placeholder**: photos, artwork, brand logos, avatars, integration marks,
-  thumbnails — anything that is someone's copyrighted asset. Dotted, labelled,
-  correctly sized.
-- **Real icon**: every UI affordance — search, chevron, close, settings, bell,
-  trash. These are generic and Lucide has them.
+A screen with six empty grey circles where the reference has faces and logos
+reads as broken, not as a deliberate convention. It is the single loudest
+difference between a recreation and its reference, and it was in almost every
+template. Four cases, and only the last of them is dotted:
+
+- **Real icon** — every UI affordance: search, chevron, close, settings, bell,
+  trash. Lucide or Phosphor, per rule 1.
+- **Brand and platform marks** — LinkedIn, Facebook, Stripe, Slack. These come
+  from **`simple-icons`**, which carries 3,400 of them as path data. That is
+  what the real product uses, and it is what the reference shows. A few are
+  absent because the owner asked to be removed (LinkedIn is one); those fall
+  back to a labelled tile — never draw someone's logo by hand.
+- **Avatars and photographs** — `Avatar` and `Thumb` in `ui/avatar.tsx`
+  generate a stable field from a seed string: initials on a colour, which is
+  what these products render for an account with no picture, and a soft
+  two-tone field for a photo. They fill the slot at the right size without
+  shipping anyone's asset, and they do not change between screenshots.
+- **`Placeholder`** — only when the point of the slot is that something is
+  *missing*: an empty state, an unconfigured integration, a failed upload.
 
 Using a placeholder where the reference has an ordinary icon is as wrong as
-using an emoji.
+using an emoji. Using one where the reference has a face or a logo is what
+made the catalogue look unfinished.
 
 ### 4. No global find-and-replace across templates
 

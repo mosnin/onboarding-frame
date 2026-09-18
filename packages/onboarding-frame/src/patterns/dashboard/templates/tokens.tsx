@@ -466,23 +466,27 @@ export const modelingTokens: TemplateTokens = {
  * all, and generous 16px radii — the opposite of the CRM's hairlines.
  */
 export const schedulerTokens: TemplateTokens = {
-  bg: "#ffffff",
+  // Sampled off the reference: the page is a warm off-white the rail sits
+  // directly on, and the content is a white panel inset within it. The
+  // mint button is #b0ed9d exactly, not a generic green.
+  bg: "#f7f6f2",
   surface: "#ffffff",
-  surface2: "#f6f6f6",
-  surface3: "#ededed",
-  border: "#e8e8e8",
-  borderStrong: "#dcdcdc",
-  fg: "#191919",
-  fgSoft: "#3d3d3d",
-  muted: "#8a8a8a",
+  surface2: "#f7f6f2",
+  surface3: "#eceae4",
+  border: "#eae8e2",
+  borderStrong: "#d9d6cd",
+  fg: "#131313",
+  fgSoft: "#3f3f3d",
+  muted: "#77756e",
   brand: "#2c4bff",
   brandFg: "#ffffff",
-  ctaBg: "#b9e6a2",
-  ctaFg: "#14370a",
+  ctaBg: "#b0ed9d",
+  ctaFg: "#12300a",
   success: "#2f9e44",
-  radius: "1rem",
-  radiusSm: "0.625rem",
-  radiusLg: "1.25rem",
+  radius: "0.75rem",
+  radiusSm: "0.5rem",
+  radiusLg: "1rem",
+  font: INTER_TIGHT,
 };
 
 /**

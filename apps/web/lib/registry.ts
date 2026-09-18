@@ -35,13 +35,15 @@ export interface RegistryItem {
 /** Package root, resolved from the web app's working directory at build time. */
 const PACKAGE_ROOT = path.join(process.cwd(), "..", "..", "packages", "onboarding-frame");
 
-// ui/icons.tsx re-exports Lucide and ui/icons-solid.tsx re-exports Phosphor,
-// so an ejected piece needs both installed.
+// ui/icons.tsx re-exports Lucide, ui/icons-solid.tsx re-exports Phosphor and
+// ui/brand.tsx reads Simple Icons' path data, so an ejected piece needs all
+// three installed.
 const RUNTIME_DEPENDENCIES = [
   "clsx",
   "tailwind-merge",
   "lucide-react",
   "@phosphor-icons/react",
+  "simple-icons",
 ];
 
 /**
@@ -58,6 +60,8 @@ const CORE_FILES = [
   "src/ui/primitives.tsx",
   "src/ui/icons.tsx",
   "src/ui/icons-solid.tsx",
+  "src/ui/brand.tsx",
+  "src/ui/avatar.tsx",
   "src/ui/fields.tsx",
   "src/ui/placeholder.tsx",
   "src/hooks/usePersistentState.ts",
