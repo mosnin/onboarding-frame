@@ -2,6 +2,7 @@
 
 import type { ComponentProps, ComponentType } from "react";
 import {
+  ArrowCircleUpRight,
   ArrowClockwise,
   ArrowDown,
   ArrowLeft,
@@ -37,6 +38,7 @@ import {
   ChartLine,
   ChartPieSlice,
   Chat,
+  ChatCenteredText,
   ChatCircleDots,
   Chats,
   Check,
@@ -50,6 +52,7 @@ import {
   Cloud,
   Code,
   Coin,
+  Copyright,
   Cpu,
   CreditCard,
   Crosshair,
@@ -63,6 +66,7 @@ import {
   FileText,
   Flag,
   FlowArrow,
+  Flower,
   Folder,
   FunnelSimple,
   Gear,
@@ -138,6 +142,7 @@ import {
   Warning,
   Wrench,
   X,
+  XCircle,
 } from "@phosphor-icons/react";
 
 /**
@@ -377,6 +382,12 @@ export const CircleNotchIcon = solid(CircleNotch, "regular");
 export const BookOpenIcon = solid(BookOpen, "regular");
 export const CurrencyCircleIcon = solid(CurrencyCircleDollar, "regular");
 export const CaretLineLeftIcon = solid(CaretLineLeft, "regular");
+export const ArrowCircleOutIcon = solid(ArrowCircleUpRight, "regular");
+export const CopyrightIcon = solid(Copyright, "regular");
+export const ChatBarsIcon = solid(ChatCenteredText, "regular");
+export const ChatCircleDotsIcon = solid(ChatCircleDots, "regular");
+export const CrossCircleIcon = solid(XCircle, "regular");
+export const FlowerIcon = solid(Flower, "regular");
 export const GitBranchIcon = solid(GitBranch, "regular");
 export const NotePencilIcon = solid(NotePencil, "regular");
 export const PlugsIcon = solid(Plugs, "regular");

@@ -115,7 +115,7 @@ progress bar (60%).
 essentially empty (one dot of fill).
 "RSVPs" card: 6 + green "↑100%" chip.
 
-| 21 | 077 | Reddit mod tools | community-traffic | DONE |
+| 21 | 077 | Reddit mod tools | community-traffic | REMEASURED |
 | 22 | 078 | Asana goal detail | goal-tracker | DONE |
 | 23 | 079 | Supabase reports | platform-reports (dark) | REMEASURED |
 | 24 | 080 | Vercel analytics | deploy-analytics | DONE |
